@@ -124,6 +124,7 @@
           <h3>Snow Forecast</h3>
           <span id="forecast-status-chip">Loading</span>
         </div>
+        <div id="forecast-chart" class="forecast-chart"></div>
         <div id="forecast-copy" class="detail-copy-block"></div>
         <div id="forecast-grid" class="forecast-grid"></div>
         <div id="forecast-actions" class="detail-source-actions"></div>
@@ -145,6 +146,20 @@
     </div>
 
     <div id="zoom-level" class="glass">View detail <span id="zoom-readout">2</span></div>
+
+    <div id="compare-bar" class="glass compare-bar" style="display:none">
+      <div id="compare-chips" class="compare-chips"></div>
+      <button id="compare-go" class="ghost-btn compare-go-btn" disabled>Compare</button>
+      <button id="compare-cancel" class="ghost-btn compare-cancel-btn">Cancel</button>
+    </div>
+
+    <div id="compare-overlay" class="glass compare-overlay" style="display:none">
+      <div class="compare-head">
+        <h2>Resort Comparison</h2>
+        <button id="compare-close" class="panel-action">×</button>
+      </div>
+      <div id="compare-grid" class="compare-grid"></div>
+    </div>
   </div>
 
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>

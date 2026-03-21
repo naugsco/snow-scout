@@ -75,6 +75,9 @@ export function toggleFavorite(id) {
 let onResortClick = null;
 export function setOnResortClick(handler) { onResortClick = handler; }
 
+let onCompareToggle = null;
+export function setOnCompareToggle(handler) { onCompareToggle = handler; }
+
 export function renderFilters(selectPassFilter, selectRegionFilter) {
   const passRoot = document.getElementById('pass-filters');
   const regionRoot = document.getElementById('region-filters');
@@ -156,10 +159,17 @@ export function renderDashboard() {
           <div class="metric"><span>Open</span><strong>${formatRunAccess(resort.metrics, true)}</strong></div>
         </div>
       </div>
+      <button class="inline-compare" title="Add to comparison">⇔</button>
       <button class="inline-star ${state.favorites.has(resort.id) ? 'active' : ''}" title="Favorite">${favoriteGlyph(resort.id)}</button>
     `;
 
     item.addEventListener('click', (event) => {
+      const compareButton = event.target.closest('.inline-compare');
+      if (compareButton) {
+        event.stopPropagation();
+        if (onCompareToggle) onCompareToggle(resort.id);
+        return;
+      }
       const favoriteButton = event.target.closest('.inline-star');
       if (favoriteButton) {
         event.stopPropagation();

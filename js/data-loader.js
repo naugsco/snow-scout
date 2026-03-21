@@ -112,6 +112,31 @@ export async function loadLiveForecastForResort(resort, onDataReady) {
 
 export async function loadOptionalSourceData(onDataReady) {
   const sourceTasks = [
+    fetch('./data/resort-forecasts.json', { cache: 'no-store' })
+      .then((response) => response.ok ? response.json() : null)
+      .then((payload) => {
+        if (!payload?.resorts) return;
+        const ageMs = payload.generatedAt ? Date.now() - new Date(payload.generatedAt).getTime() : Infinity;
+        if (ageMs > 8 * 60 * 60 * 1000) return; // skip if older than 8h
+        Object.entries(payload.resorts).forEach(([key, forecast]) => {
+          if (!forecast || forecastCache.has(key)) return;
+          forecast.apiUrl = forecast.apiUrl || null;
+          forecastCache.set(key, forecast);
+          resorts.forEach((resort) => {
+            if (getSourceKeyForResort(resort.name) !== key) return;
+            resort.metrics.forecast72h = forecast.forecast72h;
+            resort.liveForecast = forecast;
+            resort.liveForecastStatus = 'ready';
+            resort.liveSources = {
+              ...(resort.liveSources || {}),
+              forecastPage: getConditionsPageForResort(resort) || resort.liveSources?.forecastPage || null
+            };
+            resort.status = inferStatus(resort.metrics);
+            resort.statusText = getStatusText(resort.status, resort.metrics);
+          });
+        });
+      })
+      .catch(() => null),
     fetch('./data/resort-conditions.json', { cache: 'no-store' })
       .then((response) => response.ok ? response.json() : null)
       .then((payload) => {

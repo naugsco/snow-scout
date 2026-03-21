@@ -11,9 +11,11 @@ import { loadOptionalSourceData, loadLiveForecastForResort } from './data-loader
 import {
   renderDashboard, renderFilters, renderUpdatedAt, renderStormBanner,
   filteredResorts, ensureSelectionVisible, toggleFavorite, setOnResortClick,
-  baseFilteredResorts, applyStatusFilter
+  setOnCompareToggle, baseFilteredResorts, applyStatusFilter
 } from './dashboard.js';
 import { renderDetailPanel, setActiveTab } from './detail-panel.js';
+import { parseHash, updateHash, initRouter } from './router.js';
+import { toggleCompareResort, clearCompare } from './comparison.js';
 
 // Initialize webcamPages with defaults
 Object.assign(webcamPages, DEFAULT_WEBCAM_PAGES);
@@ -45,11 +47,16 @@ window.__SNOW_SCOUT__ = {
 };
 
 // Core orchestration
+function syncHash() {
+  updateHash(state, resorts);
+}
+
 function focusResort(resort, options = {}) {
   state.selectedId = resort.id;
   renderDashboard();
   updateMarkerStyles();
   renderDetailPanel();
+  syncHash();
   loadLiveForecastForResort(resort, onDataReady).catch(() => null);
   if (options.fly) flyToResort(resort);
 }
@@ -69,6 +76,7 @@ function getFilteredVisibleIds() {
 
 // Wire dashboard resort clicks
 setOnResortClick((resort) => focusResort(resort, { fly: true, openPanel: true }));
+setOnCompareToggle((id) => toggleCompareResort(id));
 
 // Filter actions
 function selectPassFilter(id) {
@@ -79,6 +87,7 @@ function selectPassFilter(id) {
   updateMarkerVisibility(getFilteredVisibleIds());
   updateMarkerStyles();
   renderDetailPanel();
+  syncHash();
 }
 
 function selectRegionFilter(id) {
@@ -89,6 +98,7 @@ function selectRegionFilter(id) {
   updateMarkerVisibility(getFilteredVisibleIds());
   updateMarkerStyles();
   renderDetailPanel();
+  syncHash();
 }
 
 function selectStatusFilter(id) {
@@ -99,6 +109,7 @@ function selectStatusFilter(id) {
   updateMarkerVisibility(getFilteredVisibleIds());
   updateMarkerStyles();
   renderDetailPanel();
+  syncHash();
 }
 
 // Event listeners
@@ -146,16 +157,18 @@ document.getElementById('detail-close').addEventListener('click', () => {
   renderDashboard();
   updateMarkerStyles();
   renderDetailPanel();
+  syncHash();
 });
 
 document.querySelectorAll('.tab-btn').forEach((button) => {
-  button.addEventListener('click', () => setActiveTab(button.dataset.tab));
+  button.addEventListener('click', () => { setActiveTab(button.dataset.tab); syncHash(); });
 });
 
 document.getElementById('detail-sources').addEventListener('click', (event) => {
   const button = event.target.closest('.source-link');
   if (!button?.dataset.tab) return;
   setActiveTab(button.dataset.tab);
+  syncHash();
 });
 
 searchInput.addEventListener('input', () => {
@@ -169,6 +182,7 @@ searchInput.addEventListener('input', () => {
 sortSelect.addEventListener('change', () => {
   state.sortMode = sortSelect.value;
   renderDashboard();
+  syncHash();
 });
 
 document.getElementById('storm-banner-dismiss').addEventListener('click', () => {
@@ -193,6 +207,7 @@ document.addEventListener('keydown', (event) => {
       renderDashboard();
       updateMarkerStyles();
       renderDetailPanel();
+      syncHash();
     }
   }
   if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
@@ -282,10 +297,51 @@ function animate() {
   syncHoverCardToEntity();
 }
 
+// Apply URL hash state before initial render
+const hashState = parseHash(resorts);
+if (hashState.passFilter) state.passFilter = hashState.passFilter;
+if (hashState.regionFilter) state.regionFilter = hashState.regionFilter;
+if (hashState.sortMode) state.sortMode = hashState.sortMode;
+if (hashState.statusFilter) state.statusFilter = hashState.statusFilter;
+if (hashState.currentTab) state.currentTab = hashState.currentTab;
+if (hashState.selectedId) state.selectedId = hashState.selectedId;
+
+// Sync sort select to state
+sortSelect.value = state.sortMode;
+
 // Initial render
 renderFilters(selectPassFilter, selectRegionFilter);
 renderDashboard();
-document.getElementById('detail-panel').classList.remove('visible');
+if (state.selectedId) {
+  renderDetailPanel();
+  if (state.currentTab !== 'overview') setActiveTab(state.currentTab);
+  const initResort = resorts.find((r) => r.id === state.selectedId);
+  if (initResort) {
+    loadLiveForecastForResort(initResort, onDataReady).catch(() => null);
+    flyToResort(initResort);
+  }
+} else {
+  document.getElementById('detail-panel').classList.remove('visible');
+}
 updateMarkerVisibility(getFilteredVisibleIds());
 loadOptionalSourceData(onDataReady);
+
+// Listen for hash changes
+initRouter(resorts, (parsed) => {
+  if (parsed.passFilter) state.passFilter = parsed.passFilter;
+  if (parsed.regionFilter) state.regionFilter = parsed.regionFilter;
+  if (parsed.sortMode) { state.sortMode = parsed.sortMode; sortSelect.value = parsed.sortMode; }
+  if (parsed.statusFilter) state.statusFilter = parsed.statusFilter;
+  if (parsed.currentTab) setActiveTab(parsed.currentTab);
+  if (parsed.selectedId) {
+    const resort = resorts.find((r) => r.id === parsed.selectedId);
+    if (resort) focusResort(resort, { fly: true, openPanel: true });
+  }
+  renderFilters(selectPassFilter, selectRegionFilter);
+  renderDashboard();
+  updateMarkerVisibility(getFilteredVisibleIds());
+  updateMarkerStyles();
+  renderDetailPanel();
+});
+
 animate();

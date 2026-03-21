@@ -5,6 +5,7 @@ import {
   getConditionsReliability, withCacheBust, webcamStreams
 } from './utils.js';
 import { selectedResort, favoriteGlyph } from './dashboard.js';
+import { createSnowfallChart } from './snowfall-chart.js';
 
 const detailPanel = document.getElementById('detail-panel');
 const detailName = document.getElementById('detail-name');
@@ -307,6 +308,14 @@ export function renderDetailPanel() {
         tempMin: resort.liveForecast.tempMin?.[index]
       }))
     : [];
+  // Render snowfall chart
+  const forecastChartEl = document.getElementById('forecast-chart');
+  forecastChartEl.innerHTML = '';
+  if (resort.liveForecast?.dailySnowfall?.length) {
+    const chart = createSnowfallChart(resort.liveForecast.dailySnowfall, resort.liveForecast.dailyTime);
+    if (chart) forecastChartEl.appendChild(chart);
+  }
+
   forecastStatusChip.textContent =
     resort.liveForecastStatus === 'loading' ? 'Refreshing'
     : resort.liveForecastStatus === 'error' ? 'Unavailable'

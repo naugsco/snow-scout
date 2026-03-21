@@ -1,0 +1,24 @@
+name: Fetch Resort Data
+on:
+  schedule:
+    - cron: '0 */4 * 11,12,1,2,3,4 *'  # every 4h, Nov-Apr
+  workflow_dispatch: {}
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node scripts/fetch_resort_conditions.mjs
+      - run: node scripts/fetch_resort_forecasts.mjs
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/resort-conditions.json data/resort-forecasts.json
+          git diff --cached --quiet || git commit -m "chore: update resort data"
+          git push

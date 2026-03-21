@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snow Scout</title>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="cesium-container"></div>
+  <div id="map-legend" class="map-legend glass">
+    <span class="legend-item"><span class="legend-dot" style="background:#b06cff;box-shadow:0 0 6px #b06cff"></span>Incoming</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#65d9ff;box-shadow:0 0 6px #65d9ff"></span>Fresh</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#ff9f57;box-shadow:0 0 6px #ff9f57"></span>Dry</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#7ec7b8;box-shadow:0 0 6px #7ec7b8"></span>Steady</span>
+  </div>
+  <div class="shell">
+    <aside id="dashboard" class="glass">
+      <div class="brand-row">
+        <div class="brand-lockup">
+          <div class="brand-badge">△</div>
+          <div class="brand-copy">
+            <h1>Snow Scout</h1>
+            <p>Realtime conditions, storm watch, and resort fly-ins on a 3D earth.</p>
+          </div>
+        </div>
+        <button id="focus-top-btn" class="ghost-btn" title="Fly to top incoming resort">↗</button>
+      </div>
+
+      <div id="updated-at" class="updated-at" style="display:none"></div>
+      <div id="storm-banner" class="storm-banner" style="display:none">
+        <span id="storm-banner-text"></span>
+        <button id="storm-banner-dismiss" class="storm-dismiss" title="Dismiss">×</button>
+      </div>
+
+      <div id="pass-filters" class="filter-row"></div>
+      <div id="region-filters" class="region-row"></div>
+
+      <div class="summary-grid">
+        <button id="incoming-filter" class="summary-card" data-tone="incoming" title="Show resorts with incoming snow">
+          <span>Incoming Snow</span>
+          <strong id="incoming-count">0</strong>
+        </button>
+        <button id="fresh-filter" class="summary-card" data-tone="fresh" title="Show resorts with fresh snow in the last 24 hours">
+          <span>Fresh in 24h</span>
+          <strong id="fresh-count">0</strong>
+        </button>
+        <button id="dry-filter" class="summary-card" data-tone="dry" title="Show resorts with the longest dry spell">
+          <span>Longest Dry Spell</span>
+          <strong id="dry-count">0d</strong>
+        </button>
+      </div>
+
+      <div class="search-row">
+        <span class="search-icon">⌕</span>
+        <input id="search-input" class="search-input" type="text" placeholder="Search resorts…" autocomplete="off" />
+        <span class="search-kbd">/</span>
+      </div>
+
+      <div class="section-head">
+        <h3>Shortlist</h3>
+        <select id="sort-select" class="sort-select">
+          <option value="score">Best Snow</option>
+          <option value="snow24h">Most Fresh (24h)</option>
+          <option value="forecast72h">Biggest Forecast</option>
+          <option value="daysSinceSnow">Days Since Snow</option>
+          <option value="alpha">Alphabetical</option>
+        </select>
+        <span id="resort-count">0 resorts</span>
+      </div>
+
+      <div id="resort-list"></div>
+    </aside>
+
+    <aside id="detail-panel" class="glass">
+      <div class="detail-head">
+        <div class="detail-copy">
+          <h2 id="detail-name">Select a resort</h2>
+          <p id="detail-subtitle">Click a glowing marker or choose a resort from the dashboard.</p>
+        </div>
+        <div class="detail-actions">
+          <button id="detail-favorite" class="panel-action" title="Favorite">☆</button>
+          <button id="detail-close" class="panel-action" title="Close">×</button>
+        </div>
+      </div>
+
+      <div id="detail-meta" class="detail-meta"></div>
+      <div id="detail-sources" class="detail-sources"></div>
+
+      <div class="detail-tabs">
+        <button class="tab-btn active" data-tab="overview">Overview</button>
+        <button class="tab-btn" data-tab="conditions">Conditions</button>
+        <button class="tab-btn" data-tab="forecast">Forecast</button>
+        <button class="tab-btn" data-tab="webcams">Webcams</button>
+      </div>
+
+      <section id="tab-overview" class="tab-panel active">
+        <div id="detail-stat-grid" class="detail-stat-grid"></div>
+
+        <div class="detail-section-head">
+          <h3>Run Access</h3>
+          <span id="run-open-copy">-</span>
+        </div>
+        <div class="progress-track">
+          <div id="run-open-bar" class="progress-bar" style="width: 0%"></div>
+        </div>
+        <div class="detail-note" id="detail-note">Pick a resort to inspect recent snow, forecast, base depth, open terrain, and grooming.</div>
+      </section>
+
+      <section id="tab-conditions" class="tab-panel">
+        <div class="detail-section-head">
+          <h3>Conditions Snapshot</h3>
+          <span id="conditions-status-chip">Estimated</span>
+        </div>
+        <div id="conditions-grid" class="detail-stat-grid"></div>
+        <div id="conditions-copy" class="detail-copy-block"></div>
+        <div id="conditions-actions" class="detail-source-actions"></div>
+        <div id="conditions-source-state" class="detail-source-state"></div>
+      </section>
+
+      <section id="tab-forecast" class="tab-panel">
+        <div class="detail-section-head">
+          <h3>Snow Forecast</h3>
+          <span id="forecast-status-chip">Loading</span>
+        </div>
+        <div id="forecast-copy" class="detail-copy-block"></div>
+        <div id="forecast-grid" class="forecast-grid"></div>
+        <div id="forecast-actions" class="detail-source-actions"></div>
+        <div id="forecast-source-state" class="detail-source-state"></div>
+      </section>
+
+      <section id="tab-webcams" class="tab-panel">
+        <div class="detail-section-head">
+          <h3>Camera Links</h3>
+          <span id="webcam-count">0 feeds</span>
+        </div>
+        <div id="webcam-list" class="webcam-list"></div>
+      </section>
+    </aside>
+
+    <div id="hover-card" class="glass">
+      <strong id="hover-name"></strong>
+      <p id="hover-copy"></p>
+    </div>
+
+    <div id="zoom-level" class="glass">View detail <span id="zoom-readout">2</span></div>
+  </div>
+
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

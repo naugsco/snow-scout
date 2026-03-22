@@ -435,6 +435,71 @@ async function parsePowdr(entry) {
   };
 }
 
+async function parseTelluride(entry) {
+  const html = await fetchText(entry.reportUrl);
+
+  const snow24hMatch = html.match(/Last 24 hours[\s\S]{0,200}?<strong>(\d+(?:\.\d+)?)["″]/i)
+    || html.match(/24 hours[\s\S]{0,100}?(\d+(?:\.\d+)?)["″]/i);
+  const snow48hMatch = html.match(/Last 48 hours[\s\S]{0,200}?<strong>(\d+(?:\.\d+)?)["″]/i)
+    || html.match(/48 hours[\s\S]{0,100}?(\d+(?:\.\d+)?)["″]/i);
+  const baseMatch = html.match(/Snow depth[\s\S]{0,80}?<strong>(\d+(?:\.\d+)?)["″]/i);
+  const trailMatch = html.match(/Trail Status[\s\S]{0,500}?Open[\s\S]{0,100}?<strong>(\d+)\s*\/\s*(\d+)/i);
+  const groomedMatch = html.match(/Groomed[\s\S]{0,100}?<strong>(\d+)\s*\/\s*(\d+)/i);
+
+  const snow24h = parseNumber(snow24hMatch?.[1]);
+  const snow48h = parseNumber(snow48hMatch?.[1]);
+
+  return {
+    updatedAt: null,
+    metrics: {
+      snow24h,
+      forecast72h: null,
+      daysSinceSnow: inferDaysSinceSnow({ snow24h, snow48h }),
+      baseDepth: parseNumber(baseMatch?.[1]),
+      runsOpen: parseNumber(trailMatch?.[1]),
+      runsTotal: parseNumber(trailMatch?.[2]),
+      groomedRuns: parseNumber(groomedMatch?.[1])
+    },
+    note: cleanText((html.match(/Packed powder|Powder|Spring conditions|Hard packed|Machine groomed|Variable/i) || [])[0]),
+    sources: {
+      conditions: entry.reportUrl,
+      terrain: entry.reportUrl
+    }
+  };
+}
+
+async function parseJacksonHole(entry) {
+  const html = await fetchText(entry.reportUrl);
+
+  function extractTotalSmall(label) {
+    const pattern = new RegExp(label + '[\\s\\S]{0,200}?class="total-small"[^>]*>\\s*(\\d+(?:\\.\\d+)?)', 'i');
+    const match = html.match(pattern);
+    return parseNumber(match?.[1]);
+  }
+
+  const snow24h = extractTotalSmall('OVERNIGHT') ?? extractTotalSmall('SINCE 6AM');
+  const snow48h = extractTotalSmall('48 HOURS');
+  const baseDepth = extractTotalSmall('SNOW DEPTH');
+
+  return {
+    updatedAt: null,
+    metrics: {
+      snow24h,
+      forecast72h: null,
+      daysSinceSnow: inferDaysSinceSnow({ snow24h, snow48h }),
+      baseDepth,
+      runsOpen: null,
+      runsTotal: null,
+      groomedRuns: null
+    },
+    note: null,
+    sources: {
+      conditions: entry.reportUrl,
+      terrain: entry.reportUrl
+    }
+  };
+}
+
 async function parseEntry(entry) {
   switch (entry.adapter) {
     case 'vail':
@@ -447,6 +512,10 @@ async function parseEntry(entry) {
       return parseMtnfeed(entry);
     case 'powdr':
       return parsePowdr(entry);
+    case 'telluride':
+      return parseTelluride(entry);
+    case 'jacksonhole':
+      return parseJacksonHole(entry);
     default:
       throw new Error(`Unsupported adapter: ${entry.adapter}`);
   }

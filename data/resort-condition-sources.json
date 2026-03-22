@@ -358,5 +358,59 @@
     "lon": -111.4783,
     "reportUrl": "https://www.deervalley.com/explore-the-mountain/mountain-report",
     "resortPath": "deer-valley"
+  },
+  {
+    "key": "copper mountain",
+    "name": "Copper Mountain",
+    "adapter": "powdr",
+    "lat": 39.5022,
+    "lon": -106.1497,
+    "reportUrl": "https://www.coppercolorado.com/the-mountain/conditions-weather/snow-report",
+    "terrainUrl": "https://www.coppercolorado.com/the-mountain/conditions-weather/snow-report",
+    "apiBase": "https://api.coppercolorado.com/api/v1/dor"
+  },
+  {
+    "key": "snowbird",
+    "name": "Snowbird",
+    "adapter": "powdr",
+    "lat": 40.581,
+    "lon": -111.6571,
+    "reportUrl": "https://www.snowbird.com/mountain-report/",
+    "terrainUrl": "https://www.snowbird.com/mountain-report/",
+    "apiBase": "https://api.snowbird.com/api/v1/dor"
+  },
+  {
+    "key": "sugarbush",
+    "name": "Sugarbush",
+    "adapter": "mtnfeed",
+    "lat": 44.1355,
+    "lon": -72.9093,
+    "reportUrl": "https://www.sugarbush.com/mountain/conditions",
+    "resortPath": "sugarbush"
+  },
+  {
+    "key": "stratton",
+    "name": "Stratton",
+    "adapter": "mtnfeed",
+    "lat": 43.1134,
+    "lon": -72.9079,
+    "reportUrl": "https://www.stratton.com/the-mountain/conditions-weather/snow-report",
+    "resortPath": "stratton"
+  },
+  {
+    "key": "telluride",
+    "name": "Telluride",
+    "adapter": "telluride",
+    "lat": 37.9375,
+    "lon": -107.8123,
+    "reportUrl": "https://tellurideskiresort.com/snow-report-scrape/"
+  },
+  {
+    "key": "jackson hole",
+    "name": "Jackson Hole",
+    "adapter": "jacksonhole",
+    "lat": 43.5877,
+    "lon": -110.8279,
+    "reportUrl": "https://www.jacksonhole.com/mountain-report"
   }
 ]

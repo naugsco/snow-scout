@@ -58,8 +58,8 @@ export function getClimate(region) {
 }
 
 export function inferStatus(metrics) {
-  if (metrics.forecast72h >= 22) return 'incoming';
   if (metrics.snow24h >= 7) return 'fresh';
+  if (metrics.forecast72h >= 12) return 'incoming';
   if (metrics.daysSinceSnow >= 11) return 'dry';
   return 'steady';
 }

@@ -17,6 +17,7 @@ export const state = {
   passFilter: 'all',
   regionFilter: 'all',
   statusFilter: 'all',
+  freshMode: '24h',
   searchQuery: '',
   sortMode: 'score',
   showAllResorts: false,

@@ -103,7 +103,7 @@ function selectRegionFilter(id) {
 
 function selectStatusFilter(id) {
   state.statusFilter = state.statusFilter === id ? 'all' : id;
-  ensureSelectionVisible();
+  state.selectedId = null;
   renderFilters(selectPassFilter, selectRegionFilter);
   renderDashboard();
   updateMarkerVisibility(getFilteredVisibleIds());
@@ -123,27 +123,28 @@ document.getElementById('focus-top-btn').addEventListener('click', () => {
 });
 
 document.getElementById('incoming-filter').addEventListener('click', () => {
-  const wasActive = state.statusFilter === 'incoming';
   selectStatusFilter('incoming');
-  if (wasActive) return;
-  const resort = filteredResorts()[0];
-  if (resort) focusResort(resort, { fly: true, openPanel: true });
 });
 
 document.getElementById('fresh-filter').addEventListener('click', () => {
-  const wasActive = state.statusFilter === 'fresh';
-  selectStatusFilter('fresh');
-  if (wasActive) return;
-  const resort = filteredResorts()[0];
-  if (resort) focusResort(resort, { fly: true, openPanel: true });
+  if (state.statusFilter === 'fresh') {
+    // Cycle: 24h → 48h → 24h
+    state.freshMode = state.freshMode === '24h' ? '48h' : '24h';
+    state.selectedId = null;
+    renderFilters(selectPassFilter, selectRegionFilter);
+    renderDashboard();
+    updateMarkerVisibility(getFilteredVisibleIds());
+    updateMarkerStyles();
+    renderDetailPanel();
+    syncHash();
+  } else {
+    state.freshMode = '24h';
+    selectStatusFilter('fresh');
+  }
 });
 
 document.getElementById('dry-filter').addEventListener('click', () => {
-  const wasActive = state.statusFilter === 'dry';
   selectStatusFilter('dry');
-  if (wasActive) return;
-  const resort = filteredResorts()[0];
-  if (resort) focusResort(resort, { fly: true, openPanel: true });
 });
 
 document.getElementById('detail-favorite').addEventListener('click', () => {
@@ -158,6 +159,16 @@ document.getElementById('detail-close').addEventListener('click', () => {
   updateMarkerStyles();
   renderDetailPanel();
   syncHash();
+});
+
+document.getElementById('detail-overlay').addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) {
+    state.selectedId = null;
+    renderDashboard();
+    updateMarkerStyles();
+    renderDetailPanel();
+    syncHash();
+  }
 });
 
 document.querySelectorAll('.tab-btn').forEach((button) => {
@@ -321,7 +332,7 @@ if (state.selectedId) {
     flyToResort(initResort);
   }
 } else {
-  document.getElementById('detail-panel').classList.remove('visible');
+  document.getElementById('detail-overlay').style.display = 'none';
 }
 updateMarkerVisibility(getFilteredVisibleIds());
 loadOptionalSourceData(onDataReady);

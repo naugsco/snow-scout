@@ -8,80 +8,96 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="cesium-container"></div>
-  <div id="map-legend" class="map-legend glass">
-    <span class="legend-item"><span class="legend-dot" style="background:#b06cff;box-shadow:0 0 6px #b06cff"></span>Incoming</span>
-    <span class="legend-item"><span class="legend-dot" style="background:#65d9ff;box-shadow:0 0 6px #65d9ff"></span>Fresh</span>
-    <span class="legend-item"><span class="legend-dot" style="background:#ff9f57;box-shadow:0 0 6px #ff9f57"></span>Dry</span>
-    <span class="legend-item"><span class="legend-dot" style="background:#7ec7b8;box-shadow:0 0 6px #7ec7b8"></span>Steady</span>
-  </div>
-  <div class="shell">
-    <aside id="dashboard" class="glass">
-      <div class="brand-row">
-        <div class="brand-lockup">
-          <div class="brand-badge">△</div>
-          <div class="brand-copy">
-            <h1>Snow Scout</h1>
-            <p>Realtime conditions, storm watch, and resort fly-ins on a 3D earth.</p>
+  <div class="app-layout">
+    <!-- Top 2/3: Dashboard -->
+    <div id="dashboard" class="dashboard-area">
+      <header class="dash-header">
+        <div class="brand-row">
+          <div class="brand-lockup">
+            <div class="brand-badge">&#x25B3;</div>
+            <div class="brand-copy">
+              <h1>Snow Scout</h1>
+              <p>Realtime conditions, storm watch, and resort fly-ins on a 3D earth.</p>
+            </div>
+          </div>
+          <button id="focus-top-btn" class="ghost-btn" title="Fly to top incoming resort">&#x2197;</button>
+        </div>
+
+        <div id="updated-at" class="updated-at" style="display:none"></div>
+        <div id="storm-banner" class="storm-banner" style="display:none">
+          <span id="storm-banner-text"></span>
+          <button id="storm-banner-dismiss" class="storm-dismiss" title="Dismiss">&times;</button>
+        </div>
+
+        <div class="filter-region-row">
+          <div id="pass-filters" class="filter-row"></div>
+          <span class="divider"></span>
+          <div id="region-filters" class="region-row"></div>
+        </div>
+
+        <div class="summary-grid">
+          <button id="incoming-filter" class="summary-card" data-tone="incoming" title="Resorts expecting 12″+ over the next 72 hours">
+            <span>Storm Watch (72h)</span>
+            <strong id="incoming-count">0</strong>
+          </button>
+          <button id="fresh-filter" class="summary-card" data-tone="fresh" title="Resorts that received 7″+ in the last 24 hours">
+            <span>Fresh Snow (24h)</span>
+            <strong id="fresh-count">0</strong>
+          </button>
+          <button id="dry-filter" class="summary-card" data-tone="dry" title="Resorts with the longest streak without new snow">
+            <span>Dry Streak</span>
+            <strong id="dry-count">0d</strong>
+          </button>
+        </div>
+
+        <div class="search-sort-row">
+          <div class="search-row">
+            <span class="search-icon">&#x2315;</span>
+            <input id="search-input" class="search-input" type="text" placeholder="Search resorts&hellip;" autocomplete="off" />
+            <span class="search-kbd">/</span>
+          </div>
+          <div class="section-head">
+            <h3>Shortlist</h3>
+            <select id="sort-select" class="sort-select">
+              <option value="score">Best Snow</option>
+              <option value="snow24h">Most Fresh (24h)</option>
+              <option value="forecast72h">Biggest Forecast</option>
+              <option value="daysSinceSnow">Days Since Snow</option>
+              <option value="alpha">Alphabetical</option>
+            </select>
+            <span id="resort-count">0 resorts</span>
           </div>
         </div>
-        <button id="focus-top-btn" class="ghost-btn" title="Fly to top incoming resort">↗</button>
+      </header>
+
+      <div id="resort-list" class="resort-grid"></div>
+    </div>
+
+    <!-- Bottom 1/3: Map -->
+    <div class="map-area">
+      <div id="cesium-container"></div>
+      <div id="map-legend" class="map-legend glass">
+        <span>Open mode</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#b06cff;box-shadow:0 0 6px #b06cff"></span>Incoming</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#65d9ff;box-shadow:0 0 6px #65d9ff"></span>Fresh</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#ff9f57;box-shadow:0 0 6px #ff9f57"></span>Dry</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#7ec7b8;box-shadow:0 0 6px #7ec7b8"></span>Steady</span>
       </div>
+      <div id="zoom-level" class="glass">View detail <span id="zoom-readout">2</span></div>
+    </div>
+  </div>
 
-      <div id="updated-at" class="updated-at" style="display:none"></div>
-      <div id="storm-banner" class="storm-banner" style="display:none">
-        <span id="storm-banner-text"></span>
-        <button id="storm-banner-dismiss" class="storm-dismiss" title="Dismiss">×</button>
-      </div>
-
-      <div id="pass-filters" class="filter-row"></div>
-      <div id="region-filters" class="region-row"></div>
-
-      <div class="summary-grid">
-        <button id="incoming-filter" class="summary-card" data-tone="incoming" title="Show resorts with incoming snow">
-          <span>Incoming Snow</span>
-          <strong id="incoming-count">0</strong>
-        </button>
-        <button id="fresh-filter" class="summary-card" data-tone="fresh" title="Show resorts with fresh snow in the last 24 hours">
-          <span>Fresh in 24h</span>
-          <strong id="fresh-count">0</strong>
-        </button>
-        <button id="dry-filter" class="summary-card" data-tone="dry" title="Show resorts with the longest dry spell">
-          <span>Longest Dry Spell</span>
-          <strong id="dry-count">0d</strong>
-        </button>
-      </div>
-
-      <div class="search-row">
-        <span class="search-icon">⌕</span>
-        <input id="search-input" class="search-input" type="text" placeholder="Search resorts…" autocomplete="off" />
-        <span class="search-kbd">/</span>
-      </div>
-
-      <div class="section-head">
-        <h3>Shortlist</h3>
-        <select id="sort-select" class="sort-select">
-          <option value="score">Best Snow</option>
-          <option value="snow24h">Most Fresh (24h)</option>
-          <option value="forecast72h">Biggest Forecast</option>
-          <option value="daysSinceSnow">Days Since Snow</option>
-          <option value="alpha">Alphabetical</option>
-        </select>
-        <span id="resort-count">0 resorts</span>
-      </div>
-
-      <div id="resort-list"></div>
-    </aside>
-
-    <aside id="detail-panel" class="glass">
+  <!-- Detail panel overlay -->
+  <div id="detail-overlay" class="detail-overlay" style="display:none">
+    <div id="detail-panel" class="detail-panel glass">
       <div class="detail-head">
         <div class="detail-copy">
           <h2 id="detail-name">Select a resort</h2>
           <p id="detail-subtitle">Click a glowing marker or choose a resort from the dashboard.</p>
         </div>
         <div class="detail-actions">
-          <button id="detail-favorite" class="panel-action" title="Favorite">☆</button>
-          <button id="detail-close" class="panel-action" title="Close">×</button>
+          <button id="detail-favorite" class="panel-action" title="Favorite">&#x2606;</button>
+          <button id="detail-close" class="panel-action" title="Close">&times;</button>
         </div>
       </div>
 
@@ -138,28 +154,28 @@
         </div>
         <div id="webcam-list" class="webcam-list"></div>
       </section>
-    </aside>
-
-    <div id="hover-card" class="glass">
-      <strong id="hover-name"></strong>
-      <p id="hover-copy"></p>
     </div>
+  </div>
 
-    <div id="zoom-level" class="glass">View detail <span id="zoom-readout">2</span></div>
+  <!-- Hover card for map markers -->
+  <div id="hover-card" class="glass hover-card">
+    <strong id="hover-name"></strong>
+    <p id="hover-copy"></p>
+  </div>
 
-    <div id="compare-bar" class="glass compare-bar" style="display:none">
-      <div id="compare-chips" class="compare-chips"></div>
-      <button id="compare-go" class="ghost-btn compare-go-btn" disabled>Compare</button>
-      <button id="compare-cancel" class="ghost-btn compare-cancel-btn">Cancel</button>
+  <!-- Compare UI -->
+  <div id="compare-bar" class="glass compare-bar" style="display:none">
+    <div id="compare-chips" class="compare-chips"></div>
+    <button id="compare-go" class="ghost-btn compare-go-btn" disabled>Compare</button>
+    <button id="compare-cancel" class="ghost-btn compare-cancel-btn">Cancel</button>
+  </div>
+
+  <div id="compare-overlay" class="glass compare-overlay" style="display:none">
+    <div class="compare-head">
+      <h2>Resort Comparison</h2>
+      <button id="compare-close" class="panel-action">&times;</button>
     </div>
-
-    <div id="compare-overlay" class="glass compare-overlay" style="display:none">
-      <div class="compare-head">
-        <h2>Resort Comparison</h2>
-        <button id="compare-close" class="panel-action">×</button>
-      </div>
-      <div id="compare-grid" class="compare-grid"></div>
-    </div>
+    <div id="compare-grid" class="compare-grid"></div>
   </div>
 
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>

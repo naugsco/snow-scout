@@ -42,6 +42,9 @@ export function baseFilteredResorts() {
 
 export function applyStatusFilter(list) {
   if (state.statusFilter === 'all') return list;
+  if (state.statusFilter === 'fresh' && state.freshMode === '48h') {
+    return list.filter((resort) => (resort.metrics.snow48h ?? 0) >= 7);
+  }
   return list.filter((resort) => resort.status === state.statusFilter);
 }
 
@@ -106,26 +109,54 @@ export function renderDashboard() {
   const baseVisible = baseFilteredResorts();
   const visible = applyStatusFilter(baseVisible);
   const incoming = baseVisible.filter((resort) => resort.status === 'incoming').sort((a, b) => b.metrics.forecast72h - a.metrics.forecast72h);
-  const fresh = baseVisible.filter((resort) => resort.status === 'fresh').sort((a, b) => b.metrics.snow24h - a.metrics.snow24h);
+  const fresh24 = baseVisible.filter((resort) => resort.status === 'fresh').sort((a, b) => b.metrics.snow24h - a.metrics.snow24h);
+  const fresh48 = baseVisible.filter((resort) => (resort.metrics.snow48h ?? 0) >= 7).sort((a, b) => b.metrics.snow48h - a.metrics.snow48h);
   const dry = baseVisible.filter((resort) => resort.status === 'dry').sort((a, b) => b.metrics.daysSinceSnow - a.metrics.daysSinceSnow);
 
   incomingFilterButton.classList.toggle('active', state.statusFilter === 'incoming');
   freshFilterButton.classList.toggle('active', state.statusFilter === 'fresh');
   dryFilterButton.classList.toggle('active', state.statusFilter === 'dry');
 
+  // Update fresh button label to reflect current mode
+  const freshLabel = freshFilterButton.querySelector('span');
+  const freshCount = state.freshMode === '48h' ? fresh48.length : fresh24.length;
+  if (freshLabel) freshLabel.textContent = `Fresh Snow (${state.freshMode})`;
+
   incomingCountEl.textContent = incoming.length;
-  freshCountEl.textContent = fresh.length;
+  freshCountEl.textContent = freshCount;
   dryCountEl.textContent = `${dry[0]?.metrics.daysSinceSnow || 0}d`;
 
   const countLabel =
-    state.statusFilter === 'incoming' ? 'incoming'
-    : state.statusFilter === 'fresh' ? 'fresh'
+    state.statusFilter === 'incoming' ? 'storm-watch'
+    : state.statusFilter === 'fresh' ? 'fresh-snow'
     : state.statusFilter === 'dry' ? 'dry-streak'
     : '';
   resortCount.textContent = countLabel
     ? `${visible.length} ${countLabel} resort${visible.length === 1 ? '' : 's'}`
     : `${visible.length} resort${visible.length === 1 ? '' : 's'}`;
   resortListEl.innerHTML = '';
+
+  // Compute heatmap range when a status filter is active
+  let heatmapMetric = null;
+  let heatmapMin = 0;
+  let heatmapMax = 1;
+  let heatmapColor = null;
+  if (state.statusFilter === 'incoming') {
+    heatmapMetric = 'forecast72h';
+    heatmapColor = '176, 108, 255';
+    const vals = visible.map((r) => r.metrics.forecast72h).filter(Number.isFinite);
+    if (vals.length) { heatmapMin = Math.min(...vals); heatmapMax = Math.max(...vals); }
+  } else if (state.statusFilter === 'fresh') {
+    heatmapMetric = state.freshMode === '48h' ? 'snow48h' : 'snow24h';
+    heatmapColor = '101, 217, 255';
+    const vals = visible.map((r) => r.metrics[heatmapMetric]).filter(Number.isFinite);
+    if (vals.length) { heatmapMin = Math.min(...vals); heatmapMax = Math.max(...vals); }
+  } else if (state.statusFilter === 'dry') {
+    heatmapMetric = 'daysSinceSnow';
+    heatmapColor = '255, 159, 87';
+    const vals = visible.map((r) => r.metrics.daysSinceSnow).filter(Number.isFinite);
+    if (vals.length) { heatmapMin = Math.min(...vals); heatmapMax = Math.max(...vals); }
+  }
 
   const CAP = 18;
   const isCapped = state.statusFilter === 'all' && !state.showAllResorts && !state.searchQuery && visible.length > CAP;
@@ -145,22 +176,60 @@ export function renderDashboard() {
   shortlist.forEach((resort) => {
     const item = document.createElement('div');
     item.className = `resort-item ${state.selectedId === resort.id ? 'selected' : ''}`;
+
+    if (heatmapMetric && heatmapColor) {
+      const val = resort.metrics[heatmapMetric] ?? 0;
+      const range = heatmapMax - heatmapMin;
+      const t = range > 0 ? (val - heatmapMin) / range : 0.5;
+      const opacity = 0.06 + t * 0.38;
+      const borderOpacity = 0.1 + t * 0.4;
+      item.style.background = `linear-gradient(135deg, rgba(${heatmapColor}, ${opacity}), rgba(${heatmapColor}, ${opacity * 0.4}))`;
+      item.style.borderColor = `rgba(${heatmapColor}, ${borderOpacity})`;
+    }
+
+    const ds = resort.liveForecast?.dailySnowfall;
+    const d1 = ds?.[0] ?? resort.metrics.forecastDay1 ?? 0;
+    const d2 = ds?.[1] ?? resort.metrics.forecastDay2 ?? 0;
+    const d3 = ds?.[2] ?? resort.metrics.forecastDay3 ?? 0;
+    const fMax = Math.max(d1, d2, d3, 1);
+    const sMax = Math.max(resort.metrics.snow24h, resort.metrics.snow48h, 1);
+
     item.innerHTML = `
-      <span class="status-dot ${resort.status}"></span>
-      <div class="resort-copy">
+      <div class="card-head">
+        <span class="status-dot ${resort.status}"></span>
         <strong>
           ${resort.name}
           <span class="pass-tag ${getPassTone(resort)}">${formatPassLabel(resort)}</span>
         </strong>
-        <div class="meta">${resort.regionLabel} · ${resort.statusText}</div>
-        <div class="resort-metrics">
-          <div class="metric"><span>24h</span><strong>${formatInches(resort.metrics.snow24h)}</strong><div class="mini-bar"><div class="mini-bar-fill fresh-bar" style="width:${Math.min(100, (resort.metrics.snow24h / 24) * 100)}%"></div></div></div>
-          <div class="metric"><span>72h</span><strong>${formatInches(resort.metrics.forecast72h)}</strong><div class="mini-bar"><div class="mini-bar-fill forecast-bar" style="width:${Math.min(100, (resort.metrics.forecast72h / 36) * 100)}%"></div></div></div>
-          <div class="metric"><span>Open</span><strong>${formatRunAccess(resort.metrics, true)}</strong></div>
+        <span class="card-actions">
+          <button class="inline-compare" title="Add to comparison">⇔</button>
+          <button class="inline-star ${state.favorites.has(resort.id) ? 'active' : ''}" title="Favorite">${favoriteGlyph(resort.id)}</button>
+        </span>
+      </div>
+      <div class="meta">${resort.regionLabel} · ${resort.statusText}</div>
+      <div class="card-data-row">
+        <div class="data-section">
+          <span class="data-section-label">Recent Snow</span>
+          <div class="data-section-items">
+            <div class="data-col"><div class="data-bar"><div class="data-bar-fill fresh-bar" style="height:${Math.min(100, (resort.metrics.snow24h / sMax) * 100)}%"></div></div><strong>${formatInches(resort.metrics.snow24h)}</strong><span>24h</span></div>
+            <div class="data-col"><div class="data-bar"><div class="data-bar-fill fresh-bar" style="height:${Math.min(100, (resort.metrics.snow48h / sMax) * 100)}%"></div></div><strong>${formatInches(resort.metrics.snow48h)}</strong><span>48h</span></div>
+          </div>
+        </div>
+        <div class="data-section">
+          <span class="data-section-label">Next 3 Days</span>
+          <div class="data-section-items">
+            <div class="data-col"><div class="data-bar"><div class="data-bar-fill forecast-bar" style="height:${Math.min(100, (d1 / fMax) * 100)}%"></div></div><strong>${formatInches(d1)}</strong><span>D1</span></div>
+            <div class="data-col"><div class="data-bar"><div class="data-bar-fill forecast-bar" style="height:${Math.min(100, (d2 / fMax) * 100)}%"></div></div><strong>${formatInches(d2)}</strong><span>D2</span></div>
+            <div class="data-col"><div class="data-bar"><div class="data-bar-fill forecast-bar" style="height:${Math.min(100, (d3 / fMax) * 100)}%"></div></div><strong>${formatInches(d3)}</strong><span>D3</span></div>
+          </div>
+        </div>
+        <div class="data-section data-section-compact">
+          <span class="data-section-label">Runs</span>
+          <div class="data-section-items">
+            <div class="data-col"><strong class="runs-val">${formatRunAccess(resort.metrics, true)}</strong><span>Open</span></div>
+          </div>
         </div>
       </div>
-      <button class="inline-compare" title="Add to comparison">⇔</button>
-      <button class="inline-star ${state.favorites.has(resort.id) ? 'active' : ''}" title="Favorite">${favoriteGlyph(resort.id)}</button>
     `;
 
     item.addEventListener('click', (event) => {

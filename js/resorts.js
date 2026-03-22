@@ -13,7 +13,11 @@ export function enrichResort(resort, index) {
   const seedC = seeded(`${seed}-c`);
   const seedD = seeded(`${seed}-d`);
   const snow24h = rangeRound(clamp((seedA * 12 + (region === 'japan' ? 2.5 : 0) - (region === 'south' ? 1.4 : 0)), 0, 18), 1);
+  const snow48h = rangeRound(clamp(snow24h + seeded(`${seed}-48h`) * 8, 0, 28), 1);
   const forecast72h = rangeRound(clamp((seedB * 26 + (region === 'japan' ? 6 : 0) + (index % 9 === 0 ? 8 : 0)), 0, 38), 1);
+  const forecastDay1 = rangeRound(clamp(seeded(`${seed}-fd1`) * forecast72h * 0.6, 0, 18), 1);
+  const forecastDay2 = rangeRound(clamp(seeded(`${seed}-fd2`) * (forecast72h - forecastDay1) * 0.7, 0, 18), 1);
+  const forecastDay3 = rangeRound(clamp(forecast72h - forecastDay1 - forecastDay2, 0, 18), 1);
   const daysSinceSnow = rangeRound(clamp((1 - seedC) * 12 + (forecast72h > 18 ? -3 : 0) - (snow24h > 6 ? 2 : 0), 0, 16), 1);
   const baseDepth = rangeRound(clamp(climate.base + seedD * 95 + snow24h * 2.1 - daysSinceSnow * 1.3, 18, 228), 1);
   const runsTotal = Math.round(climate.totalRuns[0] + seeded(`${seed}-runs`) * (climate.totalRuns[1] - climate.totalRuns[0]));
@@ -21,7 +25,7 @@ export function enrichResort(resort, index) {
   const runsOpen = clamp(Math.round(runsTotal * openRatio), 1, runsTotal);
   const groomedRuns = clamp(Math.round(runsOpen * clamp(0.34 + seeded(`${seed}-groom`) * 0.5, 0.28, 0.88)), 0, runsOpen);
   const tempF = Math.round(clamp(14 + seeded(`${seed}-temp`) * 22 + climate.tempShift + (region === 'south' ? 5 : 0), 4, 39));
-  const metrics = { snow24h, forecast72h, daysSinceSnow, baseDepth, runsOpen, runsTotal, groomedRuns, tempF };
+  const metrics = { snow24h, snow48h, forecast72h, forecastDay1, forecastDay2, forecastDay3, daysSinceSnow, baseDepth, runsOpen, runsTotal, groomedRuns, tempF };
   const status = inferStatus(metrics);
   return {
     ...resort,

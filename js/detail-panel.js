@@ -7,6 +7,7 @@ import {
 import { selectedResort, favoriteGlyph } from './dashboard.js';
 import { createSnowfallChart } from './snowfall-chart.js';
 
+const detailOverlay = document.getElementById('detail-overlay');
 const detailPanel = document.getElementById('detail-panel');
 const detailName = document.getElementById('detail-name');
 const detailSubtitle = document.getElementById('detail-subtitle');
@@ -193,11 +194,11 @@ export function setActiveTab(tabName) {
 export function renderDetailPanel() {
   const resort = selectedResort();
   if (!resort) {
-    detailPanel.classList.remove('visible');
+    detailOverlay.style.display = 'none';
     return;
   }
 
-  detailPanel.classList.add('visible');
+  detailOverlay.style.display = 'flex';
   detailName.textContent = resort.name;
   const updateSuffix = resort.liveUpdatedAt
     ? ` · ${/^updated\b/i.test(resort.liveUpdatedAt) ? resort.liveUpdatedAt : `Updated ${resort.liveUpdatedAt}`}`

@@ -84,6 +84,32 @@
         <span class="legend-item"><span class="legend-dot" style="background:#7ec7b8;box-shadow:0 0 6px #7ec7b8"></span>Steady</span>
       </div>
       <div id="zoom-level" class="glass">View detail <span id="zoom-readout">2</span></div>
+
+      <div id="weather-panel" class="weather-panel glass">
+        <div class="weather-panel-head">
+          <span class="weather-panel-title">Weather</span>
+          <button id="weather-close" class="weather-close" title="Close">&times;</button>
+        </div>
+        <div class="weather-layers">
+          <button class="weather-layer-btn" data-layer="radar">Radar</button>
+          <button class="weather-layer-btn" data-layer="clouds">Clouds</button>
+          <button class="weather-layer-btn" data-layer="precipitation">Precip</button>
+          <button class="weather-layer-btn" data-layer="temp">Temp</button>
+        </div>
+        <div class="weather-opacity">
+          <label>Opacity</label>
+          <input id="weather-opacity" type="range" min="0" max="100" value="60" />
+        </div>
+        <div id="radar-controls" class="radar-controls" style="display:none">
+          <div class="radar-timeline">
+            <button id="radar-play" class="radar-play-btn" title="Play/Pause">&#9654;</button>
+            <input id="radar-scrubber" type="range" min="0" max="0" value="0" />
+            <span id="radar-time" class="radar-time">--:--</span>
+          </div>
+          <div id="radar-badge" class="radar-badge"></div>
+        </div>
+      </div>
+      <button id="weather-toggle" class="weather-toggle glass" title="Weather overlay">&#x26C5;</button>
     </div>
   </div>
 

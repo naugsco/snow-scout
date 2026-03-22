@@ -16,6 +16,11 @@ import {
 import { renderDetailPanel, setActiveTab } from './detail-panel.js';
 import { parseHash, updateHash, initRouter } from './router.js';
 import { toggleCompareResort, clearCompare } from './comparison.js';
+import {
+  showLayer, removeActiveLayer, setLayerOpacity, getActiveLayerId,
+  toggleRadarAnimation, isAnimating, showRadarFrame, getRadarFrames,
+  getRadarFrameIndex, formatRadarTime, setOnFrameChange, getLayerOpacity
+} from './weather-layers.js';
 
 // Initialize webcamPages with defaults
 Object.assign(webcamPages, DEFAULT_WEBCAM_PAGES);
@@ -199,6 +204,85 @@ sortSelect.addEventListener('change', () => {
 document.getElementById('storm-banner-dismiss').addEventListener('click', () => {
   state.stormBannerDismissed = true;
   document.getElementById('storm-banner').style.display = 'none';
+});
+
+// Weather overlay controls
+const weatherPanel = document.getElementById('weather-panel');
+const weatherToggleBtn = document.getElementById('weather-toggle');
+const radarControlsEl = document.getElementById('radar-controls');
+const radarPlayBtn = document.getElementById('radar-play');
+const radarScrubber = document.getElementById('radar-scrubber');
+const radarTimeEl = document.getElementById('radar-time');
+const radarBadgeEl = document.getElementById('radar-badge');
+const weatherOpacityInput = document.getElementById('weather-opacity');
+
+function updateWeatherBtnStates() {
+  const activeId = getActiveLayerId();
+  document.querySelectorAll('.weather-layer-btn').forEach((btn) => {
+    btn.classList.toggle('active', btn.dataset.layer === activeId);
+  });
+  radarControlsEl.style.display = activeId === 'radar' ? 'flex' : 'none';
+  weatherToggleBtn.classList.toggle('active', !!activeId);
+}
+
+function updateRadarUI() {
+  const frames = getRadarFrames();
+  const idx = getRadarFrameIndex();
+  if (!frames.length || idx < 0) return;
+  radarScrubber.max = frames.length - 1;
+  radarScrubber.value = idx;
+  radarTimeEl.textContent = formatRadarTime(frames[idx].time);
+  const frame = frames[idx];
+  radarBadgeEl.textContent = frame.forecast ? 'Forecast' : 'Observed';
+  radarPlayBtn.classList.toggle('playing', isAnimating());
+  radarPlayBtn.innerHTML = isAnimating() ? '&#9646;&#9646;' : '&#9654;';
+}
+
+setOnFrameChange(() => {
+  updateRadarUI();
+  updateWeatherBtnStates();
+});
+
+weatherToggleBtn.addEventListener('click', () => {
+  const isOpen = weatherPanel.classList.contains('visible');
+  if (isOpen) {
+    weatherPanel.classList.remove('visible');
+    removeActiveLayer();
+    updateWeatherBtnStates();
+  } else {
+    weatherPanel.classList.add('visible');
+  }
+});
+
+document.getElementById('weather-close').addEventListener('click', () => {
+  weatherPanel.classList.remove('visible');
+  removeActiveLayer();
+  updateWeatherBtnStates();
+});
+
+document.querySelectorAll('.weather-layer-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const layerId = btn.dataset.layer;
+    if (getActiveLayerId() === layerId) {
+      removeActiveLayer();
+    } else {
+      showLayer(layerId);
+    }
+    updateWeatherBtnStates();
+  });
+});
+
+weatherOpacityInput.addEventListener('input', () => {
+  setLayerOpacity(Number(weatherOpacityInput.value) / 100);
+});
+
+radarPlayBtn.addEventListener('click', () => {
+  toggleRadarAnimation();
+  updateRadarUI();
+});
+
+radarScrubber.addEventListener('input', () => {
+  showRadarFrame(Number(radarScrubber.value));
 });
 
 document.addEventListener('keydown', (event) => {

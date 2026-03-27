@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-27T05:44:50.909Z",
+  "generatedAt": "2026-03-27T08:59:25.012Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -39,7 +39,7 @@
         "baseDepth": 25,
         "runsOpen": 26,
         "runsTotal": 181,
-        "groomedRuns": 12
+        "groomedRuns": 10
       },
       "sources": {
         "conditions": "https://www.beavercreek.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -181,7 +181,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 1,
-        "forecast72h": 0.7,
+        "forecast72h": 0.9,
         "daysSinceSnow": 0,
         "baseDepth": 48,
         "runsOpen": 67,
@@ -202,7 +202,7 @@
       "note": "Fresh",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.3,
+        "forecast72h": 0.5,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 94,
@@ -244,7 +244,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 9,
-        "forecast72h": 1.1,
+        "forecast72h": 0.4,
         "daysSinceSnow": 0,
         "baseDepth": 76,
         "runsOpen": null,
@@ -265,12 +265,12 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 1,
-        "forecast72h": 0.3,
+        "forecast72h": 0.7,
         "daysSinceSnow": 0,
         "baseDepth": 92,
-        "runsOpen": 263,
+        "runsOpen": 265,
         "runsTotal": 305,
-        "groomedRuns": 141
+        "groomedRuns": 144
       },
       "sources": {
         "conditions": "https://www.whistlerblackcomb.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -307,7 +307,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.3,
         "daysSinceSnow": null,
         "baseDepth": 12,
         "runsOpen": 46,
@@ -349,7 +349,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.8,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 23,
         "runsOpen": null,
@@ -433,7 +433,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0.4,
         "daysSinceSnow": null,
         "baseDepth": 20,
         "runsOpen": 21,
@@ -442,7 +442,8 @@
       },
       "sources": {
         "conditions": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=43.0164&longitude=-71.8764&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "hunter mountain": {
@@ -473,7 +474,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -482,8 +483,7 @@
       },
       "sources": {
         "conditions": "https://www.jfbb.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.jfbb.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=41.0594&longitude=-75.6163&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.jfbb.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
       }
     },
     "roundtop mountain": {
@@ -557,7 +557,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.4,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -578,7 +578,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -616,7 +616,7 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "11:00 pm",
+      "updatedAt": "02:00 am",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 0,
@@ -730,7 +730,7 @@
       "note": "Good evening, Beast family, Warmer temps brought more soft snow along with a great scene to enjoy your lunch on the deck under the sun. Tomorrow we’ll see clouds early before the sun fights its way out, with temps topping out near 26 at the base and 19 at the peak. A steady northwest wind will keep things feeling a little brisk. Surfaces were soft again with scattered areas of hardpack and a slushier feel as temperatures rose above fifty. With temperatures dropping tonight, surfaces should firm up. To help mitigate any refreezing, our grooming team will be employing a strategy to tackle higher elevations later. They’ll be on the usual plan, with trails like Bear Claw, Cruise Control, Cascade, Bunny Buster, and many more getting resurfaced. Groomed trails will be the move tomorrow for the best surfaces and for the full list of options, head to our Lifts & Trails Report . There’s a small cold snap coming in on Saturday, so you know what that means: snowmaking is coming back online on Superstar and Mouse Trap. It’s already spring, but we’re still keeping winter alive as long as we can! Our key lifts are once again scheduled to open at 9:00 a.m., with the North Ridge Quad following suit at 9:30 a.m. and our Canyon and South Ridge Quads coming online at 10:00 a.m. In our kparks, the Bear parks (Dream Maker & The Stash) are back on the menu for some sweet spring skiing & riding. Over on Ramshead, Timberline continues to shine with 44 features, 5 jumps, and a halfpipe. Our Killington Parks Crew recently did a feature refresh in Timberline, and our halfpipe was re-cut again this past evening. Make sure you check out what the team has been cooking up! Easy Street, Lil’ Stash, and Vale Yard are also dialed in for fun progression options. Check our Terrain Parks Report for the lowdown on all of our features. This weekend will be your last chance to take advantage of our Meet the Mountains Tours , taking place daily at 10:00 and 11:00 a.m., weather permitting. Meet your friendly tour guide in the courtyard at Snowshed Base Lodge and hit the slopes for a 75–90-minute tour of Killington Resort. Season passes for 26/27 are now on sale! Lock in the lowest price on Beast 365 or Winter Unlimited passes with perks, plus free skiing for the rest of this Spring, and over $300 in savings on Youth 365 passes. Have a fun Friday! - Evan Operating Day: 136 Lifts Key lifts operate seven days a week from 9:00 a.m. to 4:00 p.m. on Monday through Friday, and from 8:00 a.m. to 4:00 p.m. on Saturday and Sunday plus Peak Dates*; the Bear Mountain Quad will operate from 7:30 a.m. to 4:00 p.m. every Saturday through the end of March. The North Ridge Quad will open at 9:30 a.m. on weekdays and 8:00 a.m. on weekends, the Canyon Quad will spin from 10:00 a.m. to 3:30 p.m. Monday, Wednesday, Friday and 9:00 a.m. to 4:00 p.m. on weekends, and the Sunrise Village Triple will spin until 3:00 p.m. on weekdays and 4:00 p.m. on weekends. A note for our snowboarders: Thanks to our new cabins on the Skyeship Gondola, we're asking you to please utilize the snowboard racks outside of each cabin. If the racks are entirely full, please put your boards underneath the seats. This differs from our K-1 Gondola, where all snowboards should be brought inside the cabins. Just remember: outside Skyeship, inside K-1! The Tubing Park presented by bubly is closed for the season. Uphill Travel Please visit killington.com/uphill for specific uphill route information, including a map of each route: Ramshead base to top of Ramshead Express Quad - Open Ramshead Express Quad to top of Snowdon Mountain - Open Snowshed base to the top of Snowshed Slope - Open Base of Sunrise Village Triple to top of Bear Mountain - Open Killington/Pico Mountain Interconnect - CLOSED Pico Base to the top of Golden Express Quad - Open Pico Base to Pico Summit - Open Pico Summit Glade Route - CLOSED Before heading up the hill, be sure to review our uphill travel policies and grab your Uphill Travel Pass here . All uphill travelers are required to have an Uphill Travel Pass and armband, which can be picked up at any ticket window. Please keep an eye out for grooming equipment and steer clear of mountain ops during non-operating hours. MOUNTAIN SERVICES Parking & Shuttles Parking is available at the K-1, Snowshed, Ramshead, Bear, Skyeship and Vale parking lots. Please respect signage and allow our parking staff to assist you on your trip to the slopes. Shuttle service is available from 7:00 a.m. - 5:00 p.m. midweek and 6:00 a.m. - 5:00 p.m. on weekends and holidays. Winter car camping and overnight parking is only available in the lot across from Skyeship Lodge. See details here . Lodge Services All lodges are open daily from 8:00 a.m. - 5:00 p.m. on weekdays and 7:00 a.m. - 5:00 p.m. on weekends/peak dates*. K-1 Lodge Breakfast: Served starting at 8:30 a.m. on weekdays and 7:30 a.m. on weekends/peak dates. Lunch: Served from 10:30 a.m. - 3:00 p.m. daily. Brew Bar (2nd floor): Open serving handcrafted coffees at 8:30 a.m. on weekdays and at 7:30 a.m. on weekends, with cocktails and beers served starting at 9:00 a.m. K-1 Pub (3rd floor): Open at 10:00 a.m. daily. Rentals & Killington Sports at K-1: Open 30 minutes before lifts until 30 minutes after lifts. Guest Services: 1st floor - Open 30 minutes before lifts until 1:00 p.m. on weekdays and until 4:30 p.m. on weekends/peak dates. 2nd floor - Open 30 minutes before lifts until 30 minutes after lifts. Superstar Umbrella Bar: Open at 11:00 a.m. from Friday - Sunday offering beer, wine, liquor, and specialty hot cocktails. Snowshed Lodge Breakfast: Served starting at 8:30 a.m. on weekdays and 7:30 a.m. on weekends/peak dates. Lunch: Served from 10:30 a.m. - 3:30 p.m. daily. Long Trail Pub (3rd floor): Open daily from 10:30 a.m. - 6:00 p.m., offering our Lunch Dining Menu until 5:30 p.m. and lite fare until 6:00 p.m. Snowshed Umbrella Bar: Open on Saturdays and Sundays serving beers, cocktails, and light fare. Rentals, Killington Sports at Snowshed, & Guest Services: Open 30 minutes before lifts until 30 minutes after lifts. On Fridays, rentals & demos for the weekend can be picked up ahead of time between 2:00 p.m. and 6:00 p.m. Snowshed Demos & Tuning: Open 30 minutes before lifts until 30 minutes after lifts. Ski & snowboard demo packages available. Please note that binding mounts and adjustments are not offered at this time. Click here for more information. Private & Adult Group Lessons: Booked online in advance here . Ramshead Lodge Breakfast: Served starting at 8:30 a.m. on Fridays and 7:30 a.m. on weekends/peak dates. Lunch: Served daily with grab & go options & soups. The pizza station is open Thursday - Monday, and the full grill menu is available Friday - Sunday. Guest Services: Open 30 minutes before lifts until 12:00 p.m. on Monday – Thursday and until 4:30 p.m. on Friday - Sunday at the ticket windows outside of the lodge. Rentals: Open for youth lesson participants and families only. Youth Lessons: Youth Group Lessons and our Ministars program meet at Ramshead. Child Care Center: Open weekdays from 8:30 a.m. - 3:45 p.m. and weekends from 8:00 a.m. - 3:45 p.m. Bear Mountain Lodge Breakfast: Served starting at 8:30 a.m. on weekdays and 7:30 a.m. on weekends/peak dates. Lunch: Open daily with grab & go items and soups available. Full grill menu available Friday - Sunday. Bear Bar: Open from 10:00 a.m. until 4:30 p.m. on weekdays and until 5:00 p.m. on weekends. Guest Services: Available Friday - Monday at ticket windows outside the lodge. Open 30 minutes before lifts open. Kiosk lift ticket pickup is available daily. Skyeship Lodge Food & Bar Service: Available daily from The Rollin’ Rooster. Guest Services: Open daily inside the lodge. Closing Date: March 29th On-Mountain Dining Options Peak Lodge – Open daily from 9:30 a.m. - 3:30 p.m. Grill open daily from 10:30 a.m. - 3:00 p.m. Peak Lodge Bar offers its own menu daily with QR code ordering. Jerk Jamaican Mountain Grill – Ski-on, ski- off. Open Thursday-Monday from 11:00 a.m. - 3:00 p.m. weather permitting. Ledgewood Yurt – closed for the season. Mountain services are subject to change. Please check here daily before making your lunch and lodge choices. Winter Lift Tickets and rentals must be purchased online at this link . Check to see if your pass is good to go using our Online Pass Checker . Find Season Pass FAQs by clicking here . Get your Unlimited Winter Season Pass today! Buy now . Have a ticketing question? Our text number ( 802-523-2202 ) is the best way to get it answered quickly, but please note that we cannot process transactions via text. Have a season pass question? Call 1-800-621-MTNS or email seasonpass@killington.com Please visit Killington.com/cancellation for more details on our cancellation policy. Killington Sports at Route 4 is open Sunday - Thursday from 10:00 a.m. - 5:00 p.m., Friday and Saturday from 10:00 a.m. - 6:00 p.m., and 10:00 a.m. - 4:00 p.m. on holidays. Killington is a cashless resort. We accept all major credit cards as well as Apple, Google, and Samsung Pay. *No remaining Peak Dates during winter 2025/26. We strive to have the most up-to-date and accurate snow report, but errors can happen from time to time. If you have feedback or a correction for us, please share it here.",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.9,
+        "forecast72h": 0.7,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": 84,
@@ -912,7 +912,7 @@
       "note": "Machine Groomed Frozen Granular",
       "metrics": {
         "snow24h": 1,
-        "forecast72h": 3,
+        "forecast72h": 4,
         "daysSinceSnow": 0,
         "baseDepth": 27,
         "runsOpen": 92,
@@ -934,7 +934,7 @@
       "note": "Machine Groomed Variable Conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2,
+        "forecast72h": 3,
         "daysSinceSnow": null,
         "baseDepth": 24,
         "runsOpen": 47,

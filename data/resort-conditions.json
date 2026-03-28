@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-28T05:23:49.287Z",
+  "generatedAt": "2026-03-28T08:46:16.097Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -39,7 +39,7 @@
         "baseDepth": 25,
         "runsOpen": 21,
         "runsTotal": 181,
-        "groomedRuns": 10
+        "groomedRuns": 11
       },
       "sources": {
         "conditions": "https://www.beavercreek.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -181,7 +181,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 1,
-        "forecast72h": 1.4,
+        "forecast72h": 0.4,
         "daysSinceSnow": 0,
         "baseDepth": 48,
         "runsOpen": 58,
@@ -202,7 +202,7 @@
       "note": "Fresh",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": 0.2,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 67,
@@ -223,7 +223,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": 0.3,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 31,
@@ -244,7 +244,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.4,
+        "forecast72h": 1.5,
         "daysSinceSnow": 1,
         "baseDepth": 70,
         "runsOpen": null,
@@ -265,7 +265,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.7,
+        "forecast72h": 0.5,
         "daysSinceSnow": 1,
         "baseDepth": 91,
         "runsOpen": 264,
@@ -391,7 +391,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.1,
         "daysSinceSnow": 5,
         "baseDepth": 0,
         "runsOpen": 44,
@@ -412,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0.2,
         "daysSinceSnow": 5,
         "baseDepth": 14,
         "runsOpen": 12,
@@ -421,7 +421,8 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "crotched mountain": {
@@ -432,7 +433,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 20,
         "runsOpen": 20,
@@ -453,7 +454,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": 0.2,
         "daysSinceSnow": null,
         "baseDepth": 48,
         "runsOpen": 30,
@@ -598,7 +599,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -607,15 +608,14 @@
       },
       "sources": {
         "conditions": "https://www.laurelmountainski.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.laurelmountainski.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=40.1614&longitude=-79.1658&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.laurelmountainski.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
       }
     },
     "alta": {
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "11:00 pm",
+      "updatedAt": "02:00 am",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 0,
@@ -628,8 +628,7 @@
       },
       "sources": {
         "conditions": "https://www.alta.com/weather",
-        "terrain": "https://www.alta.com/lift-terrain-status",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=40.5884&longitude=-111.6386&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.alta.com/lift-terrain-status"
       }
     },
     "snowbasin": {
@@ -976,7 +975,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,

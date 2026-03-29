@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-29T05:45:38.523Z",
+  "generatedAt": "2026-03-29T08:48:44.795Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -55,7 +55,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": 5,
         "baseDepth": 29,
         "runsOpen": 81,
@@ -64,8 +64,7 @@
       },
       "sources": {
         "conditions": "https://www.breckenridge.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.breckenridge.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.4817&longitude=-106.0384&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.breckenridge.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "keystone": {
@@ -76,7 +75,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": 28,
@@ -85,8 +84,7 @@
       },
       "sources": {
         "conditions": "https://www.keystoneresort.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.keystoneresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.6069&longitude=-105.9718&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.keystoneresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "park city": {
@@ -97,7 +95,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 1,
         "daysSinceSnow": null,
         "baseDepth": 52,
         "runsOpen": 22,
@@ -118,7 +116,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.6,
         "daysSinceSnow": null,
         "baseDepth": 19,
         "runsOpen": 14,
@@ -139,7 +137,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": 1.5,
         "daysSinceSnow": null,
         "baseDepth": 47,
         "runsOpen": 28,
@@ -160,7 +158,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 3.8,
         "daysSinceSnow": null,
         "baseDepth": 32,
         "runsOpen": 76,
@@ -181,7 +179,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": 1,
         "baseDepth": 48,
         "runsOpen": 71,
@@ -190,8 +188,7 @@
       },
       "sources": {
         "conditions": "https://www.stowe.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.stowe.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.5303&longitude=-72.7814&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.stowe.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "okemo": {
@@ -202,7 +199,7 @@
       "note": "Fresh",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 91,
@@ -211,8 +208,7 @@
       },
       "sources": {
         "conditions": "https://www.okemo.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.okemo.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=43.4017&longitude=-72.7170&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.okemo.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
       }
     },
     "mount snow": {
@@ -244,7 +240,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.6,
+        "forecast72h": 2.1,
         "daysSinceSnow": 5,
         "baseDepth": 69,
         "runsOpen": null,
@@ -265,7 +261,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.3,
         "daysSinceSnow": 5,
         "baseDepth": 89,
         "runsOpen": 267,
@@ -286,7 +282,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 1,
         "daysSinceSnow": null,
         "baseDepth": 29,
         "runsOpen": 52,
@@ -433,7 +429,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 20,
         "runsOpen": 19,
@@ -442,8 +438,7 @@
       },
       "sources": {
         "conditions": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=43.0164&longitude=-71.8764&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "hunter mountain": {
@@ -517,7 +512,7 @@
       "note": "Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -526,7 +521,8 @@
       },
       "sources": {
         "conditions": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.7553&longitude=-77.3753&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "whitetail resort": {
@@ -537,7 +533,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": null,
@@ -546,7 +542,8 @@
       },
       "sources": {
         "conditions": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
+        "terrain": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.7428&longitude=-77.9342&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "seven springs": {
@@ -616,11 +613,11 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "11:00 pm",
+      "updatedAt": "02:00 am",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 1,
         "daysSinceSnow": null,
         "baseDepth": 78,
         "runsOpen": 0,
@@ -706,7 +703,7 @@
       "note": "5:55 AM update – Good morning, skiers and riders! Welcome to the Eldora snow report for Saturday, March 28, 2026. After a brief stretch of cooler weather, warm spring days are back for the weekend, with mostly sunny skies and a high near 60 through Monday before cooler temps return on Tuesday. The weekend is shaping up to be a blast, with the Timbers Classic Rail Jam kicking off today at Woodward Timbers Park. Come hang on Timbers deck with us and watch some of the best park riders on the Front Range throw down! See ya out there! NWS Weather Snapshot: A 20 percent chance of showers after 2pm. Mostly sunny, with a high near 59. Breezy, with a west wind 14 to 17 mph, with gusts as high as 28 mph. Uphill and Nordic Skiing... The Nordic Center is now closed for the season. Check Nordic Pulse for the latest update. Uphill Access is now closed for the season. Visit eldora.com/uphill for more info. 2026-27 season passes are now on sale . Lock in your lowest price now, before prices increase on April 30. Stay in the loop: This page, eldora.com/conditions , is always your go-to for the latest updates, but you can also sign up for text alerts so you never miss a beat. Text one of the following keywords to (866) 965-6224: ELDORA for general alerts, UPHILL for uphill-specific updates, or NORDIC for Nordic updates. Message and data rates may apply. Thanks for checking the Eldora snow report. We'll see you on the hill! -- GENERAL INFORMATION Lift Hours: 9:00 AM to 4:00 PM, seven days a week. Lodge Hours: 8:00 AM to 4:30 PM, seven days a week. Single-Occupancy Vehicle (SOV) Fees: Vehicles with two or more occupants may park for free seven days a week. Vehicles with one occupant will be charged $10 on weekends, during certain holiday periods, and on weekdays with 10 or more inches of new snow. Credit/debit is accepted; cash is not. High-Occupancy Vehicle (HOV) Parking: Per Boulder County requirements, the Elk Lot (nearest to Alpenglow chair) is reserved seven days a week for vehicles with three or more occupants on a first-come, first-served basis. Learn more here . EV Parking: Eldora provides 30 free ChargePoint EV charging stations. These premium parking spots are available on a first-come, first-served basis and are subject to the SOV policy above. To park in the EV lot, you MUST have an EV and be actively charging. If you are finished charging, please move your car to another non-EV space so others can use the chargers. Easy, Convenient RTD Bus Service from Boulder: RTD’s NB route brings you from Downtown Boulder Station straight to the Alpenglow chairlift in about 40 minutes; riders 19 and under ride RTD for FREE through RTD's Zero Fare for Youth program. For schedule and fare info, visit rtd-denver.com",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.2,
         "daysSinceSnow": null,
         "baseDepth": 20,
         "runsOpen": 31,
@@ -864,7 +861,7 @@
       "note": "Good morning and thanks for checking in with your Copper Mountain Snow report, No new snow on the table today and we can expect conditions to be much like the day before. Temperatures will reach up to the 40s with consistent wind from the West throughout the day. Expect some cloud coverage to keep things cool. Put your sunscreen on and get ready to watch the Athletes score big at this years National Championships! for more information visit https://www.coppercolorado.com/events-activities/events-calendar/",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.1,
         "daysSinceSnow": 5,
         "baseDepth": 34,
         "runsOpen": 82,
@@ -888,7 +885,7 @@
       "note": "Surf’s up 🌊 – it’s your once-in-a-bluebird snow reporter Ciara here. Mountain Update: 8 am - 2 pm spring lift operations will remain in place through Sunday, March 29. Hours of operation will be reassessed for the following week. Surf Season is in full effect—slushy lines, buttery turns, and edges just vibing. Today's weather calls for mostly sunny skies, with a high near 62 and a chance of showers after 3pm. Slather on the sunscreen, rock your favorite heart-shaped Pit Vipers and let's go! This weekend kicks off Plazapalooza . The Tram deck is the place to be from 1–4pm with live tunes from LapDog. Surf Season swag available—side effects may include questionable dance moves, instant besties and a friendship bracelet you can’t emotionally remove. Please note, due to current operating hours, Plazapalooza will run from 1-4pm this weekend only. You can also catch the Steve Young Ski Classic happening on Chickadee today with Wasatch Adaptive Sports. If you haven't yet gotten your Chickadee Fever badge on the Snowbird App, now's the time. The Chickadee Lift will close for the 2025-26 season for replacement on April 6th. The new Chickadee Lift is expected to reopen for summer operations in July. ALL uphill travel is closed. Don’t be that guy (or gal). Please remember to ski and ride in control, if you don’t, you’re gonna have a bad time. See you out there!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 3.3,
         "daysSinceSnow": null,
         "baseDepth": 71,
         "runsOpen": 97,
@@ -956,7 +953,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.8,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": 35,
@@ -977,7 +974,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": 1.4,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,

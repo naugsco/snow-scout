@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T16:46:31.572Z",
+  "generatedAt": "2026-04-03T20:42:10.315Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -13,7 +13,7 @@
       "note": "Powder",
       "metrics": {
         "snow24h": 12,
-        "forecast72h": 1.1,
+        "forecast72h": 1.2,
         "daysSinceSnow": 0,
         "baseDepth": 45,
         "runsOpen": 19,
@@ -34,7 +34,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.9,
+        "forecast72h": 1.8,
         "daysSinceSnow": null,
         "baseDepth": 19,
         "runsOpen": null,
@@ -100,7 +100,7 @@
         "forecast72h": 0,
         "daysSinceSnow": 0,
         "baseDepth": 66,
-        "runsOpen": 12,
+        "runsOpen": 13,
         "runsTotal": 349,
         "groomedRuns": 4
       },
@@ -163,9 +163,9 @@
         "forecast72h": 0,
         "daysSinceSnow": 1,
         "baseDepth": 39,
-        "runsOpen": 65,
+        "runsOpen": 86,
         "runsTotal": 113,
-        "groomedRuns": 15
+        "groomedRuns": 16
       },
       "sources": {
         "conditions": "https://www.kirkwood.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -177,16 +177,16 @@
       "status": "ok",
       "resort": "Stowe",
       "adapter": "vail",
-      "updatedAt": "Updated April 03, 2026 at 5:28 AM EDT",
-      "note": "Variable",
+      "updatedAt": "Updated April 03, 2026 at 3:45 PM EDT",
+      "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": 0,
         "daysSinceSnow": 5,
         "baseDepth": 48,
-        "runsOpen": 74,
+        "runsOpen": 87,
         "runsTotal": 129,
-        "groomedRuns": 48
+        "groomedRuns": 50
       },
       "sources": {
         "conditions": "https://www.stowe.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -205,9 +205,9 @@
         "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 36,
-        "runsOpen": 67,
+        "runsOpen": 68,
         "runsTotal": 129,
-        "groomedRuns": 66
+        "groomedRuns": 67
       },
       "sources": {
         "conditions": "https://www.okemo.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -226,9 +226,9 @@
         "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 24,
-        "runsOpen": 15,
+        "runsOpen": 21,
         "runsTotal": 86,
-        "groomedRuns": 15
+        "groomedRuns": 21
       },
       "sources": {
         "conditions": "https://www.mountsnow.com/the-mountain/mountain-conditions/weather-report.aspx",
@@ -247,9 +247,9 @@
         "forecast72h": 0,
         "daysSinceSnow": 0,
         "baseDepth": 75,
-        "runsOpen": 33,
+        "runsOpen": 46,
         "runsTotal": 56,
-        "groomedRuns": 15
+        "groomedRuns": 22
       },
       "sources": {
         "conditions": "https://www.stevenspass.com/the-mountain/mountain-conditions/weather-report.aspx",
@@ -265,10 +265,10 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.6,
+        "forecast72h": 0.3,
         "daysSinceSnow": 1,
         "baseDepth": 91,
-        "runsOpen": 277,
+        "runsOpen": 279,
         "runsTotal": 305,
         "groomedRuns": 146
       },
@@ -328,7 +328,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.4,
+        "forecast72h": 0.7,
         "daysSinceSnow": null,
         "baseDepth": 24,
         "runsOpen": null,
@@ -349,7 +349,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 23,
         "runsOpen": null,
@@ -370,7 +370,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.4,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 14,
         "runsOpen": null,
@@ -387,21 +387,20 @@
       "status": "ok",
       "resort": "Attitash",
       "adapter": "vail",
-      "updatedAt": "Updated April 03, 2026 at 12:29 PM EDT",
+      "updatedAt": "Updated April 03, 2026 at 3:56 PM EDT",
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.6,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "runsOpen": 44,
+        "runsOpen": 41,
         "runsTotal": 76,
-        "groomedRuns": 35
+        "groomedRuns": 32
       },
       "sources": {
         "conditions": "https://www.attitash.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.attitash.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.0833&longitude=-71.2292&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.attitash.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
       }
     },
     "wildcat mountain": {
@@ -432,7 +431,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 20,
         "runsOpen": null,
@@ -441,7 +440,8 @@
       },
       "sources": {
         "conditions": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=43.0164&longitude=-71.8764&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "hunter mountain": {
@@ -515,7 +515,7 @@
       "note": "Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -524,8 +524,7 @@
       },
       "sources": {
         "conditions": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.7553&longitude=-77.3753&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "whitetail resort": {
@@ -616,14 +615,14 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "10:00 am",
+      "updatedAt": "02:00 pm",
       "note": "Partly Cloudy",
       "metrics": {
-        "snow24h": 10,
+        "snow24h": 7,
         "forecast72h": 1,
         "daysSinceSnow": 0,
-        "baseDepth": 97,
-        "runsOpen": 97,
+        "baseDepth": 96,
+        "runsOpen": 110,
         "runsTotal": 118,
         "groomedRuns": null
       },
@@ -665,7 +664,7 @@
         "forecast72h": 2,
         "daysSinceSnow": 0,
         "baseDepth": 35,
-        "runsOpen": 23,
+        "runsOpen": 22,
         "runsTotal": 171,
         "groomedRuns": 13
       },
@@ -733,7 +732,7 @@
         "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 18,
-        "runsOpen": 87,
+        "runsOpen": 84,
         "runsTotal": 164,
         "groomedRuns": 67
       },
@@ -794,7 +793,7 @@
       "status": "ok",
       "resort": "Mammoth Mountain",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-03T09:44:56-0700",
+      "updatedAt": "2026-04-03T13:06:00-0700",
       "note": "Fresh Powder",
       "metrics": {
         "snow24h": 0,
@@ -816,7 +815,7 @@
       "status": "ok",
       "resort": "June Mountain",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-03T09:19:52-0700",
+      "updatedAt": "2026-04-03T13:41:17-0700",
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
@@ -864,7 +863,7 @@
       "note": "Happy Friday! The snow keeps falling and the stoke keeps rising. 4 inches of new snow overnight with more flurries continuing throughout the day. Temps are dropping and could reach single digits in the morning so be sure to layer up. The high will be in the teens with winds from the west around 15-20 mph, gusting into the 40s. Go out and enjoy some soft turns, but remember that this new snow may have covered up previously visible hazards so ski and ride safely.",
       "metrics": {
         "snow24h": 4,
-        "forecast72h": 0.5,
+        "forecast72h": 0.6,
         "daysSinceSnow": 0,
         "baseDepth": 31,
         "runsOpen": 72,
@@ -891,7 +890,7 @@
         "forecast72h": 0.2,
         "daysSinceSnow": 0,
         "baseDepth": 90,
-        "runsOpen": 118,
+        "runsOpen": 117,
         "runsTotal": 174,
         "groomedRuns": 38
       },
@@ -908,14 +907,14 @@
       "status": "ok",
       "resort": "Sugarbush",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-03T11:05:54-0400",
+      "updatedAt": "2026-04-03T13:15:38-0400",
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 1,
         "daysSinceSnow": null,
         "baseDepth": 27,
-        "runsOpen": 34,
+        "runsOpen": 39,
         "runsTotal": 111,
         "groomedRuns": 20
       },
@@ -930,7 +929,7 @@
       "status": "ok",
       "resort": "Stratton",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-03T09:03:05-0400",
+      "updatedAt": "2026-04-03T14:04:23-0400",
       "note": "Machine Groomed Variable Conditions",
       "metrics": {
         "snow24h": 0,

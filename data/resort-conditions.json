@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-08T20:51:43.027Z",
+  "generatedAt": "2026-04-09T02:39:15.977Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -16,9 +16,9 @@
         "forecast72h": 0,
         "daysSinceSnow": 5,
         "baseDepth": 30,
-        "runsOpen": 14,
-        "runsTotal": 277,
-        "groomedRuns": 12
+        "runsOpen": null,
+        "runsTotal": null,
+        "groomedRuns": null
       },
       "sources": {
         "conditions": "https://www.vail.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -76,7 +76,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.3,
+        "forecast72h": 0,
         "daysSinceSnow": 5,
         "baseDepth": 32,
         "runsOpen": null,
@@ -118,7 +118,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.3,
+        "forecast72h": null,
         "daysSinceSnow": 5,
         "baseDepth": 26,
         "runsOpen": null,
@@ -127,8 +127,7 @@
       },
       "sources": {
         "conditions": "https://www.skiheavenly.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiheavenly.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=38.9353&longitude=-119.9400&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.skiheavenly.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "northstar": {
@@ -139,7 +138,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.3,
+        "forecast72h": 2.6,
         "daysSinceSnow": 5,
         "baseDepth": 57,
         "runsOpen": null,
@@ -160,12 +159,12 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2,
+        "forecast72h": 5,
         "daysSinceSnow": 5,
         "baseDepth": 31,
-        "runsOpen": 51,
+        "runsOpen": 50,
         "runsTotal": 113,
-        "groomedRuns": 18
+        "groomedRuns": 17
       },
       "sources": {
         "conditions": "https://www.kirkwood.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -180,7 +179,7 @@
       "updatedAt": "Updated April 08, 2026 at 2:30 PM EDT",
       "note": "Variable",
       "metrics": {
-        "snow24h": 5,
+        "snow24h": 1,
         "forecast72h": 0,
         "daysSinceSnow": 0,
         "baseDepth": 48,
@@ -240,16 +239,16 @@
       "status": "ok",
       "resort": "Stevens Pass",
       "adapter": "vail",
-      "updatedAt": "Updated April 08, 2026 at 4:00 AM PDT",
+      "updatedAt": "Updated April 08, 2026 at 4:16 PM PDT",
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 0,
         "daysSinceSnow": 5,
-        "baseDepth": 62,
-        "runsOpen": 27,
+        "baseDepth": 60,
+        "runsOpen": null,
         "runsTotal": 56,
-        "groomedRuns": 14
+        "groomedRuns": null
       },
       "sources": {
         "conditions": "https://www.stevenspass.com/the-mountain/mountain-conditions/weather-report.aspx",
@@ -261,16 +260,16 @@
       "status": "ok",
       "resort": "Whistler Blackcomb",
       "adapter": "vail",
-      "updatedAt": "Updated April 07, 2026 at 3:30 PM PDT",
+      "updatedAt": "Updated April 08, 2026 at 3:17 PM PDT",
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 0,
         "daysSinceSnow": 5,
-        "baseDepth": 90,
-        "runsOpen": 274,
+        "baseDepth": 85,
+        "runsOpen": 260,
         "runsTotal": 305,
-        "groomedRuns": 139
+        "groomedRuns": 133
       },
       "sources": {
         "conditions": "https://www.whistlerblackcomb.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -286,7 +285,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.2,
         "daysSinceSnow": 5,
         "baseDepth": 42,
         "runsOpen": null,
@@ -328,7 +327,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.2,
         "daysSinceSnow": null,
         "baseDepth": 24,
         "runsOpen": null,
@@ -412,7 +411,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 3,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": 0,
         "baseDepth": 10,
         "runsOpen": null,
@@ -421,7 +420,8 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "crotched mountain": {
@@ -616,14 +616,14 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "02:00 pm",
+      "updatedAt": "08:00 pm",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 0,
         "daysSinceSnow": null,
-        "baseDepth": 85,
-        "runsOpen": 97,
+        "baseDepth": 84,
+        "runsOpen": 0,
         "runsTotal": 118,
         "groomedRuns": null
       },
@@ -643,7 +643,7 @@
         "snow24h": null,
         "forecast72h": 0,
         "daysSinceSnow": null,
-        "baseDepth": 52,
+        "baseDepth": 50,
         "runsOpen": 0,
         "runsTotal": 115,
         "groomedRuns": null
@@ -662,7 +662,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2,
+        "forecast72h": 1,
         "daysSinceSnow": 5,
         "baseDepth": 32,
         "runsOpen": 18,
@@ -706,7 +706,7 @@
       "note": "Eldora is closed for the summer. 26/27 alpine season passes are on sale now, at the lowest prices of the year! Prices increase on May 8 . Shop now HERE for the best pricing. Thanks for a great season! We'll see you in November!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": 0,
         "daysSinceSnow": 5,
         "baseDepth": 0,
         "runsOpen": null,
@@ -864,7 +864,7 @@
       "note": "Good morning, Copper Athletes, and welcome to the final day of competition for the USASA Nationals! Today, expect bright sunny skies with moderate northwest winds and temperatures in the low 40s. Winds will increase throughout the day, with a chance for light flurries, though little to no accumulation is expected. Don’t forget to check out this year’s freeski athletes competing in Halfpipe, Rail Jam, Slopestyle, and Skier Cross events happening at venues across the mountain. As you head out, remember that sun and wind can quickly change snow conditions throughout the day. Surfaces may become variable, especially in exposed areas, so stay aware of your surroundings, adjust your speed accordingly, and give yourself plenty of space to stop safely. Have a great day!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.1,
         "daysSinceSnow": 5,
         "baseDepth": 26,
         "runsOpen": 63,
@@ -885,7 +885,7 @@
       "resort": "Snowbird",
       "adapter": "powdr",
       "updatedAt": "2026-04-08 05:38:19",
-      "note": "Gooooood morning Snowbird! It’s Owen, with your snow report for Wednesday. Today is going to be another great day on the mountain with a high of 55° and sunny skies. Slap on some sunscreen (for your face) and some wax (for your skis) and you’ll be ready to surf the day away (for your soul). The groomers have been firing as of late and my go to’s have been Regulator as the snow has been so good, especially around mid-day and Big Emma. Both have been a blast to drop a hip on. Today is Play Forever Wednesday . $5 of your ticket will be donated to a non-profit of the week that is dedicated to bettering the environment, providing local relief or broadening participation in outdoor activities. This week, we are supporting SheJumps, which serves girls ages 6 and up, women 18 & older who either have never participated in outdoor activities or are active members of the outdoor community looking to give back and share their passion. Click the link to learn more. Also, in case you haven’t heard, we’re hosting The Blister Summit starting April 12. It's going to be sick. There will be demos on tons of brands, professional athletes and public testing gear, nightly panel sessions and sweet après events. Register now to claim your spot. A Blister Summit Pass includes 4 days of equipment demos, 4 evenings of panel sessions, nightly gear giveaways and Blister Summit swag. Don't forget that Chickadee Bowl is closed for construction as we begin upgrading Chickadee Lift into a 4-seater. If you're parking in Entry 4, your easiest mountain access will be via Who Dunnit/Creekside Road alongside the Bypass parking lot. ALL uphill travel is closed. Don’t be that guy (or gal). Please remember to ski and ride in control, if you don’t, you’re gonna have a bad time. It's high tide at Surf Season, so to quote that one surfer guy, \"drop in, just smack the lip, wapow.\" Go do some soul surfing today (just don't lose an arm to a shark). #GMTB",
+      "note": "Gooooood morning Snowbird! It’s Owen, with your snow report for Wednesday. Today is going to be another great day on the mountain with a high of 55° and sunny skies. Slap on some sunscreen (for your face) and some wax (for your skis) and you’ll be ready to surf the day away (for your soul). The groomers have been firing as of late and my go to’s have been Regulator as the snow has been so good, especially around mid-day and Big Emma. Both have been a blast to drop a hip on. Today is Play Forever Wednesday . $5 of your ticket will be donated to a non-profit of the week that is dedicated to bettering the environment, providing local relief or broadening participation in outdoor activities. This week, we are supporting SheJumps, which serves girls ages 6 and up, women 18 & older who either have never participated in outdoor activities or are active members of the outdoor community looking to give back and share their passion. Click the link to learn more. Also, in case you haven’t heard, we’re hosting The Blister Summit starting April 13th. It's going to be sick. There will be demos on tons of brands, professional athletes and public testing gear, nightly panel sessions and sweet après events. Register now to claim your spot. A Blister Summit Pass includes 4 days of equipment demos, 4 evenings of panel sessions, nightly gear giveaways and Blister Summit swag. Don't forget that Chickadee Bowl is closed for construction as we begin upgrading Chickadee Lift into a 4-seater. If you're parking in Entry 4, your easiest mountain access will be via Who Dunnit/Creekside Road alongside the Bypass parking lot. ALL uphill travel is closed. Don’t be that guy (or gal). Please remember to ski and ride in control, if you don’t, you’re gonna have a bad time. It's high tide at Surf Season, so to quote that one surfer guy, \"drop in, just smack the lip, wapow.\" Go do some soul surfing today (just don't lose an arm to a shark). #GMTB",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 0,
@@ -937,9 +937,9 @@
         "forecast72h": 0,
         "daysSinceSnow": 1,
         "baseDepth": 18,
-        "runsOpen": 29,
+        "runsOpen": 30,
         "runsTotal": 99,
-        "groomedRuns": 29
+        "groomedRuns": 30
       },
       "sources": {
         "conditions": "https://www.stratton.com/the-mountain/conditions-weather/snow-report",
@@ -956,7 +956,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,

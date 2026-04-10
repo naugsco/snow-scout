@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-10T16:55:59.292Z",
+  "generatedAt": "2026-04-10T20:43:37.939Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -13,7 +13,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": 0.7,
         "daysSinceSnow": 5,
         "baseDepth": 30,
         "runsOpen": null,
@@ -55,7 +55,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 29,
         "runsOpen": 18,
@@ -76,7 +76,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.7,
+        "forecast72h": 0.4,
         "daysSinceSnow": 5,
         "baseDepth": 32,
         "runsOpen": null,
@@ -97,7 +97,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": 0.8,
         "daysSinceSnow": null,
         "baseDepth": 63,
         "runsOpen": null,
@@ -139,7 +139,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 7.9,
+        "forecast72h": 10.6,
         "daysSinceSnow": null,
         "baseDepth": 57,
         "runsOpen": null,
@@ -160,7 +160,7 @@
       "note": "Wet Snow",
       "metrics": {
         "snow24h": 1,
-        "forecast72h": 21.9,
+        "forecast72h": 26.7,
         "daysSinceSnow": 0,
         "baseDepth": 30,
         "runsOpen": 49,
@@ -177,14 +177,14 @@
       "status": "ok",
       "resort": "Stowe",
       "adapter": "vail",
-      "updatedAt": "Updated April 10, 2026 at 5:01 AM EDT",
+      "updatedAt": "Updated April 10, 2026 at 4:03 PM EDT",
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": 0.2,
         "daysSinceSnow": 5,
         "baseDepth": 48,
-        "runsOpen": 60,
+        "runsOpen": 63,
         "runsTotal": 129,
         "groomedRuns": 35
       },
@@ -226,9 +226,9 @@
         "forecast72h": 0,
         "daysSinceSnow": 5,
         "baseDepth": 24,
-        "runsOpen": 7,
+        "runsOpen": 5,
         "runsTotal": 86,
-        "groomedRuns": 6
+        "groomedRuns": 4
       },
       "sources": {
         "conditions": "https://www.mountsnow.com/the-mountain/mountain-conditions/weather-report.aspx",
@@ -247,9 +247,9 @@
         "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 59,
-        "runsOpen": 38,
+        "runsOpen": 44,
         "runsTotal": 56,
-        "groomedRuns": 21
+        "groomedRuns": 22
       },
       "sources": {
         "conditions": "https://www.stevenspass.com/the-mountain/mountain-conditions/weather-report.aspx",
@@ -265,10 +265,10 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.1,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 85,
-        "runsOpen": 259,
+        "runsOpen": 261,
         "runsTotal": 305,
         "groomedRuns": 136
       },
@@ -412,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": 0,
         "daysSinceSnow": 5,
         "baseDepth": 10,
         "runsOpen": 14,
@@ -453,7 +453,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -462,7 +462,8 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "jack frost big boulder": {
@@ -616,14 +617,14 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "10:00 am",
+      "updatedAt": "02:00 pm",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 1,
         "daysSinceSnow": null,
-        "baseDepth": 83,
-        "runsOpen": 82,
+        "baseDepth": 82,
+        "runsOpen": 99,
         "runsTotal": 118,
         "groomedRuns": null
       },
@@ -641,9 +642,9 @@
       "note": null,
       "metrics": {
         "snow24h": null,
-        "forecast72h": 0.2,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
-        "baseDepth": 54,
+        "baseDepth": 57,
         "runsOpen": 0,
         "runsTotal": 115,
         "groomedRuns": null
@@ -662,7 +663,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3,
+        "forecast72h": 2,
         "daysSinceSnow": 5,
         "baseDepth": 31,
         "runsOpen": 17,
@@ -706,7 +707,7 @@
       "note": "Eldora is closed for the summer. 26/27 alpine season passes are on sale now, at the lowest prices of the year! Prices increase on May 8 . Shop now HERE for the best pricing. Thanks for a great season! We'll see you in November!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": 0.6,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -731,11 +732,11 @@
       "metrics": {
         "snow24h": 0,
         "forecast72h": 0,
-        "daysSinceSnow": 2,
+        "daysSinceSnow": 5,
         "baseDepth": 16,
-        "runsOpen": 73,
+        "runsOpen": 71,
         "runsTotal": 164,
-        "groomedRuns": 59
+        "groomedRuns": 57
       },
       "sources": {
         "conditions": "https://www.killington.com/the-mountain/conditions-weather/current-conditions-weather/",
@@ -794,11 +795,11 @@
       "status": "ok",
       "resort": "Mammoth Mountain",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-10T07:51:30-0700",
+      "updatedAt": "2026-04-10T10:10:22-0700",
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 30,
+        "forecast72h": 29,
         "daysSinceSnow": null,
         "baseDepth": 72.5,
         "runsOpen": 109,
@@ -820,7 +821,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 25,
+        "forecast72h": 22,
         "daysSinceSnow": null,
         "baseDepth": 29,
         "runsOpen": 29,
@@ -842,7 +843,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1,
+        "forecast72h": 2,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": 0,
@@ -864,10 +865,10 @@
       "note": "Happy Friday! Another beautiful day with temps into the mid 40s and southwest winds around 10 mph, gusting into the 20s. We will likely see some snow flurries this afternoon, similar to yesterday, so come prepared. Lots of fun events to take part in today and through the weekend such as Pass Holder Party Laps and the Mammut Uphill Race Series Grand Finale. Check out these and more on the Copper Instagram or on our events page: https://www.coppercolorado.com/events-activities/events-calendar/ . Have fun and be safe!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.4,
+        "forecast72h": 1.6,
         "daysSinceSnow": 5,
         "baseDepth": 25,
-        "runsOpen": 63,
+        "runsOpen": 64,
         "runsTotal": 162,
         "groomedRuns": 34
       },
@@ -888,7 +889,7 @@
       "note": "Howdy! How are y’all doing? It’s Otto with your snow report for Friday April 10th. We’ve got warm temperatures and fun skiing on tap today. There is a high of 59 degrees today, and it will be a bit cloudy but the sun should be poking through. There is a potential for showers to develop this afternoon, but that’s more likely for right around the end of the ski day. You probably can avoid wearing a shell today, but maybe keep one in the car just in case that round of weather develops earlier. I’m getting really excited for the Blister Summit, starting Monday night the 13th and running throughout the week. There’s not only a lot of really exciting skis and brands to demo, but you’ll get to meet and ski with some incredible pro athletes (yes, Hoji is coming), hear from industry legends and kick it with everyone in the afternoon après. The price on this year’s Blister Summit is a screaming deal, and you don’t want to miss out. Register now . Don't forget that Chickadee Bowl is closed for construction as we begin upgrading Chickadee Lift into a 4-seater. If you're parking in Entry 4, your easiest mountain access will be via Who Dunnit/Creekside Road alongside the Bypass parking lot. ALL uphill travel is closed. Please remember to ski and ride in control and respect others out there. Surf Season is firing right now, go have some fun in the slush before snow returns next week.",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.7,
+        "forecast72h": 1.2,
         "daysSinceSnow": 5,
         "baseDepth": 74,
         "runsOpen": 92,
@@ -908,7 +909,7 @@
       "status": "ok",
       "resort": "Sugarbush",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-10T10:03:22-0400",
+      "updatedAt": "2026-04-10T13:16:16-0400",
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
@@ -930,7 +931,7 @@
       "status": "ok",
       "resort": "Stratton",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-10T05:39:42-0400",
+      "updatedAt": "2026-04-10T14:36:49-0400",
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
@@ -956,7 +957,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,
@@ -977,7 +978,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.4,
+        "forecast72h": 0.2,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,

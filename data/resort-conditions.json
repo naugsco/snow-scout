@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-11T02:35:10.788Z",
+  "generatedAt": "2026-04-11T05:27:15.189Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -55,7 +55,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 29,
         "runsOpen": 18,
@@ -97,7 +97,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.4,
+        "forecast72h": 0.3,
         "daysSinceSnow": null,
         "baseDepth": 63,
         "runsOpen": null,
@@ -118,7 +118,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 10.8,
+        "forecast72h": 11.9,
         "daysSinceSnow": null,
         "baseDepth": 26,
         "runsOpen": null,
@@ -139,7 +139,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 11.4,
+        "forecast72h": 10.8,
         "daysSinceSnow": null,
         "baseDepth": 57,
         "runsOpen": null,
@@ -160,7 +160,7 @@
       "note": "Wet Snow",
       "metrics": {
         "snow24h": 1,
-        "forecast72h": 26.9,
+        "forecast72h": 31.7,
         "daysSinceSnow": 0,
         "baseDepth": 30,
         "runsOpen": 49,
@@ -181,7 +181,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": 0,
         "daysSinceSnow": 5,
         "baseDepth": 48,
         "runsOpen": 63,
@@ -412,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0.3,
         "daysSinceSnow": 5,
         "baseDepth": 10,
         "runsOpen": 14,
@@ -421,7 +421,8 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "crotched mountain": {
@@ -452,7 +453,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -461,8 +462,7 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "jack frost big boulder": {
@@ -616,7 +616,7 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "08:00 pm",
+      "updatedAt": "11:00 pm",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 0,
@@ -643,7 +643,7 @@
         "snow24h": null,
         "forecast72h": 0,
         "daysSinceSnow": null,
-        "baseDepth": 55,
+        "baseDepth": 54,
         "runsOpen": 0,
         "runsTotal": 115,
         "groomedRuns": null
@@ -754,7 +754,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2,
+        "forecast72h": 3,
         "daysSinceSnow": null,
         "baseDepth": null,
         "runsOpen": 0,
@@ -798,7 +798,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 28,
+        "forecast72h": 31,
         "daysSinceSnow": null,
         "baseDepth": 72.5,
         "runsOpen": 109,
@@ -820,7 +820,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 22,
+        "forecast72h": 23,
         "daysSinceSnow": null,
         "baseDepth": 29,
         "runsOpen": 29,
@@ -864,7 +864,7 @@
       "note": "Happy Friday! Another beautiful day with temps into the mid 40s and southwest winds around 10 mph, gusting into the 20s. We will likely see some snow flurries this afternoon, similar to yesterday, so come prepared. Lots of fun events to take part in today and through the weekend such as Pass Holder Party Laps and the Mammut Uphill Race Series Grand Finale. Check out these and more on the Copper Instagram or on our events page: https://www.coppercolorado.com/events-activities/events-calendar/ . Have fun and be safe!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.2,
+        "forecast72h": 1.1,
         "daysSinceSnow": 5,
         "baseDepth": 25,
         "runsOpen": 64,
@@ -934,7 +934,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1,
+        "forecast72h": 0,
         "daysSinceSnow": 5,
         "baseDepth": 18,
         "runsOpen": 32,
@@ -956,7 +956,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.8,
+        "forecast72h": 0.9,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,

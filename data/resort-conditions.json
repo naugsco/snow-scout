@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-13T10:00:31.983Z",
+  "generatedAt": "2026-04-13T13:47:49.771Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -13,7 +13,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.1,
+        "forecast72h": 1,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": null,
@@ -51,16 +51,16 @@
       "status": "ok",
       "resort": "Breckenridge",
       "adapter": "vail",
-      "updatedAt": "Updated April 12, 2026 at 9:37 AM MDT",
+      "updatedAt": "Updated April 13, 2026 at 4:58 AM MDT",
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.5,
+        "forecast72h": 1.4,
         "daysSinceSnow": null,
-        "baseDepth": 21,
-        "runsOpen": 5,
+        "baseDepth": 20,
+        "runsOpen": 3,
         "runsTotal": 193,
-        "groomedRuns": 5
+        "groomedRuns": 3
       },
       "sources": {
         "conditions": "https://www.breckenridge.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -97,7 +97,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 1.2,
         "daysSinceSnow": null,
         "baseDepth": 63,
         "runsOpen": null,
@@ -106,7 +106,8 @@
       },
       "sources": {
         "conditions": "https://www.parkcitymountain.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.parkcitymountain.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.parkcitymountain.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=40.6514&longitude=-111.5080&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "heavenly": {
@@ -117,7 +118,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 9,
-        "forecast72h": 0.4,
+        "forecast72h": 0.2,
         "daysSinceSnow": 0,
         "baseDepth": 33,
         "runsOpen": null,
@@ -138,7 +139,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.8,
+        "forecast72h": 0.9,
         "daysSinceSnow": null,
         "baseDepth": 57,
         "runsOpen": null,
@@ -155,13 +156,13 @@
       "status": "ok",
       "resort": "Kirkwood",
       "adapter": "vail",
-      "updatedAt": "Updated April 12, 2026 at 5:46 AM PDT",
+      "updatedAt": "Updated April 13, 2026 at 5:51 AM PDT",
       "note": "Powder",
       "metrics": {
-        "snow24h": 17,
-        "forecast72h": 3.8,
+        "snow24h": 14,
+        "forecast72h": 0.4,
         "daysSinceSnow": 0,
-        "baseDepth": 54,
+        "baseDepth": 62,
         "runsOpen": 48,
         "runsTotal": 113,
         "groomedRuns": 9
@@ -185,7 +186,7 @@
         "baseDepth": 48,
         "runsOpen": 58,
         "runsTotal": 129,
-        "groomedRuns": 8
+        "groomedRuns": 9
       },
       "sources": {
         "conditions": "https://www.stowe.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -243,7 +244,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 8.1,
+        "forecast72h": 9.4,
         "daysSinceSnow": null,
         "baseDepth": 59,
         "runsOpen": null,
@@ -264,12 +265,12 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 8.3,
+        "forecast72h": 8,
         "daysSinceSnow": null,
         "baseDepth": 81,
-        "runsOpen": 246,
+        "runsOpen": 240,
         "runsTotal": 305,
-        "groomedRuns": 124
+        "groomedRuns": 112
       },
       "sources": {
         "conditions": "https://www.whistlerblackcomb.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -285,7 +286,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.6,
+        "forecast72h": 0.9,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -411,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": null,
         "daysSinceSnow": 5,
         "baseDepth": 10,
         "runsOpen": null,
@@ -420,8 +421,7 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "crotched mountain": {
@@ -432,7 +432,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 20,
         "runsOpen": null,
@@ -441,7 +441,8 @@
       },
       "sources": {
         "conditions": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=43.0164&longitude=-71.8764&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "hunter mountain": {
@@ -452,7 +453,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -461,7 +462,8 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "jack frost big boulder": {
@@ -514,7 +516,7 @@
       "note": "Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -523,8 +525,7 @@
       },
       "sources": {
         "conditions": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.7553&longitude=-77.3753&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "whitetail resort": {
@@ -535,7 +536,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": null,
@@ -544,8 +545,7 @@
       },
       "sources": {
         "conditions": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.7428&longitude=-77.9342&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
       }
     },
     "seven springs": {
@@ -615,13 +615,13 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "03:00 am",
+      "updatedAt": "07:00 am",
       "note": "Partly Cloudy",
       "metrics": {
-        "snow24h": 3,
+        "snow24h": 4,
         "forecast72h": 3,
         "daysSinceSnow": 0,
-        "baseDepth": 82,
+        "baseDepth": 84,
         "runsOpen": 0,
         "runsTotal": 118,
         "groomedRuns": null
@@ -642,7 +642,7 @@
         "snow24h": null,
         "forecast72h": 1.6,
         "daysSinceSnow": null,
-        "baseDepth": 32,
+        "baseDepth": 30,
         "runsOpen": 0,
         "runsTotal": 115,
         "groomedRuns": null
@@ -657,16 +657,16 @@
       "status": "ok",
       "resort": "Winter Park",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-12T05:09:28-0600",
+      "updatedAt": "2026-04-13T05:09:10-0600",
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 9,
         "daysSinceSnow": null,
         "baseDepth": 29,
-        "runsOpen": 17,
+        "runsOpen": 9,
         "runsTotal": 171,
-        "groomedRuns": 14
+        "groomedRuns": 8
       },
       "sources": {
         "conditions": "https://www.winterparkresort.com/the-mountain/mountain-report",
@@ -683,7 +683,7 @@
       "note": "Packed Powder Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 9,
+        "forecast72h": 12,
         "daysSinceSnow": 1,
         "baseDepth": 33,
         "runsOpen": 0,
@@ -726,13 +726,13 @@
       "resort": "Killington",
       "adapter": "powdr",
       "updatedAt": "2026-04-13 05:30:56",
-      "note": "Good morning, Beast family, We closed out a legendary weekend on a high note, with great conditions, plenty of sunshine, and an awesome turnout for both the Pond Skim and the kparks Spring Send-Off. Thanks to everyone who came out to celebrate spring with us. Today keeps that spring momentum rolling. Temperatures are climbing into the mid-50s under mostly cloudy skies, with a chance for a few light showers moving through this afternoon. Winds will be on the stronger side, running 20 to 35 mph at the base and 35 to 50 mph up top, so there is the potential for a wind hold here or there. Surface conditions continue to trend in a true spring direction. Expect softening snow as temperatures rise, with wet and loose conditions developing across the mountain. There may be some variability out there, so stay alert for changing surfaces and any inconsistent coverage that may appear. If you're looking for bumps, Great Bear remains a solid choice, while groomed terrain will offer smooth, forgiving turns as things soften up. Our grooming team worked overnight across key areas of the mountain, focusing efforts off the peak, in the Canyon, and over at Snowdon and Ramshead. Double Dipper replaces Downdraft in the plan, with Bunny Buster, Caper, and a number of other runs getting a refresh. Check the Lifts & Trails Report for the full list of groomed options. We are scheduled to have 5 lifts spinning today, with the Superstar Six, K-1 Gondola, Snowdon Six, and Ramshead Quad opening at 9:00 a.m., and the North Ridge Quad joining at 9:30 a.m. Please note that beginner terrain is currently only available off Ramshead. On the kparks front, Timberline remains in great shape with close to 40 features in total. Our crew recently refreshed a number of features ahead of this past weekend’s Spring Send-Off, so now is a great time to get in there and take a few laps. We’ll be open daily through Ramshead’s final scheduled operating day on Sunday, April 19. Spring is here, and we’re still getting after it. We’ll see you out there. -Josh Operating Day: 153 Season passes for 26/27 are now on sale! Lock in the lowest price on Beast 365 or Winter Unlimited passes with lots of perks, plus free skiing & riding for the rest of this spring. And there's more good news for families: Youth & Child pass pricing has been significantly reduced for next season, with over $300 in savings available on Beast 365 access. Lifts Key lifts operate seven days a week from 9:00 a.m. to 4:00 p.m. on Monday through Friday, and from 8:00 a.m. to 4:00 p.m. on Saturday and Sunday. The North Ridge Quad opens at 9:30 a.m. on weekdays and 8:00 a.m. on weekends. The Tubing Park presented by bubly is closed for the season. Uphill Travel Please visit killington.com/uphill for specific uphill route information, including a map of each route: Ramshead base to top of Ramshead Express Quad - Open Ramshead Express Quad to top of Snowdon Mountain - CLOSED Snowshed base to the top of Snowshed Slope - CLOSED Base of Sunrise Village Triple to top of Bear Mountain - CLOSED Killington/Pico Mountain Interconnect - CLOSED Pico Base to the top of Golden Express Quad - CLOSED Pico Base to Pico Summit - CLOSED Pico Summit Glade Route - CLOSED Before heading up the hill, be sure to review our uphill travel policies and grab your Uphill Travel Pass here . All uphill travelers are required to have an Uphill Travel Pass and armband, which can be picked up at any ticket window. Please keep an eye out for grooming equipment and steer clear of mountain ops during non-operating hours. MOUNTAIN SERVICES Parking & Shuttles Parking is available at the K-1, Snowshed, Ramshead, and Vale parking lots. Please respect signage and allow our parking staff to assist you on your trip to the slopes. Shuttle service is available from 7:00 a.m. - 5:00 p.m. midweek and 6:00 a.m. - 5:00 p.m. on weekends and holidays. Winter car camping and overnight parking is only available in the lot across from Skyeship Lodge, though please note that the Skyeship Lodge is closed for this season. See details here . Lodge Services All lodges listed here are open daily from 8:00 a.m. - 5:00 p.m. on weekdays and 7:00 a.m. - 5:00 p.m. on weekends/peak dates*. K-1 Lodge Breakfast: Served starting at 8:30 a.m. on weekdays and 7:30 a.m. on weekends/peak dates. Lunch: Served from 10:30 a.m. - 3:00 p.m. daily. Brew Bar (2nd floor): Open serving handcrafted coffees at 8:30 a.m. on weekdays and at 7:30 a.m. on weekends, with cocktails and beers served starting at 9:00 a.m. K-1 Pub (3rd floor): Open at 10:00 a.m. on Friday - Sunday. Rentals & Killington Sports at K-1: Open 30 minutes before lifts until 30 minutes after lifts. Demos & Tuning: Available via the K-1 Rental Shop from April 10th through May 3rd. All pass holders—including Beast 365 and Unlimited—will receive 50% off demo rentals. Guest Services: 1st floor - Open 30 minutes before lifts until 1:00 p.m. on weekdays and until 4:30 p.m. on weekends/peak dates. 2nd floor - Open 30 minutes before lifts until 30 minutes after lifts. Superstar Umbrella Bar: Open at 11:00 a.m. from Friday - Sunday offering beer, wine, liquor, and specialty hot cocktails. Ramshead Lodge Breakfast: Served starting at 8:30 a.m. on Fridays and 7:30 a.m. on weekends/peak dates. Lunch: Served daily with grab & go options & soups. The pizza station is open Thursday - Monday, and the full grill menu is available Friday - Sunday. Guest Services: Open 30 minutes before lifts until 12:00 p.m. on Monday – Thursday and until 4:30 p.m. on Friday - Sunday at the ticket windows outside of the lodge. Rentals: Open 30 minutes before lifts until 30 minutes after lifts. Child Care Center: Open weekdays from 8:30 a.m. - 3:45 p.m. and weekends from 8:00 a.m. - 3:45 p.m. Closing Date: April 19th Bear Mountain Lodge - Closed for the season. Will re-open for basic lodge services on April 17th - 19th, conditions permitting. Snowshed Lodge - Closed for the season. Snowshed Demos & Tuning remains open seven days a week, providing tuning services for guests and Season Tune holders. Demos also available with more options at K-1. Skyeship Lodge - Closed for the season. On-Mountain Dining Options : Peak Lodge – Closed for the season. Jerk Jamaican Mountain Grill – Closed for the season. Ledgewood Yurt – Closed for the season. Mountain services are subject to change. Please check here daily before making your lunch and lodge choices. Winter Lift Tickets and rentals must be purchased online at this link . Check to see if your pass is good to go using our Online Pass Checker . Find our Season Pass FAQs by clicking here . Season passes for summer 2026 and winter 26/27 are now on sale! Buy now . Have a ticketing question? Our text number ( 802-523-2202 ) is the best way to get it answered quickly, but please note that we cannot process transactions via text. Have a season pass question? Call 1-800-621-MTNS or email seasonpass@killington.com Please visit Killington.com/cancellation for more details on our cancellation policy. Killington Sports at Route 4 is open daily from 10:00 a.m. - 5:00 p.m. Closing date: Sunday, April 19th Killington is a cashless resort. We accept all major credit cards as well as Apple, Google, and Samsung Pay. *No remaining Peak Dates during winter 2025/26. We strive to have the most up-to-date and accurate snow report, but errors can happen from time to time. If you have feedback or a correction for us, please share it here.",
+      "note": "Good morning, Beast family, We closed out a legendary weekend on a high note, with great conditions, plenty of sunshine, and an awesome turnout for both the Pond Skim and the kparks Spring Send-Off. Thanks to everyone who came out to celebrate spring with us. Today keeps that spring momentum rolling. Temperatures are climbing into the mid-50s under mostly cloudy skies, with a chance for a few light showers moving through this afternoon. Winds will be on the stronger side, running 20 to 35 mph at the base and 35 to 50 mph up top, so there is the potential for a wind hold here or there. Surface conditions continue to trend in a true spring direction. Expect softening snow as temperatures rise, with wet and loose conditions developing across the mountain. There may be some variability out there, so stay alert for changing surfaces and any inconsistent coverage that may appear. If you're looking for bumps, Great Bear remains a solid choice, while groomed terrain will offer smooth, forgiving turns as things soften up. Our grooming team worked overnight across key areas of the mountain, focusing efforts off the peak, in the Canyon, and over at Snowdon and Ramshead. Double Dipper replaces Downdraft in the plan, with Bunny Buster, Caper, and a number of other runs getting a refresh. Check the Lifts & Trails Report for the full list of groomed options. We are scheduled to have 5 lifts spinning today, with the Superstar Six, K-1 Gondola, Snowdon Six, and Ramshead Quad opening at 9:00 a.m., and the North Ridge Quad joining at 9:30 a.m. Please note that beginner terrain is currently only available off Ramshead. On the kparks front, Timberline remains in great shape with close to 40 features in total. Our crew recently refreshed a number of features ahead of this past weekend’s Spring Send-Off, so now is a great time to get in there and take a few laps. We’ll be open daily through Ramshead’s final scheduled operating day on Sunday, April 19. Spring is here, and we’re still getting after it. We’ll see you out there. -Josh Operating Day: 153 Season passes for 26/27 are now on sale! Lock in the lowest price on Beast 365 or Winter Unlimited passes with lots of perks, plus free skiing & riding for the rest of this spring. And there's more good news for families: Youth & Child pass pricing has been significantly reduced for next season, with over $300 in savings available on Beast 365 access. Lifts Key lifts operate seven days a week from 9:00 a.m. to 4:00 p.m. on Monday through Friday, and from 8:00 a.m. to 4:00 p.m. on Saturday and Sunday. The North Ridge Quad opens at 9:30 a.m. on weekdays and 8:00 a.m. on weekends. The Tubing Park presented by bubly is closed for the season. Uphill Travel Please visit killington.com/uphill for specific uphill route information, including a map of each route: Ramshead base to top of Ramshead Express Quad - Open Ramshead Express Quad to top of Snowdon Mountain - CLOSED Snowshed base to the top of Snowshed Slope - CLOSED Base of Sunrise Village Triple to top of Bear Mountain - CLOSED Killington/Pico Mountain Interconnect - CLOSED Pico Base to the top of Golden Express Quad - CLOSED Pico Base to Pico Summit - CLOSED Pico Summit Glade Route - CLOSED Before heading up the hill, be sure to review our uphill travel policies and grab your Uphill Travel Pass here . All uphill travelers are required to have an Uphill Travel Pass and armband, which can be picked up at any ticket window. Please keep an eye out for grooming equipment and steer clear of mountain ops during non-operating hours. MOUNTAIN SERVICES Parking & Shuttles Parking is available at the K-1, Snowshed, Ramshead, and Vale parking lots. Please respect signage and allow our parking staff to assist you on your trip to the slopes. Shuttle service is available from 7:00 a.m. - 5:00 p.m. midweek and 6:00 a.m. - 5:00 p.m. on weekends and holidays. Winter car camping and overnight parking is only available in the lot across from Skyeship Lodge, though please note that the Skyeship Lodge is closed for this season. See details here . Lodge Services All lodges listed here are open daily from 8:00 a.m. - 5:00 p.m. on weekdays and 7:00 a.m. - 5:00 p.m. on weekends/peak dates*. K-1 Lodge Breakfast: Served starting at 8:30 a.m. on weekdays and 7:30 a.m. on weekends/peak dates. Lunch: Served from 10:30 a.m. - 3:00 p.m. daily. Brew Bar (2nd floor): Open serving handcrafted coffees at 8:30 a.m. on weekdays and at 7:30 a.m. on weekends, with cocktails and beers served starting at 9:00 a.m. K-1 Pub (3rd floor): Open at 10:00 a.m. on Friday - Sunday. Rentals & Killington Sports at K-1: Open 30 minutes before lifts until 30 minutes after lifts. Demos & Tuning: Available via the K-1 Rental Shop from April 10th through May 3rd. All pass holders—including Beast 365 and Unlimited—will receive 50% off demo rentals. Guest Services: 1st floor - Open 30 minutes before lifts until 1:00 p.m. on weekdays and until 4:30 p.m. on weekends/peak dates. 2nd floor - Open 30 minutes before lifts until 30 minutes after lifts. Superstar Umbrella Bar: Open at 11:00 a.m. from Friday - Sunday offering beer, wine, liquor, and specialty hot cocktails. Ramshead Lodge Breakfast: Served starting at 8:30 a.m. on Fridays and 7:30 a.m. on weekends/peak dates. Lunch: Served daily with grab & go options & soups. The pizza station is open Thursday - Monday, and the full grill menu is available Friday - Sunday. Guest Services: Open 30 minutes before lifts until 12:00 p.m. on Monday – Thursday and until 4:30 p.m. on Friday - Sunday at the ticket windows outside of the lodge. Rentals: Open 30 minutes before lifts until 30 minutes after lifts. Child Care Center: Open Monday to Friday from 8:30 a.m. - 3:45 p.m. Closing Date: April 19th Bear Mountain Lodge - Closed for the season. Will re-open for basic lodge services on April 17th - 19th, conditions permitting. Snowshed Lodge - Closed for the season. Snowshed Demos & Tuning remains open seven days a week, providing tuning services for guests and Season Tune holders. Demos also available with more options at K-1. Skyeship Lodge - Closed for the season. On-Mountain Dining Options : Peak Lodge – Closed for the season. Jerk Jamaican Mountain Grill – Closed for the season. Ledgewood Yurt – Closed for the season. Mountain services are subject to change. Please check here daily before making your lunch and lodge choices. Winter Lift Tickets and rentals must be purchased online at this link . Check to see if your pass is good to go using our Online Pass Checker . Find our Season Pass FAQs by clicking here . Season passes for summer 2026 and winter 26/27 are now on sale! Buy now . Have a ticketing question? Our text number ( 802-523-2202 ) is the best way to get it answered quickly, but please note that we cannot process transactions via text. Have a season pass question? Call 1-800-621-MTNS or email seasonpass@killington.com Please visit Killington.com/cancellation for more details on our cancellation policy. Killington Sports at Route 4 is open daily from 10:00 a.m. - 5:00 p.m. Closing date: Sunday, April 19th Killington is a cashless resort. We accept all major credit cards as well as Apple, Google, and Samsung Pay. *No remaining Peak Dates during winter 2025/26. We strive to have the most up-to-date and accurate snow report, but errors can happen from time to time. If you have feedback or a correction for us, please share it here.",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 0,
         "daysSinceSnow": 5,
         "baseDepth": 16,
-        "runsOpen": 45,
+        "runsOpen": 44,
         "runsTotal": 164,
         "groomedRuns": 32
       },
@@ -753,7 +753,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 4,
+        "forecast72h": 3,
         "daysSinceSnow": null,
         "baseDepth": null,
         "runsOpen": 0,
@@ -793,13 +793,13 @@
       "status": "ok",
       "resort": "Mammoth Mountain",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-12T15:03:48-0700",
+      "updatedAt": "2026-04-13T06:41:02-0700",
       "note": "Powder",
       "metrics": {
-        "snow24h": 18,
-        "forecast72h": 6,
+        "snow24h": 14,
+        "forecast72h": 2,
         "daysSinceSnow": 0,
-        "baseDepth": 78.5,
+        "baseDepth": 81,
         "runsOpen": 57,
         "runsTotal": 180,
         "groomedRuns": 34
@@ -815,11 +815,11 @@
       "status": "ok",
       "resort": "June Mountain",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-12T07:51:40-0700",
+      "updatedAt": "2026-04-13T06:18:26-0700",
       "note": "Fresh Powder",
       "metrics": {
-        "snow24h": 13,
-        "forecast72h": 4,
+        "snow24h": 9,
+        "forecast72h": 2,
         "daysSinceSnow": 0,
         "baseDepth": 43,
         "runsOpen": 0,
@@ -841,7 +841,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3,
+        "forecast72h": 1,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": 0,
@@ -859,16 +859,16 @@
       "status": "ok",
       "resort": "Copper Mountain",
       "adapter": "powdr",
-      "updatedAt": "2026-04-12 05:00:00",
-      "note": "Good morning and Happy Sunday, everybody! Today we expect to see mostly sunny skies and temps hovering in the mid 40s at mid-mountain elevations. Base areas will be warmer in the low 50s throughout most of the day. WSW winds will be breezy at 15-25mph with gusts into the 40s at times during the afternoon hours. Overnight into tomorrow we expect to see moody, spring weather return bringing a chance of snow flurries each of the next few days. Today is the last day to enjoy some of our terrain on the western half of the resort. It'll be the last hurrah for Timberline Express, Sierra, Rendezvous and Woodward Express. Additionally, today marks the last chance for laps on Storm King and down in Green Acres. Don't worry, we'll be hanging on to the American Flyer, including Central Park, for a bit longer as well as the Eagle, Super Bee and Excelerator lifts. For the latest and greatest terrain and lift info, continue to tune into the Terrain Update channel on Instagram and of course here on coppercolorado.com. Have a great day!",
+      "updatedAt": "2026-04-13 05:00:00",
+      "note": "Good morning, Copper Mountain! It officially feels like spring out there. Today, expect mostly sunny skies with a breezy southwest wind, with gusts reaching the 30-mph range. We may see a few flurries this afternoon, though little to no accumulation is expected. Looking ahead, snow showers are possible tomorrow, with 1 to 3 inches of accumulation. Might be time to start those snow dances again—a few inches of fresh would be a welcome change of pace. Yesterday marked your final opportunity this season to ride Storm King, Timberline Express, Sierra, Rendezvous, and Woodward Express . In addition to these lift closures, a significant amount of terrain has now closed for the season . For the most up-to-date information, please check the Winter Trail & Lift Report | Copper Mountain Resort . For real-time updates, follow along on our Instagram channel by clicking the link here.",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.2,
+        "forecast72h": 0.9,
         "daysSinceSnow": null,
         "baseDepth": 25,
-        "runsOpen": 25,
+        "runsOpen": 26,
         "runsTotal": 162,
-        "groomedRuns": 17
+        "groomedRuns": 16
       },
       "sources": {
         "conditions": "https://www.coppercolorado.com/the-mountain/conditions-weather/snow-report",
@@ -883,13 +883,13 @@
       "status": "ok",
       "resort": "Snowbird",
       "adapter": "powdr",
-      "updatedAt": "2026-04-12 05:41:51",
-      "note": "Gooooood morning Snowbird! It’s Owen, with your snow report for Sunday. We've got snow in the forecast people. We’ll have partly sunny skies for the morning with a high around 48°. Around noon, snow showers are likely to roll in along with a chance of thunder and high winds throughout the day. With those high winds and snow later, I'm thinking it might be a good day for a shell with minimal layers underneath. It is unlikely that the snow will accumulate to anything today, but going into tonight it’s looking like we may get 4-6”, which would be awesome. We could definitely use it, so everyone do your weird snow rituals so we can maximize that snowfall! Also, in case you haven’t heard, The 2026 Blister Summit starts tomorrow night. There will be demos on tons of brands, chances for public and professional athletes to test gear, nightly panel sessions and sweet après events. Register now to claim your spot. If you just cannot physically wait until Tuesday to try out some new skis, don't worry we've got you covered (or more accurately Dynastar does). Come swing by the Dynastar tent on the Plaza Deck to demo some of their freeride and all mountain skis and grab some swag. After you're done tearing it up today, swing by the Plaza Deck for more Plazapalooza ! Today, from 2-5 we'll have Elbee performing on the stage and delivering good vibes directly to your ears. ALL uphill travel is closed. Don’t be that guy (or gal). Please remember to ski and ride in control, if you don’t, you’re gonna have a bad time. It's high tide at Surf Season, so to quote that one surfer guy, \"drop in, just smack the lip, wapow.\" Go get pitted today. #GMTB",
+      "updatedAt": "2026-04-13 05:26:55",
+      "note": "Gooooood morning Snowbird! It’s Owen, with your snow report for Monday. Last night we got 4” of snow. Wow, does that feel good to say. It snowed . Feels like a breath of fresh air. Today, there’s a potential for more snow showers, but accumulation of less than half an inch is expected. We’ll have a high of 42° and partly sunny skies, similar to yesterday. Today is another good day to wear that shell and maybe one less layer than usual underneath. Expect some variable conditions today, groomers will likely be skiing the best. Also, in case you haven’t heard, The 2026 Blister Summit starts tonight! There will be demos on tons of brands, chances for public and professional athletes to test gear, nightly panel sessions and sweet après events. Register now to claim your spot. As a reminder, we have closed Chickadee Bowl for construction on a new lift . Please stay out of that area for the foreseeable future as getting smacked by a construction vehicle or falling in a ditch would not make for a great day. If you normally park at the top of Chickadee, the bypass road just further down Entry 4 makes for a good parking alternative. ALL uphill travel is closed. Don’t be that guy (or gal). Please remember to ski and ride in control, if you don’t, you’re gonna have a bad time. It's Surf Season at The Bird, so to quote that one surfer guy, \"drop in, just smack the lip, wapow.\" Go get pitted today. #GMTB",
       "metrics": {
-        "snow24h": 0,
+        "snow24h": 4,
         "forecast72h": 0.9,
-        "daysSinceSnow": null,
-        "baseDepth": 73,
+        "daysSinceSnow": 0,
+        "baseDepth": 75,
         "runsOpen": 92,
         "runsTotal": 174,
         "groomedRuns": 34
@@ -907,16 +907,16 @@
       "status": "ok",
       "resort": "Sugarbush",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-12T13:13:51-0400",
+      "updatedAt": "2026-04-13T06:19:13-0400",
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 0,
-        "daysSinceSnow": 1,
+        "daysSinceSnow": 2,
         "baseDepth": 27,
-        "runsOpen": 34,
+        "runsOpen": 22,
         "runsTotal": 111,
-        "groomedRuns": 27
+        "groomedRuns": 16
       },
       "sources": {
         "conditions": "https://www.sugarbush.com/mountain/conditions",
@@ -955,7 +955,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3,
+        "forecast72h": 3.4,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,
@@ -976,7 +976,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.5,
+        "forecast72h": 4.1,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,

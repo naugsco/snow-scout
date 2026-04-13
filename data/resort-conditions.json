@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-13T02:59:38.629Z",
+  "generatedAt": "2026-04-13T06:19:06.761Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -13,7 +13,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2.6,
+        "forecast72h": 4.2,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": null,
@@ -34,7 +34,7 @@
       "note": "Low Snowfall",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3,
+        "forecast72h": 4.2,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -55,7 +55,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.7,
+        "forecast72h": 1.4,
         "daysSinceSnow": null,
         "baseDepth": 21,
         "runsOpen": 5,
@@ -76,7 +76,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.6,
+        "forecast72h": 1.4,
         "daysSinceSnow": null,
         "baseDepth": 32,
         "runsOpen": null,
@@ -97,7 +97,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.4,
+        "forecast72h": 0.4,
         "daysSinceSnow": null,
         "baseDepth": 63,
         "runsOpen": null,
@@ -118,7 +118,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 9,
-        "forecast72h": 5.3,
+        "forecast72h": 6.4,
         "daysSinceSnow": 0,
         "baseDepth": 33,
         "runsOpen": null,
@@ -160,7 +160,7 @@
       "note": "Powder",
       "metrics": {
         "snow24h": 17,
-        "forecast72h": 10.1,
+        "forecast72h": 11,
         "daysSinceSnow": 0,
         "baseDepth": 54,
         "runsOpen": 48,
@@ -244,7 +244,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 7.1,
+        "forecast72h": 7.7,
         "daysSinceSnow": null,
         "baseDepth": 59,
         "runsOpen": null,
@@ -265,7 +265,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 9.6,
+        "forecast72h": 8.4,
         "daysSinceSnow": null,
         "baseDepth": 81,
         "runsOpen": 246,
@@ -328,7 +328,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 24,
         "runsOpen": null,
@@ -337,7 +337,8 @@
       },
       "sources": {
         "conditions": "https://www.aftonalps.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.aftonalps.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
+        "terrain": "https://www.aftonalps.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.8569&longitude=-92.9036&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "mt brighton": {
@@ -348,7 +349,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 23,
         "runsOpen": null,
@@ -357,7 +358,8 @@
       },
       "sources": {
         "conditions": "https://www.mtbrighton.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.mtbrighton.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
+        "terrain": "https://www.mtbrighton.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.5392&longitude=-83.8136&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "wilmot mountain": {
@@ -410,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": 5,
         "baseDepth": 10,
         "runsOpen": null,
@@ -419,8 +421,7 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "crotched mountain": {
@@ -451,7 +452,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -460,7 +461,8 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "jack frost big boulder": {
@@ -614,12 +616,12 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "08:00 pm",
+      "updatedAt": "12:00 am",
       "note": "Partly Cloudy",
       "metrics": {
-        "snow24h": 0,
-        "forecast72h": 7,
-        "daysSinceSnow": null,
+        "snow24h": 1,
+        "forecast72h": 3,
+        "daysSinceSnow": 0,
         "baseDepth": 81,
         "runsOpen": 0,
         "runsTotal": 118,
@@ -639,9 +641,9 @@
       "note": null,
       "metrics": {
         "snow24h": null,
-        "forecast72h": 1.7,
+        "forecast72h": 2.6,
         "daysSinceSnow": null,
-        "baseDepth": 37,
+        "baseDepth": 32,
         "runsOpen": 0,
         "runsTotal": 115,
         "groomedRuns": null
@@ -682,7 +684,7 @@
       "note": "Packed Powder Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 8,
+        "forecast72h": 9,
         "daysSinceSnow": 1,
         "baseDepth": 33,
         "runsOpen": 0,
@@ -704,7 +706,7 @@
       "note": "Eldora is closed for the summer. 26/27 alpine season passes are on sale now, at the lowest prices of the year! Prices increase on May 8 . Shop now HERE for the best pricing. Thanks for a great season! We'll see you in November!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.4,
+        "forecast72h": 1.9,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -752,7 +754,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3,
+        "forecast72h": 4,
         "daysSinceSnow": null,
         "baseDepth": null,
         "runsOpen": 0,
@@ -796,7 +798,7 @@
       "note": "Powder",
       "metrics": {
         "snow24h": 18,
-        "forecast72h": 7,
+        "forecast72h": 6,
         "daysSinceSnow": 0,
         "baseDepth": 78.5,
         "runsOpen": 57,
@@ -862,7 +864,7 @@
       "note": "Good morning and Happy Sunday, everybody! Today we expect to see mostly sunny skies and temps hovering in the mid 40s at mid-mountain elevations. Base areas will be warmer in the low 50s throughout most of the day. WSW winds will be breezy at 15-25mph with gusts into the 40s at times during the afternoon hours. Overnight into tomorrow we expect to see moody, spring weather return bringing a chance of snow flurries each of the next few days. Today is the last day to enjoy some of our terrain on the western half of the resort. It'll be the last hurrah for Timberline Express, Sierra, Rendezvous and Woodward Express. Additionally, today marks the last chance for laps on Storm King and down in Green Acres. Don't worry, we'll be hanging on to the American Flyer, including Central Park, for a bit longer as well as the Eagle, Super Bee and Excelerator lifts. For the latest and greatest terrain and lift info, continue to tune into the Terrain Update channel on Instagram and of course here on coppercolorado.com. Have a great day!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.6,
+        "forecast72h": 1.8,
         "daysSinceSnow": null,
         "baseDepth": 25,
         "runsOpen": 25,
@@ -886,7 +888,7 @@
       "note": "Gooooood morning Snowbird! It’s Owen, with your snow report for Sunday. We've got snow in the forecast people. We’ll have partly sunny skies for the morning with a high around 48°. Around noon, snow showers are likely to roll in along with a chance of thunder and high winds throughout the day. With those high winds and snow later, I'm thinking it might be a good day for a shell with minimal layers underneath. It is unlikely that the snow will accumulate to anything today, but going into tonight it’s looking like we may get 4-6”, which would be awesome. We could definitely use it, so everyone do your weird snow rituals so we can maximize that snowfall! Also, in case you haven’t heard, The 2026 Blister Summit starts tomorrow night. There will be demos on tons of brands, chances for public and professional athletes to test gear, nightly panel sessions and sweet après events. Register now to claim your spot. If you just cannot physically wait until Tuesday to try out some new skis, don't worry we've got you covered (or more accurately Dynastar does). Come swing by the Dynastar tent on the Plaza Deck to demo some of their freeride and all mountain skis and grab some swag. After you're done tearing it up today, swing by the Plaza Deck for more Plazapalooza ! Today, from 2-5 we'll have Elbee performing on the stage and delivering good vibes directly to your ears. ALL uphill travel is closed. Don’t be that guy (or gal). Please remember to ski and ride in control, if you don’t, you’re gonna have a bad time. It's high tide at Surf Season, so to quote that one surfer guy, \"drop in, just smack the lip, wapow.\" Go get pitted today. #GMTB",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3,
+        "forecast72h": 0.9,
         "daysSinceSnow": null,
         "baseDepth": 73,
         "runsOpen": 92,
@@ -954,7 +956,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 4.1,
+        "forecast72h": 3.8,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,
@@ -975,7 +977,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": 3.4,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,

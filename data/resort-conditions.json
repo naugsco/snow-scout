@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T06:06:42.592Z",
+  "generatedAt": "2026-04-17T09:23:42.607Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -34,7 +34,7 @@
       "note": "Low Snowfall",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2.7,
+        "forecast72h": 2.6,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -55,7 +55,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.8,
+        "forecast72h": 1,
         "daysSinceSnow": 1,
         "baseDepth": 24,
         "runsOpen": 5,
@@ -76,7 +76,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.5,
+        "forecast72h": 0.7,
         "daysSinceSnow": null,
         "baseDepth": 32,
         "runsOpen": null,
@@ -177,7 +177,7 @@
       "status": "ok",
       "resort": "Stowe",
       "adapter": "vail",
-      "updatedAt": "Updated April 16, 2026 at 3:07 PM EDT",
+      "updatedAt": "Updated April 17, 2026 at 5:04 AM EDT",
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
@@ -186,7 +186,7 @@
         "baseDepth": 24,
         "runsOpen": 37,
         "runsTotal": 129,
-        "groomedRuns": 10
+        "groomedRuns": 8
       },
       "sources": {
         "conditions": "https://www.stowe.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -244,7 +244,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 59,
         "runsOpen": null,
@@ -270,7 +270,7 @@
         "baseDepth": 83,
         "runsOpen": 234,
         "runsTotal": 305,
-        "groomedRuns": 115
+        "groomedRuns": 124
       },
       "sources": {
         "conditions": "https://www.whistlerblackcomb.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -412,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 10,
         "runsOpen": null,
@@ -421,8 +421,7 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "crotched mountain": {
@@ -433,7 +432,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 20,
         "runsOpen": null,
@@ -442,8 +441,7 @@
       },
       "sources": {
         "conditions": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=43.0164&longitude=-71.8764&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "hunter mountain": {
@@ -454,7 +452,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0.2,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -463,7 +461,8 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "jack frost big boulder": {
@@ -474,7 +473,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -483,7 +482,8 @@
       },
       "sources": {
         "conditions": "https://www.jfbb.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.jfbb.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
+        "terrain": "https://www.jfbb.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=41.0594&longitude=-75.6163&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "roundtop mountain": {
@@ -616,13 +616,13 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "11:00 pm",
+      "updatedAt": "03:00 am",
       "note": "Partly Cloudy",
       "metrics": {
-        "snow24h": 2,
+        "snow24h": 6,
         "forecast72h": 1,
         "daysSinceSnow": 0,
-        "baseDepth": 83,
+        "baseDepth": 86,
         "runsOpen": 0,
         "runsTotal": 118,
         "groomedRuns": null
@@ -643,7 +643,7 @@
         "snow24h": null,
         "forecast72h": 0,
         "daysSinceSnow": null,
-        "baseDepth": 18,
+        "baseDepth": 21,
         "runsOpen": 0,
         "runsTotal": 115,
         "groomedRuns": null
@@ -662,7 +662,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 7,
+        "forecast72h": 6,
         "daysSinceSnow": 1,
         "baseDepth": 35,
         "runsOpen": 8,
@@ -684,7 +684,7 @@
       "note": "Packed Powder Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 10,
+        "forecast72h": 11,
         "daysSinceSnow": 1,
         "baseDepth": 33,
         "runsOpen": 0,
@@ -706,7 +706,7 @@
       "note": "Eldora is closed for the summer. 26/27 alpine season passes are on sale now, at the lowest prices of the year! Prices increase on May 8 . Shop now HERE for the best pricing. Thanks for a great season! We'll see you in November!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.1,
+        "forecast72h": 0.7,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -842,7 +842,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3,
+        "forecast72h": 2,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": 0,
@@ -864,7 +864,7 @@
       "note": "Happy Thursday! You can expect clear to partly clear skies throughout the day with a high near 41. It will be breezy with a westerly around 15 mph gusting into the 30s. Our next system looks to move in on us early Friday morning with a few inches of accumulation expected throughout the day tomorrow. As always, be safe, see you out there!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.9,
+        "forecast72h": 1.1,
         "daysSinceSnow": 1,
         "baseDepth": 30,
         "runsOpen": 28,
@@ -888,7 +888,7 @@
       "note": "Gooooood morning Snowbird! It’s Owen, with your snow report for Thursday. It's happening. Everybody stay calm, we’ve got snow in the forecast people. Starting at around 9am, it’s looking like a 90% chance of precipitation with 3-5” forecasted throughout the day. We’ll have a high of 39° around 11 am, which should then drop to 30° throughout the remainder of the day. With slightly colder temperatures today, I'd rock a shell, but you won't need to go crazy with the mid and base layers. The existing snow might be skiing a bit firmer until the new snow starts falling, which makes for a great day to demo some skis in different conditions. So if you haven’t, go check out the Blister Summit and convice yourself to buy a pair of skis that you probably don't need. Make sure to stick around for the weekend (especially if you're visiting for Blister) as we've got everybodies favorite week of Plazapalooza coming up. Yeah, that's right, it's Electronic Music Weekend . *Insert DJ airhorn noises here.* We've got some sick DJs that'll be out on the Plaza Deck, including Apoll, FleetmacWood, SkiiTour and more. It's going to be a great time, so don't miss out! As a reminder, we have closed Chickadee Bowl for construction on a new lift. Please stay out of that area for the foreseeable future as getting smacked by a construction vehicle or falling in a ditch would not make for a great day. If you normally park at the top of Chickadee, the bypass road just further down Entry 4 makes for a good parking alternative. ALL uphill travel is closed. Don’t be that guy (or gal). Please remember to ski and ride in control, if you don’t, you’re gonna have a bad time. It's Surf Season at The Bird, so to quote that one surfer guy, \"drop in, just smack the lip, wapow.\" Go get pitted today. #GMTB",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.3,
+        "forecast72h": 0.1,
         "daysSinceSnow": 5,
         "baseDepth": 72,
         "runsOpen": 95,
@@ -956,7 +956,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.5,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,
@@ -965,8 +965,7 @@
       },
       "sources": {
         "conditions": "https://tellurideskiresort.com/snow-report-scrape/",
-        "terrain": "https://tellurideskiresort.com/snow-report-scrape/",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=37.9375&longitude=-107.8123&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://tellurideskiresort.com/snow-report-scrape/"
       }
     },
     "jackson hole": {
@@ -977,7 +976,7 @@
       "note": null,
       "metrics": {
         "snow24h": null,
-        "forecast72h": 0.1,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": null,
         "runsOpen": null,
@@ -986,8 +985,7 @@
       },
       "sources": {
         "conditions": "https://www.jacksonhole.com/mountain-report",
-        "terrain": "https://www.jacksonhole.com/mountain-report",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=43.5877&longitude=-110.8279&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.jacksonhole.com/mountain-report"
       }
     }
   }

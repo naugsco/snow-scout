@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-21T02:52:57.732Z",
+  "generatedAt": "2026-04-21T06:05:35.813Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -13,7 +13,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.8,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": null,
@@ -34,7 +34,7 @@
       "note": "Low Snowfall",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.4,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -76,7 +76,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 32,
         "runsOpen": null,
@@ -97,7 +97,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.8,
+        "forecast72h": 1.7,
         "daysSinceSnow": null,
         "baseDepth": 63,
         "runsOpen": null,
@@ -118,7 +118,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 4.7,
+        "forecast72h": 4.8,
         "daysSinceSnow": null,
         "baseDepth": 39,
         "runsOpen": null,
@@ -139,7 +139,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.2,
+        "forecast72h": 3.1,
         "daysSinceSnow": null,
         "baseDepth": 57,
         "runsOpen": null,
@@ -160,7 +160,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 12.5,
+        "forecast72h": 13.6,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": null,
@@ -181,7 +181,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 3,
-        "forecast72h": 1.3,
+        "forecast72h": 1,
         "daysSinceSnow": 0,
         "baseDepth": 20,
         "runsOpen": 20,
@@ -223,7 +223,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.1,
+        "forecast72h": 1,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -286,7 +286,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.7,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -391,7 +391,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.2,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -412,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 1.4,
         "daysSinceSnow": null,
         "baseDepth": 10,
         "runsOpen": null,
@@ -421,7 +421,8 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "crotched mountain": {
@@ -432,7 +433,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 20,
         "runsOpen": null,
@@ -441,8 +442,7 @@
       },
       "sources": {
         "conditions": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=43.0164&longitude=-71.8764&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "hunter mountain": {
@@ -453,7 +453,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -462,8 +462,7 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "jack frost big boulder": {
@@ -558,7 +557,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.8,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -579,7 +578,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.9,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -600,7 +599,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.6,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -617,11 +616,11 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "08:00 pm",
+      "updatedAt": "11:00 pm",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 4,
+        "forecast72h": 8,
         "daysSinceSnow": null,
         "baseDepth": 79,
         "runsOpen": 0,
@@ -644,7 +643,7 @@
         "snow24h": null,
         "forecast72h": 0.9,
         "daysSinceSnow": null,
-        "baseDepth": 59,
+        "baseDepth": 55,
         "runsOpen": 0,
         "runsTotal": 23,
         "groomedRuns": null
@@ -731,7 +730,7 @@
       "note": "Good afternoon, Beast fans! We just kicked off our first week of daily Superstar laps, and Mother Nature is giving us a bit of a hand with maintaining our snowpack. We had another fun weather day out there today, with a rotating mixture of flurries and sun making it feel nice and wintry. Tomorrow should bring more snow-friendly temperatures along with a bit more cloud cover. After temps dip a bit more this evening, tomorrow will start just below freezing and end up in the mid-30s at our base by the end of the day. Winds will start relatively calm and get even calmer throughout the afternoon, so it shouldn’t feel too chilly out there. Conditions in this weather have varied a bit by elevation and tomorrow should be no different. Superstar headwall stayed pretty firm throughout the day, while Lower Bittersweet became nice and sugary by day’s end. Right in the middle was the sweet spot for some carved turns that felt more like February than April—Middle Superstar and Skyelark were excellent, and I’d expect them to be just the same tomorrow with another fresh groom. Great news for the non-mogul inclined among you: Superstar is getting a full groom tonight, and the glacier will start the day with a nice smooth surface once again. Our intermediate route from Skyelark to High Road to Bittersweet is still holding onto good coverage, and that’ll be smoothed out for the morning as well. Our kparks crew couldn’t let us go one single day without a park offering, so they cooked up 5 features in Skyehawk for all your spring park needs. Just drop down Superstar’s headwall and hang a right to find yourself at the top. We’ll keep the park alive as long as conditions allow. Thank you, Park Crew! The Superstar Six is scheduled to spin tomorrow starting at 9:00 a.m. Please note that there is no longer any beginner terrain available, and late season conditions will continue to exist in some locations. Have a great rest of your week! - Cullen Operating Day: 160 Season passes for 26/27 are now on sale! Lock in the lowest price on Beast 365 or Winter Unlimited passes with lots of perks, plus free skiing & riding for the rest of this spring. And there's more good news for families: Youth & Child pass pricing has been significantly reduced for next season, with over $300 in savings available on Beast 365 access. Lifts The Superstar Six will operate seven days a week from 9:00 a.m. to 4:00 p.m. on Monday through Friday, from 8:00 a.m. to 5:00 p.m. on Saturdays, and from 8:00 a.m. to 4:00 p.m. on Sundays. Starting on May 3rd, the Superstar Six will be open Friday through Sunday while conditions allow. The Tubing Park presented by bubly is closed for the season. Uphill Travel Uphill travel is now closed for this season. Please visit killington.com/uphill for full information on our uphill travel policies. MOUNTAIN SERVICES Parking & Shuttles Parking is available at our K-1 Lodge and at the top of Killington Road. Vale Road is closed Monday - Friday for road work and on Saturday mornings to facilitate Snowdon Triple chair pickups. Please respect signage and allow our parking staff to assist you on your trip to the slopes. Shuttle service is available from 7:00 a.m. - 5:00 p.m. midweek and 6:00 a.m. - 5:00 p.m. on weekends and holidays through Sunday, May 3rd unless otherwise stated in this report. Winter car camping and overnight parking is only available in the lot across from Skyeship Lodge, though please note that the Skyeship Lodge is closed for the season. See details here . Lodge Services All lodges listed here are open daily from 8:00 a.m. - 5:00 p.m. on weekdays and 7:00 a.m. - 5:00 p.m. on weekends/peak dates*. K-1 Lodge Breakfast: Served starting at 8:30 a.m. on weekdays and 7:30 a.m. on weekends/peak dates. Lunch: Served from 10:30 a.m. - 3:00 p.m. daily with limited offerings midweek. Brew Bar (2nd floor): Closed for the season. Will re-open during the weekend dependent on weather conditions. K-1 Pub (3rd floor): Closed for the season. Rentals & Killington Sports at K-1: Open 30 minutes before lifts until 30 minutes after lifts. Killington Sports will close at 12:00 p.m. on Tuesday, April 21st for inventory purposes. Demos & Tuning: Available via the K-1 Rental Shop daily through May 3rd. Beast 365, Unlimited, and Midweek Pass holders can receive 50% off demo rentals. Guest Services: 1st floor - Open 30 minutes before lifts until 1:00 p.m. on weekdays and until 4:30 p.m. on weekends/peak dates. 2nd floor location is closed for the season. Superstar Umbrella Bar: Open at 11:00 a.m. from Friday - Sunday offering beer, wine, liquor, and specialty hot cocktails. Ramshead Lodge - Closed for the season. Bear Mountain Lodge - Closed for the season. Snowshed Lodge - Closed for the season. Snowshed Demos & Tuning remains open seven days a week, providing tuning services for guests and Season Tune holders. Demos also available with more options at K-1. Skyeship Lodge - Closed for the season. On-Mountain Dining Options : Peak Lodge – Closed for the season. Jerk Jamaican Mountain Grill – Closed for the season. Ledgewood Yurt – Closed for the season. Mountain services are subject to change. Please check here daily before making your lunch and lodge choices. Winter Lift Tickets and rentals must be purchased online at this link . Check to see if your pass is good to go using our Online Pass Checker . Find our Season Pass FAQs by clicking here . Season passes for summer 2026 and winter 26/27 are now on sale! Buy now . Have a ticketing question? Our text number ( 802-523-2202 ) is the best way to get it answered quickly, but please note that we cannot process transactions via text. Have a season pass question? Call 1-800-621-MTNS or email seasonpass@killington.com Please visit Killington.com/cancellation for more details on our cancellation policy. Killington is a cashless resort. We accept all major credit cards as well as Apple, Google, and Samsung Pay. *No remaining Peak Dates during winter 2025/26. We strive to have the most up-to-date and accurate snow report, but errors can happen from time to time. If you have feedback or a correction for us, please share it here.",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.2,
+        "forecast72h": 1,
         "daysSinceSnow": 1,
         "baseDepth": 12,
         "runsOpen": 7,
@@ -843,7 +842,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3,
+        "forecast72h": 4,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": 0,
@@ -865,7 +864,7 @@
       "note": "Happy Monday, Copper Mountain! Here’s what to expect out on the slopes today: bright, sunny skies with temperatures reaching above 50°F in the base area. Northwest winds will remain light to moderate throughout the day, with occasional gusts helping keep alpine terrain a bit cooler. Be sure to check back for updates as we look ahead to a return to more winter-like conditions later this week. Yesterday marked your final chance to ride American Flyer and lap Central Park for the season. Moving forward, make the most of our extended season by hopping on American Eagle, Super Bee, or Excelerator for some great corduroy—and maybe even a taste of powder later this week. Don’t forget to stop by Eagle Hike Park for rails and boxes, or swing into the Aerie for a drink and a bite to eat. Have a great day out there—wear your sunscreen and stay aware of changing conditions around the mountain.",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": 0,
         "daysSinceSnow": 2,
         "baseDepth": 35,
         "runsOpen": 18,
@@ -889,7 +888,7 @@
       "note": "Gooooood morning Snowbird! It’s Owen, with your snow report for Monday. Mountain Operations Update: Due to warming temperatures, multiple changes go into effect as of Monday, April, 20th. The mountain will transition to springtime operating hours and lifts will be closing for the remainder of the season. Lift Closures: Gadzoom Gad 2 Wilbere Baldy Express Peruvian (Closed Monday - Thursday) Peruvian Tunnel (Closed Monday - Thursday) Spring Operating Hours: Tram: 8 am - 2 pm Little Cloud: 8 am - 2 pm Peruvian 8 am - 2 pm (Friday - Sunday) Peruvian Tunnel: 8 am - 1 pm (Friday - Sunday) Mineral Basin: 8 am - 1 pm It’s going to be a toasty one today. We’ll have a high of 62° and sunny skies. If there was ever a day to ski in shorts and a t-shirt, today's your day. Just don’t forget that sunscreen. Don't worry, people will still know that you ski, even without the goggle and boot tan lines. The snow may start out a bit firm but is going to be getting surfy again and skiing softer throughout the day. Things may be winding down with the operational updates today, but that doesn't mean it's over yet. There is still plenty of time to get after it. As a reminder, we have closed Chickadee Bowl for construction on a new lift. Please stay out of that area for the foreseeable future as getting smacked by a construction vehicle or falling in a ditch would not make for a great day. If you normally park at the top of Chickadee, the bypass road just further down Entry 4 makes for a good parking alternative. ALL uphill travel is closed. Don’t be that guy (or gal). Please remember to ski and ride in control, if you don’t, you’re gonna have a bad time. It's Surf Season at The Bird, so to quote that one surfer guy, \"drop in, just smack the lip, wapow.\" Go get pitted today. #GMTB",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.6,
+        "forecast72h": 1.4,
         "daysSinceSnow": 5,
         "baseDepth": 71,
         "runsOpen": 70,
@@ -957,7 +956,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,
@@ -978,7 +977,7 @@
       "note": null,
       "metrics": {
         "snow24h": null,
-        "forecast72h": 1.9,
+        "forecast72h": 6.5,
         "daysSinceSnow": null,
         "baseDepth": null,
         "runsOpen": null,

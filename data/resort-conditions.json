@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-23T02:55:09.906Z",
+  "generatedAt": "2026-04-23T06:08:46.501Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -13,7 +13,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.2,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": null,
@@ -76,7 +76,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.4,
         "daysSinceSnow": null,
         "baseDepth": 32,
         "runsOpen": null,
@@ -97,7 +97,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.7,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 63,
         "runsOpen": null,
@@ -160,7 +160,7 @@
       "note": "Fresh",
       "metrics": {
         "snow24h": 9,
-        "forecast72h": 0.6,
+        "forecast72h": 0.5,
         "daysSinceSnow": 0,
         "baseDepth": 43,
         "runsOpen": null,
@@ -286,7 +286,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 1.5,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -412,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 10,
         "runsOpen": null,
@@ -421,7 +421,8 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "crotched mountain": {
@@ -453,7 +454,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.9,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -462,8 +463,7 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "jack frost big boulder": {
@@ -474,7 +474,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -483,8 +483,7 @@
       },
       "sources": {
         "conditions": "https://www.jfbb.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.jfbb.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=41.0594&longitude=-75.6163&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.jfbb.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
       }
     },
     "roundtop mountain": {
@@ -516,7 +515,7 @@
       "note": "Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -525,7 +524,8 @@
       },
       "sources": {
         "conditions": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.7553&longitude=-77.3753&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "whitetail resort": {
@@ -536,7 +536,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": null,
@@ -545,7 +545,8 @@
       },
       "sources": {
         "conditions": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
+        "terrain": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.7428&longitude=-77.9342&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "seven springs": {
@@ -615,13 +616,13 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "08:00 pm",
+      "updatedAt": "11:00 pm",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 5,
+        "forecast72h": 3,
         "daysSinceSnow": null,
-        "baseDepth": 77,
+        "baseDepth": 76,
         "runsOpen": 0,
         "runsTotal": 118,
         "groomedRuns": null
@@ -640,9 +641,9 @@
       "note": null,
       "metrics": {
         "snow24h": null,
-        "forecast72h": 1.4,
+        "forecast72h": 1.7,
         "daysSinceSnow": null,
-        "baseDepth": 36,
+        "baseDepth": 34,
         "runsOpen": 0,
         "runsTotal": 23,
         "groomedRuns": null
@@ -705,7 +706,7 @@
       "note": "Eldora is closed for the summer. 26/27 alpine season passes are on sale now, at the lowest prices of the year! Prices increase on May 8 . Shop now HERE for the best pricing. Thanks for a great season! We'll see you in November!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.6,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -887,7 +888,7 @@
       "note": "Gooooood morning Snowbird! It’s Owen, with your snow report for Wednesday. Mountain Operations Update: Due to warming temperatures, multiple changes went into effect as of Monday, April, 20th. The mountain will transition to springtime operating hours and the following lifts will be closed for the remainder of the season. Lift Closures: Gadzoom Gad 2 Wilbere Baldy Express Peruvian (Closed Monday - Thursday) Peruvian Tunnel (Closed Monday - Thursday) Spring Operating Hours: Tram: 8 am - 2 pm Little Cloud: 8 am - 2 pm Peruvian 8 am - 2 pm (Friday - Sunday) Peruvian Tunnel: 8 am - 1 pm (Friday - Sunday) Mineral Basin: 8 am - 1 pm It seems that the weather is going through an identity crisis of some sort. Yesterday we got warm and sunny, and today we have cold, wind and snow. That’s right, we’ve got an 80% chance of precipitation with a projected 1-3” starting around 6 am, and a high of around 41°. Time to put away those Hawaiian shirts and grab your jacket again, maybe winter wants to stick around after all. Today is Play Forever Wednesday . $5 of your ticket will be donated to a non-profit of the week that is dedicated to bettering the environment, providing local relief or broadening participation in outdoor activities. This week, we are supporting Wasatch Backcountry Rescue. WBR's primary purpose is rapid response for avalanche rescue, winter-related mountain rescue and medical evacuation incidents using trained professionals and search & rescue dogs. Click the link to learn more. As a reminder, we have closed Chickadee Bowl for construction on a new lift. Please stay out of that area for the foreseeable future as getting smacked by a construction vehicle or falling in a ditch would not make for a great day. If you normally park at the top of Chickadee, the bypass road just further down Entry 4 makes for a good parking alternative. ALL uphill travel is closed. Don’t be that guy (or gal). Please remember to ski and ride in control, if you don’t, you’re gonna have a bad time. It's Surf Season at The Bird, so to quote that one surfer guy, \"drop in, just smack the lip, wapow.\" Go get pitted today. #GMTB",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.4,
+        "forecast72h": 1.3,
         "daysSinceSnow": 5,
         "baseDepth": 68,
         "runsOpen": 70,
@@ -911,7 +912,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1,
+        "forecast72h": 0,
         "daysSinceSnow": 2,
         "baseDepth": 27,
         "runsOpen": 6,
@@ -955,7 +956,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.3,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,
@@ -976,7 +977,7 @@
       "note": null,
       "metrics": {
         "snow24h": null,
-        "forecast72h": 3,
+        "forecast72h": 2.7,
         "daysSinceSnow": null,
         "baseDepth": null,
         "runsOpen": null,

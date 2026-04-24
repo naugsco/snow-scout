@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-24T13:43:40.024Z",
+  "generatedAt": "2026-04-24T17:01:55.345Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -13,7 +13,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1,
+        "forecast72h": 1.5,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": null,
@@ -34,7 +34,7 @@
       "note": "Low Snowfall",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.7,
+        "forecast72h": 0.8,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -55,7 +55,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.7,
+        "forecast72h": 1.5,
         "daysSinceSnow": 5,
         "baseDepth": 26,
         "runsOpen": null,
@@ -76,7 +76,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.6,
+        "forecast72h": 1.4,
         "daysSinceSnow": null,
         "baseDepth": 32,
         "runsOpen": null,
@@ -97,7 +97,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.8,
+        "forecast72h": 3.7,
         "daysSinceSnow": null,
         "baseDepth": 63,
         "runsOpen": null,
@@ -160,7 +160,7 @@
       "note": "Fresh",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.4,
+        "forecast72h": 2.9,
         "daysSinceSnow": null,
         "baseDepth": 41,
         "runsOpen": null,
@@ -184,9 +184,9 @@
         "forecast72h": 0,
         "daysSinceSnow": 5,
         "baseDepth": 20,
-        "runsOpen": 20,
+        "runsOpen": 23,
         "runsTotal": 129,
-        "groomedRuns": 16
+        "groomedRuns": 20
       },
       "sources": {
         "conditions": "https://www.stowe.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -261,16 +261,16 @@
       "status": "ok",
       "resort": "Whistler Blackcomb",
       "adapter": "vail",
-      "updatedAt": "Updated April 23, 2026 at 4:56 PM PDT",
+      "updatedAt": "Updated April 24, 2026 at 9:29 AM PDT",
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 80,
-        "runsOpen": 99,
+        "runsOpen": 103,
         "runsTotal": 152,
-        "groomedRuns": 49
+        "groomedRuns": 53
       },
       "sources": {
         "conditions": "https://www.whistlerblackcomb.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -286,7 +286,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 5.9,
+        "forecast72h": 7.1,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -453,7 +453,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -462,8 +462,7 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "jack frost big boulder": {
@@ -474,7 +473,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": 1.7,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -617,14 +616,14 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "07:00 am",
+      "updatedAt": "10:00 am",
       "note": "Partly Cloudy",
       "metrics": {
-        "snow24h": 2,
-        "forecast72h": 9,
+        "snow24h": 1,
+        "forecast72h": 10,
         "daysSinceSnow": 0,
         "baseDepth": 79,
-        "runsOpen": 0,
+        "runsOpen": 110,
         "runsTotal": 118,
         "groomedRuns": null
       },
@@ -644,7 +643,7 @@
         "snow24h": null,
         "forecast72h": 0.1,
         "daysSinceSnow": null,
-        "baseDepth": 32,
+        "baseDepth": 37,
         "runsOpen": 0,
         "runsTotal": 23,
         "groomedRuns": null
@@ -663,7 +662,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 5,
+        "forecast72h": 4,
         "daysSinceSnow": 1,
         "baseDepth": 39,
         "runsOpen": 0,
@@ -707,7 +706,7 @@
       "note": "Eldora is closed for the summer. 26/27 alpine season passes are on sale now, at the lowest prices of the year! Prices increase on May 8 . Shop now HERE for the best pricing. Thanks for a great season! We'll see you in November!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.2,
+        "forecast72h": 1.8,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -795,12 +794,12 @@
       "status": "ok",
       "resort": "Mammoth Mountain",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-23T13:00:32-0700",
-      "note": "Powder",
+      "updatedAt": "2026-04-24T08:44:56-0700",
+      "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 6,
-        "daysSinceSnow": 1,
+        "daysSinceSnow": 2,
         "baseDepth": 81,
         "runsOpen": 100,
         "runsTotal": 180,
@@ -865,7 +864,7 @@
       "note": "Good Morning! Today is looking to be a transition day before our snowy period through the weekend and into next week (Fingers crossed!) We could see temps at the base reaching into the 40's with light to moderate winds from the west, southwest averaging around 15mph. Days like today it is important to remember there are changing conditions from the top of the mountain to the bottom, It could be firm up top and slush by the time you get to the base. Be careful and have fun!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.5,
+        "forecast72h": 1.7,
         "daysSinceSnow": 5,
         "baseDepth": 30,
         "runsOpen": 18,
@@ -888,13 +887,13 @@
       "updatedAt": "2026-04-24 05:06:26",
       "note": "Top of the morning to you, spring shredders! This is Gwen with your Snow Report for Friday, April 24. Spring snow showers brought us 2 inches of snowfall yesterday, and there’s a slight chance of snow showers today. Expect a mostly sunny day with a high near 47 and west winds at 7 to 13 mph. Tonight should be partly cloudy, with a low around 26. Heads up for spring mountain operations – that’s 8 am to 2 pm for the Tram, Peruvian & Little Cloud and 8 am to 1 pm for the Tunnel & Mineral. Starting after this Sunday, Snowbird will be closed Monday – Thursday and reopen for weekend operations, May 1 – 3. Conditions will be assessed week-by-week to determine a closing date. Today’s the day for the Used Gear Drive with SOS Outreach . Drop your lightly used soft goods on the Plaza Deck from 10 am – 3 pm to lift up the next generation of skiers and riders. Plazapalooza continues this weekend, kicking off today from 1 – 4 pm with tunes from one of my faves, Mitokandrea. While squeezing out the last days of the 2025-26 season, don’t forget to secure your 2026-27 Season Pass by May 13. Besides the best pricing, that’s the deadline for the $100 renewal credit and Early Bird Benefits. As a reminder, please avoid the Chickadee Bowl area, which is currently under construction on a new lift. If you plan to park above Chickadee or in the Superior Lot, your ski-in/ski-out access will be available along the Bypass Road further down Entry 4. ALL uphill travel is closed. Late-season conditions exist, so please remember to ski and ride in control. Thanks for enjoying spring at Snowbird with us.",
       "metrics": {
-        "snow24h": 2,
-        "forecast72h": 8.3,
-        "daysSinceSnow": 0,
+        "snow24h": 0,
+        "forecast72h": 8.7,
+        "daysSinceSnow": 1,
         "baseDepth": 68,
-        "runsOpen": 53,
+        "runsOpen": 65,
         "runsTotal": 174,
-        "groomedRuns": 17
+        "groomedRuns": 19
       },
       "sources": {
         "conditions": "https://www.snowbird.com/mountain-report/",
@@ -957,7 +956,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 5.6,
+        "forecast72h": 5.5,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,

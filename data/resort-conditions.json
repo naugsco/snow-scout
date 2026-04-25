@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-25T13:13:18.098Z",
+  "generatedAt": "2026-04-25T16:49:58.297Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -13,7 +13,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2.3,
+        "forecast72h": 2.1,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": null,
@@ -34,7 +34,7 @@
       "note": "Low Snowfall",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.6,
+        "forecast72h": 2,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -55,7 +55,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.5,
+        "forecast72h": 3.1,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": 4,
@@ -76,7 +76,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2,
+        "forecast72h": 2.2,
         "daysSinceSnow": null,
         "baseDepth": 32,
         "runsOpen": null,
@@ -97,7 +97,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.3,
+        "forecast72h": 3.2,
         "daysSinceSnow": null,
         "baseDepth": 63,
         "runsOpen": null,
@@ -118,7 +118,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.7,
+        "forecast72h": 0.4,
         "daysSinceSnow": null,
         "baseDepth": 39,
         "runsOpen": null,
@@ -139,7 +139,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.5,
+        "forecast72h": 0.3,
         "daysSinceSnow": null,
         "baseDepth": 57,
         "runsOpen": null,
@@ -160,7 +160,7 @@
       "note": "Fresh",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 4.5,
+        "forecast72h": 4.8,
         "daysSinceSnow": null,
         "baseDepth": 41,
         "runsOpen": null,
@@ -268,9 +268,9 @@
         "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 80,
-        "runsOpen": 93,
+        "runsOpen": 97,
         "runsTotal": 152,
-        "groomedRuns": 46
+        "groomedRuns": 50
       },
       "sources": {
         "conditions": "https://www.whistlerblackcomb.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
@@ -286,7 +286,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.8,
+        "forecast72h": 8.2,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -412,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 10,
         "runsOpen": null,
@@ -421,7 +421,8 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "crotched mountain": {
@@ -432,7 +433,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 20,
         "runsOpen": null,
@@ -441,8 +442,7 @@
       },
       "sources": {
         "conditions": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=43.0164&longitude=-71.8764&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "hunter mountain": {
@@ -453,7 +453,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.3,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -462,8 +462,7 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "jack frost big boulder": {
@@ -516,7 +515,7 @@
       "note": "Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -525,7 +524,8 @@
       },
       "sources": {
         "conditions": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.7553&longitude=-77.3753&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "whitetail resort": {
@@ -536,7 +536,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": null,
@@ -545,7 +545,8 @@
       },
       "sources": {
         "conditions": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
+        "terrain": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.7428&longitude=-77.9342&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "seven springs": {
@@ -615,14 +616,14 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "07:00 am",
+      "updatedAt": "10:00 am",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 20,
+        "forecast72h": 18,
         "daysSinceSnow": null,
         "baseDepth": 77,
-        "runsOpen": 0,
+        "runsOpen": 110,
         "runsTotal": 118,
         "groomedRuns": null
       },
@@ -640,9 +641,9 @@
       "note": null,
       "metrics": {
         "snow24h": null,
-        "forecast72h": 1,
+        "forecast72h": 6.6,
         "daysSinceSnow": null,
-        "baseDepth": 30,
+        "baseDepth": 36,
         "runsOpen": 0,
         "runsTotal": 23,
         "groomedRuns": null
@@ -683,7 +684,7 @@
       "note": "Packed Powder Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 15,
+        "forecast72h": 16,
         "daysSinceSnow": 1,
         "baseDepth": 33,
         "runsOpen": 0,
@@ -705,7 +706,7 @@
       "note": "Eldora is closed for the summer. 26/27 alpine season passes are on sale now, at the lowest prices of the year! Prices increase on May 8 . Shop now HERE for the best pricing. Thanks for a great season! We'll see you in November!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.2,
+        "forecast72h": 3.6,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -753,7 +754,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 4,
+        "forecast72h": 5,
         "daysSinceSnow": null,
         "baseDepth": null,
         "runsOpen": 0,
@@ -793,12 +794,12 @@
       "status": "ok",
       "resort": "Mammoth Mountain",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-24T14:04:11-0700",
-      "note": "Packed Powder",
+      "updatedAt": "2026-04-25T08:08:09-0700",
+      "note": "Variable Conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 9,
-        "daysSinceSnow": 2,
+        "forecast72h": 8,
+        "daysSinceSnow": null,
         "baseDepth": 81,
         "runsOpen": 100,
         "runsTotal": 180,
@@ -819,7 +820,7 @@
       "note": "N/A",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 6,
+        "forecast72h": 7,
         "daysSinceSnow": null,
         "baseDepth": 43,
         "runsOpen": 0,
@@ -841,7 +842,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 18,
+        "forecast72h": 16,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": 0,
@@ -863,7 +864,7 @@
       "note": "Happy Saturday Copper Mountain! Sunsation continues today with live performances by Moon Taxi and The Record Company in Eagles landing starting at 1:30pm. Don’t forget to enter the Sweepstakes Prize Drawing for a chance to win some great prizes! If you’re sticking around for the weekend, be sure to grab a partner and sign up for the Skimmy Dippers Dual Pond Skim Competition taking place tomorrow at 11:30 near the bottom of the half pipe in Center Village. Today, expect southwest winds in the teens , with gusts reaching into the high 30 mph range . Temperatures will be in the low to mid 40s under partly sunny skies . Around closing time, we may see a few flurries, though meaningful accumulation is expected to begin tomorrow afternoon . Snow may continue into Monday and possibly Tuesday, with totals of 2 to 4 inches . As this next weather pattern brings a return to more winter-like conditions, don’t forget to join us for our extended season , beginning Monday, April 27 , with skiing and riding continuing into May.",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.5,
+        "forecast72h": 2.6,
         "daysSinceSnow": null,
         "baseDepth": 29,
         "runsOpen": 18,
@@ -887,8 +888,8 @@
       "note": "Howdy and good morning! This is Kolton with your Snow Report for Saturday, April 25. Today will be the sunny calm before the storm, with mostly sunny conditions throughout operating hours, followed by slight snow showers starting up after 3 pm. Expect a high around 48 degrees and winds 5 to 9 mph out of the West southwest. You'll find me with my sunscreen overly applied, skiing down Powder Paradise in the morning, followed by everyone's favorite, Chips Run, this afternoon. That's my Snow Reporter run recommendation. We'll have the J-Rad Cooley Band jamming and rocking on the harmonica today with some blues vibes for Plazapalooza, playing Noon - 3 pm on the Plaza Deck. A friendly reminder, spring mountain operations are in effect. After this Sunday, Snowbird will be closed midweek for snow preservation so that we can reopen Friday - Sunday on May 1 through 3 with some awesome spring skiing conditions. Please avoid the Chickadee Bowl area, which is currently under construction on a new lift. If you plan to park above Chickadee or in the Superior Lot, your ski-in/ski-out access will be available along the Bypass Road further down Entry 4. ALL uphill travel is closed and will remain closed through the mid-week closure. Late-season conditions exist, so please remember to ski and ride in control. Thanks for skiing/riding with us and have a groovy day!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 10.6,
-        "daysSinceSnow": 1,
+        "forecast72h": 8.9,
+        "daysSinceSnow": 2,
         "baseDepth": 68,
         "runsOpen": 65,
         "runsTotal": 174,
@@ -907,7 +908,7 @@
       "status": "ok",
       "resort": "Sugarbush",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-25T06:46:26-0400",
+      "updatedAt": "2026-04-25T10:04:20-0400",
       "note": "Machine Groomed Loose Granular",
       "metrics": {
         "snow24h": 0,
@@ -955,7 +956,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 4.4,
+        "forecast72h": 6,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,

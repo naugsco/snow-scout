@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-25T08:58:58.788Z",
+  "generatedAt": "2026-04-25T13:13:18.098Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -13,7 +13,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2.1,
+        "forecast72h": 2.3,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": null,
@@ -51,13 +51,13 @@
       "status": "ok",
       "resort": "Breckenridge",
       "adapter": "vail",
-      "updatedAt": "Updated April 19, 2026 at 5:21 AM MDT",
-      "note": "Variable",
+      "updatedAt": "Updated April 25, 2026 at 6:19 AM MDT",
+      "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.4,
-        "daysSinceSnow": 5,
-        "baseDepth": 26,
+        "forecast72h": 1.5,
+        "daysSinceSnow": null,
+        "baseDepth": 18,
         "runsOpen": 4,
         "runsTotal": 193,
         "groomedRuns": 4
@@ -97,7 +97,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.4,
+        "forecast72h": 3.3,
         "daysSinceSnow": null,
         "baseDepth": 63,
         "runsOpen": null,
@@ -118,7 +118,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.4,
+        "forecast72h": 0.7,
         "daysSinceSnow": null,
         "baseDepth": 39,
         "runsOpen": null,
@@ -139,7 +139,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.1,
+        "forecast72h": 0.5,
         "daysSinceSnow": null,
         "baseDepth": 57,
         "runsOpen": null,
@@ -160,7 +160,7 @@
       "note": "Fresh",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.6,
+        "forecast72h": 4.5,
         "daysSinceSnow": null,
         "baseDepth": 41,
         "runsOpen": null,
@@ -177,7 +177,7 @@
       "status": "ok",
       "resort": "Stowe",
       "adapter": "vail",
-      "updatedAt": "Updated April 24, 2026 at 2:04 PM EDT",
+      "updatedAt": "Updated April 25, 2026 at 5:12 AM EDT",
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
@@ -202,7 +202,7 @@
       "note": "Fresh",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": null,
@@ -211,7 +211,8 @@
       },
       "sources": {
         "conditions": "https://www.okemo.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.okemo.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
+        "terrain": "https://www.okemo.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=43.4017&longitude=-72.7170&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "mount snow": {
@@ -222,7 +223,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -231,7 +232,8 @@
       },
       "sources": {
         "conditions": "https://www.mountsnow.com/the-mountain/mountain-conditions/weather-report.aspx",
-        "terrain": "https://www.mountsnow.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
+        "terrain": "https://www.mountsnow.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.9603&longitude=-72.9206&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "stevens pass": {
@@ -263,7 +265,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 80,
         "runsOpen": 93,
@@ -284,7 +286,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.1,
+        "forecast72h": 3.8,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -410,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 10,
         "runsOpen": null,
@@ -419,8 +421,7 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "crotched mountain": {
@@ -452,7 +453,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 1.3,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -461,7 +462,8 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "jack frost big boulder": {
@@ -472,7 +474,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -481,7 +483,8 @@
       },
       "sources": {
         "conditions": "https://www.jfbb.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.jfbb.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
+        "terrain": "https://www.jfbb.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=41.0594&longitude=-75.6163&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "roundtop mountain": {
@@ -513,7 +516,7 @@
       "note": "Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -522,8 +525,7 @@
       },
       "sources": {
         "conditions": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.7553&longitude=-77.3753&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "whitetail resort": {
@@ -534,7 +536,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": null,
@@ -543,8 +545,7 @@
       },
       "sources": {
         "conditions": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=39.7428&longitude=-77.9342&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx"
       }
     },
     "seven springs": {
@@ -614,13 +615,13 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "02:00 am",
+      "updatedAt": "07:00 am",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 18,
+        "forecast72h": 20,
         "daysSinceSnow": null,
-        "baseDepth": 78,
+        "baseDepth": 77,
         "runsOpen": 0,
         "runsTotal": 118,
         "groomedRuns": null
@@ -639,7 +640,7 @@
       "note": null,
       "metrics": {
         "snow24h": null,
-        "forecast72h": 1.7,
+        "forecast72h": 1,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": 0,
@@ -660,7 +661,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 4,
+        "forecast72h": 8,
         "daysSinceSnow": 1,
         "baseDepth": 39,
         "runsOpen": 0,
@@ -682,7 +683,7 @@
       "note": "Packed Powder Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 7,
+        "forecast72h": 15,
         "daysSinceSnow": 1,
         "baseDepth": 33,
         "runsOpen": 0,
@@ -724,8 +725,8 @@
       "status": "ok",
       "resort": "Killington",
       "adapter": "powdr",
-      "updatedAt": "2026-04-24 16:22:33",
-      "note": "Good evening, Killington Family, It’s officially the weekend. Time to pack the car and head to The Beast for what’s shaping up to be one of the best spring weekends ever! Friday was marked by plenty of sunshine, warm temps later in the day, and a whole lot of smiles. There’s more of that in store tomorrow. Temps are dropping into the high 20s tonight and should break 32 degrees within the first hour of the day. It’s going to rise into the mid 40s tomorrow, and the sun will be shining high in the sky all day long, making for a picture-perfect spring day. Surfaces should be a bit variable in the morning thanks to wintry temps tonight, with conditions consisting of machined groomed hardpack and frozen granular to start the day. As temperatures rise and the sun works it's spring magic, the snow should soften back to that buttery corn we love by the afternoon. Our grooming team is running it back tonight, smoothing out Superstar, Skyelark, Lower Bittersweet, and surrounding areas. If you’re looking to carve up some turns on a freshly groomed surface, get out early, as the bumps are bound to return by the afternoon. The sun should make for irresistible spring conditions later in the day. Put on your SPF and enjoy it out there! Our kparks crew cooked up five features in Skyehawk earlier this week for all your spring park needs. Just drop down Superstar’s headwall and hang a right to find yourself at the top. We’ll keep the park alive as long as conditions allow. Thank you, Park Crew! The Superstar Six is scheduled to spin starting at 8:00 a.m. and will be open until 5:00 p.m. on Saturday for some late laps. Please note that there is no longer any beginner terrain available, and late season conditions will continue to exist in some locations. On Saturday, the vibes are going to be all time at the Superstar Umbrella Bar as we kick off Decked Out Days . It's a retro-themed celebration of spring with a live DJ set from Benny Shreds, games, NÜTRL giveaways, and much more. Best dressed from the 80s era wins a prize! There's nothing like spring at The Beast. See you out there! – Austin Operating Day: 165 Season passes for 26/27 are now on sale! Lock in the lowest price on Beast 365 or Winter Unlimited passes with lots of perks, plus free skiing & riding for the rest of this spring. And there's more good news for families: Youth & Child pass pricing has been significantly reduced for next season, with over $300 in savings available on Beast 365 access. Lifts The Superstar Six will operate seven days a week from 9:00 a.m. to 4:00 p.m. on Monday through Friday, from 8:00 a.m. to 5:00 p.m. on Saturdays, and from 8:00 a.m. to 4:00 p.m. on Sundays. Starting on May 3rd, the Superstar Six will be open Friday through Sunday while conditions allow. The Tubing Park presented by bubly is closed for the season. Uphill Travel Uphill travel is now closed for this season. Please visit killington.com/uphill for full information on our uphill travel policies. MOUNTAIN SERVICES Parking & Shuttles Parking is available at our K-1 Lodge and at the top of Killington Road. Vale Road is closed on Saturday mornings to facilitate Snowdon Triple chair pickups. Please respect signage and allow our parking staff to assist you on your trip to the slopes. Shuttle service is available from 7:00 a.m. - 5:00 p.m. midweek and 6:00 a.m. - 5:00 p.m. on weekends and holidays through Sunday, May 3rd unless otherwise stated in this report. Winter car camping and overnight parking is only available in the lot across from Skyeship Lodge, though please note that the Skyeship Lodge is closed for the season. See details here . Lodge Services All lodges listed here are open daily from 8:00 a.m. - 5:00 p.m. on weekdays and 7:00 a.m. - 5:00 p.m. on weekends/peak dates*. K-1 Lodge Breakfast: Served starting at 8:30 a.m. on weekdays and 7:30 a.m. on weekends/peak dates. Lunch: Served from 10:30 a.m. - 2:00 p.m. on weekdays and from 10:30 a.m. - 3:00 p.m. on weekends, with limited grill station offerings midweek. Brew Bar (2nd floor): Closed for the season. Will re-open during the weekend dependent on weather conditions. K-1 Pub (3rd floor): Closed for the season. Rentals & Killington Sports at K-1: Open 30 minutes before lifts until 30 minutes after lifts. Killington Sports will close at 12:00 p.m. on Tuesday, April 21st for inventory purposes. Demos & Tuning: Available via the K-1 Rental Shop daily through May 3rd. Beast 365, Unlimited, and Midweek Pass holders can receive 50% off demo rentals. Guest Services: 1st floor - Open 30 minutes before lifts until 1:00 p.m. on weekdays and until 4:30 p.m. on weekends/peak dates. 2nd floor location is closed for the season. Superstar Umbrella Bar: Open at 11:00 a.m. from Friday - Sunday offering beer, wine, liquor, and specialty hot cocktails. Ramshead Lodge - Closed for the season. Bear Mountain Lodge - Closed for the season. Snowshed Lodge - Closed for the season. Snowshed Demos & Tuning remains open seven days a week, providing tuning services for guests and Season Tune holders. Demos also available with more options at K-1. Skyeship Lodge - Closed for the season. On-Mountain Dining Options : Peak Lodge – Closed for the season. Jerk Jamaican Mountain Grill – Closed for the season. Ledgewood Yurt – Closed for the season. Mountain services are subject to change. Please check here daily before making your lunch and lodge choices. Winter Lift Tickets and rentals must be purchased online at this link . Check to see if your pass is good to go using our Online Pass Checker . Find our Season Pass FAQs by clicking here . Season passes for summer 2026 and winter 26/27 are now on sale! Buy now . Have a ticketing question? Our text number ( 802-523-2202 ) is the best way to get it answered quickly, but please note that we cannot process transactions via text. Have a season pass question? Call 1-800-621-MTNS or email seasonpass@killington.com Please visit Killington.com/cancellation for more details on our cancellation policy. Killington is a cashless resort. We accept all major credit cards as well as Apple, Google, and Samsung Pay. *No remaining Peak Dates during winter 2025/26. We strive to have the most up-to-date and accurate snow report, but errors can happen from time to time. If you have feedback or a correction for us, please share it here.",
+      "updatedAt": "2026-04-25 05:55:59",
+      "note": "Good morning, Killington family, Another sunny Saturday is here. We hope you've made your way up to The Beast for what’s shaping up to be a classic spring weekend! Yesterday was marked by plenty of sunshine, warm temps later in the day, and a whole lot of smiles. There’s more where that came from today! Temps dropped into the high 20s last night and should break above freezing at our base within the first hour of the day. It’ll then rise into the mid 40s by the end of the day, and the sun should be shining high in the sky all day long, making for a picture-perfect spring day. Surfaces should be a bit variable in the morning thanks to more wintry temps last night, with conditions consisting of machined groomed hardpack and frozen granular to start the day. As temperatures rise and the sun works its spring magic, snow conditions should soften back to that buttery corn we love by the afternoon. Our grooming team is running it back tonight, smoothing out Superstar, Skyelark, Lower Bittersweet, and surrounding areas. If you’re looking to carve up some turns on a freshly groomed surface, get out early, as the bumps are bound to return by the afternoon. The sun should make for irresistible spring conditions later in the day. Put on your SPF and enjoy it out there! Our kparks crew cooked up five features in Skyehawk earlier this week for all your spring park needs. Just drop down Superstar’s headwall and hang a right to find yourself at the top. We’ll keep the park alive as long as conditions allow. Thank you, Park Crew! The Superstar Six is scheduled to spin starting at 8:00 a.m. and will be open until 5:00 p.m. on Saturday for some late laps. Please note that there is no longer any beginner terrain available, and late season conditions will continue to exist in some locations. Lastly, today's vibes are going to be all time at the Superstar Umbrella Bar as we kick off Decked Out Days . It's a retro-themed celebration of spring with a live DJ set from Benny Shreds, games, NÜTRL giveaways, and much more. Best dressed from the 80s era wins a prize! Whether you're skiing the bumps or lounging on the deck, it's bound to be a great day out there. - Cullen Operating Day: 165 Season passes for 26/27 are now on sale! Lock in the lowest price on Beast 365 or Winter Unlimited passes with lots of perks, plus free skiing & riding for the rest of this spring. And there's more good news for families: Youth & Child pass pricing has been significantly reduced for next season, with over $300 in savings available on Beast 365 access. Lifts The Superstar Six will operate seven days a week from 9:00 a.m. to 4:00 p.m. on Monday through Friday, from 8:00 a.m. to 5:00 p.m. on Saturdays, and from 8:00 a.m. to 4:00 p.m. on Sundays. Starting on May 3rd, the Superstar Six will be open Friday through Sunday while conditions allow. The Tubing Park presented by bubly is closed for the season. Uphill Travel Uphill travel is now closed for this season. Please visit killington.com/uphill for full information on our uphill travel policies. MOUNTAIN SERVICES Parking & Shuttles Parking is available at our K-1 Lodge and at the top of Killington Road. Vale Road is closed on Saturday mornings to facilitate Snowdon Triple chair pickups. Please respect signage and allow our parking staff to assist you on your trip to the slopes. Shuttle service is available from 7:00 a.m. - 5:00 p.m. midweek and 6:00 a.m. - 5:00 p.m. on weekends and holidays through Sunday, May 3rd unless otherwise stated in this report. Winter car camping and overnight parking is only available in the lot across from Skyeship Lodge, though please note that the Skyeship Lodge is closed for the season. See details here . Lodge Services All lodges listed here are open daily from 8:00 a.m. - 5:00 p.m. on weekdays and 7:00 a.m. - 5:00 p.m. on weekends/peak dates*. K-1 Lodge Breakfast: Served starting at 8:30 a.m. on weekdays and 7:30 a.m. on weekends/peak dates. Lunch: Served from 10:30 a.m. - 2:00 p.m. on weekdays and from 10:30 a.m. - 3:00 p.m. on weekends, with limited grill station offerings midweek. Brew Bar (2nd floor): Closed for the season. Will re-open during the weekend dependent on weather conditions. K-1 Pub (3rd floor): Closed for the season. Rentals & Killington Sports at K-1: Open 30 minutes before lifts until 30 minutes after lifts. Demos & Tuning: Available via the K-1 Rental Shop daily through May 3rd. Beast 365, Unlimited, and Midweek Pass holders can receive 50% off demo rentals. Guest Services: 1st floor - Open 30 minutes before lifts until 1:00 p.m. on weekdays and until 4:30 p.m. on weekends/peak dates. 2nd floor location is closed for the season. Superstar Umbrella Bar: Open at 11:00 a.m. from Friday - Sunday offering beer, wine, liquor, and specialty hot cocktails. Ramshead Lodge - Closed for the season. Bear Mountain Lodge - Closed for the season. Snowshed Lodge - Closed for the season. Snowshed Demos & Tuning remains open seven days a week, providing tuning services for guests and Season Tune holders. Demos also available with more options at K-1. Skyeship Lodge - Closed for the season. On-Mountain Dining Options : Peak Lodge – Closed for the season. Jerk Jamaican Mountain Grill – Closed for the season. Ledgewood Yurt – Closed for the season. Mountain services are subject to change. Please check here daily before making your lunch and lodge choices. Winter Lift Tickets and rentals must be purchased online at this link . Check to see if your pass is good to go using our Online Pass Checker . Find our Season Pass FAQs by clicking here . Season passes for summer 2026 and winter 26/27 are now on sale! Buy now . Have a ticketing question? Our text number ( 802-523-2202 ) is the best way to get it answered quickly, but please note that we cannot process transactions via text. Have a season pass question? Call 1-800-621-MTNS or email seasonpass@killington.com Please visit Killington.com/cancellation for more details on our cancellation policy. Killington is a cashless resort. We accept all major credit cards as well as Apple, Google, and Samsung Pay. *No remaining Peak Dates during winter 2025/26. We strive to have the most up-to-date and accurate snow report, but errors can happen from time to time. If you have feedback or a correction for us, please share it here.",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 0,
@@ -796,7 +797,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 8,
+        "forecast72h": 9,
         "daysSinceSnow": 2,
         "baseDepth": 81,
         "runsOpen": 100,
@@ -818,7 +819,7 @@
       "note": "N/A",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3,
+        "forecast72h": 6,
         "daysSinceSnow": null,
         "baseDepth": 43,
         "runsOpen": 0,
@@ -840,7 +841,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 8,
+        "forecast72h": 18,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": 0,
@@ -858,16 +859,16 @@
       "status": "ok",
       "resort": "Copper Mountain",
       "adapter": "powdr",
-      "updatedAt": "2026-04-24 05:00:19",
-      "note": "Good Morning! Today is looking to be a transition day before our snowy period through the weekend and into next week (Fingers crossed!) We could see temps at the base reaching into the 40's with light to moderate winds from the west, southwest averaging around 15mph. Days like today it is important to remember there are changing conditions from the top of the mountain to the bottom, It could be firm up top and slush by the time you get to the base. Be careful and have fun!",
+      "updatedAt": "2026-04-25 05:00:00",
+      "note": "Happy Saturday Copper Mountain! Sunsation continues today with live performances by Moon Taxi and The Record Company in Eagles landing starting at 1:30pm. Don’t forget to enter the Sweepstakes Prize Drawing for a chance to win some great prizes! If you’re sticking around for the weekend, be sure to grab a partner and sign up for the Skimmy Dippers Dual Pond Skim Competition taking place tomorrow at 11:30 near the bottom of the half pipe in Center Village. Today, expect southwest winds in the teens , with gusts reaching into the high 30 mph range . Temperatures will be in the low to mid 40s under partly sunny skies . Around closing time, we may see a few flurries, though meaningful accumulation is expected to begin tomorrow afternoon . Snow may continue into Monday and possibly Tuesday, with totals of 2 to 4 inches . As this next weather pattern brings a return to more winter-like conditions, don’t forget to join us for our extended season , beginning Monday, April 27 , with skiing and riding continuing into May.",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.4,
+        "forecast72h": 1.5,
         "daysSinceSnow": null,
-        "baseDepth": 30,
+        "baseDepth": 29,
         "runsOpen": 18,
         "runsTotal": 162,
-        "groomedRuns": 9
+        "groomedRuns": 11
       },
       "sources": {
         "conditions": "https://www.coppercolorado.com/the-mountain/conditions-weather/snow-report",
@@ -882,11 +883,11 @@
       "status": "ok",
       "resort": "Snowbird",
       "adapter": "powdr",
-      "updatedAt": "2026-04-24 05:06:26",
-      "note": "Top of the morning to you, spring shredders! This is Gwen with your Snow Report for Friday, April 24. Spring snow showers brought us 2 inches of snowfall yesterday, and there’s a slight chance of snow showers today. Expect a mostly sunny day with a high near 47 and west winds at 7 to 13 mph. Tonight should be partly cloudy, with a low around 26. Heads up for spring mountain operations – that’s 8 am to 2 pm for the Tram, Peruvian & Little Cloud and 8 am to 1 pm for the Tunnel & Mineral. Starting after this Sunday, Snowbird will be closed Monday – Thursday and reopen for weekend operations, May 1 – 3. Conditions will be assessed week-by-week to determine a closing date. Today’s the day for the Used Gear Drive with SOS Outreach . Drop your lightly used soft goods on the Plaza Deck from 10 am – 3 pm to lift up the next generation of skiers and riders. Plazapalooza continues this weekend, kicking off today from 1 – 4 pm with tunes from one of my faves, Mitokandrea. While squeezing out the last days of the 2025-26 season, don’t forget to secure your 2026-27 Season Pass by May 13. Besides the best pricing, that’s the deadline for the $100 renewal credit and Early Bird Benefits. As a reminder, please avoid the Chickadee Bowl area, which is currently under construction on a new lift. If you plan to park above Chickadee or in the Superior Lot, your ski-in/ski-out access will be available along the Bypass Road further down Entry 4. ALL uphill travel is closed. Late-season conditions exist, so please remember to ski and ride in control. Thanks for enjoying spring at Snowbird with us.",
+      "updatedAt": "2026-04-25 05:22:04",
+      "note": "Howdy and good morning! This is Kolton with your Snow Report for Saturday, April 25. Today will be the sunny calm before the storm, with mostly sunny conditions throughout operating hours, followed by slight snow showers starting up after 3 pm. Expect a high around 48 degrees and winds 5 to 9 mph out of the West southwest. You'll find me with my sunscreen overly applied, skiing down Powder Paradise in the morning, followed by everyone's favorite, Chips Run, this afternoon. That's my Snow Reporter run recommendation. We'll have the J-Rad Cooley Band jamming and rocking on the harmonica today with some blues vibes for Plazapalooza, playing Noon - 3 pm on the Plaza Deck. A friendly reminder, spring mountain operations are in effect. After this Sunday, Snowbird will be closed midweek for snow preservation so that we can reopen Friday - Sunday on May 1 through 3 with some awesome spring skiing conditions. Please avoid the Chickadee Bowl area, which is currently under construction on a new lift. If you plan to park above Chickadee or in the Superior Lot, your ski-in/ski-out access will be available along the Bypass Road further down Entry 4. ALL uphill travel is closed and will remain closed through the mid-week closure. Late-season conditions exist, so please remember to ski and ride in control. Thanks for skiing/riding with us and have a groovy day!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 9.4,
+        "forecast72h": 10.6,
         "daysSinceSnow": 1,
         "baseDepth": 68,
         "runsOpen": 65,
@@ -906,8 +907,8 @@
       "status": "ok",
       "resort": "Sugarbush",
       "adapter": "mtnfeed",
-      "updatedAt": "2026-04-24T13:20:14-0400",
-      "note": "Spring conditions",
+      "updatedAt": "2026-04-25T06:46:26-0400",
+      "note": "Machine Groomed Loose Granular",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 0,
@@ -915,7 +916,7 @@
         "baseDepth": 27,
         "runsOpen": 6,
         "runsTotal": 111,
-        "groomedRuns": 5
+        "groomedRuns": 6
       },
       "sources": {
         "conditions": "https://www.sugarbush.com/mountain/conditions",
@@ -954,7 +955,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.8,
+        "forecast72h": 4.4,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,
@@ -975,7 +976,7 @@
       "note": null,
       "metrics": {
         "snow24h": null,
-        "forecast72h": 0.2,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": null,
         "runsOpen": null,

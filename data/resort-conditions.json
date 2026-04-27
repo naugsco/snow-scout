@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-27T03:26:35.521Z",
+  "generatedAt": "2026-04-27T06:31:16.741Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -13,7 +13,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.6,
+        "forecast72h": 3,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": null,
@@ -34,7 +34,7 @@
       "note": "Low Snowfall",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2.6,
+        "forecast72h": 3.2,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -55,7 +55,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.7,
+        "forecast72h": 3.4,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -76,7 +76,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.2,
+        "forecast72h": 4.2,
         "daysSinceSnow": null,
         "baseDepth": 32,
         "runsOpen": null,
@@ -97,7 +97,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.4,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 63,
         "runsOpen": null,
@@ -160,7 +160,7 @@
       "note": "Fresh",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.7,
+        "forecast72h": 1,
         "daysSinceSnow": null,
         "baseDepth": 41,
         "runsOpen": null,
@@ -286,7 +286,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 5,
+        "forecast72h": 0.4,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -412,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 10,
         "runsOpen": null,
@@ -421,7 +421,8 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "crotched mountain": {
@@ -452,7 +453,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.3,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -461,8 +462,7 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "jack frost big boulder": {
@@ -616,11 +616,11 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "09:00 pm",
+      "updatedAt": "12:00 am",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 14,
-        "forecast72h": 20,
+        "forecast72h": 8,
         "daysSinceSnow": 0,
         "baseDepth": 89,
         "runsOpen": 0,
@@ -641,7 +641,7 @@
       "note": null,
       "metrics": {
         "snow24h": null,
-        "forecast72h": 1.9,
+        "forecast72h": 0.6,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,
@@ -706,7 +706,7 @@
       "note": "Eldora is closed for the summer. 26/27 alpine season passes are on sale now, at the lowest prices of the year! Prices increase on May 8 . Shop now HERE for the best pricing. Thanks for a great season! We'll see you in November!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2.9,
+        "forecast72h": 2.8,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -842,7 +842,7 @@
       "note": "Spring conditions",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 8,
+        "forecast72h": 9,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": 0,
@@ -864,7 +864,7 @@
       "note": "Good morning everybody, here's your snow report for Sunday, April 26. No new snow to talk about just yet, but we do expect that to change as the day rolls along. Snowfall is expected at various times today with a couple of inches possible by sundown this evening. Temps will hover in the low to mid 30s, so things will feel cooler than they have been as of late. Winds will be breezy out of the WSW with gusts into the 40s possible later this afternoon. A stronger pulse of snow is expected overnight into tomorrow morning, along with additional chances for new snow all week. Stay tuned! Sunsation is still going strong today with the Skimmy Dippers Dual Pond Skim taking center stage just outside of Downhill Duke's in Center Village. Things get rolling at 1130am with awards taking place at 3pm. Don Fuego then kicks things off in Eagle's Landing immediately following. Have a great Sunday!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2.7,
+        "forecast72h": 3.9,
         "daysSinceSnow": null,
         "baseDepth": 28,
         "runsOpen": 18,
@@ -888,7 +888,7 @@
       "note": "Gooooood morning Snowbird! It’s Owen, with your snow report for Sunday. We have received 4” of snow overnight and it looks like it’s going to continue throughout today with plenty more to come (with plenty meaning a projected 6 - 10”). Yes, you read that right. We’ll have a high near 38° and winds around 10 mph. Don’t put away that ski jacket just yet folks, there’s still a few more days to come. Just because we got snow doesn't mean we won't be rockin' out at Plazapalooza ! Today from 12 - 3pm, we'll have Slow Potion playing in the Tram Club, so come check them out for some good vibes and après. A quick reminder, spring mountain operations are in effect (see the bottom of this page). After today, Snowbird will be closed midweek for snow preservation so that we can reopen Friday - Sunday on May 1 through 3 with some awesome spring skiing conditions. Additionally, we have closed Chickadee Bowl for construction on a new lift. Please stay out of that area for the foreseeable future as getting smacked by a construction vehicle or falling in a ditch would not make for a great day. ALL uphill travel is closed. Don’t be that guy (or gal). Please remember to ski and ride in control, if you don’t, you’re gonna have a bad time. It's Surf Season at The Bird, so to quote that one surfer guy, \"drop in, just smack the lip, wapow.\" Go get pitted today. #GMTB",
       "metrics": {
         "snow24h": 9,
-        "forecast72h": 6.4,
+        "forecast72h": 2,
         "daysSinceSnow": 0,
         "baseDepth": 79,
         "runsOpen": null,
@@ -956,7 +956,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2.9,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,
@@ -977,7 +977,7 @@
       "note": null,
       "metrics": {
         "snow24h": null,
-        "forecast72h": 0.6,
+        "forecast72h": 1,
         "daysSinceSnow": null,
         "baseDepth": null,
         "runsOpen": null,

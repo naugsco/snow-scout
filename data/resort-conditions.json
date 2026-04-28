@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-28T14:20:47.824Z",
+  "generatedAt": "2026-04-28T17:49:47.015Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -13,7 +13,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2.9,
+        "forecast72h": 2.1,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": null,
@@ -34,7 +34,7 @@
       "note": "Low Snowfall",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.8,
+        "forecast72h": 1.7,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -55,7 +55,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2.9,
+        "forecast72h": 4.5,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -97,7 +97,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.2,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 63,
         "runsOpen": null,
@@ -160,7 +160,7 @@
       "note": "Fresh",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3.1,
+        "forecast72h": 2.8,
         "daysSinceSnow": null,
         "baseDepth": 41,
         "runsOpen": null,
@@ -261,13 +261,13 @@
       "status": "ok",
       "resort": "Whistler Blackcomb",
       "adapter": "vail",
-      "updatedAt": "Updated April 27, 2026 at 3:57 PM PDT",
+      "updatedAt": "Updated April 28, 2026 at 8:36 AM PDT",
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
         "forecast72h": 0,
         "daysSinceSnow": null,
-        "baseDepth": 79,
+        "baseDepth": 78,
         "runsOpen": 87,
         "runsTotal": 152,
         "groomedRuns": 41
@@ -286,7 +286,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.6,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -412,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 10,
         "runsOpen": null,
@@ -421,8 +421,7 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "crotched mountain": {
@@ -453,7 +452,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -462,7 +461,8 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "jack frost big boulder": {
@@ -616,7 +616,7 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "08:00 am",
+      "updatedAt": "11:00 am",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 3,
@@ -643,7 +643,7 @@
         "snow24h": null,
         "forecast72h": 0,
         "daysSinceSnow": null,
-        "baseDepth": 34,
+        "baseDepth": 36,
         "runsOpen": 0,
         "runsTotal": 23,
         "groomedRuns": null
@@ -706,7 +706,7 @@
       "note": "Eldora is closed for the summer. 26/27 alpine season passes are on sale now, at the lowest prices of the year! Prices increase on May 8 . Shop now HERE for the best pricing. Thanks for a great season! We'll see you in November!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 5.6,
+        "forecast72h": 7.9,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -798,7 +798,7 @@
       "note": "Packed Powder",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2,
+        "forecast72h": 1,
         "daysSinceSnow": 2,
         "baseDepth": 83,
         "runsOpen": 91,
@@ -864,7 +864,7 @@
       "note": "Tuesday, A bit more snow is on the way today with flurries throughout the day accumulating around 1 inch. Temperatures will be in the mid to upper 20s and Cool winds will be from the west around 10-15 mph, gusting into the 30s. This snowy trend will continue through this week and into closing weekend. Out on the slopes there is still a lot of fun to be had. We have 3 chair lifts operating to the end and Camp Hale in Center Village as well as the Aerie Serve up all your food and bev needs. Please note there is no more beginner terrain available.",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2.9,
+        "forecast72h": 4.2,
         "daysSinceSnow": 1,
         "baseDepth": 21,
         "runsOpen": 17,
@@ -888,7 +888,7 @@
       "note": "Snowbird has transitioned to weekends-only operations and is scheduled to reopen Friday - Sunday, starting May 1 through 3. Snowbird is CLOSED midweek for snow preservation efforts to provide the best late-season skiing/riding conditions and to extend the season as long as possible. Scenic Tram rides will remain open, conditions permitting, 10 am to 2 pm, Monday through Thursday, and 8 am to 1:30 pm Friday through Sunday. ALL uphill travel is closed and will remain closed midweek and through the weekend to allow the on-mountain teams to move snow and continue snow preservation efforts. We look forward to seeing and skiing with you on Friday, May 1.",
       "metrics": {
         "snow24h": 2,
-        "forecast72h": 1,
+        "forecast72h": 0.7,
         "daysSinceSnow": 0,
         "baseDepth": 82,
         "runsOpen": null,
@@ -956,7 +956,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 1.7,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,
@@ -965,7 +965,8 @@
       },
       "sources": {
         "conditions": "https://tellurideskiresort.com/snow-report-scrape/",
-        "terrain": "https://tellurideskiresort.com/snow-report-scrape/"
+        "terrain": "https://tellurideskiresort.com/snow-report-scrape/",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=37.9375&longitude=-107.8123&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "jackson hole": {
@@ -976,7 +977,7 @@
       "note": null,
       "metrics": {
         "snow24h": null,
-        "forecast72h": null,
+        "forecast72h": 0.8,
         "daysSinceSnow": null,
         "baseDepth": null,
         "runsOpen": null,
@@ -985,7 +986,8 @@
       },
       "sources": {
         "conditions": "https://www.jacksonhole.com/mountain-report",
-        "terrain": "https://www.jacksonhole.com/mountain-report"
+        "terrain": "https://www.jacksonhole.com/mountain-report",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=43.5877&longitude=-110.8279&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     }
   }

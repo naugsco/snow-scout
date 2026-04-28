@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-28T03:33:04.342Z",
+  "generatedAt": "2026-04-28T06:33:30.299Z",
   "summary": {
     "ok": 46,
     "error": 0
@@ -13,7 +13,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 3,
+        "forecast72h": 3.1,
         "daysSinceSnow": null,
         "baseDepth": 30,
         "runsOpen": null,
@@ -34,7 +34,7 @@
       "note": "Low Snowfall",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 4.3,
+        "forecast72h": 1.5,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -55,7 +55,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.5,
+        "forecast72h": 7.1,
         "daysSinceSnow": null,
         "baseDepth": 18,
         "runsOpen": null,
@@ -76,7 +76,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1.2,
+        "forecast72h": 4.2,
         "daysSinceSnow": null,
         "baseDepth": 32,
         "runsOpen": null,
@@ -97,7 +97,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 1,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 63,
         "runsOpen": null,
@@ -118,7 +118,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.1,
         "daysSinceSnow": null,
         "baseDepth": 39,
         "runsOpen": null,
@@ -286,7 +286,7 @@
       "note": "Snow Groomed",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": 0.2,
         "daysSinceSnow": null,
         "baseDepth": 42,
         "runsOpen": null,
@@ -412,7 +412,7 @@
       "note": "Variable",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0,
+        "forecast72h": null,
         "daysSinceSnow": null,
         "baseDepth": 10,
         "runsOpen": null,
@@ -421,8 +421,7 @@
       },
       "sources": {
         "conditions": "https://www.skiwildcat.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
-        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=44.2636&longitude=-71.2389&daily=snowfall_sum&forecast_days=4&timezone=auto"
+        "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
       }
     },
     "crotched mountain": {
@@ -453,7 +452,7 @@
       "note": "Spring",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": null,
+        "forecast72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 38,
         "runsOpen": null,
@@ -462,7 +461,8 @@
       },
       "sources": {
         "conditions": "https://www.huntermtn.com/the-mountain/mountain-conditions/snow-and-weather-report.aspx",
-        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx"
+        "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+        "forecast": "https://api.open-meteo.com/v1/forecast?latitude=42.2028&longitude=-74.2258&daily=snowfall_sum&forecast_days=4&timezone=auto"
       }
     },
     "jack frost big boulder": {
@@ -616,11 +616,11 @@
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "updatedAt": "09:00 pm",
+      "updatedAt": "12:00 am",
       "note": "Partly Cloudy",
       "metrics": {
         "snow24h": 3,
-        "forecast72h": 7,
+        "forecast72h": 1,
         "daysSinceSnow": 0,
         "baseDepth": 89,
         "runsOpen": 0,
@@ -706,7 +706,7 @@
       "note": "Eldora is closed for the summer. 26/27 alpine season passes are on sale now, at the lowest prices of the year! Prices increase on May 8 . Shop now HERE for the best pricing. Thanks for a great season! We'll see you in November!",
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 2.4,
+        "forecast72h": 8.1,
         "daysSinceSnow": null,
         "baseDepth": 0,
         "runsOpen": null,
@@ -864,7 +864,7 @@
       "note": "Good morning and Happy Monday Copper faithful. Welcome to day 1 of extended spring operations! Don't cry because it's almost over, smile because it's still happening. We've picked up 4\" of new snow over the last 24 hours, with about half of that falling after the lifts closed yesterday. Snow flurries will continue off and on today with some additional accumulation expected. Temps will rise to the mid 30s at mid-mountain with light westerly winds gusting to 20mph. Snow picks up slightly overnight into tomorrow, with additional snow showers possible all week. We're still skiing and riding on 3 chairlifts until the end, serving up 17 trails and almost 2300 vertical feet for you to enjoy. Visit Camp Hale in Center Village or the Aerie for all of your food and bev needs. Please note there is no beginner terrain available during our last week of the winter season. Have a great day and see you out there!",
       "metrics": {
         "snow24h": 4,
-        "forecast72h": 0.4,
+        "forecast72h": 5.6,
         "daysSinceSnow": 0,
         "baseDepth": 24,
         "runsOpen": 17,
@@ -888,7 +888,7 @@
       "note": "Snowbird has transitioned to weekends-only operations and is scheduled to reopen Friday - Sunday, starting May 1 through 3. Snowbird is CLOSED midweek for snow preservation efforts to provide the best late-season skiing/riding conditions and to extend the season as long as possible. Scenic Tram rides will remain open, conditions permitting, 10 am to 2 pm, Monday through Thursday, and 8 am to 1:30 pm Friday through Sunday. ALL uphill travel is closed and will remain closed midweek and through the weekend to allow the on-mountain teams to move snow and continue snow preservation efforts. We look forward to seeing and skiing with you on Friday, May 1.",
       "metrics": {
         "snow24h": 5,
-        "forecast72h": 1.6,
+        "forecast72h": 0.5,
         "daysSinceSnow": 0,
         "baseDepth": 84,
         "runsOpen": null,
@@ -956,7 +956,7 @@
       "note": null,
       "metrics": {
         "snow24h": 0,
-        "forecast72h": 0.1,
+        "forecast72h": 3.9,
         "daysSinceSnow": null,
         "baseDepth": 36,
         "runsOpen": 0,

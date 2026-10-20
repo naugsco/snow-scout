@@ -1,12 +1,12 @@
-import { state } from './state.js?v=20261019-standard-globe';
+import { state } from './state.js?v=20261019-chart-selection';
 import {
   formatInches, formatTemperature, formatRunAccess, formatPassLabel,
   getPassTone, getSourceKeyForResort, getConditionsPageForResort, getWebcamPageForResort,
   withCacheBust, webcamStreams
-} from './utils.js?v=20261019-standard-globe';
-import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261019-standard-globe';
-import { createSnowfallChart } from './snowfall-chart.js?v=20261019-standard-globe';
-import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261019-standard-globe';
+} from './utils.js?v=20261019-chart-selection';
+import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261019-chart-selection';
+import { createSnowfallChart } from './snowfall-chart.js?v=20261019-chart-selection';
+import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261019-chart-selection';
 
 const detailOverlay = document.getElementById('detail-overlay');
 const detailPanel = document.getElementById('detail-panel');

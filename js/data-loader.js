@@ -1,11 +1,11 @@
-import { state } from './state.js?v=20261019-standard-globe';
-import { resorts } from './resorts.js?v=20261019-standard-globe';
+import { state } from './state.js?v=20261019-chart-selection';
+import { resorts } from './resorts.js?v=20261019-chart-selection';
 import {
   getSourceKeyForResort, inferStatus, getStatusText, buildForecastUrl, formatInches,
   conditionPages, webcamPages, webcamStreams, forecastCache, forecastRequests,
   getConditionsPageForResort
-} from './utils.js?v=20261019-standard-globe';
-import { DEFAULT_CONDITION_PAGES } from './constants.js?v=20261019-standard-globe';
+} from './utils.js?v=20261019-chart-selection';
+import { DEFAULT_CONDITION_PAGES } from './constants.js?v=20261019-chart-selection';
 
 // Initialize conditionPages with defaults
 Object.assign(conditionPages, DEFAULT_CONDITION_PAGES);

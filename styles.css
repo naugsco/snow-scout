@@ -995,6 +995,11 @@ button {
   box-shadow: var(--shadow);
 }
 
+.resort-item.chart-highlighted {
+  outline: 3px solid var(--fresh);
+  outline-offset: 2px;
+}
+
 .resort-item.status-incoming {
   border-left-color: var(--incoming);
 }

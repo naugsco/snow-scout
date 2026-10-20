@@ -21,11 +21,11 @@ test('northern seasons roll in July; southern seasons roll in January', () => {
   assert.equal(currentSeason(resorts[2], now), '2026');
 });
 
-test('every resort is ranked, missing totals are separate from true zero, highest is rightmost', () => {
+test('every resort is ranked, missing totals are separate from true zero, highest is leftmost', () => {
   const ranked = rankedSnowfall(resorts, catalog, now);
-  assert.deepEqual(ranked.map((row) => row.resort.id), ['d', 'b', 'a', 'c']);
-  assert.equal(ranked[0].total, null);
-  assert.equal(ranked[1].total, 0);
+  assert.deepEqual(ranked.map((row) => row.resort.id), ['c', 'a', 'b', 'd']);
+  assert.equal(ranked[3].total, null);
+  assert.equal(ranked[2].total, 0);
 });
 
 test('last season total cannot enter the current chart', () => {

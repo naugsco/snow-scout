@@ -1,4 +1,4 @@
-import { normalizeResortName } from './utils.js?v=20261019-standard-globe';
+import { normalizeResortName } from './utils.js?v=20261019-chart-selection';
 
 const PARAM_MAP = {
   resort: 'selectedId',

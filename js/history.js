@@ -1,7 +1,7 @@
-import { resorts } from './resorts.js?v=20261019-standard-globe';
-import { state, setUseMetric, setTheme } from './state.js?v=20261019-standard-globe';
-import { formatInches, formatPassLabel } from './utils.js?v=20261019-standard-globe';
-import { historyRecords, fetchSnowfallCatalog } from './season-snowfall.js';
+import { resorts } from './resorts.js?v=20261019-chart-selection';
+import { state, setUseMetric, setTheme } from './state.js?v=20261019-chart-selection';
+import { formatInches, formatPassLabel } from './utils.js?v=20261019-chart-selection';
+import { historyRecords, fetchSnowfallCatalog } from './season-snowfall.js?v=20261019-chart-selection';
 
 const $ = (id) => document.getElementById(id);
 const passLabels = { epic: 'Epic Pass', ikon: 'Ikon Pass', 'mountain-collective': 'Mountain Collective' };

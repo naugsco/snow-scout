@@ -1,6 +1,9 @@
-import { resorts } from './resorts.js?v=20261019-standard-globe';
-import { formatInches } from './utils.js?v=20261019-standard-globe';
-import { rankedSnowfall, fetchSnowfallCatalog } from './season-snowfall.js';
+import { resorts } from './resorts.js?v=20261019-chart-selection';
+import { formatInches } from './utils.js?v=20261019-chart-selection';
+import { rankedSnowfall, fetchSnowfallCatalog } from './season-snowfall.js?v=20261019-chart-selection';
+
+let onResortClick = null;
+export function setOnSeasonResortClick(handler) { onResortClick = handler; }
 
 let catalog = null;
 let loadError = null;
@@ -44,7 +47,10 @@ export function renderSeasonChart() {
     };
     bar.addEventListener('pointerenter', show);
     bar.addEventListener('focus', show);
-    bar.addEventListener('click', show); // Tapping exposes the same details on phones.
+    bar.addEventListener('click', () => {
+      show();
+      onResortClick?.(item.resort);
+    });
     bar.addEventListener('pointerleave', () => { tooltip.hidden = true; });
     bar.addEventListener('blur', () => { tooltip.hidden = true; });
     bar.addEventListener('keydown', (event) => {
@@ -61,7 +67,7 @@ export function renderSeasonChart() {
   note.textContent = loadError || (catalog
     ? `ERA5 model estimates · ${reported.length}/${resorts.length} resorts · Through ${[...new Set(reported.map((item) => item.record.through))].sort().join(' to ') || '—'} · Northern ${ranked.find((item) => item.resort.lat > 0)?.season}; southern ${ranked.find((item) => item.resort.lat < 0)?.season}.${resorts.length - reported.length ? ` ${resorts.length - reported.length} unavailable (hatched).` : ''}${Object.values(catalog.resorts).some((item) => item.status === 'error') ? ' Some data refreshes failed; see history for coverage.' : ''}`
     : 'Loading modeled season totals…');
-  root.setAttribute('aria-label', `Current-season snowfall for all ${resorts.length} resorts, ascending from left to right. Resorts without estimates are hatched.`);
+  root.setAttribute('aria-label', `Current-season snowfall for all ${resorts.length} resorts, descending from left to right. Resorts without estimates are hatched.`);
 }
 
 export async function loadSeasonChart() {

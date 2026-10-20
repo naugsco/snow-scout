@@ -22,7 +22,7 @@ export function currentSnowfall(resort, catalog, now = new Date()) {
 
 export function rankedSnowfall(resorts, catalog, now = new Date()) {
   return resorts.map((resort) => ({ resort, ...currentSnowfall(resort, catalog, now) }))
-    .sort((a, b) => (a.total ?? -1) - (b.total ?? -1) || a.resort.name.localeCompare(b.resort.name));
+    .sort((a, b) => (b.total ?? -1) - (a.total ?? -1) || a.resort.name.localeCompare(b.resort.name));
 }
 
 export function historyRecords(resorts, catalog, { pass = 'all', query = '', season = 'all', min = 0, max = Infinity } = {}, now = new Date()) {

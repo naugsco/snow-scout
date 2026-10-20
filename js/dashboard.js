@@ -1,10 +1,10 @@
-import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261019-standard-globe';
-import { state, saveFavorites } from './state.js?v=20261019-standard-globe';
-import { resorts } from './resorts.js?v=20261019-standard-globe';
+import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261019-chart-selection';
+import { state, saveFavorites } from './state.js?v=20261019-chart-selection';
+import { resorts } from './resorts.js?v=20261019-chart-selection';
 import {
   formatInches, formatRunAccess, formatPassLabel, getPassTone
-} from './utils.js?v=20261019-standard-globe';
-import { getResortLogoUrl } from './resort-logos.js?v=20261019-standard-globe';
+} from './utils.js?v=20261019-chart-selection';
+import { getResortLogoUrl } from './resort-logos.js?v=20261019-chart-selection';
 
 const resortListEl = document.getElementById('resort-list');
 const resortCount = document.getElementById('resort-count');
@@ -212,7 +212,10 @@ export function renderDashboard() {
   shortlist.forEach((resort) => {
     const item = document.createElement('div');
     const isPowderDay = resort.metrics.snow24h >= 12;
-    item.className = `resort-item status-${resort.status} ${isPowderDay ? 'powder-day' : ''} ${state.selectedId === resort.id ? 'selected' : ''}`;
+    item.className = `resort-item status-${resort.status} ${isPowderDay ? 'powder-day' : ''} ${state.selectedId === resort.id ? 'selected' : ''} ${state.highlightedResortId === resort.id ? 'chart-highlighted' : ''}`;
+
+    item.dataset.resortId = resort.id;
+    item.tabIndex = -1;
 
     if (heatmapMetric && heatmapColor) {
       const val = resort.metrics[heatmapMetric] ?? 0;

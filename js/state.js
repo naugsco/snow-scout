@@ -1,4 +1,4 @@
-import { FAVORITES_KEY } from './constants.js?v=20261019-standard-globe';
+import { FAVORITES_KEY } from './constants.js?v=20261019-chart-selection';
 
 export function loadFavorites() {
   try {
@@ -30,6 +30,7 @@ export const state = {
   sortMode: 'score',
   showAllResorts: false,
   selectedId: null,
+  highlightedResortId: null,
   hoveredId: null,
   currentTab: 'overview',
   favorites: loadFavorites(),

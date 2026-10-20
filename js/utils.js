@@ -1,5 +1,5 @@
-import { RESORT_SOURCE_ALIASES } from './constants.js?v=20261019-standard-globe';
-import { state } from './state.js?v=20261019-standard-globe';
+import { RESORT_SOURCE_ALIASES } from './constants.js?v=20261019-chart-selection';
+import { state } from './state.js?v=20261019-chart-selection';
 
 export function normalizeResortName(name) {
   return name

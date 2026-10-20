@@ -1,4 +1,4 @@
-import { viewer } from './cesium-map.js?v=20261019-standard-globe';
+import { viewer } from './cesium-map.js?v=20261019-chart-selection';
 
 // ============================================================
 // Weather layer state — supports multiple simultaneous layers

@@ -8,7 +8,7 @@
   <meta http-equiv="Expires" content="0" />
   <title>Snow Scout</title>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261019-standard-globe">
+  <link rel="stylesheet" href="styles.css?v=20261019-chart-selection">
 </head>
 <body>
   <div class="app-layout">
@@ -31,8 +31,8 @@
 
         <section class="season-snowfall" aria-labelledby="season-chart-title">
           <div class="season-chart-heading">
-            <div><h2 id="season-chart-title">Season snowfall</h2><p>All resorts · <a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">ERA5 estimates</a> · Hover or tap a bar for details</p></div>
-            <span class="season-chart-order">More snow →</span>
+            <div><h2 id="season-chart-title">Season snowfall</h2><p>All resorts · <a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">ERA5 estimates</a> · Hover for details · Click to highlight a resort</p></div>
+            <span class="season-chart-order">Highest → Lowest</span>
           </div>
           <div class="season-chart-frame">
             <div class="season-chart-scale" aria-hidden="true"><span id="season-chart-max">—</span><span>0</span></div>
@@ -237,6 +237,6 @@
 
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
-  <script type="module" src="js/main.js?v=20261019-standard-globe"></script>
+  <script type="module" src="js/main.js?v=20261019-chart-selection"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
   <meta name="description" content="Explore Snow Scout's painted winter mountains in 3D. Orbit real terrain and inspect community-mapped ski trails." />
   <title>3D Mountain — Snow Scout</title>
   <link rel="stylesheet" href="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Widgets/widgets.css" />
-  <link rel="stylesheet" href="mountain.css?v=20261020-painted-mountains" />
+  <link rel="stylesheet" href="mountain.css?v=20261020-all-trails" />
 </head>
 <body>
   <main class="mountain-app">
@@ -24,6 +24,7 @@
     <section class="map-view" aria-label="Painted 3D mountain">
       <div id="mountain-view" class="mountain-canvas"></div>
       <div class="mountain-heading"><h1 id="mountain-name">YOUR NEXT MOUNTAIN</h1><p id="mountain-description">Painted winter terrain</p></div>
+      <label id="area-picker" class="area-picker" hidden>Mountain area <select id="mountain-area" aria-label="Mountain area" disabled><option value="">All mapped areas</option></select></label>
       <nav id="camera-controls" class="map-toolbar" aria-label="Camera controls">
         <button id="orbit" aria-pressed="true" disabled><img class="icon" src="assets/mountain-icons/orbit.svg" alt="" />Orbit</button>
         <button id="tilt" aria-pressed="false" disabled><img class="icon" src="assets/mountain-icons/move-vertical.svg" alt="" />Tilt</button>
@@ -44,12 +45,16 @@
         <button id="lifts" aria-pressed="true" disabled><img class="icon" src="assets/mountain-icons/cable-car.svg" alt="" />Lifts</button>
       </div>
       <p id="coverage-note" class="coverage-note" hidden>Painted terrain only. Mapped trails and lifts are not available in this 3D view yet.</p>
+      <details id="coverage-info" class="coverage-info" hidden>
+        <summary>Data &amp; coverage</summary>
+        <div><p id="coverage-counts"></p><p id="mapped-areas"></p><p id="coverage-date"></p><p>Community mapping may be incomplete. Counts are route segments, not unique named runs. Gray routes have no mapped grade; orange trails are freeride or extreme routes.</p><a id="download-trails" href="#" download>Download mapped routes (GeoJSON)</a></div>
+      </details>
       <div id="map-hint" class="map-hint"><img class="icon" src="assets/mountain-icons/mouse.svg" alt="" /><span>Drag to rotate · Scroll to zoom</span></div>
       <footer class="data-note"><a id="osm-credit" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a><span>Illustrative winter styling · Not live snow cover or trail status</span></footer>
     </section>
     <span id="map-status" class="sr-only" role="status">Loading real terrain.</span>
   </main>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>
-  <script type="module" src="js/mountain-page.js?v=20261020-painted-mountains"></script>
+  <script type="module" src="js/mountain-page.js?v=20261020-all-trails"></script>
 </body>
 </html>

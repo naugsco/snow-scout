@@ -1,5 +1,5 @@
-import { RESORT_SOURCE_ALIASES } from './constants.js?v=20261020-painted-mountains';
-import { state } from './state.js?v=20261020-painted-mountains';
+import { RESORT_SOURCE_ALIASES } from './constants.js?v=20261020-all-trails';
+import { state } from './state.js?v=20261020-all-trails';
 
 export function normalizeResortName(name) {
   return name

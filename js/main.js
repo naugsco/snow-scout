@@ -1,27 +1,27 @@
-import { DEFAULT_WEBCAM_PAGES } from './constants.js?v=20261020-painted-mountains';
-import { loadSeasonChart, renderSeasonChart, setOnSeasonResortClick } from './season-chart.js?v=20261020-painted-mountains';
-import { state, setUseMetric, setTheme } from './state.js?v=20261020-painted-mountains';
-import { normalizeResortName, getSourceKeyForResort, webcamPages, withCacheBust } from './utils.js?v=20261020-painted-mountains';
-import { resorts } from './resorts.js?v=20261020-painted-mountains';
+import { DEFAULT_WEBCAM_PAGES } from './constants.js?v=20261020-all-trails';
+import { loadSeasonChart, renderSeasonChart, setOnSeasonResortClick } from './season-chart.js?v=20261020-all-trails';
+import { state, setUseMetric, setTheme } from './state.js?v=20261020-all-trails';
+import { normalizeResortName, getSourceKeyForResort, webcamPages, withCacheBust } from './utils.js?v=20261020-all-trails';
+import { resorts } from './resorts.js?v=20261020-all-trails';
 import {
   viewer, createMarkerEntity, updateMarkerVisibility, updateMarkerStyles,
   syncHoverCardToEntity, screenSpaceHandler, resortForScreenPosition,
   flyToResort, updateZoomReadout, autoRotate, setAutoRotate
-} from './cesium-map.js?v=20261020-painted-mountains';
-import { loadOptionalSourceData, loadLiveForecastForResort } from './data-loader.js?v=20261020-painted-mountains';
+} from './cesium-map.js?v=20261020-all-trails';
+import { loadOptionalSourceData, loadLiveForecastForResort } from './data-loader.js?v=20261020-all-trails';
 import {
   renderDashboard, renderFilters, renderUpdatedAt, renderStormBanner,
   filteredResorts, ensureSelectionVisible, toggleFavorite, setOnResortClick,
   setOnCompareToggle, baseFilteredResorts, applyStatusFilter
-} from './dashboard.js?v=20261020-painted-mountains';
-import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261020-painted-mountains';
-import { parseHash, updateHash, initRouter } from './router.js?v=20261020-painted-mountains';
-import { toggleCompareResort, clearCompare } from './comparison.js?v=20261020-painted-mountains';
+} from './dashboard.js?v=20261020-all-trails';
+import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261020-all-trails';
+import { parseHash, updateHash, initRouter } from './router.js?v=20261020-all-trails';
+import { toggleCompareResort, clearCompare } from './comparison.js?v=20261020-all-trails';
 import {
   toggleLayer, removeAllLayers, setLayerOpacity, getActiveLayerIds, isLayerActive,
   toggleRadarAnimation, isAnimating, showRadarFrame, getRadarFrames,
   getRadarFrameIndex, formatRadarTime, setOnFrameChange, getLayerOpacity
-} from './weather-layers.js?v=20261020-painted-mountains';
+} from './weather-layers.js?v=20261020-all-trails';
 
 // Initialize webcamPages with defaults
 Object.assign(webcamPages, DEFAULT_WEBCAM_PAGES);

@@ -1,4 +1,4 @@
-import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261020-painted-mountains';
+import { TRAIL_CATALOG } from './trail-catalog.js?v=20261020-all-trails';
 
 export function mountainSlug(name) {
   return name.toLowerCase().replace(/\(.*?\)/g, '').replace(/&/g, 'and')
@@ -10,8 +10,11 @@ export function mountainUrl(resort) {
 }
 
 export function mountainConfig(resort) {
+  const mapped = TRAIL_CATALOG[mountainSlug(resort.name)];
+  if (!mapped) throw new Error(`Trail catalog entry missing for ${resort.name}.`);
   if (resort.name === 'Whistler Blackcomb') {
     return {
+      coverage: mapped, convention: 'north_america', views: [], mobileRange: 22000, minRange: 3500,
       name: resort.name, center: [-122.923, 50.082], height: 1800,
       heading: 145, pitch: -19, range: 10800, snowline: 1900,
       bounds: [-123.01, 50.02, -122.84, 50.13],
@@ -24,16 +27,12 @@ export function mountainConfig(resort) {
       ]
     };
   }
-  const viewport = TRAIL_MAP_VIEWPORTS[resort.name];
-  // Never show another ski area's geometry as this resort's trails.
-  const center = viewport && !viewport.proxyName ? viewport.center : [resort.lon, resort.lat];
-  const [lon, lat] = center;
-  const dx = 6000 / (111000 * Math.cos(lat * Math.PI / 180));
-  const dy = 6000 / 111000;
   return {
-    name: resort.name, center, height: null, heading: 145, pitch: -29, range: 10800,
-    bounds: [lon - dx, lat - dy, lon + dx, lat + dy],
-    forestBounds: [lon - dx, lat - dy, lon + dx, lat + dy],
-    trailsUrl: null, namedLabels: []
+    name: resort.name, center: mapped.center, height: null,
+    heading: 145, pitch: -29, range: mapped.range,
+    bounds: mapped.bounds, forestBounds: mapped.bounds,
+    trailsUrl: new URL(`../data/trails/${mapped.file}`, import.meta.url).href,
+    namedLabels: [], coverage: mapped, convention: mapped.conventions[0],
+    views: mapped.views.length > 1 ? mapped.views : []
   };
 }

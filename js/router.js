@@ -1,4 +1,4 @@
-import { normalizeResortName } from './utils.js?v=20261020-painted-mountains';
+import { normalizeResortName } from './utils.js?v=20261020-all-trails';
 
 const PARAM_MAP = {
   resort: 'selectedId',

@@ -1,4 +1,4 @@
-import { viewer } from './cesium-map.js?v=20261020-painted-mountains';
+import { viewer } from './cesium-map.js?v=20261020-all-trails';
 
 // ============================================================
 // Weather layer state — supports multiple simultaneous layers

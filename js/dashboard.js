@@ -1,10 +1,10 @@
-import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261020-painted-mountains';
-import { state, saveFavorites } from './state.js?v=20261020-painted-mountains';
-import { resorts } from './resorts.js?v=20261020-painted-mountains';
+import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261020-all-trails';
+import { state, saveFavorites } from './state.js?v=20261020-all-trails';
+import { resorts } from './resorts.js?v=20261020-all-trails';
 import {
   formatInches, formatRunAccess, formatPassLabel, getPassTone
-} from './utils.js?v=20261020-painted-mountains';
-import { getResortLogoUrl } from './resort-logos.js?v=20261020-painted-mountains';
+} from './utils.js?v=20261020-all-trails';
+import { getResortLogoUrl } from './resort-logos.js?v=20261020-all-trails';
 
 const resortListEl = document.getElementById('resort-list');
 const resortCount = document.getElementById('resort-count');

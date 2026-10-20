@@ -31,6 +31,7 @@ class PackagingTests(unittest.TestCase):
             subprocess.run([sys.executable, str(ROOT / 'scripts/package_site.py'),
                             '--output', str(output)], check=True, capture_output=True)
             self.assertTrue((output / 'data/trails/whistler.geojson').is_file())
+            self.assertEqual(len(list((output / 'data/trails').glob('*.geojson'))), 105)
             self.assertTrue((output / 'assets/mountain-icons/LICENSE').is_file())
             self.assertFalse((output / 'output').exists())
             self.assertFalse((output / '.git').exists())

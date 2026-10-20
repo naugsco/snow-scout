@@ -1,5 +1,6 @@
-import { CESIUM_ION_TOKEN } from './constants.js?v=20261020-painted-mountains';
-import { paintedMaterial, paintImagery } from './painted-material.js?v=20261020-painted-mountains';
+import { CESIUM_ION_TOKEN } from './constants.js?v=20261020-all-trails';
+import { paintedMaterial, paintImagery } from './painted-material.js?v=20261020-all-trails';
+import { trailColor } from './trail-style.js?v=20261020-all-trails';
 
 export async function createMountain(container, notify, fail, config) {
   const C = window.Cesium;
@@ -115,10 +116,14 @@ export async function createMountain(container, notify, fail, config) {
   scene.globe.material = material;
   const controller = scene.screenSpaceCameraController;
   controller.enableInputs = false;
-  const homePose = () => ({heading:config.heading,pitch:config.pitch,range:container.clientWidth<600?22000:config.range});
+  let activeArea = config;
+  const homePose = () => ({heading:config.heading,pitch:config.pitch,
+    range:container.clientWidth<600
+      ? (activeArea === config && config.mobileRange || activeArea.range * 600 / Math.max(container.clientWidth,320))
+      : activeArea.range});
   let home = homePose();
   let pose = {...home}, globe = false, mode = 'orbit', disposed = false;
-  const target = C.Cartesian3.fromDegrees(...config.center, targetHeight);
+  let target = C.Cartesian3.fromDegrees(...config.center, targetHeight);
   const lightDirection = C.Matrix4.multiplyByPointAsVector(
     C.Transforms.eastNorthUpToFixedFrame(target), new C.Cartesian3(0.4,0.3,-0.86),new C.Cartesian3());
   scene.light = new C.DirectionalLight({direction:C.Cartesian3.normalize(lightDirection,lightDirection),intensity:1.05});
@@ -126,7 +131,6 @@ export async function createMountain(container, notify, fail, config) {
   const liftSource = new C.CustomDataSource('Mapped lifts');
   const labels = new C.CustomDataSource('Mountain labels');
   viewer.dataSources.add(trailSource); viewer.dataSources.add(liftSource); viewer.dataSources.add(labels);
-  const colors = {novice:'#219c60',easy:'#219c60',intermediate:'#198be8',advanced:'#172c41',expert:'#172c41',freeride:'#172c41',unknown:'#859cac'};
   const routeLength = feature => feature.geometry.coordinates.slice(1).reduce((total, point, i) => {
     const previous = feature.geometry.coordinates[i];
     return total + Math.hypot((point[0]-previous[0])*lonMeters,(point[1]-previous[1])*111000);
@@ -142,10 +146,10 @@ export async function createMountain(container, notify, fail, config) {
     const p = feature.properties, lift = p.kind === 'lift';
     const positions = C.Cartesian3.fromDegreesArray(feature.geometry.coordinates.flatMap(p=>p.slice(0,2)));
     if (positions.length < 2) continue;
-    const color = C.Color.fromCssColorString(lift ? '#edac48' : (colors[p.difficulty] || colors.unknown));
+    const color = C.Color.fromCssColorString(lift ? '#edac48' : trailColor(p.difficulty,p.convention || config.convention));
     const source = lift ? liftSource : trailSource;
     const length = namedLengths.get(p.name || p.id) || 0;
-    const detailDistance = lift || length >= 750 ? 45000 : length >= 300 ? 10500 : 7500;
+    const detailDistance = lift || length >= 750 ? Math.max(45000,config.range*2) : length >= 300 ? 10500 : 7500;
     source.entities.add({name:p.name, properties:p, polyline:{
       positions, clampToGround:true, width:lift?3.5:length>=750?3:2.2,
       material:lift ? new C.PolylineDashMaterialProperty({color,dashLength:20}) : new C.PolylineOutlineMaterialProperty({color,outlineColor:C.Color.WHITE.withAlpha(0.92),outlineWidth:0.85}),
@@ -210,7 +214,8 @@ export async function createMountain(container, notify, fail, config) {
     viewer.camera.cancelFlight();
     pose.heading = (pose.heading+dh+360)%360;
     pose.pitch = Math.max(-82,Math.min(-16,pose.pitch+dp));
-    pose.range = Math.max(3500,Math.min(45000,pose.range*zoom));
+    const minimumRange = activeArea === config && config.minRange || Math.min(3500,activeArea.range*.15);
+    pose.range = Math.max(minimumRange,Math.min(Math.max(45000,config.range*3),pose.range*zoom));
     renderPose();
   }
   const canvas = scene.canvas;
@@ -231,7 +236,7 @@ export async function createMountain(container, notify, fail, config) {
   const up=e=>{pointers.delete(e.pointerId);previousPinch=null;};
   const wheel=e=>{if(globe)return;e.preventDefault();change(0,0,Math.exp(e.deltaY*0.001));};
   const key=e=>{
-    if(globe)return;
+    if(globe || e.target.closest('select,input,textarea,[contenteditable="true"]'))return;
     const actions={ArrowLeft:()=>change(-7),ArrowRight:()=>change(7),ArrowUp:()=>change(0,-5),ArrowDown:()=>change(0,5),'+':()=>change(0,0,0.85),'=':()=>change(0,0,0.85),'-':()=>change(0,0,1.18)};
     if(actions[e.key]){e.preventDefault();actions[e.key]();}
   };
@@ -246,6 +251,20 @@ export async function createMountain(container, notify, fail, config) {
   },C.ScreenSpaceEventType.LEFT_CLICK);
   notify({ready:true,runCount,liftCount});
   const api = {
+    async focusArea(areaId) {
+      const area = areaId ? config.views.find(item=>item.id===areaId) : config;
+      if (!area) throw new Error('Mapped mountain area not found.');
+      const [sample] = await C.sampleTerrainMostDetailed(terrain,[C.Cartographic.fromDegrees(...area.center)]);
+      if(disposed)return;
+      if(!Number.isFinite(sample.height))throw new Error(`Terrain height missing for ${area.name}.`);
+      activeArea=area;
+      viewer.camera.cancelFlight();
+      viewer.camera.lookAtTransform(C.Matrix4.IDENTITY);
+      target=C.Cartesian3.fromDegrees(...area.center,area===config?targetHeight:sample.height*1.5+120);
+      home=homePose();pose={...home};
+      container.dataset.area=area.name;
+      api.flyIn();
+    },
     setMode(value){mode=value;},
     reset(){viewer.camera.cancelFlight();home=homePose();pose={...home};renderPose();},
     rotate(){change(35);},

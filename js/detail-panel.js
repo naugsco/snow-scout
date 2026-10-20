@@ -1,13 +1,13 @@
-import { state } from './state.js?v=20261020-painted-mountains';
+import { state } from './state.js?v=20261020-all-trails';
 import {
   formatInches, formatTemperature, formatRunAccess, formatPassLabel,
   getPassTone, getSourceKeyForResort, getConditionsPageForResort, getWebcamPageForResort,
   withCacheBust, webcamStreams
-} from './utils.js?v=20261020-painted-mountains';
-import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261020-painted-mountains';
-import { createSnowfallChart } from './snowfall-chart.js?v=20261020-painted-mountains';
-import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261020-painted-mountains';
-import { mountainUrl } from './mountain-config.js?v=20261020-painted-mountains';
+} from './utils.js?v=20261020-all-trails';
+import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261020-all-trails';
+import { createSnowfallChart } from './snowfall-chart.js?v=20261020-all-trails';
+import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261020-all-trails';
+import { mountainUrl } from './mountain-config.js?v=20261020-all-trails';
 
 const detailOverlay = document.getElementById('detail-overlay');
 const detailPanel = document.getElementById('detail-panel');

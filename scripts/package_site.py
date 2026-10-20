@@ -15,11 +15,11 @@ def main():
         'index.html', 'history.html', 'styles.css', 'mountain.html', 'mountain.css',
         'assets/gouache-grain.png', 'assets/painted-conifer.png',
         'assets/mountain-icons/LICENSE',
-        'data/trails/whistler.geojson',
     )]
     files += sorted((ROOT / 'js').glob('*.js'))
     files += sorted((ROOT / 'assets/mountain-icons').glob('*.svg'))
     files += sorted((ROOT / 'data').glob('resort-*.json'))
+    files += sorted((ROOT / 'data/trails').glob('*.geojson'))
     files += sorted((ROOT / 'ski-webcams').glob('*.json'))
     for source in files:
         if not source.is_file():

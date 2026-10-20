@@ -1,8 +1,8 @@
-import { RAW_RESORTS } from './constants.js?v=20261020-painted-mountains';
+import { RAW_RESORTS } from './constants.js?v=20261020-all-trails';
 import {
   normalizeResortName, seeded, clamp, rangeRound,
   getRegion, getRegionLabel, getClimate, inferStatus, getStatusText
-} from './utils.js?v=20261020-painted-mountains';
+} from './utils.js?v=20261020-all-trails';
 
 export function enrichResort(resort, index) {
   const region = getRegion(resort.lat, resort.lon);

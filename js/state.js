@@ -1,4 +1,4 @@
-import { FAVORITES_KEY } from './constants.js?v=20261020-painted-mountains';
+import { FAVORITES_KEY } from './constants.js?v=20261020-all-trails';
 
 export function loadFavorites() {
   try {

@@ -1,6 +1,6 @@
-import { resorts } from './resorts.js?v=20261020-painted-mountains';
-import { formatInches } from './utils.js?v=20261020-painted-mountains';
-import { rankedSnowfall, fetchSnowfallCatalog } from './season-snowfall.js?v=20261020-painted-mountains';
+import { resorts } from './resorts.js?v=20261020-all-trails';
+import { formatInches } from './utils.js?v=20261020-all-trails';
+import { rankedSnowfall, fetchSnowfallCatalog } from './season-snowfall.js?v=20261020-all-trails';
 
 let onResortClick = null;
 export function setOnSeasonResortClick(handler) { onResortClick = handler; }

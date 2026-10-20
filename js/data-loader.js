@@ -1,11 +1,11 @@
-import { state } from './state.js?v=20261019-chart-selection';
-import { resorts } from './resorts.js?v=20261019-chart-selection';
+import { state } from './state.js?v=20261020-painted-mountains';
+import { resorts } from './resorts.js?v=20261020-painted-mountains';
 import {
   getSourceKeyForResort, inferStatus, getStatusText, buildForecastUrl, formatInches,
   conditionPages, webcamPages, webcamStreams, forecastCache, forecastRequests,
   getConditionsPageForResort
-} from './utils.js?v=20261019-chart-selection';
-import { DEFAULT_CONDITION_PAGES } from './constants.js?v=20261019-chart-selection';
+} from './utils.js?v=20261020-painted-mountains';
+import { DEFAULT_CONDITION_PAGES } from './constants.js?v=20261020-painted-mountains';
 
 // Initialize conditionPages with defaults
 Object.assign(conditionPages, DEFAULT_CONDITION_PAGES);

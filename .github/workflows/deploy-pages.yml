@@ -33,7 +33,7 @@ jobs:
       - name: Verify snowfall calculations and filtering
         run: |
           python3 -m unittest discover -s tests -p 'test_*.py'
-          node --test tests/snowfall.test.mjs
+          node --test tests/*.test.mjs
       - name: Package public site
         run: python3 scripts/package_site.py --output "$RUNNER_TEMP/snow-scout-site"
       - uses: actions/configure-pages@v5

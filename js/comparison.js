@@ -1,6 +1,6 @@
-import { resorts } from './resorts.js?v=20261019-chart-selection';
-import { formatInches, formatRunAccess, formatPassLabel, getPassTone, formatTemperature } from './utils.js?v=20261019-chart-selection';
-import { createSnowfallChart } from './snowfall-chart.js?v=20261019-chart-selection';
+import { resorts } from './resorts.js?v=20261020-painted-mountains';
+import { formatInches, formatRunAccess, formatPassLabel, getPassTone, formatTemperature } from './utils.js?v=20261020-painted-mountains';
+import { createSnowfallChart } from './snowfall-chart.js?v=20261020-painted-mountains';
 
 const MAX_COMPARE = 3;
 const compareIds = [];

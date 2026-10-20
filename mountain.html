@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Explore Snow Scout's painted winter mountains in 3D. Orbit real terrain and inspect community-mapped ski trails." />
+  <title>3D Mountain — Snow Scout</title>
+  <link rel="stylesheet" href="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Widgets/widgets.css" />
+  <link rel="stylesheet" href="mountain.css?v=20261020-painted-mountains" />
+</head>
+<body>
+  <main class="mountain-app">
+    <header class="app-header">
+      <a class="brand" href="./" aria-label="Snow Scout — all resorts">
+        <div class="brand-mark"><img class="icon" src="assets/mountain-icons/mountain-snow.svg" alt="" /></div>
+        <div><strong>SNOW SCOUT</strong><span>Chase the storm. Find the powder.</span></div>
+      </a>
+      <span class="preview-label">3D MOUNTAIN</span>
+      <div class="header-links">
+        <a id="resort-details" class="header-link" href="./">Conditions</a>
+        <button id="back-to-globe" class="back-button" disabled><img class="icon" src="assets/mountain-icons/arrow-left.svg" alt="" /><span>Back to globe</span></button>
+      </div>
+    </header>
+    <section class="map-view" aria-label="Painted 3D mountain">
+      <div id="mountain-view" class="mountain-canvas"></div>
+      <div class="mountain-heading"><h1 id="mountain-name">YOUR NEXT MOUNTAIN</h1><p id="mountain-description">Painted winter terrain</p></div>
+      <nav id="camera-controls" class="map-toolbar" aria-label="Camera controls">
+        <button id="orbit" aria-pressed="true" disabled><img class="icon" src="assets/mountain-icons/orbit.svg" alt="" />Orbit</button>
+        <button id="tilt" aria-pressed="false" disabled><img class="icon" src="assets/mountain-icons/move-vertical.svg" alt="" />Tilt</button>
+        <button id="reset" disabled><img class="icon" src="assets/mountain-icons/rotate-ccw.svg" alt="" />Reset view</button>
+      </nav>
+      <button id="fly-in" class="fly-in" hidden><img class="icon" src="assets/mountain-icons/mountain-snow.svg" alt="" /><span>Explore mountain</span></button>
+      <p id="loading" class="loading" role="status">Preparing the painted mountain…</p>
+      <div id="mountain-error" class="error-panel" role="alert" hidden><strong>The mountain could not load</strong><p></p><button id="reload">Reload mountain</button></div>
+      <div id="trail-selection" class="trail-selection" role="status" hidden><div><span></span><strong></strong></div><button id="close-trail" aria-label="Close trail details"><img class="icon" src="assets/mountain-icons/x.svg" alt="" /></button></div>
+      <div id="zoom-controls" class="zoom-controls">
+        <button id="zoom-in" aria-label="Zoom in" disabled><img class="icon" src="assets/mountain-icons/plus.svg" alt="" /></button>
+        <button id="zoom-out" aria-label="Zoom out" disabled><img class="icon" src="assets/mountain-icons/minus.svg" alt="" /></button>
+      </div>
+      <div id="trail-legend" class="map-legend" aria-label="Trail difficulty and layers" hidden>
+        <span><img class="icon" src="assets/mountain-icons/circle.svg" alt="" />Easy</span>
+        <span><img class="icon" src="assets/mountain-icons/square.svg" alt="" />Intermediate</span>
+        <span><img class="icon" src="assets/mountain-icons/diamond.svg" alt="" />Advanced</span>
+        <button id="lifts" aria-pressed="true" disabled><img class="icon" src="assets/mountain-icons/cable-car.svg" alt="" />Lifts</button>
+      </div>
+      <p id="coverage-note" class="coverage-note" hidden>Painted terrain only. Mapped trails and lifts are not available in this 3D view yet.</p>
+      <div id="map-hint" class="map-hint"><img class="icon" src="assets/mountain-icons/mouse.svg" alt="" /><span>Drag to rotate · Scroll to zoom</span></div>
+      <footer class="data-note"><a id="osm-credit" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a><span>Illustrative winter styling · Not live snow cover or trail status</span></footer>
+    </section>
+    <span id="map-status" class="sr-only" role="status">Loading real terrain.</span>
+  </main>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>
+  <script type="module" src="js/mountain-page.js?v=20261020-painted-mountains"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-import { FAVORITES_KEY } from './constants.js?v=20261019-chart-selection';
+import { FAVORITES_KEY } from './constants.js?v=20261020-painted-mountains';
 
 export function loadFavorites() {
   try {

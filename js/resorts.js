@@ -1,8 +1,8 @@
-import { RAW_RESORTS } from './constants.js?v=20261019-chart-selection';
+import { RAW_RESORTS } from './constants.js?v=20261020-painted-mountains';
 import {
   normalizeResortName, seeded, clamp, rangeRound,
   getRegion, getRegionLabel, getClimate, inferStatus, getStatusText
-} from './utils.js?v=20261019-chart-selection';
+} from './utils.js?v=20261020-painted-mountains';
 
 export function enrichResort(resort, index) {
   const region = getRegion(resort.lat, resort.lon);

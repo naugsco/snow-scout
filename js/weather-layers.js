@@ -1,4 +1,4 @@
-import { viewer } from './cesium-map.js?v=20261019-chart-selection';
+import { viewer } from './cesium-map.js?v=20261020-painted-mountains';
 
 // ============================================================
 // Weather layer state — supports multiple simultaneous layers

@@ -1,12 +1,13 @@
-import { state } from './state.js?v=20261019-chart-selection';
+import { state } from './state.js?v=20261020-painted-mountains';
 import {
   formatInches, formatTemperature, formatRunAccess, formatPassLabel,
   getPassTone, getSourceKeyForResort, getConditionsPageForResort, getWebcamPageForResort,
   withCacheBust, webcamStreams
-} from './utils.js?v=20261019-chart-selection';
-import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261019-chart-selection';
-import { createSnowfallChart } from './snowfall-chart.js?v=20261019-chart-selection';
-import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261019-chart-selection';
+} from './utils.js?v=20261020-painted-mountains';
+import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261020-painted-mountains';
+import { createSnowfallChart } from './snowfall-chart.js?v=20261020-painted-mountains';
+import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261020-painted-mountains';
+import { mountainUrl } from './mountain-config.js?v=20261020-painted-mountains';
 
 const detailOverlay = document.getElementById('detail-overlay');
 const detailPanel = document.getElementById('detail-panel');
@@ -211,6 +212,7 @@ export function renderDetailPanel() {
 
   detailOverlay.style.display = 'flex';
   detailName.textContent = resort.name;
+  document.getElementById('detail-mountain').href = mountainUrl(resort);
   const updateSuffix = resort.liveUpdatedAt
     ? ` · ${/^updated\b/i.test(resort.liveUpdatedAt) ? resort.liveUpdatedAt : `Updated ${resort.liveUpdatedAt}`}`
     : '';

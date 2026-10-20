@@ -11,8 +11,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
     output = parser.parse_args().output.resolve()
-    files = [ROOT / name for name in ('index.html', 'history.html', 'styles.css')]
+    files = [ROOT / name for name in (
+        'index.html', 'history.html', 'styles.css', 'mountain.html', 'mountain.css',
+        'assets/gouache-grain.png', 'assets/painted-conifer.png',
+        'assets/mountain-icons/LICENSE',
+        'data/trails/whistler.geojson',
+    )]
     files += sorted((ROOT / 'js').glob('*.js'))
+    files += sorted((ROOT / 'assets/mountain-icons').glob('*.svg'))
     files += sorted((ROOT / 'data').glob('resort-*.json'))
     files += sorted((ROOT / 'ski-webcams').glob('*.json'))
     for source in files:

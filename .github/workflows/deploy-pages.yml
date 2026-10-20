@@ -1,0 +1,45 @@
+name: Deploy Snow Scout
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+  workflow_run:
+    workflows: [Fetch Resort Data, Refresh Season Snowfall]
+    types: [completed]
+    branches: [main]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages-deployment
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify snowfall calculations and filtering
+        run: |
+          python3 -m unittest discover -s tests -p 'test_*.py'
+          node --test tests/snowfall.test.mjs
+      - name: Package public site
+        run: python3 scripts/package_site.py --output "$RUNNER_TEMP/snow-scout-site"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/snow-scout-site
+      - name: Publish
+        id: deployment
+        uses: actions/deploy-pages@v4

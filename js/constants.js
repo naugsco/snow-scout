@@ -92,7 +92,37 @@ export const RAW_RESORTS = [
   { name: "Panorama", lat: 50.4600, lon: -116.2350, pass: "ikon" },
   { name: "Schweitzer", lat: 48.3675, lon: -116.6225, pass: "ikon" },
   { name: "Sun Valley", lat: 43.6975, lon: -114.3514, pass: "ikon" },
-  { name: "Snowbasin", lat: 41.2161, lon: -111.8569, pass: "ikon" }
+  { name: "Snowbasin", lat: 41.2161, lon: -111.8569, pass: "ikon" },
+  // 2026/27 roster: https://mountaincollective.com/resorts/
+  // Coronet Peak and The Remarkables share a pass destination, but have separate conditions.
+  { name: "Alta", lat: 40.5884, lon: -111.6386, pass: "mountain-collective" },
+  { name: "Aspen Snowmass", lat: 39.2084, lon: -106.9490, pass: "mountain-collective" },
+  { name: "Big Sky", lat: 45.2836, lon: -111.4008, pass: "mountain-collective" },
+  { name: "Jackson Hole", lat: 43.5877, lon: -110.8279, pass: "mountain-collective" },
+  { name: "Snowbasin", lat: 41.2161, lon: -111.8569, pass: "mountain-collective" },
+  { name: "Snowbird", lat: 40.5830, lon: -111.6508, pass: "mountain-collective" },
+  { name: "Sugarloaf", lat: 45.0314, lon: -70.3131, pass: "mountain-collective" },
+  { name: "Sun Valley", lat: 43.6975, lon: -114.3514, pass: "mountain-collective" },
+  { name: "Sunday River", lat: 44.4728, lon: -70.8572, pass: "mountain-collective" },
+  { name: "Taos", lat: 36.5964, lon: -105.4542, pass: "mountain-collective" },
+  { name: "Panorama", lat: 50.4600, lon: -116.2350, pass: "mountain-collective" },
+  { name: "Revelstoke", lat: 51.0267, lon: -118.1631, pass: "mountain-collective" },
+  { name: "Sun Peaks", lat: 50.8833, lon: -119.8833, pass: "mountain-collective" },
+  { name: "Niseko United", lat: 42.8625, lon: 140.6875, pass: "mountain-collective" },
+  { name: "Chamonix (Mont Blanc)", lat: 45.9237, lon: 6.8694, pass: "mountain-collective" },
+  { name: "Valle Nevado", lat: -33.3583, lon: -70.2678, pass: "mountain-collective" },
+  { name: "Grand Targhee", lat: 43.7903, lon: -110.9578, pass: "mountain-collective" },
+  { name: "Sugar Bowl", lat: 39.3044, lon: -120.3358, pass: "mountain-collective" },
+  { name: "Whiteface", lat: 44.3659, lon: -73.9026, pass: "mountain-collective" },
+  { name: "Banff Sunshine", lat: 51.0783, lon: -115.7828, pass: "mountain-collective" },
+  { name: "Bromont", lat: 45.3017, lon: -72.6372, pass: "mountain-collective" },
+  { name: "Lake Louise", lat: 51.4419, lon: -116.1617, pass: "mountain-collective" },
+  { name: "Le Massif de Charlevoix", lat: 47.2786, lon: -70.5664, pass: "mountain-collective" },
+  { name: "Marmot Basin", lat: 52.8006, lon: -118.0833, pass: "mountain-collective" },
+  { name: "Megève", lat: 45.8569, lon: 6.6178, pass: "mountain-collective" },
+  { name: "Mt Buller", lat: -37.1466, lon: 146.4494, pass: "mountain-collective" },
+  { name: "Coronet Peak", lat: -44.9265, lon: 168.7371, pass: "mountain-collective" },
+  { name: "The Remarkables", lat: -45.0522, lon: 168.8142, pass: "mountain-collective" }
 ];
 
 export const DEFAULT_WEBCAM_PAGES = {
@@ -160,9 +190,10 @@ export const DEFAULT_WEBCAM_PAGES = {
 
 export const PASS_FILTERS = [
   { id: "all", label: "All Resorts" },
-  { id: "favorites", label: "Favorites" },
+  { id: "favorites", label: "★ Favorites" },
   { id: "epic", label: "Epic Pass" },
-  { id: "ikon", label: "Ikon Pass" }
+  { id: "ikon", label: "Ikon Pass" },
+  { id: "mountain-collective", label: "Mountain Collective" }
 ];
 
 export const REGION_FILTERS = [
@@ -181,6 +212,18 @@ export const SELECTED_MARKER_HEIGHT = 520;
 export const FAVORITES_KEY = "snow-scout-favorites";
 
 export const DEFAULT_CONDITION_PAGES = {
+  "the remarkables": "https://www.theremarkables.co.nz/",
+  "coronet peak": "https://www.coronetpeak.co.nz/",
+  "mt buller": "https://www.mtbuller.com.au/",
+  "meg ve": "https://forfaits.megeve.com/",
+  "marmot basin": "https://www.skimarmot.com/",
+  "le massif de charlevoix": "https://www.lemassif.com/",
+  "lake louise": "https://www.skilouise.com/",
+  "bromont": "https://www.bromontmontagne.com/",
+  "banff sunshine": "https://www.skibanff.com/",
+  "whiteface": "https://whiteface.com/",
+  "sugar bowl": "https://www.sugarbowl.com/",
+  "grand targhee": "https://www.grandtarghee.com/",
   "copper mountain": "https://www.coppercolorado.com/the-mountain/conditions-weather/snow-report/",
   "snowbird": "https://www.snowbird.com/the-mountain/mountain-report/current-conditions-weather/",
   "solitude": "https://www.solitudemountain.com/mountain-and-village/conditions-and-maps"

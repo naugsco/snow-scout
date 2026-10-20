@@ -1,8 +1,11 @@
 name: Fetch Resort Data
 on:
   schedule:
-    - cron: '0 */4 * 11,12,1,2,3,4 *'  # every 4h, Nov-Apr
+    - cron: '0 */4 * * *'  # Northern and southern ski seasons
   workflow_dispatch: {}
+concurrency:
+  group: resort-data-updates
+  cancel-in-progress: false
 jobs:
   fetch:
     runs-on: ubuntu-latest

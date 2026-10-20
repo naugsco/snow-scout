@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snowfall History · Snow Scout</title>
+  <link rel="stylesheet" href="styles.css?v=20261019-snowfall" />
+</head>
+<body class="history-page">
+  <main class="history-main">
+    <header class="brand-row">
+      <a class="brand-lockup" href="./" aria-label="Snow Scout conditions"><div class="brand-badge">△</div><div class="brand-copy"><h1>Snow Scout</h1><p>Chase the storm. Find the powder.</p></div></a>
+      <nav class="history-nav" aria-label="Main navigation"><a class="ghost-btn" href="./">Conditions</a><a class="ghost-btn active" href="history.html" aria-current="page">History</a></nav>
+      <button id="history-theme" class="ghost-btn" type="button" aria-label="Toggle light or dark theme">☾</button>
+      <button id="history-units" class="ghost-btn" type="button" aria-label="Switch snowfall units">in → cm</button>
+    </header>
+    <section class="history-intro"><p class="history-eyebrow">THE SEASON, IN PERSPECTIVE</p><h2>Snowfall history</h2><p>Compare all available ski seasons by resort and ski pass. Clearly labeled weather-model estimates.</p></section>
+    <form id="history-filters" class="history-filters" aria-label="Filter snowfall history">
+      <label>Ski pass<select id="history-pass"><option value="all">All passes</option><option value="epic">Epic Pass</option><option value="ikon">Ikon Pass</option><option value="mountain-collective">Mountain Collective</option></select></label>
+      <label>Season<select id="history-season"><option value="all">All past seasons</option></select></label>
+      <label class="history-search">Resort<input id="history-resort" type="search" placeholder="Search resorts…" /></label>
+      <label>Min snowfall <span class="history-unit">(in)</span><input id="history-min" type="number" min="0" step="any" placeholder="0" /></label>
+      <label>Max snowfall <span class="history-unit">(in)</span><input id="history-max" type="number" min="0" step="any" placeholder="No limit" /></label>
+      <button id="history-reset" class="ghost-btn" type="reset">Reset</button>
+    </form>
+    <p id="history-range-error" class="snowfall-error" role="alert" hidden>Enter a nonnegative snowfall range with minimum no greater than maximum.</p>
+    <section id="history-pass-summary" class="history-pass-summary" aria-label="Snowfall by ski pass"></section>
+    <div class="history-results-heading"><h3>Resort season totals</h3><span id="history-count" role="status">Loading…</span><label>Sort<select id="history-sort"><option value="snow-desc">Most snowfall</option><option value="snow-asc">Least snowfall</option><option value="resort">Resort A–Z</option><option value="season">Newest season</option></select></label></div>
+    <p id="history-status" class="snowfall-note" role="status">Loading snowfall records…</p>
+    <div class="history-table-wrap"><table class="history-table"><caption class="visually-hidden">ERA5 estimated snowfall by resort and completed ski season. Values use the selected units.</caption><thead><tr><th scope="col">Resort</th><th scope="col">Pass</th><th scope="col">Season</th><th scope="col" class="history-snow-heading">Total snowfall <span class="history-unit">(in)</span></th><th scope="col">Source</th></tr></thead><tbody id="history-rows"></tbody></table></div>
+    <div class="history-pagination" aria-label="History pagination"><button id="history-prev" class="ghost-btn" type="button" disabled>← Previous</button><span id="history-page-count"></span><button id="history-next" class="ghost-btn" type="button" disabled>Next →</button></div>
+    <p id="history-empty" class="history-empty" hidden>No records match these filters. Try another season, resort, or snowfall range.</p>
+    <footer class="history-footnote"><p>Totals are weather-model estimates near each resort, not mountain measurements. Northern seasons run July 1–June 30; southern seasons run January 1–December 31. Days use UTC. Only seasons with every day available enter historical comparisons.</p><p>Pass groups use the site's current resort memberships, not historical pass affiliations. Resorts on multiple passes appear in each relevant summary. Pass totals sum available resort-season estimates; compare coverage alongside totals.</p><p>Source: <a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Open-Meteo / ECMWF ERA5</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. Daily snowfall is summed and converted from centimeters. The model has approximately 25 km resolution and arrives about five days late. Estimates can differ from resort snow stakes and include years before resorts opened.</p><p id="history-updated"></p><a href="./">← Back to current conditions</a></footer>
+  </main>
+  <script type="module" src="js/history.js"></script>
+</body>
+</html>

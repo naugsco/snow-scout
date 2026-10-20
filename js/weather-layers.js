@@ -1,18 +1,20 @@
-import { viewer } from './cesium-map.js';
+import { viewer } from './cesium-map.js?v=20261019-snowfall';
 
 // ============================================================
-// Weather layer state
+// Weather layer state — supports multiple simultaneous layers
 // ============================================================
-let activeLayer = null;       // current Cesium ImageryLayer
-let activeLayerId = null;     // 'radar' | 'clouds' | 'precipitation' | 'snow' | 'temp'
+const activeLayers = new Map();   // layerId → Cesium ImageryLayer (for OWM layers)
 let layerOpacity = 0.6;
-let radarFrames = [];         // [{time, path}]
+let radarFrames = [];         // [{time, path, forecast?}]
 let radarFrameIndex = -1;
 let radarAnimTimer = null;
 let radarHost = '';
 let onFrameChange = null;     // callback for UI updates
 let owmKey = null;            // loaded from config.json
 let owmKeyLoaded = false;
+
+// Pre-cached radar imagery layers for smooth animation (no blinking)
+let radarLayers = [];         // parallel array to radarFrames
 
 // ============================================================
 // Config loader — fetch API key from gitignored config
@@ -60,6 +62,30 @@ function createRadarProvider(frame) {
   });
 }
 
+/**
+ * Pre-add all radar frames as hidden imagery layers so we can
+ * swap between them instantly (toggle show/alpha) without the
+ * add-remove cycle that causes blinking.
+ */
+function buildRadarLayerCache() {
+  // Remove any existing cached layers
+  clearRadarLayerCache();
+  radarLayers = radarFrames.map((frame) => {
+    const provider = createRadarProvider(frame);
+    const layer = viewer.imageryLayers.addImageryProvider(provider);
+    layer.alpha = 0;   // hidden initially
+    layer.show = false;
+    return layer;
+  });
+}
+
+function clearRadarLayerCache() {
+  radarLayers.forEach((layer) => {
+    try { viewer.imageryLayers.remove(layer, false); } catch { /* already removed */ }
+  });
+  radarLayers = [];
+}
+
 // ============================================================
 // OpenWeatherMap layers (cached providers to avoid redundant tile fetches)
 // ============================================================
@@ -95,7 +121,18 @@ export function getLayerOpacity() {
 }
 
 export function getActiveLayerId() {
-  return activeLayerId;
+  // Return first active layer for backwards compat, or null
+  if (activeLayers.size === 0 && !radarLayers.length) return null;
+  // Check radar first
+  if (radarLayers.length) return 'radar';
+  const ids = Array.from(activeLayers.keys());
+  return ids[0] || null;
+}
+
+export function getActiveLayerIds() {
+  const ids = new Set(activeLayers.keys());
+  if (radarLayers.length) ids.add('radar');
+  return ids;
 }
 
 export function getRadarFrames() {
@@ -110,65 +147,107 @@ export function isAnimating() {
   return radarAnimTimer !== null;
 }
 
-export function removeActiveLayer() {
-  if (activeLayer) {
-    viewer.imageryLayers.remove(activeLayer, false);
-    activeLayer = null;
+export function isLayerActive(id) {
+  if (id === 'radar') return radarLayers.length > 0;
+  return activeLayers.has(id);
+}
+
+export function removeLayer(id) {
+  if (id === 'radar') {
+    stopRadarAnimation();
+    clearRadarLayerCache();
+    radarFrameIndex = -1;
+  } else if (activeLayers.has(id)) {
+    const layer = activeLayers.get(id);
+    viewer.imageryLayers.remove(layer, false);
+    activeLayers.delete(id);
   }
+}
+
+export function removeAllLayers() {
+  // Remove all OWM layers
+  activeLayers.forEach((layer) => {
+    viewer.imageryLayers.remove(layer, false);
+  });
+  activeLayers.clear();
+  // Clear radar
   stopRadarAnimation();
-  activeLayerId = null;
+  clearRadarLayerCache();
   radarFrameIndex = -1;
 }
 
-export async function showLayer(id) {
-  removeActiveLayer();
-  activeLayerId = id;
+export async function toggleLayer(id) {
+  if (isLayerActive(id)) {
+    removeLayer(id);
+    return;
+  }
+  await addLayer(id);
+}
+
+export async function addLayer(id) {
+  if (isLayerActive(id)) return;
 
   if (id === 'radar') {
     if (!radarFrames.length) await fetchRadarFrames();
     if (!radarFrames.length) return;
-    radarFrameIndex = radarFrames.length - 1; // start at most recent
-    const provider = createRadarProvider(radarFrames[radarFrameIndex]);
-    activeLayer = viewer.imageryLayers.addImageryProvider(provider);
-    activeLayer.alpha = layerOpacity;
+    buildRadarLayerCache();
+    radarFrameIndex = radarFrames.length - 1;
+    radarLayers[radarFrameIndex].show = true;
+    radarLayers[radarFrameIndex].alpha = layerOpacity;
     if (onFrameChange) onFrameChange();
   } else if (OWM_LAYERS[id]) {
     const key = await ensureOwmKey();
-    if (!key) {
-      activeLayerId = null;
-      return;
-    }
+    if (!key) return;
     const provider = createOwmProvider(OWM_LAYERS[id], key);
-    activeLayer = viewer.imageryLayers.addImageryProvider(provider);
-    activeLayer.alpha = layerOpacity;
+    const layer = viewer.imageryLayers.addImageryProvider(provider);
+    layer.alpha = layerOpacity;
+    activeLayers.set(id, layer);
   }
+}
+
+// Legacy single-layer API (kept for backwards compat)
+export function removeActiveLayer() {
+  removeAllLayers();
+}
+
+export async function showLayer(id) {
+  await toggleLayer(id);
 }
 
 export function setLayerOpacity(value) {
   layerOpacity = value;
-  if (activeLayer) activeLayer.alpha = value;
+  // Update all active OWM layers
+  activeLayers.forEach((layer) => {
+    layer.alpha = value;
+  });
+  // Also update the currently visible radar frame
+  if (radarLayers.length && radarFrameIndex >= 0 && radarFrameIndex < radarLayers.length) {
+    radarLayers[radarFrameIndex].alpha = value;
+  }
 }
 
 // ============================================================
-// Radar animation
+// Radar animation — smooth frame swapping via show/hide
 // ============================================================
 export function showRadarFrame(index) {
-  if (!radarFrames.length || index < 0 || index >= radarFrames.length) return;
-  radarFrameIndex = index;
-  if (activeLayer) {
-    viewer.imageryLayers.remove(activeLayer, false);
+  if (!radarLayers.length || index < 0 || index >= radarLayers.length) return;
+  // Hide current frame
+  if (radarFrameIndex >= 0 && radarFrameIndex < radarLayers.length) {
+    radarLayers[radarFrameIndex].show = false;
+    radarLayers[radarFrameIndex].alpha = 0;
   }
-  const provider = createRadarProvider(radarFrames[index]);
-  activeLayer = viewer.imageryLayers.addImageryProvider(provider);
-  activeLayer.alpha = layerOpacity;
+  // Show new frame
+  radarFrameIndex = index;
+  radarLayers[index].show = true;
+  radarLayers[index].alpha = layerOpacity;
   if (onFrameChange) onFrameChange();
 }
 
 export function startRadarAnimation(intervalMs = 500) {
   if (radarAnimTimer) return;
-  if (!radarFrames.length) return;
+  if (!radarLayers.length) return;
   radarAnimTimer = setInterval(() => {
-    const next = (radarFrameIndex + 1) % radarFrames.length;
+    const next = (radarFrameIndex + 1) % radarLayers.length;
     showRadarFrame(next);
   }, intervalMs);
 }

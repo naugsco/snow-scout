@@ -1,9 +1,10 @@
-import { PASS_FILTERS, REGION_FILTERS } from './constants.js';
-import { state, saveFavorites } from './state.js';
-import { resorts } from './resorts.js';
+import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261019-snowfall';
+import { state, saveFavorites } from './state.js?v=20261019-snowfall';
+import { resorts } from './resorts.js?v=20261019-snowfall';
 import {
   formatInches, formatRunAccess, formatPassLabel, getPassTone
-} from './utils.js';
+} from './utils.js?v=20261019-snowfall';
+import { getResortLogoUrl } from './resort-logos.js?v=20261019-snowfall';
 
 const resortListEl = document.getElementById('resort-list');
 const resortCount = document.getElementById('resort-count');
@@ -22,6 +23,7 @@ export function baseFilteredResorts() {
       if (state.passFilter === 'favorites' && !state.favorites.has(resort.id)) return false;
       if (state.passFilter === 'epic' && !resort.passes.includes('epic')) return false;
       if (state.passFilter === 'ikon' && !resort.passes.includes('ikon')) return false;
+      if (state.passFilter === 'mountain-collective' && !resort.passes.includes('mountain-collective')) return false;
       if (state.regionFilter !== 'all' && resort.region !== state.regionFilter) return false;
       return true;
     })
@@ -120,7 +122,7 @@ export function renderDashboard() {
   // Update fresh button label to reflect current mode
   const freshLabel = freshFilterButton.querySelector('span');
   const freshCount = state.freshMode === '48h' ? fresh48.length : fresh24.length;
-  if (freshLabel) freshLabel.textContent = `Fresh Snow (${state.freshMode})`;
+  if (freshLabel) freshLabel.textContent = `❄ Fresh Snow (${state.freshMode})`;
 
   incomingCountEl.textContent = incoming.length;
   freshCountEl.textContent = freshCount;
@@ -135,6 +137,40 @@ export function renderDashboard() {
     ? `${visible.length} ${countLabel} resort${visible.length === 1 ? '' : 's'}`
     : `${visible.length} resort${visible.length === 1 ? '' : 's'}`;
   resortListEl.innerHTML = '';
+
+  // Render "Best Bet Today" hero card
+  const bestBetContainer = document.getElementById('best-bet');
+  if (bestBetContainer) {
+    const allBase = baseFilteredResorts();
+    // Pick the resort with the highest composite score
+    const bestBet = allBase[0]; // already sorted by score
+    if (bestBet && state.statusFilter === 'all' && !state.searchQuery) {
+      const snow = bestBet.metrics.snow24h;
+      const forecast = bestBet.metrics.forecast72h;
+      bestBetContainer.innerHTML = `
+        <div class="best-bet-card" data-resort-id="${bestBet.id}">
+          <span class="best-bet-badge">❄ Best Bet Today</span>
+          <div class="best-bet-info">
+            <span class="best-bet-name">${bestBet.name}</span>
+            <div class="best-bet-stats">
+              <span>❄ <strong>${formatInches(snow)}</strong> fresh</span>
+              <span>⛈ <strong>${formatInches(forecast)}</strong> next 72h</span>
+              <span>🎿 <strong>${bestBet.metrics.runsOpen}/${bestBet.metrics.runsTotal}</strong> open</span>
+            </div>
+          </div>
+          <span class="best-bet-arrow">→</span>
+        </div>
+      `;
+      bestBetContainer.style.display = 'block';
+      // Add click handler
+      bestBetContainer.querySelector('.best-bet-card').addEventListener('click', () => {
+        if (onResortClick) onResortClick(bestBet);
+      });
+    } else {
+      bestBetContainer.innerHTML = '';
+      bestBetContainer.style.display = 'none';
+    }
+  }
 
   // Compute heatmap range when a status filter is active
   let heatmapMetric = null;
@@ -175,7 +211,8 @@ export function renderDashboard() {
 
   shortlist.forEach((resort) => {
     const item = document.createElement('div');
-    item.className = `resort-item ${state.selectedId === resort.id ? 'selected' : ''}`;
+    const isPowderDay = resort.metrics.snow24h >= 12;
+    item.className = `resort-item status-${resort.status} ${isPowderDay ? 'powder-day' : ''} ${state.selectedId === resort.id ? 'selected' : ''}`;
 
     if (heatmapMetric && heatmapColor) {
       const val = resort.metrics[heatmapMetric] ?? 0;
@@ -196,7 +233,7 @@ export function renderDashboard() {
 
     item.innerHTML = `
       <div class="card-head">
-        <span class="status-dot ${resort.status}"></span>
+        <img class="resort-logo" src="${getResortLogoUrl(resort.name) || ''}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" /><span class="resort-logo-fallback" style="display:none">${resort.name.charAt(0)}</span>
         <strong>
           ${resort.name}
           <span class="pass-tag ${getPassTone(resort)}">${formatPassLabel(resort)}</span>
@@ -209,14 +246,14 @@ export function renderDashboard() {
       <div class="meta">${resort.regionLabel} · ${resort.statusText}</div>
       <div class="card-data-row">
         <div class="data-section">
-          <span class="data-section-label">Recent Snow</span>
+          <span class="data-section-label">❄ Recent Snow</span>
           <div class="data-section-items">
-            <div class="data-col"><div class="data-bar"><div class="data-bar-fill fresh-bar" style="height:${Math.min(100, (resort.metrics.snow24h / sMax) * 100)}%"></div></div><strong>${formatInches(resort.metrics.snow24h)}</strong><span>24h</span></div>
-            <div class="data-col"><div class="data-bar"><div class="data-bar-fill fresh-bar" style="height:${Math.min(100, (resort.metrics.snow48h / sMax) * 100)}%"></div></div><strong>${formatInches(resort.metrics.snow48h)}</strong><span>48h</span></div>
+            <div class="data-col"><div class="data-bar"><div class="data-bar-fill fresh-bar" style="height:${Math.min(100, (resort.metrics.snow24h / sMax) * 100)}%"></div></div><strong>❄${formatInches(resort.metrics.snow24h)}</strong><span>24h</span></div>
+            <div class="data-col"><div class="data-bar"><div class="data-bar-fill fresh-bar" style="height:${Math.min(100, (resort.metrics.snow48h / sMax) * 100)}%"></div></div><strong>❄${formatInches(resort.metrics.snow48h)}</strong><span>48h</span></div>
           </div>
         </div>
         <div class="data-section">
-          <span class="data-section-label">Next 3 Days</span>
+          <span class="data-section-label">⛷ Next 3 Days</span>
           <div class="data-section-items">
             <div class="data-col"><div class="data-bar"><div class="data-bar-fill forecast-bar" style="height:${Math.min(100, (d1 / fMax) * 100)}%"></div></div><strong>${formatInches(d1)}</strong><span>D1</span></div>
             <div class="data-col"><div class="data-bar"><div class="data-bar-fill forecast-bar" style="height:${Math.min(100, (d2 / fMax) * 100)}%"></div></div><strong>${formatInches(d2)}</strong><span>D2</span></div>
@@ -224,7 +261,7 @@ export function renderDashboard() {
           </div>
         </div>
         <div class="data-section data-section-compact">
-          <span class="data-section-label">Runs</span>
+          <span class="data-section-label">🎿 Runs</span>
           <div class="data-section-items">
             <div class="data-col"><strong class="runs-val">${formatRunAccess(resort.metrics, true)}</strong><span>Open</span></div>
           </div>
@@ -275,7 +312,7 @@ export function renderUpdatedAt() {
   else if (mins < 60) ago = `${mins}m ago`;
   else if (mins < 1440) ago = `${Math.floor(mins / 60)}h ago`;
   else ago = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
-  el.textContent = `Conditions updated ${ago}`;
+  el.textContent = `Conditions updated ${ago}${state.conditionErrorCount ? ` · ${state.conditionErrorCount} condition feeds unavailable` : ''}`;
   el.style.display = 'block';
 }
 

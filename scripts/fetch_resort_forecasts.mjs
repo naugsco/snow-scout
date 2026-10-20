@@ -59,7 +59,24 @@ const RESORT_LOCATIONS = [
   { key: "mount snow", lat: 42.9603, lon: -72.9206 },
   { key: "attitash", lat: 44.0833, lon: -71.2292 },
   { key: "hunter", lat: 42.2028, lon: -74.2258 },
-  { key: "seven springs", lat: 40.0231, lon: -79.2978 }
+  { key: "seven springs", lat: 40.0231, lon: -79.2978 },
+  { key: "panorama", lat: 50.4600, lon: -116.2350 },
+  { key: "sun peaks", lat: 50.8833, lon: -119.8833 },
+  { key: "niseko united", lat: 42.8625, lon: 140.6875 },
+  { key: "chamonix", lat: 45.9237, lon: 6.8694 },
+  { key: "valle nevado", lat: -33.3583, lon: -70.2678 },
+  { key: "grand targhee", lat: 43.7903, lon: -110.9578 },
+  { key: "sugar bowl", lat: 39.3044, lon: -120.3358 },
+  { key: "whiteface", lat: 44.3659, lon: -73.9026 },
+  { key: "banff sunshine", lat: 51.0783, lon: -115.7828 },
+  { key: "bromont", lat: 45.3017, lon: -72.6372 },
+  { key: "lake louise", lat: 51.4419, lon: -116.1617 },
+  { key: "le massif de charlevoix", lat: 47.2786, lon: -70.5664 },
+  { key: "marmot basin", lat: 52.8006, lon: -118.0833 },
+  { key: "meg ve", lat: 45.8569, lon: 6.6178 },
+  { key: "mt buller", lat: -37.1466, lon: 146.4494 },
+  { key: "coronet peak", lat: -44.9265, lon: 168.7371 },
+  { key: "the remarkables", lat: -45.0522, lon: 168.8142 }
 ];
 
 function sleep(ms) {

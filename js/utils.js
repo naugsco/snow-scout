@@ -1,4 +1,5 @@
-import { RESORT_SOURCE_ALIASES } from './constants.js';
+import { RESORT_SOURCE_ALIASES } from './constants.js?v=20261019-snowfall';
+import { state } from './state.js?v=20261019-snowfall';
 
 export function normalizeResortName(name) {
   return name
@@ -83,6 +84,11 @@ export function getSourceKeyForResort(name) {
 
 export function formatInches(value, fallback = '—') {
   if (!Number.isFinite(value)) return fallback;
+  if (state.useMetric) {
+    const cm = value * 2.54;
+    const rounded = Math.abs(cm - Math.round(cm)) < 0.5 ? Math.round(cm) : Math.round(cm * 10) / 10;
+    return `${rounded}cm`;
+  }
   const rounded = Math.abs(value - Math.round(value)) < 0.05
     ? Math.round(value)
     : Math.round(value * 10) / 10;
@@ -91,6 +97,10 @@ export function formatInches(value, fallback = '—') {
 
 export function formatTemperature(value, fallback = '—') {
   if (!Number.isFinite(value)) return fallback;
+  if (state.useMetric) {
+    const c = (value - 32) * 5 / 9;
+    return `${Math.round(c)}°C`;
+  }
   return `${Math.round(value)}°F`;
 }
 
@@ -115,8 +125,8 @@ export function formatRunAccess(metrics, compact = false) {
 }
 
 export function formatPassLabel(resort) {
-  if (resort.passes.length > 1) return 'Epic + Ikon';
-  return resort.passes[0] === 'epic' ? 'Epic Pass' : 'Ikon Pass';
+  const labels = { epic: 'Epic Pass', ikon: 'Ikon Pass', 'mountain-collective': 'Mountain Collective' };
+  return resort.passes.map((pass) => labels[pass]).join(' + ');
 }
 
 export function buildForecastUrl(resort) {
@@ -132,6 +142,8 @@ export function buildForecastUrl(resort) {
 }
 
 export function getConditionsReliability(resort) {
+  if (resort.liveConditionsStatus === 'error') return 'Feed unavailable';
+  if (resort.liveConditionsKind === 'model') return 'Weather Model';
   if (resort.liveConditionsStatus === 'ready') return 'Official Live';
   if (getConditionsPageForResort(resort)) return 'Official Link';
   return 'Estimated';

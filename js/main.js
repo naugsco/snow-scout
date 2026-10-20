@@ -1,26 +1,28 @@
-import { DEFAULT_WEBCAM_PAGES } from './constants.js';
-import { state } from './state.js';
-import { normalizeResortName, getSourceKeyForResort, webcamPages, withCacheBust } from './utils.js';
-import { resorts } from './resorts.js';
+import { DEFAULT_WEBCAM_PAGES } from './constants.js?v=20261019-snowfall';
+import { loadSeasonChart, renderSeasonChart } from './season-chart.js';
+import { state, setUseMetric, setTheme } from './state.js?v=20261019-snowfall';
+import { normalizeResortName, getSourceKeyForResort, webcamPages, withCacheBust } from './utils.js?v=20261019-snowfall';
+import { resorts } from './resorts.js?v=20261019-snowfall';
 import {
   viewer, createMarkerEntity, updateMarkerVisibility, updateMarkerStyles,
   syncHoverCardToEntity, screenSpaceHandler, resortForScreenPosition,
-  flyToResort, updateZoomReadout, autoRotate, setAutoRotate
-} from './cesium-map.js';
-import { loadOptionalSourceData, loadLiveForecastForResort } from './data-loader.js';
+  flyToResort, updateZoomReadout, autoRotate, setAutoRotate,
+  applyGlobeStyle, GLOBE_STYLE_IDS
+} from './cesium-map.js?v=20261019-snowfall';
+import { loadOptionalSourceData, loadLiveForecastForResort } from './data-loader.js?v=20261019-snowfall';
 import {
   renderDashboard, renderFilters, renderUpdatedAt, renderStormBanner,
   filteredResorts, ensureSelectionVisible, toggleFavorite, setOnResortClick,
   setOnCompareToggle, baseFilteredResorts, applyStatusFilter
-} from './dashboard.js';
-import { renderDetailPanel, setActiveTab } from './detail-panel.js';
-import { parseHash, updateHash, initRouter } from './router.js';
-import { toggleCompareResort, clearCompare } from './comparison.js';
+} from './dashboard.js?v=20261019-snowfall';
+import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261019-snowfall';
+import { parseHash, updateHash, initRouter } from './router.js?v=20261019-snowfall';
+import { toggleCompareResort, clearCompare } from './comparison.js?v=20261019-snowfall';
 import {
-  showLayer, removeActiveLayer, setLayerOpacity, getActiveLayerId,
+  toggleLayer, removeAllLayers, setLayerOpacity, getActiveLayerIds, isLayerActive,
   toggleRadarAnimation, isAnimating, showRadarFrame, getRadarFrames,
   getRadarFrameIndex, formatRadarTime, setOnFrameChange, getLayerOpacity
-} from './weather-layers.js';
+} from './weather-layers.js?v=20261019-snowfall';
 
 // Initialize webcamPages with defaults
 Object.assign(webcamPages, DEFAULT_WEBCAM_PAGES);
@@ -54,6 +56,25 @@ window.__SNOW_SCOUT__ = {
 // Core orchestration
 function syncHash() {
   updateHash(state, resorts);
+}
+
+function updateGlobeStyleControls() {
+  document.querySelectorAll('.globe-style-btn').forEach((button) => {
+    button.classList.toggle('active', button.dataset.style === state.globeStyle);
+  });
+}
+
+function setGlobeStyle(styleId, { sync = true } = {}) {
+  const nextStyle = GLOBE_STYLE_IDS.includes(styleId) ? styleId : 'default';
+  if (state.globeStyle === nextStyle) {
+    updateGlobeStyleControls();
+    return;
+  }
+  state.globeStyle = nextStyle;
+  applyGlobeStyle(nextStyle);
+  updateMarkerStyles();
+  updateGlobeStyleControls();
+  if (sync) syncHash();
 }
 
 function focusResort(resort, options = {}) {
@@ -121,10 +142,39 @@ function selectStatusFilter(id) {
 const searchInput = document.getElementById('search-input');
 const sortSelect = document.getElementById('sort-select');
 const hoverCard = document.getElementById('hover-card');
+const globeStyleButtons = document.querySelectorAll('.globe-style-btn');
 
 document.getElementById('focus-top-btn').addEventListener('click', () => {
   const resort = filteredResorts()[0];
   if (resort) focusResort(resort, { fly: true, openPanel: true });
+});
+
+globeStyleButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    setGlobeStyle(button.dataset.style);
+  });
+});
+
+// Theme toggle (dark ↔ light)
+const themeToggleBtn = document.getElementById('theme-toggle');
+if (state.theme === 'light') document.body.setAttribute('data-theme', 'light');
+themeToggleBtn.textContent = state.theme === 'light' ? '☀' : '☾';
+themeToggleBtn.addEventListener('click', () => {
+  const newTheme = state.theme === 'light' ? 'dark' : 'light';
+  setTheme(newTheme);
+  themeToggleBtn.textContent = newTheme === 'light' ? '☀' : '☾';
+});
+
+// Unit toggle (imperial ↔ metric)
+const unitToggleBtn = document.getElementById('unit-toggle');
+unitToggleBtn.textContent = state.useMetric ? '°C' : '°F';
+unitToggleBtn.addEventListener('click', () => {
+  setUseMetric(!state.useMetric);
+  unitToggleBtn.textContent = state.useMetric ? '°C' : '°F';
+  renderSeasonChart();
+  renderDashboard();
+  renderStormBanner();
+  if (state.selectedId) renderDetailPanel();
 });
 
 document.getElementById('incoming-filter').addEventListener('click', () => {
@@ -180,13 +230,6 @@ document.querySelectorAll('.tab-btn').forEach((button) => {
   button.addEventListener('click', () => { setActiveTab(button.dataset.tab); syncHash(); });
 });
 
-document.getElementById('detail-sources').addEventListener('click', (event) => {
-  const button = event.target.closest('.source-link');
-  if (!button?.dataset.tab) return;
-  setActiveTab(button.dataset.tab);
-  syncHash();
-});
-
 searchInput.addEventListener('input', () => {
   state.searchQuery = searchInput.value;
   state.showAllResorts = false;
@@ -217,12 +260,12 @@ const radarBadgeEl = document.getElementById('radar-badge');
 const weatherOpacityInput = document.getElementById('weather-opacity');
 
 function updateWeatherBtnStates() {
-  const activeId = getActiveLayerId();
+  const activeIds = getActiveLayerIds();
   document.querySelectorAll('.weather-layer-btn').forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.layer === activeId);
+    btn.classList.toggle('active', activeIds.has(btn.dataset.layer));
   });
-  radarControlsEl.style.display = activeId === 'radar' ? 'flex' : 'none';
-  weatherToggleBtn.classList.toggle('active', !!activeId);
+  radarControlsEl.style.display = isLayerActive('radar') ? 'flex' : 'none';
+  weatherToggleBtn.classList.toggle('active', activeIds.size > 0);
 }
 
 function updateRadarUI() {
@@ -247,7 +290,7 @@ weatherToggleBtn.addEventListener('click', () => {
   const isOpen = weatherPanel.classList.contains('visible');
   if (isOpen) {
     weatherPanel.classList.remove('visible');
-    removeActiveLayer();
+    removeAllLayers();
     updateWeatherBtnStates();
   } else {
     weatherPanel.classList.add('visible');
@@ -256,19 +299,13 @@ weatherToggleBtn.addEventListener('click', () => {
 
 document.getElementById('weather-close').addEventListener('click', () => {
   weatherPanel.classList.remove('visible');
-  removeActiveLayer();
+  removeAllLayers();
   updateWeatherBtnStates();
 });
 
 document.querySelectorAll('.weather-layer-btn').forEach((btn) => {
   btn.addEventListener('click', () => {
-    const layerId = btn.dataset.layer;
-    if (getActiveLayerId() === layerId) {
-      removeActiveLayer();
-    } else {
-      showLayer(layerId);
-    }
-    updateWeatherBtnStates();
+    toggleLayer(btn.dataset.layer).then(() => updateWeatherBtnStates());
   });
 });
 
@@ -285,7 +322,21 @@ radarScrubber.addEventListener('input', () => {
   showRadarFrame(Number(radarScrubber.value));
 });
 
+// Mobile map toggle
+const mobileMapToggle = document.getElementById('mobile-map-toggle');
+const mapArea = document.querySelector('.map-area');
+mobileMapToggle.addEventListener('click', () => {
+  const showing = mapArea.classList.toggle('mobile-visible');
+  mobileMapToggle.classList.toggle('active', showing);
+  document.getElementById('mobile-map-toggle-label').textContent = showing ? 'Hide Map' : 'Show Map';
+  if (showing) {
+    // Cesium needs a resize nudge after becoming visible
+    setTimeout(() => viewer.resize(), 50);
+  }
+});
+
 document.addEventListener('keydown', (event) => {
+  if (event.target.closest('#season-chart')) return;
   if (event.key === '/' && document.activeElement !== searchInput) {
     event.preventDefault();
     searchInput.focus();
@@ -398,13 +449,17 @@ if (hashState.passFilter) state.passFilter = hashState.passFilter;
 if (hashState.regionFilter) state.regionFilter = hashState.regionFilter;
 if (hashState.sortMode) state.sortMode = hashState.sortMode;
 if (hashState.statusFilter) state.statusFilter = hashState.statusFilter;
+if (GLOBE_STYLE_IDS.includes(hashState.globeStyle)) state.globeStyle = hashState.globeStyle;
 if (hashState.currentTab) state.currentTab = hashState.currentTab;
 if (hashState.selectedId) state.selectedId = hashState.selectedId;
 
 // Sync sort select to state
 sortSelect.value = state.sortMode;
+applyGlobeStyle(state.globeStyle);
+updateGlobeStyleControls();
 
 // Initial render
+loadSeasonChart();
 renderFilters(selectPassFilter, selectRegionFilter);
 renderDashboard();
 if (state.selectedId) {
@@ -427,6 +482,7 @@ initRouter(resorts, (parsed) => {
   if (parsed.regionFilter) state.regionFilter = parsed.regionFilter;
   if (parsed.sortMode) { state.sortMode = parsed.sortMode; sortSelect.value = parsed.sortMode; }
   if (parsed.statusFilter) state.statusFilter = parsed.statusFilter;
+  setGlobeStyle(parsed.globeStyle || 'default', { sync: false });
   if (parsed.currentTab) setActiveTab(parsed.currentTab);
   if (parsed.selectedId) {
     const resort = resorts.find((r) => r.id === parsed.selectedId);

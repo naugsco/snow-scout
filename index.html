@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Snow Scout</title>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261019-snowfall">
 </head>
 <body>
   <div class="app-layout">
@@ -17,11 +20,26 @@
             <div class="brand-badge">&#x25B3;</div>
             <div class="brand-copy">
               <h1>Snow Scout</h1>
-              <p>Realtime conditions, storm watch, and resort fly-ins on a 3D earth.</p>
+              <p>Chase the storm. Find the powder.</p>
             </div>
           </div>
+          <a class="ghost-btn history-link" href="history.html">Snowfall history ↗</a>
+          <button id="theme-toggle" class="ghost-btn theme-toggle" title="Toggle light/dark theme">&#x263E;</button>
+          <button id="unit-toggle" class="ghost-btn unit-toggle" title="Switch units">°F</button>
           <button id="focus-top-btn" class="ghost-btn" title="Fly to top incoming resort">&#x2197;</button>
         </div>
+
+        <section class="season-snowfall" aria-labelledby="season-chart-title">
+          <div class="season-chart-heading">
+            <div><h2 id="season-chart-title">Season snowfall</h2><p>All resorts · <a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">ERA5 estimates</a> · Hover or tap a bar for details</p></div>
+            <span class="season-chart-order">More snow →</span>
+          </div>
+          <div class="season-chart-frame">
+            <div class="season-chart-scale" aria-hidden="true"><span id="season-chart-max">—</span><span>0</span></div>
+            <div id="season-chart" class="season-chart" role="group" aria-label="Current-season snowfall"></div>
+          </div>
+          <p id="season-chart-note" class="snowfall-note" role="status">Loading modeled season totals…</p>
+        </section>
 
         <div id="updated-at" class="updated-at" style="display:none"></div>
         <div id="storm-banner" class="storm-banner" style="display:none">
@@ -37,15 +55,15 @@
 
         <div class="summary-grid">
           <button id="incoming-filter" class="summary-card" data-tone="incoming" title="Resorts expecting 12″+ over the next 72 hours">
-            <span>Storm Watch (72h)</span>
+            <span>⛈ Storm Watch (72h)</span>
             <strong id="incoming-count">0</strong>
           </button>
           <button id="fresh-filter" class="summary-card" data-tone="fresh" title="Resorts that received 7″+ in the last 24 hours">
-            <span>Fresh Snow (24h)</span>
+            <span>❄ Fresh Snow (24h)</span>
             <strong id="fresh-count">0</strong>
           </button>
           <button id="dry-filter" class="summary-card" data-tone="dry" title="Resorts with the longest streak without new snow">
-            <span>Dry Streak</span>
+            <span>☀ Dry Streak</span>
             <strong id="dry-count">0d</strong>
           </button>
         </div>
@@ -70,12 +88,24 @@
         </div>
       </header>
 
+      <div id="best-bet"></div>
       <div id="resort-list" class="resort-grid"></div>
     </div>
+
+    <!-- Mobile map toggle -->
+    <button id="mobile-map-toggle" class="mobile-map-toggle glass">
+      <span class="mobile-map-toggle-icon">&#x1F30D;</span>
+      <span id="mobile-map-toggle-label">Show Map</span>
+    </button>
 
     <!-- Bottom 1/3: Map -->
     <div class="map-area">
       <div id="cesium-container"></div>
+      <div id="globe-style-switcher" class="globe-style-switcher glass" aria-label="Globe style">
+        <button class="globe-style-btn active" data-style="default" type="button">Default</button>
+        <button class="globe-style-btn" data-style="storybook" type="button">Storybook</button>
+        <button class="globe-style-btn" data-style="comic" type="button">Comic</button>
+      </div>
       <div id="map-legend" class="map-legend glass">
         <span>Open mode</span>
         <span class="legend-item"><span class="legend-dot" style="background:#b06cff;box-shadow:0 0 6px #b06cff"></span>Incoming</span>
@@ -108,6 +138,7 @@
           </div>
           <div id="radar-badge" class="radar-badge"></div>
         </div>
+        <div id="owm-toast" class="owm-toast" style="display:none"></div>
       </div>
       <button id="weather-toggle" class="weather-toggle glass" title="Weather overlay">&#x26C5;</button>
     </div>
@@ -128,54 +159,58 @@
       </div>
 
       <div id="detail-meta" class="detail-meta"></div>
-      <div id="detail-sources" class="detail-sources"></div>
 
       <div class="detail-tabs">
-        <button class="tab-btn active" data-tab="overview">Overview</button>
-        <button class="tab-btn" data-tab="conditions">Conditions</button>
+        <button class="tab-btn active" data-tab="overview">Conditions</button>
         <button class="tab-btn" data-tab="forecast">Forecast</button>
+        <button class="tab-btn" data-tab="trail-map">Trail Map</button>
         <button class="tab-btn" data-tab="webcams">Webcams</button>
       </div>
 
       <section id="tab-overview" class="tab-panel active">
-        <div id="detail-stat-grid" class="detail-stat-grid"></div>
-
+        <div id="detail-visual-grid" class="detail-visual-grid"></div>
+        <div id="detail-snow-bars" class="detail-snow-bars"></div>
+        <div id="detail-forecast-bars" class="detail-snow-bars"></div>
+        <div id="detail-base-depth" class="detail-base-depth"></div>
         <div class="detail-section-head">
-          <h3>Run Access</h3>
+          <h3>&#x26F7; Terrain</h3>
           <span id="run-open-copy">-</span>
         </div>
         <div class="progress-track">
           <div id="run-open-bar" class="progress-bar" style="width: 0%"></div>
         </div>
-        <div class="detail-note" id="detail-note">Pick a resort to inspect recent snow, forecast, base depth, open terrain, and grooming.</div>
-      </section>
-
-      <section id="tab-conditions" class="tab-panel">
-        <div class="detail-section-head">
-          <h3>Conditions Snapshot</h3>
-          <span id="conditions-status-chip">Estimated</span>
-        </div>
-        <div id="conditions-grid" class="detail-stat-grid"></div>
-        <div id="conditions-copy" class="detail-copy-block"></div>
+        <div id="detail-terrain-stats" class="detail-terrain-stats"></div>
         <div id="conditions-actions" class="detail-source-actions"></div>
-        <div id="conditions-source-state" class="detail-source-state"></div>
+        <div class="detail-note" id="detail-note"></div>
       </section>
 
       <section id="tab-forecast" class="tab-panel">
-        <div class="detail-section-head">
-          <h3>Snow Forecast</h3>
-          <span id="forecast-status-chip">Loading</span>
-        </div>
         <div id="forecast-chart" class="forecast-chart"></div>
-        <div id="forecast-copy" class="detail-copy-block"></div>
         <div id="forecast-grid" class="forecast-grid"></div>
         <div id="forecast-actions" class="detail-source-actions"></div>
-        <div id="forecast-source-state" class="detail-source-state"></div>
+      </section>
+
+      <section id="tab-trail-map" class="tab-panel">
+        <div class="detail-section-head">
+          <h3>&#x1F5FA; Trail Map</h3>
+          <span id="trail-map-copy">Runs and lifts via OpenSkiMap</span>
+        </div>
+        <div class="trail-map-shell">
+          <iframe
+            id="trail-map-frame"
+            class="trail-map-frame"
+            title="OpenSkiMap trail map"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+        </div>
+        <div id="trail-map-actions" class="detail-source-actions"></div>
+        <div id="trail-map-note" class="detail-note"></div>
       </section>
 
       <section id="tab-webcams" class="tab-panel">
         <div class="detail-section-head">
-          <h3>Camera Links</h3>
+          <h3>&#x1F4F7; Cameras</h3>
           <span id="webcam-count">0 feeds</span>
         </div>
         <div id="webcam-list" class="webcam-list"></div>
@@ -184,6 +219,7 @@
   </div>
 
   <!-- Hover card for map markers -->
+  <div id="season-tooltip" class="season-tooltip" role="tooltip" hidden></div>
   <div id="hover-card" class="glass hover-card">
     <strong id="hover-name"></strong>
     <p id="hover-copy"></p>
@@ -206,6 +242,6 @@
 
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/main.js?v=20261019-snowfall"></script>
 </body>
 </html>

@@ -1,24 +1,44 @@
-import { state } from './state.js';
-import { resorts } from './resorts.js';
+import { state } from './state.js?v=20261019-snowfall';
+import { resorts } from './resorts.js?v=20261019-snowfall';
 import {
   getSourceKeyForResort, inferStatus, getStatusText, buildForecastUrl, formatInches,
   conditionPages, webcamPages, webcamStreams, forecastCache, forecastRequests,
   getConditionsPageForResort
-} from './utils.js';
-import { DEFAULT_CONDITION_PAGES } from './constants.js';
+} from './utils.js?v=20261019-snowfall';
+import { DEFAULT_CONDITION_PAGES } from './constants.js?v=20261019-snowfall';
 
 // Initialize conditionPages with defaults
 Object.assign(conditionPages, DEFAULT_CONDITION_PAGES);
 
 export function applyLiveConditions(conditionCatalog) {
   resorts.forEach((resort) => {
-    const live = conditionCatalog[getSourceKeyForResort(resort.name)];
-    if (!live || live.status !== 'ok' || !live.metrics) return;
+    const sourceKey = getSourceKeyForResort(resort.name);
+    const rawKey = resort.name.toLowerCase().replace(/\(.*?\)/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim();
+    const live = conditionCatalog[sourceKey] || conditionCatalog[rawKey];
+    if (!live) return;
+    if (live.status !== 'ok' || !live.metrics) {
+      resort.liveConditionsStatus = 'error';
+      resort.liveNote = 'Current conditions are unavailable. Check the resort report.';
+      console.error(`${resort.name} conditions: ${live.error || 'No condition metrics returned'}`);
+      for (const key of Object.keys(resort.metrics)) {
+        if (!key.startsWith('forecast') || resort.liveForecastStatus !== 'ready') resort.metrics[key] = null;
+      }
+      resort.status = inferStatus(resort.metrics);
+      resort.statusText = resort.liveNote;
+      resort.liveSources = { ...(resort.liveSources || {}), ...(live.sources || {}) };
+      return;
+    }
 
     const nextMetrics = { ...resort.metrics };
+    // Metrics that should keep generated values when live data returns null
+    const keepGeneratedIfNull = resort.passes.includes('mountain-collective')
+      ? new Set()
+      : new Set(['runsOpen', 'runsTotal', 'groomedRuns', 'baseDepth']);
     Object.entries(live.metrics).forEach(([metricKey, value]) => {
       if (value === undefined) return;
       if (value === null) {
+        // For open-meteo fallback, preserve generated runs/terrain data
+        if (keepGeneratedIfNull.has(metricKey) && nextMetrics[metricKey] != null) return;
         nextMetrics[metricKey] = null;
         return;
       }
@@ -32,6 +52,7 @@ export function applyLiveConditions(conditionCatalog) {
     resort.liveNote = live.note || resort.liveNote || null;
     resort.liveUpdatedAt = live.updatedAt || resort.liveUpdatedAt || null;
     resort.liveConditionsStatus = 'ready';
+    resort.liveConditionsKind = live.adapter === 'open-meteo' ? 'model' : 'reported';
     resort.liveSources = {
       ...(resort.liveSources || {}),
       ...(live.sources || {})
@@ -142,6 +163,7 @@ export async function loadOptionalSourceData(onDataReady) {
       .then((payload) => {
         if (!payload?.resorts) return;
         if (payload.generatedAt) state.conditionsGeneratedAt = payload.generatedAt;
+        state.conditionErrorCount = Object.values(payload.resorts).filter((entry) => entry.status === 'error').length;
         Object.entries(payload.resorts).forEach(([key, entry]) => {
           if (entry?.sources?.conditions) {
             const resolvedKeys = new Set([

@@ -1,4 +1,4 @@
-import { normalizeResortName } from './utils.js';
+import { normalizeResortName } from './utils.js?v=20261019-snowfall';
 
 const PARAM_MAP = {
   resort: 'selectedId',
@@ -6,6 +6,7 @@ const PARAM_MAP = {
   region: 'regionFilter',
   sort: 'sortMode',
   status: 'statusFilter',
+  style: 'globeStyle',
   tab: 'currentTab'
 };
 
@@ -19,6 +20,7 @@ export function parseHash(resorts) {
   if (params.has('region')) result.regionFilter = params.get('region');
   if (params.has('sort')) result.sortMode = params.get('sort');
   if (params.has('status')) result.statusFilter = params.get('status');
+  if (params.has('style')) result.globeStyle = params.get('style');
   if (params.has('tab')) result.currentTab = params.get('tab');
 
   if (params.has('resort')) {
@@ -46,6 +48,7 @@ export function updateHash(state, resorts) {
   if (state.regionFilter !== 'all') params.set('region', state.regionFilter);
   if (state.sortMode !== 'score') params.set('sort', state.sortMode);
   if (state.statusFilter !== 'all') params.set('status', state.statusFilter);
+  if (state.globeStyle !== 'default') params.set('style', state.globeStyle);
   if (state.currentTab !== 'overview') params.set('tab', state.currentTab);
 
   const hashStr = params.toString();

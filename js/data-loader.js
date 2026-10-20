@@ -1,11 +1,11 @@
-import { state } from './state.js?v=20261019-snowfall';
-import { resorts } from './resorts.js?v=20261019-snowfall';
+import { state } from './state.js?v=20261019-standard-globe';
+import { resorts } from './resorts.js?v=20261019-standard-globe';
 import {
   getSourceKeyForResort, inferStatus, getStatusText, buildForecastUrl, formatInches,
   conditionPages, webcamPages, webcamStreams, forecastCache, forecastRequests,
   getConditionsPageForResort
-} from './utils.js?v=20261019-snowfall';
-import { DEFAULT_CONDITION_PAGES } from './constants.js?v=20261019-snowfall';
+} from './utils.js?v=20261019-standard-globe';
+import { DEFAULT_CONDITION_PAGES } from './constants.js?v=20261019-standard-globe';
 
 // Initialize conditionPages with defaults
 Object.assign(conditionPages, DEFAULT_CONDITION_PAGES);

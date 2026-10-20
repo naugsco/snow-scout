@@ -1,7 +1,7 @@
-import { DEG2RAD, CESIUM_ION_TOKEN, BILLBOARD_HEIGHT, HOVER_MARKER_HEIGHT, SELECTED_MARKER_HEIGHT } from './constants.js?v=20261019-snowfall';
-import { state } from './state.js?v=20261019-snowfall';
-import { clamp, getPassTone, inferStatus, getStatusText, normalizeResortName, getSourceKeyForResort } from './utils.js?v=20261019-snowfall';
-import { resorts } from './resorts.js?v=20261019-snowfall';
+import { DEG2RAD, CESIUM_ION_TOKEN, BILLBOARD_HEIGHT, HOVER_MARKER_HEIGHT, SELECTED_MARKER_HEIGHT } from './constants.js?v=20261019-standard-globe';
+import { state } from './state.js?v=20261019-standard-globe';
+import { clamp, getPassTone, inferStatus, getStatusText, normalizeResortName, getSourceKeyForResort } from './utils.js?v=20261019-standard-globe';
+import { resorts } from './resorts.js?v=20261019-standard-globe';
 
 Cesium.Ion.defaultAccessToken = CESIUM_ION_TOKEN;
 
@@ -45,13 +45,11 @@ const resortViewContexts = new Map();
 const resortViewContextPromises = new Map();
 export const screenSpaceHandler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
 export let autoRotate = true;
-export const GLOBE_STYLE_IDS = ['default', 'storybook', 'comic'];
 
 export function setAutoRotate(value) { autoRotate = value; }
 
 const DEFAULT_LABEL_DISTANCE = new Cesium.DistanceDisplayCondition(0, 2200000);
 const SELECTED_LABEL_DISTANCE = new Cesium.DistanceDisplayCondition(0, 22000000);
-const texelStepScratch = new Cesium.Cartesian2();
 
 function buildLabelTheme({
   font,
@@ -139,449 +137,40 @@ function createMarkerTextureSet(markerConfig) {
   );
 }
 
-const GLOBE_STYLE_SHADER = `
-uniform sampler2D colorTexture;
-in vec2 v_textureCoordinates;
-uniform vec2 texelStep;
-uniform float styleMode;
-uniform float mixAmount;
-uniform float saturation;
-uniform float contrast;
-uniform float warmth;
-uniform float coolness;
-uniform float haze;
-uniform float grain;
-uniform float vignette;
-uniform float bandCount;
-uniform float edgeStrength;
-uniform float halftoneAmount;
-uniform float halftoneScale;
-
-float luminance(vec3 color) {
-  return dot(color, vec3(0.299, 0.587, 0.114));
-}
-
-vec3 applySaturation(vec3 color, float amount) {
-  float gray = luminance(color);
-  return mix(vec3(gray), color, amount);
-}
-
-vec3 applyContrast(vec3 color, float amount) {
-  return clamp((color - 0.5) * amount + 0.5, 0.0, 1.0);
-}
-
-float hash(vec2 value) {
-  return fract(sin(dot(value, vec2(127.1, 311.7))) * 43758.5453123);
-}
-
-float edgeSample(vec2 uv) {
-  vec3 center = texture(colorTexture, uv).rgb;
-  vec3 north = texture(colorTexture, uv + vec2(0.0, texelStep.y)).rgb;
-  vec3 south = texture(colorTexture, uv - vec2(0.0, texelStep.y)).rgb;
-  vec3 east = texture(colorTexture, uv + vec2(texelStep.x, 0.0)).rgb;
-  vec3 west = texture(colorTexture, uv - vec2(texelStep.x, 0.0)).rgb;
-  float diff = length(center - north) + length(center - south) + length(center - east) + length(center - west);
-  return clamp(diff * 1.8, 0.0, 1.0);
-}
-
-float vignetteMask(vec2 uv) {
-  vec2 centered = uv - 0.5;
-  float radius = dot(centered, centered) * 2.35;
-  return smoothstep(0.18, 0.88, radius);
-}
-
-vec3 sampleSoft(vec2 uv, float radius) {
-  vec2 step = texelStep * radius;
-  vec3 center = texture(colorTexture, uv).rgb * 4.0;
-  vec3 north = texture(colorTexture, uv + vec2(0.0, step.y)).rgb;
-  vec3 south = texture(colorTexture, uv - vec2(0.0, step.y)).rgb;
-  vec3 east = texture(colorTexture, uv + vec2(step.x, 0.0)).rgb;
-  vec3 west = texture(colorTexture, uv - vec2(step.x, 0.0)).rgb;
-  vec3 northEast = texture(colorTexture, uv + step).rgb;
-  vec3 southWest = texture(colorTexture, uv - step).rgb;
-  return (center + north + south + east + west + northEast + southWest) / 10.0;
-}
-
-float quantizeValue(float value, float levels) {
-  float safeLevels = max(levels, 2.0);
-  return floor(value * (safeLevels - 1.0) + 0.5) / (safeLevels - 1.0);
-}
-
-vec3 quantizeColor(vec3 color, float levels) {
-  float safeLevels = max(levels, 2.0);
-  return floor(color * (safeLevels - 1.0) + 0.5) / (safeLevels - 1.0);
-}
-
-float colorVariance(vec3 color) {
-  return abs(color.r - color.g) + abs(color.g - color.b) + abs(color.b - color.r);
-}
-
-float benDayPattern(vec2 fragCoord, float scale) {
-  vec2 cell = fract(fragCoord / max(scale, 1.0)) - 0.5;
-  float circle = dot(cell, cell) * 4.0;
-  return 1.0 - smoothstep(0.16, 0.58, circle);
-}
-
-float hatchLine(vec2 fragCoord, float scale, float angle, float width) {
-  vec2 direction = vec2(cos(angle), sin(angle));
-  float stripe = abs(fract(dot(fragCoord, direction) / max(scale, 1.0)) - 0.5);
-  return 1.0 - smoothstep(width, width + 0.08, stripe);
-}
-
-float crossHatchPattern(vec2 fragCoord, float scale, float intensity) {
-  float hatchA = hatchLine(fragCoord, scale, 0.55, 0.16);
-  float hatchB = hatchLine(fragCoord + vec2(scale * 0.35), scale * 0.92, -0.62, 0.15);
-  float hatchC = hatchLine(fragCoord + vec2(scale * 0.18, scale * 0.12), scale * 1.18, 0.18, 0.13);
-  float secondary = mix(0.0, hatchC, intensity);
-  return max(max(hatchA, hatchB), secondary);
-}
-
-void main() {
-  vec4 source = texture(colorTexture, v_textureCoordinates);
-  vec3 color = source.rgb;
-  float lum = luminance(color);
-  float vignetteValue = vignetteMask(v_textureCoordinates);
-  float grainValue = (hash(gl_FragCoord.xy) - 0.5) * grain;
-  vec3 outputColor = color;
-
-  if (styleMode < 1.5) {
-    vec3 softened = mix(color, sampleSoft(v_textureCoordinates, 2.8), 0.78);
-    vec3 story = applyContrast(softened, contrast);
-    story = applySaturation(story, saturation);
-    float storyLevels = max(bandCount, 4.0);
-    float storyTone = quantizeValue(luminance(story), storyLevels);
-    float sourceWaterBias = min(
-      color.b - color.r * 0.88,
-      color.b - color.g * 0.96
-    );
-    float waterBlueBias = max(
-      min(story.b - story.r * 0.92, story.b - story.g * 0.98),
-      min(softened.b - softened.r * 0.94, softened.b - softened.g * 1.02)
-    );
-    float landGreenBias = max(
-      softened.g - max(softened.r * 0.94, softened.b * 0.82),
-      story.g - max(story.r * 0.96, story.b * 0.84)
-    );
-    float dryLandBias = max(story.r, softened.r) - max(story.b, softened.b) * 0.92;
-    float waterMask = max(
-      smoothstep(0.025, 0.18, waterBlueBias),
-      smoothstep(0.03, 0.16, sourceWaterBias)
-    );
-    waterMask *= 1.0 - smoothstep(0.02, 0.2, landGreenBias) * 0.92;
-    waterMask *= 1.0 - smoothstep(0.06, 0.28, dryLandBias) * 0.82;
-    waterMask = max(waterMask, smoothstep(0.08, 0.24, sourceWaterBias) * 0.92);
-    float landMask = max(
-      (1.0 - waterMask) * smoothstep(-0.02, 0.16, story.g - story.r * 0.9),
-      smoothstep(0.02, 0.18, landGreenBias)
-    );
-    float brightMask = smoothstep(0.72, 0.98, storyTone) * (1.0 - smoothstep(0.16, 0.42, colorVariance(story)));
-    vec3 oceanShadow = vec3(0.16, 0.44, 0.86);
-    vec3 oceanMid = vec3(0.29, 0.73, 0.96);
-    vec3 oceanHighlight = vec3(0.76, 0.95, 1.0);
-    vec3 landShadow = vec3(0.45, 0.7, 0.16);
-    vec3 landMid = vec3(0.73, 0.9, 0.25);
-    vec3 landHighlight = vec3(0.96, 0.98, 0.55);
-    vec3 neutralShadow = vec3(0.6, 0.74, 0.8);
-    vec3 neutralHighlight = vec3(0.94, 0.97, 0.92);
-    vec3 oceanWash = mix(
-      mix(oceanShadow, oceanMid, smoothstep(0.0, 0.58, storyTone)),
-      oceanHighlight,
-      smoothstep(0.5, 1.0, storyTone)
-    );
-    vec3 landWash = mix(
-      mix(landShadow, landMid, smoothstep(0.0, 0.56, storyTone)),
-      landHighlight,
-      smoothstep(0.46, 1.0, storyTone)
-    );
-    vec3 neutralWash = mix(neutralShadow, neutralHighlight, smoothstep(0.0, 1.0, storyTone));
-    vec3 wash = mix(neutralWash, oceanWash, waterMask);
-    wash = mix(wash, landWash, landMask);
-    story = mix(story, wash, 0.76);
-    story = mix(story, landWash, landMask * 0.28);
-    story = mix(story, oceanWash, waterMask * 0.82);
-    story += vec3(warmth, warmth * 0.4, -warmth * 0.18) * landMask * 0.45;
-    story += vec3(-coolness * 0.18, coolness * 0.16, coolness) * waterMask * 0.55;
-    story = mix(story, mix(oceanMid, oceanHighlight, smoothstep(0.45, 1.0, storyTone)), waterMask * 0.42);
-    story = mix(story, vec3(storyTone), 0.08);
-    story += brightMask * vec3(0.16, 0.16, 0.12);
-    float storyEdge = clamp(edgeSample(v_textureCoordinates) * edgeStrength, 0.0, 1.0);
-    story = mix(story, story * vec3(0.44, 0.56, 0.72), storyEdge * 0.74);
-    story = quantizeColor(story, storyLevels - 0.4);
-    story += grainValue * 0.5;
-    story *= 1.0 - vignette * vignetteValue * 0.22;
-    outputColor = mix(color, clamp(story, 0.0, 1.0), mixAmount);
-  } else {
-    vec3 softened = mix(color, sampleSoft(v_textureCoordinates, 1.9), 0.52);
-    vec3 comic = applyContrast(softened, contrast);
-    comic = applySaturation(comic, saturation);
-    float levels = max(bandCount, 3.0);
-    float comicTone = quantizeValue(luminance(comic), levels);
-    comic = quantizeColor(comic, levels);
-    comic = mix(comic, vec3(comicTone), 0.28);
-    float edgeInk = clamp(edgeSample(v_textureCoordinates) * edgeStrength, 0.0, 1.0);
-    vec3 outlineColor = vec3(0.05, 0.05, 0.07);
-    comic = mix(comic, outlineColor, smoothstep(0.38, 0.92, edgeInk) * 0.48);
-    float dotPattern = benDayPattern(gl_FragCoord.xy + vec2(comicTone * 13.0, comicTone * 17.0), halftoneScale);
-    float dotZone = smoothstep(0.34, 0.62, comicTone);
-    float highlightZone = smoothstep(0.62, 0.92, comicTone) * 0.75;
-    float dotAmount = dotPattern * (dotZone + highlightZone) * halftoneAmount;
-    vec3 dotInk = mix(comic * vec3(0.58, 0.68, 0.92), vec3(0.3, 0.38, 0.75), 0.35);
-    comic = mix(comic, dotInk, clamp(dotAmount, 0.0, 0.95));
-    float shadowZone = 1.0 - smoothstep(0.44, 0.76, comicTone);
-    float hatchPattern = crossHatchPattern(gl_FragCoord.xy + vec2(comicTone * 19.0, comicTone * 11.0), halftoneScale * 0.82, shadowZone);
-    float hatchAmount = hatchPattern * shadowZone * halftoneAmount * 0.52;
-    vec3 hatchInk = mix(comic * vec3(0.72, 0.78, 0.9), vec3(0.22, 0.28, 0.44), 0.24);
-    comic = mix(comic, hatchInk, clamp(hatchAmount, 0.0, 0.58));
-    comic += vec3(warmth, warmth * 0.4, -warmth * 0.12) * 0.35;
-    comic = quantizeColor(comic, levels);
-    comic += grainValue * 0.2;
-    comic *= 1.0 - vignette * vignetteValue * 0.18;
-    outputColor = mix(color, clamp(comic, 0.0, 1.0), mixAmount);
-  }
-
-  out_FragColor = vec4(clamp(outputColor, 0.0, 1.0), source.a);
-}
-`;
-
-
-const GLOBE_STYLE_PRESETS = {
-  default: {
-    atmosphere: { hueShift: -0.03, saturationShift: -0.12, brightnessShift: -0.08 },
-    fog: { enabled: true, density: 0.0002, minimumBrightness: 0.06 },
-    imagery: { brightness: 1, contrast: 1, saturation: 1, gamma: 1, hue: 0 },
-    backgroundColor: '#040810',
-    labelTheme: buildLabelTheme({
-      font: '600 12px "Avenir Next", "Segoe UI", sans-serif',
-      fill: '#f4f8ff',
-      outline: 'rgba(7, 16, 30, 0.94)',
-      outlineWidth: 3,
-      background: 'rgba(7, 16, 30, 0.72)'
-    }),
-    markerConfig: {
-      passBase: {
-        'mountain-collective': 'rgba(92,210,175,1)',
-        epic: 'rgba(78,140,255,1)',
-        ikon: 'rgba(249,199,79,1)',
-        dual: 'rgba(182,179,255,1)'
-      },
-      statusGlow: {
-        incoming: 'rgba(176,108,255,0.42)',
-        fresh: 'rgba(101,217,255,0.42)',
-        dry: 'rgba(255,159,87,0.38)',
-        steady: 'rgba(126,199,184,0.36)'
-      },
-      textureOptions: {}
+const globeAppearance = {
+  atmosphere: { hueShift: -0.03, saturationShift: -0.12, brightnessShift: -0.08 },
+  fog: { enabled: true, density: 0.0002, minimumBrightness: 0.06 },
+  imagery: { brightness: 1, contrast: 1, saturation: 1, gamma: 1, hue: 0 },
+  backgroundColor: '#040810',
+  labelTheme: buildLabelTheme({
+    font: '600 12px "Avenir Next", "Segoe UI", sans-serif',
+    fill: '#f4f8ff',
+    outline: 'rgba(7, 16, 30, 0.94)',
+    outlineWidth: 3,
+    background: 'rgba(7, 16, 30, 0.72)'
+  }),
+  markerConfig: {
+    passBase: {
+      'mountain-collective': 'rgba(92,210,175,1)',
+      epic: 'rgba(78,140,255,1)',
+      ikon: 'rgba(249,199,79,1)',
+      dual: 'rgba(182,179,255,1)'
     },
-    post: {
-      enabled: false,
-      styleMode: 0,
-      mixAmount: 0,
-      saturation: 1,
-      contrast: 1,
-      warmth: 0,
-      coolness: 0,
-      haze: 0,
-      grain: 0,
-      vignette: 0,
-      bandCount: 8,
-      edgeStrength: 0,
-      halftoneAmount: 0,
-      halftoneScale: 1
-    }
-  },
-  storybook: {
-    atmosphere: { hueShift: 0.014, saturationShift: -0.14, brightnessShift: 0.08 },
-    fog: { enabled: true, density: 0.00018, minimumBrightness: 0.16 },
-    imagery: { brightness: 1.08, contrast: 0.7, saturation: 0.42, gamma: 0.9, hue: 0.02 },
-    backgroundColor: '#a9dff4',
-    labelTheme: buildLabelTheme({
-      font: '600 12px "Avenir Next", "Segoe UI", sans-serif',
-      fill: '#f7f4ea',
-      outline: 'rgba(27, 39, 56, 0.96)',
-      outlineWidth: 3,
-      background: 'rgba(27, 39, 56, 0.7)',
-      padding: [8, 5]
-    }),
-    markerConfig: {
-      passBase: {
-        'mountain-collective': 'rgba(92,190,165,0.96)',
-        epic: 'rgba(104,150,222,0.96)',
-        ikon: 'rgba(243,184,109,0.96)',
-        dual: 'rgba(196,181,224,0.96)'
-      },
-      statusGlow: {
-        incoming: 'rgba(164,120,224,0.28)',
-        fresh: 'rgba(127,205,233,0.28)',
-        dry: 'rgba(228,155,101,0.24)',
-        steady: 'rgba(141,190,179,0.24)'
-      },
-      textureOptions: {
-        ringColor: 'rgba(255,251,235,0.94)',
-        coreColor: 'rgba(255,253,245,0.98)',
-        outerGlowColor: 'rgba(255,251,233,0.08)',
-        innerRadius: 11,
-        ringRadius: 13,
-        coreRadius: 6,
-        glowRadius: 34,
-        ringWidth: 4
-      }
+    statusGlow: {
+      incoming: 'rgba(176,108,255,0.42)',
+      fresh: 'rgba(101,217,255,0.42)',
+      dry: 'rgba(255,159,87,0.38)',
+      steady: 'rgba(126,199,184,0.36)'
     },
-    post: {
-      enabled: true,
-      styleMode: 1,
-      mixAmount: 0.95,
-      saturation: 0.78,
-      contrast: 0.82,
-      warmth: 0.12,
-      coolness: 0.08,
-      haze: 0.08,
-      grain: 0.01,
-      vignette: 0.1,
-      bandCount: 3,
-      edgeStrength: 1.08,
-      halftoneAmount: 0,
-      halftoneScale: 1
-    }
-  },
-  comic: {
-    atmosphere: { hueShift: -0.015, saturationShift: 0.06, brightnessShift: -0.02 },
-    fog: { enabled: true, density: 0.00014, minimumBrightness: 0.04 },
-    imagery: { brightness: 1.05, contrast: 1.16, saturation: 1.2, gamma: 0.92, hue: -0.01 },
-    backgroundColor: '#050913',
-    labelTheme: buildLabelTheme({
-      font: '700 12px "Barlow Condensed", "Avenir Next", sans-serif',
-      fill: '#fff4c6',
-      outline: 'rgba(8, 10, 16, 0.98)',
-      outlineWidth: 4,
-      background: 'rgba(8, 10, 16, 0.82)',
-      padding: [8, 5]
-    }),
-    markerConfig: {
-      passBase: {
-        'mountain-collective': 'rgba(92,230,175,1)',
-        epic: 'rgba(61,120,255,1)',
-        ikon: 'rgba(255,155,46,1)',
-        dual: 'rgba(181,139,255,1)'
-      },
-      statusGlow: {
-        incoming: 'rgba(255,88,214,0.38)',
-        fresh: 'rgba(104,230,255,0.38)',
-        dry: 'rgba(255,184,67,0.34)',
-        steady: 'rgba(132,223,192,0.32)'
-      },
-      textureOptions: {
-        ringColor: 'rgba(255,255,255,0.98)',
-        coreColor: 'rgba(255,255,255,1)',
-        outerGlowColor: 'rgba(255,255,255,0.03)',
-        innerRadius: 11,
-        ringRadius: 13,
-        coreRadius: 6,
-        glowRadius: 35,
-        ringWidth: 4,
-        outerStrokeColor: 'rgba(10,12,18,0.88)',
-        outerStrokeWidth: 3
-      }
-    },
-    post: {
-      enabled: true,
-      styleMode: 2,
-      mixAmount: 0.96,
-      saturation: 1.08,
-      contrast: 1.34,
-      warmth: 0.05,
-      coolness: 0.02,
-      haze: 0.02,
-      grain: 0.008,
-      vignette: 0.08,
-      bandCount: 3,
-      edgeStrength: 1.42,
-      halftoneAmount: 0.5,
-      halftoneScale: 21.0
-    }
+    textureOptions: {}
   }
 };
 
-const markerTextureSets = Object.fromEntries(
-  Object.entries(GLOBE_STYLE_PRESETS).map(([styleId, preset]) => [styleId, createMarkerTextureSet(preset.markerConfig)])
-);
-
-const globeStyleUniforms = { ...GLOBE_STYLE_PRESETS.default.post };
-const globeStyleStage = viewer.scene.postProcessStages.add(new Cesium.PostProcessStage({
-  name: 'snow-scout-globe-style',
-  fragmentShader: GLOBE_STYLE_SHADER,
-  uniforms: {
-    texelStep: () => {
-      texelStepScratch.x = 1 / Math.max(viewer.scene.drawingBufferWidth, 1);
-      texelStepScratch.y = 1 / Math.max(viewer.scene.drawingBufferHeight, 1);
-      return texelStepScratch;
-    },
-    styleMode: () => globeStyleUniforms.styleMode,
-    mixAmount: () => globeStyleUniforms.mixAmount,
-    saturation: () => globeStyleUniforms.saturation,
-    contrast: () => globeStyleUniforms.contrast,
-    warmth: () => globeStyleUniforms.warmth,
-    coolness: () => globeStyleUniforms.coolness,
-    haze: () => globeStyleUniforms.haze,
-    grain: () => globeStyleUniforms.grain,
-    vignette: () => globeStyleUniforms.vignette,
-    bandCount: () => globeStyleUniforms.bandCount,
-    edgeStrength: () => globeStyleUniforms.edgeStrength,
-    halftoneAmount: () => globeStyleUniforms.halftoneAmount,
-    halftoneScale: () => globeStyleUniforms.halftoneScale
-  }
-}));
-globeStyleStage.enabled = false;
-
-function getActiveGlobeStyleId() {
-  return GLOBE_STYLE_IDS.includes(state.globeStyle) ? state.globeStyle : 'default';
-}
-
-function getActiveGlobeStylePreset() {
-  return GLOBE_STYLE_PRESETS[getActiveGlobeStyleId()];
-}
-
-function getBaseImageryLayer() {
-  return viewer.imageryLayers.length ? viewer.imageryLayers.get(0) : null;
-}
-
-export function applyGlobeStyle(styleId = 'default') {
-  const resolvedStyle = GLOBE_STYLE_IDS.includes(styleId) ? styleId : 'default';
-  const preset = GLOBE_STYLE_PRESETS[resolvedStyle];
-  const baseLayer = getBaseImageryLayer();
-  try {
-    viewer.scene.skyAtmosphere.hueShift = preset.atmosphere.hueShift;
-    viewer.scene.skyAtmosphere.saturationShift = preset.atmosphere.saturationShift;
-    viewer.scene.skyAtmosphere.brightnessShift = preset.atmosphere.brightnessShift;
-    viewer.scene.backgroundColor = Cesium.Color.fromCssColorString(preset.backgroundColor);
-
-    if (viewer.scene.fog) {
-      viewer.scene.fog.enabled = preset.fog.enabled;
-      viewer.scene.fog.density = preset.fog.density;
-      viewer.scene.fog.minimumBrightness = preset.fog.minimumBrightness;
-    }
-
-    if (baseLayer) {
-      baseLayer.brightness = preset.imagery.brightness;
-      baseLayer.contrast = preset.imagery.contrast;
-      baseLayer.saturation = preset.imagery.saturation;
-      baseLayer.gamma = preset.imagery.gamma;
-      baseLayer.hue = preset.imagery.hue;
-    }
-
-    viewer.scene.globe.material = undefined;
-    Object.assign(globeStyleUniforms, preset.post);
-    globeStyleStage.enabled = preset.post.enabled;
-    document.body.setAttribute('data-globe-style', resolvedStyle);
-    viewer.scene.requestRender();
-  } catch (error) {
-    console.error(`Failed to apply globe style "${resolvedStyle}"`, error);
-    viewer.scene.globe.material = undefined;
-    Object.assign(globeStyleUniforms, GLOBE_STYLE_PRESETS.default.post);
-    globeStyleStage.enabled = false;
-    document.body.setAttribute('data-globe-style', 'default');
-    viewer.scene.requestRender();
-  }
-}
+const markerTextures = createMarkerTextureSet(globeAppearance.markerConfig);
+Object.assign(viewer.scene.skyAtmosphere, globeAppearance.atmosphere);
+viewer.scene.backgroundColor = Cesium.Color.fromCssColorString(globeAppearance.backgroundColor);
+if (viewer.scene.fog) Object.assign(viewer.scene.fog, globeAppearance.fog);
+if (viewer.imageryLayers.length) Object.assign(viewer.imageryLayers.get(0), globeAppearance.imagery);
 
 function markerHeightForResort(resort) {
   if (state.selectedId === resort.id) return SELECTED_MARKER_HEIGHT;
@@ -606,12 +195,11 @@ export function updateZoomReadout() {
 }
 
 export function createMarkerEntity(resort) {
-  const stylePreset = getActiveGlobeStylePreset();
   const passTone = getPassTone(resort);
   const entity = viewer.entities.add({
     position: cartesianForResort(resort),
     billboard: {
-      image: markerTextureSets[getActiveGlobeStyleId()][passTone][resort.status],
+      image: markerTextures[passTone][resort.status],
       heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
       verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
       scale: 0.84,
@@ -620,14 +208,14 @@ export function createMarkerEntity(resort) {
     label: {
       text: resort.name,
       heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
-      font: stylePreset.labelTheme.font,
-      style: stylePreset.labelTheme.style,
-      fillColor: stylePreset.labelTheme.fillColor,
-      outlineColor: stylePreset.labelTheme.outlineColor,
-      outlineWidth: stylePreset.labelTheme.outlineWidth,
+      font: globeAppearance.labelTheme.font,
+      style: globeAppearance.labelTheme.style,
+      fillColor: globeAppearance.labelTheme.fillColor,
+      outlineColor: globeAppearance.labelTheme.outlineColor,
+      outlineWidth: globeAppearance.labelTheme.outlineWidth,
       showBackground: true,
-      backgroundColor: stylePreset.labelTheme.backgroundColor,
-      backgroundPadding: stylePreset.labelTheme.backgroundPadding,
+      backgroundColor: globeAppearance.labelTheme.backgroundColor,
+      backgroundPadding: globeAppearance.labelTheme.backgroundPadding,
       horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
       verticalOrigin: Cesium.VerticalOrigin.CENTER,
       pixelOffset: new Cesium.Cartesian2(14, -34),
@@ -653,9 +241,6 @@ export function updateMarkerVisibility(visibleIds) {
 
 export function updateMarkerStyles() {
   const cameraHeight = viewer.camera.positionCartographic?.height ?? 22000000;
-  const styleId = getActiveGlobeStyleId();
-  const stylePreset = GLOBE_STYLE_PRESETS[styleId];
-  const markerTextures = markerTextureSets[styleId];
   resorts.forEach((resort) => {
     const marker = markerById.get(resort.id);
     if (!marker) return;
@@ -673,13 +258,13 @@ export function updateMarkerStyles() {
     marker.label.show = Boolean(marker.show && (isSelected || isHovered || cameraHeight < 900000));
     marker.label.pixelOffset = new Cesium.Cartesian2(16, isSelected ? -54 : isHovered ? -42 : -34);
     marker.label.scale = isSelected ? 1.08 : isHovered ? 1 : 0.94;
-    marker.label.font = stylePreset.labelTheme.font;
-    marker.label.style = stylePreset.labelTheme.style;
-    marker.label.fillColor = stylePreset.labelTheme.fillColor;
-    marker.label.outlineColor = stylePreset.labelTheme.outlineColor;
-    marker.label.outlineWidth = stylePreset.labelTheme.outlineWidth;
-    marker.label.backgroundColor = stylePreset.labelTheme.backgroundColor;
-    marker.label.backgroundPadding = stylePreset.labelTheme.backgroundPadding;
+    marker.label.font = globeAppearance.labelTheme.font;
+    marker.label.style = globeAppearance.labelTheme.style;
+    marker.label.fillColor = globeAppearance.labelTheme.fillColor;
+    marker.label.outlineColor = globeAppearance.labelTheme.outlineColor;
+    marker.label.outlineWidth = globeAppearance.labelTheme.outlineWidth;
+    marker.label.backgroundColor = globeAppearance.labelTheme.backgroundColor;
+    marker.label.backgroundPadding = globeAppearance.labelTheme.backgroundPadding;
     marker.label.distanceDisplayCondition = isSelected ? SELECTED_LABEL_DISTANCE : DEFAULT_LABEL_DISTANCE;
   });
   updateZoomReadout();

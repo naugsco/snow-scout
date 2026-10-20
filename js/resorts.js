@@ -1,8 +1,8 @@
-import { RAW_RESORTS } from './constants.js?v=20261019-snowfall';
+import { RAW_RESORTS } from './constants.js?v=20261019-standard-globe';
 import {
   normalizeResortName, seeded, clamp, rangeRound,
   getRegion, getRegionLabel, getClimate, inferStatus, getStatusText
-} from './utils.js?v=20261019-snowfall';
+} from './utils.js?v=20261019-standard-globe';
 
 export function enrichResort(resort, index) {
   const region = getRegion(resort.lat, resort.lon);

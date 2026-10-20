@@ -1,6 +1,6 @@
-import { resorts } from './resorts.js?v=20261019-snowfall';
-import { formatInches, formatRunAccess, formatPassLabel, getPassTone, formatTemperature } from './utils.js?v=20261019-snowfall';
-import { createSnowfallChart } from './snowfall-chart.js?v=20261019-snowfall';
+import { resorts } from './resorts.js?v=20261019-standard-globe';
+import { formatInches, formatRunAccess, formatPassLabel, getPassTone, formatTemperature } from './utils.js?v=20261019-standard-globe';
+import { createSnowfallChart } from './snowfall-chart.js?v=20261019-standard-globe';
 
 const MAX_COMPARE = 3;
 const compareIds = [];

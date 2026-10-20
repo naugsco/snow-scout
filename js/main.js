@@ -1,28 +1,27 @@
-import { DEFAULT_WEBCAM_PAGES } from './constants.js?v=20261019-snowfall';
+import { DEFAULT_WEBCAM_PAGES } from './constants.js?v=20261019-standard-globe';
 import { loadSeasonChart, renderSeasonChart } from './season-chart.js';
-import { state, setUseMetric, setTheme } from './state.js?v=20261019-snowfall';
-import { normalizeResortName, getSourceKeyForResort, webcamPages, withCacheBust } from './utils.js?v=20261019-snowfall';
-import { resorts } from './resorts.js?v=20261019-snowfall';
+import { state, setUseMetric, setTheme } from './state.js?v=20261019-standard-globe';
+import { normalizeResortName, getSourceKeyForResort, webcamPages, withCacheBust } from './utils.js?v=20261019-standard-globe';
+import { resorts } from './resorts.js?v=20261019-standard-globe';
 import {
   viewer, createMarkerEntity, updateMarkerVisibility, updateMarkerStyles,
   syncHoverCardToEntity, screenSpaceHandler, resortForScreenPosition,
-  flyToResort, updateZoomReadout, autoRotate, setAutoRotate,
-  applyGlobeStyle, GLOBE_STYLE_IDS
-} from './cesium-map.js?v=20261019-snowfall';
-import { loadOptionalSourceData, loadLiveForecastForResort } from './data-loader.js?v=20261019-snowfall';
+  flyToResort, updateZoomReadout, autoRotate, setAutoRotate
+} from './cesium-map.js?v=20261019-standard-globe';
+import { loadOptionalSourceData, loadLiveForecastForResort } from './data-loader.js?v=20261019-standard-globe';
 import {
   renderDashboard, renderFilters, renderUpdatedAt, renderStormBanner,
   filteredResorts, ensureSelectionVisible, toggleFavorite, setOnResortClick,
   setOnCompareToggle, baseFilteredResorts, applyStatusFilter
-} from './dashboard.js?v=20261019-snowfall';
-import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261019-snowfall';
-import { parseHash, updateHash, initRouter } from './router.js?v=20261019-snowfall';
-import { toggleCompareResort, clearCompare } from './comparison.js?v=20261019-snowfall';
+} from './dashboard.js?v=20261019-standard-globe';
+import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261019-standard-globe';
+import { parseHash, updateHash, initRouter } from './router.js?v=20261019-standard-globe';
+import { toggleCompareResort, clearCompare } from './comparison.js?v=20261019-standard-globe';
 import {
   toggleLayer, removeAllLayers, setLayerOpacity, getActiveLayerIds, isLayerActive,
   toggleRadarAnimation, isAnimating, showRadarFrame, getRadarFrames,
   getRadarFrameIndex, formatRadarTime, setOnFrameChange, getLayerOpacity
-} from './weather-layers.js?v=20261019-snowfall';
+} from './weather-layers.js?v=20261019-standard-globe';
 
 // Initialize webcamPages with defaults
 Object.assign(webcamPages, DEFAULT_WEBCAM_PAGES);
@@ -56,25 +55,6 @@ window.__SNOW_SCOUT__ = {
 // Core orchestration
 function syncHash() {
   updateHash(state, resorts);
-}
-
-function updateGlobeStyleControls() {
-  document.querySelectorAll('.globe-style-btn').forEach((button) => {
-    button.classList.toggle('active', button.dataset.style === state.globeStyle);
-  });
-}
-
-function setGlobeStyle(styleId, { sync = true } = {}) {
-  const nextStyle = GLOBE_STYLE_IDS.includes(styleId) ? styleId : 'default';
-  if (state.globeStyle === nextStyle) {
-    updateGlobeStyleControls();
-    return;
-  }
-  state.globeStyle = nextStyle;
-  applyGlobeStyle(nextStyle);
-  updateMarkerStyles();
-  updateGlobeStyleControls();
-  if (sync) syncHash();
 }
 
 function focusResort(resort, options = {}) {
@@ -142,17 +122,10 @@ function selectStatusFilter(id) {
 const searchInput = document.getElementById('search-input');
 const sortSelect = document.getElementById('sort-select');
 const hoverCard = document.getElementById('hover-card');
-const globeStyleButtons = document.querySelectorAll('.globe-style-btn');
 
 document.getElementById('focus-top-btn').addEventListener('click', () => {
   const resort = filteredResorts()[0];
   if (resort) focusResort(resort, { fly: true, openPanel: true });
-});
-
-globeStyleButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    setGlobeStyle(button.dataset.style);
-  });
 });
 
 // Theme toggle (dark ↔ light)
@@ -449,14 +422,11 @@ if (hashState.passFilter) state.passFilter = hashState.passFilter;
 if (hashState.regionFilter) state.regionFilter = hashState.regionFilter;
 if (hashState.sortMode) state.sortMode = hashState.sortMode;
 if (hashState.statusFilter) state.statusFilter = hashState.statusFilter;
-if (GLOBE_STYLE_IDS.includes(hashState.globeStyle)) state.globeStyle = hashState.globeStyle;
 if (hashState.currentTab) state.currentTab = hashState.currentTab;
 if (hashState.selectedId) state.selectedId = hashState.selectedId;
 
 // Sync sort select to state
 sortSelect.value = state.sortMode;
-applyGlobeStyle(state.globeStyle);
-updateGlobeStyleControls();
 
 // Initial render
 loadSeasonChart();
@@ -482,7 +452,6 @@ initRouter(resorts, (parsed) => {
   if (parsed.regionFilter) state.regionFilter = parsed.regionFilter;
   if (parsed.sortMode) { state.sortMode = parsed.sortMode; sortSelect.value = parsed.sortMode; }
   if (parsed.statusFilter) state.statusFilter = parsed.statusFilter;
-  setGlobeStyle(parsed.globeStyle || 'default', { sync: false });
   if (parsed.currentTab) setActiveTab(parsed.currentTab);
   if (parsed.selectedId) {
     const resort = resorts.find((r) => r.id === parsed.selectedId);

@@ -1,10 +1,10 @@
-import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261019-snowfall';
-import { state, saveFavorites } from './state.js?v=20261019-snowfall';
-import { resorts } from './resorts.js?v=20261019-snowfall';
+import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261019-standard-globe';
+import { state, saveFavorites } from './state.js?v=20261019-standard-globe';
+import { resorts } from './resorts.js?v=20261019-standard-globe';
 import {
   formatInches, formatRunAccess, formatPassLabel, getPassTone
-} from './utils.js?v=20261019-snowfall';
-import { getResortLogoUrl } from './resort-logos.js?v=20261019-snowfall';
+} from './utils.js?v=20261019-standard-globe';
+import { getResortLogoUrl } from './resort-logos.js?v=20261019-standard-globe';
 
 const resortListEl = document.getElementById('resort-list');
 const resortCount = document.getElementById('resort-count');

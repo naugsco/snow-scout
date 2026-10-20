@@ -1,4 +1,4 @@
-import { FAVORITES_KEY } from './constants.js?v=20261019-snowfall';
+import { FAVORITES_KEY } from './constants.js?v=20261019-standard-globe';
 
 export function loadFavorites() {
   try {
@@ -25,7 +25,6 @@ export const state = {
   passFilter: 'all',
   regionFilter: 'all',
   statusFilter: 'all',
-  globeStyle: 'default',
   freshMode: '24h',
   searchQuery: '',
   sortMode: 'score',

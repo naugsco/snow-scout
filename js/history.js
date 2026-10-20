@@ -1,6 +1,6 @@
-import { resorts } from './resorts.js?v=20261019-snowfall';
-import { state, setUseMetric, setTheme } from './state.js?v=20261019-snowfall';
-import { formatInches, formatPassLabel } from './utils.js?v=20261019-snowfall';
+import { resorts } from './resorts.js?v=20261019-standard-globe';
+import { state, setUseMetric, setTheme } from './state.js?v=20261019-standard-globe';
+import { formatInches, formatPassLabel } from './utils.js?v=20261019-standard-globe';
 import { historyRecords, fetchSnowfallCatalog } from './season-snowfall.js';
 
 const $ = (id) => document.getElementById(id);

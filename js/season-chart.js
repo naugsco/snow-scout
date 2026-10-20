@@ -1,5 +1,5 @@
-import { resorts } from './resorts.js?v=20261019-snowfall';
-import { formatInches } from './utils.js?v=20261019-snowfall';
+import { resorts } from './resorts.js?v=20261019-standard-globe';
+import { formatInches } from './utils.js?v=20261019-standard-globe';
 import { rankedSnowfall, fetchSnowfallCatalog } from './season-snowfall.js';
 
 let catalog = null;

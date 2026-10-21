@@ -38,6 +38,7 @@ class PackagingTests(unittest.TestCase):
             self.assertFalse((output / 'scripts').exists())
             parser = ResourceLinks()
             parser.feed((output / 'mountain.html').read_text())
+            parser.feed((output / 'index.html').read_text())
             for link in parser.links:
                 url = urlsplit(link)
                 if not url.scheme:

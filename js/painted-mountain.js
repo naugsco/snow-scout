@@ -1,6 +1,6 @@
-import { CESIUM_ION_TOKEN } from './constants.js?v=20261020-all-trails';
-import { paintedMaterial, paintImagery } from './painted-material.js?v=20261020-all-trails';
-import { trailColor } from './trail-style.js?v=20261020-all-trails';
+import { CESIUM_ION_TOKEN } from './constants.js?v=20261021-sources-verified';
+import { paintedMaterial, paintImagery } from './painted-material.js?v=20261021-sources-verified';
+import { trailColor } from './trail-style.js?v=20261021-sources-verified';
 
 export async function createMountain(container, notify, fail, config) {
   const C = window.Cesium;

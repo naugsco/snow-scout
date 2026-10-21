@@ -1,0 +1,301 @@
+{
+  "name": "Big Sky",
+  "updated": "2026-10-21T20:37:22Z",
+  "currentConditions": {
+    "resortwide": {
+      "totalTrailArea": {
+        "acres": 5850,
+        "hectares": 2368
+      },
+      "totalTrailLength": {
+        "miles": 0,
+        "kilometers": 0
+      },
+      "areaOpen": {
+        "acres": 0,
+        "hectares": 0
+      },
+      "lengthOpen": {
+        "miles": 0,
+        "kilometers": 0
+      },
+      "numTrailsTotal": 319,
+      "numTrailsOpen": 0,
+      "numTrailsGroomed": 0,
+      "numTrailsSnowMaking": 0,
+      "numLiftsTotal": 40,
+      "numLiftsOpen": 0,
+      "numLiftsOnHold": 0,
+      "numLiftsClosed": 40,
+      "numParksTotal": 6,
+      "numParksOpen": 0,
+      "numPipesTotal": null,
+      "numPipesOpen": null,
+      "numParkFeaturesOpen": 0,
+      "numSummerTrailsTotal": 58,
+      "numSummerTrailsOpen": 0,
+      "numSummerLiftsTotal": 4,
+      "numSummerLiftsOpen": 0
+    },
+    "resortLocations": {
+      "location": [
+        {
+          "name": "Big Sky Resort",
+          "elevation": null,
+          "primarySurface": null,
+          "secondarySurface": null,
+          "snowOverNight": {
+            "inches": "0",
+            "centimeters": "0"
+          },
+          "snowOverNightLabel": "Snow Overnight",
+          "snowSince5am": null,
+          "snowSince5amLabel": "Snow Since 5am",
+          "snow12Hours": null,
+          "snow12HoursLabel": "Snow 12 Hrs.",
+          "snow24Hours": {
+            "inches": "0",
+            "centimeters": "0"
+          },
+          "snow24HoursLabel": "Snow 24 Hrs.",
+          "snow48Hours": {
+            "inches": "0",
+            "centimeters": "0"
+          },
+          "snow48HoursLabel": "Snow 48 Hrs.",
+          "snow72Hours": {
+            "inches": "0",
+            "centimeters": "0"
+          },
+          "snow72HoursLabel": "Snow 72 Hrs.",
+          "snow7Days": {
+            "inches": "3",
+            "centimeters": "8"
+          },
+          "snow7DaysLabel": "Snow 7 Days",
+          "snowSeasonTotal": null,
+          "snowSeasonTotalLabel": "Snow Season Total",
+          "base": {
+            "inches": "1",
+            "centimeters": "3"
+          },
+          "baseLabel": "Base Depth",
+          "baseMin": {
+            "inches": "1",
+            "centimeters": "3"
+          },
+          "baseMinLabel": "Base Depth",
+          "baseMax": {
+            "inches": "1",
+            "centimeters": "3"
+          },
+          "baseMaxLabel": "Base Depth",
+          "tracksetOpen": null,
+          "tracksetOpenLabel": "Trackset Open",
+          "skateGroomed": null,
+          "skateGroomedLabel": "Skate Groomed",
+          "snowshoeGroomed": null,
+          "snowshoeGroomedLabel": "Snowshoe Groomed",
+          "fatTireOpen": null,
+          "fatTireOpenLabel": "Fat Tire Open"
+        }
+      ]
+    },
+    "roads": null
+  },
+  "facilities": {
+    "areas": {
+      "area": [
+        {
+          "name": "Cascade Area",
+          "lifts": {
+            "lift": [
+              {
+                "name": "Cascade 3",
+                "id": 11321,
+                "status": "Closed",
+                "statusIcon": "closed",
+                "comment": "",
+                "openTime": null,
+                "closeTime": null,
+                "nightStatus": null,
+                "type": "Chairlift",
+                "capacity": 3,
+                "liftIcon": "chairlift-3",
+                "featureIcons": null,
+                "skierWaitTime": null,
+                "scenicWaitTime": null
+              },
+              {
+                "name": "Little Thunder 2",
+                "id": 11322,
+                "status": "Closed",
+                "statusIcon": "closed",
+                "comment": "",
+                "openTime": null,
+                "closeTime": null,
+                "nightStatus": null,
+                "type": "Chairlift",
+                "capacity": 2,
+                "liftIcon": "chairlift-2",
+                "featureIcons": null,
+                "skierWaitTime": null,
+                "scenicWaitTime": null
+              }
+            ]
+          },
+          "trails": {
+            "trail": [
+              {
+                "name": "Little Thunder",
+                "id": 11312,
+                "status": "Closed",
+                "statusIcon": "closed",
+                "comment": null,
+                "difficulty": "beginner",
+                "difficultyIcon": "beginner",
+                "groomed": false,
+                "nightStatus": null,
+                "snowMaking": null,
+                "uphill": null,
+                "type": null,
+                "featureIcons": null,
+                "area": 1.1,
+                "length": null
+              },
+              {
+                "name": "Middle River",
+                "id": 11311,
+                "status": "Closed",
+                "statusIcon": "closed",
+                "comment": null,
+                "difficulty": "beginner",
+                "difficultyIcon": "beginner",
+                "groomed": false,
+                "nightStatus": null,
+                "snowMaking": null,
+                "uphill": null,
+                "type": null,
+                "featureIcons": null,
+                "area": 9.9,
+                "length": null
+              },
+              {
+                "name": "Swift Bear",
+                "id": 11314,
+                "status": "Closed",
+                "statusIcon": "closed",
+                "comment": null,
+                "difficulty": "beginner",
+                "difficultyIcon": "beginner",
+                "groomed": false,
+                "nightStatus": null,
+                "snowMaking": null,
+                "uphill": null,
+                "type": null,
+                "featureIcons": null,
+                "area": 4.1,
+                "length": null
+              },
+              {
+                "name": "Plenty Coup",
+                "id": 11313,
+                "status": "Closed",
+                "statusIcon": "closed",
+                "comment": null,
+                "difficulty": "intermediate",
+                "difficultyIcon": "intermediate",
+                "groomed": false,
+                "nightStatus": null,
+                "snowMaking": null,
+                "uphill": null,
+                "type": null,
+                "featureIcons": null,
+                "area": 6.7,
+                "length": null
+              }
+            ]
+          },
+          "freestyleTerrain": {
+            "parks": null,
+            "pipes": null
+          },
+          "specialTerrain": {
+            "terrain": null
+          },
+          "gates": null,
+          "nonDesignatedTrails": null
+        }
+      ]
+    },
+    "parkingLots": {
+      "parking": [
+        {
+          "name": "Exchange Lot",
+          "status": "Closed",
+          "percentFull": null,
+          "openTime": null,
+          "closeTime": null,
+          "price": "",
+          "totalCapacity": null,
+          "comment": "",
+          "alert": "",
+          "reservationsRequired": null
+        },
+        {
+          "name": "Mountain Village Free Parking",
+          "status": "Closed",
+          "percentFull": null,
+          "openTime": null,
+          "closeTime": null,
+          "price": "",
+          "totalCapacity": null,
+          "comment": "",
+          "alert": "",
+          "reservationsRequired": null
+        },
+        {
+          "name": "Madison Base Lot",
+          "status": "Closed",
+          "percentFull": null,
+          "openTime": null,
+          "closeTime": null,
+          "price": "",
+          "totalCapacity": null,
+          "comment": "",
+          "alert": "",
+          "reservationsRequired": null
+        },
+        {
+          "name": "Carpool Lot",
+          "status": "Closed",
+          "percentFull": null,
+          "openTime": null,
+          "closeTime": null,
+          "price": "",
+          "totalCapacity": null,
+          "comment": "",
+          "alert": "",
+          "reservationsRequired": null
+        }
+      ]
+    },
+    "shuttles": {
+      "line": [
+        {
+          "name": "Mountain Village Shuttle",
+          "status": "Open",
+          "numberRunning": 5,
+          "openTime": null,
+          "closedTime": null,
+          "comment": " ",
+          "alert": ""
+        }
+      ]
+    },
+    "lodges": null,
+    "retail": null,
+    "skiChecks": null,
+    "winterActivities": null
+  }
+}

@@ -1,4 +1,4 @@
-import { TRAIL_CATALOG } from './trail-catalog.js?v=20261020-all-trails';
+import { TRAIL_CATALOG } from './trail-catalog.js?v=20261021-sources-verified';
 
 export function mountainSlug(name) {
   return name.toLowerCase().replace(/\(.*?\)/g, '').replace(/&/g, 'and')

@@ -1,6 +1,6 @@
-import { resorts } from './resorts.js?v=20261020-all-trails';
-import { formatInches, formatRunAccess, formatPassLabel, getPassTone, formatTemperature } from './utils.js?v=20261020-all-trails';
-import { createSnowfallChart } from './snowfall-chart.js?v=20261020-all-trails';
+import { resorts } from './resorts.js?v=20261021-sources-verified';
+import { formatInches, formatRunAccess, formatPassLabel, getPassTone, formatTemperature } from './utils.js?v=20261021-sources-verified';
+import { createSnowfallChart } from './snowfall-chart.js?v=20261021-sources-verified';
 
 const MAX_COMPARE = 3;
 const compareIds = [];
@@ -87,7 +87,7 @@ function renderCompareOverlay() {
     { key: 'forecast72h', label: 'Forecast 72h', format: (v) => formatInches(v), best: 'max' },
     { key: 'baseDepth', label: 'Base Depth', format: (v) => formatInches(v), best: 'max' },
     { key: 'runsOpen', label: 'Runs Open', format: (v) => Number.isFinite(v) ? String(v) : '—', best: 'max' },
-    { key: 'groomedRuns', label: 'Groomed', format: (v) => Number.isFinite(v) ? String(v) : '—', best: 'max' },
+    { key: 'groomedRuns', label: 'Open groomed', format: (v) => Number.isFinite(v) ? String(v) : '—', best: 'max' },
     { key: 'tempF', label: 'Temp', format: (v) => formatTemperature(v), best: null },
     { key: 'daysSinceSnow', label: 'Days Since Snow', format: (v) => Number.isFinite(v) ? `${v}d` : '—', best: 'min' }
   ];
@@ -113,6 +113,11 @@ function renderCompareOverlay() {
       <span class="pass-tag ${getPassTone(resort)}">${formatPassLabel(resort)}</span>
     `;
     col.appendChild(header);
+    const source = document.createElement('p');
+    source.className = 'detail-note';
+    source.textContent = `${resort.liveConditionsKind === 'model' ? 'Modeled recent conditions' : 'Resort report'} · Snow: ${resort.liveSnowStatus || 'unavailable'} · Terrain: ${resort.liveTerrainStatus || 'unavailable'} · Forecast: ${resort.liveForecastStatus === 'ready' ? 'model' : 'unavailable'}`;
+    col.appendChild(source);
+
 
     // Metrics
     metrics.forEach((m) => {
@@ -139,6 +144,10 @@ function renderCompareOverlay() {
   });
 
   compareOverlay.style.display = 'flex';
+}
+
+export function refreshComparison() {
+  if (compareOverlay.style.display === 'flex') renderCompareOverlay();
 }
 
 // Wire buttons

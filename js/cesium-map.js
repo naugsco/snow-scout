@@ -1,11 +1,12 @@
-import { DEG2RAD, CESIUM_ION_TOKEN, BILLBOARD_HEIGHT, HOVER_MARKER_HEIGHT, SELECTED_MARKER_HEIGHT } from './constants.js?v=20261020-all-trails';
-import { state } from './state.js?v=20261020-all-trails';
-import { clamp, getPassTone, inferStatus, getStatusText, normalizeResortName, getSourceKeyForResort } from './utils.js?v=20261020-all-trails';
-import { resorts } from './resorts.js?v=20261020-all-trails';
+import { DEG2RAD, CESIUM_ION_TOKEN, BILLBOARD_HEIGHT, HOVER_MARKER_HEIGHT, SELECTED_MARKER_HEIGHT } from './constants.js?v=20261021-sources-verified';
+import { state } from './state.js?v=20261021-sources-verified';
+import { clamp, getPassTone, inferStatus, getStatusText, normalizeResortName, getSourceKeyForResort } from './utils.js?v=20261021-sources-verified';
+import { resorts } from './resorts.js?v=20261021-sources-verified';
 
 Cesium.Ion.defaultAccessToken = CESIUM_ION_TOKEN;
 
 export const viewer = new Cesium.Viewer('cesium-container', {
+  useDefaultRenderLoop: false,
   terrain: Cesium.Terrain.fromWorldTerrain({
     requestVertexNormals: true
   }),
@@ -297,8 +298,9 @@ export function syncHoverCardToEntity() {
   document.getElementById('hover-name').textContent = resort.name;
   document.getElementById('hover-copy').textContent = resort.statusText;
   hoverCard.style.display = 'block';
-  hoverCard.style.left = `${screen.x}px`;
-  hoverCard.style.top = `${screen.y}px`;
+  const canvasRect = viewer.scene.canvas.getBoundingClientRect();
+  hoverCard.style.left = `${canvasRect.left + screen.x}px`;
+  hoverCard.style.top = `${canvasRect.top + screen.y}px`;
 }
 
 function offsetLatLonByMeters(lat, lon, eastMeters, northMeters) {

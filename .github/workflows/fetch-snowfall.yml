@@ -17,7 +17,8 @@ jobs:
         with:
           python-version: '3.12'
       - name: Refresh current totals and resume historical backfill
-        run: python3 scripts/fetch_resort_snowfall.py --backfill-budget 1800
+        # Reserve free-tier request capacity for hourly current weather collection.
+        run: python3 scripts/fetch_resort_snowfall.py --backfill-budget 1200
       - name: Commit snowfall checkpoints
         if: always()
         run: |

@@ -1,13 +1,13 @@
-import { state } from './state.js?v=20261020-all-trails';
+import { state } from './state.js?v=20261021-sources-verified';
 import {
   formatInches, formatTemperature, formatRunAccess, formatPassLabel,
   getPassTone, getSourceKeyForResort, getConditionsPageForResort, getWebcamPageForResort,
   withCacheBust, webcamStreams
-} from './utils.js?v=20261020-all-trails';
-import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261020-all-trails';
-import { createSnowfallChart } from './snowfall-chart.js?v=20261020-all-trails';
-import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261020-all-trails';
-import { mountainUrl } from './mountain-config.js?v=20261020-all-trails';
+} from './utils.js?v=20261021-sources-verified';
+import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261021-sources-verified';
+import { createSnowfallChart } from './snowfall-chart.js?v=20261021-sources-verified';
+import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261021-sources-verified';
+import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';
 
 const detailOverlay = document.getElementById('detail-overlay');
 const detailPanel = document.getElementById('detail-panel');
@@ -69,7 +69,7 @@ function summarizeForecastBreakdown(resort) {
   if (!daily?.length) return null;
   return daily
     .slice(0, 3)
-    .map((amount, index) => `D${index + 1} ${formatInches(amount, '0"')}`)
+    .map((amount, index) => `D${index + 1} ${formatInches(amount)}`)
     .join(' · ');
 }
 
@@ -99,7 +99,7 @@ function buildSourceLinks(resort) {
     links.unshift({
       id: 'conditions', tab: 'conditions', title: 'Conditions',
       subtitle: summarizeConditionSnapshot(resort),
-      hint: 'Official conditions source is not wired for this resort yet. Current values may still be estimated.',
+      hint: 'Official conditions source is not wired for this resort yet. Unverified values are not displayed.',
       url: null, isStatic: true
     });
   }
@@ -213,10 +213,11 @@ export function renderDetailPanel() {
   detailOverlay.style.display = 'flex';
   detailName.textContent = resort.name;
   document.getElementById('detail-mountain').href = mountainUrl(resort);
-  const updateSuffix = resort.liveUpdatedAt
-    ? ` · ${/^updated\b/i.test(resort.liveUpdatedAt) ? resort.liveUpdatedAt : `Updated ${resort.liveUpdatedAt}`}`
-    : '';
-  detailSubtitle.textContent = `${formatPassLabel(resort)} · ${resort.regionLabel} · ${resort.statusText}${updateSuffix}`;
+  const sourceLabel = resort.liveConditionsKind === 'model' ? 'Open-Meteo model estimate' : 'Resort report';
+  const snowTime = resort.liveSnowReportedAt ? new Date(resort.liveSnowReportedAt).toLocaleString() : 'unknown';
+  const terrainTime = resort.liveTerrainReportedAt ? new Date(resort.liveTerrainReportedAt).toLocaleString() : 'unknown';
+  const terrainTimeLabel = resort.liveTerrainTimestampKind === 'feed' ? 'feed updated' : resort.liveTerrainTimestampKind === 'checked' ? 'checked' : 'reported';
+  detailSubtitle.textContent = `${formatPassLabel(resort)} · ${resort.regionLabel} · ${sourceLabel} · Snow: ${resort.liveSnowStatus || 'loading'} (${snowTime}) · Terrain ${terrainTimeLabel}: ${resort.liveTerrainStatus || 'loading'} (${terrainTime})`;
   detailFavorite.textContent = favoriteGlyph(resort.id);
   detailFavorite.classList.toggle('primary', state.favorites.has(resort.id));
 
@@ -240,34 +241,22 @@ export function renderDetailPanel() {
   visualGrid.innerHTML = `
     <div class="current-temp">
       <span class="current-temp-value" style="color:${tempColor}">${formatTemperature(temp)}</span>
-      <span class="current-temp-label">Now</span>
+      <span class="current-temp-label">${resort.liveTemperatureKind === 'model' ? 'Modeled now' : 'Now'}</span>
     </div>
   `;
 
-  // === RECENT SNOW (discrete daily, past 3 days) ===
+  // Cumulative reporting windows, not invented calendar-day totals.
   const snowBars = document.getElementById('detail-snow-bars');
-  const r1 = resort.metrics.recentDay1 ?? resort.metrics.snow24h;
-  const r2 = resort.metrics.recentDay2 ?? Math.max((resort.metrics.snow48h ?? 0) - (resort.metrics.snow24h ?? 0), 0);
-  const r3 = resort.metrics.recentDay3 ?? 0;
-  const recentMax = Math.max(r1, r2, r3, 1);
-  const recentTotal = r1 + r2 + r3;
+  const recent = [resort.metrics.snow24h, resort.metrics.snow48h, resort.metrics.snow72h];
+  const recentMax = Math.max(...recent.filter(Number.isFinite), 1);
   snowBars.innerHTML = `
-    <span class="detail-snow-bars-label">\u2744 Last 3 Days <em class="bars-total">${formatInches(recentTotal)} total</em></span>
-    <div class="detail-snow-bars-row">
+    <span class="detail-snow-bars-label">Recent snowfall <em class="bars-total">${resort.liveConditionsKind === 'model' ? 'Model estimate' : 'Resort report'} · cumulative</em></span>
+    <div class="detail-snow-bars-row">${recent.map((amount, index) => `
       <div class="detail-snow-bar-col">
-        <div class="detail-snow-bar"><div class="detail-snow-bar-fill recent-bar" style="height:${(r1 / recentMax) * 100}%"></div></div>
-        <strong>${formatInches(r1)}</strong><span>Yesterday</span>
-      </div>
-      <div class="detail-snow-bar-col">
-        <div class="detail-snow-bar"><div class="detail-snow-bar-fill recent-bar" style="height:${(r2 / recentMax) * 100}%"></div></div>
-        <strong>${formatInches(r2)}</strong><span>2 days</span>
-      </div>
-      <div class="detail-snow-bar-col">
-        <div class="detail-snow-bar"><div class="detail-snow-bar-fill recent-bar" style="height:${(r3 / recentMax) * 100}%"></div></div>
-        <strong>${formatInches(r3)}</strong><span>3 days</span>
-      </div>
-    </div>
-  `;
+        <div class="detail-snow-bar"><div class="detail-snow-bar-fill recent-bar" style="height:${Number.isFinite(amount) ? amount / recentMax * 100 : 0}%"></div></div>
+        <strong>${formatInches(amount)}</strong><span>Last ${(index + 1) * 24}h</span>
+      </div>`).join('')}
+    </div>`;
 
   // === 3-DAY FORECAST with temps ===
   const forecastBars = document.getElementById('detail-forecast-bars');
@@ -275,11 +264,11 @@ export function renderDetailPanel() {
   const dt = resort.liveForecast?.dailyTime;
   const tMax = resort.liveForecast?.tempMax;
   const tMin = resort.liveForecast?.tempMin;
-  const d1 = ds?.[0] ?? resort.metrics.forecastDay1 ?? 0;
-  const d2 = ds?.[1] ?? resort.metrics.forecastDay2 ?? 0;
-  const d3 = ds?.[2] ?? resort.metrics.forecastDay3 ?? 0;
-  const fMax = Math.max(d1, d2, d3, 1);
-  const forecastTotal = d1 + d2 + d3;
+  const d1 = ds?.[0] ?? null;
+  const d2 = ds?.[1] ?? null;
+  const d3 = ds?.[2] ?? null;
+  const fMax = Math.max(...[d1, d2, d3].filter(Number.isFinite), 1);
+  const forecastTotal = resort.metrics.forecast72h;
 
   function dayLabel(idx) {
     const dateStr = dt?.[idx];
@@ -299,7 +288,7 @@ export function renderDetailPanel() {
   }
 
   forecastBars.innerHTML = `
-    <span class="detail-snow-bars-label">\u26C8 3-Day Forecast <em class="bars-total">${formatInches(forecastTotal)} total</em></span>
+    <span class="detail-snow-bars-label">\u26C8 Daily model forecast <em class="bars-total">${formatInches(forecastTotal)} next 72h</em></span>
     <div class="detail-snow-bars-row forecast-with-temps">
       <div class="detail-snow-bar-col">
         <span class="bar-temp">${tempRange(0)}</span>
@@ -337,8 +326,8 @@ export function renderDetailPanel() {
 
   const terrainStats = document.getElementById('detail-terrain-stats');
   terrainStats.innerHTML = `
-    <span><strong>${resort.metrics.runsOpen}</strong> of ${resort.metrics.runsTotal} runs</span>
-    <span><strong>${resort.metrics.groomedRuns}</strong> groomed</span>
+    <span><strong>${resort.metrics.runsOpen ?? '—'}</strong> of ${resort.metrics.runsTotal ?? '—'} runs</span>
+    <span><strong>${resort.metrics.groomedRuns ?? '—'}</strong> open groomed</span>
   `;
 
   // === CONDITIONS ACTIONS (external links) ===
@@ -346,6 +335,7 @@ export function renderDetailPanel() {
   conditionsActions.innerHTML = '';
   [
     { label: '\uD83D\uDCCB Conditions report', url: getConditionsPageForResort(resort) },
+    { label: 'Weather model data', url: resort.liveConditionsKind === 'model' ? resort.liveSources?.weatherModel || resort.liveSources?.conditions : null },
     { label: '\uD83D\uDDFA Terrain status', url: resort.liveSources?.terrain || null }
   ].filter((item) => item.url).forEach((item) => {
     const link = document.createElement('a');
@@ -357,14 +347,7 @@ export function renderDetailPanel() {
   });
 
   // === NOTE ===
-  detailNote.textContent =
-    resort.status === 'incoming'
-      ? `${resort.name} is on storm watch \u2014 forecast momentum is strongest here.`
-      : resort.status === 'fresh'
-        ? `${resort.name} got fresh snow \u2014 one of the best plays right now.`
-        : resort.status === 'dry'
-          ? `${resort.name} has the longest dry streak in the current view.`
-          : `${resort.name} is holding steady with reliable base.`;
+  detailNote.textContent = resort.liveNote || 'Current snow and terrain data are unavailable until a source report can be verified.';
 
   // === FORECAST TAB ===
   const forecastCards = resort.liveForecast?.dailySnowfall?.length
@@ -392,7 +375,7 @@ export function renderDetailPanel() {
       card.className = 'forecast-day';
       card.innerHTML = `
         <span>${label}</span>
-        <strong>${formatInches(day.amount, '0"')} snow</strong>
+        <strong>${formatInches(day.amount)} snow</strong>
         <em>${formatTemperature(day.tempMin)} to ${formatTemperature(day.tempMax)}</em>
       `;
       forecastGrid.appendChild(card);
@@ -401,7 +384,7 @@ export function renderDetailPanel() {
 
   forecastActions.innerHTML = '';
   [
-    { label: '\uD83D\uDCCA Official forecast', url: resort.liveSources?.forecastPage || getConditionsPageForResort(resort) || null },
+    { label: '\uD83D\uDCCA Resort weather page', url: resort.liveSources?.forecastPage || getConditionsPageForResort(resort) || null },
     { label: '\uD83D\uDD17 Model API', url: resort.liveSources?.forecastModel || null }
   ].filter((item) => item.url).forEach((item) => {
     const link = document.createElement('a');
@@ -411,6 +394,13 @@ export function renderDetailPanel() {
     link.textContent = item.label;
     forecastActions.appendChild(link);
   });
+
+  const forecastNote = document.createElement('p');
+  forecastNote.className = 'detail-note';
+  forecastNote.textContent = resort.liveForecast
+    ? `Open-Meteo model, fetched ${new Date(resort.liveForecast.updatedAt).toLocaleString()}. Daily bars use resort-local calendar dates; the 72-hour total starts ${new Date(resort.liveForecast.periodStart).toLocaleString()}.`
+    : resort.liveForecastStatus === 'loading' ? 'Loading the weather-model forecast…' : 'Current forecast unavailable. Unverified forecast values are withheld.';
+  forecastActions.appendChild(forecastNote);
 
   // === TRAIL MAP TAB ===
   const trailMapViewport = getTrailMapViewport(resort);

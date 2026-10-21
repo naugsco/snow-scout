@@ -1,66 +1,61 @@
-import { state } from './state.js?v=20261020-all-trails';
-import { resorts } from './resorts.js?v=20261020-all-trails';
+import { state } from './state.js?v=20261021-sources-verified';
+import { resorts } from './resorts.js?v=20261021-sources-verified';
 import {
-  getSourceKeyForResort, inferStatus, getStatusText, buildForecastUrl, formatInches,
+  getSourceKeyForResort, inferStatus, getStatusText, buildForecastUrl,
   conditionPages, webcamPages, webcamStreams, forecastCache, forecastRequests,
   getConditionsPageForResort
-} from './utils.js?v=20261020-all-trails';
-import { DEFAULT_CONDITION_PAGES } from './constants.js?v=20261020-all-trails';
+} from './utils.js?v=20261021-sources-verified';
+import { DEFAULT_CONDITION_PAGES } from './constants.js?v=20261021-sources-verified';
+
+import { CONDITION_KEYS, isFresh } from './condition-data.js?v=20261021-sources-verified';
+import { chooseConditions } from './condition-selection.js?v=20261021-sources-verified';
+import { parseWeather, forecastIsCurrent } from './weather-data.js?v=20261021-sources-verified';
 
 // Initialize conditionPages with defaults
 Object.assign(conditionPages, DEFAULT_CONDITION_PAGES);
+let conditionSnapshot = null;
 
-export function applyLiveConditions(conditionCatalog) {
+export function applyLiveConditions(conditionCatalog, snapshotAt, now = Date.now()) {
   resorts.forEach((resort) => {
-    const sourceKey = getSourceKeyForResort(resort.name);
-    const rawKey = resort.name.toLowerCase().replace(/\(.*?\)/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim();
-    const live = conditionCatalog[sourceKey] || conditionCatalog[rawKey];
-    if (!live) return;
-    if (live.status !== 'ok' || !live.metrics) {
-      resort.liveConditionsStatus = 'error';
-      resort.liveNote = 'Current conditions are unavailable. Check the resort report.';
-      console.error(`${resort.name} conditions: ${live.error || 'No condition metrics returned'}`);
-      for (const key of Object.keys(resort.metrics)) {
-        if (!key.startsWith('forecast') || resort.liveForecastStatus !== 'ready') resort.metrics[key] = null;
-      }
-      resort.status = inferStatus(resort.metrics);
-      resort.statusText = resort.liveNote;
-      resort.liveSources = { ...(resort.liveSources || {}), ...(live.sources || {}) };
-      return;
-    }
-
-    const nextMetrics = { ...resort.metrics };
-    // Metrics that should keep generated values when live data returns null
-    const keepGeneratedIfNull = resort.passes.includes('mountain-collective')
-      ? new Set()
-      : new Set(['runsOpen', 'runsTotal', 'groomedRuns', 'baseDepth']);
-    Object.entries(live.metrics).forEach(([metricKey, value]) => {
-      if (value === undefined) return;
-      if (value === null) {
-        // For open-meteo fallback, preserve generated runs/terrain data
-        if (keepGeneratedIfNull.has(metricKey) && nextMetrics[metricKey] != null) return;
-        nextMetrics[metricKey] = null;
-        return;
-      }
-      if (Number.isNaN(Number(value))) return;
-      nextMetrics[metricKey] = Number(value);
-    });
-
-    resort.metrics = nextMetrics;
-    resort.status = inferStatus(nextMetrics);
-    resort.statusText = getStatusText(resort.status, nextMetrics);
-    resort.liveNote = live.note || resort.liveNote || null;
-    resort.liveUpdatedAt = live.updatedAt || resort.liveUpdatedAt || null;
-    resort.liveConditionsStatus = 'ready';
-    resort.liveConditionsKind = live.adapter === 'open-meteo' ? 'model' : 'reported';
-    resort.liveSources = {
-      ...(resort.liveSources || {}),
-      ...(live.sources || {})
-    };
+    const published = conditionCatalog[getSourceKeyForResort(resort.name)];
+    const live = chooseConditions(published, snapshotAt, forecastCache.get(getSourceKeyForResort(resort.name)), now);
+    const assessment = live;
+    // Replacement, never a merge with generated or previously loaded condition values.
+    for (const key of CONDITION_KEYS) resort.metrics[key] = assessment.metrics[key];
+    resort.liveSnowStatus = assessment.snowStatus;
+    resort.liveTerrainStatus = assessment.terrainStatus;
+    resort.liveConditionsStatus = assessment.snowStatus === 'ready' || assessment.terrainStatus === 'ready' ? 'ready'
+      : assessment.snowStatus === 'stale' ? 'stale' : 'error';
+    resort.liveConditionsKind = live?.snowSourceKind || (live?.adapter === 'open-meteo' ? 'model' : 'reported');
+    resort.liveTerrainTimestampKind = live?.terrainTimestampKind || 'reported';
+    resort.liveTemperatureKind = live?.temperatureKind || resort.liveConditionsKind;
+    resort.livePrimarySnowStatus = live?.primarySnowStatus || assessment.snowStatus;
+    resort.liveRunsReported = Number.isFinite(resort.metrics.runsOpen);
+    resort.liveUpdatedAt = assessment.snowStatus === 'ready' ? live.snowReportedAt : null;
+    resort.liveSnowReportedAt = live?.snowReportedAt || null;
+    resort.liveTerrainReportedAt = live?.terrainReportedAt || null;
+    resort.liveCheckedAt = live?.checkedAt || null;
+    resort.liveNote = [...new Set([
+      assessment.snowStatus === 'ready' ? live?.note : `Current snow report ${assessment.snowStatus}.`,
+      assessment.terrainStatus !== 'ready' ? `Terrain status ${assessment.terrainStatus}.` : null,
+      ...assessment.issues
+    ].filter(Boolean))].join(' ');
+    resort.liveSources = { ...(resort.liveSources || {}), ...(live?.sources || {}) };
+    resort.status = inferStatus(resort.metrics);
+    resort.statusText = getStatusText(resort.status, resort.metrics);
   });
 }
 
+function clearForecast(resort, status = 'error') {
+  resort.metrics.forecast72h = null;
+  resort.liveForecast = null;
+  resort.liveForecastStatus = status;
+  resort.status = inferStatus(resort.metrics);
+  resort.statusText = getStatusText(resort.status, resort.metrics);
+}
+
 export function applyForecastToResortKey(sourceKey, forecast, onDataReady) {
+  if (!forecastIsCurrent(forecast)) throw new Error('Forecast is stale or invalid.');
   resorts.forEach((resort) => {
     if (getSourceKeyForResort(resort.name) !== sourceKey) return;
     resort.metrics.forecast72h = forecast.forecast72h;
@@ -74,6 +69,7 @@ export function applyForecastToResortKey(sourceKey, forecast, onDataReady) {
     resort.status = inferStatus(resort.metrics);
     resort.statusText = getStatusText(resort.status, resort.metrics);
   });
+  if (onDataReady && conditionSnapshot) applyLiveConditions(conditionSnapshot.resorts, conditionSnapshot.generatedAt);
   if (onDataReady) onDataReady();
 }
 
@@ -81,36 +77,26 @@ export async function loadLiveForecastForResort(resort, onDataReady) {
   const sourceKey = getSourceKeyForResort(resort.name);
   if (!sourceKey) return null;
 
-  if (forecastCache.has(sourceKey)) {
+  if (forecastIsCurrent(forecastCache.get(sourceKey))) {
     const cached = forecastCache.get(sourceKey);
     applyForecastToResortKey(sourceKey, cached, onDataReady);
     return cached;
   }
 
+  forecastCache.delete(sourceKey);
   if (forecastRequests.has(sourceKey)) {
     return forecastRequests.get(sourceKey);
   }
 
-  resort.liveForecastStatus = 'loading';
+  clearForecast(resort, 'loading');
   if (onDataReady) onDataReady();
 
   const apiUrl = buildForecastUrl(resort);
   const request = fetch(apiUrl, { cache: 'no-store' })
     .then((response) => response.ok ? response.json() : Promise.reject(new Error(`Forecast request failed (${response.status})`)))
     .then((payload) => {
-      const dailySnowfall = Array.isArray(payload?.daily?.snowfall_sum)
-        ? payload.daily.snowfall_sum.slice(0, 7).map((value) => Math.round(((Number(value) || 0) / 2.54) * 10) / 10)
-        : [];
-      const forecast = {
-        apiUrl,
-        forecast72h: Math.round(dailySnowfall.slice(0, 3).reduce((sum, value) => sum + value, 0) * 10) / 10,
-        dailySnowfall,
-        dailyTime: Array.isArray(payload?.daily?.time) ? payload.daily.time.slice(0, 7) : [],
-        tempMax: Array.isArray(payload?.daily?.temperature_2m_max) ? payload.daily.temperature_2m_max.slice(0, 7).map((value) => Number(value) || 0) : [],
-        tempMin: Array.isArray(payload?.daily?.temperature_2m_min) ? payload.daily.temperature_2m_min.slice(0, 7).map((value) => Number(value) || 0) : [],
-        weatherCodes: Array.isArray(payload?.daily?.weathercode) ? payload.daily.weathercode.slice(0, 7) : Array.isArray(payload?.daily?.weather_code) ? payload.daily.weather_code.slice(0, 7) : [],
-        updatedAt: new Date().toISOString()
-      };
+      const parsed = parseWeather(payload, apiUrl);
+      const forecast = { ...parsed.forecast, recentConditions: parsed.conditions, recentConditionsAt: parsed.observedThrough };
       forecastCache.set(sourceKey, forecast);
       applyForecastToResortKey(sourceKey, forecast, onDataReady);
       return forecast;
@@ -118,7 +104,8 @@ export async function loadLiveForecastForResort(resort, onDataReady) {
     .catch((error) => {
       resorts.forEach((item) => {
         if (getSourceKeyForResort(item.name) !== sourceKey) return;
-        item.liveForecastStatus = 'error';
+        clearForecast(item);
+        forecastCache.delete(sourceKey);
       });
       if (onDataReady) onDataReady();
       throw error;
@@ -134,51 +121,46 @@ export async function loadLiveForecastForResort(resort, onDataReady) {
 export async function loadOptionalSourceData(onDataReady) {
   const sourceTasks = [
     fetch('./data/resort-forecasts.json', { cache: 'no-store' })
-      .then((response) => response.ok ? response.json() : null)
+      .then((response) => response.ok ? response.json() : Promise.reject(new Error(`Forecast snapshot HTTP ${response.status}`)))
       .then((payload) => {
-        if (!payload?.resorts) return;
-        const ageMs = payload.generatedAt ? Date.now() - new Date(payload.generatedAt).getTime() : Infinity;
-        if (ageMs > 8 * 60 * 60 * 1000) return; // skip if older than 8h
-        Object.entries(payload.resorts).forEach(([key, forecast]) => {
-          if (!forecast || forecastCache.has(key)) return;
-          forecast.apiUrl = forecast.apiUrl || null;
-          forecastCache.set(key, forecast);
-          resorts.forEach((resort) => {
-            if (getSourceKeyForResort(resort.name) !== key) return;
-            resort.metrics.forecast72h = forecast.forecast72h;
-            resort.liveForecast = forecast;
-            resort.liveForecastStatus = 'ready';
-            resort.liveSources = {
-              ...(resort.liveSources || {}),
-              forecastPage: getConditionsPageForResort(resort) || resort.liveSources?.forecastPage || null
-            };
-            resort.status = inferStatus(resort.metrics);
-            resort.statusText = getStatusText(resort.status, resort.metrics);
-          });
-        });
-      })
-      .catch(() => null),
-    fetch('./data/resort-conditions.json', { cache: 'no-store' })
-      .then((response) => response.ok ? response.json() : null)
-      .then((payload) => {
-        if (!payload?.resorts) return;
-        if (payload.generatedAt) state.conditionsGeneratedAt = payload.generatedAt;
-        state.conditionErrorCount = Object.values(payload.resorts).filter((entry) => entry.status === 'error').length;
-        Object.entries(payload.resorts).forEach(([key, entry]) => {
-          if (entry?.sources?.conditions) {
-            const resolvedKeys = new Set([
-              key,
-              getSourceKeyForResort(key),
-              getSourceKeyForResort(entry.resort || key)
-            ]);
-            resolvedKeys.forEach((resolvedKey) => {
-              if (resolvedKey) conditionPages[resolvedKey] = entry.sources.conditions;
-            });
+        if (payload?.schemaVersion !== 2 || !payload.resorts) throw new Error('Forecast snapshot format is outdated or invalid.');
+        const fresh = isFresh(payload.generatedAt);
+        for (const resort of resorts) {
+          const key = getSourceKeyForResort(resort.name);
+          const forecast = payload.resorts[key];
+          if (fresh && forecastIsCurrent(forecast)) {
+            if (forecastIsCurrent(resort.liveForecast) && Date.parse(resort.liveForecast.updatedAt) > Date.parse(forecast.updatedAt)) continue;
+            forecastCache.set(key, forecast);
+            applyForecastToResortKey(key, forecast);
+          } else if (!forecastIsCurrent(resort.liveForecast)) {
+            clearForecast(resort, !fresh || forecast?.status === 'ok' ? 'stale' : 'error');
           }
-        });
-        applyLiveConditions(payload.resorts);
+        }
       })
-      .catch(() => null),
+      .catch((error) => {
+        console.error('Forecast data:', error.message);
+        for (const resort of resorts) if (!forecastIsCurrent(resort.liveForecast)) clearForecast(resort);
+      }),
+    fetch('./data/resort-conditions.json', { cache: 'no-store' })
+      .then((response) => response.ok ? response.json() : Promise.reject(new Error(`Conditions snapshot HTTP ${response.status}`)))
+      .then((payload) => {
+        if (payload?.schemaVersion !== 2 || !payload.resorts) throw new Error('Conditions snapshot format is outdated or invalid.');
+        conditionSnapshot = payload;
+        state.conditionsGeneratedAt = payload.generatedAt;
+        Object.entries(payload.resorts).forEach(([key, entry]) => {
+          if (entry?.adapter !== 'open-meteo' && entry?.sources?.conditions) conditionPages[key] = entry.sources.conditions;
+        });
+        applyLiveConditions(payload.resorts, payload.generatedAt);
+        state.conditionsLoadStatus = isFresh(payload.generatedAt) ? 'ready' : 'stale';
+        state.conditionErrorCount = resorts.filter((resort) => resort.liveSnowStatus !== 'ready').length;
+      })
+      .catch((error) => {
+        console.error('Condition data:', error.message);
+        conditionSnapshot = null;
+        state.conditionsLoadStatus = 'error';
+        applyLiveConditions({}, null);
+        state.conditionErrorCount = resorts.length;
+      }),
     fetch('./ski-webcams/webcam_pages.json', { cache: 'no-store' })
       .then((response) => response.ok ? response.json() : null)
       .then((catalog) => {
@@ -228,5 +210,26 @@ export async function loadOptionalSourceData(onDataReady) {
   ];
 
   await Promise.all(sourceTasks);
+  if (conditionSnapshot) applyLiveConditions(conditionSnapshot.resorts, conditionSnapshot.generatedAt);
   if (onDataReady) onDataReady();
+}
+
+// An open browser tab must expire data too, not just a freshly loaded page.
+export function expireStaleWeather(onDataReady, now = Date.now()) {
+  let changed = false;
+  if (conditionSnapshot) {
+    const previous = JSON.stringify(resorts.map(r => [r.metrics, r.liveSnowStatus, r.liveTerrainStatus, r.liveConditionsKind]));
+    applyLiveConditions(conditionSnapshot.resorts, conditionSnapshot.generatedAt, now);
+    changed = previous !== JSON.stringify(resorts.map(r => [r.metrics, r.liveSnowStatus, r.liveTerrainStatus, r.liveConditionsKind]));
+    state.conditionsLoadStatus = isFresh(conditionSnapshot.generatedAt, undefined, now) ? 'ready' : 'stale';
+    state.conditionErrorCount = resorts.filter((resort) => resort.liveSnowStatus !== 'ready').length;
+  }
+  for (const resort of resorts) {
+    if (resort.liveForecastStatus === 'ready' && !forecastIsCurrent(resort.liveForecast, now)) {
+      clearForecast(resort, 'stale');
+      forecastCache.delete(getSourceKeyForResort(resort.name));
+      changed = true;
+    }
+  }
+  if (changed && onDataReady) onDataReady();
 }

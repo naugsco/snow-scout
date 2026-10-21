@@ -9,133 +9,45 @@
   <title>Snow Scout</title>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261020-all-trails">
+  <link rel="stylesheet" href="heatmap.css?v=20261021-heatmap">
 </head>
 <body>
-  <div class="app-layout">
-    <!-- Top 2/3: Dashboard -->
-    <div id="dashboard" class="dashboard-area">
-      <header class="dash-header">
-        <div class="brand-row">
-          <div class="brand-lockup">
-            <div class="brand-badge">&#x25B3;</div>
-            <div class="brand-copy">
-              <h1>Snow Scout</h1>
-              <p>Chase the storm. Find the powder.</p>
-            </div>
-          </div>
-          <a class="ghost-btn history-link" href="history.html">Snowfall history ↗</a>
-          <button id="theme-toggle" class="ghost-btn theme-toggle" title="Toggle light/dark theme">&#x263E;</button>
-          <button id="unit-toggle" class="ghost-btn unit-toggle" title="Switch units">°F</button>
-          <button id="focus-top-btn" class="ghost-btn" title="Fly to top incoming resort">&#x2197;</button>
-        </div>
-
-        <section class="season-snowfall" aria-labelledby="season-chart-title">
-          <div class="season-chart-heading">
-            <div><h2 id="season-chart-title">Season snowfall</h2><p>All resorts · <a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">ERA5 estimates</a> · Hover for details · Click to highlight a resort</p></div>
-            <span class="season-chart-order">Highest → Lowest</span>
-          </div>
-          <div class="season-chart-frame">
-            <div class="season-chart-scale" aria-hidden="true"><span id="season-chart-max">—</span><span>0</span></div>
-            <div id="season-chart" class="season-chart" role="group" aria-label="Current-season snowfall"></div>
-          </div>
-          <p id="season-chart-note" class="snowfall-note" role="status">Loading modeled season totals…</p>
-        </section>
-
-        <div id="updated-at" class="updated-at" style="display:none"></div>
-        <div id="storm-banner" class="storm-banner" style="display:none">
-          <span id="storm-banner-text"></span>
-          <button id="storm-banner-dismiss" class="storm-dismiss" title="Dismiss">&times;</button>
-        </div>
-
-        <div class="filter-region-row">
-          <div id="pass-filters" class="filter-row"></div>
-          <span class="divider"></span>
-          <div id="region-filters" class="region-row"></div>
-        </div>
-
-        <div class="summary-grid">
-          <button id="incoming-filter" class="summary-card" data-tone="incoming" title="Resorts expecting 12″+ over the next 72 hours">
-            <span>⛈ Storm Watch (72h)</span>
-            <strong id="incoming-count">0</strong>
-          </button>
-          <button id="fresh-filter" class="summary-card" data-tone="fresh" title="Resorts that received 7″+ in the last 24 hours">
-            <span>❄ Fresh Snow (24h)</span>
-            <strong id="fresh-count">0</strong>
-          </button>
-          <button id="dry-filter" class="summary-card" data-tone="dry" title="Resorts with the longest streak without new snow">
-            <span>☀ Dry Streak</span>
-            <strong id="dry-count">0d</strong>
-          </button>
-        </div>
-
-        <div class="search-sort-row">
-          <div class="search-row">
-            <span class="search-icon">&#x2315;</span>
-            <input id="search-input" class="search-input" type="text" placeholder="Search resorts&hellip;" autocomplete="off" />
-            <span class="search-kbd">/</span>
-          </div>
-          <div class="section-head">
-            <h3>Shortlist</h3>
-            <select id="sort-select" class="sort-select">
-              <option value="score">Best Snow</option>
-              <option value="snow24h">Most Fresh (24h)</option>
-              <option value="forecast72h">Biggest Forecast</option>
-              <option value="daysSinceSnow">Days Since Snow</option>
-              <option value="alpha">Alphabetical</option>
-            </select>
-            <span id="resort-count">0 resorts</span>
-          </div>
-        </div>
+  <div class="app-layout heatmap-app">
+    <header class="heatmap-header">
+      <a href="./" class="heatmap-brand" aria-label="Snow Scout home"><span class="brand-badge"><span data-icon="triangle"></span></span><strong>Snow Scout</strong></a>
+      <nav class="heatmap-nav" aria-label="Resort views"><button id="explore-view" class="active" aria-pressed="true"><span data-icon="sliders-horizontal"></span>Explore</button><button id="saved-view" aria-pressed="false"><span data-icon="bookmark"></span>Saved</button></nav>
+      <div class="header-tools"><div id="airport-control" hidden></div><a href="history.html" class="header-history" title="Snowfall history" aria-label="Snowfall history"><span data-icon="clock"></span></a><button id="theme-toggle" class="icon-button" title="Toggle light/dark theme" aria-label="Switch theme"><span data-icon="moon"></span></button><button id="unit-toggle" class="units-button" title="Switch snow and temperature units">in / °F</button><button id="map-toggle" class="map-view-button" aria-expanded="false" aria-controls="map-dialog"><span data-icon="globe"></span><span>Map view</span></button></div>
+    </header>
+    <main id="dashboard" class="dashboard-area">
+      <header class="heatmap-controls">
+        <div class="heatmap-title-row"><h1>Resort heatmap</h1><div class="heatmap-search-filters"><label class="heatmap-search"><span data-icon="search"></span><input id="search-input" type="search" placeholder="Search resorts…" aria-label="Search resorts" autocomplete="off"></label><label class="heatmap-select"><span data-icon="globe"></span><select id="region-select" aria-label="Region"></select><span data-icon="chevron-down" class="select-chevron"></span></label><label class="heatmap-select"><span data-icon="ticket"></span><select id="pass-select" aria-label="Ski pass"></select><span data-icon="chevron-down" class="select-chevron"></span></label></div></div>
+        <div id="metric-filters" class="metric-filters" role="group" aria-label="Heatmap metric"></div>
+        <div class="heatmap-context"><p><span id="metric-description">Showing forecast snowfall · Next 72 hours</span><span id="metric-size-note">Larger tile = higher value</span></p><div class="heatmap-coverage"><span id="updated-at" class="updated-at">Conditions loading…</span><span id="resort-count"></span><button id="show-all-resorts" hidden>Show all resorts</button></div></div>
       </header>
+      <div id="resort-list" class="heatmap-canvas" role="group" aria-label="Resorts ranked by the selected metric"></div>
+      <footer class="heatmap-footer"><div class="heatmap-legend"><div class="heatmap-color-scale" aria-hidden="true"></div><div class="heatmap-legend-labels"><span id="legend-high">Higher forecast</span><span>Middle</span><span id="legend-low">Lower forecast</span></div></div><p><span data-icon="info"></span><span>Hover to preview · Click for full resort details</span></p></footer>
+      <p class="heatmap-data-note">Forecasts and labeled recent conditions are weather-model estimates. Gray tiles indicate unavailable data. <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Weather by Open-Meteo</a></p>
+    </main>
+  </div>
 
-      <div id="best-bet"></div>
-      <div id="resort-list" class="resort-grid"></div>
-    </div>
-
-    <!-- Mobile map toggle -->
-    <button id="mobile-map-toggle" class="mobile-map-toggle glass">
-      <span class="mobile-map-toggle-icon">&#x1F30D;</span>
-      <span id="mobile-map-toggle-label">Show Map</span>
-    </button>
-
-    <!-- Bottom 1/3: Map -->
-    <div class="map-area">
-      <div id="cesium-container"></div>
-      <div id="map-legend" class="map-legend glass">
-        <span>Open mode</span>
-        <span class="legend-item"><span class="legend-dot" style="background:#b06cff;box-shadow:0 0 6px #b06cff"></span>Incoming</span>
-        <span class="legend-item"><span class="legend-dot" style="background:#65d9ff;box-shadow:0 0 6px #65d9ff"></span>Fresh</span>
-        <span class="legend-item"><span class="legend-dot" style="background:#ff9f57;box-shadow:0 0 6px #ff9f57"></span>Dry</span>
-        <span class="legend-item"><span class="legend-dot" style="background:#7ec7b8;box-shadow:0 0 6px #7ec7b8"></span>Steady</span>
+  <div id="heatmap-preview" class="heatmap-preview" role="region" aria-label="Resort preview" aria-hidden="true"></div>
+  <div id="map-dialog" class="map-dialog" role="dialog" aria-modal="true" aria-label="Resort globe" hidden>
+    <div class="map-shell">
+      <header class="map-dialog-header"><div><span data-icon="globe"></span><h2>Resort globe</h2></div><button id="map-close" class="icon-button" aria-label="Close map"><span data-icon="x"></span></button></header>
+      <div class="map-area">
+        <div id="cesium-container"></div>
+        <div id="map-legend" class="map-legend glass"><span class="legend-item"><span class="legend-dot" style="background:#b06cff"></span>Incoming</span><span class="legend-item"><span class="legend-dot" style="background:#65d9ff"></span>Fresh</span><span class="legend-item"><span class="legend-dot" style="background:#ff9f57"></span>Dry</span><span class="legend-item"><span class="legend-dot" style="background:#7ec7b8"></span>Steady</span></div>
+        <div id="zoom-level" class="glass">View detail <span id="zoom-readout">2</span></div>
+        <div id="weather-panel" class="weather-panel glass visible">
+          <div class="weather-panel-head"><span class="weather-panel-title">Weather layers</span><button id="weather-close" class="icon-button" aria-label="Hide weather controls"><span data-icon="x"></span></button></div>
+          <div class="weather-layers"><button class="weather-layer-btn" data-layer="radar" aria-pressed="false"><span data-icon="radar"></span>Radar</button><button class="weather-layer-btn" data-layer="clouds" aria-pressed="false"><span data-icon="cloud"></span>Clouds</button><button class="weather-layer-btn" data-layer="precipitation" aria-pressed="false"><span data-icon="cloud-rain"></span>Precip</button><button class="weather-layer-btn" data-layer="temp" aria-pressed="false"><span data-icon="thermometer"></span>Temp</button></div>
+          <div class="weather-opacity"><label for="weather-opacity">Opacity</label><input id="weather-opacity" type="range" min="0" max="100" value="60"></div>
+          <div id="radar-controls" class="radar-controls" style="display:none"><div class="radar-timeline"><button id="radar-play" class="radar-play-btn" title="Play radar" aria-label="Play radar"><span data-icon="play"></span></button><input id="radar-scrubber" type="range" min="0" max="0" value="0" aria-label="Radar time"><span id="radar-time" class="radar-time">--:--</span></div><div id="radar-badge" class="radar-badge"></div></div>
+          <div id="owm-toast" class="owm-toast" role="status" style="display:none"></div>
+          <p id="weather-status" class="weather-status" role="status"></p>
+        </div>
+        <button id="weather-toggle" class="weather-toggle glass" title="Weather controls" aria-label="Show weather controls"><span data-icon="layers"></span></button>
       </div>
-      <div id="zoom-level" class="glass">View detail <span id="zoom-readout">2</span></div>
-
-      <div id="weather-panel" class="weather-panel glass">
-        <div class="weather-panel-head">
-          <span class="weather-panel-title">Weather</span>
-          <button id="weather-close" class="weather-close" title="Close">&times;</button>
-        </div>
-        <div class="weather-layers">
-          <button class="weather-layer-btn" data-layer="radar">Radar</button>
-          <button class="weather-layer-btn" data-layer="clouds">Clouds</button>
-          <button class="weather-layer-btn" data-layer="precipitation">Precip</button>
-          <button class="weather-layer-btn" data-layer="temp">Temp</button>
-        </div>
-        <div class="weather-opacity">
-          <label>Opacity</label>
-          <input id="weather-opacity" type="range" min="0" max="100" value="60" />
-        </div>
-        <div id="radar-controls" class="radar-controls" style="display:none">
-          <div class="radar-timeline">
-            <button id="radar-play" class="radar-play-btn" title="Play/Pause">&#9654;</button>
-            <input id="radar-scrubber" type="range" min="0" max="0" value="0" />
-            <span id="radar-time" class="radar-time">--:--</span>
-          </div>
-          <div id="radar-badge" class="radar-badge"></div>
-        </div>
-        <div id="owm-toast" class="owm-toast" style="display:none"></div>
-      </div>
-      <button id="weather-toggle" class="weather-toggle glass" title="Weather overlay">&#x26C5;</button>
     </div>
   </div>
 
@@ -241,6 +153,6 @@
 
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
-  <script type="module" src="js/main.js?v=20261020-all-trails"></script>
+  <script type="module" src="js/main.js?v=20261021-sources-verified"></script>
 </body>
 </html>

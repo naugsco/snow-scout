@@ -1,5 +1,6 @@
-import { RESORT_SOURCE_ALIASES } from './constants.js?v=20261020-all-trails';
-import { state } from './state.js?v=20261020-all-trails';
+import { weatherUrl } from './weather-data.js?v=20261021-sources-verified';
+import { RESORT_SOURCE_ALIASES } from './constants.js?v=20261021-sources-verified';
+import { state } from './state.js?v=20261021-sources-verified';
 
 export function normalizeResortName(name) {
   return name
@@ -9,20 +10,6 @@ export function normalizeResortName(name) {
     .replace(/[^a-z0-9]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-}
-
-export function hashString(input) {
-  let hash = 2166136261;
-  for (let i = 0; i < input.length; i++) {
-    hash ^= input.charCodeAt(i);
-    hash = Math.imul(hash, 16777619);
-  }
-  return Math.abs(hash >>> 0);
-}
-
-export function seeded(name, min = 0, max = 1) {
-  const normalized = hashString(name) / 4294967295;
-  return min + normalized * (max - min);
 }
 
 export function clamp(value, min, max) {
@@ -51,13 +38,6 @@ export function getRegionLabel(region) {
   }
 }
 
-export function getClimate(region) {
-  if (region === 'alps') return { base: 92, forecastBoost: 1.08, tempShift: -2, totalRuns: [90, 260] };
-  if (region === 'japan') return { base: 118, forecastBoost: 1.2, tempShift: -4, totalRuns: [35, 92] };
-  if (region === 'south') return { base: 80, forecastBoost: 0.78, tempShift: 3, totalRuns: [28, 108] };
-  return { base: 86, forecastBoost: 1, tempShift: 0, totalRuns: [45, 230] };
-}
-
 export function inferStatus(metrics) {
   if (metrics.snow24h >= 7) return 'fresh';
   if (metrics.forecast72h >= 12) return 'incoming';
@@ -69,7 +49,8 @@ export function getStatusText(status, metrics) {
   if (status === 'incoming') return `${formatInches(metrics.forecast72h)} expected in 72h`;
   if (status === 'fresh') return `${formatInches(metrics.snow24h)} in the last 24h`;
   if (status === 'dry') return `${Number.isFinite(metrics.daysSinceSnow) ? metrics.daysSinceSnow : '—'} days since the last reset`;
-  return `${formatInches(metrics.baseDepth)} base with a stable surface`;
+  if (Number.isFinite(metrics.snow24h)) return `${formatInches(metrics.snow24h)} snowfall in the last 24h`;
+  return 'Current snow report unavailable';
 }
 
 export function getPassTone(resort) {
@@ -86,9 +67,11 @@ export function formatInches(value, fallback = '—') {
   if (!Number.isFinite(value)) return fallback;
   if (state.useMetric) {
     const cm = value * 2.54;
-    const rounded = Math.abs(cm - Math.round(cm)) < 0.5 ? Math.round(cm) : Math.round(cm * 10) / 10;
+    if (cm > 0 && cm < 0.1) return '<0.1cm';
+    const rounded = cm > 0 && cm < 1 ? Math.round(cm * 10) / 10 : Math.round(cm);
     return `${rounded}cm`;
   }
+  if (value > 0 && value < 0.1) return '<0.1"';
   const rounded = Math.abs(value - Math.round(value)) < 0.05
     ? Math.round(value)
     : Math.round(value * 10) / 10;
@@ -129,27 +112,19 @@ export function formatPassLabel(resort) {
   return resort.passes.map((pass) => labels[pass]).join(' + ');
 }
 
-export function buildForecastUrl(resort) {
-  const params = new URLSearchParams({
-    latitude: resort.lat.toFixed(4),
-    longitude: resort.lon.toFixed(4),
-    daily: 'snowfall_sum,temperature_2m_max,temperature_2m_min,weathercode',
-    forecast_days: '7',
-    temperature_unit: 'fahrenheit',
-    timezone: 'auto'
-  });
-  return `https://api.open-meteo.com/v1/forecast?${params.toString()}`;
-}
+export function buildForecastUrl(resort) { return weatherUrl(resort); }
 
 export function getConditionsReliability(resort) {
+  if (resort.liveConditionsStatus === 'stale') return 'Stale report withheld';
   if (resort.liveConditionsStatus === 'error') return 'Feed unavailable';
   if (resort.liveConditionsKind === 'model') return 'Weather Model';
-  if (resort.liveConditionsStatus === 'ready') return 'Official Live';
+  if (resort.liveConditionsStatus === 'ready') return 'Resort report';
   if (getConditionsPageForResort(resort)) return 'Official Link';
-  return 'Estimated';
+  return 'Unavailable';
 }
 
 export function getConditionsPageForResort(resort) {
+  if (resort?.liveConditionsKind === 'model') return conditionPages[getSourceKeyForResort(resort.name)] || null;
   return resort?.liveSources?.conditions || conditionPages[getSourceKeyForResort(resort.name)] || null;
 }
 

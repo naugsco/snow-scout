@@ -1,40 +1,14 @@
-import { RAW_RESORTS } from './constants.js?v=20261020-all-trails';
+import { RAW_RESORTS } from './constants.js?v=20261021-sources-verified';
 import {
-  normalizeResortName, seeded, clamp, rangeRound,
-  getRegion, getRegionLabel, getClimate, inferStatus, getStatusText
-} from './utils.js?v=20261020-all-trails';
+  normalizeResortName,
+  getRegion, getRegionLabel, inferStatus, getStatusText
+} from './utils.js?v=20261021-sources-verified';
+
+import { emptyMetrics } from './condition-data.js?v=20261021-sources-verified';
 
 export function enrichResort(resort, index) {
   const region = getRegion(resort.lat, resort.lon);
-  const climate = getClimate(region);
-  const seed = `${resort.name}-${resort.lat}-${resort.lon}`;
-  const seedA = seeded(`${seed}-a`);
-  const seedB = seeded(`${seed}-b`);
-  const seedC = seeded(`${seed}-c`);
-  const seedD = seeded(`${seed}-d`);
-  const snow24h = rangeRound(clamp((seedA * 12 + (region === 'japan' ? 2.5 : 0) - (region === 'south' ? 1.4 : 0)), 0, 18), 1);
-  const snow48h = rangeRound(clamp(snow24h + seeded(`${seed}-48h`) * 8, 0, 28), 1);
-  const snow72h = rangeRound(clamp(snow48h + seeded(`${seed}-72h`) * 6, 0, 36), 1);
-  // Discrete daily recent snowfall (non-cumulative)
-  const recentDay1 = snow24h;                                        // yesterday
-  const recentDay2 = rangeRound(Math.max(snow48h - snow24h, 0), 1); // 2 days ago
-  const recentDay3 = rangeRound(Math.max(snow72h - snow48h, 0), 1); // 3 days ago
-  const forecast72h = rangeRound(clamp((seedB * 26 + (region === 'japan' ? 6 : 0) + (index % 9 === 0 ? 8 : 0)), 0, 38), 1);
-  const forecastDay1 = rangeRound(clamp(seeded(`${seed}-fd1`) * forecast72h * 0.6, 0, 18), 1);
-  const forecastDay2 = rangeRound(clamp(seeded(`${seed}-fd2`) * (forecast72h - forecastDay1) * 0.7, 0, 18), 1);
-  const forecastDay3 = rangeRound(clamp(forecast72h - forecastDay1 - forecastDay2, 0, 18), 1);
-  const daysSinceSnow = rangeRound(clamp((1 - seedC) * 12 + (forecast72h > 18 ? -3 : 0) - (snow24h > 6 ? 2 : 0), 0, 16), 1);
-  const baseDepth = rangeRound(clamp(climate.base + seedD * 95 + snow24h * 2.1 - daysSinceSnow * 1.3, 18, 228), 1);
-  const runsTotal = Math.round(climate.totalRuns[0] + seeded(`${seed}-runs`) * (climate.totalRuns[1] - climate.totalRuns[0]));
-  const openRatio = clamp(0.38 + snow24h * 0.028 + forecast72h * 0.006 - daysSinceSnow * 0.03 + seeded(`${seed}-ratio`) * 0.18, 0.16, 1);
-  const runsOpen = clamp(Math.round(runsTotal * openRatio), 1, runsTotal);
-  const groomedRuns = clamp(Math.round(runsOpen * clamp(0.34 + seeded(`${seed}-groom`) * 0.5, 0.28, 0.88)), 0, runsOpen);
-  const tempF = Math.round(clamp(14 + seeded(`${seed}-temp`) * 22 + climate.tempShift + (region === 'south' ? 5 : 0), 4, 39));
-  const metrics = { snow24h, snow48h, snow72h, recentDay1, recentDay2, recentDay3, forecast72h, forecastDay1, forecastDay2, forecastDay3, daysSinceSnow, baseDepth, runsOpen, runsTotal, groomedRuns, tempF };
-  if (resort.passes.length === 1 && resort.passes[0] === 'mountain-collective') {
-    // Newly added resorts wait for model data instead of displaying generated examples.
-    Object.keys(metrics).forEach((key) => { metrics[key] = null; });
-  }
+  const metrics = emptyMetrics();
   const status = inferStatus(metrics);
   return {
     ...resort,

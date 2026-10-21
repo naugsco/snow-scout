@@ -1,332 +1,296 @@
-import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261020-all-trails';
-import { state, saveFavorites } from './state.js?v=20261020-all-trails';
-import { resorts } from './resorts.js?v=20261020-all-trails';
-import {
-  formatInches, formatRunAccess, formatPassLabel, getPassTone
-} from './utils.js?v=20261020-all-trails';
-import { getResortLogoUrl } from './resort-logos.js?v=20261020-all-trails';
+import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261021-sources-verified';
+import { state, saveFavorites } from './state.js?v=20261021-sources-verified';
+import { resorts } from './resorts.js?v=20261021-sources-verified';
+import { formatInches, formatRunAccess, formatPassLabel } from './utils.js?v=20261021-sources-verified';
+import { fetchSnowfallCatalog, currentSnowfall } from './season-snowfall.js?v=20261021-sources-verified';
+import { HEATMAP_METRICS, rankResorts, heatColor, layoutHeatmap } from './heatmap-metrics.js?v=20261021-sources-verified';
+import { icon } from './ui-icons.js?v=20261021-sources-verified';
 
-const resortListEl = document.getElementById('resort-list');
-const resortCount = document.getElementById('resort-count');
-const incomingFilterButton = document.getElementById('incoming-filter');
-const freshFilterButton = document.getElementById('fresh-filter');
-const dryFilterButton = document.getElementById('dry-filter');
-const incomingCountEl = document.getElementById('incoming-count');
-const freshCountEl = document.getElementById('fresh-count');
-const dryCountEl = document.getElementById('dry-count');
+const root = document.getElementById('resort-list');
+const preview = document.getElementById('heatmap-preview');
+let catalog = null;
+let seasonError = null;
+let onResortClick = null;
+let onCompareToggle = null;
+let visibleRows = [];
+let hoveredId = null;
+let forecastUpdated = false;
+let showTimer;
+let hideTimer;
+const CAP = 20;
+const escape = (value) => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+const metric = () => HEATMAP_METRICS.find((item) => item.id === state.sortMode) || HEATMAP_METRICS[3];
 
 export function baseFilteredResorts() {
   const query = state.searchQuery.toLowerCase().trim();
-  return resorts
-    .filter((resort) => {
-      if (query && !resort.name.toLowerCase().includes(query)) return false;
-      if (state.passFilter === 'favorites' && !state.favorites.has(resort.id)) return false;
-      if (state.passFilter === 'epic' && !resort.passes.includes('epic')) return false;
-      if (state.passFilter === 'ikon' && !resort.passes.includes('ikon')) return false;
-      if (state.passFilter === 'mountain-collective' && !resort.passes.includes('mountain-collective')) return false;
-      if (state.regionFilter !== 'all' && resort.region !== state.regionFilter) return false;
-      return true;
-    })
-    .sort((a, b) => {
-      switch (state.sortMode) {
-        case 'snow24h': return b.metrics.snow24h - a.metrics.snow24h;
-        case 'forecast72h': return b.metrics.forecast72h - a.metrics.forecast72h;
-        case 'daysSinceSnow': return (a.metrics.daysSinceSnow ?? 999) - (b.metrics.daysSinceSnow ?? 999);
-        case 'alpha': return a.name.localeCompare(b.name);
-        default: {
-          const scoreA = a.metrics.forecast72h * 1.1 + a.metrics.snow24h * 1.35 - a.metrics.daysSinceSnow * 0.8;
-          const scoreB = b.metrics.forecast72h * 1.1 + b.metrics.snow24h * 1.35 - b.metrics.daysSinceSnow * 0.8;
-          return scoreB - scoreA;
-        }
-      }
-    });
+  const list = resorts.filter((resort) => {
+    if (query && !resort.name.toLowerCase().includes(query)) return false;
+    if (state.passFilter === 'favorites' && !state.favorites.has(resort.id)) return false;
+    if (!['all', 'favorites'].includes(state.passFilter) && !resort.passes.includes(state.passFilter)) return false;
+    return state.regionFilter === 'all' || resort.region === state.regionFilter;
+  });
+  if (state.sortMode === 'alpha') return list.sort((a, b) => a.name.localeCompare(b.name));
+  if (state.sortMode === 'daysSinceSnow') return list.sort((a, b) => (a.metrics.daysSinceSnow ?? Infinity) - (b.metrics.daysSinceSnow ?? Infinity));
+  return rankResorts(list, metric().id, catalog).map((row) => row.resort);
 }
 
 export function applyStatusFilter(list) {
   if (state.statusFilter === 'all') return list;
-  if (state.statusFilter === 'fresh' && state.freshMode === '48h') {
-    return list.filter((resort) => (resort.metrics.snow48h ?? 0) >= 7);
-  }
+  if (state.statusFilter === 'fresh' && state.freshMode === '48h') return list.filter((resort) => Number.isFinite(resort.metrics.snow48h) && resort.metrics.snow48h >= 7);
   return list.filter((resort) => resort.status === state.statusFilter);
 }
-
-export function filteredResorts() {
-  return applyStatusFilter(baseFilteredResorts());
-}
-
-export function selectedResort() {
-  return resorts.find((resort) => resort.id === state.selectedId) || null;
-}
-
+export function filteredResorts() { return applyStatusFilter(baseFilteredResorts()); }
+export function selectedResort() { return resorts.find((resort) => resort.id === state.selectedId) || null; }
 export function ensureSelectionVisible() {
-  if (!state.selectedId) return;
-  const visibleIds = new Set(filteredResorts().map((resort) => resort.id));
-  if (!visibleIds.has(state.selectedId)) {
-    state.selectedId = null;
-  }
+  if (state.selectedId && !filteredResorts().some((resort) => resort.id === state.selectedId)) state.selectedId = null;
 }
-
-export function favoriteGlyph(id) {
-  return state.favorites.has(id) ? '★' : '☆';
-}
-
+export function favoriteGlyph(id) { return state.favorites.has(id) ? '★' : '☆'; }
 export function toggleFavorite(id) {
   if (!id) return;
   if (state.favorites.has(id)) state.favorites.delete(id);
   else state.favorites.add(id);
   saveFavorites();
 }
-
-let onResortClick = null;
 export function setOnResortClick(handler) { onResortClick = handler; }
-
-let onCompareToggle = null;
 export function setOnCompareToggle(handler) { onCompareToggle = handler; }
 
 export function renderFilters(selectPassFilter, selectRegionFilter) {
-  const passRoot = document.getElementById('pass-filters');
-  const regionRoot = document.getElementById('region-filters');
-  passRoot.innerHTML = '';
-  regionRoot.innerHTML = '';
-
-  PASS_FILTERS.forEach((filter) => {
-    const button = document.createElement('button');
-    button.className = `chip ${state.passFilter === filter.id ? 'active' : ''}`;
-    button.textContent = filter.label;
-    button.addEventListener('click', () => selectPassFilter(filter.id));
-    passRoot.appendChild(button);
-  });
-
-  REGION_FILTERS.forEach((filter) => {
-    const button = document.createElement('button');
-    button.className = `chip ${state.regionFilter === filter.id ? 'active' : ''}`;
-    button.dataset.region = filter.id;
-    button.textContent = filter.label;
-    button.addEventListener('click', () => selectRegionFilter(filter.id));
-    regionRoot.appendChild(button);
-  });
+  const passSelect = document.getElementById('pass-select');
+  const regionSelect = document.getElementById('region-select');
+  if (!passSelect.options.length) {
+    for (const filter of PASS_FILTERS.filter((item) => item.id !== 'favorites')) passSelect.add(new Option(filter.id === 'all' ? 'All passes' : filter.label.replace(/^[^A-Za-z]+/, ''), filter.id));
+    for (const filter of REGION_FILTERS) regionSelect.add(new Option(filter.id === 'all' ? 'Worldwide' : filter.label.replace(/^[^A-Za-z]+/, ''), filter.id));
+    passSelect.addEventListener('change', () => selectPassFilter(passSelect.value));
+    regionSelect.addEventListener('change', () => selectRegionFilter(regionSelect.value));
+    document.getElementById('saved-view').addEventListener('click', () => selectPassFilter('favorites'));
+    document.getElementById('explore-view').addEventListener('click', () => selectPassFilter('all'));
+  }
+  passSelect.value = state.passFilter === 'favorites' ? 'all' : state.passFilter;
+  regionSelect.value = state.regionFilter;
+  document.getElementById('saved-view').classList.toggle('active', state.passFilter === 'favorites');
+  document.getElementById('explore-view').classList.toggle('active', state.passFilter !== 'favorites');
+  document.getElementById('saved-view').setAttribute('aria-pressed', String(state.passFilter === 'favorites'));
+  document.getElementById('explore-view').setAttribute('aria-pressed', String(state.passFilter !== 'favorites'));
 }
 
-export function renderDashboard() {
-  const baseVisible = baseFilteredResorts();
-  const visible = applyStatusFilter(baseVisible);
-  const incoming = baseVisible.filter((resort) => resort.status === 'incoming').sort((a, b) => b.metrics.forecast72h - a.metrics.forecast72h);
-  const fresh24 = baseVisible.filter((resort) => resort.status === 'fresh').sort((a, b) => b.metrics.snow24h - a.metrics.snow24h);
-  const fresh48 = baseVisible.filter((resort) => (resort.metrics.snow48h ?? 0) >= 7).sort((a, b) => b.metrics.snow48h - a.metrics.snow48h);
-  const dry = baseVisible.filter((resort) => resort.status === 'dry').sort((a, b) => b.metrics.daysSinceSnow - a.metrics.daysSinceSnow);
+function amount(value, id = metric().id) {
+  if (value === null || !Number.isFinite(value)) return '—';
+  if (id === 'runsOpen') return String(Math.round(value));
+  if (id === 'score') return value.toFixed(1);
+  return formatInches(value).replace(/cm$/, ' cm');
+}
 
-  incomingFilterButton.classList.toggle('active', state.statusFilter === 'incoming');
-  freshFilterButton.classList.toggle('active', state.statusFilter === 'fresh');
-  dryFilterButton.classList.toggle('active', state.statusFilter === 'dry');
-
-  // Update fresh button label to reflect current mode
-  const freshLabel = freshFilterButton.querySelector('span');
-  const freshCount = state.freshMode === '48h' ? fresh48.length : fresh24.length;
-  if (freshLabel) freshLabel.textContent = `❄ Fresh Snow (${state.freshMode})`;
-
-  incomingCountEl.textContent = incoming.length;
-  freshCountEl.textContent = freshCount;
-  dryCountEl.textContent = `${dry[0]?.metrics.daysSinceSnow || 0}d`;
-
-  const countLabel =
-    state.statusFilter === 'incoming' ? 'storm-watch'
-    : state.statusFilter === 'fresh' ? 'fresh-snow'
-    : state.statusFilter === 'dry' ? 'dry-streak'
-    : '';
-  resortCount.textContent = countLabel
-    ? `${visible.length} ${countLabel} resort${visible.length === 1 ? '' : 's'}`
-    : `${visible.length} resort${visible.length === 1 ? '' : 's'}`;
-  resortListEl.innerHTML = '';
-
-  // Render "Best Bet Today" hero card
-  const bestBetContainer = document.getElementById('best-bet');
-  if (bestBetContainer) {
-    const allBase = baseFilteredResorts();
-    // Pick the resort with the highest composite score
-    const bestBet = allBase[0]; // already sorted by score
-    if (bestBet && state.statusFilter === 'all' && !state.searchQuery) {
-      const snow = bestBet.metrics.snow24h;
-      const forecast = bestBet.metrics.forecast72h;
-      bestBetContainer.innerHTML = `
-        <div class="best-bet-card" data-resort-id="${bestBet.id}">
-          <span class="best-bet-badge">❄ Best Bet Today</span>
-          <div class="best-bet-info">
-            <span class="best-bet-name">${bestBet.name}</span>
-            <div class="best-bet-stats">
-              <span>❄ <strong>${formatInches(snow)}</strong> fresh</span>
-              <span>⛈ <strong>${formatInches(forecast)}</strong> next 72h</span>
-              <span>🎿 <strong>${bestBet.metrics.runsOpen}/${bestBet.metrics.runsTotal}</strong> open</span>
-            </div>
-          </div>
-          <span class="best-bet-arrow">→</span>
-        </div>
-      `;
-      bestBetContainer.style.display = 'block';
-      // Add click handler
-      bestBetContainer.querySelector('.best-bet-card').addEventListener('click', () => {
-        if (onResortClick) onResortClick(bestBet);
-      });
-    } else {
-      bestBetContainer.innerHTML = '';
-      bestBetContainer.style.display = 'none';
-    }
+function provenance(resort, id = metric().id) {
+  if (id === 'season') {
+    const entry = currentSnowfall(resort, catalog);
+    return `ERA5 estimate${entry.record?.through ? ' · through ' + entry.record.through : ''}`;
   }
+  if (id === 'forecast72h') return resort.liveForecastStatus === 'ready' ? 'Model forecast' : `Forecast ${resort.liveForecastStatus || 'unavailable'}`;
+  const status = id === 'runsOpen' ? resort.liveTerrainStatus : resort.liveSnowStatus;
+  if (status !== 'ready') return status === 'stale' ? 'Stale report withheld' : `Report ${status || 'unavailable'}`;
+  if (id === 'runsOpen') return 'Resort report';
+  return resort.liveConditionsKind === 'model' ? 'Model estimate' : 'Resort report';
+}
 
-  // Compute heatmap range when a status filter is active
-  let heatmapMetric = null;
-  let heatmapMin = 0;
-  let heatmapMax = 1;
-  let heatmapColor = null;
-  if (state.statusFilter === 'incoming') {
-    heatmapMetric = 'forecast72h';
-    heatmapColor = '176, 108, 255';
-    const vals = visible.map((r) => r.metrics.forecast72h).filter(Number.isFinite);
-    if (vals.length) { heatmapMin = Math.min(...vals); heatmapMax = Math.max(...vals); }
-  } else if (state.statusFilter === 'fresh') {
-    heatmapMetric = state.freshMode === '48h' ? 'snow48h' : 'snow24h';
-    heatmapColor = '101, 217, 255';
-    const vals = visible.map((r) => r.metrics[heatmapMetric]).filter(Number.isFinite);
-    if (vals.length) { heatmapMin = Math.min(...vals); heatmapMax = Math.max(...vals); }
-  } else if (state.statusFilter === 'dry') {
-    heatmapMetric = 'daysSinceSnow';
-    heatmapColor = '255, 159, 87';
-    const vals = visible.map((r) => r.metrics.daysSinceSnow).filter(Number.isFinite);
-    if (vals.length) { heatmapMin = Math.min(...vals); heatmapMax = Math.max(...vals); }
-  }
+function heatmapRows(list) {
+  return rankResorts(list, metric().id, catalog).map((row) => {
+    if (metric().id === 'runsOpen' && !row.resort.liveRunsReported) return { ...row, value: null };
+    return row;
+  }).sort((a, b) => (a.value === null) - (b.value === null) || (b.value ?? 0) - (a.value ?? 0) || a.resort.name.localeCompare(b.resort.name));
+}
 
-  const CAP = 18;
-  const isCapped = state.statusFilter === 'all' && !state.showAllResorts && !state.searchQuery && visible.length > CAP;
-  const shortlist = isCapped ? visible.slice(0, CAP) : visible;
+export function hideHeatmapPreview({ refresh = true } = {}) {
+  const updateRanking = forecastUpdated;
+  forecastUpdated = false;
+  clearTimeout(showTimer);
+  clearTimeout(hideTimer);
+  preview.classList.remove('visible');
+  preview.setAttribute('aria-hidden', 'true');
+  hoveredId = null;
+  root.querySelectorAll('.previewing').forEach((tile) => tile.classList.remove('previewing'));
+  if (refresh && updateRanking) renderDashboard();
+}
 
-  if (!shortlist.length) {
-    const empty = document.createElement('div');
-    empty.className = 'resort-item empty';
-    empty.textContent = state.searchQuery
-      ? `No resorts match "${state.searchQuery}".`
-      : state.statusFilter === 'all'
-        ? 'No resorts match the current pass and region filters.'
-        : 'No resorts match this snow signal in the current pass and region view.';
-    resortListEl.appendChild(empty);
-  }
+function positionPreview(tile) {
+  const rect = tile.getBoundingClientRect();
+  const width = Math.min(365, innerWidth - 24);
+  preview.style.width = `${width}px`;
+  let left = rect.left + rect.width * 0.6;
+  if (left + width > innerWidth - 12) left = rect.right - width - rect.width * 0.25;
+  const top = Math.max(12, Math.min(rect.top + rect.height * 0.62, innerHeight - preview.offsetHeight - 12));
+  preview.style.left = `${Math.max(12, Math.min(left, innerWidth - width - 12))}px`;
+  preview.style.top = `${top}px`;
+}
 
-  shortlist.forEach((resort) => {
-    const item = document.createElement('div');
-    const isPowderDay = resort.metrics.snow24h >= 12;
-    item.className = `resort-item status-${resort.status} ${isPowderDay ? 'powder-day' : ''} ${state.selectedId === resort.id ? 'selected' : ''} ${state.highlightedResortId === resort.id ? 'chart-highlighted' : ''}`;
+function previewBars(resort) {
+  const days = resort.liveForecast?.dailySnowfall?.slice(0, 3) || [null, null, null];
+  const max = Math.max(...days.filter(Number.isFinite), 1);
+  return days.map((value, i) => `<div><strong>${formatInches(value)}</strong><span class="preview-bar"><i style="height:${Number.isFinite(value) ? Math.max(2, value / max * 40) : 0}px"></i></span><span>D${i + 1}</span></div>`).join('');
+}
 
-    item.dataset.resortId = resort.id;
-    item.tabIndex = -1;
+function previewSource(resort) {
+  const updatedAt = metric().id === 'forecast72h' && resort.liveForecast?.updatedAt ? resort.liveForecast.updatedAt : metric().id === 'runsOpen' ? resort.liveTerrainReportedAt : resort.liveUpdatedAt;
+  return `${provenance(resort)}${updatedAt ? ` · ${new Date(updatedAt).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}` : ''}`;
+}
 
-    if (heatmapMetric && heatmapColor) {
-      const val = resort.metrics[heatmapMetric] ?? 0;
-      const range = heatmapMax - heatmapMin;
-      const t = range > 0 ? (val - heatmapMin) / range : 0.5;
-      const opacity = 0.06 + t * 0.38;
-      const borderOpacity = 0.1 + t * 0.4;
-      item.style.background = `linear-gradient(135deg, rgba(${heatmapColor}, ${opacity}), rgba(${heatmapColor}, ${opacity * 0.4}))`;
-      item.style.borderColor = `rgba(${heatmapColor}, ${borderOpacity})`;
-    }
-
-    const ds = resort.liveForecast?.dailySnowfall;
-    const d1 = ds?.[0] ?? resort.metrics.forecastDay1 ?? 0;
-    const d2 = ds?.[1] ?? resort.metrics.forecastDay2 ?? 0;
-    const d3 = ds?.[2] ?? resort.metrics.forecastDay3 ?? 0;
-    const fMax = Math.max(d1, d2, d3, 1);
-    const sMax = Math.max(resort.metrics.snow24h, resort.metrics.snow48h, 1);
-
-    item.innerHTML = `
-      <div class="card-head">
-        <img class="resort-logo" src="${getResortLogoUrl(resort.name) || ''}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" /><span class="resort-logo-fallback" style="display:none">${resort.name.charAt(0)}</span>
-        <strong>
-          ${resort.name}
-          <span class="pass-tag ${getPassTone(resort)}">${formatPassLabel(resort)}</span>
-        </strong>
-        <span class="card-actions">
-          <button class="inline-compare" title="Add to comparison">⇔</button>
-          <button class="inline-star ${state.favorites.has(resort.id) ? 'active' : ''}" title="Favorite">${favoriteGlyph(resort.id)}</button>
-        </span>
-      </div>
-      <div class="meta">${resort.regionLabel} · ${resort.statusText}</div>
-      <div class="card-data-row">
-        <div class="data-section">
-          <span class="data-section-label">❄ Recent Snow</span>
-          <div class="data-section-items">
-            <div class="data-col"><div class="data-bar"><div class="data-bar-fill fresh-bar" style="height:${Math.min(100, (resort.metrics.snow24h / sMax) * 100)}%"></div></div><strong>❄${formatInches(resort.metrics.snow24h)}</strong><span>24h</span></div>
-            <div class="data-col"><div class="data-bar"><div class="data-bar-fill fresh-bar" style="height:${Math.min(100, (resort.metrics.snow48h / sMax) * 100)}%"></div></div><strong>❄${formatInches(resort.metrics.snow48h)}</strong><span>48h</span></div>
-          </div>
-        </div>
-        <div class="data-section">
-          <span class="data-section-label">⛷ Next 3 Days</span>
-          <div class="data-section-items">
-            <div class="data-col"><div class="data-bar"><div class="data-bar-fill forecast-bar" style="height:${Math.min(100, (d1 / fMax) * 100)}%"></div></div><strong>${formatInches(d1)}</strong><span>D1</span></div>
-            <div class="data-col"><div class="data-bar"><div class="data-bar-fill forecast-bar" style="height:${Math.min(100, (d2 / fMax) * 100)}%"></div></div><strong>${formatInches(d2)}</strong><span>D2</span></div>
-            <div class="data-col"><div class="data-bar"><div class="data-bar-fill forecast-bar" style="height:${Math.min(100, (d3 / fMax) * 100)}%"></div></div><strong>${formatInches(d3)}</strong><span>D3</span></div>
-          </div>
-        </div>
-        <div class="data-section data-section-compact">
-          <span class="data-section-label">🎿 Runs</span>
-          <div class="data-section-items">
-            <div class="data-col"><strong class="runs-val">${formatRunAccess(resort.metrics, true)}</strong><span>Open</span></div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    item.addEventListener('click', (event) => {
-      const compareButton = event.target.closest('.inline-compare');
-      if (compareButton) {
-        event.stopPropagation();
-        if (onCompareToggle) onCompareToggle(resort.id);
-        return;
-      }
-      const favoriteButton = event.target.closest('.inline-star');
-      if (favoriteButton) {
-        event.stopPropagation();
-        toggleFavorite(resort.id);
-        renderDashboard();
-        return;
-      }
-      if (onResortClick) onResortClick(resort);
-    });
-
-    resortListEl.appendChild(item);
+function showPreview(resort, tile, fromPointer = false) {
+  clearTimeout(showTimer);
+  clearTimeout(hideTimer);
+  if (fromPointer && preview.matches(':hover')) return;
+  hoveredId = resort.id;
+  preview.dataset.resortId = resort.id;
+  root.querySelectorAll('.previewing').forEach((item) => item.classList.remove('previewing'));
+  tile.classList.add('previewing');
+  const m = resort.metrics;
+  const runs = resort.liveRunsReported ? formatRunAccess(m, true) : '—';
+  preview.innerHTML = `
+    <div class="preview-head"><div><h2>${escape(resort.name)}</h2><p>${escape(resort.regionLabel)} · ${escape(formatPassLabel(resort))}</p></div>
+      <button class="preview-favorite ${state.favorites.has(resort.id) ? 'is-saved' : ''}" aria-label="${state.favorites.has(resort.id) ? 'Unsave' : 'Save'} ${escape(resort.name)}">${icon('star')}</button></div>
+    <div class="preview-stats">${[
+      ['snowflake', 'Fresh 24h', formatInches(m.snow24h), 'snow24h'], ['snowflake', 'Fresh 48h', formatInches(m.snow48h), 'snow48h'],
+      ['cloud', 'Forecast 72h', formatInches(m.forecast72h), 'forecast72h'], ['mountain', 'Runs open', runs, 'runsOpen']
+    ].map(([symbol, label, value, key]) => `<div>${icon(symbol)}<span>${label}</span><strong data-preview-stat="${key}">${escape(value)}</strong></div>`).join('')}</div>
+    <div class="preview-forecast"><p>Daily forecast (${state.useMetric ? 'cm' : 'in'})</p><div class="preview-bars">${previewBars(resort)}</div></div>
+    <p class="preview-source">${escape(previewSource(resort))}</p>
+    <div id="preview-travel"></div>
+    <div class="preview-footer"><button class="preview-open">Full resort details ${icon('arrow-right')}</button><button class="preview-compare" title="Add resort to comparison" aria-label="Compare ${escape(resort.name)}">${icon('sliders-horizontal')}</button></div>`;
+  preview.querySelector('.preview-favorite').addEventListener('click', () => {
+    toggleFavorite(resort.id);
+    const button = preview.querySelector('.preview-favorite');
+    button.classList.toggle('is-saved', state.favorites.has(resort.id));
+    button.setAttribute('aria-label', `${state.favorites.has(resort.id) ? 'Unsave' : 'Save'} ${resort.name}`);
+    if (state.passFilter === 'favorites' && !state.favorites.has(resort.id)) renderDashboard();
   });
+  preview.querySelector('.preview-open').addEventListener('click', () => { hideHeatmapPreview(); onResortClick?.(resort); });
+  preview.querySelector('.preview-compare').addEventListener('click', () => onCompareToggle?.(resort.id));
+  preview.dispatchEvent(new CustomEvent('preview-ready', { detail: { resort } }));
+  preview.setAttribute('aria-hidden', 'false');
+  positionPreview(tile);
+  preview.classList.add('visible');
+}
 
-  if (isCapped) {
-    const showMore = document.createElement('button');
-    showMore.className = 'show-more-btn';
-    showMore.textContent = `Show all ${visible.length} resorts`;
-    showMore.addEventListener('click', () => {
-      state.showAllResorts = true;
-      renderDashboard();
-    });
-    resortListEl.appendChild(showMore);
+export function refreshHeatmapPreview(resort) {
+  const updated = heatmapRows(filteredResorts());
+  const byId = new Map(updated.map((row) => [row.resort.id, row]));
+  const values = updated.map((row) => row.value).filter(Number.isFinite);
+  visibleRows = visibleRows.map((row) => byId.get(row.resort.id) || row);
+  root.querySelectorAll('.heat-tile').forEach((tile) => {
+    const row = byId.get(tile.dataset.resortId);
+    if (!row) return;
+    const color = heatColor(row.value, Math.min(...values), Math.max(...values));
+    tile.style.setProperty('--tile-bg', color.background);
+    tile.style.setProperty('--tile-fg', color.foreground);
+    tile.querySelector('.heat-value').textContent = amount(row.value);
+    tile.querySelector('.heat-source').textContent = provenance(row.resort);
+    tile.setAttribute('aria-label', `${row.resort.name}, ${metric().label}: ${row.value === null ? 'Unavailable' : amount(row.value)}. Open resort details.`);
+  });
+  const tile = [...root.querySelectorAll('.heat-tile')].find((item) => item.dataset.resortId === resort.id);
+  if (hoveredId === resort.id && tile) {
+    // Update only data, preserving interactive buttons, focus and pointer targets.
+    preview.querySelector('[data-preview-stat="forecast72h"]').textContent = formatInches(resort.metrics.forecast72h);
+    preview.querySelector('.preview-bars').innerHTML = previewBars(resort);
+    preview.querySelector('.preview-source').textContent = previewSource(resort);
+    // Keep tiles still under the pointer; apply the new ranking on dismissal.
+    forecastUpdated = true;
+  } else if (!hoveredId) renderDashboard();
+  else forecastUpdated = true;
+}
+
+export function reportPreviewForecastError(resort) {
+  if (hoveredId === resort.id) preview.querySelector('.preview-source').textContent = 'Daily forecast unavailable. Try the resort’s full forecast.';
+}
+
+preview.addEventListener('pointerenter', () => { clearTimeout(showTimer); clearTimeout(hideTimer); });
+preview.addEventListener('focusin', () => { clearTimeout(showTimer); clearTimeout(hideTimer); });
+preview.addEventListener('pointerleave', () => { hideTimer = setTimeout(hideHeatmapPreview, 100); });
+preview.addEventListener('focusout', (event) => { if (!preview.contains(event.relatedTarget)) hideHeatmapPreview(); });
+window.addEventListener('scroll', hideHeatmapPreview, true);
+
+function positionTiles() {
+  const width = root.clientWidth;
+  // ResizeObserver can run while a viewport/navigation transition temporarily
+  // gives the canvas no width. Wait for its next non-zero measurement.
+  if (!root.isConnected || width <= 0 || !visibleRows.length) return;
+  const height = Math.max(innerWidth <= 600 ? Math.max(720, visibleRows.length * 48) : 430, Math.min(820, innerHeight - 350), state.showAllResorts ? visibleRows.length * (innerWidth <= 600 ? 60 : 16) : 0);
+  root.style.height = `${height}px`;
+  const rects = layoutHeatmap(visibleRows, width, height);
+  root.querySelectorAll('.heat-tile').forEach((tile, i) => {
+    const rect = rects[i];
+    tile.style.left = `${rect.x}px`;
+    tile.style.top = `${rect.y}px`;
+    tile.style.width = `${rect.width}px`;
+    tile.style.height = `${rect.height}px`;
+    const compact = rect.width < 150 || rect.height < 170;
+    tile.classList.toggle('compact', compact);
+    tile.style.setProperty('--tile-name-size', `${Math.max(12, Math.min(compact ? 26 : 32, rect.width / 9, rect.height / (compact ? 6.6 : 4.8)))}px`);
+    tile.style.setProperty('--tile-value-size', `${Math.max(20, Math.min(compact ? 40 : 50, rect.width / 5.8, rect.height / (compact ? 3.8 : 3)))}px`);
+  });
+}
+new ResizeObserver(() => { if (visibleRows.length) positionTiles(); }).observe(root);
+
+export function renderDashboard() {
+  hideHeatmapPreview({ refresh: false });
+  const visible = filteredResorts();
+  const allRows = heatmapRows(visible);
+  const capped = !state.showAllResorts && !state.searchQuery && allRows.length > CAP;
+  visibleRows = capped ? allRows.slice(0, CAP) : allRows;
+  const values = allRows.map((row) => row.value).filter(Number.isFinite);
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  root.replaceChildren();
+  document.getElementById('metric-description').textContent = `Showing ${metric().description}`;
+  document.getElementById('metric-size-note').textContent = metric().id === 'season' && seasonError ? seasonError : 'Larger tile = higher value';
+  document.getElementById('resort-count').textContent = capped ? `${CAP} of ${visible.length} resorts` : `${visible.length} resorts`;
+  document.getElementById('show-all-resorts').hidden = !capped;
+  document.getElementById('show-all-resorts').textContent = `Show all ${visible.length}`;
+  document.querySelectorAll('.metric-button').forEach((button) => {
+    const active = button.dataset.metric === metric().id;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+  document.getElementById('legend-high').textContent = metric().id === 'runsOpen' ? 'More runs open' : metric().id === 'score' ? 'Higher snow score' : metric().id === 'forecast72h' ? 'Higher forecast' : 'More snowfall';
+  document.getElementById('legend-low').textContent = metric().id === 'runsOpen' ? 'Fewer runs open' : metric().id === 'score' ? 'Lower snow score' : metric().id === 'forecast72h' ? 'Lower forecast' : 'Less snowfall';
+  if (!visible.length) {
+    root.style.height = '430px';
+    const empty = document.createElement('div');
+    empty.className = 'heatmap-empty';
+    empty.textContent = state.passFilter === 'favorites' ? 'No saved resorts yet. Explore the heatmap and save a resort from its preview or full details.' : 'No resorts match these filters. Try another region, pass, or search.';
+    root.appendChild(empty);
+    return;
   }
+  for (const row of visibleRows) {
+    const { resort, value } = row;
+    const tile = document.createElement('button');
+    tile.type = 'button';
+    tile.className = `heat-tile${value === null ? ' is-missing' : ''}${state.selectedId === resort.id ? ' selected' : ''}`;
+    tile.dataset.resortId = resort.id;
+    const color = heatColor(value, min, max);
+    tile.style.setProperty('--tile-bg', color.background);
+    tile.style.setProperty('--tile-fg', color.foreground);
+    tile.setAttribute('aria-label', `${resort.name}, ${metric().label}: ${value === null ? 'Unavailable' : amount(value)}. Open resort details.`);
+    tile.innerHTML = `<strong class="heat-name">${escape(resort.name)}</strong><span class="heat-value">${amount(value)}</span><span class="heat-period">${value === null ? 'Not available' : metric().caption}</span><span class="heat-source">${escape(provenance(resort))}</span>`;
+    tile.addEventListener('pointerenter', (event) => { if (event.pointerType === 'touch' || preview.matches(':hover')) return; clearTimeout(showTimer); clearTimeout(hideTimer); showTimer = setTimeout(() => showPreview(resort, tile, true), 120); });
+    tile.addEventListener('pointerleave', (event) => { clearTimeout(showTimer); if (!preview.contains(event.relatedTarget)) hideTimer = setTimeout(hideHeatmapPreview, 110); });
+    tile.addEventListener('focus', () => showPreview(resort, tile));
+    tile.addEventListener('blur', (event) => { if (!preview.contains(event.relatedTarget)) hideHeatmapPreview(); });
+    tile.addEventListener('click', () => { hideHeatmapPreview(); onResortClick?.(resort); });
+    root.appendChild(tile);
+  }
+  positionTiles();
+}
+
+export async function loadHeatmapSeason() {
+  try { catalog = await fetchSnowfallCatalog(); }
+  catch (error) { seasonError = error.message; console.error('Season snowfall:', error); }
+  renderDashboard();
 }
 
 export function renderUpdatedAt() {
-  const el = document.getElementById('updated-at');
-  if (!state.conditionsGeneratedAt) { el.style.display = 'none'; return; }
+  const element = document.getElementById('updated-at');
+  if (!state.conditionsGeneratedAt) {
+    element.textContent = state.conditionsLoadStatus === 'error' ? 'Conditions could not load · Unverified values withheld' : 'Conditions loading…';
+    return;
+  }
   const date = new Date(state.conditionsGeneratedAt);
-  const diff = Date.now() - date.getTime();
-  const mins = Math.floor(diff / 60000);
-  let ago;
-  if (mins < 1) ago = 'just now';
-  else if (mins < 60) ago = `${mins}m ago`;
-  else if (mins < 1440) ago = `${Math.floor(mins / 60)}h ago`;
-  else ago = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
-  el.textContent = `Conditions updated ${ago}${state.conditionErrorCount ? ` · ${state.conditionErrorCount} condition feeds unavailable` : ''}`;
-  el.style.display = 'block';
-}
-
-export function renderStormBanner() {
-  const banner = document.getElementById('storm-banner');
-  const text = document.getElementById('storm-banner-text');
-  if (state.stormBannerDismissed) { banner.style.display = 'none'; return; }
-  const stormResorts = resorts.filter((r) => r.metrics.forecast72h >= 12);
-  if (stormResorts.length < 3) { banner.style.display = 'none'; return; }
-  const topForecasts = stormResorts.sort((a, b) => b.metrics.forecast72h - a.metrics.forecast72h).slice(0, 3);
-  const names = topForecasts.map((r) => r.name).join(', ');
-  text.innerHTML = `<strong>Storm incoming</strong> — ${stormResorts.length} resorts expecting 12″+ in the next 72h. Top: ${names}.`;
-  banner.style.display = 'flex';
+  element.textContent = `${state.conditionsLoadStatus === 'stale' ? 'Resort snapshot stale · check source times' : 'Sources checked ' + date.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}${resorts.some(r => r.liveConditionsKind === 'model') ? ` · ${resorts.filter(r => r.liveSnowStatus === 'ready' && r.liveConditionsKind === 'model').length} model estimates` : ''}${resorts.some(r => r.liveTerrainStatus !== 'ready') ? ` · ${resorts.filter(r => r.liveTerrainStatus !== 'ready').length} terrain reports unavailable` : ''}`;
 }

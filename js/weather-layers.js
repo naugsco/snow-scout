@@ -1,4 +1,4 @@
-import { viewer } from './cesium-map.js?v=20261020-all-trails';
+import { viewer } from './cesium-map.js?v=20261021-sources-verified';
 
 // ============================================================
 // Weather layer state — supports multiple simultaneous layers
@@ -12,6 +12,9 @@ let radarHost = '';
 let onFrameChange = null;     // callback for UI updates
 let owmKey = null;            // loaded from config.json
 let owmKeyLoaded = false;
+const pendingLayers = new Map();
+let onLayerError = null;
+export function setOnLayerError(callback) { onLayerError = callback; }
 
 // Pre-cached radar imagery layers for smooth animation (no blinking)
 let radarLayers = [];         // parallel array to radarFrames
@@ -21,15 +24,12 @@ let radarLayers = [];         // parallel array to radarFrames
 // ============================================================
 async function ensureOwmKey() {
   if (owmKeyLoaded) return owmKey;
+  const res = await fetch('./data/config.json', { cache: 'no-store' });
+  if (!res.ok) throw new Error('Cloud, precipitation and temperature layers need the OpenWeather configuration.');
+  const config = await res.json();
+  owmKey = config.owmApiKey || null;
+  if (!owmKey) throw new Error('An OpenWeather API key is required for this weather layer.');
   owmKeyLoaded = true;
-  try {
-    const res = await fetch('./data/config.json', { cache: 'no-store' });
-    if (!res.ok) return null;
-    const config = await res.json();
-    owmKey = config.owmApiKey || null;
-  } catch {
-    owmKey = null;
-  }
   return owmKey;
 }
 
@@ -38,8 +38,10 @@ async function ensureOwmKey() {
 // ============================================================
 async function fetchRadarFrames() {
   const res = await fetch('https://api.rainviewer.com/public/weather-maps.json');
+  if (!res.ok) throw new Error(`Radar is unavailable (HTTP ${res.status}).`);
   const data = await res.json();
-  radarHost = data.host || 'https://tilecache.rainviewer.com';
+  if (!data.host || !Array.isArray(data.radar?.past) || !data.radar.past.length) throw new Error('Radar returned no observed frames.');
+  radarHost = data.host;
   radarFrames = (data.radar?.past || []).map((f) => ({
     time: f.time,
     path: f.path
@@ -56,6 +58,7 @@ function createRadarProvider(frame) {
   const url = `${radarHost}${frame.path}/256/{z}/{x}/{y}/6/1_1.png`;
   return new Cesium.UrlTemplateImageryProvider({
     url,
+    tilingScheme: new Cesium.WebMercatorTilingScheme(),
     minimumLevel: 0,
     maximumLevel: 7,
     credit: new Cesium.Credit('<a href="https://www.rainviewer.com" target="_blank">RainViewer</a>')
@@ -72,6 +75,7 @@ function buildRadarLayerCache() {
   clearRadarLayerCache();
   radarLayers = radarFrames.map((frame) => {
     const provider = createRadarProvider(frame);
+    observeProvider(provider, 'Radar');
     const layer = viewer.imageryLayers.addImageryProvider(provider);
     layer.alpha = 0;   // hidden initially
     layer.show = false;
@@ -95,12 +99,27 @@ function createOwmProvider(layer, key) {
   if (owmProviderCache.has(layer)) return owmProviderCache.get(layer);
   const provider = new Cesium.UrlTemplateImageryProvider({
     url: `https://tile.openweathermap.org/map/${layer}/{z}/{x}/{y}.png?appid=${key}`,
+    tilingScheme: new Cesium.WebMercatorTilingScheme(),
     minimumLevel: 0,
     maximumLevel: 6,
     credit: new Cesium.Credit('<a href="https://openweathermap.org" target="_blank">OpenWeatherMap</a>')
   });
   owmProviderCache.set(layer, provider);
   return provider;
+}
+
+async function verifyTile(url, label) {
+  let response;
+  try { response = await fetch(url); }
+  catch { throw new Error(`${label} could not connect to its weather provider. Please retry.`); }
+  if (!response.ok) throw new Error(`${label} is unavailable (HTTP ${response.status}). Check the provider configuration.`);
+  if (!response.headers.get('content-type')?.includes('image/')) throw new Error(`${label} returned an invalid weather tile.`);
+}
+
+function observeProvider(provider, label) {
+  provider.errorEvent.addEventListener(() => {
+    onLayerError?.(`${label} could not load a map tile. Try again or check the provider configuration.`);
+  });
 }
 
 const OWM_LAYERS = {
@@ -186,10 +205,12 @@ export async function toggleLayer(id) {
 
 export async function addLayer(id) {
   if (isLayerActive(id)) return;
-
+  if (pendingLayers.has(id)) return pendingLayers.get(id);
+  const task = (async () => {
   if (id === 'radar') {
-    if (!radarFrames.length) await fetchRadarFrames();
-    if (!radarFrames.length) return;
+    if (!radarFrames.length || Date.now() / 1000 - radarFrames[radarFrames.length - 1].time > 900) await fetchRadarFrames();
+    const latest = radarFrames[radarFrames.length - 1];
+    await verifyTile(`${radarHost}${latest.path}/256/0/0/0/6/1_1.png`, 'Radar');
     buildRadarLayerCache();
     radarFrameIndex = radarFrames.length - 1;
     radarLayers[radarFrameIndex].show = true;
@@ -197,12 +218,18 @@ export async function addLayer(id) {
     if (onFrameChange) onFrameChange();
   } else if (OWM_LAYERS[id]) {
     const key = await ensureOwmKey();
-    if (!key) return;
+    const label = { clouds: 'Clouds', precipitation: 'Precipitation', temp: 'Temperature' }[id];
+    await verifyTile(`https://tile.openweathermap.org/map/${OWM_LAYERS[id]}/0/0/0.png?appid=${encodeURIComponent(key)}`, label);
     const provider = createOwmProvider(OWM_LAYERS[id], key);
+    observeProvider(provider, label);
     const layer = viewer.imageryLayers.addImageryProvider(provider);
     layer.alpha = layerOpacity;
     activeLayers.set(id, layer);
-  }
+  } else throw new Error(`Unknown weather layer: ${id}`);
+  })();
+  pendingLayers.set(id, task);
+  try { await task; }
+  finally { pendingLayers.delete(id); }
 }
 
 // Legacy single-layer API (kept for backwards compat)

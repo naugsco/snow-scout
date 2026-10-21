@@ -1,4 +1,4 @@
-import { FAVORITES_KEY } from './constants.js?v=20261020-all-trails';
+import { FAVORITES_KEY } from './constants.js?v=20261021-sources-verified';
 
 export function loadFavorites() {
   try {
@@ -37,6 +37,7 @@ export const state = {
   isFlying: false,
   activeFlightId: 0,
   conditionsGeneratedAt: null,
+  conditionsLoadStatus: 'loading',
   conditionErrorCount: 0,
   stormBannerDismissed: false,
   useMetric: loadUseMetric(),

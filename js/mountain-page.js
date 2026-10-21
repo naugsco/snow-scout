@@ -1,7 +1,7 @@
-import { RAW_RESORTS } from './constants.js?v=20261020-all-trails';
-import { mountainConfig, mountainSlug } from './mountain-config.js?v=20261020-all-trails';
-import { createMountain } from './painted-mountain.js?v=20261020-all-trails';
-import { trailLegend } from './trail-style.js?v=20261020-all-trails';
+import { RAW_RESORTS } from './constants.js?v=20261021-sources-verified';
+import { mountainConfig, mountainSlug } from './mountain-config.js?v=20261021-sources-verified';
+import { createMountain } from './painted-mountain.js?v=20261021-sources-verified';
+import { trailLegend } from './trail-style.js?v=20261021-sources-verified';
 
 const el = id => document.getElementById(id);
 const requested = new URLSearchParams(location.search).get('resort');

@@ -1,3 +1,4 @@
+import { formatInches } from './utils.js?v=20261021-sources-verified';
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
 export function createSnowfallChart(dailySnowfall, dailyTime) {
@@ -13,7 +14,7 @@ export function createSnowfallChart(dailySnowfall, dailyTime) {
   const bottomPad = labelHeight + 4;
   const chartHeight = height - topPad - bottomPad;
   const barWidth = (width - barGap * (barCount + 1)) / barCount;
-  const maxVal = Math.max(...days, 1);
+  const maxVal = Math.max(...days.filter(Number.isFinite), 1);
 
   const svg = document.createElementNS(SVG_NS, 'svg');
   svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
@@ -22,7 +23,7 @@ export function createSnowfallChart(dailySnowfall, dailyTime) {
 
   days.forEach((amount, i) => {
     const x = barGap + i * (barWidth + barGap);
-    const barH = Math.max((amount / maxVal) * chartHeight, 2);
+    const barH = Number.isFinite(amount) ? Math.max((amount / maxVal) * chartHeight, 2) : 0;
     const y = topPad + chartHeight - barH;
 
     // Bar with rounded top
@@ -44,7 +45,7 @@ export function createSnowfallChart(dailySnowfall, dailyTime) {
     amountLabel.setAttribute('font-size', '10');
     amountLabel.setAttribute('font-family', 'var(--font-ui, sans-serif)');
     amountLabel.setAttribute('font-weight', '600');
-    amountLabel.textContent = amount > 0 ? `${amount}"` : '0';
+    amountLabel.textContent = formatInches(amount);
     svg.appendChild(amountLabel);
 
     // Day abbreviation below

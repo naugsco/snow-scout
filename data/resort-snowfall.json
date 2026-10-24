@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T16:01:01.266134+00:00",
+  "generatedAt": "2026-10-24T20:54:28.928711+00:00",
   "units": "in",
   "model": "era5",
   "source": "Open-Meteo / ECMWF ERA5 reanalysis",
@@ -7,8 +7,8 @@
   "historyStartDate": "1940-01-01",
   "seasonDefinition": "Northern: July 1–June 30. Southern: January 1–December 31. Days are UTC.",
   "summary": {
-    "ok": 95,
-    "error": 10,
+    "ok": 102,
+    "error": 3,
     "pending": 0
   },
   "resorts": {
@@ -1002,13 +1002,13 @@
       "name": "Alta",
       "lat": 40.5884,
       "lon": -111.6386,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.5884&longitude=-111.6386&start_date=1946-07-01&end_date=1956-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-24T04:43:13.866978+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.5884&longitude=-111.6386&start_date=1940-01-01&end_date=1946-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-24T20:54:28.928711+00:00",
       "requestedThrough": "2026-10-19",
       "availableThrough": "2026-10-18",
-      "historyStartDate": "1946-07-01",
+      "historyStartDate": "1940-01-01",
       "gridElevationM": 2603.0,
       "gridLat": 40.5,
       "gridLon": -111.75,
@@ -1903,22 +1903,98 @@
           "missingDays": 0,
           "total": 102.22,
           "complete": true
+        },
+        {
+          "season": "1945/46",
+          "startDate": "1945-07-01",
+          "endDate": "1946-06-30",
+          "through": "1946-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 91.63,
+          "complete": true
+        },
+        {
+          "season": "1944/45",
+          "startDate": "1944-07-01",
+          "endDate": "1945-06-30",
+          "through": "1945-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 90.09,
+          "complete": true
+        },
+        {
+          "season": "1943/44",
+          "startDate": "1943-07-01",
+          "endDate": "1944-06-30",
+          "through": "1944-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 87.5,
+          "complete": true
+        },
+        {
+          "season": "1942/43",
+          "startDate": "1942-07-01",
+          "endDate": "1943-06-30",
+          "through": "1943-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 80.8,
+          "complete": true
+        },
+        {
+          "season": "1941/42",
+          "startDate": "1941-07-01",
+          "endDate": "1942-06-30",
+          "through": "1942-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 77.96,
+          "complete": true
+        },
+        {
+          "season": "1940/41",
+          "startDate": "1940-07-01",
+          "endDate": "1941-06-30",
+          "through": "1941-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 85.13,
+          "complete": true
+        },
+        {
+          "season": "1939/40",
+          "startDate": "1939-07-01",
+          "endDate": "1940-06-30",
+          "through": "1940-06-30",
+          "sumCm": 169.60999999999996,
+          "observedDays": 181,
+          "expectedDays": 366,
+          "missingDays": 185,
+          "total": null,
+          "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-24T16:01:01.266134+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "andermatt sedrun": {
       "name": "Andermatt-Sedrun",
       "lat": 46.6342,
       "lon": 8.5942,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=46.6342&longitude=8.5942&start_date=2026-07-01&end_date=2026-10-19&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-24T04:43:13.866978+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=46.6342&longitude=8.5942&start_date=1940-01-01&end_date=1946-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-24T20:54:28.928711+00:00",
       "requestedThrough": "2026-10-19",
       "availableThrough": "2026-10-18",
-      "historyStartDate": "1956-07-01",
+      "historyStartDate": "1940-01-01",
       "gridElevationM": 1441.0,
       "gridLat": 46.75,
       "gridLon": 8.5,
@@ -2703,10 +2779,196 @@
           "missingDays": 0,
           "total": 88.52,
           "complete": true
+        },
+        {
+          "season": "1955/56",
+          "startDate": "1955-07-01",
+          "endDate": "1956-06-30",
+          "through": "1956-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 91.22,
+          "complete": true
+        },
+        {
+          "season": "1954/55",
+          "startDate": "1954-07-01",
+          "endDate": "1955-06-30",
+          "through": "1955-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 120.74,
+          "complete": true
+        },
+        {
+          "season": "1953/54",
+          "startDate": "1953-07-01",
+          "endDate": "1954-06-30",
+          "through": "1954-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 109.33,
+          "complete": true
+        },
+        {
+          "season": "1952/53",
+          "startDate": "1952-07-01",
+          "endDate": "1953-06-30",
+          "through": "1953-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 153.2,
+          "complete": true
+        },
+        {
+          "season": "1951/52",
+          "startDate": "1951-07-01",
+          "endDate": "1952-06-30",
+          "through": "1952-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 127.74,
+          "complete": true
+        },
+        {
+          "season": "1950/51",
+          "startDate": "1950-07-01",
+          "endDate": "1951-06-30",
+          "through": "1951-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 204.19,
+          "complete": true
+        },
+        {
+          "season": "1949/50",
+          "startDate": "1949-07-01",
+          "endDate": "1950-06-30",
+          "through": "1950-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 135.18,
+          "complete": true
+        },
+        {
+          "season": "1948/49",
+          "startDate": "1948-07-01",
+          "endDate": "1949-06-30",
+          "through": "1949-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 102.63,
+          "complete": true
+        },
+        {
+          "season": "1947/48",
+          "startDate": "1947-07-01",
+          "endDate": "1948-06-30",
+          "through": "1948-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 140.77,
+          "complete": true
+        },
+        {
+          "season": "1946/47",
+          "startDate": "1946-07-01",
+          "endDate": "1947-06-30",
+          "through": "1947-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 95.57,
+          "complete": true
+        },
+        {
+          "season": "1945/46",
+          "startDate": "1945-07-01",
+          "endDate": "1946-06-30",
+          "through": "1946-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 118.75,
+          "complete": true
+        },
+        {
+          "season": "1944/45",
+          "startDate": "1944-07-01",
+          "endDate": "1945-06-30",
+          "through": "1945-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 162.93,
+          "complete": true
+        },
+        {
+          "season": "1943/44",
+          "startDate": "1943-07-01",
+          "endDate": "1944-06-30",
+          "through": "1944-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 132.42,
+          "complete": true
+        },
+        {
+          "season": "1942/43",
+          "startDate": "1942-07-01",
+          "endDate": "1943-06-30",
+          "through": "1943-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 88.19,
+          "complete": true
+        },
+        {
+          "season": "1941/42",
+          "startDate": "1941-07-01",
+          "endDate": "1942-06-30",
+          "through": "1942-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 96.76,
+          "complete": true
+        },
+        {
+          "season": "1940/41",
+          "startDate": "1940-07-01",
+          "endDate": "1941-06-30",
+          "through": "1941-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 146.17,
+          "complete": true
+        },
+        {
+          "season": "1939/40",
+          "startDate": "1939-07-01",
+          "endDate": "1940-06-30",
+          "through": "1940-06-30",
+          "sumCm": 173.04,
+          "observedDays": 181,
+          "expectedDays": 366,
+          "missingDays": 185,
+          "total": null,
+          "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-24T16:01:01.266134+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "arapahoe basin": {
       "name": "Arapahoe Basin",
@@ -7644,8 +7906,8 @@
       "lon": -116.8906,
       "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=34.2364&longitude=-116.8906&start_date=1946-07-01&end_date=1956-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-24T04:43:13.866978+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=34.2364&longitude=-116.8906&start_date=2026-07-01&end_date=2026-10-19&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-24T20:54:28.928711+00:00",
       "requestedThrough": "2026-10-19",
       "availableThrough": "2026-10-18",
       "historyStartDate": "1946-07-01",
@@ -8545,7 +8807,7 @@
           "complete": true
         }
       ],
-      "lastAttemptAt": "2026-10-24T16:01:01.266134+00:00",
+      "lastAttemptAt": "2026-10-24T20:54:28.928711+00:00",
       "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
     },
     "big sky": {
@@ -11510,13 +11772,13 @@
       "name": "Boyne Mountain",
       "lat": 45.1653,
       "lon": -84.9319,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=45.1653&longitude=-84.9319&start_date=1946-07-01&end_date=1956-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-24T11:08:51.235784+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=45.1653&longitude=-84.9319&start_date=1940-01-01&end_date=1946-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-24T20:54:28.928711+00:00",
       "requestedThrough": "2026-10-19",
       "availableThrough": "2026-10-18",
-      "historyStartDate": "1946-07-01",
+      "historyStartDate": "1940-01-01",
       "gridElevationM": 223.0,
       "gridLat": 45.25,
       "gridLon": -85.0,
@@ -12411,10 +12673,86 @@
           "missingDays": 0,
           "total": 57.21,
           "complete": true
+        },
+        {
+          "season": "1945/46",
+          "startDate": "1945-07-01",
+          "endDate": "1946-06-30",
+          "through": "1946-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 54.62,
+          "complete": true
+        },
+        {
+          "season": "1944/45",
+          "startDate": "1944-07-01",
+          "endDate": "1945-06-30",
+          "through": "1945-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 50.6,
+          "complete": true
+        },
+        {
+          "season": "1943/44",
+          "startDate": "1943-07-01",
+          "endDate": "1944-06-30",
+          "through": "1944-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 49.74,
+          "complete": true
+        },
+        {
+          "season": "1942/43",
+          "startDate": "1942-07-01",
+          "endDate": "1943-06-30",
+          "through": "1943-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 75.59,
+          "complete": true
+        },
+        {
+          "season": "1941/42",
+          "startDate": "1941-07-01",
+          "endDate": "1942-06-30",
+          "through": "1942-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 68.43,
+          "complete": true
+        },
+        {
+          "season": "1940/41",
+          "startDate": "1940-07-01",
+          "endDate": "1941-06-30",
+          "through": "1941-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 51.56,
+          "complete": true
+        },
+        {
+          "season": "1939/40",
+          "startDate": "1939-07-01",
+          "endDate": "1940-06-30",
+          "through": "1940-06-30",
+          "sumCm": 90.99999999999999,
+          "observedDays": 181,
+          "expectedDays": 366,
+          "missingDays": 185,
+          "total": null,
+          "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-24T16:01:01.266134+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "breckenridge": {
       "name": "Breckenridge",
@@ -16364,13 +16702,13 @@
       "name": "Copper Mountain",
       "lat": 39.5022,
       "lon": -106.1497,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=39.5022&longitude=-106.1497&start_date=1946-07-01&end_date=1956-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-24T04:43:13.866978+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=39.5022&longitude=-106.1497&start_date=1940-01-01&end_date=1946-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-24T20:54:28.928711+00:00",
       "requestedThrough": "2026-10-19",
       "availableThrough": "2026-10-18",
-      "historyStartDate": "1946-07-01",
+      "historyStartDate": "1940-01-01",
       "gridElevationM": 2965.0,
       "gridLat": 39.5,
       "gridLon": -106.25,
@@ -17265,10 +17603,86 @@
           "missingDays": 0,
           "total": 106.02,
           "complete": true
+        },
+        {
+          "season": "1945/46",
+          "startDate": "1945-07-01",
+          "endDate": "1946-06-30",
+          "through": "1946-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 76.34,
+          "complete": true
+        },
+        {
+          "season": "1944/45",
+          "startDate": "1944-07-01",
+          "endDate": "1945-06-30",
+          "through": "1945-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 89.4,
+          "complete": true
+        },
+        {
+          "season": "1943/44",
+          "startDate": "1943-07-01",
+          "endDate": "1944-06-30",
+          "through": "1944-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 82.93,
+          "complete": true
+        },
+        {
+          "season": "1942/43",
+          "startDate": "1942-07-01",
+          "endDate": "1943-06-30",
+          "through": "1943-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 80.0,
+          "complete": true
+        },
+        {
+          "season": "1941/42",
+          "startDate": "1941-07-01",
+          "endDate": "1942-06-30",
+          "through": "1942-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 81.82,
+          "complete": true
+        },
+        {
+          "season": "1940/41",
+          "startDate": "1940-07-01",
+          "endDate": "1941-06-30",
+          "through": "1941-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 85.71,
+          "complete": true
+        },
+        {
+          "season": "1939/40",
+          "startDate": "1939-07-01",
+          "endDate": "1940-06-30",
+          "through": "1940-06-30",
+          "sumCm": 130.47999999999993,
+          "observedDays": 181,
+          "expectedDays": 366,
+          "missingDays": 185,
+          "total": null,
+          "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-24T16:01:01.266134+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "coronet peak": {
       "name": "Coronet Peak",
@@ -40905,13 +41319,13 @@
       "name": "Laurel Mountain",
       "lat": 40.1614,
       "lon": -79.1658,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.1614&longitude=-79.1658&start_date=2026-07-01&end_date=2026-10-19&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-24T16:01:01.266134+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.1614&longitude=-79.1658&start_date=1940-01-01&end_date=1946-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-24T20:54:28.928711+00:00",
       "requestedThrough": "2026-10-19",
       "availableThrough": "2026-10-18",
-      "historyStartDate": "1946-07-01",
+      "historyStartDate": "1940-01-01",
       "gridElevationM": 837.0,
       "gridLat": 40.25,
       "gridLon": -79.25,
@@ -41806,10 +42220,86 @@
           "missingDays": 0,
           "total": 38.94,
           "complete": true
+        },
+        {
+          "season": "1945/46",
+          "startDate": "1945-07-01",
+          "endDate": "1946-06-30",
+          "through": "1946-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 30.59,
+          "complete": true
+        },
+        {
+          "season": "1944/45",
+          "startDate": "1944-07-01",
+          "endDate": "1945-06-30",
+          "through": "1945-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 56.3,
+          "complete": true
+        },
+        {
+          "season": "1943/44",
+          "startDate": "1943-07-01",
+          "endDate": "1944-06-30",
+          "through": "1944-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 41.28,
+          "complete": true
+        },
+        {
+          "season": "1942/43",
+          "startDate": "1942-07-01",
+          "endDate": "1943-06-30",
+          "through": "1943-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 54.68,
+          "complete": true
+        },
+        {
+          "season": "1941/42",
+          "startDate": "1941-07-01",
+          "endDate": "1942-06-30",
+          "through": "1942-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 51.51,
+          "complete": true
+        },
+        {
+          "season": "1940/41",
+          "startDate": "1940-07-01",
+          "endDate": "1941-06-30",
+          "through": "1941-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 44.65,
+          "complete": true
+        },
+        {
+          "season": "1939/40",
+          "startDate": "1939-07-01",
+          "endDate": "1940-06-30",
+          "through": "1940-06-30",
+          "sumCm": 104.72000000000001,
+          "observedDays": 181,
+          "expectedDays": 366,
+          "missingDays": 185,
+          "total": null,
+          "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-24T16:01:01.266134+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "le massif de charlevoix": {
       "name": "Le Massif de Charlevoix",
@@ -46662,7 +47152,7 @@
           "complete": true
         }
       ],
-      "lastAttemptAt": "2026-10-24T16:01:01.266134+00:00",
+      "lastAttemptAt": "2026-10-24T20:54:28.928711+00:00",
       "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
     },
     "lotte arai": {
@@ -53571,13 +54061,13 @@
       "name": "Mt Buller",
       "lat": -37.1466,
       "lon": 146.4494,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=-37.1466&longitude=146.4494&start_date=1946-01-01&end_date=1955-12-31&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-24T04:43:13.866978+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=-37.1466&longitude=146.4494&start_date=1940-01-01&end_date=1945-12-31&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-24T20:54:28.928711+00:00",
       "requestedThrough": "2026-10-19",
       "availableThrough": "2026-10-18",
-      "historyStartDate": "1946-01-01",
+      "historyStartDate": "1940-01-01",
       "gridElevationM": 1586.0,
       "gridLat": -37.25,
       "gridLon": 146.5,
@@ -54472,10 +54962,75 @@
           "missingDays": 0,
           "total": 17.53,
           "complete": true
+        },
+        {
+          "season": "1945",
+          "startDate": "1945-01-01",
+          "endDate": "1945-12-31",
+          "through": "1945-12-31",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 13.17,
+          "complete": true
+        },
+        {
+          "season": "1944",
+          "startDate": "1944-01-01",
+          "endDate": "1944-12-31",
+          "through": "1944-12-31",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 12.9,
+          "complete": true
+        },
+        {
+          "season": "1943",
+          "startDate": "1943-01-01",
+          "endDate": "1943-12-31",
+          "through": "1943-12-31",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 27.5,
+          "complete": true
+        },
+        {
+          "season": "1942",
+          "startDate": "1942-01-01",
+          "endDate": "1942-12-31",
+          "through": "1942-12-31",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 23.34,
+          "complete": true
+        },
+        {
+          "season": "1941",
+          "startDate": "1941-01-01",
+          "endDate": "1941-12-31",
+          "through": "1941-12-31",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 10.03,
+          "complete": true
+        },
+        {
+          "season": "1940",
+          "startDate": "1940-01-01",
+          "endDate": "1940-12-31",
+          "through": "1940-12-31",
+          "sumCm": 15.330000000000002,
+          "observedDays": 365,
+          "expectedDays": 366,
+          "missingDays": 1,
+          "total": null,
+          "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-24T16:01:01.266134+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "niseko united": {
       "name": "Niseko United",
@@ -63344,13 +63899,13 @@
       "name": "Revelstoke",
       "lat": 51.0267,
       "lon": -118.1631,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=51.0267&longitude=-118.1631&start_date=2026-07-01&end_date=2026-10-19&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-24T16:01:01.266134+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=51.0267&longitude=-118.1631&start_date=1940-01-01&end_date=1946-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-24T20:54:28.928711+00:00",
       "requestedThrough": "2026-10-19",
       "availableThrough": "2026-10-18",
-      "historyStartDate": "1946-07-01",
+      "historyStartDate": "1940-01-01",
       "gridElevationM": 1637.0,
       "gridLat": 51.0,
       "gridLon": -118.25,
@@ -64245,10 +64800,86 @@
           "missingDays": 0,
           "total": 209.37,
           "complete": true
+        },
+        {
+          "season": "1945/46",
+          "startDate": "1945-07-01",
+          "endDate": "1946-06-30",
+          "through": "1946-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 262.17,
+          "complete": true
+        },
+        {
+          "season": "1944/45",
+          "startDate": "1944-07-01",
+          "endDate": "1945-06-30",
+          "through": "1945-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 192.64,
+          "complete": true
+        },
+        {
+          "season": "1943/44",
+          "startDate": "1943-07-01",
+          "endDate": "1944-06-30",
+          "through": "1944-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 130.27,
+          "complete": true
+        },
+        {
+          "season": "1942/43",
+          "startDate": "1942-07-01",
+          "endDate": "1943-06-30",
+          "through": "1943-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 179.63,
+          "complete": true
+        },
+        {
+          "season": "1941/42",
+          "startDate": "1941-07-01",
+          "endDate": "1942-06-30",
+          "through": "1942-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 137.35,
+          "complete": true
+        },
+        {
+          "season": "1940/41",
+          "startDate": "1940-07-01",
+          "endDate": "1941-06-30",
+          "through": "1941-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 113.87,
+          "complete": true
+        },
+        {
+          "season": "1939/40",
+          "startDate": "1939-07-01",
+          "endDate": "1940-06-30",
+          "through": "1940-06-30",
+          "sumCm": 198.23999999999992,
+          "observedDays": 181,
+          "expectedDays": 366,
+          "missingDays": 185,
+          "total": null,
+          "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-24T16:01:01.266134+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "roundtop mountain": {
       "name": "Roundtop Mountain",
@@ -92829,7 +93460,7 @@
       "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=-33.3583&longitude=-70.2678&start_date=2026-01-01&end_date=2026-10-19&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-24T11:08:51.235784+00:00",
+      "retrievedAt": "2026-10-24T20:54:28.928711+00:00",
       "requestedThrough": "2026-10-19",
       "availableThrough": "2026-10-18",
       "historyStartDate": "1956-01-01",
@@ -93619,7 +94250,7 @@
           "complete": true
         }
       ],
-      "lastAttemptAt": "2026-10-24T16:01:01.266134+00:00",
+      "lastAttemptAt": "2026-10-24T20:54:28.928711+00:00",
       "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
     },
     "verbier": {

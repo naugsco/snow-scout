@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T11:38:46.530161+00:00",
+  "generatedAt": "2026-10-25T16:28:44.439875+00:00",
   "units": "in",
   "model": "era5",
   "source": "Open-Meteo / ECMWF ERA5 reanalysis",
@@ -7,8 +7,8 @@
   "historyStartDate": "1940-01-01",
   "seasonDefinition": "Northern: July 1–June 30. Southern: January 1–December 31. Days are UTC.",
   "summary": {
-    "ok": 102,
-    "error": 3,
+    "ok": 105,
+    "error": 0,
     "pending": 0
   },
   "resorts": {
@@ -7904,13 +7904,13 @@
       "name": "Big Bear Mountain",
       "lat": 34.2364,
       "lon": -116.8906,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=34.2364&longitude=-116.8906&start_date=2026-07-01&end_date=2026-10-20&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-25T11:38:46.530161+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=34.2364&longitude=-116.8906&start_date=1940-01-01&end_date=1946-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-25T16:28:44.439875+00:00",
       "requestedThrough": "2026-10-20",
       "availableThrough": "2026-10-19",
-      "historyStartDate": "1946-07-01",
+      "historyStartDate": "1940-01-01",
       "gridElevationM": 2126.0,
       "gridLat": 34.25,
       "gridLon": -117.0,
@@ -8805,10 +8805,86 @@
           "missingDays": 0,
           "total": 11.0,
           "complete": true
+        },
+        {
+          "season": "1945/46",
+          "startDate": "1945-07-01",
+          "endDate": "1946-06-30",
+          "through": "1946-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 13.37,
+          "complete": true
+        },
+        {
+          "season": "1944/45",
+          "startDate": "1944-07-01",
+          "endDate": "1945-06-30",
+          "through": "1945-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 23.48,
+          "complete": true
+        },
+        {
+          "season": "1943/44",
+          "startDate": "1943-07-01",
+          "endDate": "1944-06-30",
+          "through": "1944-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 28.39,
+          "complete": true
+        },
+        {
+          "season": "1942/43",
+          "startDate": "1942-07-01",
+          "endDate": "1943-06-30",
+          "through": "1943-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 3.0,
+          "complete": true
+        },
+        {
+          "season": "1941/42",
+          "startDate": "1941-07-01",
+          "endDate": "1942-06-30",
+          "through": "1942-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 6.86,
+          "complete": true
+        },
+        {
+          "season": "1940/41",
+          "startDate": "1940-07-01",
+          "endDate": "1941-06-30",
+          "through": "1941-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 16.95,
+          "complete": true
+        },
+        {
+          "season": "1939/40",
+          "startDate": "1939-07-01",
+          "endDate": "1940-06-30",
+          "through": "1940-06-30",
+          "sumCm": 20.160000000000007,
+          "observedDays": 181,
+          "expectedDays": 366,
+          "missingDays": 185,
+          "total": null,
+          "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-25T11:38:46.530161+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "big sky": {
       "name": "Big Sky",
@@ -21621,12 +21697,12 @@
       "name": "Crystal Mountain",
       "lat": 46.9283,
       "lon": -121.5047,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=46.9283&longitude=-121.5047&start_date=1940-01-01&end_date=1946-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-24T16:01:01.266134+00:00",
-      "requestedThrough": "2026-10-19",
-      "availableThrough": "2026-10-18",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=46.9283&longitude=-121.5047&start_date=2026-07-01&end_date=2026-10-20&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-25T16:28:44.439875+00:00",
+      "requestedThrough": "2026-10-20",
+      "availableThrough": "2026-10-19",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 2109.0,
       "gridLat": 47.0,
@@ -21636,9 +21712,9 @@
           "season": "2026/27",
           "startDate": "2026-07-01",
           "endDate": "2027-06-30",
-          "through": "2026-10-18",
-          "observedDays": 110,
-          "expectedDays": 110,
+          "through": "2026-10-19",
+          "observedDays": 111,
+          "expectedDays": 111,
           "missingDays": 0,
           "total": 0.19,
           "complete": false
@@ -22601,9 +22677,7 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-25T11:38:46.530161+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "cypress mountain": {
       "name": "Cypress Mountain",
@@ -31472,12 +31546,12 @@
       "name": "Hotham",
       "lat": -36.9781,
       "lon": 147.1706,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=-36.9781&longitude=147.1706&start_date=1940-01-01&end_date=1945-12-31&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-24T16:01:01.266134+00:00",
-      "requestedThrough": "2026-10-19",
-      "availableThrough": "2026-10-18",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=-36.9781&longitude=147.1706&start_date=2026-01-01&end_date=2026-10-20&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-25T16:28:44.439875+00:00",
+      "requestedThrough": "2026-10-20",
+      "availableThrough": "2026-10-19",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 1411.0,
       "gridLat": -37.0,
@@ -31487,9 +31561,9 @@
           "season": "2026",
           "startDate": "2026-01-01",
           "endDate": "2026-12-31",
-          "through": "2026-10-18",
-          "observedDays": 291,
-          "expectedDays": 291,
+          "through": "2026-10-19",
+          "observedDays": 292,
+          "expectedDays": 292,
           "missingDays": 0,
           "total": 4.77,
           "complete": false
@@ -32441,9 +32515,7 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-25T11:38:46.530161+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "hunter mountain": {
       "name": "Hunter Mountain",

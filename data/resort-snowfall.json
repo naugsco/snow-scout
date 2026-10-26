@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T13:12:23.649834+00:00",
+  "generatedAt": "2026-10-26T22:43:41.607795+00:00",
   "units": "in",
   "model": "era5",
   "source": "Open-Meteo / ECMWF ERA5 reanalysis",
@@ -7,8 +7,8 @@
   "historyStartDate": "1940-01-01",
   "seasonDefinition": "Northern: July 1–June 30. Southern: January 1–December 31. Days are UTC.",
   "summary": {
-    "ok": 102,
-    "error": 3,
+    "ok": 105,
+    "error": 0,
     "pending": 0
   },
   "resorts": {
@@ -66023,12 +66023,12 @@
       "name": "Rusutsu",
       "lat": 42.75,
       "lon": 140.5667,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=42.75&longitude=140.5667&start_date=2026-07-01&end_date=2026-10-20&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-25T04:49:06.602849+00:00",
-      "requestedThrough": "2026-10-20",
-      "availableThrough": "2026-10-19",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=42.75&longitude=140.5667&start_date=2026-07-01&end_date=2026-10-21&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-26T22:43:41.607795+00:00",
+      "requestedThrough": "2026-10-21",
+      "availableThrough": "2026-10-20",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 262.0,
       "gridLat": 42.75,
@@ -66038,9 +66038,9 @@
           "season": "2026/27",
           "startDate": "2026-07-01",
           "endDate": "2027-06-30",
-          "through": "2026-10-19",
-          "observedDays": 111,
-          "expectedDays": 111,
+          "through": "2026-10-20",
+          "observedDays": 112,
+          "expectedDays": 112,
           "missingDays": 0,
           "total": 0.0,
           "complete": false
@@ -67003,20 +67003,18 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-26T13:12:23.649834+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "schweitzer": {
       "name": "Schweitzer",
       "lat": 48.3675,
       "lon": -116.6225,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=48.3675&longitude=-116.6225&start_date=2026-07-01&end_date=2026-10-20&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-25T04:49:06.602849+00:00",
-      "requestedThrough": "2026-10-20",
-      "availableThrough": "2026-10-19",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=48.3675&longitude=-116.6225&start_date=2026-07-01&end_date=2026-10-21&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-26T22:43:41.607795+00:00",
+      "requestedThrough": "2026-10-21",
+      "availableThrough": "2026-10-20",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 1430.0,
       "gridLat": 48.25,
@@ -67026,9 +67024,9 @@
           "season": "2026/27",
           "startDate": "2026-07-01",
           "endDate": "2027-06-30",
-          "through": "2026-10-19",
-          "observedDays": 111,
-          "expectedDays": 111,
+          "through": "2026-10-20",
+          "observedDays": 112,
+          "expectedDays": 112,
           "missingDays": 0,
           "total": 0.0,
           "complete": false
@@ -67991,9 +67989,7 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-26T13:12:23.649834+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "seven springs": {
       "name": "Seven Springs",
@@ -90655,12 +90651,12 @@
       "name": "Tremblant",
       "lat": 46.2094,
       "lon": -74.5858,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=46.2094&longitude=-74.5858&start_date=2026-07-01&end_date=2026-10-20&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-25T04:49:06.602849+00:00",
-      "requestedThrough": "2026-10-20",
-      "availableThrough": "2026-10-19",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=46.2094&longitude=-74.5858&start_date=2026-07-01&end_date=2026-10-21&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-26T22:43:41.607795+00:00",
+      "requestedThrough": "2026-10-21",
+      "availableThrough": "2026-10-20",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 234.0,
       "gridLat": 46.25,
@@ -90670,9 +90666,9 @@
           "season": "2026/27",
           "startDate": "2026-07-01",
           "endDate": "2027-06-30",
-          "through": "2026-10-19",
-          "observedDays": 111,
-          "expectedDays": 111,
+          "through": "2026-10-20",
+          "observedDays": 112,
+          "expectedDays": 112,
           "missingDays": 0,
           "total": 0.0,
           "complete": false
@@ -91635,9 +91631,7 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-26T13:12:23.649834+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "vail": {
       "name": "Vail",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T13:02:23.426652+00:00",
+  "generatedAt": "2026-10-28T22:39:38.827507+00:00",
   "units": "in",
   "model": "era5",
   "source": "Open-Meteo / ECMWF ERA5 reanalysis",
@@ -7,8 +7,8 @@
   "historyStartDate": "1940-01-01",
   "seasonDefinition": "Northern: July 1–June 30. Southern: January 1–December 31. Days are UTC.",
   "summary": {
-    "ok": 103,
-    "error": 2,
+    "ok": 105,
+    "error": 0,
     "pending": 0
   },
   "resorts": {
@@ -41395,12 +41395,12 @@
       "name": "Laurel Mountain",
       "lat": 40.1614,
       "lon": -79.1658,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.1614&longitude=-79.1658&start_date=2026-07-01&end_date=2026-10-22&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-27T05:11:56.976673+00:00",
-      "requestedThrough": "2026-10-22",
-      "availableThrough": "2026-10-21",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.1614&longitude=-79.1658&start_date=2026-07-01&end_date=2026-10-23&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-28T22:39:38.827507+00:00",
+      "requestedThrough": "2026-10-23",
+      "availableThrough": "2026-10-22",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 837.0,
       "gridLat": 40.25,
@@ -41410,9 +41410,9 @@
           "season": "2026/27",
           "startDate": "2026-07-01",
           "endDate": "2027-06-30",
-          "through": "2026-10-21",
-          "observedDays": 113,
-          "expectedDays": 113,
+          "through": "2026-10-22",
+          "observedDays": 114,
+          "expectedDays": 114,
           "missingDays": 0,
           "total": 0.0,
           "complete": false
@@ -42375,9 +42375,7 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-28T13:02:23.426652+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "le massif de charlevoix": {
       "name": "Le Massif de Charlevoix",
@@ -63067,12 +63065,12 @@
       "name": "Red Mountain",
       "lat": 49.1042,
       "lon": -117.8453,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=49.1042&longitude=-117.8453&start_date=2026-07-01&end_date=2026-10-22&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-27T05:11:56.976673+00:00",
-      "requestedThrough": "2026-10-22",
-      "availableThrough": "2026-10-21",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=49.1042&longitude=-117.8453&start_date=2026-07-01&end_date=2026-10-23&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-28T22:39:38.827507+00:00",
+      "requestedThrough": "2026-10-23",
+      "availableThrough": "2026-10-22",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 1813.0,
       "gridLat": 49.0,
@@ -63082,9 +63080,9 @@
           "season": "2026/27",
           "startDate": "2026-07-01",
           "endDate": "2027-06-30",
-          "through": "2026-10-21",
-          "observedDays": 113,
-          "expectedDays": 113,
+          "through": "2026-10-22",
+          "observedDays": 114,
+          "expectedDays": 114,
           "missingDays": 0,
           "total": 0.0,
           "complete": false
@@ -64047,9 +64045,7 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-28T13:02:23.426652+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "revelstoke": {
       "name": "Revelstoke",

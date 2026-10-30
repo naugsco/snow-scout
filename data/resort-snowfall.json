@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T13:02:07.761587+00:00",
+  "generatedAt": "2026-10-30T22:25:31.424392+00:00",
   "units": "in",
   "model": "era5",
   "source": "Open-Meteo / ECMWF ERA5 reanalysis",
@@ -7,8 +7,8 @@
   "historyStartDate": "1940-01-01",
   "seasonDefinition": "Northern: July 1–June 30. Southern: January 1–December 31. Days are UTC.",
   "summary": {
-    "ok": 104,
-    "error": 1,
+    "ok": 105,
+    "error": 0,
     "pending": 0
   },
   "resorts": {
@@ -26627,12 +26627,12 @@
       "name": "Falls Creek",
       "lat": -36.8625,
       "lon": 147.2753,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=-36.8625&longitude=147.2753&start_date=2026-01-01&end_date=2026-10-24&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-29T05:54:26.634881+00:00",
-      "requestedThrough": "2026-10-24",
-      "availableThrough": "2026-10-23",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=-36.8625&longitude=147.2753&start_date=2026-01-01&end_date=2026-10-25&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-30T22:25:31.424392+00:00",
+      "requestedThrough": "2026-10-25",
+      "availableThrough": "2026-10-24",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 1546.0,
       "gridLat": -36.75,
@@ -26642,9 +26642,9 @@
           "season": "2026",
           "startDate": "2026-01-01",
           "endDate": "2026-12-31",
-          "through": "2026-10-23",
-          "observedDays": 296,
-          "expectedDays": 296,
+          "through": "2026-10-24",
+          "observedDays": 297,
+          "expectedDays": 297,
           "missingDays": 0,
           "total": 2.34,
           "complete": false
@@ -27596,9 +27596,7 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-30T13:02:07.761587+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "grand targhee": {
       "name": "Grand Targhee",

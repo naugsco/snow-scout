@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-31T12:30:57.366Z",
+  "generatedAt": "2026-10-31T17:45:01.452Z",
   "summary": {
     "ok": 105,
     "error": 0
@@ -16,8 +16,8 @@
         0,
         0,
         0.08,
-        0.17,
-        0.28
+        0.08,
+        0
       ],
       "dailyTime": [
         "2026-10-31",
@@ -29,46 +29,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        47.3,
-        50.7,
-        43.5,
-        49.2,
-        42.1,
-        44.9,
-        44.4
+        50.9,
+        50.6,
+        41.2,
+        44.3,
+        41.1,
+        39.9,
+        43
       ],
       "tempMin": [
-        37.6,
-        38.7,
-        33.8,
-        23.2,
-        25.6,
-        25,
-        26.9
+        39,
+        39.3,
+        34,
+        18.8,
+        20.5,
+        24.6,
+        22.2
       ],
       "weatherCodes": [
-        63,
+        51,
         61,
-        63,
+        80,
         51,
         80,
         73,
-        85
+        3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:29:32.346Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:43.278Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 39.2,
+        "tempF": 44.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "beaver creek": {
       "status": "ok",
@@ -79,8 +79,8 @@
         0,
         0,
         0,
+        0,
         0.03,
-        0.11,
         0
       ],
       "dailyTime": [
@@ -93,59 +93,59 @@
         "2026-11-06"
       ],
       "tempMax": [
-        46.7,
-        53,
-        42.5,
-        47.4,
-        42,
-        43.9,
-        45.1
+        52.1,
+        55.3,
+        40.3,
+        42.6,
+        40.8,
+        39.4,
+        43.8
       ],
       "tempMin": [
-        36.5,
+        38.1,
         37.7,
-        33.6,
-        24.2,
-        27.7,
-        25.9,
-        27.3
+        34.3,
+        20.2,
+        23.8,
+        26.4,
+        24.2
       ],
       "weatherCodes": [
+        3,
         63,
-        61,
-        61,
+        80,
         51,
-        81,
-        73,
-        51
+        80,
+        71,
+        3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:29:33.140Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:44.027Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 37.6,
+        "tempF": 44.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "breckenridge": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.4817&longitude=-106.0384&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.17,
+      "forecast72h": 0.28,
       "dailySnowfall": [
         0,
         0,
+        0.25,
+        0.03,
+        0.25,
         0.14,
-        0.03,
-        0.11,
-        0.03,
-        0.06
+        0
       ],
       "dailyTime": [
         "2026-10-31",
@@ -157,59 +157,59 @@
         "2026-11-06"
       ],
       "tempMax": [
-        47.7,
-        48.6,
-        38.5,
-        50,
-        38.5,
-        44.2,
-        42.3
+        48.7,
+        53.2,
+        38.9,
+        47.1,
+        40.9,
+        39.9,
+        42.7
       ],
       "tempMin": [
-        31.7,
-        29.3,
-        27.4,
-        20.3,
-        24.2,
-        23.6,
-        24.7
+        32.4,
+        32.3,
+        26,
+        17.4,
+        22.4,
+        21.6,
+        19.1
       ],
       "weatherCodes": [
-        53,
-        55,
-        85,
+        3,
+        63,
+        71,
         71,
         85,
         71,
-        85
+        3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:29:33.931Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:44.774Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 33.6,
+        "tempF": 41.5,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "keystone": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.6069&longitude=-105.9718&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.47,
+      "forecast72h": 0.55,
       "dailySnowfall": [
-        0.22,
         0,
-        0.19,
+        0,
+        0.5,
         0.06,
-        0.55,
-        0.14,
-        0.28
+        0.44,
+        0.25,
+        0
       ],
       "dailyTime": [
         "2026-10-31",
@@ -221,57 +221,57 @@
         "2026-11-06"
       ],
       "tempMax": [
-        48,
-        49.4,
-        40.7,
-        49,
-        38.2,
-        43.3,
-        42
+        49.9,
+        52.2,
+        40.9,
+        47.1,
+        41,
+        40.1,
+        42.3
       ],
       "tempMin": [
-        35.5,
-        34.4,
-        29.4,
-        20.7,
-        25.1,
-        22.1,
-        27.3
+        36.6,
+        35.9,
+        27.6,
+        18.1,
+        24.6,
+        21.2,
+        20.2
       ],
       "weatherCodes": [
+        3,
+        61,
         73,
-        63,
-        80,
         71,
         85,
         71,
-        85
+        3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:29:34.723Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:45.523Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 37.2,
+        "tempF": 42.1,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "crested butte": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=38.8991&longitude=-106.9653&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.29,
+      "forecast72h": 0.36,
       "dailySnowfall": [
-        0,
-        0.15,
-        0.14,
-        0,
         0.03,
+        0.03,
+        0.33,
+        0,
+        0.06,
         0,
         0
       ],
@@ -285,46 +285,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        44.3,
-        43.6,
-        35.8,
-        38,
-        34.2,
-        37.8,
-        37.4
+        46.8,
+        45.3,
+        37,
+        38.3,
+        35.4,
+        35.4,
+        37.6
       ],
       "tempMin": [
-        34.3,
-        33.4,
-        25.4,
-        15.1,
-        19.9,
-        18.2,
-        26.6
+        33.8,
+        32.9,
+        20.3,
+        14,
+        22.6,
+        23,
+        19.7
       ],
       "weatherCodes": [
-        51,
-        73,
+        71,
+        71,
         80,
         45,
-        71,
+        85,
         45,
         3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:29:35.514Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:46.272Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
-        "snow24h": 0,
-        "snow48h": 0,
-        "snow72h": 0,
-        "daysSinceSnow": null,
-        "tempF": 37.2,
+        "snow24h": 0.03,
+        "snow48h": 0.03,
+        "snow72h": 0.03,
+        "daysSinceSnow": 0,
+        "tempF": 41.4,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "park city": {
       "status": "ok",
@@ -349,56 +349,56 @@
         "2026-11-06"
       ],
       "tempMax": [
-        49.1,
-        44.9,
-        37.6,
-        47.7,
-        36,
-        45.7,
-        44.6
+        50.7,
+        47.6,
+        40.7,
+        49.7,
+        38.6,
+        43.3,
+        44
       ],
       "tempMin": [
-        38.7,
-        38,
-        29.1,
-        29.1,
-        26.5,
-        26,
-        29.8
+        39.5,
+        40.1,
+        28.7,
+        28.5,
+        24.5,
+        23.8,
+        27.3
       ],
       "weatherCodes": [
-        61,
+        51,
         63,
         61,
         3,
-        80,
-        3,
+        63,
+        2,
         3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:29:36.306Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:47.018Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 40.1,
+        "tempF": 46,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "kirkwood": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=38.6850&longitude=-120.0653&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 9.04,
+      "forecast72h": 7.66,
       "dailySnowfall": [
-        9.54,
-        0.8,
+        9.26,
+        1.1,
         0,
-        0.85,
+        1.21,
         0,
         0,
         0
@@ -413,56 +413,56 @@
         "2026-11-06"
       ],
       "tempMax": [
-        36.7,
-        34.7,
-        43.2,
-        38.3,
-        43.6,
-        49.4,
-        54.4
+        37.6,
+        35.5,
+        46.4,
+        40,
+        47.3,
+        47,
+        57.5
       ],
       "tempMin": [
-        29.4,
-        20.8,
-        19.2,
-        20.8,
+        29.7,
+        20.1,
+        21.1,
         21.4,
-        27.3,
-        31.5
+        21.2,
+        27.2,
+        29.9
       ],
       "weatherCodes": [
         75,
         75,
         45,
         86,
-        2,
+        3,
         3,
         3
       ],
       "timezone": "America/Los_Angeles",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:29:37.096Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:47.764Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
-        "snow24h": 2.07,
-        "snow48h": 2.26,
-        "snow72h": 2.26,
+        "snow24h": 3.17,
+        "snow48h": 3.67,
+        "snow72h": 3.67,
         "daysSinceSnow": 0,
-        "tempF": 29.9,
-        "baseDepth": 0.39
+        "tempF": 34.3,
+        "baseDepth": 1.57
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "heavenly": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=38.9353&longitude=-119.9400&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 1.79,
+      "forecast72h": 1.87,
       "dailySnowfall": [
-        0.66,
-        1.13,
+        1.79,
+        0.17,
         0,
-        0.61,
+        0.28,
         0,
         0,
         0
@@ -477,110 +477,110 @@
         "2026-11-06"
       ],
       "tempMax": [
-        43.4,
-        38,
-        46.6,
-        48.6,
-        44.4,
-        51.3,
-        57.3
+        45.1,
+        41.7,
+        47.9,
+        50.2,
+        47.1,
+        48.1,
+        56.2
       ],
       "tempMin": [
-        33.7,
-        26.8,
-        24.8,
-        27,
-        25.3,
-        29.1,
-        35.4
-      ],
-      "weatherCodes": [
-        75,
-        75,
-        3,
-        75,
-        3,
-        3,
-        3
-      ],
-      "timezone": "America/Los_Angeles",
-      "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:29:37.885Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
-      "recentConditions": {
-        "snow24h": 0,
-        "snow48h": 0,
-        "snow72h": 0,
-        "daysSinceSnow": null,
-        "tempF": 35.7,
-        "baseDepth": 0
-      },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
-    },
-    "northstar": {
-      "status": "ok",
-      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.2746&longitude=-120.1210&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 1.79,
-      "dailySnowfall": [
-        1.49,
-        0.3,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "dailyTime": [
-        "2026-10-31",
-        "2026-11-01",
-        "2026-11-02",
-        "2026-11-03",
-        "2026-11-04",
-        "2026-11-05",
-        "2026-11-06"
-      ],
-      "tempMax": [
-        44.3,
-        39.4,
-        52.3,
-        46.5,
-        51,
-        55.2,
-        61.6
-      ],
-      "tempMin": [
-        33.7,
-        24.2,
-        23.9,
-        24.4,
-        23.7,
-        28.9,
-        35
+        32.7,
+        30.9,
+        26.2,
+        28.5,
+        24.9,
+        30.5,
+        33.3
       ],
       "weatherCodes": [
         75,
         73,
         3,
-        53,
+        73,
         3,
         3,
         3
       ],
       "timezone": "America/Los_Angeles",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:29:38.675Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:48.513Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
+      "recentConditions": {
+        "snow24h": 0.08,
+        "snow48h": 0.08,
+        "snow72h": 0.08,
+        "daysSinceSnow": 0,
+        "tempF": 39.3,
+        "baseDepth": 0
+      },
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
+    },
+    "northstar": {
+      "status": "ok",
+      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.2746&longitude=-120.1210&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
+      "forecast72h": 0.58,
+      "dailySnowfall": [
+        0.36,
+        0.22,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dailyTime": [
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06"
+      ],
+      "tempMax": [
+        43.7,
+        42.7,
+        53.9,
+        48.6,
+        52.5,
+        54.8,
+        61.9
+      ],
+      "tempMin": [
+        34.7,
+        30.9,
+        29,
+        24.4,
+        23.5,
+        29.9,
+        33.8
+      ],
+      "weatherCodes": [
+        73,
+        73,
+        3,
+        63,
+        3,
+        3,
+        3
+      ],
+      "timezone": "America/Los_Angeles",
+      "utcOffsetSeconds": -25200,
+      "updatedAt": "2026-10-31T17:43:49.261Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 35.1,
+        "tempF": 41.3,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "stowe": {
       "status": "ok",
@@ -605,46 +605,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        39.3,
-        50.3,
-        58.6,
-        57.7,
-        65.5,
-        52.9,
-        52.9
+        39.8,
+        49.8,
+        57,
+        58.3,
+        64.2,
+        53.2,
+        53.1
       ],
       "tempMin": [
-        31.2,
-        31.3,
-        40.8,
-        44.5,
-        46.9,
-        51.4,
-        47.7
+        30.7,
+        32.7,
+        41.6,
+        44.1,
+        47.1,
+        49.4,
+        45.6
       ],
       "weatherCodes": [
         3,
-        0,
-        51,
+        1,
         3,
         3,
-        55,
+        3,
+        61,
         51
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:39.467Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:50.009Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 32.1,
+        "tempF": 38.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "okemo": {
       "status": "ok",
@@ -669,46 +669,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        45.3,
-        54.2,
-        61.8,
-        63.6,
-        67.9,
-        66.4,
-        56.9
+        45.7,
+        53.9,
+        60.2,
+        63.2,
+        67.3,
+        64.8,
+        58.3
       ],
       "tempMin": [
-        34.5,
+        34.9,
         32.9,
-        39.8,
+        41.4,
         45.7,
-        49,
-        51.1,
-        49.3
+        49.5,
+        49.4,
+        47.5
       ],
       "weatherCodes": [
-        1,
+        0,
         0,
         3,
         3,
         3,
-        3,
-        51
+        53,
+        55
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:40.257Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:50.756Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 35.3,
+        "tempF": 44.4,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "mount sunapee": {
       "status": "ok",
@@ -733,22 +733,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        45.6,
-        54.1,
-        63.2,
-        64,
-        66.8,
-        64.4,
-        52.6
+        46.1,
+        53.3,
+        62.5,
+        62.3,
+        64.7,
+        64.6,
+        58.6
       ],
       "tempMin": [
-        32.6,
-        31.7,
-        38.8,
-        43.8,
-        46.8,
-        49.8,
-        45.7
+        32.9,
+        31.4,
+        40.6,
+        44,
+        47.8,
+        50.4,
+        43.9
       ],
       "weatherCodes": [
         3,
@@ -756,23 +756,23 @@
         3,
         3,
         3,
-        3,
-        51
+        53,
+        55
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:41.048Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:51.505Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 34.9,
+        "tempF": 44.1,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "stevens pass": {
       "status": "ok",
@@ -797,46 +797,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        39.4,
-        43,
-        44.7,
-        46.7,
-        39,
-        45.8,
-        39.4
+        37.8,
+        42.1,
+        45.4,
+        47.3,
+        44.9,
+        46.2,
+        37.3
       ],
       "tempMin": [
-        25.9,
-        28.4,
-        28.4,
+        24.2,
+        30.3,
+        29.8,
         32.2,
-        32.1,
-        32,
-        31.8
+        31.7,
+        37.3,
+        24.2
       ],
       "weatherCodes": [
         45,
         3,
-        51,
         3,
-        53,
-        55,
-        53
+        51,
+        51,
+        51,
+        81
       ],
       "timezone": "America/Los_Angeles",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:29:41.838Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:52.253Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
-        "snow72h": 3.97,
+        "snow72h": 2.56,
         "daysSinceSnow": 2,
-        "tempF": 27.2,
+        "tempF": 29.3,
         "baseDepth": 3.54
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "whistler blackcomb": {
       "status": "ok",
@@ -861,46 +861,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        44.3,
-        47.2,
-        48,
-        43.9,
-        42.9,
-        45.1,
-        40.9
+        44.2,
+        45.9,
+        48.7,
+        44.7,
+        44.4,
+        42.6,
+        39.9
       ],
       "tempMin": [
-        37.6,
-        32.8,
-        32.7,
-        38.9,
-        40.9,
-        36.1,
-        29.4
+        36.2,
+        33.9,
+        34.7,
+        37.4,
+        39.7,
+        38.2,
+        29
       ],
       "weatherCodes": [
+        53,
         3,
         3,
-        51,
-        51,
-        63,
+        53,
         81,
-        55
+        55,
+        63
       ],
       "timezone": "America/Vancouver",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:29:42.632Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:53.000Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 37.9,
+        "tempF": 38.8,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "afton alps": {
       "status": "ok",
@@ -925,27 +925,27 @@
         "2026-11-06"
       ],
       "tempMax": [
-        55.3,
-        64.5,
-        66.6,
-        66.6,
-        53.2,
-        55.8,
-        57.3
+        56.1,
+        65.5,
+        65.4,
+        65.2,
+        51.8,
+        58.6,
+        57.4
       ],
       "tempMin": [
-        47.7,
-        54.9,
-        53.9,
-        44,
-        46.3,
-        50.3,
-        44.4
+        47.8,
+        54.6,
+        55.3,
+        43.4,
+        44.6,
+        50.5,
+        44.7
       ],
       "weatherCodes": [
         51,
         61,
-        82,
+        65,
         53,
         3,
         3,
@@ -953,18 +953,18 @@
       ],
       "timezone": "America/Chicago",
       "utcOffsetSeconds": -18000,
-      "updatedAt": "2026-10-31T12:29:43.421Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:53.746Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 47.7,
+        "tempF": 50.9,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "mt brighton": {
       "status": "ok",
@@ -989,46 +989,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        57.5,
-        66.4,
-        60.7,
-        74.3,
-        64.2,
-        54.5,
-        48.8
+        61,
+        67.3,
+        62.4,
+        73.4,
+        67.7,
+        62,
+        59
       ],
       "tempMin": [
         36.2,
-        46.7,
-        52.2,
-        55.8,
-        54.5,
-        48.8,
-        44.4
+        49.4,
+        49.9,
+        54.2,
+        52.5,
+        48.2,
+        50.5
       ],
       "weatherCodes": [
         3,
         3,
-        51,
-        51,
+        3,
+        3,
         61,
-        51,
-        3
+        3,
+        53
       ],
       "timezone": "America/Detroit",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:44.212Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:54.492Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 42.2,
+        "tempF": 57.5,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "wilmot mountain": {
       "status": "ok",
@@ -1053,46 +1053,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        59.5,
-        64.5,
-        62.3,
-        65.9,
+        60,
+        64.3,
         61.3,
-        53.3,
-        53.8
+        68,
+        61.9,
+        55.5,
+        52.5
       ],
       "tempMin": [
-        49.2,
-        50,
-        54.6,
-        53,
-        47.6,
-        47.3,
-        43.2
+        49,
+        46.8,
+        52.5,
+        55.5,
+        48.6,
+        48.6,
+        49.3
       ],
       "weatherCodes": [
-        51,
+        3,
         3,
         51,
-        80,
+        53,
         3,
         3,
         3
       ],
       "timezone": "America/Chicago",
       "utcOffsetSeconds": -18000,
-      "updatedAt": "2026-10-31T12:29:45.001Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:55.237Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 49.7,
+        "tempF": 59.2,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "attitash": {
       "status": "ok",
@@ -1117,46 +1117,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        49,
-        57.1,
-        65.4,
-        67.8,
-        72.8,
-        68,
-        55.1
+        48.6,
+        56.2,
+        63.6,
+        68.6,
+        66.7,
+        67.3,
+        59.8
       ],
       "tempMin": [
-        35.2,
-        31.3,
-        44.7,
-        53.1,
-        54.7,
-        54.5,
-        48.3
+        35,
+        30.7,
+        45.5,
+        52.9,
+        50.5,
+        51.4,
+        46.5
       ],
       "weatherCodes": [
         3,
-        0,
         3,
         3,
         3,
         3,
+        51,
         51
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:45.792Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:55.982Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 36.7,
+        "tempF": 47.4,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "wildcat": {
       "status": "ok",
@@ -1181,22 +1181,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        42.9,
-        50.8,
-        58,
-        62.1,
-        68.3,
-        58.8,
-        51.6
+        42.5,
+        50.3,
+        56.1,
+        63.2,
+        61.6,
+        64.2,
+        55.6
       ],
       "tempMin": [
-        30.9,
-        30.8,
-        41.2,
-        49.1,
-        51.2,
-        51.5,
-        45.7
+        30.7,
+        29.5,
+        43.3,
+        48.5,
+        48.3,
+        49.3,
+        42.8
       ],
       "weatherCodes": [
         3,
@@ -1204,23 +1204,23 @@
         3,
         3,
         3,
-        3,
-        51
+        53,
+        53
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:46.582Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:56.728Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 31.9,
+        "tempF": 41.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "crotched mountain": {
       "status": "ok",
@@ -1245,46 +1245,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        48.4,
-        56.5,
-        64.6,
-        64.9,
-        67.5,
-        66.5,
-        56.6
+        48.8,
+        56.2,
+        63,
+        65,
+        68.2,
+        67.4,
+        60.4
       ],
       "tempMin": [
-        33.9,
-        32.5,
-        40.7,
-        44.3,
-        47.1,
-        50.3,
-        46.6
+        34.2,
+        32.1,
+        41.3,
+        45,
+        48.7,
+        52.7,
+        46.5
       ],
       "weatherCodes": [
-        3,
+        0,
         0,
         3,
         3,
         3,
         3,
-        51
+        61
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:47.373Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:57.475Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 37.3,
+        "tempF": 46.3,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "hunter": {
       "status": "ok",
@@ -1309,46 +1309,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        42.9,
-        51.6,
-        60.3,
-        61.6,
-        61.2,
-        61.8,
-        58.9
+        43.4,
+        51.7,
+        59.7,
+        59.6,
+        61.3,
+        58.1,
+        53.8
       ],
       "tempMin": [
-        32.1,
-        32.7,
-        40.5,
-        43.6,
+        31.3,
+        32.8,
+        42.3,
+        42.5,
+        45.7,
         45.4,
-        47,
-        47.4
+        47.7
       ],
       "weatherCodes": [
         3,
-        1,
         3,
         3,
         3,
         3,
-        51
+        51,
+        61
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:48.164Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:58.223Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 32.1,
+        "tempF": 42.1,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "mount snow": {
       "status": "ok",
@@ -1373,22 +1373,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        36.9,
-        44.6,
-        54.5,
-        55,
-        58,
-        58.2,
-        52.8
+        37.3,
+        44.4,
+        53.4,
+        54.4,
+        58.5,
+        56.9,
+        51.4
       ],
       "tempMin": [
-        28.2,
-        28.3,
-        34.8,
-        39,
-        42,
-        43.8,
-        41.6
+        28,
+        28.8,
+        36.4,
+        39.8,
+        42.3,
+        43.2,
+        41
       ],
       "weatherCodes": [
         0,
@@ -1396,23 +1396,23 @@
         3,
         3,
         3,
-        3,
-        51
+        53,
+        61
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:48.954Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:58.970Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 28.3,
+        "tempF": 36.5,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "jack frost": {
       "status": "ok",
@@ -1437,46 +1437,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        52.3,
-        57.7,
-        57.9,
-        59,
-        62.1,
-        56.9,
-        61.7
+        50.6,
+        57,
+        58,
+        58.1,
+        62.7,
+        60.8,
+        59.1
       ],
       "tempMin": [
-        38.9,
-        34.7,
-        41.6,
-        43.4,
-        45.7,
-        48.5,
-        52.1
+        38.7,
+        35.2,
+        42.2,
+        43.9,
+        45.9,
+        51.2,
+        56.2
       ],
       "weatherCodes": [
         3,
         3,
         3,
         3,
-        3,
-        45,
-        3
+        2,
+        51,
+        80
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:49.745Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:43:59.717Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 40.7,
+        "tempF": 49.2,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "roundtop": {
       "status": "ok",
@@ -1501,22 +1501,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        58.6,
-        61.3,
-        63.2,
-        66.1,
-        69,
-        69.4,
-        66.5
+        58.5,
+        60.6,
+        58.5,
+        66.2,
+        69.7,
+        70.9,
+        62.1
       ],
       "tempMin": [
-        42.6,
-        42.7,
-        45,
-        45.5,
-        47.8,
-        52.9,
-        57.6
+        42.5,
+        43.2,
+        46.1,
+        43.7,
+        48,
+        53.1,
+        59.6
       ],
       "weatherCodes": [
         3,
@@ -1524,23 +1524,23 @@
         3,
         3,
         3,
-        45,
-        51
+        51,
+        80
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:50.535Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:00.462Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 42.9,
+        "tempF": 55.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "liberty": {
       "status": "ok",
@@ -1565,22 +1565,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        62.2,
-        62.5,
-        63.5,
-        67.4,
-        69.6,
-        71.5,
-        67.1
+        61.2,
+        60.7,
+        55.8,
+        67.5,
+        70.5,
+        72.3,
+        64.7
       ],
       "tempMin": [
-        42.3,
-        44.1,
-        45.7,
-        46.2,
-        49.3,
-        53.9,
-        56.5
+        42,
+        44.9,
+        45.4,
+        44.7,
+        49.4,
+        54.7,
+        60.6
       ],
       "weatherCodes": [
         3,
@@ -1588,23 +1588,23 @@
         3,
         3,
         3,
-        45,
-        53
+        51,
+        81
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:51.324Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:01.208Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 42.7,
+        "tempF": 59.3,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "whitetail": {
       "status": "ok",
@@ -1630,21 +1630,21 @@
       ],
       "tempMax": [
         59.8,
-        62.7,
-        60.8,
-        66.6,
-        69.5,
-        68.9,
-        63
+        60,
+        55.2,
+        66.8,
+        69.9,
+        70.4,
+        61.4
       ],
       "tempMin": [
-        42.7,
-        46.2,
-        43.9,
-        43.3,
-        45,
-        49.2,
-        53.9
+        42.3,
+        45.7,
+        45.9,
+        42.3,
+        45.7,
+        52.6,
+        59.2
       ],
       "weatherCodes": [
         3,
@@ -1652,23 +1652,23 @@
         3,
         3,
         3,
-        3,
+        51,
         81
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:52.114Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:01.954Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 43.1,
+        "tempF": 56.4,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "seven springs": {
       "status": "ok",
@@ -1693,22 +1693,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        56.5,
-        61,
-        61.6,
-        67.9,
-        69,
-        63.4,
-        55.8
+        56.1,
+        59.5,
+        59.5,
+        68,
+        67.3,
+        56.9,
+        57.7
       ],
       "tempMin": [
-        36.7,
-        43.3,
-        45.1,
-        46.2,
-        47.7,
-        50.2,
-        50.2
+        37.4,
+        42.3,
+        46.8,
+        45,
+        47.1,
+        54.1,
+        53.1
       ],
       "weatherCodes": [
         3,
@@ -1716,23 +1716,23 @@
         3,
         3,
         3,
-        55,
+        53,
         81
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:52.902Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:02.698Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 36.8,
+        "tempF": 51.2,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "hidden valley": {
       "status": "ok",
@@ -1757,22 +1757,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        55,
-        59.3,
-        60.4,
-        66.8,
-        67.5,
-        63.3,
-        54.9
+        54.6,
+        57.8,
+        57.7,
+        66.4,
+        64.7,
+        57.2,
+        56.2
       ],
       "tempMin": [
-        34.6,
-        42.1,
-        43.8,
-        44.6,
-        45.8,
-        48.3,
-        48.9
+        34.7,
+        40.8,
+        44.8,
+        43,
+        45.1,
+        52.9,
+        52.5
       ],
       "weatherCodes": [
         3,
@@ -1785,18 +1785,18 @@
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:53.692Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:03.445Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 34.7,
+        "tempF": 49.2,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "laurel mountain": {
       "status": "ok",
@@ -1821,22 +1821,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        54.7,
-        59.5,
-        60.1,
-        66.5,
-        67.8,
-        62.9,
-        54.5
+        53.3,
+        58,
+        59,
+        66.9,
+        65.7,
+        57.3,
+        56.8
       ],
       "tempMin": [
-        35.9,
-        45,
-        44.8,
-        45.1,
-        46.4,
-        49,
-        49.8
+        35.4,
+        44.3,
+        45.2,
+        43.7,
+        45.8,
+        53.1,
+        52.7
       ],
       "weatherCodes": [
         3,
@@ -1849,18 +1849,18 @@
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:29:54.482Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:04.193Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 36.1,
+        "tempF": 50.2,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "perisher": {
       "status": "ok",
@@ -1872,59 +1872,59 @@
         0,
         0,
         0.08,
-        0.08,
-        0
+        0,
+        2.15
       ],
       "dailyTime": [
-        "2026-10-31",
         "2026-11-01",
         "2026-11-02",
         "2026-11-03",
         "2026-11-04",
         "2026-11-05",
-        "2026-11-06"
+        "2026-11-06",
+        "2026-11-07"
       ],
       "tempMax": [
-        54.1,
-        54.6,
-        57.7,
-        49.9,
-        51.9,
-        48.4,
-        58.2
+        55.4,
+        58.4,
+        50.4,
+        53.8,
+        49.1,
+        56.6,
+        41
       ],
       "tempMin": [
-        44.6,
-        36.8,
         37,
-        42.7,
-        30.6,
-        25.2,
-        31.3
+        36.9,
+        40.1,
+        32.5,
+        28.6,
+        32.8,
+        23.7
       ],
       "weatherCodes": [
+        53,
         80,
-        51,
-        81,
         95,
+        55,
         85,
-        85,
-        2
+        2,
+        86
       ],
       "timezone": "Australia/Sydney",
       "utcOffsetSeconds": 39600,
-      "updatedAt": "2026-10-31T12:29:55.271Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:04.938Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 44.9,
+        "tempF": 42.4,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "falls creek": {
       "status": "ok",
@@ -1935,60 +1935,60 @@
         0,
         0,
         0,
-        0.08,
         0,
-        0
+        0,
+        1.16
       ],
       "dailyTime": [
-        "2026-10-31",
         "2026-11-01",
         "2026-11-02",
         "2026-11-03",
         "2026-11-04",
         "2026-11-05",
-        "2026-11-06"
+        "2026-11-06",
+        "2026-11-07"
       ],
       "tempMax": [
-        52.3,
-        55.4,
-        57.4,
         55.3,
-        51.9,
-        54.2,
-        56.1
+        58.2,
+        57,
+        54.8,
+        55.4,
+        55.2,
+        45.3
       ],
       "tempMin": [
-        45.2,
-        40.8,
-        40.6,
-        42,
-        29.7,
-        28.7,
-        34.3
+        37.7,
+        41.2,
+        43.9,
+        31.2,
+        31.1,
+        35.9,
+        25.1
       ],
       "weatherCodes": [
-        96,
-        51,
-        81,
-        55,
-        95,
-        2,
-        3
+        45,
+        80,
+        53,
+        80,
+        45,
+        3,
+        85
       ],
       "timezone": "Australia/Melbourne",
       "utcOffsetSeconds": 39600,
-      "updatedAt": "2026-10-31T12:29:56.062Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:05.684Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 45.4,
+        "tempF": 39.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "hotham": {
       "status": "ok",
@@ -2001,58 +2001,58 @@
         0,
         0,
         0,
-        0
+        0.66
       ],
       "dailyTime": [
-        "2026-10-31",
         "2026-11-01",
         "2026-11-02",
         "2026-11-03",
         "2026-11-04",
         "2026-11-05",
-        "2026-11-06"
+        "2026-11-06",
+        "2026-11-07"
       ],
       "tempMax": [
-        53.2,
-        58.3,
-        59.4,
-        60.3,
-        53.6,
-        53.2,
-        57.4
+        57.6,
+        59.5,
+        59.6,
+        57.1,
+        54.9,
+        58.4,
+        46
       ],
       "tempMin": [
-        46.2,
-        39.9,
-        41.8,
-        42.5,
-        31.2,
-        30.4,
-        34.8
+        38.1,
+        41.9,
+        44.5,
+        32.6,
+        32.6,
+        37.3,
+        26.2
       ],
       "weatherCodes": [
-        95,
-        51,
-        55,
-        53,
-        95,
+        45,
+        81,
+        80,
+        80,
+        45,
         3,
-        3
+        85
       ],
       "timezone": "Australia/Melbourne",
       "utcOffsetSeconds": 39600,
-      "updatedAt": "2026-10-31T12:29:56.852Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:06.430Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 47,
+        "tempF": 41.3,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "hakuba valley": {
       "status": "ok",
@@ -2068,119 +2068,119 @@
         0
       ],
       "dailyTime": [
-        "2026-10-31",
         "2026-11-01",
         "2026-11-02",
         "2026-11-03",
         "2026-11-04",
         "2026-11-05",
-        "2026-11-06"
+        "2026-11-06",
+        "2026-11-07"
       ],
       "tempMax": [
-        54.8,
+        54.5,
+        53.4,
+        49.1,
         54.6,
-        51.1,
-        56.1,
-        55.1,
-        54.8,
-        61.6
+        53.8,
+        63.3,
+        48.6
       ],
       "tempMin": [
-        42.7,
-        39.8,
-        45.2,
-        37.3,
-        37.7,
-        45.4,
-        43
+        39.3,
+        44.6,
+        38.3,
+        34.9,
+        44.8,
+        43,
+        38.7
       ],
       "weatherCodes": [
-        61,
-        2,
+        3,
         63,
-        51,
+        2,
         45,
-        81,
+        63,
+        53,
         53
       ],
       "timezone": "Asia/Tokyo",
       "utcOffsetSeconds": 32400,
-      "updatedAt": "2026-10-31T12:29:57.641Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:07.176Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 45.2,
+        "tempF": 42.3,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "rusutsu": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=42.7500&longitude=140.5667&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 1.43,
+      "forecast72h": 1.93,
       "dailySnowfall": [
+        0.03,
+        0.66,
+        1.1,
+        0.14,
         0,
-        0.06,
-        1.38,
-        0.72,
-        0.06,
-        0,
-        0.22
+        0.22,
+        2.59
       ],
       "dailyTime": [
-        "2026-10-31",
         "2026-11-01",
         "2026-11-02",
         "2026-11-03",
         "2026-11-04",
         "2026-11-05",
-        "2026-11-06"
+        "2026-11-06",
+        "2026-11-07"
       ],
       "tempMax": [
-        55.6,
-        39.5,
-        42.5,
-        42.9,
-        41.3,
-        51.4,
-        52.4
+        39.7,
+        42.3,
+        42.7,
+        41.4,
+        51.5,
+        52.9,
+        33.7
       ],
       "tempMin": [
-        35.7,
         34.1,
-        31.8,
-        30.1,
-        27.6,
-        27.8,
-        29.5
+        32.2,
+        31.4,
+        29.2,
+        29.7,
+        29.5,
+        24.9
       ],
       "weatherCodes": [
-        53,
         71,
-        73,
+        85,
         86,
         85,
         51,
-        73
+        80,
+        85
       ],
       "timezone": "Asia/Tokyo",
       "utcOffsetSeconds": 32400,
-      "updatedAt": "2026-10-31T12:29:58.430Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:07.922Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
-        "snow72h": 0.22,
+        "snow72h": 0.06,
         "daysSinceSnow": 2,
-        "tempF": 37.2,
+        "tempF": 35.4,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "andermatt sedrun": {
       "status": "ok",
@@ -2205,46 +2205,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        49.1,
-        35.5,
-        46.5,
-        48,
-        44.8,
-        45,
-        41.7
+        48.9,
+        35.2,
+        41.6,
+        47.3,
+        42.6,
+        46.1,
+        50.3
       ],
       "tempMin": [
         34.4,
-        28.5,
-        27.4,
-        32.8,
-        33.1,
-        36.2,
-        36.5
+        28.9,
+        27.8,
+        32.6,
+        34.9,
+        35.9,
+        39
       ],
       "weatherCodes": [
-        51,
+        45,
         48,
         45,
-        1,
-        2,
         3,
-        45
+        3,
+        2,
+        2
       ],
       "timezone": "Europe/Zurich",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:29:59.222Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:08.677Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 49,
+        "tempF": 37.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "verbier": {
       "status": "ok",
@@ -2257,7 +2257,7 @@
         0,
         0,
         0,
-        0.41
+        0
       ],
       "dailyTime": [
         "2026-10-31",
@@ -2269,46 +2269,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        45.9,
-        40.2,
+        45.7,
         40.3,
-        45.1,
-        45.9,
-        48.3,
-        39.4
+        40.2,
+        44.5,
+        46.1,
+        47.7,
+        45
       ],
       "tempMin": [
-        37.3,
-        32.8,
-        30.6,
-        33.9,
+        37.6,
+        32.3,
+        30.8,
+        32.2,
         35.2,
-        35.2,
-        33.8
+        37.5,
+        34.8
       ],
       "weatherCodes": [
         1,
         45,
+        45,
         3,
-        1,
         3,
         3,
-        73
+        3
       ],
       "timezone": "Europe/Zurich",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:00.012Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:09.426Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 45.8,
+        "tempF": 40.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "crans montana": {
       "status": "ok",
@@ -2333,46 +2333,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        45.7,
-        41.5,
-        40.8,
-        42.7,
-        43.1,
-        47.5,
-        36.5
+        45.6,
+        41.7,
+        39.6,
+        41.8,
+        43.9,
+        46.8,
+        44.6
       ],
       "tempMin": [
         34.9,
-        31.2,
-        30.6,
         31.5,
-        30.2,
-        31.8,
-        31.7
+        30.5,
+        30.5,
+        31.7,
+        33.3,
+        33.8
       ],
       "weatherCodes": [
-        45,
         1,
+        1,
+        45,
         3,
-        0,
-        2,
         3,
-        71
+        3,
+        2
       ],
       "timezone": "Europe/Zurich",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:00.945Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:10.172Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 45.6,
+        "tempF": 37.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "les 3 vall es": {
       "status": "ok",
@@ -2384,8 +2384,8 @@
         0,
         0,
         0,
-        0.11,
-        0.3
+        0,
+        0
       ],
       "dailyTime": [
         "2026-10-31",
@@ -2397,46 +2397,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        45.8,
-        41.3,
-        37.6,
-        43.8,
+        45.9,
+        41.7,
+        37.2,
+        41.6,
         44.1,
-        41.5,
-        36.6
+        46,
+        42.2
       ],
       "tempMin": [
         32.8,
-        29.8,
-        28.5,
-        32.3,
-        32.4,
-        32.9,
-        32.5
+        30.1,
+        28.1,
+        30.7,
+        33.1,
+        33.4,
+        35.3
       ],
       "weatherCodes": [
-        1,
+        0,
+        45,
         45,
         3,
         3,
         3,
-        71,
-        71
+        61
       ],
       "timezone": "Europe/Paris",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:01.796Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:10.923Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 45.8,
+        "tempF": 37.5,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "paradiski": {
       "status": "ok",
@@ -2448,8 +2448,8 @@
         0,
         0,
         0,
-        0.25,
-        1.32
+        0,
+        0
       ],
       "dailyTime": [
         "2026-10-31",
@@ -2461,46 +2461,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        40.4,
-        34.2,
-        34.7,
-        34.3,
-        30.4,
-        30.4,
-        26.7
+        40.7,
+        34.6,
+        33.2,
+        31.6,
+        29.6,
+        32.1,
+        32
       ],
       "tempMin": [
         28.9,
-        22.9,
-        23.1,
-        25.5,
-        24.6,
-        23.9,
-        20.9
+        22.2,
+        22.2,
+        26.1,
+        25.6,
+        26.2,
+        27.7
       ],
       "weatherCodes": [
         1,
-        1,
+        2,
         3,
         3,
         3,
-        71,
-        77
+        3,
+        71
       ],
       "timezone": "Europe/Paris",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:02.808Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:11.670Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 40.3,
+        "tempF": 34.1,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "tignes": {
       "status": "ok",
@@ -2512,8 +2512,8 @@
         0,
         0,
         0,
-        0.14,
-        0.69
+        0,
+        0.08
       ],
       "dailyTime": [
         "2026-10-31",
@@ -2525,46 +2525,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        48.4,
-        41.8,
-        41,
-        40.6,
-        36.7,
-        37.2,
-        32.5
+        48.7,
+        42.3,
+        39.8,
+        37.9,
+        35.9,
+        40.3,
+        38.9
       ],
       "tempMin": [
         33.1,
-        29.1,
-        27.9,
-        31.8,
-        30.9,
-        30.2,
-        29
+        28.4,
+        27.2,
+        32.4,
+        31.9,
+        32.5,
+        33.7
       ],
       "weatherCodes": [
-        1,
+        0,
         2,
         3,
         3,
         3,
-        71,
+        3,
         71
       ],
       "timezone": "Europe/Paris",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:03.754Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:12.416Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 48.2,
+        "tempF": 39.5,
         "baseDepth": 0.39
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "val d is re": {
       "status": "ok",
@@ -2590,56 +2590,56 @@
       ],
       "tempMax": [
         52,
-        44.8,
-        43,
-        41.6,
-        37.1,
-        37.3,
-        37.4
+        45.3,
+        44.9,
+        40.8,
+        36.8,
+        39.1,
+        42.1
       ],
       "tempMin": [
         31.8,
-        29.1,
-        26.4,
-        33.1,
-        31.8,
-        31.5,
-        28
+        29.6,
+        26.2,
+        31,
+        33.9,
+        33.4,
+        36
       ],
       "weatherCodes": [
         0,
         2,
-        3,
-        3,
+        2,
         3,
         61,
+        3,
         61
       ],
       "timezone": "Europe/Paris",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:04.725Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:13.162Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 51.7,
+        "tempF": 41.5,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "telluride": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=37.9375&longitude=-107.8123&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.03,
+      "forecast72h": 1.32,
       "dailySnowfall": [
         0,
         0,
-        0.03,
+        1.32,
         0,
-        0.17,
+        0,
         0,
         0
       ],
@@ -2653,58 +2653,58 @@
         "2026-11-06"
       ],
       "tempMax": [
-        47.2,
-        51.5,
-        37.5,
-        43.6,
-        36.7,
-        43.3,
-        43.6
+        48,
+        53.7,
+        38.6,
+        44.1,
+        38.3,
+        41.3,
+        43.4
       ],
       "tempMin": [
-        34.9,
-        37.9,
+        36.9,
+        38.6,
         29.4,
-        21.4,
-        21.7,
-        20.9,
-        25.1
+        21.8,
+        20.4,
+        20.1,
+        27
       ],
       "weatherCodes": [
         63,
-        63,
-        85,
+        65,
+        80,
         45,
-        85,
+        55,
         3,
         3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:05.597Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:13.911Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 35.5,
+        "tempF": 42.8,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "aspen snowmass": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.2084&longitude=-106.9490&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 1.67,
+      "forecast72h": 2.75,
       "dailySnowfall": [
         0,
-        0.02,
-        1.65,
         0,
-        0.8,
+        2.75,
         0,
+        0.61,
+        0.22,
         0
       ],
       "dailyTime": [
@@ -2717,46 +2717,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        50.7,
-        51.9,
-        39.4,
-        46.6,
-        39.2,
-        43.4,
-        45.5
+        51.3,
+        53.1,
+        39.3,
+        42.6,
+        41.8,
+        40.8,
+        45
       ],
       "tempMin": [
-        37.4,
-        37.7,
-        31.5,
-        24.6,
-        28.6,
-        27.7,
-        27.7
+        38.1,
+        38.7,
+        30.6,
+        18.5,
+        25.8,
+        27,
+        24.6
       ],
       "weatherCodes": [
-        45,
-        61,
-        85,
-        45,
-        86,
         3,
-        51
+        63,
+        86,
+        45,
+        85,
+        73,
+        3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:06.399Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:14.656Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 37.7,
+        "tempF": 44.9,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "steamboat": {
       "status": "ok",
@@ -2781,59 +2781,59 @@
         "2026-11-06"
       ],
       "tempMax": [
-        51.5,
-        54.6,
-        46.2,
-        50.5,
-        41.6,
-        47.8,
-        50.1
+        53.8,
+        58.2,
+        44.4,
+        45.8,
+        42.2,
+        43.4,
+        47.6
       ],
       "tempMin": [
-        39,
-        42.4,
-        36.3,
-        29.3,
-        33.2,
-        33.6,
-        34.3
+        41.7,
+        43.6,
+        35.4,
+        31.5,
+        30.8,
+        31.5,
+        30.2
       ],
       "weatherCodes": [
-        55,
-        53,
-        81,
+        51,
+        65,
+        61,
         3,
+        53,
         51,
-        51,
-        51
+        3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:07.188Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:15.401Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 41.4,
+        "tempF": 49.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "winter park": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.8841&longitude=-105.7625&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.14,
+      "forecast72h": 0.74,
       "dailySnowfall": [
         0,
         0,
-        0.08,
+        0.69,
         0.06,
-        2.15,
-        0.11,
-        0.19
+        0.74,
+        0.39,
+        0
       ],
       "dailyTime": [
         "2026-10-31",
@@ -2845,58 +2845,250 @@
         "2026-11-06"
       ],
       "tempMax": [
+        48.3,
+        55.8,
+        39.9,
         45.1,
-        54.2,
-        41.5,
-        49,
-        39.4,
-        41.5,
-        41.4
+        40.3,
+        37.9,
+        41.1
       ],
       "tempMin": [
-        35.2,
-        34.5,
-        31.1,
-        19.7,
-        24.2,
-        24.8,
-        27.2
+        35.4,
+        35.5,
+        30,
+        19.5,
+        22.9,
+        22.4,
+        19.3
       ],
       "weatherCodes": [
-        51,
+        3,
         61,
+        80,
         85,
         85,
-        86,
-        71,
-        85
+        73,
+        45
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:07.978Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:16.146Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 36.3,
+        "tempF": 40.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "copper mountain": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.5022&longitude=-106.1497&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.25,
+      "forecast72h": 0.47,
       "dailySnowfall": [
         0,
         0,
-        0.19,
+        0.41,
         0.06,
-        0.22,
+        0.41,
+        0.14,
+        0
+      ],
+      "dailyTime": [
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06"
+      ],
+      "tempMax": [
+        46.1,
+        50.6,
+        37.9,
+        46.3,
+        39.8,
+        39.4,
+        41.8
+      ],
+      "tempMin": [
+        33.8,
+        32.9,
+        25.2,
+        16.9,
+        24.7,
+        22.6,
+        20.8
+      ],
+      "weatherCodes": [
+        3,
+        63,
+        80,
+        71,
+        85,
+        71,
+        3
+      ],
+      "timezone": "America/Denver",
+      "utcOffsetSeconds": -21600,
+      "updatedAt": "2026-10-31T17:44:16.893Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
+      "recentConditions": {
+        "snow24h": 0,
+        "snow48h": 0,
+        "snow72h": 0,
+        "daysSinceSnow": null,
+        "tempF": 39.1,
+        "baseDepth": 0
+      },
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
+    },
+    "eldora": {
+      "status": "ok",
+      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.9375&longitude=-105.5828&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
+      "forecast72h": 0.36,
+      "dailySnowfall": [
+        0,
+        0,
+        0.36,
+        0,
+        0.8,
         0.03,
+        0
+      ],
+      "dailyTime": [
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06"
+      ],
+      "tempMax": [
+        48.8,
+        49.7,
+        40,
+        47.9,
+        42.2,
+        40.5,
+        42.6
+      ],
+      "tempMin": [
+        35,
+        32.4,
+        27.8,
+        22.3,
+        24.9,
+        22.4,
+        21.4
+      ],
+      "weatherCodes": [
+        3,
+        51,
+        73,
+        3,
+        85,
+        71,
+        3
+      ],
+      "timezone": "America/Denver",
+      "utcOffsetSeconds": -21600,
+      "updatedAt": "2026-10-31T17:44:17.636Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
+      "recentConditions": {
+        "snow24h": 0,
+        "snow48h": 0,
+        "snow72h": 0,
+        "daysSinceSnow": null,
+        "tempF": 43.6,
+        "baseDepth": 0
+      },
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
+    },
+    "arapahoe basin": {
+      "status": "ok",
+      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.6425&longitude=-105.8719&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
+      "forecast72h": 1.98,
+      "dailySnowfall": [
+        0,
+        0.06,
+        1.93,
+        0,
+        1.93,
+        0.11,
+        0
+      ],
+      "dailyTime": [
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06"
+      ],
+      "tempMax": [
+        41.8,
+        45.6,
+        34.6,
+        43.1,
+        38,
+        35.6,
+        36.6
+      ],
+      "tempMin": [
+        28.7,
+        28.5,
+        21,
+        15.8,
+        20.8,
+        14.6,
+        14.8
+      ],
+      "weatherCodes": [
+        3,
+        71,
+        85,
+        51,
+        86,
+        71,
+        45
+      ],
+      "timezone": "America/Denver",
+      "utcOffsetSeconds": -21600,
+      "updatedAt": "2026-10-31T17:44:18.381Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
+      "recentConditions": {
+        "snow24h": 0,
+        "snow48h": 0,
+        "snow72h": 0,
+        "daysSinceSnow": null,
+        "tempF": 32.9,
+        "baseDepth": 0
+      },
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
+    },
+    "big sky": {
+      "status": "ok",
+      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=45.2836&longitude=-111.4008&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
+      "forecast72h": 0.06,
+      "dailySnowfall": [
+        0,
+        0,
+        0.06,
+        0,
+        0,
+        0,
         0.17
       ],
       "dailyTime": [
@@ -2909,238 +3101,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        43.9,
-        49,
-        37.7,
-        47.6,
-        37.5,
-        43.3,
-        41.1
-      ],
-      "tempMin": [
-        32.1,
-        33.3,
-        26.9,
-        20.4,
-        25.6,
-        23.4,
-        26.5
-      ],
-      "weatherCodes": [
-        61,
-        53,
-        85,
-        71,
-        85,
-        71,
-        85
-      ],
-      "timezone": "America/Denver",
-      "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:08.770Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
-      "recentConditions": {
-        "snow24h": 0,
-        "snow48h": 0,
-        "snow72h": 0,
-        "daysSinceSnow": null,
-        "tempF": 33.9,
-        "baseDepth": 0
-      },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
-    },
-    "eldora": {
-      "status": "ok",
-      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.9375&longitude=-105.5828&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0,
-      "dailySnowfall": [
-        0,
-        0,
-        0,
-        0,
-        1.98,
-        0,
-        0
-      ],
-      "dailyTime": [
-        "2026-10-31",
-        "2026-11-01",
-        "2026-11-02",
-        "2026-11-03",
-        "2026-11-04",
-        "2026-11-05",
-        "2026-11-06"
-      ],
-      "tempMax": [
-        46.3,
-        47.1,
-        40.5,
-        52.1,
-        41.8,
-        42.9,
-        42.6
-      ],
-      "tempMin": [
-        34.1,
-        31.7,
-        29.1,
-        22.8,
-        24.2,
-        21.6,
-        26.8
-      ],
-      "weatherCodes": [
-        3,
-        3,
-        53,
-        3,
-        86,
-        3,
-        3
-      ],
-      "timezone": "America/Denver",
-      "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:09.559Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
-      "recentConditions": {
-        "snow24h": 0,
-        "snow48h": 0,
-        "snow72h": 0,
-        "daysSinceSnow": null,
-        "tempF": 36,
-        "baseDepth": 0
-      },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
-    },
-    "arapahoe basin": {
-      "status": "ok",
-      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.6425&longitude=-105.8719&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 1.59,
-      "dailySnowfall": [
-        0.19,
-        0.51,
-        0.88,
-        0,
-        1.3,
-        0.03,
-        0.3
-      ],
-      "dailyTime": [
-        "2026-10-31",
-        "2026-11-01",
-        "2026-11-02",
-        "2026-11-03",
-        "2026-11-04",
-        "2026-11-05",
-        "2026-11-06"
-      ],
-      "tempMax": [
-        40,
-        41.8,
-        34.8,
-        44.8,
-        34.4,
-        38.8,
-        36.2
-      ],
-      "tempMin": [
-        28.4,
-        28.1,
-        23.3,
-        15.7,
-        21.7,
-        15,
-        22.2
-      ],
-      "weatherCodes": [
-        73,
-        73,
-        85,
-        51,
-        85,
-        71,
-        85
-      ],
-      "timezone": "America/Denver",
-      "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:10.347Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
-      "recentConditions": {
-        "snow24h": 0,
-        "snow48h": 0,
-        "snow72h": 0,
-        "daysSinceSnow": null,
-        "tempF": 29.9,
-        "baseDepth": 0
-      },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
-    },
-    "big sky": {
-      "status": "ok",
-      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=45.2836&longitude=-111.4008&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0,
-      "dailySnowfall": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "dailyTime": [
-        "2026-10-31",
-        "2026-11-01",
-        "2026-11-02",
-        "2026-11-03",
-        "2026-11-04",
-        "2026-11-05",
-        "2026-11-06"
-      ],
-      "tempMax": [
-        43.9,
-        41.1,
-        38.6,
+        43.5,
+        40.4,
+        39.3,
+        43.1,
+        41.3,
         42.7,
-        41.4,
-        43.2,
-        40.3
+        39.7
       ],
       "tempMin": [
-        33.8,
         33.5,
-        22.8,
-        25.2,
-        27.6,
-        27.4,
-        24.6
+        32.4,
+        26,
+        26.1,
+        27,
+        27,
+        21.1
       ],
       "weatherCodes": [
-        65,
         61,
-        53,
+        55,
+        71,
         3,
         3,
         3,
-        51
+        85
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:11.148Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:19.127Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 34.8,
-        "baseDepth": 0.39
+        "tempF": 39.3,
+        "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "jackson hole": {
       "status": "ok",
@@ -3166,56 +3166,56 @@
       ],
       "tempMax": [
         51.2,
-        47.6,
-        40.8,
-        47,
-        40.9,
-        44.7,
-        42.3
+        46.8,
+        41.4,
+        47.7,
+        41.4,
+        45.2,
+        43
       ],
       "tempMin": [
-        36.8,
-        37.8,
-        30.3,
-        29.6,
-        32.9,
-        32.5,
-        31.8
+        40,
+        38.4,
+        31.6,
+        30.7,
+        34.1,
+        31.7,
+        32.3
       ],
       "weatherCodes": [
         55,
-        55,
         53,
-        3,
         51,
+        3,
+        3,
         3,
         51
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:11.940Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:19.872Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 40.2,
+        "tempF": 44.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "alta": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=40.5884&longitude=-111.6386&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 9.54,
+      "forecast72h": 7.46,
       "dailySnowfall": [
-        0.39,
-        5.63,
-        3.55,
         0,
-        3.56,
+        4.24,
+        3.22,
+        0,
+        6.39,
         0,
         0
       ],
@@ -3229,57 +3229,57 @@
         "2026-11-06"
       ],
       "tempMax": [
+        42.1,
         40.4,
-        38.8,
-        31.9,
-        37.6,
-        33.4,
-        35.4,
-        37.2
+        34.1,
+        39.5,
+        34.2,
+        33.6,
+        34.7
       ],
       "tempMin": [
-        33.7,
-        31.1,
-        21.1,
-        21.2,
+        33.9,
+        33.6,
+        22.6,
+        22.7,
         20.3,
-        20.7,
-        26.6
+        18.2,
+        21
       ],
       "weatherCodes": [
-        73,
+        53,
         75,
         85,
-        3,
-        86,
+        51,
+        85,
         3,
         3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:12.730Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:20.617Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
-        "snow24h": 0.66,
-        "snow48h": 0.66,
-        "snow72h": 0.66,
+        "snow24h": 0.63,
+        "snow48h": 0.63,
+        "snow72h": 0.63,
         "daysSinceSnow": 0,
-        "tempF": 34,
+        "tempF": 39.1,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "snowbird": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=40.5830&longitude=-111.6508&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 3.61,
+      "forecast72h": 1.56,
       "dailySnowfall": [
         0,
-        0.1,
-        3.5,
         0,
-        3.56,
+        1.56,
+        0,
+        6.39,
         0,
         0
       ],
@@ -3293,57 +3293,57 @@
         "2026-11-06"
       ],
       "tempMax": [
-        41.9,
-        38.4,
-        32.8,
-        38.6,
-        34.4,
-        36.4,
-        38.2
+        43.6,
+        42.6,
+        35.6,
+        40.5,
+        35.2,
+        34.6,
+        35.6
       ],
       "tempMin": [
         34.3,
-        33,
-        22.1,
-        22.1,
-        21.3,
-        21.7,
-        27.5
+        34.8,
+        23.6,
+        23.6,
+        21.2,
+        19.2,
+        22
       ],
       "weatherCodes": [
-        63,
+        51,
         63,
         85,
-        3,
-        86,
+        51,
+        85,
         3,
         3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:13.518Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:21.362Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 34.3,
+        "tempF": 40.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "deer valley": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=40.6375&longitude=-111.4783&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.14,
+      "forecast72h": 0.08,
       "dailySnowfall": [
         0,
         0,
-        0.14,
+        0.07,
         0,
-        0.72,
+        1.96,
         0,
         0
       ],
@@ -3357,27 +3357,27 @@
         "2026-11-06"
       ],
       "tempMax": [
-        47,
-        44.7,
-        38.1,
-        48.1,
-        38.2,
-        44.9,
-        46.6
+        48.4,
+        46.1,
+        39.7,
+        50.5,
+        37.5,
+        42.9,
+        46.3
       ],
       "tempMin": [
-        39,
-        37.7,
-        29.5,
-        28.9,
-        28.2,
-        27.7,
-        32
+        39.5,
+        38.9,
+        29.9,
+        28.7,
+        27.3,
+        24.8,
+        27.9
       ],
       "weatherCodes": [
-        61,
+        51,
         63,
-        71,
+        85,
         3,
         85,
         3,
@@ -3385,29 +3385,29 @@
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:14.308Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:22.107Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 39.5,
+        "tempF": 44.3,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "brighton": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=40.5980&longitude=-111.5833&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 7.88,
+      "forecast72h": 5.85,
       "dailySnowfall": [
-        0.22,
-        5.66,
-        2.03,
+        0.03,
+        3.94,
+        1.9,
         0,
-        2.54,
+        5.15,
         0,
         0
       ],
@@ -3421,57 +3421,57 @@
         "2026-11-06"
       ],
       "tempMax": [
-        39.8,
-        37.5,
-        31.7,
-        38.5,
-        30.9,
-        37.2,
-        38.2
+        41.3,
+        39.6,
+        33.7,
+        42,
+        32.6,
+        34.4,
+        36.8
       ],
       "tempMin": [
-        32.7,
-        29.5,
-        21.8,
-        21.9,
-        21.3,
-        21.6,
-        28.4
+        33,
+        32.5,
+        23.3,
+        23.3,
+        18.4,
+        17.7,
+        23
       ],
       "weatherCodes": [
-        73,
+        71,
         75,
         85,
         3,
-        86,
+        85,
         3,
         3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:15.097Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:22.853Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0.91,
         "snow48h": 0.91,
         "snow72h": 0.91,
         "daysSinceSnow": 0,
-        "tempF": 32.8,
+        "tempF": 37.9,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "solitude": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=40.6197&longitude=-111.5922&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 2.86,
+      "forecast72h": 1.65,
       "dailySnowfall": [
         0,
-        0.83,
-        2.03,
+        0.08,
+        1.56,
         0,
-        2.54,
+        5.15,
         0,
         0
       ],
@@ -3485,54 +3485,54 @@
         "2026-11-06"
       ],
       "tempMax": [
-        43.2,
-        40.4,
-        33.8,
-        40.7,
-        33,
-        39.3,
-        40.3
+        45.1,
+        42.9,
+        36.2,
+        44.2,
+        34.7,
+        36.5,
+        38.9
       ],
       "tempMin": [
-        34.7,
-        33.7,
-        23.9,
-        24,
-        23.4,
-        23.7,
-        30.6
+        35.7,
+        35.8,
+        25.4,
+        25.4,
+        20.6,
+        19.8,
+        25.2
       ],
       "weatherCodes": [
-        61,
-        75,
+        51,
+        71,
         85,
         3,
-        86,
+        85,
         3,
         3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:15.885Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:23.597Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 34.9,
+        "tempF": 41.8,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "mammoth": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=37.6308&longitude=-119.0326&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 11.96,
+      "forecast72h": 13.61,
       "dailySnowfall": [
-        8.38,
-        3.58,
+        6.06,
+        7.55,
         0,
         0,
         0,
@@ -3549,54 +3549,54 @@
         "2026-11-06"
       ],
       "tempMax": [
-        28.4,
-        22.7,
-        36.4,
-        31,
-        40.8,
-        37.2,
-        45.5
+        30.2,
+        21.2,
+        35.4,
+        30.7,
+        39.5,
+        36.9,
+        47
       ],
       "tempMin": [
-        20.6,
-        7.8,
-        5.3,
-        10.1,
-        9.7,
-        15.1,
-        19.9
+        21.1,
+        13,
+        6,
+        10.7,
+        10.6,
+        16.3,
+        17.2
       ],
       "weatherCodes": [
         75,
         75,
         3,
+        51,
         3,
         3,
-        3,
-        2
+        3
       ],
       "timezone": "America/Los_Angeles",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:30:16.675Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:24.343Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0.11,
         "snow72h": 0.11,
         "daysSinceSnow": 1,
-        "tempF": 21.8,
+        "tempF": 26.2,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "june mountain": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=37.7675&longitude=-119.0906&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.39,
+      "forecast72h": 2.59,
       "dailySnowfall": [
         0,
-        0.39,
+        2.59,
         0,
         0,
         0,
@@ -3613,22 +3613,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        46.1,
-        37.5,
-        51.4,
-        48.3,
-        52.1,
-        50.6,
-        56.9
+        46.6,
+        35.9,
+        51,
+        48.1,
+        51.8,
+        47.6,
+        57.9
       ],
       "tempMin": [
-        31.5,
-        24.5,
-        23.9,
-        29,
-        28.8,
-        33.3,
-        37.9
+        30.6,
+        26,
+        24.7,
+        29.8,
+        29.8,
+        31.9,
+        36.3
       ],
       "weatherCodes": [
         63,
@@ -3637,26 +3637,90 @@
         3,
         3,
         3,
-        2
+        3
       ],
       "timezone": "America/Los_Angeles",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:30:17.467Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:25.089Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 31.7,
+        "tempF": 41.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "big bear mountain": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=34.2364&longitude=-116.8906&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
+      "forecast72h": 0.03,
+      "dailySnowfall": [
+        0,
+        0.03,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dailyTime": [
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06"
+      ],
+      "tempMax": [
+        52.8,
+        43.2,
+        53.4,
+        60.6,
+        55.3,
+        54.2,
+        56.4
+      ],
+      "tempMin": [
+        34.9,
+        31.7,
+        32.3,
+        42,
+        39.5,
+        42.2,
+        40.3
+      ],
+      "weatherCodes": [
+        53,
+        71,
+        3,
+        3,
+        3,
+        3,
+        0
+      ],
+      "timezone": "America/Los_Angeles",
+      "utcOffsetSeconds": -25200,
+      "updatedAt": "2026-10-31T17:44:25.836Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
+      "recentConditions": {
+        "snow24h": 0,
+        "snow48h": 0,
+        "snow72h": 0,
+        "daysSinceSnow": null,
+        "tempF": 49.2,
+        "baseDepth": 0
+      },
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
+    },
+    "palisades tahoe": {
+      "status": "ok",
+      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.1968&longitude=-120.2354&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
       "forecast72h": 0,
       "dailySnowfall": [
         0,
@@ -3677,110 +3741,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        49.9,
-        41.4,
-        53.5,
-        61.3,
-        57.8,
-        56.5,
-        56.6
+        43.3,
+        43.7,
+        53.8,
+        46.7,
+        48.1,
+        51.2,
+        61.8
       ],
       "tempMin": [
-        36.5,
-        32.5,
-        35,
-        41.3,
-        39.7,
-        43.8,
-        40
-      ],
-      "weatherCodes": [
-        51,
-        61,
-        3,
-        3,
-        3,
-        3,
-        2
-      ],
-      "timezone": "America/Los_Angeles",
-      "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:30:18.260Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
-      "recentConditions": {
-        "snow24h": 0,
-        "snow48h": 0,
-        "snow72h": 0,
-        "daysSinceSnow": null,
-        "tempF": 37.8,
-        "baseDepth": 0
-      },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
-    },
-    "palisades tahoe": {
-      "status": "ok",
-      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.1968&longitude=-120.2354&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.3,
-      "dailySnowfall": [
-        0,
-        0.3,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "dailyTime": [
-        "2026-10-31",
-        "2026-11-01",
-        "2026-11-02",
-        "2026-11-03",
-        "2026-11-04",
-        "2026-11-05",
-        "2026-11-06"
-      ],
-      "tempMax": [
-        43.6,
-        40.2,
-        51.8,
-        45.6,
-        47.6,
-        56.4,
-        61.5
-      ],
-      "tempMin": [
-        33,
+        34.4,
+        28,
+        29.9,
         24.8,
-        24.8,
-        25,
-        25.7,
-        29.8,
-        35.4
+        23.9,
+        29.4,
+        33.7
       ],
       "weatherCodes": [
         63,
-        73,
+        53,
         3,
-        80,
+        63,
         45,
         3,
         3
       ],
       "timezone": "America/Los_Angeles",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:30:19.050Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:26.582Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 35.8,
+        "tempF": 40.4,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "killington": {
       "status": "ok",
@@ -3806,45 +3806,45 @@
       ],
       "tempMax": [
         31.2,
-        39.1,
-        50,
-        52.2,
-        57.6,
-        55.2,
-        47.1
+        38.8,
+        48.4,
+        51.8,
+        57.4,
+        53.8,
+        47
       ],
       "tempMin": [
-        24.8,
-        27.3,
-        29.6,
-        35.6,
-        39.3,
-        41.7,
-        39.4
+        24.3,
+        27.5,
+        30.8,
+        35.1,
+        39.5,
+        40,
+        37.3
       ],
       "weatherCodes": [
-        3,
+        45,
         0,
         3,
         3,
         3,
-        3,
-        45
+        61,
+        53
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:19.841Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:27.328Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 24.9,
+        "tempF": 29.5,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "sugarbush": {
       "status": "ok",
@@ -3869,22 +3869,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        40.5,
+        41.2,
         51.1,
-        57.6,
-        58.9,
-        63.1,
-        55,
-        53
+        56.9,
+        58.7,
+        63.4,
+        57.3,
+        53.7
       ],
       "tempMin": [
-        31.6,
-        32.4,
-        39.9,
-        45.4,
-        48.8,
-        51.2,
-        47.3
+        30.7,
+        32.2,
+        42.4,
+        45.3,
+        47.9,
+        51.3,
+        46.3
       ],
       "weatherCodes": [
         3,
@@ -3892,23 +3892,23 @@
         3,
         3,
         3,
-        51,
+        61,
         51
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:20.632Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:28.076Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 31.7,
+        "tempF": 40,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "stratton": {
       "status": "ok",
@@ -3933,22 +3933,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        42.9,
-        51.5,
+        43.5,
+        51.2,
+        57.2,
         58.6,
-        59.9,
         64.6,
-        64,
-        57.3
+        61.4,
+        57.4
       ],
       "tempMin": [
-        32,
+        32.7,
         31.5,
-        37.9,
-        42.9,
+        38.9,
+        43.1,
         47,
-        48.8,
-        46.9
+        47.4,
+        45.2
       ],
       "weatherCodes": [
         0,
@@ -3956,23 +3956,23 @@
         3,
         3,
         3,
-        3,
-        51
+        53,
+        55
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:21.421Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:28.822Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 32.7,
+        "tempF": 42.2,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "tremblant": {
       "status": "ok",
@@ -3997,46 +3997,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        41.8,
-        56.4,
-        60,
-        50.9,
-        63.4,
-        58.2,
-        47.1
+        42.9,
+        55.1,
+        55.1,
+        51.5,
+        61,
+        59.2,
+        50.8
       ],
       "tempMin": [
-        30.7,
-        33,
-        41,
-        48.2,
-        48.1,
-        47.1,
-        42.4
+        30.1,
+        33.3,
+        44.1,
+        48.6,
+        48.4,
+        50.8,
+        41.7
       ],
       "weatherCodes": [
         3,
         3,
-        3,
+        51,
         53,
-        61,
+        3,
         63,
-        63
+        3
       ],
       "timezone": "America/Toronto",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:22.212Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:29.569Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 30.9,
+        "tempF": 42.1,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "blue": {
       "status": "ok",
@@ -4061,46 +4061,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        51.8,
-        61.6,
-        67.9,
-        71.1,
-        64.7,
-        52.7,
-        47.4
+        51.3,
+        60.1,
+        68.7,
+        70.9,
+        69.4,
+        61,
+        52.8
       ],
       "tempMin": [
-        41.2,
-        44.7,
-        50.9,
-        54.6,
-        52.7,
-        46.3,
-        46
+        40.9,
+        45.8,
+        53.2,
+        53.6,
+        56.5,
+        49.2,
+        45.5
       ],
       "weatherCodes": [
         3,
         3,
         3,
+        51,
+        61,
         3,
-        53,
-        63,
         53
       ],
       "timezone": "America/Toronto",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:23.002Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:30.317Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 41.2,
+        "tempF": 48.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "skibig3": {
       "status": "ok",
@@ -4125,22 +4125,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        37.7,
-        46.4,
-        43.9,
-        40.9,
-        41.2,
-        38.8,
-        40.4
+        39.5,
+        37.8,
+        45.4,
+        45.2,
+        41.9,
+        35.9,
+        41
       ],
       "tempMin": [
-        24.4,
-        27.5,
-        26.3,
-        31.1,
-        28.7,
-        30.4,
-        29.7
+        18.7,
+        24.2,
+        26.5,
+        30.5,
+        28.5,
+        29.5,
+        28.2
       ],
       "weatherCodes": [
         3,
@@ -4148,23 +4148,23 @@
         3,
         3,
         3,
-        3,
-        3
+        53,
+        53
       ],
       "timezone": "America/Edmonton",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:23.793Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:31.062Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0.72,
         "daysSinceSnow": 2,
-        "tempF": 26,
+        "tempF": 28.2,
         "baseDepth": 0.79
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "revelstoke": {
       "status": "ok",
@@ -4174,10 +4174,10 @@
         0,
         0,
         0,
-        0.03,
-        0.11,
         0,
-        2.31
+        0.11,
+        0.88,
+        3.8
       ],
       "dailyTime": [
         "2026-10-31",
@@ -4189,46 +4189,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        35.3,
-        39.4,
-        38.4,
-        36.5,
-        34.2,
-        35.3,
-        30.8
+        34.6,
+        37.5,
+        38.9,
+        36.6,
+        37.8,
+        33.7,
+        30.4
       ],
       "tempMin": [
-        27.2,
-        22.3,
-        21.9,
-        24.9,
-        28.4,
-        28,
-        24.5
+        27,
+        27.4,
+        22.7,
+        24,
+        25.3,
+        23.2,
+        15.8
       ],
       "weatherCodes": [
+        45,
         3,
         3,
-        3,
-        71,
-        71,
-        51,
-        85
+        45,
+        73,
+        85,
+        86
       ],
       "timezone": "America/Vancouver",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:30:24.588Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:31.809Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
-        "snow72h": 2.23,
+        "snow72h": 1.71,
         "daysSinceSnow": 2,
-        "tempF": 27.9,
+        "tempF": 29.8,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "cypress": {
       "status": "ok",
@@ -4253,186 +4253,58 @@
         "2026-11-06"
       ],
       "tempMax": [
-        41,
-        45.1,
-        42.9,
-        39.7,
-        39.5,
-        46.2,
-        41.2
+        40.7,
+        43.6,
+        43.5,
+        38,
+        41.6,
+        43.5,
+        38.9
       ],
       "tempMin": [
-        33.7,
-        32.4,
-        31.8,
-        35.2,
-        34.8,
-        37.9,
-        33
+        33.8,
+        36.7,
+        32.6,
+        35.8,
+        36.5,
+        36.8,
+        33.5
       ],
       "weatherCodes": [
         3,
         3,
         3,
-        51,
-        63,
+        53,
         81,
-        53
+        81,
+        81
       ],
       "timezone": "America/Vancouver",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:30:25.380Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:32.555Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0.06,
         "snow48h": 0.69,
         "snow72h": 0.69,
         "daysSinceSnow": 0,
-        "tempF": 34.2,
+        "tempF": 37.2,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "red": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=49.1042&longitude=-117.8453&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0,
+      "forecast72h": 0.11,
       "dailySnowfall": [
         0,
+        0.11,
         0,
         0,
         0,
         0,
-        0,
-        0.25
-      ],
-      "dailyTime": [
-        "2026-10-31",
-        "2026-11-01",
-        "2026-11-02",
-        "2026-11-03",
-        "2026-11-04",
-        "2026-11-05",
-        "2026-11-06"
-      ],
-      "tempMax": [
-        33.1,
-        35.7,
-        36.7,
-        38.1,
-        35.4,
-        35.6,
-        35.9
-      ],
-      "tempMin": [
-        24.8,
-        22.2,
-        18.2,
-        23.5,
-        22,
-        22.8,
-        25.7
-      ],
-      "weatherCodes": [
-        3,
-        3,
-        3,
-        51,
-        3,
-        3,
-        85
-      ],
-      "timezone": "America/Vancouver",
-      "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:30:26.171Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
-      "recentConditions": {
-        "snow24h": 0,
-        "snow48h": 0,
-        "snow72h": 1.82,
-        "daysSinceSnow": 2,
-        "tempF": 25.2,
-        "baseDepth": 2.76
-      },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
-    },
-    "sun peaks": {
-      "status": "ok",
-      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=50.8833&longitude=-119.8833&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0,
-      "dailySnowfall": [
-        0,
-        0,
-        0,
-        0.03,
-        0,
-        0,
-        0.17
-      ],
-      "dailyTime": [
-        "2026-10-31",
-        "2026-11-01",
-        "2026-11-02",
-        "2026-11-03",
-        "2026-11-04",
-        "2026-11-05",
-        "2026-11-06"
-      ],
-      "tempMax": [
-        39.8,
-        44.3,
-        36.5,
-        38.3,
-        36,
-        35.9,
-        39
-      ],
-      "tempMin": [
-        29.6,
-        21.8,
-        20.5,
-        25.2,
-        32.1,
-        30.3,
-        29.8
-      ],
-      "weatherCodes": [
-        3,
-        3,
-        3,
-        71,
-        45,
-        51,
-        71
-      ],
-      "timezone": "America/Vancouver",
-      "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:30:26.965Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
-      "recentConditions": {
-        "snow24h": 0,
-        "snow48h": 0,
-        "snow72h": 2.2,
-        "daysSinceSnow": 2,
-        "tempF": 30.4,
-        "baseDepth": 0
-      },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
-    },
-    "crystal": {
-      "status": "ok",
-      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=46.9283&longitude=-121.5047&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.03,
-      "dailySnowfall": [
-        0,
-        0,
-        0.03,
-        0,
-        0,
-        0.74,
         0
       ],
       "dailyTime": [
@@ -4445,46 +4317,174 @@
         "2026-11-06"
       ],
       "tempMax": [
-        29.2,
-        33.4,
-        37,
-        37.6,
-        33.3,
-        40.1,
-        32
+        32.9,
+        34.9,
+        36.6,
+        38.9,
+        36.3,
+        35.3,
+        34.8
       ],
       "tempMin": [
-        15.7,
-        17.7,
-        17.7,
-        21.9,
-        22,
-        24.7,
-        20
+        23.4,
+        27.6,
+        18.8,
+        23.6,
+        23,
+        23.3,
+        19.9
+      ],
+      "weatherCodes": [
+        45,
+        73,
+        3,
+        3,
+        3,
+        51,
+        81
+      ],
+      "timezone": "America/Vancouver",
+      "utcOffsetSeconds": -25200,
+      "updatedAt": "2026-10-31T17:44:33.319Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
+      "recentConditions": {
+        "snow24h": 0,
+        "snow48h": 0,
+        "snow72h": 0.94,
+        "daysSinceSnow": 2,
+        "tempF": 29.1,
+        "baseDepth": 2.76
+      },
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
+    },
+    "sun peaks": {
+      "status": "ok",
+      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=50.8833&longitude=-119.8833&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
+      "forecast72h": 0,
+      "dailySnowfall": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dailyTime": [
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06"
+      ],
+      "tempMax": [
+        39.5,
+        43.9,
+        37.1,
+        37.9,
+        33.7,
+        33.7,
+        40
+      ],
+      "tempMin": [
+        30.2,
+        28.7,
+        21.5,
+        24.3,
+        26.5,
+        29.1,
+        24.9
       ],
       "weatherCodes": [
         45,
         3,
+        3,
+        45,
+        51,
+        51,
+        53
+      ],
+      "timezone": "America/Vancouver",
+      "utcOffsetSeconds": -25200,
+      "updatedAt": "2026-10-31T17:44:34.064Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
+      "recentConditions": {
+        "snow24h": 0,
+        "snow48h": 0,
+        "snow72h": 1.63,
+        "daysSinceSnow": 2,
+        "tempF": 34.8,
+        "baseDepth": 0
+      },
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
+    },
+    "crystal": {
+      "status": "ok",
+      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=46.9283&longitude=-121.5047&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
+      "forecast72h": 0.03,
+      "dailySnowfall": [
+        0,
+        0,
+        0,
+        0.03,
+        0,
+        0.08,
+        3.39
+      ],
+      "dailyTime": [
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06"
+      ],
+      "tempMax": [
+        28.5,
+        31.1,
+        37.9,
+        37.5,
+        35.5,
+        38.8,
+        28.4
+      ],
+      "tempMin": [
+        15.3,
+        22.4,
+        20.4,
+        22.3,
+        21.7,
+        28,
+        17.9
+      ],
+      "weatherCodes": [
+        45,
+        3,
+        3,
         71,
-        51,
-        51,
-        73,
-        80
+        53,
+        71,
+        85
       ],
       "timezone": "America/Los_Angeles",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:30:27.756Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:34.810Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0.11,
         "snow48h": 0.5,
-        "snow72h": 2.43,
+        "snow72h": 1.21,
         "daysSinceSnow": 0,
-        "tempF": 16.2,
+        "tempF": 22.4,
         "baseDepth": 6.69
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "summit at snoqualmie": {
       "status": "ok",
@@ -4509,46 +4509,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        46.8,
-        50.7,
+        46,
         49,
-        51.9,
-        47.8,
-        50.4,
-        44
+        49.9,
+        53,
+        49.7,
+        52.6,
+        43.6
       ],
       "tempMin": [
-        33.4,
-        33.9,
-        33.9,
+        32.8,
         37.2,
-        37.8,
-        37.5,
-        38.1
+        35.1,
+        37,
+        36.3,
+        42.7,
+        33.7
       ],
       "weatherCodes": [
         45,
         3,
         3,
+        3,
         51,
         53,
-        61,
-        55
+        80
       ],
       "timezone": "America/Los_Angeles",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:30:28.545Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:35.555Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
-        "snow72h": 0.03,
-        "daysSinceSnow": 2,
-        "tempF": 34.3,
+        "snow72h": 0,
+        "daysSinceSnow": null,
+        "tempF": 37.6,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "loon": {
       "status": "ok",
@@ -4574,45 +4574,45 @@
       ],
       "tempMax": [
         36.1,
-        44.7,
-        55,
-        56.8,
-        61,
-        59.1,
-        47.7
+        43.9,
+        54.7,
+        58.6,
+        57.7,
+        57.7,
+        50.9
       ],
       "tempMin": [
-        26.5,
-        26.8,
-        35.4,
-        42.6,
-        44.8,
-        44.3,
-        41.8
+        26,
+        27.1,
+        37.6,
+        42.5,
+        44.1,
+        42.4,
+        40.4
       ],
       "weatherCodes": [
         3,
-        0,
         3,
         3,
         3,
         3,
-        45
+        53,
+        53
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:29.336Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:36.301Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 27.6,
+        "tempF": 35.1,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "sugarloaf": {
       "status": "ok",
@@ -4637,46 +4637,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        28,
-        39.3,
-        45.6,
-        51.7,
-        55.2,
-        45.3,
-        42.8
+        27.9,
+        38,
+        44.5,
+        51.5,
+        48.9,
+        47.9,
+        44
       ],
       "tempMin": [
-        21.1,
-        22.3,
-        28.9,
-        37.6,
-        39.7,
-        42.3,
-        32.8
+        20.7,
+        21.7,
+        34.4,
+        36.8,
+        37.7,
+        38.7,
+        32.3
       ],
       "weatherCodes": [
         3,
         3,
         3,
         3,
-        3,
-        53,
+        51,
+        51,
         51
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:30.129Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:37.048Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 21.1,
+        "tempF": 26.9,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "sunday river": {
       "status": "ok",
@@ -4701,22 +4701,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        45.9,
-        54.5,
-        58.1,
-        64.6,
-        67.9,
-        57.6,
-        53.9
+        45.6,
+        53.6,
+        60.3,
+        64.9,
+        62.9,
+        62.9,
+        56.1
       ],
       "tempMin": [
-        32.1,
-        28.6,
-        39.6,
-        49.3,
-        50.3,
-        50.3,
-        45.1
+        32.5,
+        28.7,
+        40.9,
+        47.1,
+        48,
+        46.3,
+        44.2
       ],
       "weatherCodes": [
         3,
@@ -4724,23 +4724,23 @@
         3,
         3,
         3,
-        3,
+        51,
         51
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:30.919Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:37.794Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 34.2,
+        "tempF": 43.8,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "boyne highlands": {
       "status": "ok",
@@ -4765,46 +4765,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        58.7,
-        61,
-        59.7,
+        59.8,
+        63.7,
         65.4,
-        55.4,
-        50.1,
-        48.1
+        71.4,
+        63.7,
+        55.5,
+        50.4
       ],
       "tempMin": [
-        32.5,
-        45.7,
-        52.1,
-        54.6,
-        47.1,
-        42.5,
-        41.5
+        32.7,
+        46.3,
+        48.3,
+        56.4,
+        52.3,
+        50.4,
+        45.1
       ],
       "weatherCodes": [
         3,
         3,
-        53,
-        81,
         51,
-        3,
+        53,
+        61,
+        51,
         3
       ],
       "timezone": "America/Detroit",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:31.709Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:38.541Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 33.1,
+        "tempF": 54,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "boyne mountain": {
       "status": "ok",
@@ -4829,55 +4829,55 @@
         "2026-11-06"
       ],
       "tempMax": [
-        61.6,
-        64.5,
-        61.8,
-        66.9,
-        56.6,
-        51.6,
-        49.3
+        60.7,
+        67.3,
+        65.5,
+        72.5,
+        65.7,
+        54.3,
+        49.6
       ],
       "tempMin": [
-        30.7,
-        43.9,
-        53.2,
-        55,
-        48.1,
-        42.4,
-        40.6
+        30.8,
+        46.3,
+        49.9,
+        57.2,
+        53.9,
+        45.9,
+        45.1
       ],
       "weatherCodes": [
         3,
         3,
-        53,
-        80,
-        53,
+        51,
+        51,
+        63,
         3,
         3
       ],
       "timezone": "America/Detroit",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:32.501Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:39.290Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 30.9,
+        "tempF": 54.5,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "taos": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=36.5964&longitude=-105.4542&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 3.95,
+      "forecast72h": 2.09,
       "dailySnowfall": [
         0,
-        0.07,
-        3.88,
+        0,
+        2.09,
         0,
         0,
         0,
@@ -4893,46 +4893,46 @@
         "2026-11-06"
       ],
       "tempMax": [
+        45.6,
+        46.6,
+        37.6,
         43.6,
-        45.7,
-        37.5,
-        42.9,
-        39.2,
-        45.9,
-        45.4
+        42.2,
+        46.2,
+        45.6
       ],
       "tempMin": [
-        36.2,
-        36.1,
-        27.8,
+        36.3,
+        36.3,
+        25.7,
         24.2,
-        26,
-        24.8,
-        29.3
+        25.6,
+        24.7,
+        29
       ],
       "weatherCodes": [
-        45,
+        51,
         65,
         86,
         3,
         51,
-        3,
+        2,
         3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:33.295Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:40.037Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 38.1,
+        "tempF": 42.3,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "snowshoe": {
       "status": "ok",
@@ -4957,46 +4957,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        55.3,
-        53.4,
+        53.1,
         52.5,
-        57.9,
-        58,
-        53.3,
-        48.9
+        46.5,
+        57.3,
+        55.2,
+        52,
+        52.2
       ],
       "tempMin": [
-        41,
-        42.7,
-        37.3,
+        40.3,
+        40.2,
+        36.4,
         35.8,
-        40,
-        42.8,
+        40.2,
+        45.9,
         45.5
       ],
       "weatherCodes": [
         3,
         3,
-        51,
         3,
         3,
+        3,
         51,
-        81
+        80
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:34.086Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:40.783Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 41.1,
+        "tempF": 51.6,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "windham mountain": {
       "status": "ok",
@@ -5021,46 +5021,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        48.5,
-        56.4,
-        63.4,
-        64.1,
-        65.7,
-        67.7,
-        63.1
+        48.7,
+        56.7,
+        63.1,
+        62.8,
+        66.8,
+        62.9,
+        57.3
       ],
       "tempMin": [
-        34.1,
-        32.2,
-        42.2,
-        45.4,
-        47.6,
-        49.8,
-        50.7
+        33.5,
+        32.4,
+        42.4,
+        44.2,
+        47.5,
+        48.5,
+        51
       ],
       "weatherCodes": [
         0,
-        0,
+        2,
         3,
         3,
         3,
-        3,
-        51
+        53,
+        61
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:34.879Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:41.530Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 34.4,
+        "tempF": 47.4,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "chamonix": {
       "status": "ok",
@@ -5085,46 +5085,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        52.7,
-        51.1,
-        45.4,
-        50,
         52.5,
-        53.4,
-        44.4
+        51.2,
+        46.3,
+        50.6,
+        53.5,
+        56.2,
+        50.8
       ],
       "tempMin": [
         31.1,
-        27.7,
-        26.9,
-        30.3,
-        38,
-        40.1,
-        38.1
+        27.6,
+        27.5,
+        30.7,
+        36.6,
+        39.3,
+        43.3
       ],
       "weatherCodes": [
-        45,
+        56,
         1,
         45,
         45,
         3,
         3,
-        61
+        3
       ],
       "timezone": "Europe/Paris",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:35.680Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:42.280Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 52.6,
+        "tempF": 39.2,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "zermatt": {
       "status": "ok",
@@ -5149,46 +5149,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        54.5,
+        55.5,
         45.2,
-        45,
-        44.3,
-        42.2,
-        45.1,
-        37.4
+        46.5,
+        42.9,
+        42.4,
+        46.1,
+        45.9
       ],
       "tempMin": [
         33,
-        30.2,
-        28.3,
-        35.4,
-        35.4,
-        36.2,
-        34.9
+        29.7,
+        29.3,
+        36.1,
+        35.9,
+        37.8,
+        36.5
       ],
       "weatherCodes": [
         0,
         1,
+        2,
         3,
-        1,
         3,
         3,
-        77
+        3
       ],
       "timezone": "Europe/Zurich",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:36.475Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:43.028Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 53,
+        "tempF": 44.9,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "st moritz": {
       "status": "ok",
@@ -5213,46 +5213,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        39.3,
+        39.8,
         30.5,
-        35.9,
-        33.1,
-        31.2,
-        32.8,
-        32.6
+        34.6,
+        34.4,
+        31.5,
+        34.2,
+        37.3
       ],
       "tempMin": [
         24.6,
+        21,
         21.2,
-        21.1,
-        26.3,
-        26.6,
-        25.9,
-        27.3
+        25.3,
+        27.2,
+        25.7,
+        29.9
       ],
       "weatherCodes": [
         0,
-        2,
+        3,
         1,
         3,
-        3,
-        3,
-        3
+        48,
+        2,
+        2
       ],
       "timezone": "Europe/Zurich",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:37.275Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:43.776Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 39.2,
+        "tempF": 34.7,
         "baseDepth": 0.79
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "kitzb hel": {
       "status": "ok",
@@ -5278,53 +5278,53 @@
       ],
       "tempMax": [
         50.5,
-        41.8,
-        40.7,
-        42.4,
-        49.4,
-        57.2,
-        47.3
+        40.8,
+        42.6,
+        41,
+        48.5,
+        56.1,
+        50.3
       ],
       "tempMin": [
         39.5,
-        34.5,
-        33.6,
-        37.6,
-        37.5,
-        36.6,
-        34.5
+        34.8,
+        34.4,
+        36.7,
+        36.3,
+        34.9,
+        33.7
       ],
       "weatherCodes": [
         61,
         80,
         45,
+        51,
         45,
         45,
-        1,
         45
       ],
       "timezone": "Europe/Vienna",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:38.075Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:44.525Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 50.4,
+        "tempF": 43.9,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "lech z rs am arlberg": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=47.2083&longitude=10.1419&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0,
+      "forecast72h": 0.06,
       "dailySnowfall": [
         0,
-        0,
+        0.06,
         0,
         0,
         0,
@@ -5342,113 +5342,49 @@
       ],
       "tempMax": [
         47.5,
-        35.5,
-        37.6,
-        43.2,
-        48.1,
-        49.7,
-        40.7
+        33.6,
+        39,
+        42.9,
+        49.4,
+        50.5,
+        46.8
       ],
       "tempMin": [
-        31.5,
-        29.7,
-        28.5,
-        33.4,
+        30.7,
+        29,
+        27.9,
+        32.7,
         36.9,
-        35.7,
-        33.7
+        36.8,
+        35.3
       ],
       "weatherCodes": [
         45,
-        77,
+        71,
+        45,
         45,
         3,
-        2,
-        3,
-        45
+        0,
+        0
       ],
       "timezone": "Europe/Vienna",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:38.873Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:45.272Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 47.5,
+        "tempF": 35,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "dolomiti superski": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=46.5367&longitude=11.8439&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.04,
-      "dailySnowfall": [
-        0,
-        0.04,
-        0,
-        0.08,
-        0.08,
-        0,
-        0
-      ],
-      "dailyTime": [
-        "2026-10-31",
-        "2026-11-01",
-        "2026-11-02",
-        "2026-11-03",
-        "2026-11-04",
-        "2026-11-05",
-        "2026-11-06"
-      ],
-      "tempMax": [
-        37.5,
-        26.2,
-        34,
-        33.9,
-        33.4,
-        36,
-        33
-      ],
-      "tempMin": [
-        25.8,
-        21.4,
-        22.6,
-        28.6,
-        27.7,
-        26.4,
-        26.2
-      ],
-      "weatherCodes": [
-        0,
-        2,
-        3,
-        3,
-        45,
-        45,
-        3
-      ],
-      "timezone": "Europe/Rome",
-      "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:39.888Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
-      "recentConditions": {
-        "snow24h": 0,
-        "snow48h": 0,
-        "snow72h": 0,
-        "daysSinceSnow": null,
-        "tempF": 37.1,
-        "baseDepth": 0.79
-      },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
-    },
-    "thredbo": {
-      "status": "ok",
-      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=-36.5053&longitude=148.3072&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
       "forecast72h": 0,
       "dailySnowfall": [
         0,
@@ -5469,110 +5405,174 @@
         "2026-11-06"
       ],
       "tempMax": [
-        56.1,
-        58,
-        59.5,
-        57.5,
-        55.6,
-        51.9,
-        56.8
+        37.6,
+        26.1,
+        32.8,
+        34.4,
+        33.4,
+        36.8,
+        40.3
       ],
       "tempMin": [
-        47.4,
-        41.4,
-        41.1,
-        43.5,
-        33.6,
-        29,
-        35
+        26.1,
+        20.9,
+        22,
+        28.4,
+        28.9,
+        27.6,
+        29.1
       ],
       "weatherCodes": [
-        95,
-        51,
-        80,
-        53,
-        95,
-        51,
-        2
+        0,
+        2,
+        3,
+        3,
+        45,
+        45,
+        0
       ],
-      "timezone": "Australia/Sydney",
-      "utcOffsetSeconds": 39600,
-      "updatedAt": "2026-10-31T12:30:40.855Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "timezone": "Europe/Rome",
+      "utcOffsetSeconds": 3600,
+      "updatedAt": "2026-10-31T17:44:46.020Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 48.3,
-        "baseDepth": 0
+        "tempF": 32.6,
+        "baseDepth": 0.79
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
-    "niseko united": {
+    "thredbo": {
       "status": "ok",
-      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=42.8625&longitude=140.6875&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 1.38,
+      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=-36.5053&longitude=148.3072&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
+      "forecast72h": 0,
       "dailySnowfall": [
         0,
-        0.17,
-        1.13,
-        0.94,
-        0.91,
         0,
-        0.47
+        0,
+        0,
+        0,
+        0,
+        0.33
       ],
       "dailyTime": [
-        "2026-10-31",
         "2026-11-01",
         "2026-11-02",
         "2026-11-03",
         "2026-11-04",
         "2026-11-05",
-        "2026-11-06"
+        "2026-11-06",
+        "2026-11-07"
       ],
       "tempMax": [
-        53,
-        36.2,
-        39.9,
-        41,
-        36.5,
-        48.9,
-        51.1
+        57.8,
+        60.6,
+        56.2,
+        57.3,
+        52.6,
+        56.6,
+        44.5
       ],
       "tempMin": [
-        31.7,
-        28.7,
-        29.5,
-        24.5,
-        21.6,
-        21.8,
-        26.7
+        41.7,
+        41.2,
+        41,
+        36.1,
+        32.4,
+        36.9,
+        28.8
       ],
       "weatherCodes": [
+        51,
+        80,
         55,
+        80,
+        53,
+        2,
+        85
+      ],
+      "timezone": "Australia/Sydney",
+      "utcOffsetSeconds": 39600,
+      "updatedAt": "2026-10-31T17:44:46.769Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
+      "recentConditions": {
+        "snow24h": 0,
+        "snow48h": 0,
+        "snow72h": 0,
+        "daysSinceSnow": null,
+        "tempF": 45.6,
+        "baseDepth": 0
+      },
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
+    },
+    "niseko united": {
+      "status": "ok",
+      "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=42.8625&longitude=140.6875&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
+      "forecast72h": 2.98,
+      "dailySnowfall": [
+        0.14,
+        0.58,
+        1.46,
+        1.05,
+        0,
+        0.47,
+        3.64
+      ],
+      "dailyTime": [
+        "2026-11-01",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "tempMax": [
+        36.1,
+        41.4,
+        39.5,
+        36.6,
+        48.3,
+        49.7,
+        31.1
+      ],
+      "tempMin": [
+        28.9,
+        29.6,
+        25,
+        21.2,
+        21.3,
+        26.7,
+        22.7
+      ],
+      "weatherCodes": [
         71,
         73,
         86,
-        85,
+        86,
         51,
+        85,
         85
       ],
       "timezone": "Asia/Tokyo",
       "utcOffsetSeconds": 32400,
-      "updatedAt": "2026-10-31T12:30:41.664Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:47.516Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
-        "snow72h": 0.28,
+        "snow72h": 0.06,
         "daysSinceSnow": 2,
-        "tempF": 33.4,
+        "tempF": 32,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "lotte arai": {
       "status": "ok",
@@ -5588,65 +5588,65 @@
         0
       ],
       "dailyTime": [
-        "2026-10-31",
         "2026-11-01",
         "2026-11-02",
         "2026-11-03",
         "2026-11-04",
         "2026-11-05",
-        "2026-11-06"
+        "2026-11-06",
+        "2026-11-07"
       ],
       "tempMax": [
-        64.1,
-        57.6,
-        55.8,
-        54.8,
-        57.5,
-        62,
-        64.9
+        57.3,
+        56,
+        52.2,
+        58.8,
+        58.6,
+        65.8,
+        49.7
       ],
       "tempMin": [
-        50.1,
-        48.6,
-        51.8,
-        42.7,
-        43.7,
-        50.6,
-        44.3
+        48.2,
+        52.1,
+        44,
+        42.2,
+        51.2,
+        44.3,
+        37.7
       ],
       "weatherCodes": [
+        53,
         63,
-        51,
-        61,
-        61,
-        45,
-        81,
+        63,
+        3,
+        63,
+        80,
         80
       ],
       "timezone": "Asia/Tokyo",
       "utcOffsetSeconds": 32400,
-      "updatedAt": "2026-10-31T12:30:42.459Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:48.262Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 51.3,
+        "tempF": 49.8,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "valle nevado": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=-33.3583&longitude=-70.2678&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.06,
+      "forecast72h": 0.17,
       "dailySnowfall": [
         0,
         0,
         0,
-        0.91,
+        4.16,
         0,
         0,
         0
@@ -5662,45 +5662,45 @@
       ],
       "tempMax": [
         39.2,
-        35,
-        37,
-        32.1,
-        37.8,
-        41.2,
+        35.9,
+        36.6,
+        31.5,
+        36.5,
+        38.7,
         40.5
       ],
       "tempMin": [
-        25,
-        18.3,
-        17.1,
-        16.7,
-        19.6,
-        23.1,
-        26.7
+        26.1,
+        23.7,
+        25.5,
+        15.4,
+        18.8,
+        22.1,
+        19.9
       ],
       "weatherCodes": [
         51,
         51,
-        45,
-        85,
+        3,
+        86,
         0,
-        1,
-        2
+        2,
+        45
       ],
       "timezone": "America/Santiago",
       "utcOffsetSeconds": -10800,
-      "updatedAt": "2026-10-31T12:30:43.251Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:49.007Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 34.3,
-        "baseDepth": 79.13
+        "tempF": 38.2,
+        "baseDepth": 77.95
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "panorama": {
       "status": "ok",
@@ -5713,7 +5713,7 @@
         0,
         0,
         0,
-        0.06
+        0
       ],
       "dailyTime": [
         "2026-10-31",
@@ -5725,22 +5725,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        43.1,
-        48.7,
-        46.4,
-        43.3,
-        44.5,
-        43.8,
-        45.7
+        43.5,
+        47.2,
+        46.6,
+        42.4,
+        45.4,
+        44.4,
+        43.1
       ],
       "tempMin": [
+        30.1,
+        33,
+        29.9,
         31,
-        33.3,
         29.3,
-        31.2,
-        31.5,
-        31.9,
-        30.8
+        29.7,
+        28.3
       ],
       "weatherCodes": [
         3,
@@ -5748,23 +5748,23 @@
         3,
         3,
         3,
-        51,
-        71
+        45,
+        53
       ],
       "timezone": "America/Edmonton",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:44.166Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:49.755Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 32.2,
+        "tempF": 34.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "schweitzer": {
       "status": "ok",
@@ -5789,46 +5789,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        40.5,
-        43.7,
-        44,
-        40.7,
-        41.7,
-        44.4,
-        41.8
+        40.3,
+        40.8,
+        42.2,
+        45.6,
+        43.5,
+        42.7,
+        40.2
       ],
       "tempMin": [
-        31.4,
-        28.8,
-        24.5,
-        29.1,
-        25.6,
-        29.6,
-        26.5
+        30.9,
+        35.9,
+        25.3,
+        28.3,
+        26.3,
+        27.7,
+        25.2
       ],
       "weatherCodes": [
         3,
         51,
         3,
-        53,
         3,
         3,
-        61
+        3,
+        55
       ],
       "timezone": "America/Los_Angeles",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:30:44.977Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:50.502Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
-        "snow48h": 0.11,
-        "snow72h": 4.57,
-        "daysSinceSnow": 1,
-        "tempF": 31.5,
+        "snow48h": 0,
+        "snow72h": 4.27,
+        "daysSinceSnow": 2,
+        "tempF": 35,
         "baseDepth": 4.72
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "sun valley": {
       "status": "ok",
@@ -5853,46 +5853,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        44.6,
-        47,
-        48.6,
-        48.6,
+        43.9,
+        46.6,
+        49.1,
+        48.2,
         51.1,
-        47.8,
-        49.6
+        50.1,
+        49.4
       ],
       "tempMin": [
-        38.4,
-        36.1,
-        30.5,
-        31.7,
-        35.5,
-        33.7,
-        32.3
+        39.2,
+        37.5,
+        30.3,
+        32,
+        35,
+        33.1,
+        30.9
       ],
       "weatherCodes": [
-        63,
+        61,
         71,
         3,
         3,
-        51,
         3,
-        2
+        3,
+        3
       ],
       "timezone": "America/Boise",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:45.969Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:51.247Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0.03,
         "snow48h": 0.03,
         "snow72h": 0.03,
         "daysSinceSnow": 0,
-        "tempF": 39.2,
+        "tempF": 41.4,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "snowbasin": {
       "status": "ok",
@@ -5917,59 +5917,59 @@
         "2026-11-06"
       ],
       "tempMax": [
-        50.5,
-        43.9,
-        41,
-        48.1,
-        39.2,
-        45.6,
-        46.7
+        50.9,
+        46.3,
+        42.5,
+        49.1,
+        41.3,
+        45.8,
+        44.5
       ],
       "tempMin": [
-        41.4,
-        38.2,
-        34.4,
-        33.3,
+        41.6,
+        41.6,
         34.9,
-        31.6,
-        34.9
+        33.8,
+        32,
+        30.3,
+        32.1
       ],
       "weatherCodes": [
+        51,
         63,
+        51,
+        3,
         63,
-        80,
-        3,
-        81,
-        3,
+        1,
         3
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:46.763Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:51.994Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 42,
+        "tempF": 47.5,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "grand targhee": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=43.7903&longitude=-110.9578&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 0.85,
+      "forecast72h": 0.42,
       "dailySnowfall": [
-        0.03,
+        0,
         0.08,
-        0.74,
+        0.34,
         0,
-        0.03,
         0,
-        0
+        0,
+        0.08
       ],
       "dailyTime": [
         "2026-10-31",
@@ -5981,56 +5981,56 @@
         "2026-11-06"
       ],
       "tempMax": [
-        42,
-        40.8,
-        35.4,
-        42.6,
-        34.3,
-        39.6,
-        37.3
+        41.7,
+        41.5,
+        36.2,
+        41.6,
+        34.1,
+        39.3,
+        35.9
       ],
       "tempMin": [
-        35.5,
-        34.3,
+        35.4,
+        35.8,
+        25.9,
+        25,
+        27.1,
         25.2,
-        23.6,
-        26.5,
-        25.8,
-        26
+        24.6
       ],
       "weatherCodes": [
+        53,
         71,
-        55,
         85,
         3,
-        71,
+        51,
         3,
-        51
+        85
       ],
       "timezone": "America/Denver",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:47.552Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:52.741Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 36.9,
+        "tempF": 38.9,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "sugar bowl": {
       "status": "ok",
       "apiUrl": "https://api.open-meteo.com/v1/forecast?latitude=39.3044&longitude=-120.3358&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth&past_days=3&forecast_days=7&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime",
-      "forecast72h": 7.66,
+      "forecast72h": 3.69,
       "dailySnowfall": [
-        6.48,
-        1.19,
-        0,
         1.52,
+        2.29,
+        0,
+        1.32,
         0,
         0,
         0
@@ -6045,46 +6045,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        39.6,
-        35.9,
-        52.5,
-        41.7,
-        48,
-        52.1,
-        58.7
+        39.7,
+        40.6,
+        54.6,
+        42.9,
+        51.4,
+        53.3,
+        60.5
       ],
       "tempMin": [
-        28.3,
-        22.8,
-        22.1,
-        26.2,
-        21.4,
-        25.4,
-        27.6
+        32.3,
+        23.8,
+        26.1,
+        28.2,
+        20.6,
+        27.3,
+        31.2
       ],
       "weatherCodes": [
         75,
         75,
         3,
-        86,
+        75,
         45,
         3,
         3
       ],
       "timezone": "America/Los_Angeles",
       "utcOffsetSeconds": -25200,
-      "updatedAt": "2026-10-31T12:30:48.343Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:53.488Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
-        "snow24h": 0.03,
-        "snow48h": 0.14,
-        "snow72h": 0.14,
+        "snow24h": 0.14,
+        "snow48h": 0.25,
+        "snow72h": 0.25,
         "daysSinceSnow": 0,
-        "tempF": 34.4,
+        "tempF": 36.4,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "whiteface": {
       "status": "ok",
@@ -6109,46 +6109,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        27.3,
-        38.8,
-        50.8,
-        48,
-        55.5,
-        46.7,
-        45.4
+        28.3,
+        39.2,
+        48.9,
+        49.9,
+        54.2,
+        45.8,
+        42.9
       ],
       "tempMin": [
-        21.1,
-        24.6,
-        32.9,
-        37.7,
+        20.2,
+        25.3,
+        34.1,
+        37.5,
         39.3,
-        40.3,
-        40.2
+        42.9,
+        34.5
       ],
       "weatherCodes": [
         45,
-        0,
+        1,
         3,
         3,
         3,
-        53,
-        61
+        61,
+        51
       ],
       "timezone": "America/New_York",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:49.133Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:54.234Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 21.4,
+        "tempF": 26.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "banff sunshine": {
       "status": "ok",
@@ -6160,8 +6160,8 @@
         0,
         0,
         0,
-        0,
-        0
+        0.47,
+        0.08
       ],
       "dailyTime": [
         "2026-10-31",
@@ -6173,22 +6173,22 @@
         "2026-11-06"
       ],
       "tempMax": [
-        29.8,
-        32.7,
-        33.3,
-        31.1,
+        29.3,
         30.4,
-        27.7,
-        29.6
+        34.8,
+        33.8,
+        31.5,
+        25.9,
+        30.2
       ],
       "tempMin": [
         18.5,
-        18.8,
-        15.8,
-        20.7,
-        18.6,
-        20.7,
-        20.1
+        20.8,
+        16.3,
+        20.4,
+        18.1,
+        19.6,
+        19.3
       ],
       "weatherCodes": [
         3,
@@ -6196,23 +6196,23 @@
         3,
         3,
         45,
-        45,
-        45
+        75,
+        85
       ],
       "timezone": "America/Edmonton",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:49.944Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:54.980Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
-        "snow72h": 0.72,
+        "snow72h": 0.61,
         "daysSinceSnow": 2,
-        "tempF": 20.5,
+        "tempF": 25.2,
         "baseDepth": 3.15
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "bromont": {
       "status": "ok",
@@ -6237,46 +6237,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        43.7,
-        52.9,
-        57.7,
-        57.9,
-        67.4,
-        61.3,
-        52.6
+        43.3,
+        52.6,
+        56.1,
+        58.7,
+        66.1,
+        60.6,
+        52.5
       ],
       "tempMin": [
-        30.9,
-        32.3,
-        42.6,
-        48,
-        50.2,
-        50.2,
-        48.5
+        30.2,
+        32,
+        46.2,
+        46.8,
+        50.6,
+        51.8,
+        45.5
       ],
       "weatherCodes": [
         3,
-        3,
-        51,
-        51,
-        3,
+        0,
         53,
-        53
+        3,
+        3,
+        61,
+        3
       ],
       "timezone": "America/Toronto",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:50.734Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:55.727Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 31.3,
+        "tempF": 42.1,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "lake louise": {
       "status": "ok",
@@ -6288,8 +6288,8 @@
         0,
         0,
         0,
-        0,
-        0
+        0.25,
+        0.25
       ],
       "dailyTime": [
         "2026-10-31",
@@ -6301,46 +6301,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        37.9,
-        39.6,
-        37.7,
-        36.3,
-        34.2,
-        33.8,
-        34.2
+        37.6,
+        39.3,
+        38.5,
+        37.6,
+        36.4,
+        32.4,
+        34.9
       ],
       "tempMin": [
+        21.2,
         20.6,
-        20.1,
-        18,
-        23.3,
-        21.4,
-        26.8,
-        27
+        18.9,
+        23.7,
+        22.1,
+        24.7,
+        20.6
       ],
       "weatherCodes": [
         3,
         3,
         3,
         3,
-        51,
-        51,
-        51
+        45,
+        73,
+        71
       ],
       "timezone": "America/Edmonton",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:51.537Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:56.474Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 23.3,
+        "tempF": 31.3,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "le massif de charlevoix": {
       "status": "ok",
@@ -6365,46 +6365,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        42.6,
-        51.6,
-        55,
-        54.6,
-        58.9,
-        58.9,
-        48.9
+        41.7,
+        50.9,
+        53.4,
+        53.2,
+        57.1,
+        58.6,
+        52
       ],
       "tempMin": [
-        34.3,
-        36.8,
-        46,
-        38.7,
-        40.7,
-        48.9,
-        36.5
+        34.2,
+        34.9,
+        46.9,
+        38.2,
+        38.4,
+        52,
+        37.6
       ],
       "weatherCodes": [
         3,
         3,
-        51,
-        63,
-        63,
+        3,
         53,
-        53
+        61,
+        55,
+        3
       ],
       "timezone": "America/Toronto",
       "utcOffsetSeconds": -14400,
-      "updatedAt": "2026-10-31T12:30:52.339Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:57.229Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 34.8,
+        "tempF": 40.8,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "marmot basin": {
       "status": "ok",
@@ -6429,21 +6429,21 @@
         "2026-11-06"
       ],
       "tempMax": [
-        39.2,
-        35.7,
+        38.8,
+        36.2,
         42.4,
-        42.1,
-        42.9,
-        45.5,
+        43.1,
+        42.3,
+        40,
         40.6
       ],
       "tempMin": [
-        7.9,
-        7.1,
-        7.2,
-        12.7,
-        16.2,
-        18.9,
+        8.4,
+        8,
+        6.8,
+        12.8,
+        14.6,
+        13.3,
         17.5
       ],
       "weatherCodes": [
@@ -6451,24 +6451,24 @@
         45,
         45,
         3,
-        1,
+        3,
         3,
         71
       ],
       "timezone": "America/Edmonton",
       "utcOffsetSeconds": -21600,
-      "updatedAt": "2026-10-31T12:30:53.540Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:58.091Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
-        "snow72h": 0.11,
+        "snow72h": 0.06,
         "daysSinceSnow": 2,
-        "tempF": 10.2,
+        "tempF": 21.7,
         "baseDepth": 5.91
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "meg ve": {
       "status": "ok",
@@ -6493,46 +6493,46 @@
         "2026-11-06"
       ],
       "tempMax": [
-        48.2,
-        46.7,
-        44.7,
-        50.1,
-        52.8,
-        52.7,
-        44.7
+        48,
+        47,
+        42.8,
+        50.3,
+        53.1,
+        56.2,
+        51
       ],
       "tempMin": [
         37.9,
-        34.4,
-        30.8,
-        31,
-        30.3,
-        31.5,
-        35.9
+        33.8,
+        32,
+        31.8,
+        32.3,
+        32.5,
+        39.5
       ],
       "weatherCodes": [
+        51,
         45,
+        3,
         45,
-        45,
-        45,
-        45,
-        61,
+        3,
+        3,
         61
       ],
       "timezone": "Europe/Paris",
       "utcOffsetSeconds": 3600,
-      "updatedAt": "2026-10-31T12:30:54.346Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:58.773Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 48.2,
+        "tempF": 41.7,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "mt buller": {
       "status": "ok",
@@ -6548,55 +6548,55 @@
         0
       ],
       "dailyTime": [
-        "2026-10-31",
         "2026-11-01",
         "2026-11-02",
         "2026-11-03",
         "2026-11-04",
         "2026-11-05",
-        "2026-11-06"
+        "2026-11-06",
+        "2026-11-07"
       ],
       "tempMax": [
-        51.4,
-        50.2,
-        55.8,
-        56.9,
-        50,
-        43.4,
-        53.6
+        51.1,
+        57.7,
+        58.4,
+        52.1,
+        45.8,
+        53.4,
+        44.2
       ],
       "tempMin": [
-        40.7,
-        36.1,
-        36.9,
-        35.3,
-        29.1,
-        27.7,
-        27.6
+        37,
+        37.5,
+        38.9,
+        30.4,
+        29.4,
+        29.7,
+        23.9
       ],
       "weatherCodes": [
-        96,
-        51,
-        81,
-        81,
+        45,
         81,
         51,
-        3
+        95,
+        51,
+        3,
+        80
       ],
       "timezone": "Australia/Melbourne",
       "utcOffsetSeconds": 39600,
-      "updatedAt": "2026-10-31T12:30:55.138Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:44:59.446Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "tempF": 41.2,
+        "tempF": 38.6,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "coronet peak": {
       "status": "ok",
@@ -6622,45 +6622,45 @@
       ],
       "tempMax": [
         46.7,
-        55.7,
-        55.4,
-        60.5,
-        54.8,
-        59.9,
+        56.1,
+        55.1,
+        58.7,
+        59.2,
+        59.8,
         58.3
       ],
       "tempMin": [
-        25.6,
-        36.8,
-        27.4,
-        38.5,
-        43.9,
-        45.7,
+        26.2,
+        38.2,
+        29.5,
+        41.9,
+        42.5,
+        44.4,
         41.3
       ],
       "weatherCodes": [
-        53,
+        45,
         63,
         51,
-        51,
-        61,
+        80,
+        55,
         51,
         51
       ],
       "timezone": "Pacific/Auckland",
       "utcOffsetSeconds": 46800,
-      "updatedAt": "2026-10-31T12:30:55.927Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:45:00.121Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
         "snow24h": 0,
-        "snow48h": 1.13,
+        "snow48h": 0.11,
         "snow72h": 1.16,
         "daysSinceSnow": 1,
-        "tempF": 29.4,
+        "tempF": 26.6,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     },
     "the remarkables": {
       "status": "ok",
@@ -6685,46 +6685,46 @@
         "2026-11-07"
       ],
       "tempMax": [
-        43.3,
-        49.4,
+        44.1,
+        50.3,
+        51.6,
         52.1,
-        53.4,
-        51.5,
-        55.2,
+        55,
+        54.8,
         52.4
       ],
       "tempMin": [
-        24.8,
-        36.5,
-        31.1,
-        36.9,
-        39.9,
-        41.3,
+        25.3,
+        37.5,
+        30.5,
+        37.4,
+        39.5,
+        41.7,
         39.3
       ],
       "weatherCodes": [
         51,
         63,
-        3,
+        45,
+        55,
         51,
-        53,
         53,
         53
       ],
       "timezone": "Pacific/Auckland",
       "utcOffsetSeconds": 46800,
-      "updatedAt": "2026-10-31T12:30:56.715Z",
-      "periodStart": "2026-10-31T12:00:00.000Z",
-      "periodEnd": "2026-11-03T12:00:00.000Z",
+      "updatedAt": "2026-10-31T17:45:00.801Z",
+      "periodStart": "2026-10-31T17:00:00.000Z",
+      "periodEnd": "2026-11-03T17:00:00.000Z",
       "recentConditions": {
-        "snow24h": 0.06,
-        "snow48h": 2.23,
-        "snow72h": 3.11,
-        "daysSinceSnow": 0,
-        "tempF": 32.7,
+        "snow24h": 0,
+        "snow48h": 1.46,
+        "snow72h": 3.06,
+        "daysSinceSnow": 1,
+        "tempF": 26.1,
         "baseDepth": 0
       },
-      "recentConditionsAt": "2026-10-31T12:00:00.000Z"
+      "recentConditionsAt": "2026-10-31T17:00:00.000Z"
     }
   }
 }

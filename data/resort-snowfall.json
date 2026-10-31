@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T12:40:30.472247+00:00",
+  "generatedAt": "2026-10-31T21:40:27.464184+00:00",
   "units": "in",
   "model": "era5",
   "source": "Open-Meteo / ECMWF ERA5 reanalysis",
@@ -7,8 +7,8 @@
   "historyStartDate": "1940-01-01",
   "seasonDefinition": "Northern: July 1–June 30. Southern: January 1–December 31. Days are UTC.",
   "summary": {
-    "ok": 103,
-    "error": 2,
+    "ok": 105,
+    "error": 0,
     "pending": 0
   },
   "resorts": {
@@ -60118,12 +60118,12 @@
       "name": "Paradiski",
       "lat": 45.5667,
       "lon": 6.85,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=45.5667&longitude=6.85&start_date=2026-07-01&end_date=2026-10-25&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-30T05:55:04.052123+00:00",
-      "requestedThrough": "2026-10-25",
-      "availableThrough": "2026-10-24",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=45.5667&longitude=6.85&start_date=2026-07-01&end_date=2026-10-26&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-31T21:40:27.464184+00:00",
+      "requestedThrough": "2026-10-26",
+      "availableThrough": "2026-10-25",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 2632.0,
       "gridLat": 45.5,
@@ -60133,11 +60133,11 @@
           "season": "2026/27",
           "startDate": "2026-07-01",
           "endDate": "2027-06-30",
-          "through": "2026-10-24",
-          "observedDays": 116,
-          "expectedDays": 116,
+          "through": "2026-10-25",
+          "observedDays": 117,
+          "expectedDays": 117,
           "missingDays": 0,
-          "total": 8.68,
+          "total": 9.81,
           "complete": false
         },
         {
@@ -61098,9 +61098,7 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-31T12:40:30.472247+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "park city": {
       "name": "Park City",
@@ -88692,12 +88690,12 @@
       "name": "Thredbo",
       "lat": -36.5053,
       "lon": 148.3072,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=-36.5053&longitude=148.3072&start_date=2026-01-01&end_date=2026-10-25&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-10-30T13:02:07.761587+00:00",
-      "requestedThrough": "2026-10-25",
-      "availableThrough": "2026-10-24",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=-36.5053&longitude=148.3072&start_date=2026-01-01&end_date=2026-10-26&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-10-31T21:40:27.464184+00:00",
+      "requestedThrough": "2026-10-26",
+      "availableThrough": "2026-10-25",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 1412.0,
       "gridLat": -36.5,
@@ -88707,9 +88705,9 @@
           "season": "2026",
           "startDate": "2026-01-01",
           "endDate": "2026-12-31",
-          "through": "2026-10-24",
-          "observedDays": 297,
-          "expectedDays": 297,
+          "through": "2026-10-25",
+          "observedDays": 298,
+          "expectedDays": 298,
           "missingDays": 0,
           "total": 1.79,
           "complete": false
@@ -89661,9 +89659,7 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-10-31T12:40:30.472247+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "tignes": {
       "name": "Tignes",

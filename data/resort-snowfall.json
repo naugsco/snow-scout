@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T14:24:05.373192+00:00",
+  "generatedAt": "2026-11-03T23:27:03.163085+00:00",
   "units": "in",
   "model": "era5",
   "source": "Open-Meteo / ECMWF ERA5 reanalysis",
@@ -7,8 +7,8 @@
   "historyStartDate": "1940-01-01",
   "seasonDefinition": "Northern: July 1–June 30. Southern: January 1–December 31. Days are UTC.",
   "summary": {
-    "ok": 103,
-    "error": 2,
+    "ok": 105,
+    "error": 0,
     "pending": 0
   },
   "resorts": {
@@ -28588,12 +28588,12 @@
       "name": "Hakuba Valley",
       "lat": 36.6983,
       "lon": 137.8319,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=36.6983&longitude=137.8319&start_date=2026-07-01&end_date=2026-10-28&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-02T06:16:04.332570+00:00",
-      "requestedThrough": "2026-10-28",
-      "availableThrough": "2026-10-27",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=36.6983&longitude=137.8319&start_date=2026-07-01&end_date=2026-10-29&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-03T23:27:03.163085+00:00",
+      "requestedThrough": "2026-10-29",
+      "availableThrough": "2026-10-28",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 945.0,
       "gridLat": 36.75,
@@ -28603,9 +28603,9 @@
           "season": "2026/27",
           "startDate": "2026-07-01",
           "endDate": "2027-06-30",
-          "through": "2026-10-27",
-          "observedDays": 119,
-          "expectedDays": 119,
+          "through": "2026-10-28",
+          "observedDays": 120,
+          "expectedDays": 120,
           "missingDays": 0,
           "total": 0.0,
           "complete": false
@@ -29568,9 +29568,7 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-11-03T14:24:05.373192+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "heavenly": {
       "name": "Heavenly",
@@ -100502,12 +100500,12 @@
       "name": "Windham Mountain",
       "lat": 42.2978,
       "lon": -74.2578,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=42.2978&longitude=-74.2578&start_date=2026-07-01&end_date=2026-10-28&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-02T06:16:04.332570+00:00",
-      "requestedThrough": "2026-10-28",
-      "availableThrough": "2026-10-27",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=42.2978&longitude=-74.2578&start_date=2026-07-01&end_date=2026-10-29&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-03T23:27:03.163085+00:00",
+      "requestedThrough": "2026-10-29",
+      "availableThrough": "2026-10-28",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 520.0,
       "gridLat": 42.25,
@@ -100517,9 +100515,9 @@
           "season": "2026/27",
           "startDate": "2026-07-01",
           "endDate": "2027-06-30",
-          "through": "2026-10-27",
-          "observedDays": 119,
-          "expectedDays": 119,
+          "through": "2026-10-28",
+          "observedDays": 120,
+          "expectedDays": 120,
           "missingDays": 0,
           "total": 0.0,
           "complete": false
@@ -101482,9 +101480,7 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-11-03T14:24:05.373192+00:00",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      ]
     },
     "winter park": {
       "name": "Winter Park",

@@ -1,0 +1,15 @@
+{
+  "name": "snow-scout-weather",
+  "main": "index.mjs",
+  "account_id": "7b101566461676467044e9fdcd02b36b",
+  "compatibility_date": "2026-11-06",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "vars": {
+    "OPENWEATHER_ENABLED": "false",
+    "OPENWEATHER_CIRCUIT_RESET_ID": "initial"
+  },
+  "durable_objects": {"bindings": [{"name": "WEATHER_ACCOUNT", "class_name": "WeatherAccount"}]},
+  "migrations": [{"tag": "v1", "new_sqlite_classes": ["WeatherAccount"]}],
+  "observability": {"enabled": false}
+}

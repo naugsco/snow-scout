@@ -1,4 +1,4 @@
-import { WEATHER_CONFIG } from './weather-config.js?v=20261106-request-control';
+import { WEATHER_CONFIG } from './weather-config.js?v=20261106-weather-backend';
 const weatherChannels = new Map();
 function weatherChannel(base) {
   if (!weatherChannels.has(base)) weatherChannels.set(base,{paused:false,listeners:new Set()});

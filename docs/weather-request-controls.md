@@ -31,3 +31,9 @@ Only after the account is restored, use the existing git-ignored `.env.travel` (
 77 Node tests and 13 Python tests passed. Tests cover a 55-request burst admitting only 45 upstream calls, 60-second rolling recovery, cross-layer in-flight deduplication, default pause/startup delay, long Retry-After, auth rejection, malformed responses, connection errors, invalid coordinates, secret redaction, shared-viewer shutdown without disabling radar, static no-direct-access behavior, and actual localhost HTTP routes. All OpenWeather responses were mocked: no blocked-key probe was made.
 
 Browser: opening the globe and selecting Clouds showed the paused-service message; Radar remained selected/available. Screenshot: output/travel-build-qa/weather-paused.png. No real-key success path was exercised during the block. Syntax, packaging and diff checks passed.
+
+## Production deployment — Nov 6
+
+Supersedes the local-only deployment boundary above: Cloudflare Worker `snow-scout-weather` is live at https://snow-scout-weather.nick-naugle.workers.dev . The GitHub Pages client is configured to use its `/api/weather` path. Production uses the fixed SQLite Durable Object `openweather-account-v1`, storing rolling request reservations before upstream calls and persisting quota/auth cooldowns. Worker instances share this account object. Storage failure stops requests. CORS accepts the existing GitHub Pages origin; no local-server security restrictions were removed.
+
+OPENWEATHER_ENABLED remains false. No subscription upgrade was made. Automatic approval review rejected importing the local API key into Cloudflare without specific user approval; the backend was deployed without a credential. This does not prevent the backend/status route or frontend connection from working. Full credential/activation/reset instructions are in worker/README.md. Actual OpenWeather tile requests remain untested until account restoration and explicit activation.

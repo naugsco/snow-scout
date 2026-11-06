@@ -2,7 +2,7 @@ import { bindWeatherControls } from './weather-controls.js?v=20261105-map-layers
 import { hydrateIcons } from './ui-icons.js?v=20261021-sources-verified';
 import { RAW_RESORTS } from './constants.js?v=20261021-sources-verified';
 import { mountainConfig, mountainSlug } from './mountain-config.js?v=20261021-sources-verified';
-import { createMountain } from './painted-mountain.js?v=20261106-request-control';
+import { createMountain } from './painted-mountain.js?v=20261106-weather-backend';
 import { trailLegend } from './trail-style.js?v=20261021-sources-verified';
 
 hydrateIcons();

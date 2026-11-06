@@ -33,3 +33,17 @@ test('network errors, redirects, invalid bodies and invalid coordinates never cr
  const invalid=fixture();invalid.ready();for(const args of [['temp_new',0,1,0],['temp_new',7,0,0],['bad',0,0,0]]) assert.equal((await invalid.g.tile(...args)).status,400);assert.equal(invalid.calls,0);
  const bad=fixture(async()=>new Response('html',{headers:{'Content-Type':'text/html'}}));bad.ready();assert.equal((await bad.g.tile('temp_new',0,0,0)).status,502);await bad.g.tile('temp_new',0,0,0);assert.equal(bad.calls,1);
 });
+
+test('persistent reservations and provider cooldown survive a new gateway instance',async()=>{
+ let saved, calls=0,time=60000;
+ const options={key:'test-secret',enabled:true,now:()=>time,state:{starts:[],blockedUntil:0,permanentlyBlocked:false,pausedMessage:''},persist:async state=>{saved=structuredClone(state);},fetchImpl:async()=>{calls++;return new Response('blocked',{status:429,headers:{'Retry-After':'1800'}});}};
+ const first=createWeatherTileGateway(options);await first.tile('temp_new',0,0,0);
+ assert.equal(saved.starts.length,1);assert.equal(saved.blockedUntil,1860000);
+ const restarted=createWeatherTileGateway({...options,state:structuredClone(saved)});
+ assert.equal((await restarted.tile('clouds_new',0,0,0)).status,503);assert.equal(calls,1);
+});
+test('storage failure prevents the upstream request and keeps the local circuit open',async()=>{
+ let calls=0;const g=createWeatherTileGateway({key:'test-secret',enabled:true,state:{starts:[],blockedUntil:0,permanentlyBlocked:false,pausedMessage:''},persist:async()=>{throw new Error('storage down');},fetchImpl:async()=>{calls++;return png();}});
+ assert.equal((await g.tile('temp_new',0,0,0)).status,503);
+ assert.equal((await g.tile('clouds_new',0,0,0)).status,503);assert.equal(calls,0);
+});

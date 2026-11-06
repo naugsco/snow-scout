@@ -108,8 +108,8 @@ test('all maps sharing a gateway stop OpenWeather on a tile failure; radar stays
   assert.equal(b.requests.length,before);
   a.weather.destroy();b.weather.destroy();
 });
-test('static deployments never fetch a local key or direct OpenWeather tiles', async()=>{
-  const f=fixture(); const w=createWeatherLayers({});
+test('unconfigured deployments never fetch a local key or direct OpenWeather tiles', async()=>{
+  const f=fixture(); const w=createWeatherLayers({}, {weatherApiBase:null});
   await assert.rejects(w.addLayer('clouds'),/Direct OpenWeather access is disabled/);
   assert.equal(f.requests.length,0);w.destroy();f.weather.destroy();
 });

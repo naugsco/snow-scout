@@ -39,7 +39,7 @@ class PackagingTests(unittest.TestCase):
             self.assertFalse((output / 'server').exists())
             self.assertFalse((output / '.env.travel').exists())
             self.assertTrue((output / 'js/weather-config.js').is_file())
-            self.assertIn('apiBase: null', (output / 'js/weather-config.js').read_text())
+            self.assertIn('https://snow-scout-weather.nick-naugle.workers.dev/api/weather', (output / 'js/weather-config.js').read_text())
             self.assertNotIn('appid=', (output / 'js/weather-layers.js').read_text())
 
             self.assertFalse((output / 'docs/flight-travel-build.mb').exists())

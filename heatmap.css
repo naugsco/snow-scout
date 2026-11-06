@@ -55,6 +55,17 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 .heat-tile::before { content: ''; position: absolute; inset: 0; background: var(--tile-bg); border-radius: 4px; z-index: -1; }
 .heat-tile:hover::before, .heat-tile:focus-visible::before, .heat-tile.previewing::before { box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 4px #2589ef; }
 .heat-tile.selected::before { box-shadow: inset 0 0 0 3px #fff; }
+.heat-snow { position: absolute; inset: 0; border-radius: 4px; overflow: hidden; pointer-events: none; z-index: -1; mask-image: linear-gradient(transparent, #000 12%, #000 85%, transparent); }
+.heat-snow-flake {
+  position: absolute; top: -26px; left: var(--flake-left); width: var(--flake-size); height: calc(100% + 26px);
+  opacity: var(--flake-opacity); animation: heat-snow-fall var(--flake-duration) var(--flake-delay) linear infinite;
+}
+.heat-snow-flake svg { display: block; width: var(--flake-size); height: var(--flake-size); filter: drop-shadow(0 1px 1px #31557555); animation: heat-snow-drift 4s var(--flake-delay) ease-in-out infinite alternate; }
+.heat-snow-outline { stroke: #29445e; stroke-width: 2.8; opacity: var(--snow-outline-opacity, .25); }
+.heat-snow-label { margin-top: 8px; font-size: 10px; line-height: 1.2; }
+@keyframes heat-snow-fall { from { transform: translateY(0); } to { transform: translateY(100%); } }
+@keyframes heat-snow-drift { from { transform: translateX(-6px) rotate(0); } to { transform: translateX(var(--flake-drift)) rotate(var(--flake-turn)); } }
+@media (prefers-reduced-motion: reduce) { .heat-snow { display: none; } }
 .heat-name { font-family: var(--font-display); font-weight: 800; font-size: var(--tile-name-size, 26px); text-transform: uppercase; line-height: 1.05; letter-spacing: -.02em; max-width: 100%; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 .heat-value { font-family: var(--font-display); font-size: var(--tile-value-size, 42px); font-weight: 700; line-height: 1.05; margin-top: 7px; }
 .heat-period { font-size: 13px; margin-top: 4px; }
@@ -64,6 +75,7 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 .heat-tile.compact .heat-period { font-size: 10px; }
 .heat-name, .heat-value, .heat-period { flex-shrink: 0; }
 .heat-tile.is-missing::before { background: #263342; }
+.heat-tile.snow-demo-white::before { background: var(--tile-bg); }
 .heatmap-empty { min-height: 430px; display: grid; place-items: center; text-align: center; max-width: 600px; margin: auto; color: #b5c6db; line-height: 1.8; }
 .heatmap-footer { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding: 18px 5px 10px; }
 .heatmap-legend { width: 55%; max-width: 850px; }

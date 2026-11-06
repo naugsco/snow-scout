@@ -11,11 +11,11 @@ import { loadOptionalSourceData, loadLiveForecastForResort, expireStaleWeather }
 import {
   renderDashboard, renderFilters, renderUpdatedAt, filteredResorts,
   ensureSelectionVisible, toggleFavorite, setOnResortClick,
-  setOnCompareToggle, loadHeatmapSeason, hideHeatmapPreview, refreshHeatmapPreview, reportPreviewForecastError
-} from './dashboard.js?v=20261021-sources-verified';
+  setOnCompareToggle, loadHeatmapSeason, hideHeatmapPreview, refreshHeatmapPreview, reportPreviewForecastError, refreshCurrentSnow
+} from './dashboard.js?v=20261106-live-snow';
 import { HEATMAP_METRICS } from './heatmap-metrics.js?v=20261021-sources-verified';
 import { icon, hydrateIcons } from './ui-icons.js?v=20261021-sources-verified';
-import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261105-map-layers';
+import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261106-live-snow';
 import { parseHash, updateHash, initRouter } from './router.js?v=20261021-sources-verified';
 import { toggleCompareResort, refreshComparison } from './comparison.js?v=20261021-sources-verified';
 import { createWeatherLayers } from './weather-layers.js?v=20261105-map-layers';
@@ -257,7 +257,7 @@ if (state.selectedId) {
 }
 loadHeatmapSeason();
 loadOptionalSourceData(onDataReady);
-setInterval(() => expireStaleWeather(onDataReady), 60000);
+setInterval(() => { expireStaleWeather(onDataReady); refreshCurrentSnow(); }, 60000);
 setInterval(() => loadOptionalSourceData(onDataReady), 15 * 60000);
 initRouter(resorts, (parsed) => {
   Object.assign(state, parsed);

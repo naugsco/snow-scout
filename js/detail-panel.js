@@ -4,7 +4,7 @@ import {
   getPassTone, getSourceKeyForResort, getConditionsPageForResort, getWebcamPageForResort,
   withCacheBust, webcamStreams
 } from './utils.js?v=20261021-sources-verified';
-import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261021-sources-verified';
+import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261106-live-snow';
 import { createSnowfallChart } from './snowfall-chart.js?v=20261021-sources-verified';
 import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261021-sources-verified';
 import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';

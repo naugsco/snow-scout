@@ -5,6 +5,7 @@ import { formatInches, formatRunAccess, formatPassLabel } from './utils.js?v=202
 import { fetchSnowfallCatalog, currentSnowfall } from './season-snowfall.js?v=20261021-sources-verified';
 import { HEATMAP_METRICS, rankResorts, heatColor, layoutHeatmap } from './heatmap-metrics.js?v=20261021-sources-verified';
 import { icon } from './ui-icons.js?v=20261021-sources-verified';
+import { currentSnowStatus, loadCurrentSnow } from './current-snow.js?v=20261106-live-snow';
 
 const root = document.getElementById('resort-list');
 const preview = document.getElementById('heatmap-preview');
@@ -18,8 +19,65 @@ let forecastUpdated = false;
 let showTimer;
 let hideTimer;
 const CAP = 20;
+// Visual experiment only; this flag does not indicate actual resort weather.
+const snowDemo = new URLSearchParams(window.location.search).get('snowDemo') === '1';
+const snowDemoWhite = snowDemo && new URLSearchParams(window.location.search).get('snowBackground') === 'white';
 const escape = (value) => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const metric = () => HEATMAP_METRICS.find((item) => item.id === state.sortMode) || HEATMAP_METRICS[3];
+
+function snowMarkup() {
+  // Three vector crystals, each assembled from six identical radial arms.
+  const arms = [
+    'M0 0V-10M0-6L-3-9M0-6L3-9M0-3L-2-5M0-3L2-5',
+    'M0 0V-10M0-5L-4-8M0-5L4-8M0-8L-2-10M0-8L2-10',
+    'M0 0V-10M0-4L-3-7M0-4L3-7M0-7L-3-10M0-7L3-10M0-2L-2-3M0-2L2-3'
+  ];
+  return `<span class="heat-snow" aria-hidden="true">${Array.from({ length: 18 }, (_, i) => {
+    const size = [12, 18, 14, 24, 16, 20][i % 6];
+    const duration = 6 + (i * 7 % 9);
+    const crystal = Array.from({ length: 6 }, (_, arm) => `<path d="${arms[i % arms.length]}" transform="rotate(${arm * 60})"/>`).join('');
+    return `<span class="heat-snow-flake" style="--flake-left:${(i * 37 + 7) % 100}%;--flake-size:${size}px;--flake-duration:${duration}s;--flake-delay:-${(i * 2.7 + 1) % duration}s;--flake-opacity:${.3 + (i % 4) * .15};--flake-turn:${i % 2 ? -90 : 90}deg;--flake-drift:${i % 2 ? -12 : 12}px"><svg viewBox="-12 -12 24 24" fill="none" stroke="white" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" focusable="false"><g class="heat-snow-outline">${crystal}</g><g>${crystal}</g></svg></span>`;
+  }).join('')}</span>`;
+}
+
+function applyTileColor(tile, color) {
+  // The white background override is restricted to the explicitly labeled demo.
+  if (tile.classList.contains('snow-demo-white')) color = heatColor(0, 0, 0);
+  tile.style.setProperty('--tile-bg', color.background);
+  tile.style.setProperty('--tile-fg', color.foreground);
+  // Use the palette's text-contrast choice to strengthen outlines on pale tiles.
+  tile.style.setProperty('--snow-outline-opacity', color.foreground === '#0b1b35' ? '.75' : '.25');
+}
+
+function updateTileSnow(tile, resort) {
+  const demo = snowDemo && tile.dataset.resortId === visibleRows[0]?.resort.id;
+  const snowing = currentSnowStatus(resort.currentSnow) === 'snowing';
+  if ((demo || snowing) && !tile.querySelector('.heat-snow')) tile.insertAdjacentHTML('afterbegin', snowMarkup());
+  if (!demo && !snowing) tile.querySelector('.heat-snow')?.remove();
+  tile.querySelector('.heat-snow-label')?.remove();
+  if (demo || snowing) {
+    const label = document.createElement('span');
+    label.className = 'heat-snow-label';
+    label.textContent = demo ? 'Snow animation demo' : 'Snowing · model';
+    if (!demo) label.title = `Open-Meteo current snowfall · ${new Date(resort.currentSnow.validAt).toLocaleString()}`;
+    tile.appendChild(label);
+  }
+  const row = visibleRows.find(row => row.resort.id === resort.id);
+  if (row) tile.setAttribute('aria-label', `${resort.name}, ${metric().label}: ${row.value === null ? 'Unavailable' : amount(row.value)}. Open resort details.${demo ? ' Snow animation demo.' : snowing ? ' Snowing now, weather-model estimate.' : ''}`);
+}
+
+function updateSnowTiles() {
+  root.querySelectorAll('.heat-tile').forEach(tile => {
+    const row = visibleRows.find(row => row.resort.id === tile.dataset.resortId);
+    if (row) updateTileSnow(tile, row.resort);
+  });
+}
+
+export function refreshCurrentSnow() {
+  updateSnowTiles();
+  loadCurrentSnow(visibleRows.map(row => row.resort), updateSnowTiles)
+    .catch(error => console.error('Current snowfall:', error.message));
+}
 
 export function baseFilteredResorts() {
   const query = state.searchQuery.toLowerCase().trim();
@@ -178,11 +236,10 @@ export function refreshHeatmapPreview(resort) {
     const row = byId.get(tile.dataset.resortId);
     if (!row) return;
     const color = heatColor(row.value, Math.min(...values), Math.max(...values));
-    tile.style.setProperty('--tile-bg', color.background);
-    tile.style.setProperty('--tile-fg', color.foreground);
+    applyTileColor(tile, color);
     tile.querySelector('.heat-value').textContent = amount(row.value);
     tile.querySelector('.heat-source').textContent = provenance(row.resort);
-    tile.setAttribute('aria-label', `${row.resort.name}, ${metric().label}: ${row.value === null ? 'Unavailable' : amount(row.value)}. Open resort details.`);
+    updateTileSnow(tile, row.resort);
   });
   const tile = [...root.querySelectorAll('.heat-tile')].find((item) => item.dataset.resortId === resort.id);
   if (hoveredId === resort.id && tile) {
@@ -264,11 +321,12 @@ export function renderDashboard() {
     tile.type = 'button';
     tile.className = `heat-tile${value === null ? ' is-missing' : ''}${state.selectedId === resort.id ? ' selected' : ''}`;
     tile.dataset.resortId = resort.id;
+    tile.classList.toggle('snow-demo-white', snowDemoWhite && row === visibleRows[0]);
     const color = heatColor(value, min, max);
-    tile.style.setProperty('--tile-bg', color.background);
-    tile.style.setProperty('--tile-fg', color.foreground);
+    applyTileColor(tile, color);
     tile.setAttribute('aria-label', `${resort.name}, ${metric().label}: ${value === null ? 'Unavailable' : amount(value)}. Open resort details.`);
     tile.innerHTML = `<strong class="heat-name">${escape(resort.name)}</strong><span class="heat-value">${amount(value)}</span><span class="heat-period">${value === null ? 'Not available' : metric().caption}</span><span class="heat-source">${escape(provenance(resort))}</span>`;
+    updateTileSnow(tile, resort);
     tile.addEventListener('pointerenter', (event) => { if (event.pointerType === 'touch' || preview.matches(':hover')) return; clearTimeout(showTimer); clearTimeout(hideTimer); showTimer = setTimeout(() => showPreview(resort, tile, true), 120); });
     tile.addEventListener('pointerleave', (event) => { clearTimeout(showTimer); if (!preview.contains(event.relatedTarget)) hideTimer = setTimeout(hideHeatmapPreview, 110); });
     tile.addEventListener('focus', () => showPreview(resort, tile));
@@ -277,6 +335,7 @@ export function renderDashboard() {
     root.appendChild(tile);
   }
   positionTiles();
+  refreshCurrentSnow();
 }
 
 export async function loadHeatmapSeason() {

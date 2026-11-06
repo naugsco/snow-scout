@@ -1,0 +1,48 @@
+#travel-panel { --muted:#afc0d3; }
+[data-theme=light] #travel-panel { --muted:#506477; }
+.travel-intro { margin: 8px 0 22px; }
+.travel-eyebrow { display:flex; align-items:center; gap:8px; color:#81bdff; font-size:10px; font-weight:700; letter-spacing:.12em; }
+.travel-intro h3 { font-size:28px; letter-spacing:-.04em; margin:10px 0 6px; }
+.travel-intro p, .travel-next p { color:var(--muted); font-size:13px; line-height:1.65; }
+.travel-snow { display:flex; align-items:flex-start; gap:14px; padding:16px; background:#2589ef18; border:1px solid #2589ef55; border-radius:12px; }
+.travel-snow strong { font-size:15px; }
+.travel-snow p { color:var(--muted); font-size:12px; line-height:1.6; margin:5px 0 0; }
+.travel-terrain { font-size:12px; line-height:1.6; margin:12px 0 2px; }
+.travel-official { color:#81bdff; font-size:12px; text-decoration:underline; }
+.travel-form { margin-top:22px; }
+.travel-fields { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+.travel-fields label { display:flex; flex-direction:column; gap:7px; font-size:12px; color:var(--muted); min-width:0; }
+.travel-fields input, .travel-fields select { box-sizing:border-box; width:100%; min-width:0; min-height:44px; background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:8px; font:inherit; padding:10px; color-scheme:dark; }
+.travel-fields input[name=origin], .travel-fields input[name=destination] { font-weight:700; }
+.travel-fields input::placeholder { font-size:11px; font-weight:400; }
+.travel-airports > span { font-size:11px; color:var(--muted); }
+.travel-airports > div { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; margin:8px 0; }
+.travel-airports button { flex:1 1 100px; min-width:0; display:flex; flex-direction:column; align-items:flex-start; text-align:left; gap:4px; padding:10px; border-radius:8px; border:1px solid var(--line); background:#ffffff04; color:var(--text); }
+.travel-airports button span { font-size:11px; }
+.travel-airports button small { font-size:10px; color:var(--muted); }
+.travel-airports button[aria-pressed=true] { border-color:#2589ef; background:#2589ef22; }
+.travel-small, .travel-footnote, .travel-service, .travel-storage { font-size:11px; line-height:1.65; color:var(--muted); }
+.travel-small a { text-decoration:underline; }
+.travel-error { color:#ffbe92; font-size:13px; line-height:1.6; margin:8px 0; }
+.travel-flight-actions { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 8px; }
+.travel-link, .travel-primary { display:inline-flex; justify-content:center; align-items:center; min-height:40px; gap:7px; padding:10px 14px; border:1px solid var(--line); background:#ffffff08; color:var(--text); border-radius:8px; font:inherit; font-size:12px; text-decoration:none; }
+.travel-primary, .travel-kayak { background:#2589ef; color:#fff; border-color:#2589ef; font-weight:600; }
+.travel-link:hover, .travel-primary:hover { border-color:#81bdff; }
+.travel-link[aria-disabled=true], .travel-primary:disabled { opacity:.5; cursor:not-allowed; }
+.travel-next { display:grid; gap:12px; margin:22px 0 16px; }
+.travel-next article { padding:16px; border:1px solid var(--line); border-radius:12px; }
+.travel-next h4 { display:flex; gap:8px; align-items:center; margin:0 0 8px; font-size:15px; }
+.travel-next .travel-link { margin:10px 5px 5px 0; }
+.travel-footnote { border-top:1px solid var(--line); padding-top:14px; }
+.travel-offer { margin:12px 0; padding:14px; border:1px solid var(--line); border-radius:10px; }
+.travel-offer p, .travel-results > p { font-size:12px; line-height:1.6; margin:8px 0; }
+.travel-offer-head { display:flex; justify-content:space-between; gap:12px; }
+.travel-offer-head strong { font-size:20px; color:#81bdff; }
+.travel-offer-head small { display:block; font-size:11px; font-weight:400; }
+.travel-offer-head > span { font-size:12px; }
+.preview-travel button { border:0; background:transparent; color:inherit; padding:0; text-align:left; font:inherit; width:100%; }
+.preview-travel button strong { color:#81bdff; }
+[data-theme=light] .travel-fields input, [data-theme=light] .travel-fields select { color-scheme:light; background:white; }
+[data-theme=light] .travel-eyebrow, [data-theme=light] .travel-official, [data-theme=light] .travel-offer-head strong { color:#0966bd; }
+[data-theme=light] .travel-error { color:#a33700; }
+@media(max-width:420px) { .travel-fields { gap:8px; } .travel-intro h3 { font-size:25px; } .travel-airports > div { grid-template-columns:repeat(2,minmax(0,1fr)); } .travel-offer-head { flex-direction:column; } }

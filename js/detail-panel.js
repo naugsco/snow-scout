@@ -8,6 +8,7 @@ import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261106-live-sn
 import { createSnowfallChart } from './snowfall-chart.js?v=20261021-sources-verified';
 import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261021-sources-verified';
 import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';
+import { renderTravelPanel } from './travel-panel.js?v=20261022-travel';
 
 const detailOverlay = document.getElementById('detail-overlay');
 const detailPanel = document.getElementById('detail-panel');
@@ -200,16 +201,19 @@ export function setActiveTab(tabName) {
   document.querySelectorAll('.tab-panel').forEach((panel) => {
     panel.classList.toggle('active', panel.id === `tab-${tabName}`);
   });
+  if (tabName === 'travel') renderTravelPanel(selectedResort());
 }
 
 export function renderDetailPanel() {
   const resort = selectedResort();
   if (!resort) {
+    renderTravelPanel(null);
     detailOverlay.style.display = 'none';
     return;
   }
 
   detailOverlay.style.display = 'flex';
+  if (state.currentTab === 'travel') renderTravelPanel(resort);
   detailName.textContent = resort.name;
   document.getElementById('detail-mountain').href = mountainUrl(resort);
   detailFavorite.textContent = favoriteGlyph(resort.id);

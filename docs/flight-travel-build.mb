@@ -1,0 +1,116 @@
+# Snow Scout travel feature — working instructions and build log
+
+Updated: 2026-10-21 Vancouver / 2026-10-22 UTC. Owner: Nick. This is Markdown text with the requested .mb extension.
+
+## Purpose and agreed scope
+
+Serve international storm chasers. Help compare snow, arrival timing, airport-to-resort travel and trip cost. Start with KAYAK. Keep the heatmap clean; expose travel in resort details and hover previews. Never fabricate prices or imply that a historical estimate is a current offer. Nick has authorized this first implementation and requested setup instructions if partner credentials cannot be obtained automatically.
+
+No traffic yet. Income aspirations: $2,000/month useful, $5,000/month excellent; these are goals, not forecasts. Recommend trips for traveler benefit, never highest commission.
+
+## First build
+
+- [x] Add Plan this trip tab and preview entry point.
+- [x] Origin preference, destination airport choices, explicit travel dates and adults. Currency is shown only when API quotes are enabled; ordinary KAYAK links use the external site's currency setting.
+- [x] Source-backed airport catalog; geographic proximity is not a drive-time or route recommendation.
+- [x] Current resort forecast and operating status beside travel choices; no invented arrival-before-storm promise.
+- [x] Working ordinary KAYAK search links while affiliate approval is pending. These earn no affiliate revenue yet.
+- [x] Directions/transit and nearby lodging discovery. No transfer schedules, hotel availability or trip totals invented.
+- [x] Server-only KAYAK search adapter using documented endpoints, bounded polling and request limits; disabled without credentials. Contract-tested with isolated synthetic fixtures, NOT tested against an issued API key.
+- [x] Sandbox results labeled synthetic. Gateway is loopback-only; public Pages stays in ordinary-link mode.
+- [x] Validate forms, preserve edits across tabs/updates, check desktop/mobile, run tests and static packaging.
+- [x] Record validation and remaining limitations below.
+
+## Verified KAYAK contract
+
+Sources read 2026-10-21:
+- https://affiliates.kayak.com/apis — approval required before production keys.
+- https://affiliates.kayak.com/deeplinks — affiliate portal generates tracked links; do not invent an affiliate code.
+- https://developers.kayak.com/ — Getting Started and Flights Search API.
+- https://developers.kayak.com/flights-search-api — POST /i/api/affiliate/search/flight/v1/poll; query apiKey, userTrackId and cluster (after initial response). Poll first-phase/second-phase until complete. Preserve searchId/cluster. Use returned booking URLs, not fabricated booking links.
+
+Getting Started states: API keys arrive by email; sandbox base is https://sandbox-en-us.kayakaffiliates.com; sandbox fares are mocked, links synthetic, keys expire after three months. Search needs a per-user/session UUID, actual User-Agent and x-original-client-ip (or provider-approved exemption). Never put the key in browser URLs, logs, frontend configuration or GitHub. Production domain comes from KAYAK; do not guess it. Flight API supports regular and split bookings; first build requests regular bookings only. Price can be -1 for scheduling-only results: withhold that value. Preserve currency, per-person/total basis, dates, provider disclosures and unknown ski-bag fees.
+
+## Access for Nick
+
+1. Open https://affiliates.kayak.com/apis#get-in-touch.
+2. Supply your full name, business email, business name and https://naugsco.github.io/snow-scout/.
+3. Request sandbox access, then production Flight Search API and affiliate deep links.
+4. Project description to use:
+
+   Snow Scout helps international skiers compare resort snowfall forecasts and plan trips from a chosen departure airport. We are pre-launch with no established traffic. We want user-initiated round-trip flight searches to airports near selected resorts, displaying dates, currency, passenger count and provider booking links. We will direct bookings to KAYAK/supply partners, not issue tickets. We also plan contextual accommodation and ground-transport links. Please assess our eligibility for sandbox and production access, confirm permitted display/caching, request limits, market coverage, costs, commission terms, attribution and the assigned production API domain.
+
+5. KAYAK must review the request. An API key cannot be generated locally. Their form needs business details not supplied in this chat. Nick can complete it using these instructions; no account or application has been submitted.
+6. Store the issued key in a password manager first. Local development uses a git-ignored .env.travel with file permissions 600. Hosting uses the server host's secret store, not a browser or static-site build variable. Do not paste the key into chat. Exact variable names and run steps will be recorded with the implementation.
+
+## Local preview and credential handoff
+
+Verified with Node 24.13.1. From this repository:
+
+```sh
+node server/travel-server.mjs
+```
+
+Open http://127.0.0.1:4174/#resort=heavenly&tab=travel . The server packages a snapshot of public files at startup. Restart after source edits. It intentionally accepts loopback connections only; this is not a publicly deployed API. Port 4174 is also used by the older Vite mountain design reference; stop that reference before running this preview.
+
+After KAYAK emails a key:
+
+1. Stop any generic static server serving the repository root (including the existing preview on 4173) BEFORE creating a secret file. Generic static servers can serve dotfiles even when Git ignores them.
+2. Copy `.env.travel.example` to `.env.travel`; set permission 600. Open the latter in your editor, and paste the key into `KAYAK_API_KEY`. Do not put it on the command line or in this document. Set `KAYAK_MODE=sandbox` for a sandbox key. No credential file was created during this build.
+3. Run `node --env-file=.env.travel server/travel-server.mjs`. Node's env-file flag needs Node 20.6+; the verified local Node version supports it.
+4. The UI should show SANDBOX and a test-fare search button. This is synthetic, not a price check. Never let a screenshot or demo imply these are real fares.
+5. Production requires an approved production key plus `KAYAK_MODE=live` and `KAYAK_BASE_URL` set to the exact partner origin KAYAK assigns. Never relabel a sandbox key as live. Confirm current API response contract and price freshness/booking-link rules before enabling production.
+6. Ask KAYAK how to test locally: the requesting client's actual IP is loopback in this preview. Their Getting Started docs permit an approved exemption when the real client IP cannot be obtained. Do not invent an IP or impersonate a browser to work around access checks.
+
+GitHub Pages cannot run this Node gateway. A later production step must choose a backend host, put credentials in its secret store, configure trusted client-IP forwarding, HTTPS, exact allowed origins, distributed rate/budget controls and partner attribution. Public `js/travel-config.js` deliberately contains `apiBase: null`. The local server overrides it with only the public path `/api/travel`; keys never enter it. Do not expose the current local server by removing its loopback checks.
+
+## Implementation map
+
+- `js/travel.js`: validated date/airport/traveler inputs, search URLs, geographic airport selection, directions and lodging links, fresh forecast context.
+- `js/travel-panel.js` and `travel.css`: resort trip tab, persisted departure preference, per-resort session drafts, accessible form, no-key/API/error/sandbox/offer states. Quotes clear after ten minutes as a conservative local policy, pending provider TTL agreement.
+- `js/main.js`, `js/detail-panel.js`, `index.html`: preview action and modal integration; query versions changed only for changed entry modules.
+- `data/travel-airports.json`: 3,244 scheduled medium/large passenger-airport records from OurAirports. Contains retrieval time, original download URL and SHA-256. Source is community-maintained and can contain seasonal/charter airports; choices do not certify available flights. Three geographically nearest large airports within 800 km plus two medium airports within 300 km are shown; any catalog airport can be entered. No hotel/transfer fares are seeded.
+- `scripts/import_travel_airports.py`: reproducible CSV importer; validates duplicate IATA codes and unexpectedly small downloads. Refresh using a newly downloaded https://ourairports.com/data/airports.csv, then `python3 scripts/import_travel_airports.py <csv-path>`; check airport suggestions afterward.
+- `server/kayak.mjs`: documented round-trip economy requests, real user-agent/IP forwarding, session UUID, at most 8 polls, bounded request time, first page of 10 itineraries, regular bookings, explicit partial/error states, preserved fare/operating-carrier disclosures, no schedule-only -1 prices. Upstream error bodies/URLs are not exposed.
+- `server/travel-server.mjs`: local preview from the packaged public artifact only, private environment configuration, origin/host checks, per-session limits and a 180 upstream-call/hour budget. No database/accounts or flight-key storage in the browser.
+- `scripts/package_site.py` and packaging tests: include public travel modules/styles/catalog; exclude server, docs, credentials and test fixtures.
+- `tests/travel.test.mjs`: 12 additional behavioral/HTTP tests. Synthetic fares exist only in tests, which never ship.
+
+## Validation record
+
+- `node --test tests/*.test.mjs`: 57 passing tests (45 existing + 12 travel).
+- `python3 -m unittest discover -s tests -p 'test_*.py'`: 13 passing tests, including actual static packaging and resource resolution.
+- JS syntax checks and `git diff --check` pass.
+- Browser: direct travel hash, preview-to-travel action, origin preference reload, changed dates and adult count carried into KAYAK link, invalid return date disables link, tab switching preserves edits.
+- Mobile: 390 × 844 viewport, form/route controls readable, page width 390 and modal scroll width equals client width (no horizontal overflow).
+- Verified KAYAK consumer URL visibly loads YVR → RNO, Nov 20–24, two travelers. Ordinary currency query was ignored, so it was removed; quote currency is hidden in no-key mode.
+- A direct browser Open-Meteo request failed transiently during QA; existing forecast handling showed the failure and subsequent model data refreshed. This was unrelated to KAYAK; no travel fare was substituted.
+- Actual KAYAK API response, real offer accuracy, affiliate attribution and production gateway deployment remain UNVERIFIED / NOT ACTIVE until access is issued and tested.
+
+## Remaining work for next discussion
+
+1. Nick submits the KAYAK partner application with business identity and email; no account/application has been submitted here.
+2. Test issued sandbox credentials, then a live route matrix after approval. Verify display-price basis, operating-carrier/fare disclosures, baggage, booking redirects and provider-specific expiration.
+3. Decide production backend hosting; add production controls and wire the public client only after testing.
+4. Add approved tracked links and verify attribution. Current public search links earn no commission.
+5. Curate verified resort gateways, winter transfer operators/timetables, rental options and resort-area hotel results. Current ground/stay links are discovery tools, not quotes or reservations.
+6. Separate departure, local arrival, check-in and ski dates before automatic trip totals or storm-arrival scoring. No automatic arrival-before-storm claim in this build.
+7. Profiles, saved/shareable plans, notifications, subscriptions and automated multi-resort fare comparisons are deferred.
+
+## Later milestones
+
+After actual production access: validate real routes across North America, Europe and Japan; booking-price match, taxes/baggage, missing airline coverage and latency. Confirm redistribution/attribution before activating revenue claims. Add manually vetted airport gateways and resort transfer pages, hotels/cars APIs, separate local arrival/check-in dates, and a trip-cost breakdown only when components are quoted. Consider saved plans, shareable itineraries and paid alerts after accuracy is proven. Do not query all resorts on every heatmap hover. Group shared airports; cache only as licensed.
+
+## Research decisions to retain
+
+Google has supplier integrations, no open consumer Google Flights search API. SerpApi is third-party scraping, not Google authorization or affiliate income. Skyscanner API gate is 100K MAU; its affiliate gate is >5K monthly unique visitors. Aviasales live API gate is 50K MAU and disallows mixing competing metasearch APIs; its cached Data API is inappropriate as live storm-trip pricing. Amadeus self-service is decommissioned. Duffel is a ticket-selling model with fees, not the first click-out affiliate choice. Expedia and DiscoverCars remain possible later affiliate candidates. Recheck terms before integration.
+
+## Progress
+
+- First local build complete. Changes are in the workspace, not committed or pushed; the live GitHub Pages deployment is unchanged.
+- Final regression run: 57 Node + 13 Python tests passed. Preview running at http://127.0.0.1:4174/ with KAYAK off. Screenshot: `output/travel-build-qa/desktop.png` (local QA artifact, excluded from packaging).
+- Updated the portable project registry at `~/Documents/Skills/project-registry/PROJECTS.md` with the verified preview command, snapshot/restart behavior and credential handling.
+- Inspected current static ES-module app, resort modal, heatmap preview, router and Pages packaging.
+- Read KAYAK public authentication and full flight search schema; found sandbox is explicitly synthetic.
+- Verified ordinary KAYAK flight URL preserves origin, destination, dates and adult count. Currency query did not change the displayed site currency; do not promise currency persistence on ordinary external links.
+- Existing unrelated untracked output/QA files are outside this feature's scope.

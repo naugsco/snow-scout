@@ -10,6 +10,7 @@
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261020-all-trails">
   <link rel="stylesheet" href="heatmap.css?v=20261106-live-snow">
+  <link rel="stylesheet" href="travel.css?v=20261022-travel">
 </head>
 <body>
   <div class="app-layout heatmap-app">
@@ -75,8 +76,10 @@
         <button class="tab-btn" data-tab="forecast">Forecast</button>
         <button class="tab-btn" data-tab="trail-map">Trail Map</button>
         <button class="tab-btn" data-tab="webcams">Webcams</button>
+        <button class="tab-btn" data-tab="travel">Plan trip</button>
       </div>
 
+      <section id="tab-travel" class="tab-panel"><div id="travel-panel"></div></section>
       <section id="tab-overview" class="tab-panel active">
         <div id="detail-visual-grid" class="detail-visual-grid"></div>
         <div id="detail-snow-bars" class="detail-snow-bars"></div>

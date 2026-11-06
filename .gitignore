@@ -3,5 +3,12 @@ node_modules/
 .DS_Store
 *.log
 .env
+.env.*
+!.env.travel.example
 .claude/
 data/config.json
+.playwright-cli/
+.playwright-mcp/
+output/
+__pycache__/
+*.pyc

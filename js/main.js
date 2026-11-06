@@ -124,13 +124,21 @@ airportRoot.hidden = false;
 airportRoot.innerHTML = `<label class="airport-preference">${icon('plane')}<span>From</span><input id="airport-input" maxlength="3" pattern="[A-Za-z]{3}" placeholder="IATA" aria-label="Departure airport, three-letter code" title="Set your departure airport (for example YVR)"></label>`;
 const airportInput = document.getElementById('airport-input');
 airportInput.value = localStorage.getItem('snow-scout-airport') || '';
+let previewTravelResort = null;
 function updateTravelPreview() {
   const root = document.getElementById('preview-travel');
   if (!root) return;
   root.className = 'preview-travel';
-  root.innerHTML = `${icon('plane')}<div><span></span><strong>Flight prices coming soon</strong></div>`;
+  root.innerHTML = `${icon('plane')}<button type="button"><span></span><strong>Plan this snow trip →</strong></button>`;
   root.querySelector('span').textContent = airportInput.value ? `From ${airportInput.value.toUpperCase()}` : 'Set your departure airport above';
+  root.querySelector('button').addEventListener('click', () => {
+    if (!previewTravelResort) return;
+    focusResort(previewTravelResort, { fly: false });
+    setActiveTab('travel'); syncHash();
+    document.querySelector('[data-tab="travel"]').focus();
+  });
 }
+document.addEventListener('travel-airport-change', event => { airportInput.value = event.detail; updateTravelPreview(); });
 airportInput.addEventListener('input', () => {
   airportInput.value = airportInput.value.toUpperCase().replace(/[^A-Z]/g, '');
   if (!airportInput.value || airportInput.value.length === 3) {
@@ -144,6 +152,7 @@ airportInput.addEventListener('change', () => {
   updateTravelPreview();
 });
 document.getElementById('heatmap-preview').addEventListener('preview-ready', (event) => {
+  previewTravelResort = event.detail.resort;
   updateTravelPreview();
   const resort = event.detail.resort;
   if (resort.liveForecastStatus === 'ready' || resort.liveForecastStatus === 'loading') return;

@@ -1,18 +1,29 @@
 import { finiteNumber, isFresh, SNAPSHOT_MAX_AGE_MS } from './condition-data.js?v=20261021-sources-verified';
+import { weatherLocation } from './weather-location.js?v=20261106-mountain-weather';
 
 const HOUR = 3600;
 const round = (value) => value === null ? null : Math.round(value * 100) / 100;
 const inches = (value) => { const n = finiteNumber(value); return n === null ? null : n / 2.54; };
 
 export function weatherUrl(resort) {
+  const point = weatherLocation(resort);
   const params = new URLSearchParams({
-    latitude: resort.lat.toFixed(4), longitude: resort.lon.toFixed(4),
+    latitude: point.lat.toFixed(4), longitude: point.lon.toFixed(4),
     daily: 'snowfall_sum,temperature_2m_max,temperature_2m_min,weather_code',
     hourly: 'snowfall,temperature_2m,snow_depth',
     past_days: '3', forecast_days: '7', temperature_unit: 'fahrenheit',
     timezone: 'auto', timeformat: 'unixtime'
   });
+  if (Number.isFinite(point.elevationM)) params.set('elevation', String(point.elevationM));
   return `https://api.open-meteo.com/v1/forecast?${params}`;
+}
+
+export function forecastMatchesLocation(resort, forecast) {
+  if (!forecast?.apiUrl) return false;
+  const expected = new URL(weatherUrl(resort));
+  let actual;
+  try { actual = new URL(forecast.apiUrl); } catch { return false; }
+  return ['latitude','longitude','elevation'].every(key => actual.searchParams.get(key) === expected.searchParams.get(key));
 }
 
 function localDate(seconds, offset) {
@@ -20,6 +31,8 @@ function localDate(seconds, offset) {
 }
 
 export function parseWeather(payload, apiUrl, now = new Date()) {
+  const requested = new URL(apiUrl || '', 'https://api.open-meteo.com');
+  const coordinate = key => requested.searchParams.has(key) ? finiteNumber(Number(requested.searchParams.get(key)), {negative:true}) : null;
   if (payload?.hourly_units?.snowfall !== 'cm' || payload?.daily_units?.snowfall_sum !== 'cm'
       || payload?.hourly_units?.temperature_2m !== '°F' || payload?.hourly_units?.snow_depth !== 'm') {
     throw new Error('Weather response has missing or unexpected units.');
@@ -55,6 +68,7 @@ export function parseWeather(payload, apiUrl, now = new Date()) {
   }
   const dailySnowfall = dailyTime.map((_, i) => round(inches(payload.daily.snowfall_sum?.[today + i])));
   const forecast = {
+    weatherLocation: { latitude:coordinate('latitude'), longitude:coordinate('longitude'), elevationM:finiteNumber(payload.elevation, {negative:true}), gridLatitude:finiteNumber(payload.latitude, {negative:true}), gridLongitude:finiteNumber(payload.longitude, {negative:true}) },
     status: 'ok', apiUrl, forecast72h, dailySnowfall, dailyTime,
     tempMax: dailyTime.map((_, i) => finiteNumber(payload.daily.temperature_2m_max?.[today + i], { negative: true })),
     tempMin: dailyTime.map((_, i) => finiteNumber(payload.daily.temperature_2m_min?.[today + i], { negative: true })),

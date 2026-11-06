@@ -1,24 +1,24 @@
-import { openTripComparison, refreshTripComparison } from './trip-comparison.js?v=20261106-trips';
+import { openTripComparison, refreshTripComparison } from './trip-comparison.js?v=20261106-all-travel-guides';
 import { DEFAULT_WEBCAM_PAGES } from './constants.js?v=20261021-sources-verified';
 import { state, setUseMetric, setTheme } from './state.js?v=20261021-sources-verified';
-import { normalizeResortName, getSourceKeyForResort, webcamPages, withCacheBust } from './utils.js?v=20261021-sources-verified';
+import { normalizeResortName, getSourceKeyForResort, webcamPages, withCacheBust } from './utils.js?v=20261106-mountain-weather';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import {
   viewer, createMarkerEntity, updateMarkerVisibility, updateMarkerStyles,
   syncHoverCardToEntity, screenSpaceHandler, resortForScreenPosition,
   updateZoomReadout, setAutoRotate, preparePaintedGlobe
 } from './cesium-map.js?v=20261105-map-layers';
-import { loadOptionalSourceData, loadLiveForecastForResort, expireStaleWeather } from './data-loader.js?v=20261021-sources-verified';
+import { loadOptionalSourceData, loadLiveForecastForResort, expireStaleWeather } from './data-loader.js?v=20261106-mountain-weather';
 import {
   renderDashboard, renderFilters, renderUpdatedAt, filteredResorts,
   ensureSelectionVisible, toggleFavorite, setOnResortClick,
   setOnCompareToggle, loadHeatmapSeason, hideHeatmapPreview, refreshHeatmapPreview, reportPreviewForecastError, refreshCurrentSnow
-} from './dashboard.js?v=20261106-live-snow';
+} from './dashboard.js?v=20261106-mountain-weather';
 import { HEATMAP_METRICS } from './heatmap-metrics.js?v=20261021-sources-verified';
 import { icon, hydrateIcons } from './ui-icons.js?v=20261021-sources-verified';
-import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261106-live-snow';
+import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261106-mountain-weather';
 import { parseHash, updateHash, initRouter } from './router.js?v=20261021-sources-verified';
-import { toggleCompareResort, refreshComparison } from './comparison.js?v=20261106-trips';
+import { toggleCompareResort, refreshComparison } from './comparison.js?v=20261106-all-travel-guides';
 import { createWeatherLayers } from './weather-layers.js?v=20261106-weather-backend';
 import { bindWeatherControls } from './weather-controls.js?v=20261105-map-layers';
 import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';

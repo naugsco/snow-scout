@@ -1,5 +1,24 @@
 # Snowfall data
 
+Current and forecast weather now use separate ski-terrain points in
+`js/weather-locations-data.js`, built by `scripts/build_weather_locations.mjs`.
+The same points drive browser current-snow checks, browser forecasts and the
+hourly forecast collector. Whistler uses Roundhouse / PEAK 2 PEAK at the official
+1,850 m elevation; the other points are spatial samples of mapped ski trails
+with Open-Meteo DEM elevation. They are not measured weather stations, guaranteed
+mid-elevation points, or conditions across every mountain in grouped destinations.
+Requested coordinates, returned model grid centers and elevation are recorded in
+each forecast. See `docs/mountain-weather-audit.md` for all 105 locations.
+Old model snapshots at changed locations are withheld rather than reused.
+The historical ERA5 season series below is unchanged and uses its existing
+coarse grid/catalog coordinates; do not compare it as an identical mountain station.
+
+Whistler's official October 21, 2026 snow report is currently stale. Its terrain
+page explicitly says trail and lift status is offline before winter opening.
+The collector recognizes this notice; unknown operations are never zero counts.
+Neither this correction nor a positive forecast establishes that it is snowing
+at this instant. The snow animation remains explicitly labeled as model output.
+
 `resort-snowfall.json` contains **weather-model estimates**, using Open-Meteo's
 ECMWF ERA5 reanalysis at the coordinates in `js/constants.js`. These are not
 resort snow-stake measurements. ERA5 has approximately 25 km resolution and

@@ -1,4 +1,4 @@
-import { formatInches } from './utils.js?v=20261021-sources-verified';
+import { formatInches } from './utils.js?v=20261106-mountain-weather';
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
 export function createSnowfallChart(dailySnowfall, dailyTime) {

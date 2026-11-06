@@ -1,5 +1,5 @@
 import { resorts } from './resorts.js?v=20261021-sources-verified';
-import { formatInches } from './utils.js?v=20261021-sources-verified';
+import { formatInches } from './utils.js?v=20261106-mountain-weather';
 import { rankedSnowfall, fetchSnowfallCatalog } from './season-snowfall.js?v=20261021-sources-verified';
 
 let onResortClick = null;

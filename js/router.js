@@ -1,4 +1,4 @@
-import { normalizeResortName } from './utils.js?v=20261021-sources-verified';
+import { normalizeResortName } from './utils.js?v=20261106-mountain-weather';
 
 const PARAM_MAP = {
   resort: 'selectedId',

@@ -2,7 +2,7 @@ import { RAW_RESORTS } from './constants.js?v=20261021-sources-verified';
 import {
   normalizeResortName,
   getRegion, getRegionLabel, inferStatus, getStatusText
-} from './utils.js?v=20261021-sources-verified';
+} from './utils.js?v=20261106-mountain-weather';
 
 import { emptyMetrics } from './condition-data.js?v=20261021-sources-verified';
 

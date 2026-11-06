@@ -4,12 +4,12 @@ import {
   getSourceKeyForResort, inferStatus, getStatusText, buildForecastUrl,
   conditionPages, webcamPages, webcamStreams, forecastCache, forecastRequests,
   getConditionsPageForResort
-} from './utils.js?v=20261021-sources-verified';
+} from './utils.js?v=20261106-mountain-weather';
 import { DEFAULT_CONDITION_PAGES } from './constants.js?v=20261021-sources-verified';
 
 import { CONDITION_KEYS, isFresh } from './condition-data.js?v=20261021-sources-verified';
-import { chooseConditions } from './condition-selection.js?v=20261021-sources-verified';
-import { parseWeather, forecastIsCurrent } from './weather-data.js?v=20261021-sources-verified';
+import { chooseConditions } from './condition-selection.js?v=20261106-mountain-weather';
+import { parseWeather, forecastIsCurrent, forecastMatchesLocation } from './weather-data.js?v=20261106-mountain-weather';
 
 // Initialize conditionPages with defaults
 Object.assign(conditionPages, DEFAULT_CONDITION_PAGES);
@@ -17,7 +17,10 @@ let conditionSnapshot = null;
 
 export function applyLiveConditions(conditionCatalog, snapshotAt, now = Date.now()) {
   resorts.forEach((resort) => {
-    const published = conditionCatalog[getSourceKeyForResort(resort.name)];
+    let published = conditionCatalog[getSourceKeyForResort(resort.name)];
+    if (published && (published.snowSourceKind === 'model' || published.adapter === 'open-meteo') && !forecastMatchesLocation(resort,{apiUrl:published.sources?.weatherModel || published.sources?.conditions})) {
+      published = {...published, snowStatus:'unverified', metrics:{...published.metrics,tempF:null}, note:'Previous model location changed; awaiting a fresh terrain forecast.'};
+    }
     const live = chooseConditions(published, snapshotAt, forecastCache.get(getSourceKeyForResort(resort.name)), now);
     const assessment = live;
     // Replacement, never a merge with generated or previously loaded condition values.
@@ -77,7 +80,7 @@ export async function loadLiveForecastForResort(resort, onDataReady) {
   const sourceKey = getSourceKeyForResort(resort.name);
   if (!sourceKey) return null;
 
-  if (forecastIsCurrent(forecastCache.get(sourceKey))) {
+  if (forecastIsCurrent(forecastCache.get(sourceKey)) && forecastMatchesLocation(resort,forecastCache.get(sourceKey))) {
     const cached = forecastCache.get(sourceKey);
     applyForecastToResortKey(sourceKey, cached, onDataReady);
     return cached;
@@ -128,7 +131,7 @@ export async function loadOptionalSourceData(onDataReady) {
         for (const resort of resorts) {
           const key = getSourceKeyForResort(resort.name);
           const forecast = payload.resorts[key];
-          if (fresh && forecastIsCurrent(forecast)) {
+          if (fresh && forecastIsCurrent(forecast) && forecastMatchesLocation(resort,forecast)) {
             if (forecastIsCurrent(resort.liveForecast) && Date.parse(resort.liveForecast.updatedAt) > Date.parse(forecast.updatedAt)) continue;
             forecastCache.set(key, forecast);
             applyForecastToResortKey(key, forecast);

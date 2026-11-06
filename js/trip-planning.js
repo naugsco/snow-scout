@@ -1,10 +1,6 @@
-import { validDate, addDays, localDate } from './travel.js?v=20261106-trips';
-export const GATEWAYS = {
-  'Whistler Blackcomb': { code:'YVR', url:'https://www.yvr.ca/en/passengers/transportation/public-transportation/long-distance-scheduled-buses/whistler', note:'YVR lists a direct Whistler bus service. Check the operator’s current timetable and ski-bag allowance.' },
-  'Heavenly': { code:'RNO', url:'https://www.skiheavenly.com/Explore%20the%20Resort/About%20the%20Resort/Getting%20Here%20and%20Parking.aspx', note:'Heavenly publishes access guidance from Reno–Tahoe. Confirm your transfer and winter road conditions.' },
-  'Niseko United': { code:'CTS', url:'https://www.niseko.ne.jp/en/getting-to-niseko3/', note:'Niseko United publishes access from New Chitose. Check seasonal bus dates, reservations and final departure.' },
-  'Chamonix (Mont Blanc)': { code:'GVA', url:'https://en.chamonix.com/usual-information-services/transports', note:'Chamonix tourism identifies Geneva as an access airport. This route crosses an international border.' }
-};
+import { validDate, addDays, localDate } from './travel.js?v=20261106-all-travel-guides';
+import { TRAVEL_GUIDES } from './travel-guides.js?v=20261106-all-travel-guides';
+export const GATEWAYS = Object.fromEntries(Object.entries(TRAVEL_GUIDES).map(([name, guide]) => [name, {code:guide.airport, verified:guide.airportVerified !== false, url:guide.accessUrl, note:guide.note}]));
 export function validatePlan(p) {
   if (!/^[A-Z]{3}$/.test(p.origin || '')) throw new Error('Enter your departure airport code.');
   if (!validDate(p.departure) || !validDate(p.returnDate)) throw new Error('Choose your departure and return flight dates.');

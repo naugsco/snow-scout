@@ -1,11 +1,12 @@
 import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261021-sources-verified';
 import { state, saveFavorites } from './state.js?v=20261021-sources-verified';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
-import { formatInches, formatRunAccess, formatPassLabel } from './utils.js?v=20261021-sources-verified';
+import { formatInches, formatRunAccess, formatPassLabel } from './utils.js?v=20261106-mountain-weather';
 import { fetchSnowfallCatalog, currentSnowfall } from './season-snowfall.js?v=20261021-sources-verified';
 import { HEATMAP_METRICS, rankResorts, heatColor, layoutHeatmap } from './heatmap-metrics.js?v=20261021-sources-verified';
 import { icon } from './ui-icons.js?v=20261021-sources-verified';
-import { currentSnowStatus, loadCurrentSnow } from './current-snow.js?v=20261106-live-snow';
+import { currentSnowStatus, loadCurrentSnow } from './current-snow.js?v=20261106-mountain-weather';
+import { weatherLocationLabel } from './weather-location.js?v=20261106-mountain-weather';
 
 const root = document.getElementById('resort-list');
 const preview = document.getElementById('heatmap-preview');
@@ -59,7 +60,7 @@ function updateTileSnow(tile, resort) {
     const label = document.createElement('span');
     label.className = 'heat-snow-label';
     label.textContent = demo ? 'Snow animation demo' : 'Snowing · model';
-    if (!demo) label.title = `Open-Meteo current snowfall · ${new Date(resort.currentSnow.validAt).toLocaleString()}`;
+    if (!demo) label.title = `Open-Meteo model · ${weatherLocationLabel(resort,{weatherLocation:{elevationM:resort.currentSnow.elevationM}})} · ${new Date(resort.currentSnow.validAt).toLocaleString()}. Not a live observation.`;
     tile.appendChild(label);
   }
   const row = visibleRows.find(row => row.resort.id === resort.id);

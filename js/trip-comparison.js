@@ -1,14 +1,15 @@
+import { mountTravelGuide } from './travel-guide-panel.js?v=20261106-all-travel-guides';
 import { icon } from './ui-icons.js?v=20261021-sources-verified';
-import { loadLiveForecastForResort } from './data-loader.js?v=20261021-sources-verified';
+import { loadLiveForecastForResort } from './data-loader.js?v=20261106-mountain-weather';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
-import { localDate, addDays, nearbyAirports, kayakFlightUrl, directionsUrl, lodgingUrl } from './travel.js?v=20261106-trips';
-import { GATEWAYS, validatePlan, snowForSkiDates, dailyTripForecast } from './trip-planning.js?v=20261106-trips';
-import { formatInches } from './utils.js?v=20261021-sources-verified';
+import { localDate, addDays, nearbyAirports, kayakFlightUrl } from './travel.js?v=20261106-all-travel-guides';
+import { GATEWAYS, validatePlan, snowForSkiDates, dailyTripForecast } from './trip-planning.js?v=20261106-all-travel-guides';
+import { formatInches } from './utils.js?v=20261106-mountain-weather';
 const esc = v => String(v ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const key='snow-scout-trip-plan-v1';
 let airports, opener, generation=0;
 const dialog=document.createElement('dialog'); dialog.className='trip-dialog'; dialog.setAttribute('aria-labelledby','trip-heading'); document.body.appendChild(dialog);
-const initial=()=>({origin:localStorage.getItem('snow-scout-airport')||'',departure:addDays(localDate(),1),customSkiDates:false,skiStart:'',skiEnd:'',returnDate:addDays(localDate(),6),adults:1,currency:'CAD',budget:'',pass:'all',transport:'either',names:['Whistler Blackcomb','Heavenly','Niseko United'],destinations:{}});
+const initial=()=>({origin:localStorage.getItem('snow-scout-airport')||'',departure:addDays(localDate(),1),customSkiDates:false,skiStart:'',skiEnd:'',returnDate:addDays(localDate(),6),adults:1,currency:'CAD',budget:'',pass:'all',transport:'either',names:['Whistler Blackcomb','Heavenly','Niseko United'],destinations:{},stays:{}});
 function link(label,url){return `<a class="travel-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`;}
 export async function openTripComparison(names) {
   opener=document.activeElement;
@@ -18,6 +19,7 @@ export async function openTripComparison(names) {
   if(names?.length) plan.names=names.slice(0,3);
   if(!Array.isArray(plan.names)) plan.names=[];
   if(!plan.destinations || typeof plan.destinations!=='object') plan.destinations={};
+  if(!plan.stays || typeof plan.stays!=='object' || Array.isArray(plan.stays)) plan.stays={};
   const dateField = (name, label, hint, required = true) => `<label>${label}<input type="date" name="${name}" value="${esc(plan[name])}" ${required ? 'required' : ''}><small>${hint}</small></label>`;
   const optionalDates = `<label class="trip-custom-toggle"><input type="checkbox" name="customSkiDates" ${plan.customSkiDates ? 'checked' : ''} aria-controls="trip-ski-dates"> Set my ski days <span>(optional)</span></label>
     <div id="trip-ski-dates" class="travel-fields" ${plan.customSkiDates ? '' : 'hidden'}>${dateField('skiStart', 'First day skiing', 'Local date at the resort.', false)}${dateField('skiEnd', 'Last day skiing', 'Local date at the resort.', false)}</div>`;
@@ -32,7 +34,7 @@ export async function openTripComparison(names) {
   dialog.querySelector('#trip-close').onclick=()=>dialog.close();
   if(!dialog.open) dialog.showModal();
   const form=dialog.querySelector('form'), message=dialog.querySelector('#trip-message'), results=dialog.querySelector('#trip-results');
-  function read(){const d=new FormData(form);return {...Object.fromEntries(d), adults:Number(d.get('adults')), customSkiDates:form.elements.customSkiDates.checked, names:[0,1,2].map(i=>d.get('resort'+i)).filter(Boolean),destinations:plan.destinations};}
+  function read(){const d=new FormData(form);return {...Object.fromEntries(d), adults:Number(d.get('adults')), customSkiDates:form.elements.customSkiDates.checked, names:[0,1,2].map(i=>d.get('resort'+i)).filter(Boolean),destinations:plan.destinations,stays:plan.stays};}
   async function render(){
     const version=++generation;
     plan=read(); results.replaceChildren();
@@ -51,7 +53,7 @@ export async function openTripComparison(names) {
         const chosen=airports.find(a=>a.code===plan.destinations[name]) || verified || choices[0];
         const snow=plan.customSkiDates ? snowForSkiDates(r,plan.skiStart,plan.skiEnd) : null;
         const card=document.createElement('article');card.className='trip-card';
-        card.innerHTML=`<h3>${esc(name)}</h3><dl><dt>${plan.customSkiDates ? 'Snow during your ski days' : 'Daily snow forecast · resort-local dates'}</dt><dd class="trip-snow-total">${snow===null?'Forecast unavailable, stale or outside your dates':esc(formatInches(snow))+' modeled'}</dd><dt>Operations now</dt><dd>${r.liveTerrainStatus==='ready'&&Number.isFinite(r.metrics.runsOpen)?r.metrics.runsOpen+' runs reported open':'Opening status unverified'}</dd><dt>Your pass</dt><dd>${plan.pass==='all'?'No preference':r.passes.includes(plan.pass)?'Listed on your pass — check dates and restrictions':'Not listed on your selected pass'}</dd><dt>Trip cost</dt><dd>Not quoted${plan.budget?' · target '+esc(plan.currency)+' '+esc(plan.budget)+'/person':''}</dd></dl><label>Arrival airport<select class="trip-destination">${choices.map(a=>`<option value="${a.code}" ${a.code===chosen?.code?'selected':''}>${a.code} · ${esc(a.city||a.name)}</option>`).join('')}</select></label><p class="travel-small">${gateway?esc(gateway.note):'Airport suggestions are geographic only. Resort-specific transfer service has not been verified.'}</p>${gateway?link('Official access guidance',gateway.url):''}<div class="trip-actions"></div><p class="travel-small">${plan.customSkiDates ? 'Snow totals require coverage of every ski day.' : 'Showing available forecast days only, not a total for your ski trip. Flight arrival and transfer time may reduce ski days.'} ${r.metrics.runsOpen===0?'No runs currently reported open. Confirm opening before booking.':''}</p>`;
+        card.innerHTML=`<h3>${esc(name)}</h3><dl><dt>${plan.customSkiDates ? 'Snow during your ski days' : 'Daily snow forecast · resort-local dates'}</dt><dd class="trip-snow-total">${snow===null?'Forecast unavailable, stale or outside your dates':esc(formatInches(snow))+' modeled'}</dd><dt>Operations now</dt><dd>${r.liveTerrainStatus==='ready'&&Number.isFinite(r.metrics.runsOpen)?r.metrics.runsOpen+' runs reported open':'Opening status unverified'}</dd><dt>Your pass</dt><dd>${plan.pass==='all'?'No preference':r.passes.includes(plan.pass)?'Listed on your pass — check dates and restrictions':'Not listed on your selected pass'}</dd><dt>Trip cost</dt><dd>Not quoted${plan.budget?' · target '+esc(plan.currency)+' '+esc(plan.budget)+'/person':''}</dd></dl><label>Arrival airport<select class="trip-destination">${choices.map(a=>`<option value="${a.code}" ${a.code===chosen?.code?'selected':''}>${a.code} · ${esc(a.city||a.name)}</option>`).join('')}</select></label><div class="trip-actions"></div><div class="trip-guide-root"></div><p class="travel-small">${plan.customSkiDates ? 'Snow totals require coverage of every ski day.' : 'Showing available forecast days only, not a total for your ski trip. Flight arrival and transfer time may reduce ski days.'} ${r.metrics.runsOpen===0?'No runs currently reported open. Confirm opening before booking.':''}</p>`;
         const select=card.querySelector('select'), actions=card.querySelector('.trip-actions');
         function updateSnow() {
           const target=card.querySelector('.trip-snow-total');
@@ -66,7 +68,14 @@ export async function openTripComparison(names) {
           }
         }
         updateSnow();
-        function actionsUpdate(){const a=airports.find(a=>a.code===select.value);if(!a)return;plan.destinations[name]=a.code;actions.innerHTML=(a.code!==plan.origin?link('Search flights',kayakFlightUrl({...plan,destination:a.code})): '<p>Arrival airport matches home. Consider ground travel.</p>')+link(plan.transport==='car'?'Driving route':'Transit options',directionsUrl(r,a,plan.transport!=='car'))+link('Find stays',lodgingUrl(r));}
+        function actionsUpdate(){
+          const a=airports.find(a=>a.code===select.value);if(!a)return;
+          plan.destinations[name]=a.code;
+          actions.innerHTML=a.code!==plan.origin?link('Search flights',kayakFlightUrl({...plan,destination:a.code})): '<p>Arrival airport matches home. Consider ground travel.</p>';
+          const stay = plan.stays[name] && typeof plan.stays[name]==='object' && !Array.isArray(plan.stays[name]) ? plan.stays[name] : {};
+          plan.stays[name] = stay;
+          mountTravelGuide(card.querySelector('.trip-guide-root'), {resort:r, airport:a, trip:plan, stay, compact:true, onStayChange:()=>{message.textContent='Stay preferences changed. Save plan to keep them on this device.';}});
+        }
         select.onchange=actionsUpdate;actionsUpdate();results.appendChild(card);
         if(snow===null && r.liveForecastStatus!=='loading') {
           loadLiveForecastForResort(r).then(()=>{

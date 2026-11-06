@@ -1,6 +1,6 @@
 # Resort source repair and reliability report
 
-Checked 2026-10-21T21:55:02.351Z. All counts describe this collection, not a historical uptime guarantee.
+Checked 2026-11-06T21:19:58.588Z. All counts describe this collection, not a historical uptime guarantee.
 
 ## How collection works
 
@@ -11,8 +11,8 @@ The hourly GitHub workflow fetches one Open-Meteo weather response per destinati
 | Category | Destinations |
 | --- | --- |
 | Official report connections configured | 63/105 |
-| Current resort-reported recent conditions | 5/105 |
-| Explicit model alternatives for recent conditions | 100/105 |
+| Current resort-reported recent conditions | 11/105 |
+| Explicit model alternatives for recent conditions | 94/105 |
 | Current official winter terrain snapshots | 42/105 |
 | Current model forecasts | 105/105 |
 
@@ -20,12 +20,12 @@ The hourly GitHub workflow fetches one Open-Meteo weather response per destinati
 | --- | --- |
 | snow24h | 105/105 |
 | snow48h | 104/105 |
-| snow72h | 102/105 |
-| baseDepth | 105/105 |
+| snow72h | 100/105 |
+| baseDepth | 104/105 |
 | tempF | 105/105 |
 | runsOpen | 42/105 |
-| runsTotal | 39/105 |
-| groomedRuns | 40/105 |
+| runsTotal | 41/105 |
+| groomedRuns | 39/105 |
 
 ## Diagnoses and repairs
 
@@ -48,7 +48,7 @@ The hourly GitHub workflow fetches one Open-Meteo weather response per destinati
 | --- | --- | --- |
 | Official live terrain JSON / current winter tables | Published run counts, closures, open groomed trails | Some sites stop winter feeds in summer; states are checked snapshots, not continuous telemetry. |
 | Resort-dated snow reports | Resort measurements at a stated time and reporting point | May stop updating offseason. Some fields/periods are never reported; grouped destinations can have different measurements. |
-| Open-Meteo | Consistent global forecasts and labeled recent-weather estimates | Model output at catalog coordinates, not resort observations, grooming, or open terrain. Free endpoint has no uptime guarantee; commercial use needs an appropriate plan. |
+| Open-Meteo | Consistent global forecasts and labeled recent-weather estimates | Model output at the selected ski-terrain sample/elevation, not resort observations, grooming, or open terrain. Broad destinations still have one sample. Free endpoint has no uptime guarantee; commercial use needs an appropriate plan. |
 | OnTheSnow / Mountain News partner API | A candidate licensed global source for snow and operating data | Paid, API-key access; exact coverage, timestamps, grooming fields and redistribution terms need a quote for this catalog. |
 | Skiresort Service International XML | Another candidate global snow/operation feed | Commercial access; some destinations describe slopes in km instead of run counts. Need a field-level coverage check. |
 | SnoCountry | Candidate licensed resort conditions feed, particularly North America | A purchased key is needed; international coverage is separately licensed. Public demonstration access is not production coverage. |
@@ -65,20 +65,20 @@ Collection is scheduled hourly; GitHub Actions schedules are best-effort, not a 
 
 | Resort | Collector | Resort snow report | Displayed recent conditions | Winter terrain | Remaining gaps / issues |
 | --- | --- | --- | --- | --- | --- |
-| Vail | vail | stale | ready (model) | ready | runsTotal; Snow report stale: Updated October 15, 2026 at 12:31 PM MDT. |
-| Beaver Creek | vail | stale | ready (model) | ready | Snow report stale: Updated October 15, 2026 at 12:37 PM MDT. |
+| Vail | vail | ready | ready (reported) | ready | snow72h |
+| Beaver Creek | vail | ready | ready (reported) | ready | snow72h |
 | Breckenridge | vail | stale | ready (model) | ready | Snow report stale: Updated June 23, 2026 at 4:22 PM MDT. |
-| Keystone | vail | ready | ready (reported) | ready | snow72h |
-| Crested Butte | vail | stale | ready (model) | ready | Snow report stale: Updated October 15, 2026 at 12:37 PM MDT. |
-| Park City | vail | stale | ready (model) | ready | Snow report stale: Updated June 23, 2026 at 4:24 PM MDT. |
-| Kirkwood | vail | stale | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns; Snow report stale: Updated April 23, 2026 at 5:09 AM PDT. Terrain report unavailable. |
-| Heavenly | vail | stale | ready (model) | ready | Snow report stale: Updated June 23, 2026 at 3:23 PM PDT. |
-| Northstar | vail | stale | ready (model) | ready | runsTotal; Snow report stale: Updated June 23, 2026 at 3:23 PM PDT. |
+| Keystone | vail | ready | ready (reported) | ready | snow72h; groomedRuns |
+| Crested Butte | vail | stale | ready (model) | ready | Snow report stale: Updated November 02, 2026 at 12:00 PM MST. |
+| Park City | vail | stale | ready (model) | ready | Snow report stale: Updated November 04, 2026 at 4:08 PM MST. |
+| Kirkwood | vail | stale | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns; Snow report stale: Updated November 01, 2026 at 10:00 AM PST. Terrain report unavailable. |
+| Heavenly | vail | ready | ready (reported) | ready | snow72h |
+| Northstar | vail | stale | ready (model) | ready | Snow report stale: Updated November 01, 2026 at 10:20 AM PST. |
 | Stowe | vail | stale | ready (model) | ready | Snow report stale: Updated June 23, 2026 at 6:21 PM EDT. |
 | Okemo | vail | stale | ready (model) | ready | Snow report stale: Updated June 23, 2026 at 6:24 PM EDT. |
 | Mount Sunapee | vail | error | ready (model) | error | runsOpen; runsTotal; groomedRuns; Snow report: Assignment token not found: FR.snowReportData = Terrain report: Terrain feed did not report success. Snow report error: no verified report timestamp. Terrain report error. |
 | Stevens Pass | vail | stale | ready (model) | ready | runsTotal; Snow report stale: Updated June 23, 2026 at 3:24 PM PDT. |
-| Whistler Blackcomb | vail | ready | ready (reported) | error | snow72h; runsOpen; runsTotal; groomedRuns; Terrain report: Assignment token not found: FR.TerrainStatusFeed = Terrain report error. |
+| Whistler Blackcomb | vail | stale | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns; The official Whistler site says its trail and lift status is offline until before winter opening. Open runs, lifts and grooming are unverified. Snow report stale: Updated October 21, 2026 at 7:36 AM PDT. Terrain report unavailable. |
 | Afton Alps | vail | error | ready (model) | error | runsOpen; runsTotal; groomedRuns; Snow report: Assignment token not found: FR.snowReportData = Terrain report: Terrain feed did not report success. Snow report error: no verified report timestamp. Terrain report error. |
 | Mt. Brighton | vail | error | ready (model) | error | runsOpen; runsTotal; groomedRuns; Snow report: Assignment token not found: FR.snowReportData = Terrain report: Terrain feed did not report success. Snow report error: no verified report timestamp. Terrain report error. |
 | Wilmot Mountain | vail | error | ready (model) | error | runsOpen; runsTotal; groomedRuns; Snow report: Assignment token not found: FR.snowReportData = Terrain report: Terrain feed did not report success. Snow report error: no verified report timestamp. Terrain report error. |
@@ -93,7 +93,7 @@ Collection is scheduled hourly; GitHub Actions schedules are best-effort, not a 
 | Whitetail Resort | vail | error | ready (model) | error | runsOpen; runsTotal; groomedRuns; Snow report: Assignment token not found: FR.snowReportData = Terrain report: Terrain feed did not report success. Snow report error: no verified report timestamp. Terrain report error. |
 | Seven Springs | vail | error | ready (model) | error | runsOpen; runsTotal; groomedRuns; Snow report: Assignment token not found: FR.snowReportData = Terrain report: Terrain feed did not report success. Snow report error: no verified report timestamp. Terrain report error. |
 | Hidden Valley | vail | error | ready (model) | error | runsOpen; runsTotal; groomedRuns; Snow report: Assignment token not found: FR.snowReportData = Terrain report: Terrain feed did not report success. Snow report error: no verified report timestamp. Terrain report error. |
-| Laurel Mountain | vail | error | ready (model) | error | runsOpen; runsTotal; groomedRuns; Snow report: Assignment token not found: FR.snowReportData = Terrain report: Terrain feed did not report success. Snow report error: no verified report timestamp. Terrain report error. |
+| Laurel Mountain | vail | error | ready (model) | error | runsOpen; runsTotal; groomedRuns; Snow report: Assignment token not found: FR.snowReportData = Terrain report: Assignment token not found: FR.TerrainStatusFeed = Snow report error: no verified report timestamp. Terrain report error. |
 | Perisher | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
 | Falls Creek | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
 | Hotham | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
@@ -110,37 +110,37 @@ Collection is scheduled hourly; GitHub Actions schedules are best-effort, not a 
 | Aspen Snowmass | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
 | Steamboat | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-10-19T11:56:24-0600. |
 | Winter Park | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-10-07T14:37:49-0600. |
-| Copper Mountain | powdr | stale | ready (model) | ready | Snow report stale: 2026-05-03 16:15:00. |
-| Eldora | powdr | stale | ready (model) | ready | Snow report stale: 2026-04-05 16:47:12. |
+| Copper Mountain | powdr | ready | ready (reported) | ready |  |
+| Eldora | powdr | stale | ready (model) | ready | Snow report stale: 2026-10-26 07:00:00. |
 | Arapahoe Basin | abasin | unverified | ready (model) | ready | groomedRuns; Snow report unverified: no verified report timestamp. |
 | Big Sky | reportpal | ready | ready (reported) | ready |  |
-| Jackson Hole | jacksonhole | unavailable | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns; Snow report unavailable: no verified report timestamp. Terrain report unavailable. |
+| Jackson Hole | jacksonhole | unverified | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns; Snow report unverified: no verified report timestamp. Terrain report unavailable. |
 | Alta | alta | ready | ready (reported) | ready | snow48h; snow72h; groomedRuns |
-| Snowbird | powdr | stale | ready (model) | ready | Snow report stale: 2026-10-20 09:00:00. |
+| Snowbird | powdr | ready | ready (reported) | ready |  |
 | Deer Valley | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-10-13T12:58:30-0600. |
 | Brighton Resort | reportpal | ready | ready (reported) | ready |  |
-| Solitude | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-10-20T15:44:06-0600. |
-| Mammoth Mountain | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-10-20T12:59:27-0700. |
-| June Mountain | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-10-08T13:15:41-0700. |
-| Big Bear Mountain | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-03-31T20:07:43-0700 / 2026-05-04T10:16:22-0700 / 2026-10-07T13:50:22-0700. |
-| Palisades Tahoe | mtnfeed | unavailable | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns; The official page currently selects a summer feed; summer trails are not ski-run inventory. Snow report unavailable: 2026-09-08T09:50:24-0700. Terrain report unavailable. |
-| Killington | killington | unavailable | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns; Snow report unavailable: no verified report timestamp. Terrain report unavailable. |
-| Sugarbush | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-10-20T14:44:22-0400. |
-| Stratton | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-04-12T19:21:02-0400. |
+| Solitude | mtnfeed | ready | ready (reported) | ready |  |
+| Mammoth Mountain | mtnfeed | ready | ready (reported) | unverified | baseDepth; runsOpen; runsTotal; groomedRuns; Positive ski-run counts have no current dated winter report and trail-state evidence; a feed-render timestamp cannot renew old summer/winter states. Terrain report unverified. |
+| June Mountain | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-11-03T09:18:00-0800. |
+| Big Bear Mountain | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-10-25T16:16:20-0700 / 2026-10-25T16:20:06-0700 / 2026-10-28T11:33:58-0700. |
+| Palisades Tahoe | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-10-29T17:47:43-0700. |
+| Killington | killington | error | ready (model) | error | runsOpen; runsTotal; groomedRuns; Official source failed: Winter report schema needs verification on the migrated official website. Winter report schema needs verification on the migrated official website. |
+| Sugarbush | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-11-03T17:22:58-0500. |
+| Stratton | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-11-05T10:48:03-0500. |
 | Tremblant | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
 | Blue Mountain (Ontario) | mtnfeed | stale | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns; The official page currently selects a summer feed; summer trails are not ski-run inventory. Snow report stale: 2026-07-19T06:54:23-0400. Terrain report unavailable. |
 | SkiBig3 (Banff) | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
-| Revelstoke | revelstoke | unavailable | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns; Snow report unavailable: no verified report timestamp. Terrain report unavailable. |
+| Revelstoke | revelstoke | unverified | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns; Snow report unverified: no verified report timestamp. Terrain report unavailable. |
 | Cypress Mountain | reportpal | stale | ready (model) | ready | Snow report stale: 2026-10-09T18:58:57Z. |
 | Red Mountain | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
 | Sun Peaks | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
-| Crystal Mountain | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-05-18T12:41:48-0700. |
-| The Summit at Snoqualmie | reportpal | stale | ready (model) | ready | Snow report stale: 2026-09-28T19:06:49Z. |
-| Loon Mountain | reportpal | unavailable | ready (model) | ready | Snow report unavailable: 2026-10-20T12:31:06Z. |
-| Sugarloaf | reportpal | stale | ready (model) | ready | Snow report stale: 2026-10-19T15:52:38Z. |
-| Sunday River | reportpal | stale | ready (model) | ready | Snow report stale: 2026-10-20T14:21:51Z. |
+| Crystal Mountain | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-10-30T09:27:32-0700. |
+| The Summit at Snoqualmie | reportpal | stale | ready (model) | ready | Snow report stale: 2026-10-31T00:26:20Z. |
+| Loon Mountain | reportpal | unavailable | ready (model) | ready | Snow report unavailable: 2026-10-29T19:55:12Z. |
+| Sugarloaf | reportpal | stale | ready (model) | ready | Snow report stale: 2026-10-29T19:47:59Z. |
+| Sunday River | reportpal | stale | ready (model) | ready | Snow report stale: 2026-11-05T19:09:00Z. |
 | Boyne Highlands | reportpal | unavailable | ready (model) | ready | Snow report unavailable: 2026-10-21T15:00:18Z. |
-| Boyne Mountain | reportpal | unavailable | ready (model) | ready | Snow report unavailable: 2026-10-19T18:03:23Z. |
+| Boyne Mountain | reportpal | unavailable | ready (model) | ready | Snow report unavailable: 2026-11-02T13:26:07Z. |
 | Taos | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
 | Snowshoe | mtnfeed | stale | ready (model) | ready | Snow report stale: 2026-10-17T13:59:51-0400. |
 | Windham Mountain | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
@@ -155,7 +155,7 @@ Collection is scheduled hourly; GitHub Actions schedules are best-effort, not a 
 | Lotte Arai | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
 | Valle Nevado | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
 | Panorama | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |
-| Schweitzer | mtnfeed | unavailable | ready (model) | ready | Snow report unavailable: 2026-10-12T15:05:38-0700. |
+| Schweitzer | mtnfeed | unavailable | ready (model) | ready | Snow report unavailable: 2026-11-05T08:07:07-0800. |
 | Sun Valley | snowbasin | unverified | ready (model) | ready | Snow report unverified: no verified report timestamp. |
 | Snowbasin | snowbasin | unverified | ready (model) | ready | Snow report unverified: no verified report timestamp. |
 | Grand Targhee | open-meteo | not-configured | ready (model) | unavailable | runsOpen; runsTotal; groomedRuns |

@@ -1,6 +1,6 @@
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import { state, setUseMetric, setTheme } from './state.js?v=20261021-sources-verified';
-import { formatInches, formatPassLabel } from './utils.js?v=20261021-sources-verified';
+import { formatInches, formatPassLabel } from './utils.js?v=20261106-mountain-weather';
 import { historyRecords, fetchSnowfallCatalog } from './season-snowfall.js?v=20261021-sources-verified';
 
 const $ = (id) => document.getElementById(id);

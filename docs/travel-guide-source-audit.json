@@ -1,0 +1,2090 @@
+{
+  "checkedAt": "2026-11-06T20:47:03.764Z",
+  "resorts": 105,
+  "note": "Reachability only. A response is not evidence of live inventory, a bookable connection or current seasonal details. Restricted sources need manual review; no bypass or retry was attempted.",
+  "sources": [
+    {
+      "url": "https://app.lottehotel.com/arai-resort/en/about/faq?p=1",
+      "resorts": [
+        "Lotte Arai"
+      ],
+      "status": 200,
+      "finalUrl": "https://app.lottehotel.com/arai-resort/en/about/faq?p=1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://app.lottehotel.com/arai-resort/en/facilities/shuttle-bus-service",
+      "resorts": [
+        "Lotte Arai"
+      ],
+      "status": 200,
+      "finalUrl": "https://app.lottehotel.com/arai-resort/en/facilities/shuttle-bus-service",
+      "result": "reachable"
+    },
+    {
+      "url": "https://booking.chamonix.com/en/",
+      "resorts": [
+        "Chamonix (Mont Blanc)"
+      ],
+      "status": 200,
+      "finalUrl": "https://booking.chamonix.com/en/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://booking.valdisere.com/transport-parking.html",
+      "resorts": [
+        "Val d'Isère"
+      ],
+      "status": 200,
+      "finalUrl": "https://booking.valdisere.com/transport-parking.html",
+      "result": "reachable"
+    },
+    {
+      "url": "https://en.chamonix.com/usual-information-services/transports",
+      "resorts": [
+        "Chamonix (Mont Blanc)"
+      ],
+      "status": 200,
+      "finalUrl": "https://en.chamonix.com/usual-information-services/transports",
+      "result": "reachable"
+    },
+    {
+      "url": "https://en.la-plagne.com/discover/practical/how-to-get-there/getting-to-la-plagne",
+      "resorts": [
+        "Paradiski"
+      ],
+      "status": 200,
+      "finalUrl": "https://en.la-plagne.com/discover/practical/how-to-get-there/getting-to-la-plagne",
+      "result": "reachable"
+    },
+    {
+      "url": "https://en.tignes.net/resort-guide/directory/accommodation",
+      "resorts": [
+        "Tignes"
+      ],
+      "status": 200,
+      "finalUrl": "https://en.tignes.net/resort-guide/directory/accommodation",
+      "result": "reachable"
+    },
+    {
+      "url": "https://en.tignes.net/resort-guide/mobility/go-tignes/come-by-plane",
+      "resorts": [
+        "Tignes"
+      ],
+      "status": 200,
+      "finalUrl": "https://en.tignes.net/resort-guide/mobility/go-tignes/come-by-plane",
+      "result": "reachable"
+    },
+    {
+      "url": "https://gobreck.com/plan/breckenridge-vacation-faqs/",
+      "resorts": [
+        "Breckenridge"
+      ],
+      "status": 200,
+      "finalUrl": "https://gobreck.com/plan/breckenridge-vacation-faqs/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://hakuba-tourism.com/accommodations/",
+      "resorts": [
+        "Hakuba Valley"
+      ],
+      "status": 200,
+      "finalUrl": "https://hakuba-tourism.com/accommodations/",
+      "result": "reachable",
+      "followupCheckedAt": "2026-11-06T20:50:03.928761+00:00",
+      "note": "The first official municipal booking link returned 503. Replaced with the official tourism accommodation directory; confirmed HTTP 200."
+    },
+    {
+      "url": "https://killington.com/transportation-parking-and-shuttles",
+      "resorts": [
+        "Killington"
+      ],
+      "status": 200,
+      "finalUrl": "https://killington.com/transportation-parking-and-shuttles",
+      "result": "reachable"
+    },
+    {
+      "url": "https://nisekogroundservice.jp/scheduled-transfers/",
+      "resorts": [
+        "Niseko United"
+      ],
+      "status": 200,
+      "finalUrl": "https://nisekogroundservice.jp/scheduled-transfers/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://reservation.les3vallees.com/en/holidays-offers/hotels-les-3-vallees",
+      "resorts": [
+        "Les 3 Vallées"
+      ],
+      "status": 200,
+      "finalUrl": "https://reservation.les3vallees.com/en/holidays-offers/hotels-les-3-vallees",
+      "result": "reachable"
+    },
+    {
+      "url": "https://rusutsu.com/en/access-shuttle-bus-new-chitose-airport/",
+      "resorts": [
+        "Rusutsu"
+      ],
+      "status": 200,
+      "finalUrl": "https://rusutsu.com/en/access-shuttle-bus-new-chitose-airport/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://rusutsu.com/en/dynamic-packages/",
+      "resorts": [
+        "Rusutsu"
+      ],
+      "status": 200,
+      "finalUrl": "https://rusutsu.com/en/dynamic-packages/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://southtahoeairporter.com/",
+      "resorts": [
+        "Heavenly"
+      ],
+      "status": 200,
+      "finalUrl": "https://southtahoeairporter.com/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://southtahoeairporter.com/faqs/",
+      "resorts": [
+        "Heavenly"
+      ],
+      "status": 200,
+      "finalUrl": "https://southtahoeairporter.com/faqs/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://tellurides.com/airport-transportation",
+      "resorts": [
+        "Telluride"
+      ],
+      "status": 200,
+      "finalUrl": "https://tellurides.com/airport-transportation",
+      "result": "reachable"
+    },
+    {
+      "url": "https://tellurideskiresort.com/stay/",
+      "resorts": [
+        "Telluride"
+      ],
+      "status": 200,
+      "finalUrl": "https://tellurideskiresort.com/stay/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://townofmountainvillage.com/explore/plan-your-trip/getting-here/",
+      "resorts": [
+        "Telluride"
+      ],
+      "status": 200,
+      "finalUrl": "https://townofmountainvillage.com/explore/plan-your-trip/getting-here/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://whiteface.com/plan-your-visit/directions/",
+      "resorts": [
+        "Whiteface"
+      ],
+      "status": 403,
+      "finalUrl": "https://whiteface.com/plan-your-visit/directions/",
+      "result": "restricted-needs-manual-check",
+      "reviewMethod": "Public content read with the web research tool; direct audit received 403. No bypass or retries."
+    },
+    {
+      "url": "https://whiteface.com/plan-your-visit/lodging/",
+      "resorts": [
+        "Whiteface"
+      ],
+      "status": 403,
+      "finalUrl": "https://whiteface.com/plan-your-visit/lodging/",
+      "result": "restricted-needs-manual-check",
+      "reviewMethod": "Public content read with the web research tool; direct audit received 403. No bypass or retries."
+    },
+    {
+      "url": "https://www.7springs.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Seven Springs"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.7springs.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.7springs.com/plan-your-trip/stay/seven-springs-lodging.aspx",
+      "resorts": [
+        "Seven Springs",
+        "Hidden Valley",
+        "Laurel Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.7springs.com/plan-your-trip/stay/seven-springs-lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.aftonalps.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Afton Alps"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.aftonalps.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.aftonalps.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "resorts": [
+        "Afton Alps"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.aftonalps.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.alpytransfers.com/chamonix",
+      "resorts": [
+        "Chamonix (Mont Blanc)"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.alpytransfers.com/chamonix",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.alta.com/getting-here/slc-airport-to-alta",
+      "resorts": [
+        "Alta"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.alta.com/getting-here/slc-airport-to-alta",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.alta.com/lodging",
+      "resorts": [
+        "Alta"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.alta.com/lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.andermatt-sedrun-disentis.ch/andermatt/en/pages/a-z",
+      "resorts": [
+        "Andermatt-Sedrun"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.andermatt-sedrun-disentis.ch/andermatt/en/pages/a-z",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.andermatt-sedrun-disentis.ch/en/stories/arrival",
+      "resorts": [
+        "Andermatt-Sedrun"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.andermatt-sedrun-disentis.ch/en/stories/arrival",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.arapahoebasin.com/lodging/",
+      "resorts": [
+        "Arapahoe Basin"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.arapahoebasin.com/lodging/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.arapahoebasin.com/parking/",
+      "resorts": [
+        "Arapahoe Basin"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.arapahoebasin.com/parking/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.aspensnowmass.com/visit/getting-here",
+      "resorts": [
+        "Aspen Snowmass"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.aspensnowmass.com/visit/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.aspensnowmass.com/visit/lodging",
+      "resorts": [
+        "Aspen Snowmass"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.aspensnowmass.com/visit/lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.attitash.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Attitash"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.attitash.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.attitash.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "resorts": [
+        "Attitash"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.attitash.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.beavercreek.com/explore-the-resort/planning-your-stay/for-first-timers.aspx",
+      "resorts": [
+        "Beaver Creek"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.beavercreek.com/explore-the-resort/planning-your-stay/for-first-timers.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.beavercreek.com/plan-your-trip/stay/beaver-creek-lodging.aspx",
+      "resorts": [
+        "Beaver Creek"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.beavercreek.com/plan-your-trip/stay/beaver-creek-lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.bigbearmountainresort.com/lodging",
+      "resorts": [
+        "Big Bear Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.bigbearmountainresort.com/lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.bigbearmountainresort.com/transportation",
+      "resorts": [
+        "Big Bear Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.bigbearmountainresort.com/transportation",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.bigbearmountainresort.com/transportation/shuttles",
+      "resorts": [
+        "Big Bear Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.bigbearmountainresort.com/transportation/shuttles",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.bigskyresort.com/getting-here",
+      "resorts": [
+        "Big Sky"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.bigskyresort.com/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.bigskyresort.com/lodging",
+      "resorts": [
+        "Big Sky"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.bigskyresort.com/lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.bluemountain.ca/discover-blue/getting-here",
+      "resorts": [
+        "Blue Mountain (Ontario)"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.bluemountain.ca/discover-blue/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.bluemountain.ca/plan-your-trip/lodging/accommodation-partners",
+      "resorts": [
+        "Blue Mountain (Ontario)"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.bluemountain.ca/plan-your-trip/lodging/accommodation-partners",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.boynemountain.com/getting-here",
+      "resorts": [
+        "Boyne Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.boynemountain.com/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.boynemountain.com/guest-directory-mountain-grand-lodge",
+      "resorts": [
+        "Boyne Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.boynemountain.com/guest-directory-mountain-grand-lodge",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.breckenridge.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Breckenridge"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.breckenridge.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.brightonresort.com/getting-here-and-parking",
+      "resorts": [
+        "Brighton Resort"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.brightonresort.com/getting-here-and-parking",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.brightonresort.com/lodging",
+      "resorts": [
+        "Brighton Resort"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.brightonresort.com/lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.bromontmontagne.com/en/lodging/",
+      "resorts": [
+        "Bromont"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.bromontmontagne.com/en/lodging/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.bromontmontagne.com/en/parking-and-shuttle/",
+      "resorts": [
+        "Bromont"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.bromontmontagne.com/en/parking-and-shuttle/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.coppercolorado.com/lodging-amenities/lodging-overview/",
+      "resorts": [
+        "Copper Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.coppercolorado.com/lodging-amenities/lodging-overview/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.coppercolorado.com/the-mountain/getting-to-around-copper/how-to-get-here/",
+      "resorts": [
+        "Copper Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.coppercolorado.com/the-mountain/getting-to-around-copper/how-to-get-here/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.coronetpeak.co.nz/getting-here-guide",
+      "resorts": [
+        "Coronet Peak"
+      ],
+      "status": 403,
+      "finalUrl": "https://www.coronetpeak.co.nz/getting-here-guide",
+      "result": "restricted-needs-manual-check",
+      "reviewMethod": "Public content read with the web research tool; direct audit received 403. No bypass or retries."
+    },
+    {
+      "url": "https://www.crans-montana.ch/en/access/plane",
+      "resorts": [
+        "Crans-Montana"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.crans-montana.ch/en/access/plane",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.crans-montana.ch/Montana/ukv/search?lang=en&reset=1",
+      "resorts": [
+        "Crans-Montana"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.crans-montana.ch/Montana/ukv/search?lang=en&reset=1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.crotchedmtn.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Crotched Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.crotchedmtn.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.crotchedmtn.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "resorts": [
+        "Crotched Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.crotchedmtn.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.crystalmountainresort.com/plan-your-trip/lodging",
+      "resorts": [
+        "Crystal Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.crystalmountainresort.com/plan-your-trip/lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.crystalmountainresort.com/plan-your-trip/parking-and-shuttle-information",
+      "resorts": [
+        "Crystal Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.crystalmountainresort.com/plan-your-trip/parking-and-shuttle-information",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.cypressmountain.com/getting-here",
+      "resorts": [
+        "Cypress Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.cypressmountain.com/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.deervalley.com/plan-your-trip/getting-here",
+      "resorts": [
+        "Deer Valley"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.deervalley.com/plan-your-trip/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.deervalley.com/plan-your-trip/hotels-lodging",
+      "resorts": [
+        "Deer Valley"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.deervalley.com/plan-your-trip/hotels-lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.destinationvancouver.com/vancouver-hotels",
+      "resorts": [
+        "Cypress Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.destinationvancouver.com/vancouver-hotels",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.dolomitisuperski.com/en/experience-the-dolomites/journey",
+      "resorts": [
+        "Dolomiti Superski"
+      ],
+      "status": 403,
+      "finalUrl": "https://www.dolomitisuperski.com/en/experience-the-dolomites/journey",
+      "result": "restricted-needs-manual-check",
+      "reviewMethod": "Public content read with the web research tool; direct audit received 403. No bypass or retries."
+    },
+    {
+      "url": "https://www.dolomitisuperski.com/en/plan-and-book/accommodation",
+      "resorts": [
+        "Dolomiti Superski"
+      ],
+      "status": 403,
+      "finalUrl": "https://www.dolomitisuperski.com/en/plan-and-book/accommodation",
+      "result": "restricted-needs-manual-check",
+      "reviewMethod": "Public content read with the web research tool; direct audit received 403. No bypass or retries."
+    },
+    {
+      "url": "https://www.eldora.com/activities-amenities/lodging-partners/",
+      "resorts": [
+        "Eldora"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.eldora.com/activities-amenities/lodging-partners/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.epicmountainexpress.com/schedules/",
+      "resorts": [
+        "Vail",
+        "Beaver Creek",
+        "Keystone"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.epicmountainexpress.com/schedules/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.fallscreek.com.au/listing/st-falls-resort-falls-creek/",
+      "resorts": [
+        "Falls Creek"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.fallscreek.com.au/listing/st-falls-resort-falls-creek/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.fallscreek.com.au/plan-your-trip-winter/accommodation-transfer-service/",
+      "resorts": [
+        "Falls Creek"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.fallscreek.com.au/plan-your-trip-winter/accommodation-transfer-service/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.fallscreek.com.au/plan-your-trip-winter/getting-here-winter/",
+      "resorts": [
+        "Falls Creek"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.fallscreek.com.au/plan-your-trip-winter/getting-here-winter/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.grandtarghee.com/plan-your-trip/lodging-options/lodging-policies-amenities",
+      "resorts": [
+        "Grand Targhee"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.grandtarghee.com/plan-your-trip/lodging-options/lodging-policies-amenities",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.grandtarghee.com/plan-your-trip/planning-tools/airport-shuttle",
+      "resorts": [
+        "Grand Targhee"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.grandtarghee.com/plan-your-trip/planning-tools/airport-shuttle",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.grandtarghee.com/plan-your-trip/planning-tools/airport-shuttle/airport-shuttle",
+      "resorts": [
+        "Grand Targhee"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.grandtarghee.com/plan-your-trip/planning-tools/airport-shuttle/airport-shuttle",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.hakubavalley.com/en/access_en/",
+      "resorts": [
+        "Hakuba Valley"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.hakubavalley.com/en/access_en/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.hakubavalley.com/en/access_en/shuttlebus_en/",
+      "resorts": [
+        "Hakuba Valley"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.hakubavalley.com/en/access_en/shuttlebus_en/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.hiddenvalleyresort.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Hidden Valley"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.hiddenvalleyresort.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.highlandsharborsprings.com/getting-here",
+      "resorts": [
+        "Boyne Highlands"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.highlandsharborsprings.com/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.highlandsharborsprings.com/lodging/lodging-faq",
+      "resorts": [
+        "Boyne Highlands"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.highlandsharborsprings.com/lodging/lodging-faq",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.huntermtn.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Hunter Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.huntermtn.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.huntermtn.com/Explore%20the%20Resort/About%20the%20Resort/Getting%20Here.aspx",
+      "resorts": [
+        "Hunter Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.huntermtn.com/explore-the-resort/about-the-resort/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.huntermtn.com/Plan-Your-Trip/stay/Lodging%20Results.aspx",
+      "resorts": [
+        "Hunter Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.huntermtn.com/Plan-Your-Trip/stay/Lodging%20Results.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.jacksonhole.com/by-air",
+      "resorts": [
+        "Jackson Hole"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.jacksonhole.com/by-air",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.jacksonhole.com/getting-around",
+      "resorts": [
+        "Jackson Hole"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.jacksonhole.com/getting-around",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.jacksonhole.com/lodging/resorts",
+      "resorts": [
+        "Jackson Hole"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.jacksonhole.com/lodging/resorts",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.jfbb.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Jack Frost / Big Boulder"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.jfbb.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.jfbb.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "resorts": [
+        "Jack Frost / Big Boulder"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.jfbb.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.junemountain.com/plan-your-trip/getting-here",
+      "resorts": [
+        "June Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.junemountain.com/plan-your-trip/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.junemountain.com/plan-your-trip/lodging",
+      "resorts": [
+        "June Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.junemountain.com/plan-your-trip/lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.keystoneresort.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Keystone"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.keystoneresort.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.keystoneresort.com/plan-your-trip/stay/keystone-lodging.aspx",
+      "resorts": [
+        "Keystone"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.keystoneresort.com/plan-your-trip/stay/keystone-lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.killington.com/plan-your-trip/lodging",
+      "resorts": [
+        "Killington"
+      ],
+      "status": 200,
+      "finalUrl": "https://killington.com/ski-and-stay",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.kirkwood.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Kirkwood"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.kirkwood.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.kirkwood.com/plan-your-trip/stay/kirkwood-lodging.aspx",
+      "resorts": [
+        "Kirkwood"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.kirkwood.com/plan-your-trip/stay/kirkwood-lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.kitzbuehel.com/en/holiday/getting-here/flying/",
+      "resorts": [
+        "Kitzbühel"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.kitzbuehel.com/en/holiday/getting-here/flying/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.kitzbuehel.com/en/summer-accommodation/",
+      "resorts": [
+        "Kitzbühel"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.kitzbuehel.com/en/summer-accommodation/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.laurelmountainski.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Laurel Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.laurelmountainski.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.lechzuers.com/en/arriving/airplane",
+      "resorts": [
+        "Lech Zürs am Arlberg"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.lechzuers.com/en/arriving/airplane",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.lechzuers.com/en/booking/accommodations/",
+      "resorts": [
+        "Lech Zürs am Arlberg"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.lechzuers.com/en/booking/accommodations/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.lemassif.com/en/accommodations-charlevoix",
+      "resorts": [
+        "Le Massif de Charlevoix"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.lemassif.com/en/accommodations-charlevoix",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.lemassif.com/en/the-mountain/winter/getting-here",
+      "resorts": [
+        "Le Massif de Charlevoix"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.lemassif.com/en/the-mountain/winter/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.les3vallees.com/en/guide/travel-to-les-3-vallees/by-plane",
+      "resorts": [
+        "Les 3 Vallées"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.les3vallees.com/en/guide/travel-to-les-3-vallees/by-plane",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.lesarcs.com/en/your-stay/finding-place-stay",
+      "resorts": [
+        "Paradiski"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.lesarcs.com/en/your-stay/finding-place-stay",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.libertymountainresort.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Liberty Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.libertymountainresort.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.libertymountainresort.com/plan-your-trip/stay/liberty-mountain-lodging.aspx",
+      "resorts": [
+        "Liberty Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.libertymountainresort.com/plan-your-trip/stay/liberty-mountain-lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.loonmtn.com/lodging",
+      "resorts": [
+        "Loon Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.loonmtn.com/lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.loonmtn.com/visitors-guide/getting-here",
+      "resorts": [
+        "Loon Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.loonmtn.com/visitors-guide/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.mammothmountain.com/discover-mammoth/getting-around/air-travel",
+      "resorts": [
+        "Mammoth Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.mammothmountain.com/discover-mammoth/getting-around/air-travel",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.mammothmountain.com/plan-your-trip/mammoth-hotels",
+      "resorts": [
+        "Mammoth Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.mammothmountain.com/plan-your-trip/mammoth-hotels",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.megeve-tourisme.fr/en/informations-pratiques/acces-et-mobilite/en-avion/",
+      "resorts": [
+        "Megève"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.megeve-tourisme.fr/en/informations-pratiques/acces-et-mobilite/en-avion/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.megeve-tourisme.fr/en/organiser-mon-sejour/",
+      "resorts": [
+        "Megève"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.megeve-tourisme.fr/en/organiser-mon-sejour/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.mountsnow.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Mount Snow"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.mountsnow.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.mountsnow.com/Plan-Your-Trip/stay/Lodging%20Results.aspx",
+      "resorts": [
+        "Mount Snow"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.mountsnow.com/Plan-Your-Trip/stay/Lodging%20Results.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.mountsunapee.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Mount Sunapee"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.mountsunapee.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.mountsunapee.com/lodging/find-lodging/hotels-and-motels.aspx",
+      "resorts": [
+        "Mount Sunapee"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.mountsunapee.com/lodging/find-lodging/hotels-and-motels.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.mtbrighton.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Mt. Brighton"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.mtbrighton.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.mtbrighton.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "resorts": [
+        "Mt. Brighton"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.mtbrighton.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.mtbuller.com.au/winter/catch-a-bus",
+      "resorts": [
+        "Mt Buller"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.mtbuller.com.au/winter/catch-a-bus",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.mtbuller.com.au/winter/plan-your-visit/accommodation/chalet-apartments",
+      "resorts": [
+        "Mt Buller"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.mtbuller.com.au/winter/plan-your-visit/accommodation/chalet-apartments",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.mthotham.com.au/resort/access/coaches-transfers/hotham-bus",
+      "resorts": [
+        "Hotham"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.mthotham.com.au/resort/access/coaches-transfers/hotham-bus",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.mthotham.com.au/summer/accommodation/accommodation/booking-services/dinner-plain-accommodation",
+      "resorts": [
+        "Hotham"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.mthotham.com.au/summer/accommodation/accommodation/booking-services/dinner-plain-accommodation",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.niseko.ne.jp/en/getting-to-niseko3/",
+      "resorts": [
+        "Niseko United"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.niseko.ne.jp/en/getting-to-niseko3/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.niseko.ne.jp/en/niseko-accommodation/",
+      "resorts": [
+        "Niseko United"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.niseko.ne.jp/en/niseko-accommodation/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.northstarcalifornia.com/explore-the-resort/about-the-resort/getting-here/.aspx",
+      "resorts": [
+        "Northstar"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.northstarcalifornia.com/explore-the-resort/about-the-resort/getting-here/.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.northstarcalifornia.com/plan-your-trip/stay/northstar-lodging",
+      "resorts": [
+        "Northstar"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.northstarcalifornia.com/plan-your-trip/stay/northstar-lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.okemo.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Okemo"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.okemo.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.okemo.com/Plan-Your-Trip/Stay/Lodging%20Results.aspx",
+      "resorts": [
+        "Okemo"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.okemo.com/Plan-Your-Trip/Stay/Lodging%20Results.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.palisadestahoe.com/plan-your-visit/lodging",
+      "resorts": [
+        "Palisades Tahoe"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.palisadestahoe.com/plan-your-visit/lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.palisadestahoe.com/plan-your-visit/travel-here",
+      "resorts": [
+        "Palisades Tahoe"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.palisadestahoe.com/plan-your-visit/travel-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.panoramaresort.com/planning/lodging-at-panorama",
+      "resorts": [
+        "Panorama"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.panoramaresort.com/planning/lodging-at-panorama",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.panoramaresort.com/public/planning/getting-here",
+      "resorts": [
+        "Panorama"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.panoramaresort.com/public/planning/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.parkcitymountain.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Park City"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.parkcitymountain.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.parkcitymountain.com/explore-the-resort/about-the-resort/park-city-basecamp.aspx",
+      "resorts": [
+        "Park City"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.parkcitymountain.com/explore-the-resort/about-the-resort/park-city-basecamp.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.perisher.com.au/perisher-valley-hotel/about-us/getting-here",
+      "resorts": [
+        "Perisher"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.perisher.com.au/perisher-valley-hotel/about-us/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.perisher.com.au/plan-your-trip/getting-to-perisher",
+      "resorts": [
+        "Perisher"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.perisher.com.au/plan-your-trip/getting-to-perisher",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.pontresina.ch/en/guide/shopping/services/service-berghaus-diavolezza",
+      "resorts": [
+        "St. Moritz (Diavolezza)"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.pontresina.ch/en/guide/shopping/services/service-berghaus-diavolezza",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.queenstownnz.co.nz/accommodation/",
+      "resorts": [
+        "Coronet Peak",
+        "The Remarkables"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.queenstownnz.co.nz/accommodation/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.redresort.com/getting-here/",
+      "resorts": [
+        "Red Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.redresort.com/getting-here/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.redresort.com/lodging/",
+      "resorts": [
+        "Red Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.redresort.com/lodging/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.revelstokemountainresort.com/discover/getting-here/getting-to-revelstoke/",
+      "resorts": [
+        "Revelstoke"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.revelstokemountainresort.com/discover/getting-here/getting-to-revelstoke/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.revelstokemountainresort.com/discover/lodging/stay/",
+      "resorts": [
+        "Revelstoke"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.revelstokemountainresort.com/discover/lodging/stay/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.rhb.ch/en/information/stations/bernina-diavolezza/",
+      "resorts": [
+        "St. Moritz (Diavolezza)"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.rhb.ch/en/information/stations/bernina-diavolezza/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.rtd-denver.com/routes-services/other-services/ski-n-ride",
+      "resorts": [
+        "Eldora"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.rtd-denver.com/routes-services/other-services/ski-n-ride",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.schweitzer.com/discover-schweitzer/directions",
+      "resorts": [
+        "Schweitzer"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.schweitzer.com/discover-schweitzer/directions",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.schweitzer.com/plan-your-trip/hotels-lodging",
+      "resorts": [
+        "Schweitzer"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.schweitzer.com/plan-your-trip/hotels-lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skibanff.com/index.php/plan-stay/getting-here/getting-here",
+      "resorts": [
+        "Banff Sunshine"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skibanff.com/plan-stay/getting-here/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skibanff.com/plan/first-time-visitors/faqs",
+      "resorts": [
+        "Banff Sunshine"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skibanff.com/plan/first-time-visitors/faqs",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skibig3.com/explore/getting-here/",
+      "resorts": [
+        "SkiBig3 (Banff)"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skibig3.com/explore/getting-here/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skibig3.com/stay/accommodation/",
+      "resorts": [
+        "SkiBig3 (Banff)",
+        "Banff Sunshine",
+        "Lake Louise"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skibig3.com/stay/accommodation/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skicb.com/explore-the-resort/during-your-stay/first-timers-guide.aspx",
+      "resorts": [
+        "Crested Butte"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skicb.com/explore-the-resort/during-your-stay/first-timers-guide.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skicb.com/Plan-Your-Trip/Stay/Lodging%20Results.aspx",
+      "resorts": [
+        "Crested Butte"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skicb.com/Plan-Your-Trip/Stay/Lodging%20Results.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skicb.com/the-mountain/about-the-mountain/epicpromise-at-cbmr.aspx",
+      "resorts": [
+        "Crested Butte"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skicb.com/the-mountain/about-the-mountain/epicpromise-at-cbmr.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skiheavenly.com/explore-the-resort/about-the-resort/getting-here-and-parking",
+      "resorts": [
+        "Heavenly"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skiheavenly.com/explore-the-resort/about-the-resort/getting-here-and-parking",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skiheavenly.com/Plan-Your-Trip/stay/Lodging%20Results.aspx",
+      "resorts": [
+        "Heavenly"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skiheavenly.com/Plan-Your-Trip/stay/Lodging%20Results.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skilouise.com/getting-here/by-air/",
+      "resorts": [
+        "Lake Louise"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skilouise.com/getting-here/by-air/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skilouise.com/getting-here/by-bus/",
+      "resorts": [
+        "Lake Louise"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skilouise.com/getting-here/by-bus/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skimarmot.com/plan-your-visit/getting-here/",
+      "resorts": [
+        "Marmot Basin"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skimarmot.com/plan-your-visit/getting-here/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skimarmot.com/plan-your-visit/where-stay/",
+      "resorts": [
+        "Marmot Basin"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skimarmot.com/plan-your-visit/where-stay/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skiroundtop.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Roundtop Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skiroundtop.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skiroundtop.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "resorts": [
+        "Roundtop Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skiroundtop.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skitaos.com/deals",
+      "resorts": [
+        "Taos"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skitaos.com/deals",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skitaos.com/getting-here",
+      "resorts": [
+        "Taos"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skitaos.com/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skiwhitetail.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Whitetail Resort"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skiwhitetail.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skiwhitetail.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "resorts": [
+        "Whitetail Resort"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skiwhitetail.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skiwildcat.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Wildcat Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skiwildcat.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.skiwildcat.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "resorts": [
+        "Wildcat Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.skiwildcat.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.snowbasin.com/about/faqs/",
+      "resorts": [
+        "Snowbasin"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.snowbasin.com/about/faqs/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.snowbasin.com/about/getting-here/",
+      "resorts": [
+        "Snowbasin"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.snowbasin.com/about/getting-here/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.snowbasin.com/lodging/",
+      "resorts": [
+        "Snowbasin"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.snowbasin.com/lodging/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.snowbird.com/lodging-amenities/lodging/the-lodge-at-snowbird/",
+      "resorts": [
+        "Snowbird"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.snowbird.com/lodging-amenities/lodging/the-lodge-at-snowbird/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.snowbird.com/the-mountain/visitors-guide/getting-here/",
+      "resorts": [
+        "Snowbird"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.snowbird.com/the-mountain/visitors-guide/getting-here/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.snowshoemtn.com/discover-snowshoe/getting-here",
+      "resorts": [
+        "Snowshoe"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.snowshoemtn.com/discover-snowshoe/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.snowshoemtn.com/plan-your-trip/lodging/check-in-information",
+      "resorts": [
+        "Snowshoe"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.snowshoemtn.com/plan-your-trip/lodging/check-in-information",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.solitudemountain.com/discover-solitude/getting-here-parking",
+      "resorts": [
+        "Solitude"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.solitudemountain.com/discover-solitude/getting-here-parking",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.solitudemountain.com/plan-your-trip/lodging",
+      "resorts": [
+        "Solitude"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.solitudemountain.com/plan-your-trip/lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.steamboat.com/explore/first-timers",
+      "resorts": [
+        "Steamboat"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.steamboat.com/explore/first-timers",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.steamboat.com/plan-your-trip/lodging/steamboat-grand",
+      "resorts": [
+        "Steamboat"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.steamboat.com/plan-your-trip/lodging/steamboat-grand",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.stevenspass.com/explore-the-resort/about-the-resort/getting-here-and-parking.aspx",
+      "resorts": [
+        "Stevens Pass"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.stevenspass.com/explore-the-resort/about-the-resort/getting-here-and-parking.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.stevenspass.com/explore-the-resort/during-your-stay/explore-lodging.aspx",
+      "resorts": [
+        "Stevens Pass"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.stevenspass.com/explore-the-resort/during-your-stay/explore-lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.stowe.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Stowe"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.stowe.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.stowe.com/plan-your-trip/stay/stowe-lodging.aspx",
+      "resorts": [
+        "Stowe"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.stowe.com/plan-your-trip/stay/stowe-lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.stratton.com/plan-your-trip/getting-here",
+      "resorts": [
+        "Stratton"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.stratton.com/plan-your-trip/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.stratton.com/plan-your-trip/hotels-lodging",
+      "resorts": [
+        "Stratton"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.stratton.com/plan-your-trip/hotels-lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sugarbowl.com/directions",
+      "resorts": [
+        "Sugar Bowl"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sugarbowl.com/directions",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sugarbowl.com/hotel",
+      "resorts": [
+        "Sugar Bowl"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sugarbowl.com/hotel",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sugarbush.com/guest-services/directions",
+      "resorts": [
+        "Sugarbush"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sugarbush.com/guest-services/directions",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sugarbush.com/plan-your-trip/lodging",
+      "resorts": [
+        "Sugarbush"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sugarbush.com/plan-your-trip/lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sugarloaf.com/experience/directions",
+      "resorts": [
+        "Sugarloaf"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sugarloaf.com/experience/directions",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sugarloaf.com/lodging/guest-guide",
+      "resorts": [
+        "Sugarloaf"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sugarloaf.com/lodging/guest-guide",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.summitatsnoqualmie.com/",
+      "resorts": [
+        "The Summit at Snoqualmie"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.summitatsnoqualmie.com/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.summitatsnoqualmie.com/directions",
+      "resorts": [
+        "The Summit at Snoqualmie"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.summitatsnoqualmie.com/directions",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.summitexpress.com/scheduled-shuttle-service/breckenridge-airport-shuttle/",
+      "resorts": [
+        "Breckenridge"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.summitexpress.com/scheduled-shuttle-service/breckenridge-airport-shuttle/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sundayriver.com/the-mountain/parking-and-shuttles",
+      "resorts": [
+        "Sunday River"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sundayriver.com/the-mountain/parking-and-shuttles",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sundayriver.com/trip-resources/area-lodging",
+      "resorts": [
+        "Sunday River"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sundayriver.com/trip-resources/area-lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sunpeaksresort.com/explore/business-directory/peak-shuttles",
+      "resorts": [
+        "Sun Peaks"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sunpeaksresort.com/explore/business-directory/peak-shuttles",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sunpeaksresort.com/explore/getting-here-around/airport-shuttles-transfers",
+      "resorts": [
+        "Sun Peaks"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sunpeaksresort.com/explore/getting-here-around/airport-shuttles-transfers",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sunpeaksresort.com/places-to-stay",
+      "resorts": [
+        "Sun Peaks"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sunpeaksresort.com/places-to-stay",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sunvalley.com/about/getting-here/",
+      "resorts": [
+        "Sun Valley"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sunvalley.com/about/getting-here/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sunvalley.com/plan-your-trip/",
+      "resorts": [
+        "Sun Valley"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.sunvalley.com/plan-your-trip/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.theremarkables.co.nz/getting-here-guide",
+      "resorts": [
+        "The Remarkables"
+      ],
+      "status": 403,
+      "finalUrl": "https://www.theremarkables.co.nz/getting-here-guide",
+      "result": "restricted-needs-manual-check",
+      "reviewMethod": "Public content read with the web research tool; direct audit received 403. No bypass or retries."
+    },
+    {
+      "url": "https://www.thredbo.com.au/accommodation/",
+      "resorts": [
+        "Thredbo"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.thredbo.com.au/accommodation/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.thredbo.com.au/arrival/",
+      "resorts": [
+        "Thredbo"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.thredbo.com.au/arrival/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.tremblant.ca/plan/getting-here",
+      "resorts": [
+        "Tremblant"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.tremblant.ca/plan/getting-here",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.tremblant.ca/plan/getting-here/ground-transportation-montreal-airport/shuttle-montreal-trudeau-international-airport-mont-tremblant",
+      "resorts": [
+        "Tremblant"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.tremblant.ca/plan/getting-here/ground-transportation-montreal-airport/shuttle-montreal-trudeau-international-airport-mont-tremblant",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.tremblant.ca/plan/hotels-condos",
+      "resorts": [
+        "Tremblant"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.tremblant.ca/plan/hotels-condos",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.vail.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Vail"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.vail.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.vail.com/plan-your-trip/stay/vail-lodging",
+      "resorts": [
+        "Vail"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.vail.com/plan-your-trip/stay/vail-lodging",
+      "result": "reachable",
+      "followupCheckedAt": "2026-11-06T20:52:34.571Z",
+      "note": "Dedicated official lodging directory, verified separately after replacing the general access link."
+    },
+    {
+      "url": "https://www.valdisere.com/en/prepare-for-your-stay/how-do-i-get-there/",
+      "resorts": [
+        "Val d'Isère"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.valdisere.com/en/prepare-for-your-stay/how-do-i-get-there/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.valdisere.com/en/val-disere/faq/",
+      "resorts": [
+        "Val d'Isère"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.valdisere.com/en/val-disere/faq/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.vallenevado.com/en/hotels/",
+      "resorts": [
+        "Valle Nevado"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.vallenevado.com/en/hotels/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.vallenevado.com/en/how-to-get-there/",
+      "resorts": [
+        "Valle Nevado"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.vallenevado.com/en/how-to-get-there/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.verbier.ch/en/practice/move-transport-and-mobility/getting-to-verbier/",
+      "resorts": [
+        "Verbier (4 Vallées)"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.verbier.ch/en/practice/move-transport-and-mobility/getting-to-verbier/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.verbier.ch/en/practice/stay-accommodation-and-workation/online-booking/",
+      "resorts": [
+        "Verbier (4 Vallées)"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.verbier.ch/en/practice/stay-accommodation-and-workation/online-booking/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.whistler.com/getting-here/road/shuttle/",
+      "resorts": [
+        "Whistler Blackcomb"
+      ],
+      "status": 403,
+      "finalUrl": "https://www.whistler.com/getting-here/road/shuttle/",
+      "result": "restricted-needs-manual-check",
+      "reviewMethod": "Public content read with the web research tool; direct audit received 403. No bypass or retries."
+    },
+    {
+      "url": "https://www.whistlerblackcomb.com/travel-guide/where-to-stay-in-whistler.aspx",
+      "resorts": [
+        "Whistler Blackcomb"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.whistlerblackcomb.com/travel-guide/where-to-stay-in-whistler.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.whistlershuttle.com/",
+      "resorts": [
+        "Whistler Blackcomb"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.whistlershuttle.com/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.wilmotmountain.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "resorts": [
+        "Wilmot Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.wilmotmountain.com/explore-the-resort/about-the-resort/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.wilmotmountain.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "resorts": [
+        "Wilmot Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.wilmotmountain.com/explore-the-resort/during-your-stay/lodging.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.windhammountainclub.com/arealodging/",
+      "resorts": [
+        "Windham Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.windhammountainclub.com/arealodging/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.windhammountainclub.com/getting-here/",
+      "resorts": [
+        "Windham Mountain"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.windhammountainclub.com/getting-here/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.winterparkresort.com/plan-your-trip/getting-here.aspx",
+      "resorts": [
+        "Winter Park"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.winterparkresort.com/plan-your-trip/getting-here.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.winterparkresort.com/plan-your-trip/hotel-lodging",
+      "resorts": [
+        "Winter Park"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.winterparkresort.com/plan-your-trip/hotel-lodging",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.yvr.ca/en/passengers/transportation/public-transportation/long-distance-scheduled-buses/whistler",
+      "resorts": [
+        "Whistler Blackcomb"
+      ],
+      "status": 403,
+      "finalUrl": "https://www.yvr.ca/en/passengers/transportation/public-transportation/long-distance-scheduled-buses/whistler",
+      "result": "restricted-needs-manual-check",
+      "reviewMethod": "Public content read with the web research tool; direct audit received 403. No bypass or retries."
+    },
+    {
+      "url": "https://yvrskylynx.com/timetable/",
+      "resorts": [
+        "Whistler Blackcomb"
+      ],
+      "status": 200,
+      "finalUrl": "https://yvrskylynx.com/timetable/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://zermatt.swiss/en/plan-book",
+      "resorts": [
+        "Zermatt"
+      ],
+      "status": 200,
+      "finalUrl": "https://zermatt.swiss/en/plan-book",
+      "result": "reachable"
+    }
+  ],
+  "repairs": [
+    {
+      "old": "https://www.sugarbush.com/plan-your-trip/getting-here",
+      "status": 404,
+      "replacement": "https://www.sugarbush.com/guest-services/directions"
+    },
+    {
+      "old": "https://www2.snowbasin.com/about/getting-here/",
+      "status": 403,
+      "replacement": "https://www.snowbasin.com/about/getting-here/"
+    },
+    {
+      "old": "https://www.booking.vill.hakuba.nagano.jp/en/",
+      "status": 503,
+      "replacement": "https://hakuba-tourism.com/accommodations/"
+    }
+  ],
+  "counts": {
+    "reachable": 219,
+    "restricted-needs-manual-check": 8
+  }
+}

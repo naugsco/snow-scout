@@ -1,5 +1,5 @@
 import { assessConditions, normalizeConditionMetrics, SNOW_KEYS, isFresh } from './condition-data.js?v=20261021-sources-verified';
-import { forecastIsCurrent } from './weather-data.js?v=20261021-sources-verified';
+import { forecastIsCurrent } from './weather-data.js?v=20261106-mountain-weather';
 
 // Pick a whole recent-weather report, so observed and modeled cumulative periods are never mixed.
 export function chooseConditions(entry, snapshotAt, forecast, now = Date.now()) {
@@ -10,7 +10,7 @@ export function chooseConditions(entry, snapshotAt, forecast, now = Date.now()) 
   selected.officialSnowReportedAt = entry?.officialSnowReportedAt || (selected.snowSourceKind === 'reported' ? entry?.snowReportedAt : null);
   selected.temperatureKind = entry?.temperatureKind || selected.snowSourceKind;
   selected.temperatureReportedAt = entry?.temperatureReportedAt || entry?.snowReportedAt;
-  if (assessed.snowStatus !== 'ready' && forecastIsCurrent(forecast, now) && isFresh(forecast.recentConditionsAt, undefined, now)) {
+  if ((assessed.snowStatus !== 'ready' || (selected.snowSourceKind === 'model' && selected.sources?.weatherModel !== forecast?.apiUrl)) && forecastIsCurrent(forecast, now) && isFresh(forecast.recentConditionsAt, undefined, now)) {
     const modeled = normalizeConditionMetrics(forecast.recentConditions).metrics;
     if (SNOW_KEYS.some(key => Number.isFinite(modeled[key]))) {
       for (const key of SNOW_KEYS) selected.metrics[key] = modeled[key];
@@ -19,7 +19,7 @@ export function chooseConditions(entry, snapshotAt, forecast, now = Date.now()) 
       selected.snowReportedAt = forecast.recentConditionsAt;
       selected.temperatureKind = 'model';
       selected.temperatureReportedAt = forecast.recentConditionsAt;
-      selected.note = `Weather-model estimates at the catalog coordinates. Resort snow report ${selected.primarySnowStatus}; these are not resort measurements.`;
+      selected.note = `Weather-model estimates at the selected ski-terrain location${Number.isFinite(forecast.weatherLocation?.elevationM) ? ` (${Math.round(forecast.weatherLocation.elevationM)} m)` : ''}. Resort snow report ${selected.primarySnowStatus}; these are not resort measurements. A model can miss snowfall happening now.`;
       selected.sources = { ...selected.sources, weatherModel: forecast.apiUrl };
     }
   }

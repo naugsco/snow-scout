@@ -218,12 +218,27 @@ async function parseVail(entry) {
   try {
     if (results[1].status === 'rejected') throw results[1].reason;
     const html = results[1].value;
-    const terrain = extractJsonAssignment(html, 'FR.TerrainStatusFeed =');
-    if (terrain.IsSuccessful !== true) throw new Error('Terrain feed did not report success.');
-    Object.assign(result.metrics, summarizeVailTerrain(terrain, html));
-    result.terrainReportedAt = reportTimestamp(terrain.Date);
+    const parsed = parseVailTerrain(html);
+    Object.assign(result.metrics, parsed.metrics);
+    result.terrainReportedAt = parsed.terrainReportedAt;
+    if (parsed.terrainStatus) result.terrainStatus = parsed.terrainStatus;
+    if (parsed.note) {
+      result.note = [result.note, parsed.note].filter(Boolean).join(' ');
+      result.issues.push(parsed.note);
+    }
   } catch (error) { result.terrainStatus = 'error'; result.issues.push(`Terrain report: ${error.message}`); }
   return result;
+}
+
+export function parseVailTerrain(html) {
+  const text = htmlText(visibleHtml(html)).replace(/&amp;/g, '&');
+  if (/Whistler Blackcomb Trail\s*&\s*Lift Status is currently offline and will be back before Winter Opening Day\./i.test(text)) {
+    return { metrics:{}, terrainStatus:'unavailable', terrainReportedAt:null,
+      note:'The official Whistler site says its trail and lift status is offline until before winter opening. Open runs, lifts and grooming are unverified.' };
+  }
+  const terrain = extractJsonAssignment(html, 'FR.TerrainStatusFeed =');
+  if (terrain.IsSuccessful !== true) throw new Error('Terrain feed did not report success.');
+  return { metrics:summarizeVailTerrain(terrain, html), terrainReportedAt:reportTimestamp(terrain.Date) };
 }
 
 async function parseAlta(entry) {

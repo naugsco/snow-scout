@@ -3,12 +3,13 @@ import {
   formatInches, formatTemperature, formatRunAccess, formatPassLabel,
   getPassTone, getSourceKeyForResort, getConditionsPageForResort, getWebcamPageForResort,
   withCacheBust, webcamStreams
-} from './utils.js?v=20261021-sources-verified';
-import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261106-live-snow';
+} from './utils.js?v=20261106-mountain-weather';
+import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261106-mountain-weather';
+import { weatherLocationLabel } from './weather-location.js?v=20261106-mountain-weather';
 import { createSnowfallChart } from './snowfall-chart.js?v=20261021-sources-verified';
 import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261021-sources-verified';
 import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';
-import { renderTravelPanel } from './travel-panel.js?v=20261106-trips';
+import { renderTravelPanel } from './travel-panel.js?v=20261106-all-travel-guides';
 
 const detailOverlay = document.getElementById('detail-overlay');
 const detailPanel = document.getElementById('detail-panel');
@@ -224,6 +225,7 @@ export function renderDetailPanel() {
     { label: formatPassLabel(resort), className: `pass-tag ${getPassTone(resort)}` },
     { label: resort.regionLabel, className: 'pill' },
     { label: formatTemperature(resort.metrics.tempF), className: 'pill' },
+    ...(resort.liveForecast ? [{label:weatherLocationLabel(resort),className:'pill'}] : []),
     { label: Number.isFinite(resort.metrics.daysSinceSnow) ? `${resort.metrics.daysSinceSnow}d since snow` : 'Snow gap unknown', className: 'pill' }
   ].forEach((item) => {
     const chip = document.createElement('span');
@@ -396,7 +398,7 @@ export function renderDetailPanel() {
   const forecastNote = document.createElement('p');
   forecastNote.className = 'detail-note';
   forecastNote.textContent = resort.liveForecast
-    ? `Open-Meteo model, fetched ${new Date(resort.liveForecast.updatedAt).toLocaleString()}. Daily bars use resort-local calendar dates; the 72-hour total starts ${new Date(resort.liveForecast.periodStart).toLocaleString()}.`
+    ? `Open-Meteo model · ${weatherLocationLabel(resort)}. One terrain sample, not conditions across every elevation or mountain in this destination. Fetched ${new Date(resort.liveForecast.updatedAt).toLocaleString()}. Daily bars use resort-local calendar dates; the 72-hour total starts ${new Date(resort.liveForecast.periodStart).toLocaleString()}. Current snowfall is modeled, not a live observation, and can miss snow happening now.`
     : resort.liveForecastStatus === 'loading' ? 'Loading the weather-model forecast…' : 'Current forecast unavailable. Unverified forecast values are withheld.';
   forecastActions.appendChild(forecastNote);
 

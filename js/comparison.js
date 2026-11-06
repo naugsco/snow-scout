@@ -1,6 +1,6 @@
-import { openTripComparison } from './trip-comparison.js?v=20261106-trips';
+import { openTripComparison } from './trip-comparison.js?v=20261106-all-travel-guides';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
-import { formatInches, formatRunAccess, formatPassLabel, getPassTone, formatTemperature } from './utils.js?v=20261021-sources-verified';
+import { formatInches, formatRunAccess, formatPassLabel, getPassTone, formatTemperature } from './utils.js?v=20261106-mountain-weather';
 import { createSnowfallChart } from './snowfall-chart.js?v=20261021-sources-verified';
 
 const MAX_COMPARE = 3;

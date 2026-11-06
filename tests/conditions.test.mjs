@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
 import { assessConditions, normalizeConditionMetrics, isFresh, emptyMetrics } from '../js/condition-data.js';
-import { parseWeather, forecastIsCurrent } from '../js/weather-data.js';
+import { parseWeather, forecastIsCurrent, weatherUrl } from '../js/weather-data.js';
 import { loadAllResorts, collectionEntries, reportTimestamp, parseVailSnow, parseSingleDepth, collectEntry, summarizeVailTerrain, summarizePowdrOpenCount, summarizePowdrGroomedCount } from '../scripts/fetch_resort_conditions.mjs';
 
 const now = new Date('2026-10-21T21:30:00Z');
@@ -31,7 +31,7 @@ test('all 105 canonical resorts start with no generated condition values', async
   assert.equal(loadAllResorts().size, resorts.length);
   for (const resort of resorts) {
     assert.deepEqual(resort.metrics, emptyMetrics(), resort.name);
-    assert.ok(loadAllResorts().has(resort.name === 'Palisades Tahoe' ? 'palisades tahoe' : (await import('../js/utils.js?v=20261021-sources-verified')).getSourceKeyForResort(resort.name)));
+    assert.ok(loadAllResorts().has(resort.name === 'Palisades Tahoe' ? 'palisades tahoe' : (await import('../js/utils.js?v=20261106-mountain-weather')).getSourceKeyForResort(resort.name)));
   }
 });
 
@@ -195,7 +195,7 @@ test('failed forecast fetch clears prior forecast values and errors are surfaced
 });
 
 test('small positive snowfall never formats as zero', async () => {
-  const { formatInches } = await import('../js/utils.js?v=20261021-sources-verified');
+  const { formatInches } = await import('../js/utils.js?v=20261106-mountain-weather');
   const { state } = await import('../js/state.js?v=20261021-sources-verified');
   state.useMetric = false;
   assert.equal(formatInches(0.03), '<0.1"');
@@ -211,7 +211,7 @@ test('conditions and forecasts expire while a browser tab stays open', async () 
   const { resorts } = await import('../js/resorts.js?v=20261021-sources-verified');
   const { state } = await import('../js/state.js?v=20261021-sources-verified');
   const checkedAt = new Date().toISOString();
-  const forecast = parseWeather(weatherFixture(new Date(checkedAt)), '', new Date(checkedAt)).forecast;
+  const forecast = parseWeather(weatherFixture(new Date(checkedAt)), weatherUrl(resorts.find(r=>r.name==='Heavenly')), new Date(checkedAt)).forecast;
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async (url) => ({ ok: true, json: async () => String(url).includes('resort-conditions')
     ? { schemaVersion: 2, generatedAt: checkedAt, resorts: { heavenly: { ...entry({ snow24h: 0, runsOpen: 0, runsTotal: 111, groomedRuns: 0 }), checkedAt, snowReportedAt: checkedAt, terrainReportedAt: checkedAt } } }

@@ -1,11 +1,13 @@
-import { GATEWAYS } from './trip-planning.js?v=20261106-trips';
+import { mountTravelGuide } from './travel-guide-panel.js?v=20261106-all-travel-guides';
+import { GATEWAYS } from './trip-planning.js?v=20261106-all-travel-guides';
 import { TRAVEL_CONFIG } from './travel-config.js?v=20261022-travel';
-import { addDays, localDate, nearbyAirports, validateTrip, kayakFlightUrl, directionsUrl, lodgingUrl, stormContext } from './travel.js?v=20261022-travel';
-import { formatInches, getConditionsPageForResort } from './utils.js?v=20261021-sources-verified';
+import { addDays, localDate, nearbyAirports, validateTrip, kayakFlightUrl, stormContext } from './travel.js?v=20261106-all-travel-guides';
+import { formatInches, getConditionsPageForResort } from './utils.js?v=20261106-mountain-weather';
 import { icon } from './ui-icons.js?v=20261021-sources-verified';
 
 const root = document.getElementById('travel-panel');
 const drafts = new Map();
+const stayDrafts = new Map();
 let catalogPromise;
 let currentResort;
 let searchController;
@@ -115,7 +117,7 @@ export async function renderTravelPanel(resort) {
   const gateway = GATEWAYS[resort.name];
   const verifiedAirport = data.airports.find(a => a.code === gateway?.code);
   if (verifiedAirport && !nearby.some(a => a.code === verifiedAirport.code)) nearby.unshift({...verifiedAirport, distance: null});
-  const draft = drafts.get(resort.id) || { origin: readPreference('snow-scout-airport'), destination: '', departure: addDays(localDate(), 1), returnDate: addDays(localDate(), 5), adults: 1, currency: readPreference('snow-scout-travel-currency') || 'CAD' };
+  const draft = drafts.get(resort.id) || { origin: readPreference('snow-scout-airport'), destination: gateway?.code || '', departure: addDays(localDate(), 1), returnDate: addDays(localDate(), 5), adults: 1, currency: readPreference('snow-scout-travel-currency') || 'CAD' };
   const savedOrigin = readPreference('snow-scout-airport');
   if (savedOrigin) draft.origin = savedOrigin;
   root.innerHTML = `
@@ -125,7 +127,7 @@ export async function renderTravelPanel(resort) {
     <form class="travel-form" novalidate>
       <div class="travel-fields"><label>Departure airport<input name="origin" aria-label="Trip departure airport" list="travel-airport-list" placeholder="e.g. YVR" maxlength="3" autocomplete="off" value="${escape(draft.origin)}" required></label>
       <label>Arrival airport<input name="destination" aria-label="Trip arrival airport" list="travel-airport-list" placeholder="Choose below or enter code" maxlength="3" autocomplete="off" value="${escape(draft.destination)}" required></label></div>
-      <div class="travel-airports"><span>Explore nearby airports</span><div>${nearby.map(a => `<button type="button" data-airport="${a.code}"><strong>${a.code}</strong><span>${escape(a.city || a.name)} · ${a.country}</span><small>${a.code === gateway?.code ? 'Official access airport' : Math.round(a.distance) + ' km straight-line'}</small></button>`).join('')}</div>
+      <div class="travel-airports"><span>Explore nearby airports</span><div>${nearby.map(a => `<button type="button" data-airport="${a.code}"><strong>${a.code}</strong><span>${escape(a.city || a.name)} · ${a.country}</span><small>${a.code === gateway?.code ? (gateway.verified ? 'Listed access airport' : 'Regional flight-search option') : Math.round(a.distance) + ' km straight-line'}</small></button>`).join('')}</div>
       <p class="travel-small">Geographic suggestions, not verified routes. Mountains, borders and seasonal flights can change the best choice. <a href="https://ourairports.com/data/" target="_blank" rel="noopener noreferrer">OurAirports</a> · updated ${escape(data.retrievedAt.slice(0, 10))}.</p></div>
       <div class="travel-fields"><label>Depart home<input type="date" name="departure" required min="${localDate()}" max="${addDays(localDate(), 329)}" value="${escape(draft.departure)}"></label><label>Return flight<input type="date" name="returnDate" required min="${addDays(localDate(), 1)}" max="${addDays(localDate(), 330)}" value="${escape(draft.returnDate)}"></label>
       <label>Adults<select name="adults">${[1,2,3,4,5,6].map(n => `<option value="${n}" ${n === draft.adults ? 'selected' : ''}>${n} adult${n === 1 ? '' : 's'}</option>`).join('')}</select></label>
@@ -136,9 +138,7 @@ export async function renderTravelPanel(resort) {
       <p class="travel-service" role="status"></p>
     </form>
     <div class="travel-results" aria-live="polite"></div>
-    ${gateway ? `<p class="travel-small">${escape(gateway.note)} <a href="${gateway.url}" target="_blank" rel="noopener noreferrer">Official access guidance ↗</a> · reviewed Nov 6, 2026.</p>` : ''}
-    <div class="travel-next"><article><h4>${icon('globe')} Airport to mountain</h4><p class="travel-ground-copy">Choose an arrival airport to explore driving and public transport.</p><div><a class="travel-drive travel-link" target="_blank" rel="noopener noreferrer">Driving route ↗</a><a class="travel-transit travel-link" target="_blank" rel="noopener noreferrer">Transit options ↗</a></div><p class="travel-small">Check winter road conditions, operating hours and ski-bag space with the transport operator. Travel times and transfer prices are not quoted here.</p></article>
-    <article><h4>${icon('mountain')} Stay near the snow</h4><p>Explore accommodation around ${escape(resort.name)}. Check access to the lifts and cancellation terms.</p><a class="travel-stays travel-link" target="_blank" rel="noopener noreferrer">Find nearby stays ↗</a><p class="travel-small">Opens Google Maps. Set check-in dates there after confirming your local arrival.</p></article></div>
+    <div class="travel-guide-root"></div>
     <p class="travel-footnote">Flight, stay and transfer totals are not yet combined. External sites confirm availability and final prices. Your airport preference stays in this browser.</p>`;
   if (!document.getElementById('travel-airport-list')) {
     const list = document.createElement('datalist'); list.id = 'travel-airport-list';
@@ -146,7 +146,6 @@ export async function renderTravelPanel(resort) {
     document.body.appendChild(list);
   }
   updateContext(resort);
-  root.querySelector('.travel-stays').href = lodgingUrl(resort);
   const form = root.querySelector('form');
   const searchButton = form.querySelector('button[type="submit"]');
   const status = form.querySelector('.travel-service');
@@ -165,9 +164,9 @@ export async function renderTravelPanel(resort) {
     catch (error) { if (showErrors) root.querySelector('.travel-error').textContent = error.message; }
     external(root.querySelector('.travel-kayak'), valid ? kayakFlightUrl(trip) : null);
     const airport = data.airports.find(a => a.code === trip.destination);
-    external(root.querySelector('.travel-drive'), airport ? directionsUrl(resort, airport) : null);
-    external(root.querySelector('.travel-transit'), airport ? directionsUrl(resort, airport, true) : null);
-    root.querySelector('.travel-ground-copy').textContent = airport ? `${airport.name} (${airport.code}) → ${resort.name}. Compare the actual route before booking.` : 'Choose an arrival airport to explore driving and public transport.';
+    const stay = stayDrafts.get(resort.id) || {};
+    stayDrafts.set(resort.id, stay);
+    mountTravelGuide(root.querySelector('.travel-guide-root'), { resort, airport, trip, stay });
     root.querySelectorAll('[data-airport]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.airport === trip.destination)));
     searchButton.hidden = service.mode === 'off'; searchButton.disabled = !valid;
     root.querySelector('.travel-currency').hidden = service.mode === 'off';

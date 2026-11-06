@@ -19,9 +19,9 @@ The committed `js/weather-config.js` contains only the public gateway URL. Local
 
 ## Credentials and activation
 
-OPENWEATHER_ENABLED remains the string `false` in Wrangler vars. No OpenWeather key was uploaded: automatic approval review required Nick's specific approval to transfer the local credential to Cloudflare. Backend deployment and the frontend connection do not require this transfer and are complete independently of it.
+OPENWEATHER_ENABLED remains the string `false` in Wrangler vars. On Nov 6, Nick explicitly approved transferring the existing local OpenWeather credential to Cloudflare. OPENWEATHER_API_KEY was uploaded to the private Worker secret store and its presence verified by name only. Live status still reports enabled=false; no provider request was made.
 
-After approval, supply OPENWEATHER_API_KEY through Cloudflare's private Worker secret store. Never place it in Wrangler vars, frontend files, GitHub or logs. Keep OPENWEATHER_ENABLED=false until the provider account is restored. When ready, explicitly change it to true and deploy. Do not probe the blocked key to see whether it works.
+For future credential updates, supply OPENWEATHER_API_KEY through Cloudflare's private Worker secret store. Never place it in Wrangler vars, frontend files, GitHub or logs. Keep OPENWEATHER_ENABLED=false until the provider account is restored. When ready, explicitly change it to true and deploy. Do not probe the blocked key to see whether it works.
 
 Authentication failures persist across restarts. After fixing rejected credentials, change OPENWEATHER_CIRCUIT_RESET_ID to a new operator-controlled value and deploy. This clears the permanent auth flag but preserves request reservations and any longer quota cooldown; a one-minute warmup applies. Do not change the durable account object's name to clear a limit.
 

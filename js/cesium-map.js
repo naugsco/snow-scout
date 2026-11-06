@@ -1,7 +1,7 @@
 import { paintImagery } from './painted-material.js?v=20261105-map-layers';
 import { DEG2RAD, CESIUM_ION_TOKEN, BILLBOARD_HEIGHT, HOVER_MARKER_HEIGHT, SELECTED_MARKER_HEIGHT } from './constants.js?v=20261021-sources-verified';
 import { state } from './state.js?v=20261021-sources-verified';
-import { clamp, getPassTone, inferStatus, getStatusText, normalizeResortName, getSourceKeyForResort } from './utils.js?v=20261021-sources-verified';
+import { clamp, getPassTone, inferStatus, getStatusText, normalizeResortName, getSourceKeyForResort } from './utils.js?v=20261106-mountain-weather';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 
 Cesium.Ion.defaultAccessToken = CESIUM_ION_TOKEN;

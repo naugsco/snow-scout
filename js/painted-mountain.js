@@ -1,8 +1,9 @@
+import { createWeatherLayers } from './weather-layers.js?v=20261105-map-layers';
 import { CESIUM_ION_TOKEN } from './constants.js?v=20261021-sources-verified';
-import { paintedMaterial, paintImagery } from './painted-material.js?v=20261021-sources-verified';
+import { paintedMaterial, paintImagery } from './painted-material.js?v=20261105-map-layers';
 import { trailColor } from './trail-style.js?v=20261021-sources-verified';
 
-export async function createMountain(container, notify, fail, config) {
+export async function createMountain(container, notify, fail, config, options = {}) {
   const C = window.Cesium;
   if (!C) throw new Error('The Cesium map engine did not load.');
   C.Ion.defaultAccessToken = CESIUM_ION_TOKEN;
@@ -46,8 +47,6 @@ export async function createMountain(container, notify, fail, config) {
   scene.postProcessStages.fxaa.enabled = true;
   scene.verticalExaggeration = 1.5;
   viewer.resolutionScale = Math.min(window.devicePixelRatio, 1.5);
-  const aerial = viewer.imageryLayers.addImageryProvider(imagery);
-  aerial.show = false;
   const trees = scene.primitives.add(new C.BillboardCollection({scene}));
   const treeCells = new Map();
   const trailClearance = new Set();
@@ -122,7 +121,7 @@ export async function createMountain(container, notify, fail, config) {
       ? (activeArea === config && config.mobileRange || activeArea.range * 600 / Math.max(container.clientWidth,320))
       : activeArea.range});
   let home = homePose();
-  let pose = {...home}, globe = false, mode = 'orbit', disposed = false;
+  let pose = {...home}, mode = 'orbit', disposed = false;
   let target = C.Cartesian3.fromDegrees(...config.center, targetHeight);
   const lightDirection = C.Matrix4.multiplyByPointAsVector(
     C.Transforms.eastNorthUpToFixedFrame(target), new C.Cartesian3(0.4,0.3,-0.86),new C.Cartesian3());
@@ -202,14 +201,18 @@ export async function createMountain(container, notify, fail, config) {
   });
   container.dataset.majorRoutes = String([...namedLengths.values()].filter(length=>length>=750).length);
   function renderPose() {
-    if(disposed || globe) return;
+    if(disposed) return;
     viewer.camera.lookAt(target,new C.HeadingPitchRange(C.Math.toRadians(pose.heading),C.Math.toRadians(pose.pitch),pose.range));
     container.dataset.heading = pose.heading.toFixed(1);
     container.dataset.pitch = pose.pitch.toFixed(1);
     container.dataset.range = pose.range.toFixed(0);
     scene.requestRender();
   }
-  renderPose();
+  if (options.flyIn) {
+    viewer.camera.setView({
+      destination: C.Cartesian3.fromDegrees(...config.center, 17000000)
+    });
+  } else renderPose();
   function change(dh=0, dp=0, zoom=1) {
     viewer.camera.cancelFlight();
     pose.heading = (pose.heading+dh+360)%360;
@@ -222,9 +225,9 @@ export async function createMountain(container, notify, fail, config) {
   canvas.setAttribute('aria-label',`Interactive painted ${config.name} terrain. Arrow keys rotate and tilt; plus and minus zoom.`);
   canvas.tabIndex=0;
   const pointers = new Map(); let previousPinch=null;
-  const down=e=>{if(globe)return;canvas.focus({preventScroll:true});canvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,[e.clientX,e.clientY]);};
+  const down=e=>{canvas.focus({preventScroll:true});canvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,[e.clientX,e.clientY]);};
   const move=e=>{
-    if(globe || !pointers.has(e.pointerId)) return;
+    if(!pointers.has(e.pointerId)) return;
     const last = pointers.get(e.pointerId); pointers.set(e.pointerId,[e.clientX,e.clientY]);
     if(pointers.size===2) {
       const [a,b]=[...pointers.values()];const distance=Math.hypot(a[0]-b[0],a[1]-b[1]);
@@ -234,9 +237,9 @@ export async function createMountain(container, notify, fail, config) {
     change(mode==='orbit' ? -(e.clientX-last[0])*0.22 : 0, (e.clientY-last[1])*0.13);
   };
   const up=e=>{pointers.delete(e.pointerId);previousPinch=null;};
-  const wheel=e=>{if(globe)return;e.preventDefault();change(0,0,Math.exp(e.deltaY*0.001));};
+  const wheel=e=>{e.preventDefault();change(0,0,Math.exp(e.deltaY*0.001));};
   const key=e=>{
-    if(globe || e.target.closest('select,input,textarea,[contenteditable="true"]'))return;
+    if(e.target.closest('select,input,textarea,[contenteditable="true"]'))return;
     const actions={ArrowLeft:()=>change(-7),ArrowRight:()=>change(7),ArrowUp:()=>change(0,-5),ArrowDown:()=>change(0,5),'+':()=>change(0,0,0.85),'=':()=>change(0,0,0.85),'-':()=>change(0,0,1.18)};
     if(actions[e.key]){e.preventDefault();actions[e.key]();}
   };
@@ -250,7 +253,10 @@ export async function createMountain(container, notify, fail, config) {
     if(entity?.properties) notify({selection:{name:entity.name,kind:entity.properties.kind.getValue(),difficulty:entity.properties.difficulty?.getValue()}});
   },C.ScreenSpaceEventType.LEFT_CLICK);
   notify({ready:true,runCount,liftCount});
+  const weather = createWeatherLayers(viewer);
   const api = {
+    weather,
+    setWeatherVisible(value) { material.uniforms.weatherVisible = value ? 1 : 0; scene.requestRender(); },
     async focusArea(areaId) {
       const area = areaId ? config.views.find(item=>item.id===areaId) : config;
       if (!area) throw new Error('Mapped mountain area not found.');
@@ -271,25 +277,18 @@ export async function createMountain(container, notify, fail, config) {
     tilt(){change(0,pose.pitch < -45 ? 25 : -20);},
     zoom(value){change(0,0,value);},
     showTrails(value){trailSource.show=value;},showLifts(value){liftSource.show=value;},
-    globe(){
-      globe=true; controller.enableInputs=true;
-      trailSource.show=false;liftSource.show=false;labels.show=false;trees.show=false;
-      scene.globe.material=undefined;layer.show=false;aerial.show=true;
-      viewer.camera.lookAtTransform(C.Matrix4.IDENTITY);
-      viewer.camera.flyTo({destination:C.Cartesian3.fromDegrees(config.center[0],config.center[1],17000000),duration:2});
-      notify({view:'globe',selection:null});
-    },
     flyIn(){
-      controller.enableInputs=false;globe=false;home=homePose();pose={...home};
-      layer.show=true;aerial.show=false;scene.globe.material=material;trailSource.show=true;liftSource.show=true;labels.show=true;trees.show=true;
+      controller.enableInputs=false;home=homePose();pose={...home};
+      trailSource.show=true;liftSource.show=true;labels.show=true;trees.show=true;
       viewer.camera.flyToBoundingSphere(new C.BoundingSphere(target,100),{
         duration:2.8,offset:new C.HeadingPitchRange(C.Math.toRadians(home.heading),C.Math.toRadians(home.pitch),home.range),
         complete:renderPose
       });
       notify({view:'resort',selection:null});
     },
-    destroy(){disposed=true;document.removeEventListener('keydown',key);selection.destroy();viewer.destroy();}
+    destroy(){disposed=true;weather.destroy();document.removeEventListener('keydown',key);selection.destroy();viewer.destroy();}
   };
+  if (options.flyIn) api.flyIn();
   return api;
   } catch (error) {
     viewer.destroy();

@@ -153,6 +153,12 @@ body.map-open .heatmap-app { pointer-events: none; }
   .heatmap-title-row { align-items: stretch; flex-direction: column; gap: 14px; }
   .heatmap-search { flex: 1; width: auto; }
   .metric-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .metric-button[data-metric="score"] { order: 0; }
+  .metric-button[data-metric="snow24h"] { order: 1; }
+  .metric-button[data-metric="snow48h"] { order: 2; }
+  .metric-button[data-metric="forecast72h"] { order: 3; }
+  .metric-button[data-metric="season"] { order: 4; }
+  .metric-button[data-metric="runsOpen"] { order: 5; }
   .metric-button { min-height: 62px; }
   .metric-button strong { font-size: 14px; }
   .heatmap-context { flex-direction: column; gap: 10px; }

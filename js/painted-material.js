@@ -36,6 +36,7 @@ export function paintedMaterial(C, features, bounds, snowline, lonMeters) {
     uniforms: {
       grain: new URL('../assets/gouache-grain.png', import.meta.url).href,
       snowline,
+      weatherVisible: 0,
       trailMask: canvas.toDataURL('image/png'),
       maskBounds: new C.Cartesian4(
         C.Math.toRadians(bounds[0]), C.Math.toRadians(bounds[1]),
@@ -75,6 +76,8 @@ export function paintedMaterial(C, features, bounds, snowline, lonMeters) {
         m.diffuse = mix(painted, snow, clearing);
         // Below the treeline, retain the painted aerial forest pattern.
         m.alpha = max(mix(0.03, 0.98, smoothstep(snowline, snowline + 250.0, height)), clearing * 0.96);
+        // Let weather imagery remain visible above the painted aerial palette.
+        m.alpha *= mix(1.0, 0.18, weatherVisible);
         return m;
       }`
   }});

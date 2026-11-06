@@ -12,7 +12,6 @@ import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';
 const detailOverlay = document.getElementById('detail-overlay');
 const detailPanel = document.getElementById('detail-panel');
 const detailName = document.getElementById('detail-name');
-const detailSubtitle = document.getElementById('detail-subtitle');
 const detailMeta = document.getElementById('detail-meta');
 const detailFavorite = document.getElementById('detail-favorite');
 const runOpenCopy = document.getElementById('run-open-copy');
@@ -213,11 +212,6 @@ export function renderDetailPanel() {
   detailOverlay.style.display = 'flex';
   detailName.textContent = resort.name;
   document.getElementById('detail-mountain').href = mountainUrl(resort);
-  const sourceLabel = resort.liveConditionsKind === 'model' ? 'Open-Meteo model estimate' : 'Resort report';
-  const snowTime = resort.liveSnowReportedAt ? new Date(resort.liveSnowReportedAt).toLocaleString() : 'unknown';
-  const terrainTime = resort.liveTerrainReportedAt ? new Date(resort.liveTerrainReportedAt).toLocaleString() : 'unknown';
-  const terrainTimeLabel = resort.liveTerrainTimestampKind === 'feed' ? 'feed updated' : resort.liveTerrainTimestampKind === 'checked' ? 'checked' : 'reported';
-  detailSubtitle.textContent = `${formatPassLabel(resort)} · ${resort.regionLabel} · ${sourceLabel} · Snow: ${resort.liveSnowStatus || 'loading'} (${snowTime}) · Terrain ${terrainTimeLabel}: ${resort.liveTerrainStatus || 'loading'} (${terrainTime})`;
   detailFavorite.textContent = favoriteGlyph(resort.id);
   detailFavorite.classList.toggle('primary', state.favorites.has(resort.id));
 

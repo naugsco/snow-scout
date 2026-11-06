@@ -1,3 +1,4 @@
+import { paintImagery } from './painted-material.js?v=20261105-map-layers';
 import { DEG2RAD, CESIUM_ION_TOKEN, BILLBOARD_HEIGHT, HOVER_MARKER_HEIGHT, SELECTED_MARKER_HEIGHT } from './constants.js?v=20261021-sources-verified';
 import { state } from './state.js?v=20261021-sources-verified';
 import { clamp, getPassTone, inferStatus, getStatusText, normalizeResortName, getSourceKeyForResort } from './utils.js?v=20261021-sources-verified';
@@ -7,6 +8,7 @@ Cesium.Ion.defaultAccessToken = CESIUM_ION_TOKEN;
 
 export const viewer = new Cesium.Viewer('cesium-container', {
   useDefaultRenderLoop: false,
+  baseLayer: false,
   terrain: Cesium.Terrain.fromWorldTerrain({
     requestVertexNormals: true
   }),
@@ -30,7 +32,7 @@ viewer.scene.skyAtmosphere.saturationShift = -0.12;
 viewer.scene.skyAtmosphere.brightnessShift = -0.08;
 viewer.scene.fxaa = true;
 viewer.scene.postProcessStages.fxaa.enabled = true;
-viewer.resolutionScale = Math.min(devicePixelRatio, 2);
+viewer.resolutionScale = Math.min(devicePixelRatio, 1.5);
 viewer.scene.screenSpaceCameraController.inertiaSpin = 0.78;
 viewer.scene.screenSpaceCameraController.inertiaTranslate = 0.82;
 viewer.scene.screenSpaceCameraController.inertiaZoom = 0.72;
@@ -39,6 +41,19 @@ viewer.scene.screenSpaceCameraController.maximumZoomDistance = 22000000;
 viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
 viewer.scene.requestRenderMode = false;
 viewer.scene.canvas.style.cursor = 'grab';
+
+let paintedGlobePromise;
+export function preparePaintedGlobe() {
+  if (!paintedGlobePromise) {
+    paintedGlobePromise = Cesium.createWorldImageryAsync({ style: Cesium.IonWorldImageryStyle.AERIAL })
+      .then(provider => {
+        provider.errorEvent.addEventListener(() => console.error('Painted globe imagery could not load a tile.'));
+        viewer.imageryLayers.addImageryProvider(paintImagery(provider), 0);
+        viewer.scene.requestRender();
+      }).catch(error => { paintedGlobePromise = null; throw error; });
+  }
+  return paintedGlobePromise;
+}
 
 export const markerEntities = [];
 export const markerById = new Map();

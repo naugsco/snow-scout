@@ -5,8 +5,8 @@ import { resorts } from './resorts.js?v=20261021-sources-verified';
 import {
   viewer, createMarkerEntity, updateMarkerVisibility, updateMarkerStyles,
   syncHoverCardToEntity, screenSpaceHandler, resortForScreenPosition,
-  flyToResort, updateZoomReadout, setAutoRotate
-} from './cesium-map.js?v=20261021-sources-verified';
+  updateZoomReadout, setAutoRotate, preparePaintedGlobe
+} from './cesium-map.js?v=20261105-map-layers';
 import { loadOptionalSourceData, loadLiveForecastForResort, expireStaleWeather } from './data-loader.js?v=20261021-sources-verified';
 import {
   renderDashboard, renderFilters, renderUpdatedAt, filteredResorts,
@@ -15,14 +15,15 @@ import {
 } from './dashboard.js?v=20261021-sources-verified';
 import { HEATMAP_METRICS } from './heatmap-metrics.js?v=20261021-sources-verified';
 import { icon, hydrateIcons } from './ui-icons.js?v=20261021-sources-verified';
-import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261021-sources-verified';
+import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261105-map-layers';
 import { parseHash, updateHash, initRouter } from './router.js?v=20261021-sources-verified';
 import { toggleCompareResort, refreshComparison } from './comparison.js?v=20261021-sources-verified';
-import {
-  toggleLayer, addLayer, setLayerOpacity, getActiveLayerIds, isLayerActive,
-  toggleRadarAnimation, stopRadarAnimation, isAnimating, showRadarFrame, getRadarFrames,
-  getRadarFrameIndex, formatRadarTime, setOnFrameChange, setOnLayerError
-} from './weather-layers.js?v=20261021-sources-verified';
+import { createWeatherLayers } from './weather-layers.js?v=20261105-map-layers';
+import { bindWeatherControls } from './weather-controls.js?v=20261105-map-layers';
+import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';
+const weather = createWeatherLayers(viewer);
+const { isLayerActive, stopRadarAnimation } = weather;
+const { changeLayer, updateWeatherUI, reportWeatherError } = bindWeatherControls(weather);
 
 Object.assign(webcamPages, DEFAULT_WEBCAM_PAGES);
 hydrateIcons();
@@ -38,11 +39,6 @@ const searchInput = document.getElementById('search-input');
 const mapDialog = document.getElementById('map-dialog');
 const mapButton = document.getElementById('map-toggle');
 const weatherPanel = document.getElementById('weather-panel');
-const radarControls = document.getElementById('radar-controls');
-const radarPlay = document.getElementById('radar-play');
-const radarScrubber = document.getElementById('radar-scrubber');
-const weatherStatus = document.getElementById('weather-status');
-const weatherError = document.getElementById('owm-toast');
 const hoverCard = document.getElementById('hover-card');
 const dashboard = document.getElementById('dashboard');
 let mapOpened = false;
@@ -52,6 +48,10 @@ const syncHash = () => updateHash(state, resorts);
 const visibleIds = () => new Set(filteredResorts().map((resort) => resort.id));
 
 function focusResort(resort, { fly = !mapDialog.hidden } = {}) {
+  if (fly && !mapDialog.hidden) {
+    location.assign(`${mountainUrl(resort)}&fly=1`);
+    return;
+  }
   lastDetailTrigger = document.activeElement;
   hideHeatmapPreview();
   state.selectedId = resort.id;
@@ -61,7 +61,6 @@ function focusResort(resort, { fly = !mapDialog.hidden } = {}) {
   document.getElementById('detail-close').focus({ preventScroll: true });
   syncHash();
   loadLiveForecastForResort(resort, onDataReady).catch((error) => console.error('Resort forecast:', error.message));
-  if (fly && !mapDialog.hidden) flyToResort(resort);
 }
 function closeDetails() {
   state.selectedId = null;
@@ -158,48 +157,6 @@ document.getElementById('detail-close').addEventListener('click', closeDetails);
 document.getElementById('detail-overlay').addEventListener('click', (event) => { if (event.target === event.currentTarget) closeDetails(); });
 document.querySelectorAll('.tab-btn').forEach((button) => button.addEventListener('click', () => { setActiveTab(button.dataset.tab); syncHash(); }));
 
-function reportWeatherError(message) {
-  weatherError.textContent = message;
-  weatherError.style.display = 'block';
-  weatherStatus.textContent = '';
-}
-setOnLayerError(reportWeatherError);
-function updateWeatherUI() {
-  const ids = getActiveLayerIds();
-  document.querySelectorAll('.weather-layer-btn').forEach((button) => {
-    const active = ids.has(button.dataset.layer);
-    button.classList.toggle('active', active);
-    button.setAttribute('aria-pressed', String(active));
-  });
-  radarControls.style.display = isLayerActive('radar') ? 'flex' : 'none';
-  document.getElementById('weather-toggle').classList.toggle('active', ids.size > 0);
-  const frames = getRadarFrames();
-  const index = getRadarFrameIndex();
-  if (index >= 0 && frames[index]) {
-    radarScrubber.max = frames.length - 1;
-    radarScrubber.value = index;
-    document.getElementById('radar-time').textContent = formatRadarTime(frames[index].time);
-    document.getElementById('radar-badge').textContent = frames[index].forecast ? 'Forecast' : 'Observed · Past 2 hours';
-  }
-  radarPlay.innerHTML = icon(isAnimating() ? 'pause' : 'play');
-  radarPlay.setAttribute('aria-label', isAnimating() ? 'Pause radar' : 'Play radar');
-}
-setOnFrameChange(updateWeatherUI);
-async function changeLayer(id, enable = false) {
-  const button = document.querySelector(`[data-layer="${id}"]`);
-  button.disabled = true;
-  weatherError.style.display = 'none';
-  weatherStatus.textContent = 'Loading weather layer…';
-  try {
-    if (enable) await addLayer(id); else await toggleLayer(id);
-    const labels = { clouds: 'Cloud', precipitation: 'Precipitation', temp: 'Temperature' };
-    const active = [...getActiveLayerIds()];
-    weatherStatus.textContent = isLayerActive('radar')
-      ? 'Radar shows observed precipitation, not forecast snowfall. Coverage varies by region.'
-      : active.length ? `${active.map((layer) => labels[layer]).join(', ')} overlay. Adjust opacity to compare with terrain.` : 'Choose a weather layer. Coverage varies by region.';
-  } catch (error) { reportWeatherError(error.message); }
-  finally { button.disabled = false; updateWeatherUI(); }
-}
 function mapAnimation() {
   if (mapDialog.hidden) return;
   updateMarkerStyles();
@@ -220,7 +177,9 @@ async function openMap() {
   document.getElementById('map-close').focus();
   mapAnimation();
   weatherPanel.classList.add('visible');
-  if (!mapOpened) {
+  try { await preparePaintedGlobe(); }
+  catch (error) { reportWeatherError(`Painted globe could not load: ${error.message}`); return; }
+  if (!mapOpened || isLayerActive('radar')) {
     mapOpened = true;
     await changeLayer('radar', true);
     if (!isLayerActive('radar')) mapOpened = false; // allow an explicit reopen to retry.
@@ -242,12 +201,6 @@ function closeMap() {
 mapButton.addEventListener('click', openMap);
 document.getElementById('map-close').addEventListener('click', closeMap);
 mapDialog.addEventListener('click', (event) => { if (event.target === mapDialog) closeMap(); });
-document.getElementById('weather-toggle').addEventListener('click', () => weatherPanel.classList.toggle('visible'));
-document.getElementById('weather-close').addEventListener('click', () => weatherPanel.classList.remove('visible'));
-document.querySelectorAll('.weather-layer-btn').forEach((button) => button.addEventListener('click', () => changeLayer(button.dataset.layer)));
-document.getElementById('weather-opacity').addEventListener('input', (event) => setLayerOpacity(Number(event.target.value) / 100));
-radarPlay.addEventListener('click', () => { toggleRadarAnimation(); updateWeatherUI(); });
-radarScrubber.addEventListener('input', () => showRadarFrame(Number(radarScrubber.value)));
 
 screenSpaceHandler.setInputAction((movement) => {
   if (state.isFlying) return;
@@ -321,3 +274,5 @@ window.__SNOW_SCOUT__ = {
     return true;
   }
 };
+
+if (new URLSearchParams(location.search).get('view') === 'map') openMap();

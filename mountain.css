@@ -12,3 +12,12 @@
 @media(max-width:600px){.area-picker{left:16px;top:155px;max-width:calc(100% - 32px);gap:6px;padding:5px 8px}.area-picker select{font-size:11px;width:210px;max-width:calc(100vw - 142px)}.area-picker:not([hidden])~.trail-selection{top:215px}.map-legend{bottom:100px;gap:9px}.map-hint{bottom:62px}.coverage-info{bottom:176px;left:12px;max-width:calc(100% - 24px);font-size:10px}.data-note{justify-content:flex-start;line-height:1.25;max-width:calc(100% - 20px)}}
 
 .data-note a{white-space:normal;min-width:0;max-width:100%;overflow-wrap:anywhere}
+
+/* Weather controls share the globe's layer controller and load only on demand. */
+.back-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid #ffffff26;border-radius:13px;background:#14202eeb;text-decoration:none;font-size:12px;white-space:nowrap}
+.weather-panel{position:absolute;right:22px;top:74px;width:min(380px,calc(100% - 44px));padding:12px;border:1px solid #ffffff26;border-radius:12px;background:#102437f5;display:none;flex-direction:column;gap:10px;z-index:3;color:#e5efff}
+.weather-panel.visible{display:flex}.weather-panel-head{display:flex;align-items:center;justify-content:space-between}.weather-panel-title{font-size:12px;font-weight:600}.weather-panel .icon-button{min-height:30px;width:30px;padding:0;border:0;background:transparent}
+.weather-layers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}.weather-layer-btn{min-height:40px;padding:5px 4px;gap:4px;border-radius:8px;font-size:10px}.weather-layer-btn.active{background:#2589ef35;border-color:#2589ef}
+.ui-icon{display:inline-block;width:16px;height:16px;filter:brightness(0) invert(1)}.weather-opacity,.radar-timeline{display:flex;align-items:center;gap:8px;font-size:11px}.weather-opacity input,.radar-timeline input{flex:1;min-width:0;accent-color:#65d9ff}.radar-controls{flex-direction:column;gap:6px}.radar-play-btn{width:32px;min-height:32px;padding:0;border-radius:50%}.radar-time{font-size:11px;white-space:nowrap}.radar-badge,.weather-status,.owm-toast{font-size:11px;line-height:1.5;margin:0}.owm-toast{color:#ffc58e}.weather-toggle{position:absolute;right:22px;top:130px;width:44px;padding:0}.weather-toggle.active{border-color:#2589ef}
+@media(max-width:1050px){.weather-panel{top:205px}.weather-toggle{top:155px}}
+@media(max-width:600px){.weather-panel{top:205px;right:12px;width:calc(100% - 24px);max-height:calc(100% - 240px);overflow:auto}.weather-toggle{top:153px;right:15px}.back-button{font-size:11px;padding:0 10px}}

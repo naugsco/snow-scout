@@ -1,12 +1,16 @@
+import { bindWeatherControls } from './weather-controls.js?v=20261105-map-layers';
+import { hydrateIcons } from './ui-icons.js?v=20261021-sources-verified';
 import { RAW_RESORTS } from './constants.js?v=20261021-sources-verified';
 import { mountainConfig, mountainSlug } from './mountain-config.js?v=20261021-sources-verified';
-import { createMountain } from './painted-mountain.js?v=20261021-sources-verified';
+import { createMountain } from './painted-mountain.js?v=20261105-resort-flight';
 import { trailLegend } from './trail-style.js?v=20261021-sources-verified';
+
+hydrateIcons();
 
 const el = id => document.getElementById(id);
 const requested = new URLSearchParams(location.search).get('resort');
 const resort = RAW_RESORTS.find(item => mountainSlug(item.name) === requested);
-let map, config, mode = 'orbit', liftsVisible = true, view = 'resort';
+let map, config, mode = 'orbit', liftsVisible = true;
 
 function fail(message) {
   console.error('Painted mountain:', message);
@@ -35,18 +39,12 @@ function update(patch) {
       : 'Painted terrain loaded. Mapped trails and lifts are not available for this resort yet.';
   }
   if (patch.view) {
-    view = patch.view;
-    const globe = view === 'globe';
-    el('mountain-name').textContent = globe ? 'YOUR NEXT MOUNTAIN' : resort.name.toUpperCase();
-    el('mountain-description').textContent = globe ? 'Fly into a painted winter mountain.'
-      : config.trailsUrl ? 'Painted winter terrain · Real terrain & mapped trails' : 'Painted winter terrain · Trail overlay unavailable';
-    el('back-to-globe').querySelector('span').textContent = globe ? 'Fly to resort' : 'Back to globe';
-    for (const id of ['camera-controls', 'zoom-controls', 'map-hint']) el(id).hidden = globe;
-    el('area-picker').hidden = globe || !config.views.length;
-    el('coverage-info').hidden = globe;
-    el('trail-legend').hidden = globe || !config.trailsUrl;
-    el('coverage-note').hidden = globe || Boolean(config.trailsUrl);
-    el('fly-in').hidden = !globe;
+    el('mountain-name').textContent = resort.name.toUpperCase();
+    el('mountain-description').textContent = config.trailsUrl ? 'Painted winter terrain · Real terrain & mapped trails' : 'Painted winter terrain · Trail overlay unavailable';
+    el('area-picker').hidden = !config.views.length;
+    el('coverage-info').hidden = false;
+    el('trail-legend').hidden = !config.trailsUrl;
+    el('coverage-note').hidden = Boolean(config.trailsUrl);
   }
   if ('selection' in patch) {
     el('trail-selection').hidden = !patch.selection;
@@ -70,14 +68,6 @@ el('lifts').addEventListener('click', () => {
   map.showLifts(liftsVisible);
   el('lifts').setAttribute('aria-pressed', liftsVisible);
 });
-function flyIn() {
-  chooseMode('orbit');
-  liftsVisible = true;
-  el('lifts').setAttribute('aria-pressed', true);
-  map.flyIn();
-}
-el('fly-in').addEventListener('click', flyIn);
-el('back-to-globe').addEventListener('click', () => view === 'globe' ? flyIn() : map.globe());
 el('mountain-area').addEventListener('change', async () => {
   el('mountain-area').disabled = true;
   update({selection: null});
@@ -99,7 +89,6 @@ if (!resort) {
   config = mountainConfig(resort);
   document.title = `${resort.name} in 3D — Snow Scout`;
   el('resort-details').href = `./#resort=${encodeURIComponent(mountainSlug(resort.name))}`;
-  el('fly-in').querySelector('span').textContent = `Explore ${resort.name}`;
   el('osm-credit').hidden = !config.trailsUrl;
   if (config.coverage.source === 'OpenSkiData') {
     el('osm-credit').href = 'https://www.openskidata.org/#license';
@@ -125,8 +114,13 @@ if (!resort) {
     el('trail-legend').insertBefore(item, el('lifts'));
   }
   update({view: 'resort'});
-  createMountain(el('mountain-view'), update, fail, config)
-    .then(instance => { map = instance; })
+  createMountain(el('mountain-view'), update, fail, config, {
+    flyIn: new URLSearchParams(location.search).get('fly') === '1'
+  })
+    .then(instance => {
+      map = instance;
+      bindWeatherControls(map.weather, document, ids => map.setWeatherVisible(ids.size > 0 && map.weather.getLayerOpacity() > 0));
+    })
     .catch(error => fail(error.message));
   window.addEventListener('pagehide', () => { if (map) { map.destroy(); map = null; } });
   // Recreate the WebGL viewer when returning through the browser's back cache.

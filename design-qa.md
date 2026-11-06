@@ -54,3 +54,11 @@ The reference and desktop capture are both 1513 × 1040 pixels. The browser CSS 
 - [x] Automated tests, browser checks, and visual evidence.
 
 final result: passed
+
+## Trip comparison popup refinement — 2026-11-06
+
+Scope: existing trip comparison dialog only. Source state: `output/travel-build-qa/two-dates.png`; refined implementation: `output/travel-build-qa/refined-popup.png`. Intentional changes are compact main controls, optional preferences disclosure, clearer card hierarchy, and independently scrolling body with persistent header/footer. Existing dark palette, blue actions, fonts and icon assets retained.
+
+Desktop visual review: aligned controls and three equal comparison cards; optional fields no longer compete with trip dates. Sticky action region remains clear of content because the middle region owns scrolling. Mobile at 390 × 844: two-column core fields, stacked resort choices/cards, persistent actions; body client and scroll widths both 350px. Expanded optional controls remain usable. Functional checks: disclosure, ski-date toggle, submit from footer, save, Escape dismissal. No blocking visual findings. Existing forecast/operation availability labels remain honest; no fabricated prices introduced.
+
+final result: passed

@@ -112,6 +112,12 @@ test('local gateway excludes secrets, rejects cross-origin requests and reuses p
   t.after(async()=>{await new Promise(r=>server.close(r));await rm(temp,{recursive:true,force:true});});
   const origin=`http://127.0.0.1:${server.address().port}`;
   assert.equal((await fetch(origin+'/.env.travel')).status,404);
+  assert.equal((await (await fetch(origin+'/api/weather/status')).json()).enabled,false);
+  assert.equal((await fetch(origin+'/api/weather/tiles/temp_new/0/0/0.png')).status,503);
+  const weatherConfig=await (await fetch(origin+'/js/weather-config.js')).text();
+  assert.ok(weatherConfig.includes('/api/weather'));
+  assert.ok(!weatherConfig.includes(settings.key));
+
   const config=await (await fetch(origin+'/js/travel-config.js')).text(); assert.ok(!config.includes(settings.key));
   assert.equal((await fetch(origin+'/api/travel/search',{method:'POST',headers:{'Content-Type':'application/json',Origin:'https://evil.example'},body:JSON.stringify(trip)})).status,403);
   const first=await fetch(origin+'/api/travel/search',{method:'POST',headers:{'Content-Type':'application/json',Origin:origin,'User-Agent':'real-test-browser'},body:JSON.stringify(trip)});

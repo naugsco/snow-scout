@@ -1,3 +1,4 @@
+import { openTripComparison, refreshTripComparison } from './trip-comparison.js?v=20261106-trips';
 import { DEFAULT_WEBCAM_PAGES } from './constants.js?v=20261021-sources-verified';
 import { state, setUseMetric, setTheme } from './state.js?v=20261021-sources-verified';
 import { normalizeResortName, getSourceKeyForResort, webcamPages, withCacheBust } from './utils.js?v=20261021-sources-verified';
@@ -17,8 +18,8 @@ import { HEATMAP_METRICS } from './heatmap-metrics.js?v=20261021-sources-verifie
 import { icon, hydrateIcons } from './ui-icons.js?v=20261021-sources-verified';
 import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261106-live-snow';
 import { parseHash, updateHash, initRouter } from './router.js?v=20261021-sources-verified';
-import { toggleCompareResort, refreshComparison } from './comparison.js?v=20261021-sources-verified';
-import { createWeatherLayers } from './weather-layers.js?v=20261105-map-layers';
+import { toggleCompareResort, refreshComparison } from './comparison.js?v=20261106-trips';
+import { createWeatherLayers } from './weather-layers.js?v=20261106-request-control';
 import { bindWeatherControls } from './weather-controls.js?v=20261105-map-layers';
 import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';
 const weather = createWeatherLayers(viewer);
@@ -26,6 +27,7 @@ const { isLayerActive, stopRadarAnimation } = weather;
 const { changeLayer, updateWeatherUI, reportWeatherError } = bindWeatherControls(weather);
 
 Object.assign(webcamPages, DEFAULT_WEBCAM_PAGES);
+document.getElementById('trip-planner-toggle').addEventListener('click', () => openTripComparison());
 hydrateIcons();
 resorts.forEach(createMarkerEntity);
 viewer.useDefaultRenderLoop = false;
@@ -72,6 +74,7 @@ function closeDetails() {
   else (mapDialog.hidden ? searchInput : document.getElementById('map-close')).focus({ preventScroll: true });
 }
 function onDataReady() {
+  refreshTripComparison();
   renderUpdatedAt();
   refreshComparison();
   renderDashboard();
@@ -230,6 +233,7 @@ viewer.camera.moveStart.addEventListener(() => { hoverCard.style.display = 'none
 window.addEventListener('resize', () => { if (!mapDialog.hidden) { viewer.resize(); viewer.scene.requestRender(); updateZoomReadout(); } });
 
 document.addEventListener('keydown', (event) => {
+  if (document.querySelector('.trip-dialog[open]')) return; // Native dialog owns focus and Escape.
   if (event.key === 'Escape') {
     hideHeatmapPreview();
     if (state.selectedId) closeDetails();

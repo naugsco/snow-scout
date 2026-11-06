@@ -10,14 +10,14 @@
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261020-all-trails">
   <link rel="stylesheet" href="heatmap.css?v=20261106-live-snow">
-  <link rel="stylesheet" href="travel.css?v=20261022-travel">
+  <link rel="stylesheet" href="travel.css?v=20261106-trips">
 </head>
 <body>
   <div class="app-layout heatmap-app">
     <header class="heatmap-header">
       <a href="./" class="heatmap-brand" aria-label="Snow Scout home"><span class="brand-badge"><span data-icon="triangle"></span></span><strong>Snow Scout</strong></a>
       <nav class="heatmap-nav" aria-label="Resort views"><button id="explore-view" class="active" aria-pressed="true"><span data-icon="sliders-horizontal"></span>Explore</button><button id="saved-view" aria-pressed="false"><span data-icon="bookmark"></span>Saved</button></nav>
-      <div class="header-tools"><div id="airport-control" hidden></div><a href="history.html" class="header-history" title="Snowfall history" aria-label="Snowfall history"><span data-icon="clock"></span></a><button id="theme-toggle" class="icon-button" title="Toggle light/dark theme" aria-label="Switch theme"><span data-icon="moon"></span></button><button id="unit-toggle" class="units-button" title="Switch snow and temperature units">in / °F</button><button id="map-toggle" class="map-view-button" aria-expanded="false" aria-controls="map-dialog"><span data-icon="globe"></span><span>Map view</span></button></div>
+      <div class="header-tools"><button id="trip-planner-toggle" class="travel-link" type="button">Compare trips</button><div id="airport-control" hidden></div><a href="history.html" class="header-history" title="Snowfall history" aria-label="Snowfall history"><span data-icon="clock"></span></a><button id="theme-toggle" class="icon-button" title="Toggle light/dark theme" aria-label="Switch theme"><span data-icon="moon"></span></button><button id="unit-toggle" class="units-button" title="Switch snow and temperature units">in / °F</button><button id="map-toggle" class="map-view-button" aria-expanded="false" aria-controls="map-dialog"><span data-icon="globe"></span><span>Map view</span></button></div>
     </header>
     <main id="dashboard" class="dashboard-area">
       <header class="heatmap-controls">
@@ -155,6 +155,6 @@
 
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
-  <script type="module" src="js/main.js?v=20261106-live-snow"></script>
+  <script type="module" src="js/main.js?v=20261106-request-control"></script>
 </body>
 </html>

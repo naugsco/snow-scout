@@ -1,4 +1,4 @@
-import { createWeatherLayers } from './weather-layers.js?v=20261105-map-layers';
+import { createWeatherLayers } from './weather-layers.js?v=20261106-request-control';
 import { CESIUM_ION_TOKEN } from './constants.js?v=20261021-sources-verified';
 import { paintedMaterial, paintImagery } from './painted-material.js?v=20261105-map-layers';
 import { trailColor } from './trail-style.js?v=20261021-sources-verified';

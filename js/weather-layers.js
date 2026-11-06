@@ -1,4 +1,10 @@
-export function createWeatherLayers(viewer) {
+import { WEATHER_CONFIG } from './weather-config.js?v=20261106-request-control';
+const weatherChannels = new Map();
+function weatherChannel(base) {
+  if (!weatherChannels.has(base)) weatherChannels.set(base,{paused:false,listeners:new Set()});
+  return weatherChannels.get(base);
+}
+export function createWeatherLayers(viewer, { weatherApiBase = WEATHER_CONFIG.apiBase } = {}) {
   // ============================================================
   // Weather layer state — supports multiple simultaneous layers
   // ============================================================
@@ -10,8 +16,17 @@ export function createWeatherLayers(viewer) {
   let radarAnimTimer = null;
   let radarHost = '';
   let onFrameChange = null;     // callback for UI updates
-  let owmKey = null;            // loaded from config.json
-  let owmKeyLoaded = false;
+  const channel = weatherChannel(weatherApiBase);
+  function pauseWeather(message) {
+    channel.paused=true;
+    for(const listener of channel.listeners) listener(message);
+  }
+  function onWeatherPaused(message) {
+    for (const id of [...activeLayers.keys()]) removeLayer(id);
+    onLayerError?.(message);
+    onFrameChange?.();
+  }
+  channel.listeners.add(onWeatherPaused);
   const pendingLayers = new Map();
   let onLayerError = null;
   const observedProviders = new WeakSet();
@@ -23,15 +38,13 @@ export function createWeatherLayers(viewer) {
   // ============================================================
   // Config loader — fetch API key from gitignored config
   // ============================================================
-  async function ensureOwmKey() {
-    if (owmKeyLoaded) return owmKey;
-    const res = await fetch('./data/config.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error('Cloud, precipitation and temperature layers need the OpenWeather configuration.');
-    const config = await res.json();
-    owmKey = config.owmApiKey || null;
-    if (!owmKey) throw new Error('An OpenWeather API key is required for this weather layer.');
-    owmKeyLoaded = true;
-    return owmKey;
+  async function ensureWeatherService() {
+    if (!weatherApiBase) throw new Error('Weather overlays need the controlled weather service. Direct OpenWeather access is disabled.');
+    if(channel.paused) throw new Error('Weather overlays paused after a provider error. Wait, then reload to retry.');
+    const response=await fetch(`${weatherApiBase}/status`,{cache:'no-store'});
+    if(!response.ok) throw new Error('Controlled weather service is unavailable.');
+    const health=await response.json();
+    if(!health.enabled) throw new Error(health.message || 'Weather overlays are paused.');
   }
 
   // ============================================================
@@ -93,15 +106,20 @@ export function createWeatherLayers(viewer) {
   // ============================================================
   const owmProviderCache = new Map();
 
-  function createOwmProvider(layer, key) {
+  function createOwmProvider(layer) {
     if (owmProviderCache.has(layer)) return owmProviderCache.get(layer);
     const provider = new Cesium.UrlTemplateImageryProvider({
-      url: `https://tile.openweathermap.org/map/${layer}/{z}/{x}/{y}.png?appid=${encodeURIComponent(key)}`,
+      url: `${weatherApiBase}/tiles/${layer}/{z}/{x}/{y}.png`,
       tilingScheme: new Cesium.WebMercatorTilingScheme(),
       minimumLevel: 0,
       maximumLevel: 6,
       credit: new Cesium.Credit('<a href="https://openweathermap.org" target="_blank">OpenWeatherMap</a>')
     });
+    const originalRequestImage=provider.requestImage.bind(provider);
+    provider.requestImage=(...args)=> {
+      if(disposed || channel.paused) return undefined;
+      return originalRequestImage(...args);
+    };
     owmProviderCache.set(layer, provider);
     return provider;
   }
@@ -114,10 +132,15 @@ export function createWeatherLayers(viewer) {
     if (!response.headers.get('content-type')?.includes('image/')) throw new Error(`${label} returned an invalid weather tile.`);
   }
 
-  function observeProvider(provider, label) {
+  function observeProvider(provider, label, controlled = false) {
     if (observedProviders.has(provider)) return;
     observedProviders.add(provider);
-    provider.errorEvent.addEventListener(() => {
+    provider.errorEvent.addEventListener((error) => {
+      if(controlled) {
+        if(error) error.retry=false;
+        if(!channel.paused) pauseWeather('Weather overlay requests stopped after a tile error. Check the service status before reloading.');
+        return;
+      }
       if (disposed) return;
       onLayerError?.(`${label} could not load a map tile. Try again or check the provider configuration.`);
     });
@@ -184,7 +207,7 @@ export function createWeatherLayers(viewer) {
     }
   }
 
-  function destroy() { disposed = true; removeAllLayers(); }
+  function destroy() { disposed = true; channel.listeners.delete(onWeatherPaused); removeAllLayers(); }
 
   function removeAllLayers() {
     // Remove all OWM layers
@@ -226,12 +249,11 @@ export function createWeatherLayers(viewer) {
         radarLayers[radarFrameIndex].alpha = layerOpacity;
         if (onFrameChange) onFrameChange();
       } else if (OWM_LAYERS[id]) {
-        const key = await ensureOwmKey();
+        await ensureWeatherService();
         const label = { clouds: 'Clouds', precipitation: 'Precipitation', temp: 'Temperature' }[id];
-        await verifyTile(`https://tile.openweathermap.org/map/${OWM_LAYERS[id]}/0/0/0.png?appid=${encodeURIComponent(key)}`, label);
-        if (disposed) return;
-        const provider = createOwmProvider(OWM_LAYERS[id], key);
-        observeProvider(provider, label);
+        if (disposed || channel.paused) return;
+        const provider = createOwmProvider(OWM_LAYERS[id]);
+        observeProvider(provider, label, true);
         const layer = viewer.imageryLayers.addImageryProvider(provider);
         layer.alpha = layerOpacity;
         activeLayers.set(id, layer);

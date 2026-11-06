@@ -38,6 +38,10 @@ class PackagingTests(unittest.TestCase):
             self.assertFalse((output / 'scripts').exists())
             self.assertFalse((output / 'server').exists())
             self.assertFalse((output / '.env.travel').exists())
+            self.assertTrue((output / 'js/weather-config.js').is_file())
+            self.assertIn('apiBase: null', (output / 'js/weather-config.js').read_text())
+            self.assertNotIn('appid=', (output / 'js/weather-layers.js').read_text())
+
             self.assertFalse((output / 'docs/flight-travel-build.mb').exists())
             self.assertTrue((output / 'data/travel-airports.json').is_file())
             parser = ResourceLinks()

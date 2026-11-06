@@ -1,3 +1,4 @@
+import { openTripComparison } from './trip-comparison.js?v=20261106-trips';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import { formatInches, formatRunAccess, formatPassLabel, getPassTone, formatTemperature } from './utils.js?v=20261021-sources-verified';
 import { createSnowfallChart } from './snowfall-chart.js?v=20261021-sources-verified';
@@ -167,3 +168,9 @@ document.addEventListener('keydown', (e) => {
     e.stopPropagation();
   }
 }, true);
+
+const tripCompareButton = document.createElement('button');
+tripCompareButton.className = 'travel-link';
+tripCompareButton.textContent = 'Compare these trips';
+compareOverlay.querySelector('.compare-head').appendChild(tripCompareButton);
+tripCompareButton.addEventListener('click', () => { compareOverlay.style.display = 'none'; openTripComparison(compareIds.map(getResort).filter(Boolean).map(r => r.name)); });

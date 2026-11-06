@@ -46,3 +46,72 @@
 [data-theme=light] .travel-eyebrow, [data-theme=light] .travel-official, [data-theme=light] .travel-offer-head strong { color:#0966bd; }
 [data-theme=light] .travel-error { color:#a33700; }
 @media(max-width:420px) { .travel-fields { gap:8px; } .travel-intro h3 { font-size:25px; } .travel-airports > div { grid-template-columns:repeat(2,minmax(0,1fr)); } .travel-offer-head { flex-direction:column; } }
+
+/* Trip comparison: compact inputs, independent scrolling and persistent actions. */
+.trip-dialog { width:min(1120px,calc(100vw - 40px)); height:min(940px,calc(100dvh - 48px)); max-height:none; box-sizing:border-box; margin:auto; padding:0; background:#142130; color:#f0f4ff; border:1px solid #3a4e65; border-radius:18px; --muted:#afc0d3; overflow:hidden; }
+.trip-dialog[open] { display:flex; flex-direction:column; }
+.trip-dialog::backdrop { background:#030a14bb; backdrop-filter:blur(5px); }
+.trip-dialog-head { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; padding:25px 28px 20px; border-bottom:1px solid #304157; flex-shrink:0; }
+.trip-dialog h2 { margin:7px 0 6px; font-size:28px; letter-spacing:-.035em; line-height:1.15; }
+.trip-dialog-head p { color:#afc0d3; font-size:12px; margin:0; line-height:1.6; }
+.trip-close-button { display:grid; place-items:center; width:34px; height:34px; border:1px solid #3a4e65; border-radius:9px; background:transparent; flex-shrink:0; }
+.trip-close-button:hover { background:#ffffff0a; }
+.trip-close-button .ui-icon { width:18px; height:18px; }
+.trip-dialog-body { overflow:auto; min-height:0; flex:1; padding:22px 28px; scrollbar-gutter:stable; }
+.trip-dialog h3 { font-size:13px; font-weight:600; margin:0; }
+.trip-form-section { margin-bottom:20px; }
+.trip-form-section h3 { display:flex; align-items:center; gap:10px; }
+.trip-form-section h3 span { font-size:11px; font-weight:400; color:#afc0d3; }
+.trip-dialog .travel-fields { margin:10px 0 0; gap:12px; }
+.trip-dialog .travel-fields label { color:#b8c8db; font-size:11px; }
+.trip-dialog .travel-fields input, .trip-dialog .travel-fields select { color-scheme:dark; background:#0d1825; color:#f0f4ff; border-color:#35475c; font-size:13px; min-height:44px; }
+.trip-dialog .travel-fields small { font-size:10px; line-height:1.5; color:#9eb1c9; }
+.trip-dialog .trip-core { grid-template-columns:.9fr .7fr 1.25fr 1.25fr; }
+.trip-dialog .trip-selectors { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.trip-options { border:1px solid #35475c; border-radius:10px; margin-bottom:24px; }
+.trip-options summary { cursor:pointer; padding:13px 15px; font-size:12px; color:#e2ebf7; }
+.trip-options summary span { font-size:11px; color:#9eb1c9; margin-left:12px; }
+.trip-options-body { border-top:1px solid #35475c; padding:15px; }
+.trip-dialog .trip-preferences { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.trip-custom-toggle { display:flex; align-items:center; gap:8px; font-size:12px; cursor:pointer; margin-bottom:14px; }
+.trip-custom-toggle input { width:17px; height:17px; accent-color:#2589ef; }
+.trip-custom-toggle span { font-size:11px; color:#afc0d3; }
+#trip-ski-dates { margin-bottom:16px; }
+.trip-results-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+.trip-results-heading > span { font-size:10px; color:#9eb1c9; }
+.trip-results { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+.trip-card { padding:18px; background:#19283a; border:1px solid #3a4e65; border-radius:12px; min-width:0; }
+.trip-card h3 { margin:0 0 18px; font-size:19px; font-weight:700; letter-spacing:-.025em; }
+.trip-card dl { margin:0 0 18px; }
+.trip-card dt { font-size:10px; color:#afc0d3; margin-top:12px; }
+.trip-card dd { margin:5px 0 12px; font-size:12px; line-height:1.6; }
+.trip-card .trip-snow-total { font-size:14px; color:#d9ecff; padding-bottom:12px; border-bottom:1px solid #35475c; }
+.trip-card label { display:grid; gap:8px; font-size:11px; color:#afc0d3; }
+.trip-card select { padding:10px; background:#101e2d; color:#f0f4ff; width:100%; border:1px solid #526a84; border-radius:7px; font-size:12px; }
+.trip-card .travel-small { font-size:10px; line-height:1.6; }
+.trip-actions { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+.trip-card .travel-link { font-size:11px; padding:8px 10px; min-height:34px; }
+.trip-dialog-footer { flex-shrink:0; padding:14px 28px; border-top:1px solid #35475c; background:#142130; }
+#trip-message { color:#afcfff; font-size:11px; line-height:1.6; margin:0 0 10px; }
+#trip-message:empty { display:none; }
+.trip-footer-actions { display:flex; align-items:center; justify-content:flex-end; gap:10px; }
+.trip-save-note { margin-right:auto; color:#9eb1c9; font-size:10px; }
+.trip-footer-actions .travel-primary { min-width:150px; }
+@media(max-width:700px) {
+ .trip-dialog { width:calc(100vw - 20px); height:calc(100dvh - 24px); border-radius:14px; }
+ .trip-dialog-head { padding:18px; gap:10px; }
+ .trip-dialog h2 { font-size:24px; }
+ .trip-dialog-body { padding:18px; }
+ .trip-dialog .trip-core,.trip-dialog .trip-preferences { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .trip-dialog .trip-selectors { grid-template-columns:1fr; }
+ .trip-options summary span { display:block; margin:5px 0 0 14px; }
+ .trip-results { grid-template-columns:1fr; }
+ .trip-results-heading { align-items:flex-start; flex-direction:column; gap:5px; }
+ .trip-dialog-footer { padding:12px 18px; }
+ .trip-save-note { display:none; }
+ .trip-footer-actions > button { flex:1; }
+ .trip-footer-actions .travel-primary { min-width:0; }
+ #trip-planner-toggle { font-size:11px; padding:7px; }
+ .header-tools { flex-wrap:wrap; }
+}
+.trip-dialog .ui-icon { filter:brightness(0) invert(1); }

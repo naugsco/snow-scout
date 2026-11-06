@@ -8,7 +8,7 @@ import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261106-live-sn
 import { createSnowfallChart } from './snowfall-chart.js?v=20261021-sources-verified';
 import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261021-sources-verified';
 import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';
-import { renderTravelPanel } from './travel-panel.js?v=20261022-travel';
+import { renderTravelPanel } from './travel-panel.js?v=20261106-trips';
 
 const detailOverlay = document.getElementById('detail-overlay');
 const detailPanel = document.getElementById('detail-panel');

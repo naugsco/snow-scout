@@ -89,7 +89,7 @@ GitHub Pages cannot run this Node gateway. A later production step must choose a
 
 ## Remaining work for next discussion
 
-1. Nick submits the KAYAK partner application with business identity and email; no account/application has been submitted here.
+1. Nick confirmed the KAYAK application has been submitted (Nov 6). Await partner response and credentials; do not submit a duplicate application.
 2. Test issued sandbox credentials, then a live route matrix after approval. Verify display-price basis, operating-carrier/fare disclosures, baggage, booking redirects and provider-specific expiration.
 3. Decide production backend hosting; add production controls and wire the public client only after testing.
 4. Add approved tracked links and verify attribution. Current public search links earn no commission.
@@ -114,3 +114,77 @@ Google has supplier integrations, no open consumer Google Flights search API. Se
 - Read KAYAK public authentication and full flight search schema; found sandbox is explicitly synthetic.
 - Verified ordinary KAYAK flight URL preserves origin, destination, dates and adult count. Currency query did not change the displayed site currency; do not promise currency persistence on ordinary external links.
 - Existing unrelated untracked output/QA files are outside this feature's scope.
+
+## Phase 2 — 2026-11-06
+
+Implemented a separate native-dialog Compare trips view, reachable from the header or the existing three-resort comparison. Shared preferences include departure airport, departure/arrival/ski/return dates, adults, currency, optional budget, pass and ground-travel preference. A single plan, its three resorts and chosen arrival airports can be saved in localStorage and reopened on the same browser. This is device storage, not a profile or cross-device account.
+
+Comparison shows snow only for complete, fresh forecast coverage of the actual ski dates. It attempts a live forecast refresh for selected resorts when coverage is missing, reports failures, and preserves unknown operations. It displays pass catalog membership with a restrictions reminder, unquoted trip costs, airport selectors, KAYAK search links and directions/lodging discovery. Budget is stored as a target; no price matching or cost ranking is claimed. Date changes invalidate the displayed comparison until Update comparison is clicked. Duplicate resorts are rejected.
+
+Official gateway references verified Nov 6:
+- Whistler/YVR: https://www.yvr.ca/en/passengers/transportation/public-transportation/long-distance-scheduled-buses/whistler
+- Heavenly/RNO: https://www.skiheavenly.com/Explore%20the%20Resort/About%20the%20Resort/Getting%20Here%20and%20Parking.aspx
+- Niseko/CTS: https://www.niseko.ne.jp/en/getting-to-niseko3/
+- Chamonix/GVA: https://en.chamonix.com/usual-information-services/transports
+These identify access airports and official planning pages, not verified service availability for a user's exact dates. Other resorts retain explicitly geographic suggestions. No schedules, prices, driving times or ski-bag policies invented.
+
+New modules: js/trip-planning.js (pure logic, gateway references), js/trip-comparison.js (dialog and storage). Integration in main.js, comparison.js, travel-panel.js and detail-panel.js; styling in travel.css. New tests in tests/trip-planning.test.mjs.
+
+Validation: 68 Node tests and 13 Python tests passed, including static packaging. Browser verified three cards, fresh live model totals, duplicate rejection, successful save and reload, valid outgoing search links, and 390px mobile dialog with equal scroll/client widths (350px; no horizontal overflow). Screenshot: output/travel-build-qa/comparison.png. Local preview uses TRAVEL_PORT=4176 node server/travel-server.mjs; open http://127.0.0.1:4176/ and click Compare trips. Default port 4174 remains supported. Restart server after edits because its public assets are packaged at startup.
+
+The local stored conditions snapshot was stale during QA, so operations correctly remained unverified; live model requests subsequently supplied ski-window snowfall. This build does not repair scheduled snapshot collection. Production fares, budget-based recommendations, flight-arrival matching, transfer availability, multi-device profiles and alerts remain future work. KAYAK credentials are still required for API prices. Changes are local and have not been pushed or deployed.
+
+### Date-entry refinement — Nov 6
+Grouped all five dates into three numbered fieldsets: Getting there (flight from home departs, flight arrives at destination), Your ski days (first/last day skiing), Heading home (flight home departs). Helper text identifies the airport/resort whose local calendar applies. Other preferences now follow the date groups. Existing field names and saved plans remain compatible. Desktop uses three columns; mobile stacks the journey stages. Verified at 390px without horizontal overflow, ran the three trip-planning tests and all 13 Python/packaging tests; syntax and diff checks passed. Screenshot: output/travel-build-qa/date-groups.png. Local preview restarted on 4176; not deployed.
+
+### Two-date simplification — Nov 6
+Supersedes the five-date layout above. Only Depart from home and Return flight date are required. Arrival date removed. Set my ski days is an optional checkbox revealing first/last ski days; it is off for new and legacy saved plans unless explicitly enabled. Validation requires both ski dates only when enabled and bounds them within travel dates. With custom dates off, cards show available fresh daily forecast values within the travel window, with explicit partial-coverage wording and no personalized ski-trip total. Existing saved optional values remain available without being applied silently.
+Validated four trip-planning tests plus 13 Python/packaging tests, syntax and diff checks; desktop mouse/keyboard toggle, daily forecast mode, two visible/required date fields, and 390px mobile without horizontal overflow. Screenshot: output/travel-build-qa/two-dates.png. Local preview restarted on 4176. Not deployed.
+
+### Popup layout refinement — Nov 6
+Reorganized the existing comparison dialog: compact home-airport/adults/travel-dates row, clearly grouped resort selectors, optional details disclosure for ski days/pass/transport/budget/currency, and comparison cards below. Header and footer remain visible while the middle content scrolls. Save and Compare buttons remain functional in the footer through native form association. Close uses the existing x.svg icon. Dialog dimensions stay stable when results clear; the global page keyboard handler defers to the native dialog for focus/Escape.
+
+Verified desktop and 390px mobile layouts, no horizontal body overflow (350px client/scroll width), preference disclosure and custom-day toggle, external-footer form submission generating three cards, successful save, and Escape dismissal. Screenshots: output/travel-build-qa/refined-popup.png. Final checks: 69 Node tests and 13 Python tests passed, JS syntax and git diff checks passed. Local only; no deployment.
+
+
+## Commercial backend plan update — Nov 6
+
+Nick has submitted the KAYAK application. Access/commission approval is pending; no credentials obtained in this session.
+
+Priority sequence:
+1. Connect approved KAYAK production access behind a private backend; validate fares, actual arrival timing, baggage and returned tracked booking links.
+2. Apply for Expedia Group Travel Creator Program as the first accommodation affiliate candidate, then Booking.com via its official regional affiliate-network route. Evaluate Agoda specifically against Japan routes. Affiliate approval does not automatically grant live hotel-search API access: confirm that separately.
+3. Benchmark actual ski-area inventory, final tax-inclusive prices, cancellation, mobile handoff, date/occupancy preservation, attribution and completed-stay earnings. Do not pick providers by advertised commission alone.
+4. Match lodging to resort/lifts or a usable shuttle, using actual local arrival/check-in dates once known. Preserve a direct property option and map discovery when those benefit the traveler, regardless of affiliate eligibility. Disclose commissions, avoid forced redirects/popunders, and never invent referral identifiers or live rates.
+5. Expand verified transfer operators, timetables, pickup/return locations and ski-bag capacity for a small initial gateway set; add suitable rental referrals. No invented winter travel times.
+6. Add licensed caching, provider request budgets, server-side secrets, monitoring of failed/limited requests and stale-price withholding.
+7. Track outbound search/booking clicks and reconcile with partner reports for completed bookings, cancellations, net commissions and payout timing. Income remains unproven until sufficient real conversion data exists.
+
+Accommodation sources checked Nov 6:
+- https://partner.expediagroup.com/en-us/solutions/build-your-travel-experience/travel-creator-program : up to 4% on eligible transactions, current product rates inside account; Expedia/Hotels.com/Vrbo. No assumption that every booking earns the advertised maximum.
+- https://help.creator.expediagroup.com/hc/en-us/articles/15187327581591-What-commission-will-I-earn : actual rates vary by travel product.
+- https://www.booking.com/affiliate-program/v2/index.html : official affiliate-network registration; displayed English/US route directs to CJ. Region/acceptance and commission terms must be confirmed, no percentage assumed.
+- https://partners.agoda.com/tl-ph/faq.html : progressive model advertised up to 7%; contractual/account rate and payout conditions need verification before financial modeling. Japan inventory superiority is a hypothesis to test, not a verified outcome.
+
+User-benefit rule: affiliate links are acceptable when they lead to a competitive, suitable offer. Ranking must reflect location, final cost, cancellation and traveler needs. Include better non-affiliate/direct booking options when available. A map is useful for location discovery; it does not itself guarantee better booking prices or fund the site.
+
+### OpenWeather incident / usage control priority
+
+Nick received a temporary-block email reporting repeated breaches of 60 requests/minute. Investigation found OpenWeather used only by cloud/precipitation/temperature tile overlays in js/weather-layers.js, shared by globe and mountain views. Open-Meteo supplies resort weather/7-day model forecasts; RainViewer supplies radar; resort adapters supply operational reports. Historical snowfall is modeled/reanalysis data, not OpenWeather.
+
+Each OpenWeather tile image is a separate request. Provider cache is per viewer and does not enforce account-wide requests/minute. Existing pending-layer deduplication and maximum zoom 6 limit some load but do not establish a quota. Layer activation also makes a validation tile request. No shared rate limiter, cross-user cache or account-wide 429 circuit breaker exists. Provider error handler displays an error but does not remove offending layers. Panning/zooming, simultaneous layers and multiple tabs/users can therefore create bursts. This is a plausible source of the block, not proof of the historical usage counts; provider logs/account records are needed to attribute exact traffic. No test calls were sent to the blocked OpenWeather key in this audit.
+
+Remediation to implement before resuming/scaling overlays: pause affected overlay use; add account-wide request governance and explicit stop/backoff on authentication/quota failures, deduplicate/cache only as permitted, isolate optional map-layer failures from core weather, retain attribution, inspect provider usage records, and resume only once within the plan. Do not recommend a paid upgrade merely to conceal uncontrolled requests. Local git-ignored key configuration does not constitute secrecy for browser tile URLs. Backend/credential and deployment-path review needed. Static packaging currently excludes data/config.json, so do not assume the current public Pages build is using the local key without checking the actual deployed artifact.
+
+Provider horizon/license findings:
+- OpenWeather free forecast is 5 days at 3-hour steps: https://openweathermap.org/api/forecast5
+- One Call 3.0 has 8-day daily forecasts, separate subscription: https://openweathermap.org/api/one-call-3
+- 16-day daily forecast appears on paid weather plans: https://openweathermap.org/price . Existing map tiles are not those forecasts.
+- Snow Scout currently requests forecast_days=7 from Open-Meteo. Open-Meteo documents up to 16 days, depending on model support: https://open-meteo.com/en/docs . Longer horizon is not equivalent to reliable exact snowfall.
+- https://open-meteo.com/en/pricing : commercial API access requires a paid commercial license; free access is for evaluation/non-commercial use. Plan this before affiliate monetization. Historical/reanalysis availability may need a different plan from forecast access. Data attribution obligations remain.
+- RainViewer commercial-use and caching rights need a separate check before monetization; do not assume public API access licenses commercial use.
+
+Recommendation: retain current Open-Meteo model pipeline as the main forecast source with appropriate commercial access; treat OpenWeather overlays as an optional separately budgeted map service. Fix usage controls before choosing paid OpenWeather versus a licensed replacement tile provider. No weather code, provider subscription or live deployment was changed in this research/plan update.
+
+### OpenWeather request-control fix — Nov 6
+Implemented the first controlled weather gateway and removed direct browser access to the key. See docs/weather-request-controls.md for the full request path, tests, rollout boundary and reactivation instructions. OpenWeather remains explicitly paused in the local preview while the account is blocked. Rolling maximum: 45 upstream attempts per minute per gateway process, shared by all its clients/layers, with in-flight deduplication, startup drain, quota/auth circuit breakers and no automatic retries. Browser tile errors remove affected layers and stop retrying; radar stays independent. No subscription changed, blocked-key calls made or deployment performed. 77 Node + 13 Python tests passed. Public multi-instance hosting requires central persistent state before enabling the key. Close/reload any tabs running the older direct-tile code.

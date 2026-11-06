@@ -1,3 +1,4 @@
+import { createWeatherTileGateway } from './weather-tiles.mjs';
 // Local development gateway. Public rollout requires a chosen host and trusted proxy configuration.
 import http from 'node:http';
 import { readFile, mkdtemp, rm, realpath } from 'node:fs/promises';
@@ -11,7 +12,7 @@ import { validateTrip, addDays } from '../js/travel.js';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const MIME = { '.html':'text/html', '.css':'text/css', '.js':'text/javascript', '.json':'application/json', '.geojson':'application/geo+json', '.png':'image/png', '.svg':'image/svg+xml' };
-export function createTravelServer({ publicDir, settings = { mode: 'off' }, airports = [], search = searchKayak } = {}) {
+export function createTravelServer({ publicDir, settings = { mode: 'off' }, airports = [], search = searchKayak, weather = createWeatherTileGateway() } = {}) {
   const validCodes = new Set(airports.map(a => a.code));
   const sessions = new Map();
   let windowStart = Date.now(), calls = 0;
@@ -31,7 +32,18 @@ export function createTravelServer({ publicDir, settings = { mode: 'off' }, airp
     const expectedOrigin = `http://127.0.0.1:${req.socket.localPort}`;
     if (req.headers.host !== `127.0.0.1:${req.socket.localPort}`) return json(res, 403, { error:'Unexpected host.' });
     const url = new URL(req.url, expectedOrigin);
-    if (url.pathname === '/api/travel/status' && req.method === 'GET') return json(res, 200, { mode: settings.mode });
+    if (url.pathname.startsWith('/api/weather/')) {
+      if(req.method!=='GET') return json(res,405,{error:'GET required.'});
+      if(url.pathname==='/api/weather/status') return json(res,200,weather.status());
+      const match=url.pathname.match(/^\/api\/weather\/tiles\/([a-z_]+)\/(\d{1,2})\/(\d{1,3})\/(\d{1,3})\.png$/);
+      if(!match) return json(res,404,{error:'Unknown weather resource.'});
+      const result=await weather.tile(match[1],...match.slice(2).map(Number));
+      if(result.retry)res.setHeader('Retry-After',String(result.retry));
+      if(result.status!==200)return json(res,result.status,{error:result.message});
+      res.writeHead(200,{'Content-Type':result.type,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
+      return res.end(result.bytes);
+    }
+    if (url.pathname === '/api/travel/status'  && req.method === 'GET') return json(res, 200, { mode: settings.mode });
     if (url.pathname === '/api/travel/search') {
       if (req.method !== 'POST') return json(res, 405, { error:'POST required.' });
       if (req.headers.origin !== expectedOrigin || !req.headers['content-type']?.startsWith('application/json')) return json(res, 403, { error:'Search must originate from this site.' });
@@ -68,6 +80,10 @@ export function createTravelServer({ publicDir, settings = { mode: 'off' }, airp
       return;
     }
     if (!['GET','HEAD'].includes(req.method)) return json(res, 405, { error:'Method not allowed.' });
+    if (url.pathname === '/js/weather-config.js') {
+      res.writeHead(200,{'Content-Type':'text/javascript','Cache-Control':'no-store'});
+      return res.end('export const WEATHER_CONFIG = Object.freeze({apiBase:"/api/weather"});');
+    }
     if (url.pathname === '/js/travel-config.js') {
       res.writeHead(200, { 'Content-Type':'text/javascript', 'Cache-Control':'no-store' });
       return res.end('export const TRAVEL_CONFIG = Object.freeze({apiBase:"/api/travel"});');
@@ -88,7 +104,7 @@ async function main() {
   execFileSync('python3', [path.join(ROOT, 'scripts/package_site.py'), '--output', path.join(temp, 'site')]);
   const publicDir = await realpath(path.join(temp, 'site'));
   const { airports } = JSON.parse(await readFile(path.join(publicDir, 'data/travel-airports.json'), 'utf8'));
-  const server = createTravelServer({ publicDir, settings, airports });
+  const server = createTravelServer({ publicDir, settings, airports, weather:createWeatherTileGateway({key:process.env.OPENWEATHER_API_KEY,enabled:process.env.OPENWEATHER_ENABLED==='true'}) });
   server.listen(Number(process.env.TRAVEL_PORT || 4174), '127.0.0.1', () => console.log(`Travel preview: http://127.0.0.1:${server.address().port} · KAYAK mode: ${settings.mode}`));
   server.on('error', error => { console.error('Travel server failed:', error.code); process.exitCode = 1; rm(temp, { recursive:true, force:true }); });
   for (const signal of ['SIGINT','SIGTERM']) process.on(signal, () => { server.close(); rm(temp, { recursive:true, force:true }).finally(() => process.exit()); });

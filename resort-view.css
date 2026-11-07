@@ -1,0 +1,50 @@
+/* Resort identity and source information, shared by both resort views. */
+.detail-title { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }
+.detail-title h2 { margin:0; }
+.detail-copy { min-width:0; }
+.detail-panel .pass-tag, .detail-panel .pill { font-size:.87rem; padding:4.5px 10.5px; white-space:normal; }
+.measurement-location { margin:0 0 14px; color:var(--muted); font-size:12px; line-height:1.5; }
+.detail-sections > section > h3 { margin:0 0 8px; }
+.detail-sections { min-width:0; }
+
+/* The card takes its own space above the mountain; the terrain stays interactive. */
+.mountain-details .detail-overlay { position:relative; inset:auto; width:100%; z-index:4; flex-shrink:0; padding:0; overflow:auto; background:none; backdrop-filter:none; -webkit-backdrop-filter:none; max-height:48dvh; }
+.mountain-details .detail-panel { width:100%; max-width:none; max-height:none; padding:16px 22px; border-radius:0; background:var(--panel-strong); overflow:visible; }
+.mountain-details .detail-head { margin-bottom:8px; }
+.mountain-details .detail-meta { margin-bottom:8px; }
+.mountain-details .detail-mountain-link { display:none; }
+.mountain-details .detail-tabs { display:flex; flex-wrap:wrap; gap:6px; }
+.mountain-details .detail-sections > section { min-width:0; }
+.mountain-details #tab-overview { order:0; }
+.mountain-details #tab-forecast { order:1; }
+.mountain-details #tab-webcams { order:2; }
+.mountain-details #tab-trail-map { order:3; }
+.mountain-details #tab-travel { order:4; }
+@media (min-width:1100px) {
+  .mountain-details .detail-tabs { display:none; }
+  .mountain-details .detail-sections { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; align-items:start; }
+  .mountain-details .detail-sections > .tab-panel { display:block; padding:0 16px 0 0; max-height:max(240px,calc(48dvh - 140px)); overflow:auto; border-right:1px solid var(--line); }
+  .mountain-details .forecast-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .mountain-details .webcam-list { grid-template-columns:1fr; }
+  .mountain-details .trail-map-frame { height:260px; }
+}
+@media (min-width:1600px) { .mountain-details .detail-sections { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media (min-width:2300px) { .mountain-details .detail-sections { grid-template-columns:repeat(5,minmax(0,1fr)); } }
+@media (max-width:767px) {
+  .detail-title { gap:8px; }
+  .mountain-details .detail-panel { padding:12px; }
+}
+
+/* TV controls overlay the full-screen heatmap without moving its tiles. */
+body.tv-mode { overflow:hidden; }
+.tv-mode .heatmap-app { min-height:100dvh; }
+.tv-mode .dashboard-area { padding:0; }
+.tv-mode .heatmap-canvas { height:100dvh; border-radius:0; }
+.tv-mode .heatmap-header { position:fixed; inset:0 0 auto; z-index:20; background:var(--panel-strong); }
+.tv-mode .heatmap-controls { position:fixed; top:var(--tv-header-height,76px); left:0; right:0; z-index:19; padding:16px 24px; background:var(--panel-strong); }
+.tv-mode .heatmap-footer { position:fixed; bottom:0; left:0; right:0; z-index:19; padding:12px 24px; background:var(--panel-strong); }
+.tv-mode .heatmap-data-note { display:none; }
+.tv-mode.tv-idle { cursor:none; }
+.tv-mode.tv-idle .heatmap-header, .tv-mode.tv-idle .heatmap-controls, .tv-mode.tv-idle .heatmap-footer { visibility:hidden; opacity:0; pointer-events:none; }
+.tv-mode.tv-idle .heatmap-preview { display:none; }
+

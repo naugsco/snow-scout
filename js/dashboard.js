@@ -1,3 +1,4 @@
+import { availableSubregions, regionMatches } from './resort-regions.js?v=20261107-resort-view';
 import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261021-sources-verified';
 import { state, saveFavorites } from './state.js?v=20261021-sources-verified';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
@@ -86,7 +87,7 @@ export function baseFilteredResorts() {
     if (query && !resort.name.toLowerCase().includes(query)) return false;
     if (state.passFilter === 'favorites' && !state.favorites.has(resort.id)) return false;
     if (!['all', 'favorites'].includes(state.passFilter) && !resort.passes.includes(state.passFilter)) return false;
-    return state.regionFilter === 'all' || resort.region === state.regionFilter;
+    return regionMatches(resort, state.regionFilter);
   });
   if (state.sortMode === 'alpha') return list.sort((a, b) => a.name.localeCompare(b.name));
   if (state.sortMode === 'daysSinceSnow') return list.sort((a, b) => (a.metrics.daysSinceSnow ?? Infinity) - (b.metrics.daysSinceSnow ?? Infinity));
@@ -118,7 +119,15 @@ export function renderFilters(selectPassFilter, selectRegionFilter) {
   const regionSelect = document.getElementById('region-select');
   if (!passSelect.options.length) {
     for (const filter of PASS_FILTERS.filter((item) => item.id !== 'favorites')) passSelect.add(new Option(filter.id === 'all' ? 'All passes' : filter.label.replace(/^[^A-Za-z]+/, ''), filter.id));
-    for (const filter of REGION_FILTERS) regionSelect.add(new Option(filter.id === 'all' ? 'Worldwide' : filter.label.replace(/^[^A-Za-z]+/, ''), filter.id));
+    for (const filter of REGION_FILTERS) {
+      regionSelect.add(new Option(filter.id === 'all' ? 'Worldwide' : filter.label.replace(/^[^A-Za-z]+/, ''), filter.id));
+      if (filter.id === 'north-america') {
+        const group = document.createElement('optgroup');
+        group.label = 'North America · States & provinces';
+        for (const region of availableSubregions(resorts)) group.appendChild(new Option(region, `north-america:${region}`));
+        regionSelect.appendChild(group);
+      }
+    }
     passSelect.addEventListener('change', () => selectPassFilter(passSelect.value));
     regionSelect.addEventListener('change', () => selectRegionFilter(regionSelect.value));
     document.getElementById('saved-view').addEventListener('click', () => selectPassFilter('favorites'));
@@ -269,7 +278,7 @@ function positionTiles() {
   // ResizeObserver can run while a viewport/navigation transition temporarily
   // gives the canvas no width. Wait for its next non-zero measurement.
   if (!root.isConnected || width <= 0 || !visibleRows.length) return;
-  const height = Math.max(innerWidth <= 600 ? Math.max(720, visibleRows.length * 48) : 430, Math.min(820, innerHeight - 350), state.showAllResorts ? visibleRows.length * (innerWidth <= 600 ? 60 : 16) : 0);
+  const height = document.body.classList.contains('tv-mode') ? innerHeight : Math.max(innerWidth <= 600 ? Math.max(720, visibleRows.length * 48) : 430, Math.min(820, innerHeight - 350), state.showAllResorts ? visibleRows.length * (innerWidth <= 600 ? 60 : 16) : 0);
   root.style.height = `${height}px`;
   const rects = layoutHeatmap(visibleRows, width, height);
   root.querySelectorAll('.heat-tile').forEach((tile, i) => {

@@ -10,6 +10,7 @@
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261020-all-trails">
   <link rel="stylesheet" href="heatmap.css?v=20261106-live-snow">
+  <link rel="stylesheet" href="resort-view.css?v=20261107-resort-view">
   <link rel="stylesheet" href="travel.css?v=20261106-all-travel-guides">
 </head>
 <body>
@@ -17,7 +18,7 @@
     <header class="heatmap-header">
       <a href="./" class="heatmap-brand" aria-label="Snow Scout home"><span class="brand-badge"><span data-icon="triangle"></span></span><strong>Snow Scout</strong></a>
       <nav class="heatmap-nav" aria-label="Resort views"><button id="explore-view" class="active" aria-pressed="true"><span data-icon="sliders-horizontal"></span>Explore</button><button id="saved-view" aria-pressed="false"><span data-icon="bookmark"></span>Saved</button></nav>
-      <div class="header-tools"><button id="trip-planner-toggle" class="travel-link" type="button">Compare trips</button><div id="airport-control" hidden></div><a href="history.html" class="header-history" title="Snowfall history" aria-label="Snowfall history"><span data-icon="clock"></span></a><button id="theme-toggle" class="icon-button" title="Toggle light/dark theme" aria-label="Switch theme"><span data-icon="moon"></span></button><button id="unit-toggle" class="units-button" title="Switch snow and temperature units">in / °F</button><button id="map-toggle" class="map-view-button" aria-expanded="false" aria-controls="map-dialog"><span data-icon="globe"></span><span>Map view</span></button></div>
+      <div class="header-tools"><button id="tv-toggle" class="units-button" type="button" aria-pressed="false">TV mode</button><button id="trip-planner-toggle" class="travel-link" type="button">Compare trips</button><div id="airport-control" hidden></div><a href="history.html" class="header-history" title="Snowfall history" aria-label="Snowfall history"><span data-icon="clock"></span></a><button id="theme-toggle" class="icon-button" title="Toggle light/dark theme" aria-label="Switch theme"><span data-icon="moon"></span></button><button id="unit-toggle" class="units-button" title="Switch snow and temperature units">in / °F</button><button id="map-toggle" class="map-view-button" aria-expanded="false" aria-controls="map-dialog"><span data-icon="globe"></span><span>Map view</span></button></div>
     </header>
     <main id="dashboard" class="dashboard-area">
       <header class="heatmap-controls">
@@ -52,85 +53,6 @@
     </div>
   </div>
 
-  <!-- Detail panel overlay -->
-  <div id="detail-overlay" class="detail-overlay" style="display:none">
-    <div id="detail-panel" class="detail-panel glass">
-      <div class="detail-head">
-        <div class="detail-copy">
-          <h2 id="detail-name">Select a resort</h2>
-        </div>
-        <div class="detail-actions">
-          <button id="detail-favorite" class="panel-action" title="Favorite">&#x2606;</button>
-          <button id="detail-close" class="panel-action" title="Close">&times;</button>
-        </div>
-      </div>
-
-      <div id="detail-meta" class="detail-meta"></div>
-      <a id="detail-mountain" class="detail-mountain-link" href="mountain.html">
-        <img src="assets/mountain-icons/mountain-snow.svg" width="19" height="19" alt="" />
-        Explore 3D Mtn
-      </a>
-
-      <div class="detail-tabs">
-        <button class="tab-btn active" data-tab="overview">Conditions</button>
-        <button class="tab-btn" data-tab="forecast">Forecast</button>
-        <button class="tab-btn" data-tab="trail-map">Trail Map</button>
-        <button class="tab-btn" data-tab="webcams">Webcams</button>
-        <button class="tab-btn" data-tab="travel">Plan trip</button>
-      </div>
-
-      <section id="tab-travel" class="tab-panel"><div id="travel-panel"></div></section>
-      <section id="tab-overview" class="tab-panel active">
-        <div id="detail-visual-grid" class="detail-visual-grid"></div>
-        <div id="detail-snow-bars" class="detail-snow-bars"></div>
-        <div id="detail-forecast-bars" class="detail-snow-bars"></div>
-        <div id="detail-base-depth" class="detail-base-depth"></div>
-        <div class="detail-section-head">
-          <h3>&#x26F7; Terrain</h3>
-          <span id="run-open-copy">-</span>
-        </div>
-        <div class="progress-track">
-          <div id="run-open-bar" class="progress-bar" style="width: 0%"></div>
-        </div>
-        <div id="detail-terrain-stats" class="detail-terrain-stats"></div>
-        <div id="conditions-actions" class="detail-source-actions"></div>
-        <div class="detail-note" id="detail-note"></div>
-      </section>
-
-      <section id="tab-forecast" class="tab-panel">
-        <div id="forecast-chart" class="forecast-chart"></div>
-        <div id="forecast-grid" class="forecast-grid"></div>
-        <div id="forecast-actions" class="detail-source-actions"></div>
-      </section>
-
-      <section id="tab-trail-map" class="tab-panel">
-        <div class="detail-section-head">
-          <h3>&#x1F5FA; Trail Map</h3>
-          <span id="trail-map-copy">Runs and lifts via OpenSkiMap</span>
-        </div>
-        <div class="trail-map-shell">
-          <iframe
-            id="trail-map-frame"
-            class="trail-map-frame"
-            title="OpenSkiMap trail map"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-          ></iframe>
-        </div>
-        <div id="trail-map-actions" class="detail-source-actions"></div>
-        <div id="trail-map-note" class="detail-note"></div>
-      </section>
-
-      <section id="tab-webcams" class="tab-panel">
-        <div class="detail-section-head">
-          <h3>&#x1F4F7; Cameras</h3>
-          <span id="webcam-count">0 feeds</span>
-        </div>
-        <div id="webcam-list" class="webcam-list"></div>
-      </section>
-    </div>
-  </div>
-
   <!-- Hover card for map markers -->
   <div id="season-tooltip" class="season-tooltip" role="tooltip" hidden></div>
   <div id="hover-card" class="glass hover-card">
@@ -155,6 +77,6 @@
 
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
-  <script type="module" src="js/main.js?v=20261106-mountain-weather"></script>
+  <script type="module" src="js/main.js?v=20261107-resort-view"></script>
 </body>
 </html>

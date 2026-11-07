@@ -239,7 +239,7 @@ export async function createMountain(container, notify, fail, config, options = 
   const up=e=>{pointers.delete(e.pointerId);previousPinch=null;};
   const wheel=e=>{e.preventDefault();change(0,0,Math.exp(e.deltaY*0.001));};
   const key=e=>{
-    if(e.target.closest('select,input,textarea,[contenteditable="true"]'))return;
+    if(e.target !== canvas)return;
     const actions={ArrowLeft:()=>change(-7),ArrowRight:()=>change(7),ArrowUp:()=>change(0,-5),ArrowDown:()=>change(0,5),'+':()=>change(0,0,0.85),'=':()=>change(0,0,0.85),'-':()=>change(0,0,1.18)};
     if(actions[e.key]){e.preventDefault();actions[e.key]();}
   };
@@ -248,8 +248,22 @@ export async function createMountain(container, notify, fail, config, options = 
   canvas.addEventListener('pointerup',up);canvas.addEventListener('pointercancel',up);
   canvas.addEventListener('wheel',wheel,{passive:false});document.addEventListener('keydown',key);
   const selection = new C.ScreenSpaceEventHandler(canvas);
+  for (const resort of options.resorts || []) {
+    const marker = viewer.entities.add({
+      position:C.Cartesian3.fromDegrees(resort.lon,resort.lat),
+      point:{pixelSize:14,color:C.Color.fromCssColorString('#65d9ff'),outlineColor:C.Color.WHITE,outlineWidth:2,
+        heightReference:C.HeightReference.CLAMP_TO_GROUND,disableDepthTestDistance:Number.POSITIVE_INFINITY,
+        distanceDisplayCondition:new C.DistanceDisplayCondition(0,250000)},
+      label:{text:resort.name,font:'600 13px sans-serif',fillColor:C.Color.WHITE,
+        showBackground:true,backgroundColor:C.Color.fromCssColorString('#102437ed'),
+        pixelOffset:new C.Cartesian2(0,-24),heightReference:C.HeightReference.CLAMP_TO_GROUND,
+        disableDepthTestDistance:Number.POSITIVE_INFINITY,distanceDisplayCondition:new C.DistanceDisplayCondition(0,120000)}
+    });
+    marker.snowscoutResort = resort;
+  }
   selection.setInputAction(click=>{
     const picked=scene.pick(click.position),entity=picked?.id;
+    if(entity?.snowscoutResort) { options.onResortSelect?.(entity.snowscoutResort); return; }
     if(entity?.properties) notify({selection:{name:entity.name,kind:entity.properties.kind.getValue(),difficulty:entity.properties.difficulty?.getValue()}});
   },C.ScreenSpaceEventType.LEFT_CLICK);
   notify({ready:true,runCount,liftCount});
@@ -282,13 +296,14 @@ export async function createMountain(container, notify, fail, config, options = 
       trailSource.show=true;liftSource.show=true;labels.show=true;trees.show=true;
       viewer.camera.flyToBoundingSphere(new C.BoundingSphere(target,100),{
         duration:2.8,offset:new C.HeadingPitchRange(C.Math.toRadians(home.heading),C.Math.toRadians(home.pitch),home.range),
-        complete:renderPose
+        complete:()=>{renderPose();notify({arrived:true});}
       });
       notify({view:'resort',selection:null});
     },
     destroy(){disposed=true;weather.destroy();document.removeEventListener('keydown',key);selection.destroy();viewer.destroy();}
   };
   if (options.flyIn) api.flyIn();
+  else notify({arrived:true});
   return api;
   } catch (error) {
     viewer.destroy();

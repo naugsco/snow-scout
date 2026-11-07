@@ -6,9 +6,12 @@
   <meta name="description" content="Explore Snow Scout's painted winter mountains in 3D. Orbit real terrain and inspect community-mapped ski trails." />
   <title>3D Mountain — Snow Scout</title>
   <link rel="stylesheet" href="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Widgets/widgets.css" />
+  <link rel="stylesheet" href="styles.css?v=20261107-resort-view" />
+  <link rel="stylesheet" href="travel.css?v=20261106-all-travel-guides" />
+  <link rel="stylesheet" href="resort-view.css?v=20261107-resort-view" />
   <link rel="stylesheet" href="mountain.css?v=20261105-map-layers" />
 </head>
-<body>
+<body class="mountain-details">
   <main class="mountain-app">
     <header class="app-header">
       <a class="brand" href="./" aria-label="Snow Scout — all resorts">
@@ -63,6 +66,7 @@
     <span id="map-status" class="sr-only" role="status">Loading real terrain.</span>
   </main>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>
-  <script type="module" src="js/mountain-page.js?v=20261106-weather-backend"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
+  <script type="module" src="js/mountain-page.js?v=20261107-resort-view"></script>
 </body>
 </html>

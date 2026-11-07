@@ -1,3 +1,4 @@
+import './detail-card.js?v=20261107-resort-view';
 import { mountTravelGuide } from './travel-guide-panel.js?v=20261106-all-travel-guides';
 import { GATEWAYS } from './trip-planning.js?v=20261106-all-travel-guides';
 import { TRAVEL_CONFIG } from './travel-config.js?v=20261022-travel';

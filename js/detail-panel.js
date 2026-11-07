@@ -1,15 +1,19 @@
+import './detail-card.js?v=20261107-resort-view';
 import { state } from './state.js?v=20261021-sources-verified';
 import {
   formatInches, formatTemperature, formatRunAccess, formatPassLabel,
   getPassTone, getSourceKeyForResort, getConditionsPageForResort, getWebcamPageForResort,
   withCacheBust, webcamStreams
 } from './utils.js?v=20261106-mountain-weather';
-import { selectedResort, favoriteGlyph } from './dashboard.js?v=20261106-mountain-weather';
-import { weatherLocationLabel } from './weather-location.js?v=20261106-mountain-weather';
+import { resorts } from './resorts.js?v=20261021-sources-verified';
+import { weatherLocation, weatherLocationLabel } from './weather-location.js?v=20261106-mountain-weather';
 import { createSnowfallChart } from './snowfall-chart.js?v=20261021-sources-verified';
 import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261021-sources-verified';
 import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';
-import { renderTravelPanel } from './travel-panel.js?v=20261106-all-travel-guides';
+import { renderTravelPanel } from './travel-panel.js?v=20261107-resort-view';
+
+const selectedResort = () => resorts.find(resort => resort.id === state.selectedId);
+const favoriteGlyph = id => state.favorites.has(id) ? '★' : '☆';
 
 const detailOverlay = document.getElementById('detail-overlay');
 const detailPanel = document.getElementById('detail-panel');
@@ -214,18 +218,26 @@ export function renderDetailPanel() {
   }
 
   detailOverlay.style.display = 'flex';
-  if (state.currentTab === 'travel') renderTravelPanel(resort);
+  if (state.currentTab === 'travel' || (document.body.classList.contains('mountain-details') && matchMedia('(min-width: 1100px)').matches)) renderTravelPanel(resort);
   detailName.textContent = resort.name;
   document.getElementById('detail-mountain').href = mountainUrl(resort);
   detailFavorite.textContent = favoriteGlyph(resort.id);
   detailFavorite.classList.toggle('primary', state.favorites.has(resort.id));
 
+  const pass = document.getElementById('detail-pass');
+  pass.className = `pass-tag ${getPassTone(resort)}`;
+  pass.textContent = formatPassLabel(resort);
+  const point = resort.liveForecast?.weatherLocation;
+  const elevation = point?.elevationM ?? weatherLocation(resort).elevationM;
+  const modelLocation = Number.isFinite(elevation)
+    ? `Weather model at ${Math.round(elevation).toLocaleString()} m elevation`
+    : 'Weather model at ski-area coordinates · elevation unavailable';
+  document.getElementById('conditions-location').textContent = resort.liveConditionsKind === 'model'
+    ? modelLocation : 'Resort report · reporting elevation not supplied';
+  document.getElementById('forecast-location').textContent = modelLocation;
   detailMeta.innerHTML = '';
   [
-    { label: formatPassLabel(resort), className: `pass-tag ${getPassTone(resort)}` },
-    { label: resort.regionLabel, className: 'pill' },
     { label: formatTemperature(resort.metrics.tempF), className: 'pill' },
-    ...(resort.liveForecast ? [{label:weatherLocationLabel(resort),className:'pill'}] : []),
     { label: Number.isFinite(resort.metrics.daysSinceSnow) ? `${resort.metrics.daysSinceSnow}d since snow` : 'Snow gap unknown', className: 'pill' }
   ].forEach((item) => {
     const chip = document.createElement('span');
@@ -431,6 +443,7 @@ export function renderDetailPanel() {
 
   // === WEBCAMS TAB ===
   const webcams = buildWebcams(resort);
+  webcamList.querySelectorAll('video').forEach(video => { video._snowScoutHls?.destroy(); video.pause(); });
   webcamList.innerHTML = '';
   if (!webcams.length) {
     webcamCount.textContent = '0 feeds';

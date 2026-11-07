@@ -1,3 +1,4 @@
+import { bindTVMode } from './tv-mode.js?v=20261107-resort-view';
 import { openTripComparison, refreshTripComparison } from './trip-comparison.js?v=20261106-all-travel-guides';
 import { DEFAULT_WEBCAM_PAGES } from './constants.js?v=20261021-sources-verified';
 import { state, setUseMetric, setTheme } from './state.js?v=20261021-sources-verified';
@@ -13,10 +14,10 @@ import {
   renderDashboard, renderFilters, renderUpdatedAt, filteredResorts,
   ensureSelectionVisible, toggleFavorite, setOnResortClick,
   setOnCompareToggle, loadHeatmapSeason, hideHeatmapPreview, refreshHeatmapPreview, reportPreviewForecastError, refreshCurrentSnow
-} from './dashboard.js?v=20261106-mountain-weather';
+} from './dashboard.js?v=20261107-resort-view';
 import { HEATMAP_METRICS } from './heatmap-metrics.js?v=20261021-sources-verified';
 import { icon, hydrateIcons } from './ui-icons.js?v=20261021-sources-verified';
-import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261106-mountain-weather';
+import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261107-resort-view';
 import { parseHash, updateHash, initRouter } from './router.js?v=20261021-sources-verified';
 import { toggleCompareResort, refreshComparison } from './comparison.js?v=20261106-all-travel-guides';
 import { createWeatherLayers } from './weather-layers.js?v=20261106-weather-backend';
@@ -50,12 +51,13 @@ const syncHash = () => updateHash(state, resorts);
 const visibleIds = () => new Set(filteredResorts().map((resort) => resort.id));
 
 function focusResort(resort, { fly = !mapDialog.hidden } = {}) {
-  if (fly && !mapDialog.hidden) {
+  if (fly && !mapDialog.hidden && !matchMedia('(max-width: 767px)').matches) {
     location.assign(`${mountainUrl(resort)}&fly=1`);
     return;
   }
   lastDetailTrigger = document.activeElement;
   hideHeatmapPreview();
+  if (!mapDialog.hidden) setActiveTab('overview');
   state.selectedId = resort.id;
   renderDashboard();
   updateMarkerStyles();
@@ -94,6 +96,7 @@ function applyFilters() {
 }
 function selectPassFilter(id) { state.passFilter = id; state.showAllResorts = false; applyFilters(); }
 function selectRegionFilter(id) { state.regionFilter = id; state.showAllResorts = false; applyFilters(); }
+bindTVMode({ render: renderDashboard, hidePreview: hideHeatmapPreview });
 setOnResortClick(focusResort);
 setOnCompareToggle(toggleCompareResort);
 
@@ -178,6 +181,7 @@ function mapAnimation() {
 async function openMap() {
   returnFromMap = document.activeElement;
   hideHeatmapPreview();
+  mapDialog.appendChild(document.getElementById('detail-overlay'));
   mapDialog.hidden = false;
   document.body.classList.add('map-open');
   document.querySelector('.heatmap-app').inert = true;
@@ -199,6 +203,8 @@ async function openMap() {
   updateWeatherUI();
 }
 function closeMap() {
+  closeDetails();
+  document.body.appendChild(document.getElementById('detail-overlay'));
   mapDialog.hidden = true;
   stopRadarAnimation();
   viewer.useDefaultRenderLoop = false;

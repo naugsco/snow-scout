@@ -1,15 +1,47 @@
+import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261107-resort-view';
+import { state, saveFavorites } from './state.js?v=20261021-sources-verified';
+import { resorts } from './resorts.js?v=20261021-sources-verified';
+import { loadOptionalSourceData, loadLiveForecastForResort } from './data-loader.js?v=20261106-mountain-weather';
+import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';
+import { DEFAULT_WEBCAM_PAGES } from './constants.js?v=20261021-sources-verified';
+import { webcamPages } from './utils.js?v=20261106-mountain-weather';
 import { bindWeatherControls } from './weather-controls.js?v=20261105-map-layers';
 import { hydrateIcons } from './ui-icons.js?v=20261021-sources-verified';
-import { RAW_RESORTS } from './constants.js?v=20261021-sources-verified';
 import { mountainConfig, mountainSlug } from './mountain-config.js?v=20261021-sources-verified';
-import { createMountain } from './painted-mountain.js?v=20261106-weather-backend';
+import { createMountain } from './painted-mountain.js?v=20261107-resort-view';
 import { trailLegend } from './trail-style.js?v=20261021-sources-verified';
 
 hydrateIcons();
 
 const el = id => document.getElementById(id);
 const requested = new URLSearchParams(location.search).get('resort');
-const resort = RAW_RESORTS.find(item => mountainSlug(item.name) === requested);
+const resort = resorts.find(item => mountainSlug(item.name) === requested);
+const card = el('detail-overlay');
+document.querySelector('.mountain-app').insertBefore(card, document.querySelector('.map-view'));
+let arrived = false;
+let cardOpen = true;
+function refreshDetails() { if (arrived && cardOpen) renderDetailPanel(); }
+function openDetails() {
+  if (!resort) return;
+  cardOpen = true;
+  state.selectedId = resort.id;
+  refreshDetails();
+}
+function closeDetails() {
+  cardOpen = false;
+  card.style.display = 'none';
+  el('resort-details').focus();
+}
+el('detail-close').addEventListener('click', closeDetails);
+el('detail-favorite').addEventListener('click', () => {
+  if (state.favorites.has(resort.id)) state.favorites.delete(resort.id);
+  else state.favorites.add(resort.id);
+  saveFavorites(); refreshDetails();
+});
+document.querySelectorAll('.tab-btn').forEach(button => button.addEventListener('click', () => setActiveTab(button.dataset.tab)));
+el('resort-details').addEventListener('click', event => { event.preventDefault(); openDetails(); });
+document.addEventListener('keydown', event => { if (event.key === 'Escape' && cardOpen) closeDetails(); });
+matchMedia('(min-width: 1100px)').addEventListener('change', refreshDetails);
 let map, config, mode = 'orbit', liftsVisible = true;
 
 function fail(message) {
@@ -29,6 +61,7 @@ function chooseMode(value) {
 }
 
 function update(patch) {
+  if (patch.arrived) { arrived = true; openDetails(); }
   if (patch.ready) {
     el('loading').hidden = true;
     document.querySelectorAll('button[disabled]').forEach(button => { button.disabled = false; });
@@ -86,6 +119,10 @@ el('mountain-area').addEventListener('change', async () => {
 if (!resort) {
   fail('Choose a resort from Snow Scout to open its 3D mountain.');
 } else {
+  state.selectedId = resort.id;
+  Object.assign(webcamPages, DEFAULT_WEBCAM_PAGES);
+  loadOptionalSourceData(refreshDetails);
+  loadLiveForecastForResort(resort, refreshDetails).catch(error => console.error('Resort forecast:', error.message));
   config = mountainConfig(resort);
   document.title = `${resort.name} in 3D — Snow Scout`;
   el('resort-details').href = `./#resort=${encodeURIComponent(mountainSlug(resort.name))}`;
@@ -115,7 +152,12 @@ if (!resort) {
   }
   update({view: 'resort'});
   createMountain(el('mountain-view'), update, fail, config, {
-    flyIn: new URLSearchParams(location.search).get('fly') === '1'
+    flyIn: new URLSearchParams(location.search).get('fly') === '1',
+    resorts,
+    onResortSelect: selected => {
+      if (selected.id === resort.id) { openDetails(); return; }
+      location.assign(`${mountainUrl(selected)}&fly=1`);
+    }
   })
     .then(instance => {
       map = instance;

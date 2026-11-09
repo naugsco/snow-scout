@@ -18,11 +18,16 @@ export async function fetchForecast(resort) {
 async function main() {
   await mkdir(path.dirname(OUTPUT_PATH), { recursive: true });
   const resorts = {};
-  const summary = { ok: 0, error: 0 };
+  const summary = { ok: 0, error: 0, preservationOk: 0, preservationUnavailable: 0 };
   for (const [key, resort] of loadAllResorts()) {
     try {
       resorts[key] = await fetchForecast(resort);
       summary.ok++;
+      if (resorts[key].snowPreservation.status === 'ok') summary.preservationOk++;
+      else {
+        summary.preservationUnavailable++;
+        process.stderr.write(`${resort.name}: preservation unavailable — ${resorts[key].snowPreservation.reason}\n`);
+      }
       process.stdout.write(`${resort.name}: ${resorts[key].forecast72h}" next 72 hours\n`);
     } catch (error) {
       summary.error++;

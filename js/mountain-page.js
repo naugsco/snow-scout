@@ -1,7 +1,7 @@
-import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261107-resort-view';
+import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261109-webcams';
 import { state, saveFavorites } from './state.js?v=20261021-sources-verified';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
-import { loadOptionalSourceData, loadLiveForecastForResort } from './data-loader.js?v=20261106-mountain-weather';
+import { loadOptionalSourceData, loadLiveForecastForResort } from './data-loader.js?v=20261109-webcams';
 import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';
 import { DEFAULT_WEBCAM_PAGES } from './constants.js?v=20261021-sources-verified';
 import { webcamPages } from './utils.js?v=20261106-mountain-weather';

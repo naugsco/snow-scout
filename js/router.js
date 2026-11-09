@@ -17,7 +17,7 @@ export function parseHash(resorts) {
 
   if (params.has('pass')) result.passFilter = params.get('pass');
   if (params.has('region')) result.regionFilter = params.get('region');
-  if (params.has('sort')) result.sortMode = params.get('sort');
+  if (params.has('sort')) result.sortMode = params.get('sort') === 'bestUpcoming' ? 'forecast72h' : params.get('sort');
   if (params.has('status')) result.statusFilter = params.get('status');
   if (params.has('tab')) result.currentTab = params.get('tab');
 

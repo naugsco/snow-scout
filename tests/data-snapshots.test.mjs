@@ -41,7 +41,28 @@ test('published forecast snapshot accounts for all resorts and dates every succe
     assert.ok(forecastIsCurrent(forecast, Date.parse(forecast.updatedAt)), key);
     assert.ok(forecast.recentConditions && forecast.recentConditionsAt, key);
     assert.equal(forecast.dailyTime.length, forecast.dailySnowfall.length, key);
+    assert.equal(forecast.dailyTime.length, 16, key);
     assert.ok(forecast.dailySnowfall.every(n => n === null || Number.isFinite(n) && n >= 0), key);
     assert.equal(Date.parse(forecast.periodEnd) - Date.parse(forecast.periodStart), 72 * 3600000, key);
+    if(forecast.remainingToday?.status==='ok') {
+      const remaining=forecast.remainingToday;
+      assert.equal(remaining.date,forecast.dailyTime[0],key);
+      assert.equal(remaining.start,forecast.periodStart,key);
+      assert.ok(remaining.hourlySnowfallInches.length>0&&remaining.hourlySnowfallInches.length<=24,key);
+      assert.ok(remaining.hourlySnowfallInches.every(value=>value===null||(Number.isFinite(value)&&value>=0)),key);
+    }
+    const preservation=forecast.snowPreservation;
+    if (preservation) {
+      assert.equal(preservation.version,1,key);
+      if (preservation.status === 'unavailable') assert.ok(preservation.reason,key);
+      else {
+        assert.equal(preservation.status,'ok',key);
+        assert.equal(preservation.hours,336,key);
+        assert.equal(preservation.asOf,forecast.periodStart,key);
+        assert.equal(Date.parse(preservation.asOf)-Date.parse(preservation.windowStart),336*3600000,key);
+        assert.ok(preservation.creditInches>=0&&preservation.creditInches<=preservation.snowfallInches,key);
+        assert.equal(preservation.lastSnowAt===null,preservation.snowfallInches===0,key);
+      }
+    }
   }
 });

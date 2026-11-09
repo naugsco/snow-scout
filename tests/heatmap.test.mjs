@@ -11,7 +11,7 @@ test('missing metrics remain distinct from zero and sort after known values', ()
   assert.deepEqual(rankResorts(resorts, 'snow24h').map((row) => row.value), [12, 0, null]);
   assert.equal(metricValue({ metrics: { snow24h: -1 } }, 'snow24h'), null);
   assert.equal(snowScore({ forecast72h: 10, snow24h: null, daysSinceSnow: 0 }), null);
-  assert.ok(Math.abs(snowScore({ forecast72h: 10, snow24h: 4, daysSinceSnow: 2 }) - 14.8) < 1e-10);
+  assert.ok(Math.abs(snowScore({ forecast72h: 10 }, {version:1,status:'ok',hours:336,snowfallInches:8,creditInches:4}) - 16.4) < 1e-10);
 });
 
 test('the color scale is orange to white to blue; equal values are neutral and missing is separate', () => {
@@ -45,5 +45,16 @@ test('treemap fills desktop/mobile canvases without overlaps, including all-zero
         }
       }
     }
+  }
+});
+
+
+test('Powder Alert reserves readable row height without overlaps or gaps',()=>{
+  for(const [width,height] of [[1000,820],[366,1560]]) {
+    const rows=Array.from({length:12},(_,i)=>({value:52-i*4}));
+    const rects=layoutHeatmap(rows,width,height,{minRowHeight:220});
+    assert.ok(rects.every(rect=>rect.height>=220));
+    assert.ok(Math.abs(rects.reduce((sum,rect)=>sum+rect.width*rect.height,0)-width*height)<.0001);
+    assert.ok(rects.every(rect=>rect.x>=0&&rect.y>=0&&rect.x+rect.width<=width+.0001&&rect.y+rect.height<=height+.0001));
   }
 });

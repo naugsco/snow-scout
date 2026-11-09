@@ -1,7 +1,8 @@
+import { webcamCatalogState } from './webcams.js?v=20261109-audit';
 import { state } from './state.js?v=20261021-sources-verified';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import {
-  getSourceKeyForResort, inferStatus, getStatusText, buildForecastUrl,
+  getSourceKeyForResort, inferStatus, getStatusText,
   conditionPages, webcamPages, webcamStreams, forecastCache, forecastRequests,
   getConditionsPageForResort
 } from './utils.js?v=20261106-mountain-weather';
@@ -9,7 +10,7 @@ import { DEFAULT_CONDITION_PAGES } from './constants.js?v=20261021-sources-verif
 
 import { CONDITION_KEYS, isFresh } from './condition-data.js?v=20261021-sources-verified';
 import { chooseConditions } from './condition-selection.js?v=20261106-mountain-weather';
-import { parseWeather, forecastIsCurrent, forecastMatchesLocation } from './weather-data.js?v=20261106-mountain-weather';
+import { parseWeather, forecastIsCurrent, forecastMatchesLocation, weatherUrl } from './weather-data.js?v=20261109-powder-alert';
 
 // Initialize conditionPages with defaults
 Object.assign(conditionPages, DEFAULT_CONDITION_PAGES);
@@ -94,7 +95,7 @@ export async function loadLiveForecastForResort(resort, onDataReady) {
   clearForecast(resort, 'loading');
   if (onDataReady) onDataReady();
 
-  const apiUrl = buildForecastUrl(resort);
+  const apiUrl = weatherUrl(resort);
   const request = fetch(apiUrl, { cache: 'no-store' })
     .then((response) => response.ok ? response.json() : Promise.reject(new Error(`Forecast request failed (${response.status})`)))
     .then((payload) => {
@@ -164,52 +165,31 @@ export async function loadOptionalSourceData(onDataReady) {
         applyLiveConditions({}, null);
         state.conditionErrorCount = resorts.length;
       }),
-    fetch('./ski-webcams/webcam_pages.json', { cache: 'no-store' })
-      .then((response) => response.ok ? response.json() : null)
-      .then((catalog) => {
-        if (!catalog) return;
-        Object.entries(catalog).forEach(([key, value]) => {
-          if (!value?.webcamPage) return;
-          const resolvedKeys = new Set([
-            key,
-            getSourceKeyForResort(key),
-            getSourceKeyForResort(value.resort || key)
-          ]);
-          resolvedKeys.forEach((resolvedKey) => {
-            if (resolvedKey) webcamPages[resolvedKey] = value.webcamPage;
-          });
-        });
+    fetch('./data/resort-webcams.json', { cache: 'no-store' })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Webcam catalog HTTP ${response.status}`);
+        return response.json();
       })
-      .catch(() => null),
-    fetch('./ski-webcams/webcam_streams_complete.json', { cache: 'no-store' })
-      .then((response) => response.ok ? response.json() : null)
       .then((payload) => {
-        if (!payload) return;
-        [...(payload.epic || []), ...(payload.ikon || [])].forEach((entry) => {
+        if (!Array.isArray(payload.resorts)) throw new Error('Invalid webcam catalog');
+        webcamStreams.clear();
+        Object.keys(webcamPages).forEach(key => delete webcamPages[key]);
+        webcamCatalogState.status = 'ready';
+        webcamCatalogState.error = null;
+        payload.resorts.forEach((entry) => {
           const key = getSourceKeyForResort(entry.sourceKey || entry.resort || '');
-          if (!key) return;
-          if (entry.webcamPage && !/page-data\.json|opensnow\.com\/location\/.+\/snow-summary/i.test(entry.webcamPage)) {
-            webcamPages[key] = entry.webcamPage;
-          }
-          const feeds = (entry.feeds || [])
-            .filter((feed) => feed?.url && !/google|doubleclick|analytics|bat\.bing|pages\d+\.net|pixel|_Incapsula_Resource|page-data\.json|getskitickets|snapchat|liveperson|pbbl\.co|t\.co\/i\/adsct|opensnow\.com\/location\/.+\/snow-summary|webcam-offline|flashtalking|everesttech/i.test(feed.url))
-            .map((feed) => ({
-              title: feed.title || 'Live camera',
-              kind: feed.kind || 'page',
-              url: feed.url
-            }));
-          if (feeds.length) {
-            webcamStreams.set(key, feeds);
-          } else if (entry.streamUrls?.length) {
-            webcamStreams.set(key, entry.streamUrls.filter(Boolean).map((url, index) => ({
-              title: `Live camera ${index + 1}`,
-              kind: 'image',
-              url
-            })));
-          }
+          if (!key) throw new Error('Webcam entry has no resort');
+          if (entry.webcamPage) webcamPages[key] = entry.webcamPage;
+          else delete webcamPages[key];
+          webcamStreams.set(key, entry.feeds || []);
         });
       })
-      .catch(() => null)
+      .catch((error) => {
+        console.error('Unable to load the audited webcam catalog:', error);
+        webcamCatalogState.status = 'error';
+        webcamCatalogState.error = error.message;
+        webcamStreams.clear();
+      })
   ];
 
   await Promise.all(sourceTasks);

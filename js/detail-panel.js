@@ -1,4 +1,7 @@
-import './detail-card.js?v=20261107-resort-view';
+import { selectWebcams, attachCameraError, webcamCatalogState } from './webcams.js?v=20261109-audit';
+import { potentialPowderDays } from './forecast-planning.js?v=20261109-16day';
+import { preservationExplanation } from './snow-preservation.js?v=20261109-preservation';
+import './detail-card.js?v=20261109-selectable-bars';
 import { state } from './state.js?v=20261021-sources-verified';
 import {
   formatInches, formatTemperature, formatRunAccess, formatPassLabel,
@@ -7,10 +10,10 @@ import {
 } from './utils.js?v=20261106-mountain-weather';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import { weatherLocation, weatherLocationLabel } from './weather-location.js?v=20261106-mountain-weather';
-import { createSnowfallChart } from './snowfall-chart.js?v=20261021-sources-verified';
+import { createSnowfallChart } from './snowfall-chart.js?v=20261109-selectable-bars';
 import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261021-sources-verified';
 import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';
-import { renderTravelPanel } from './travel-panel.js?v=20261107-resort-view';
+import { renderTravelPanel } from './travel-panel.js?v=20261109-selectable-bars';
 
 const selectedResort = () => resorts.find(resort => resort.id === state.selectedId);
 const favoriteGlyph = id => state.favorites.has(id) ? '★' : '☆';
@@ -23,7 +26,8 @@ const detailFavorite = document.getElementById('detail-favorite');
 const runOpenCopy = document.getElementById('run-open-copy');
 const runOpenBar = document.getElementById('run-open-bar');
 const detailNote = document.getElementById('detail-note');
-const forecastGrid = document.getElementById('forecast-grid');
+const forecastDayDetails = document.getElementById('forecast-day-details');
+let forecastSelection = {resortId:null,date:null};
 const forecastActions = document.getElementById('forecast-actions');
 const webcamList = document.getElementById('webcam-list');
 const webcamCount = document.getElementById('webcam-count');
@@ -122,28 +126,13 @@ function buildSourceLinks(resort) {
 }
 
 function buildWebcams(resort) {
-  const sourceKey = getSourceKeyForResort(resort.name);
-  const webcamPage = getWebcamPageForResort(resort);
-  const feeds = (webcamStreams.get(sourceKey) || []).slice().sort((a, b) => {
-    const rank = { iframe: 0, video: 1, mjpeg: 2, image: 3, hls: 4, page: 5 };
-    return (rank[a.kind] ?? 9) - (rank[b.kind] ?? 9);
-  });
-  if (feeds.length) {
-    return feeds.slice(0, 8).map((feed, index) => {
-      const kindLabel =
-        feed.kind === 'iframe' ? 'Embedded live view'
-        : feed.kind === 'video' ? 'Direct video feed'
-        : feed.kind === 'image' || feed.kind === 'mjpeg' ? 'Refreshable live snapshot'
-        : 'Official camera source';
-      return { title: feed.title || `Live camera ${index + 1}`, description: kindLabel, url: feed.url, kind: feed.kind || 'page' };
-    });
-  }
-  if (!webcamPage) return [];
-  return [
-    { title: 'Official webcam page', description: 'Open the resort camera hub for the latest live views.', url: webcamPage, kind: 'page' },
-    { title: 'Base area cam', description: 'Jump into the official camera page and select the lower mountain feed.', url: webcamPage, kind: 'page' },
-    { title: 'Summit cam', description: 'Use the official camera page to inspect wind, visibility, and upper mountain coverage.', url: webcamPage, kind: 'page' }
-  ];
+  return selectWebcams(webcamStreams.get(getSourceKeyForResort(resort.name)), getWebcamPageForResort(resort));
+}
+let webcamRenderKey = null;
+function clearWebcams() {
+  webcamList.querySelectorAll('video').forEach(video => { video._snowScoutHls?.destroy(); video.pause(); video.removeAttribute('src'); video.load(); });
+  webcamList.replaceChildren();
+  webcamRenderKey = null;
 }
 
 function renderWebcamPreview(webcam) {
@@ -151,6 +140,7 @@ function renderWebcamPreview(webcam) {
     const frame = document.createElement('iframe');
     frame.src = webcam.url;
     frame.loading = 'lazy';
+    attachCameraError(frame, 'Camera player unavailable. Open the official camera page below.');
     frame.allow = 'autoplay; fullscreen; picture-in-picture';
     frame.allowFullscreen = true;
     frame.referrerPolicy = 'strict-origin-when-cross-origin';
@@ -159,6 +149,7 @@ function renderWebcamPreview(webcam) {
   }
   if (webcam.kind === 'video') {
     const video = document.createElement('video');
+    attachCameraError(video);
     video.src = webcam.url;
     video.autoplay = true;
     video.muted = true;
@@ -176,10 +167,13 @@ function renderWebcamPreview(webcam) {
     video.controls = true;
     if (window.Hls?.isSupported()) {
       const hls = new window.Hls({ enableWorker: true, lowLatencyMode: false });
+      const fail = attachCameraError(video);
+      hls.on(window.Hls.Events.ERROR, (_event, data) => { if (data.fatal) fail(); });
       hls.loadSource(webcam.url);
       hls.attachMedia(video);
       video._snowScoutHls = hls;
     } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      attachCameraError(video);
       video.src = webcam.url;
     } else {
       return null;
@@ -188,7 +182,9 @@ function renderWebcamPreview(webcam) {
   }
   if (webcam.kind === 'image' || webcam.kind === 'mjpeg') {
     const image = document.createElement('img');
-    image.src = withCacheBust(webcam.url);
+    attachCameraError(image);
+    image.referrerPolicy = 'no-referrer';
+    image.src = webcam.url;
     image.alt = webcam.title;
     image.loading = 'lazy';
     image.dataset.baseUrl = webcam.url;
@@ -212,6 +208,7 @@ export function setActiveTab(tabName) {
 export function renderDetailPanel() {
   const resort = selectedResort();
   if (!resort) {
+    clearWebcams();
     renderTravelPanel(null);
     detailOverlay.style.display = 'none';
     return;
@@ -220,6 +217,7 @@ export function renderDetailPanel() {
   detailOverlay.style.display = 'flex';
   if (state.currentTab === 'travel' || (document.body.classList.contains('mountain-details') && matchMedia('(min-width: 1100px)').matches)) renderTravelPanel(resort);
   detailName.textContent = resort.name;
+  document.getElementById('detail-preservation').textContent = preservationExplanation(resort.liveForecast, state.useMetric);
   document.getElementById('detail-mountain').href = mountainUrl(resort);
   detailFavorite.textContent = favoriteGlyph(resort.id);
   detailFavorite.classList.toggle('primary', state.favorites.has(resort.id));
@@ -362,37 +360,38 @@ export function renderDetailPanel() {
   detailNote.textContent = resort.liveNote || 'Current snow and terrain data are unavailable until a source report can be verified.';
 
   // === FORECAST TAB ===
-  const forecastCards = resort.liveForecast?.dailySnowfall?.length
-    ? resort.liveForecast.dailySnowfall.slice(0, 6).map((amount, index) => ({
-        date: resort.liveForecast.dailyTime?.[index] || null,
-        amount,
-        tempMax: resort.liveForecast.tempMax?.[index],
-        tempMin: resort.liveForecast.tempMin?.[index]
-      }))
-    : [];
+  const powder = potentialPowderDays(resort.liveForecast);
+  const dates = resort.liveForecast?.dailyTime?.slice(0,16) || [];
+  const daily = resort.liveForecast?.dailySnowfall?.slice(0,16) || [];
   const forecastChartEl = document.getElementById('forecast-chart');
-  forecastChartEl.innerHTML = '';
-  if (resort.liveForecast?.dailySnowfall?.length) {
-    const chart = createSnowfallChart(resort.liveForecast.dailySnowfall, resort.liveForecast.dailyTime);
-    if (chart) forecastChartEl.appendChild(chart);
-  }
-
-  forecastGrid.innerHTML = '';
-  if (forecastCards.length) {
-    forecastCards.forEach((day) => {
-      const card = document.createElement('div');
-      const label = day.date
-        ? new Date(`${day.date}T12:00:00`).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })
-        : 'Day';
-      card.className = 'forecast-day';
-      card.innerHTML = `
-        <span>${label}</span>
-        <strong>${formatInches(day.amount)} snow</strong>
-        <em>${formatTemperature(day.tempMin)} to ${formatTemperature(day.tempMax)}</em>
-      `;
-      forecastGrid.appendChild(card);
-    });
-  }
+  const sameResort = forecastSelection.resortId === resort.id;
+  const previousScroll = sameResort ? forecastChartEl.scrollLeft : 0;
+  const selectedIndex = sameResort ? Math.max(0,dates.indexOf(forecastSelection.date)) : 0;
+  const powderIndices = powder.status === 'ok' ? powder.days.map(day=>day.index) : [];
+  const showDay = index => {
+    const date = dates[index];
+    forecastSelection = {resortId:resort.id,date};
+    const label = date ? new Date(`${date}T12:00:00`).toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'}) : `Day ${index+1}`;
+    forecastDayDetails.innerHTML = `
+      <h4>${label}</h4>
+      <div class="selected-day-stats"><div><span>Snowfall</span><strong>${formatInches(daily[index])}</strong></div>
+      <div><span>Temperature</span><strong>${formatTemperature(resort.liveForecast?.tempMin?.[index])} to ${formatTemperature(resort.liveForecast?.tempMax?.[index])}</strong></div></div>
+      ${powderIndices.includes(index) ? '<p class="powder-badge">Potential powder day · 6″ / approximately 15 cm or more</p>' : ''}
+      ${index===0 ? '<p class="detail-note">Today’s daily total includes snow that may already have fallen.</p>' : ''}
+      ${index>=7 ? '<p class="detail-note">Longer-range outlook · This forecast may change substantially.</p>' : ''}`;
+  };
+  forecastChartEl.replaceChildren();
+  forecastChartEl.setAttribute('role','region');
+  forecastChartEl.setAttribute('aria-label','Scrollable daily snowfall forecast');
+  forecastChartEl.removeAttribute('tabindex');
+  if(daily.length){
+    forecastChartEl.appendChild(createSnowfallChart(daily,dates,{selectedIndex,powderIndices,onSelect:showDay}));
+    showDay(selectedIndex);
+    forecastChartEl.scrollLeft=previousScroll;
+  } else forecastDayDetails.textContent='Daily forecast unavailable.';
+  document.getElementById('forecast-horizon').textContent = daily.length
+    ? `${daily.length} days · Scroll sideways and select a bar. Pulsing bars mark potential powder days.`
+    : 'Forecast unavailable.';
 
   forecastActions.innerHTML = '';
   [
@@ -443,16 +442,21 @@ export function renderDetailPanel() {
 
   // === WEBCAMS TAB ===
   const webcams = buildWebcams(resort);
-  webcamList.querySelectorAll('video').forEach(video => { video._snowScoutHls?.destroy(); video.pause(); });
-  webcamList.innerHTML = '';
+  const nextWebcamKey = JSON.stringify([resort.id, webcams, webcamCatalogState.status]);
+  if (webcamRenderKey === nextWebcamKey) return;
+  clearWebcams();
+  webcamRenderKey = nextWebcamKey;
   if (!webcams.length) {
     webcamCount.textContent = '0 feeds';
     const empty = document.createElement('div');
     empty.className = 'webcam-empty';
-    empty.textContent = 'No webcam feeds loaded for this resort yet.';
+    empty.textContent = webcamCatalogState.status === 'error'
+      ? 'The webcam catalog could not be loaded. Please try again later.'
+      : 'No verified webcam feed is available for this resort.';
     webcamList.appendChild(empty);
   } else {
-    webcamCount.textContent = `${webcams.length} feeds`;
+    const count = webcams.filter(cam => cam.kind !== 'page').length;
+    webcamCount.textContent = webcamCatalogState.status === 'loading' ? 'Loading cameras…' : webcamCatalogState.status === 'error' ? 'Catalog unavailable' : count ? `${count} camera${count === 1 ? '' : 's'}` : 'Official page only';
     webcams.forEach((webcam) => {
       const card = document.createElement('div');
       const preview = renderWebcamPreview(webcam);
@@ -462,9 +466,21 @@ export function renderDetailPanel() {
         media.className = 'webcam-media';
         const tag = document.createElement('span');
         tag.className = 'webcam-tag';
-        tag.textContent = webcam.kind === 'iframe' ? 'Live Embed' : webcam.kind === 'video' ? 'Video Feed' : 'Live Snapshot';
+        tag.textContent = webcam.kind === 'iframe' ? 'Camera player' : ['video', 'hls'].includes(webcam.kind) ? 'Video feed' : 'Snapshot';
         media.appendChild(tag);
         media.appendChild(preview);
+        if (webcam.playerUrl) {
+          const play = document.createElement('button');
+          play.className = 'webcam-play';
+          play.textContent = 'Watch live video';
+          play.addEventListener('click', () => {
+            const player = renderWebcamPreview({...webcam, kind: 'iframe', url: webcam.playerUrl});
+            tag.textContent = 'Live video';
+            media.replaceChildren(tag, player);
+            card.querySelector('.webcam-body p').textContent = 'Live camera player · availability is controlled by the resort.';
+          }, {once: true});
+          media.appendChild(play);
+        }
         card.appendChild(media);
       }
       const body = document.createElement('div');
@@ -473,16 +489,27 @@ export function renderDetailPanel() {
       title.textContent = webcam.title;
       body.appendChild(title);
       const copy = document.createElement('p');
-      copy.textContent = webcam.description;
+      copy.textContent = webcamCatalogState.status === 'error'
+        ? 'The webcam catalog could not be loaded. Try the official page.'
+        : webcamCatalogState.status === 'loading' ? 'Loading the camera catalog…'
+        : !preview && webcam.kind !== 'page' ? 'This browser cannot play this feed. Open the official camera page.' : webcam.description;
       body.appendChild(copy);
       const link = document.createElement('a');
-      link.href = webcam.url;
+      link.href = webcam.sourceUrl;
       link.target = '_blank';
       link.rel = 'noreferrer';
-      link.textContent = preview ? 'Open source' : 'Open camera page';
+      link.textContent = 'Open official camera page';
       body.appendChild(link);
       card.appendChild(body);
       webcamList.appendChild(card);
     });
   }
 }
+
+// Shared by the globe and mountain pages. Refresh visible snapshots without rebuilding players.
+setInterval(() => {
+  if (document.hidden) return;
+  webcamList.querySelectorAll('img[data-refreshable="true"]').forEach(image => {
+    if (image.getClientRects().length && image.dataset.baseUrl) image.src = withCacheBust(image.dataset.baseUrl);
+  });
+}, 45000);

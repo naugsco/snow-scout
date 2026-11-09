@@ -1,4 +1,4 @@
-import { weatherUrl } from './weather-data.js?v=20261106-mountain-weather';
+import { weatherUrl } from './weather-data.js?v=20261109-powder-alert';
 import { RESORT_SOURCE_ALIASES } from './constants.js?v=20261021-sources-verified';
 import { state } from './state.js?v=20261021-sources-verified';
 

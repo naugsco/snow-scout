@@ -2,23 +2,23 @@ import { bindTVMode } from './tv-mode.js?v=20261107-resort-view';
 import { openTripComparison, refreshTripComparison } from './trip-comparison.js?v=20261106-all-travel-guides';
 import { DEFAULT_WEBCAM_PAGES } from './constants.js?v=20261021-sources-verified';
 import { state, setUseMetric, setTheme } from './state.js?v=20261021-sources-verified';
-import { normalizeResortName, getSourceKeyForResort, webcamPages, withCacheBust } from './utils.js?v=20261106-mountain-weather';
+import { normalizeResortName, getSourceKeyForResort, webcamPages } from './utils.js?v=20261106-mountain-weather';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import {
   viewer, createMarkerEntity, updateMarkerVisibility, updateMarkerStyles,
   syncHoverCardToEntity, screenSpaceHandler, resortForScreenPosition,
   updateZoomReadout, setAutoRotate, preparePaintedGlobe
 } from './cesium-map.js?v=20261105-map-layers';
-import { loadOptionalSourceData, loadLiveForecastForResort, expireStaleWeather } from './data-loader.js?v=20261106-mountain-weather';
+import { loadOptionalSourceData, loadLiveForecastForResort, expireStaleWeather } from './data-loader.js?v=20261109-webcams';
 import {
   renderDashboard, renderFilters, renderUpdatedAt, filteredResorts,
   ensureSelectionVisible, toggleFavorite, setOnResortClick,
-  setOnCompareToggle, loadHeatmapSeason, hideHeatmapPreview, refreshHeatmapPreview, reportPreviewForecastError, refreshCurrentSnow
-} from './dashboard.js?v=20261107-resort-view';
-import { HEATMAP_METRICS } from './heatmap-metrics.js?v=20261021-sources-verified';
+  setOnCompareToggle, loadHeatmapSeason, hideHeatmapPreview, refreshHeatmapPreview, reportPreviewForecastError, refreshCurrentSnow, refreshPowderAlerts
+} from './dashboard.js?v=20261109-powder-alert';
+import { HEATMAP_METRICS } from './heatmap-metrics.js?v=20261109-powder-alert';
 import { icon, hydrateIcons } from './ui-icons.js?v=20261021-sources-verified';
-import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261107-resort-view';
-import { parseHash, updateHash, initRouter } from './router.js?v=20261021-sources-verified';
+import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261109-webcams';
+import { parseHash, updateHash, initRouter } from './router.js?v=20261109-forecast-preview';
 import { toggleCompareResort, refreshComparison } from './comparison.js?v=20261106-all-travel-guides';
 import { createWeatherLayers } from './weather-layers.js?v=20261106-weather-backend';
 import { bindWeatherControls } from './weather-controls.js?v=20261105-map-layers';
@@ -107,7 +107,9 @@ HEATMAP_METRICS.forEach((metric) => {
   button.className = 'metric-button';
   button.dataset.metric = metric.id;
   button.innerHTML = `${icon(metric.icon)}<span><strong>${metric.label}</strong><small>${metric.period}</small></span>`;
-  if (metric.id === 'score') button.title = 'Existing snow score: 1.1 × 72h forecast + 1.35 × 24h snowfall − 0.8 × days since snow. Snow amounts are in inches.';
+  if (metric.id === 'score') button.title = 'Experimental snow potential: 1.1 × 72h forecast + 1.35 × weather-preserved snow credit from 14 days of hourly history. Opening status is not checked. See How snow rankings work.';
+  if (metric.id === 'powderAlert') button.title = 'Highest qualifying day score: snowfall inches × 10 × 0.5^(days away ÷ 3). Minimum 6 inches. Today counts remaining forecast snowfall only. Opening status is not checked.';
+  if (metric.id === 'bestToday') button.title = 'Experimental weather-adjusted snow points. Requires verified open ski runs and complete current weather data. See How snow rankings work.';
   button.addEventListener('click', () => { state.sortMode = metric.id; state.showAllResorts = false; applyFilters(); });
   metricRoot.appendChild(button);
 });
@@ -258,11 +260,6 @@ document.addEventListener('keydown', (event) => {
     else if (!event.shiftKey && document.activeElement === controls.at(-1)) { event.preventDefault(); controls[0].focus(); }
   }
 });
-setInterval(() => {
-  if (state.currentTab !== 'webcams') return;
-  document.querySelectorAll('.webcam-media img[data-refreshable="true"]').forEach((image) => { if (image.dataset.baseUrl) image.src = withCacheBust(image.dataset.baseUrl); });
-}, 45000);
-
 const hashState = parseHash(resorts);
 Object.assign(state, hashState);
 if (!hashState.sortMode) state.sortMode = 'forecast72h';
@@ -276,7 +273,7 @@ if (state.selectedId) {
 }
 loadHeatmapSeason();
 loadOptionalSourceData(onDataReady);
-setInterval(() => { expireStaleWeather(onDataReady); refreshCurrentSnow(); }, 60000);
+setInterval(() => { expireStaleWeather(onDataReady); refreshCurrentSnow(); refreshPowderAlerts(); }, 60000);
 setInterval(() => loadOptionalSourceData(onDataReady), 15 * 60000);
 initRouter(resorts, (parsed) => {
   Object.assign(state, parsed);

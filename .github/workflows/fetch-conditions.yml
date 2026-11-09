@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: node --test tests/conditions.test.mjs tests/source-repair.test.mjs tests/weather-location.test.mjs tests/current-snow.test.mjs
+      - run: node --test tests/conditions.test.mjs tests/source-repair.test.mjs tests/weather-location.test.mjs tests/current-snow.test.mjs tests/snow-preservation.test.mjs tests/powder-alert.test.mjs
       - run: node scripts/fetch_resort_forecasts.mjs
       - run: node scripts/fetch_resort_conditions.mjs
       - run: node scripts/audit_resort_sources.mjs

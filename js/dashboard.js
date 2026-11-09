@@ -1,10 +1,13 @@
+import { powderAlert } from './powder-alert.js?v=20261109-powder-alert';
+import { preservationExplanation } from './snow-preservation.js?v=20261109-preservation';
+import { isQualityMetric, qualityAssessment, qualityExplanation, forecastTradeoffs } from './snow-quality.js?v=20261109-preservation';
 import { availableSubregions, regionMatches } from './resort-regions.js?v=20261107-resort-view';
 import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261021-sources-verified';
 import { state, saveFavorites } from './state.js?v=20261021-sources-verified';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import { formatInches, formatRunAccess, formatPassLabel } from './utils.js?v=20261106-mountain-weather';
 import { fetchSnowfallCatalog, currentSnowfall } from './season-snowfall.js?v=20261021-sources-verified';
-import { HEATMAP_METRICS, rankResorts, heatColor, layoutHeatmap } from './heatmap-metrics.js?v=20261021-sources-verified';
+import { HEATMAP_METRICS, rankResorts, heatColor, layoutHeatmap } from './heatmap-metrics.js?v=20261109-powder-alert';
 import { icon } from './ui-icons.js?v=20261021-sources-verified';
 import { currentSnowStatus, loadCurrentSnow } from './current-snow.js?v=20261106-mountain-weather';
 import { weatherLocationLabel } from './weather-location.js?v=20261106-mountain-weather';
@@ -65,7 +68,7 @@ function updateTileSnow(tile, resort) {
     tile.appendChild(label);
   }
   const row = visibleRows.find(row => row.resort.id === resort.id);
-  if (row) tile.setAttribute('aria-label', `${resort.name}, ${metric().label}: ${row.value === null ? 'Unavailable' : amount(row.value)}. Open resort details.${demo ? ' Snow animation demo.' : snowing ? ' Snowing now, weather-model estimate.' : ''}`);
+  if (row) tile.setAttribute('aria-label', `${resort.name}, ${metric().label}: ${row.value === null ? 'Unavailable' : amount(row.value)}. Open resort details.${metric().id === 'powderAlert' ? ' ' + powderCopy(resort) : ''}${demo ? ' Snow animation demo.' : snowing ? ' Snowing now, weather-model estimate.' : ''}`);
 }
 
 function updateSnowTiles() {
@@ -91,7 +94,7 @@ export function baseFilteredResorts() {
   });
   if (state.sortMode === 'alpha') return list.sort((a, b) => a.name.localeCompare(b.name));
   if (state.sortMode === 'daysSinceSnow') return list.sort((a, b) => (a.metrics.daysSinceSnow ?? Infinity) - (b.metrics.daysSinceSnow ?? Infinity));
-  return rankResorts(list, metric().id, catalog).map((row) => row.resort);
+  return (isQualityMetric(metric().id) || metric().id === 'powderAlert') ? list : rankResorts(list, metric().id, catalog).map((row) => row.resort);
 }
 
 export function applyStatusFilter(list) {
@@ -145,10 +148,15 @@ function amount(value, id = metric().id) {
   if (value === null || !Number.isFinite(value)) return '—';
   if (id === 'runsOpen') return String(Math.round(value));
   if (id === 'score') return value.toFixed(1);
+  if (id === 'powderAlert') return String(Math.round(value));
+  if (isQualityMetric(id)) return String(Math.round(value));
   return formatInches(value).replace(/cm$/, ' cm');
 }
 
 function provenance(resort, id = metric().id) {
+  if (id === 'powderAlert') return powderAlert(resort.liveForecast).reason;
+  if (isQualityMetric(id)) return qualityAssessment(resort, id).reason;
+  if (id === 'score') return 'Model preservation · Opening not checked';
   if (id === 'season') {
     const entry = currentSnowfall(resort, catalog);
     return `ERA5 estimate${entry.record?.through ? ' · through ' + entry.record.through : ''}`;
@@ -158,6 +166,24 @@ function provenance(resort, id = metric().id) {
   if (status !== 'ready') return status === 'stale' ? 'Stale report withheld' : `Report ${status || 'unavailable'}`;
   if (id === 'runsOpen') return 'Resort report';
   return resort.liveConditionsKind === 'model' ? 'Model estimate' : 'Resort report';
+}
+
+function powderDate(day) {
+  return new Date(`${day.date}T12:00:00`).toLocaleDateString(undefined,{month:'short',day:'numeric'});
+}
+function powderArrival(day) {
+  return day.isToday ? 'remaining today' : day.daysAway === 1 ? 'tomorrow' : `in ${day.daysAway}d`;
+}
+function powderCopy(resort) {
+  const alert=powderAlert(resort.liveForecast);
+  if(alert.status!=='ok')return alert.reason;
+  const {best,peak}=alert;
+  return `Powder Alert ${Math.round(alert.score)} points · Top opportunity: ${formatInches(best.snowInches)} ${powderArrival(best)} (${powderDate(best)})${best.outlook?' · Longer-range outlook':''}. Peak incoming day: ${formatInches(peak.snowInches)} ${powderArrival(peak)} (${powderDate(peak)})${peak.outlook?' · Longer-range outlook':''}. Score weight halves every three days; this is not a confidence percentage. Opening status is not checked.${alert.missingDays ? ` ${alert.missingDays} incoming-day totals are unavailable and unassessed.` : ''}`;
+}
+function powderTileMarkup(resort) {
+  const alert=powderAlert(resort.liveForecast);
+  if(alert.status!=='ok')return '';
+  return `<strong>${escape(formatInches(alert.best.snowInches))} ${escape(powderArrival(alert.best))}</strong><small>Top opportunity · ${escape(powderDate(alert.best))}${alert.best.outlook?' · Outlook':''}</small><span>Peak: ${escape(formatInches(alert.peak.snowInches))} ${escape(powderArrival(alert.peak))} · ${escape(powderDate(alert.peak))}${alert.peak.outlook?' · Outlook':''}</span>`;
 }
 
 function heatmapRows(list) {
@@ -197,7 +223,7 @@ function previewBars(resort) {
 }
 
 function previewSource(resort) {
-  const updatedAt = metric().id === 'forecast72h' && resort.liveForecast?.updatedAt ? resort.liveForecast.updatedAt : metric().id === 'runsOpen' ? resort.liveTerrainReportedAt : resort.liveUpdatedAt;
+  const updatedAt = (metric().id === 'forecast72h' || metric().id === 'score' || metric().id === 'powderAlert' || isQualityMetric(metric().id)) && resort.liveForecast?.updatedAt ? resort.liveForecast.updatedAt : metric().id === 'runsOpen' ? resort.liveTerrainReportedAt : resort.liveUpdatedAt;
   return `${provenance(resort)}${updatedAt ? ` · ${new Date(updatedAt).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}` : ''}`;
 }
 
@@ -220,6 +246,10 @@ function showPreview(resort, tile, fromPointer = false) {
     ].map(([symbol, label, value, key]) => `<div>${icon(symbol)}<span>${label}</span><strong data-preview-stat="${key}">${escape(value)}</strong></div>`).join('')}</div>
     <div class="preview-forecast"><p>Daily forecast (${state.useMetric ? 'cm' : 'in'})</p><div class="preview-bars">${previewBars(resort)}</div></div>
     <p class="preview-source">${escape(previewSource(resort))}</p>
+    ${metric().id === 'powderAlert' ? `<p class="preview-powder">${escape(powderCopy(resort))}</p>` : ''}
+    <p class="preview-weather">${escape(forecastTradeoffs(resort, state.useMetric))}</p>
+    ${metric().id === 'score' ? `<p class="preview-preservation">${escape(preservationExplanation(resort.liveForecast, state.useMetric))}</p>` : ''}
+    ${isQualityMetric(metric().id) ? `<p class="preview-quality">${escape(qualityExplanation(qualityAssessment(resort, metric().id), state.useMetric))}</p>` : ''}
     <div id="preview-travel"></div>
     <div class="preview-footer"><button class="preview-open">Full resort details ${icon('arrow-right')}</button><button class="preview-compare" title="Add resort to comparison" aria-label="Compare ${escape(resort.name)}">${icon('sliders-horizontal')}</button></div>`;
   preview.querySelector('.preview-favorite').addEventListener('click', () => {
@@ -240,6 +270,7 @@ function showPreview(resort, tile, fromPointer = false) {
 export function refreshHeatmapPreview(resort) {
   const updated = heatmapRows(filteredResorts());
   const byId = new Map(updated.map((row) => [row.resort.id, row]));
+  if ((isQualityMetric(metric().id) || metric().id === 'powderAlert') && visibleRows.some(row => !byId.has(row.resort.id))) { renderDashboard(); return; }
   const values = updated.map((row) => row.value).filter(Number.isFinite);
   visibleRows = visibleRows.map((row) => byId.get(row.resort.id) || row);
   root.querySelectorAll('.heat-tile').forEach((tile) => {
@@ -249,6 +280,8 @@ export function refreshHeatmapPreview(resort) {
     applyTileColor(tile, color);
     tile.querySelector('.heat-value').textContent = amount(row.value);
     tile.querySelector('.heat-source').textContent = provenance(row.resort);
+    const powderDetails=tile.querySelector('.powder-tile-details');
+    if(powderDetails)powderDetails.innerHTML=powderTileMarkup(row.resort);
     updateTileSnow(tile, row.resort);
   });
   const tile = [...root.querySelectorAll('.heat-tile')].find((item) => item.dataset.resortId === resort.id);
@@ -257,14 +290,35 @@ export function refreshHeatmapPreview(resort) {
     preview.querySelector('[data-preview-stat="forecast72h"]').textContent = formatInches(resort.metrics.forecast72h);
     preview.querySelector('.preview-bars').innerHTML = previewBars(resort);
     preview.querySelector('.preview-source').textContent = previewSource(resort);
+    preview.querySelector('.preview-weather').textContent = forecastTradeoffs(resort, state.useMetric);
+    const powderText=preview.querySelector('.preview-powder');
+    if(powderText)powderText.textContent=powderCopy(resort);
+    const preservationCopy = preview.querySelector('.preview-preservation');
+    if (preservationCopy) preservationCopy.textContent = preservationExplanation(resort.liveForecast, state.useMetric);
+    const qualityCopy = preview.querySelector('.preview-quality');
+    if (qualityCopy) qualityCopy.textContent = qualityExplanation(qualityAssessment(resort, metric().id), state.useMetric);
     // Keep tiles still under the pointer; apply the new ranking on dismissal.
     forecastUpdated = true;
   } else if (!hoveredId) renderDashboard();
   else forecastUpdated = true;
 }
 
+export function refreshPowderAlerts() {
+  if(state.sortMode!=='powderAlert')return;
+  const hovered=resorts.find(resort=>resort.id===hoveredId);
+  if(hovered)refreshHeatmapPreview(hovered);
+  else renderDashboard();
+}
+
 export function reportPreviewForecastError(resort) {
-  if (hoveredId === resort.id) preview.querySelector('.preview-source').textContent = 'Daily forecast unavailable. Try the resort’s full forecast.';
+  if (hoveredId === resort.id) {
+    preview.querySelector('.preview-source').textContent = 'Daily forecast unavailable. Try the resort’s full forecast.';
+    preview.querySelector('.preview-weather').textContent = forecastTradeoffs(resort, state.useMetric);
+    const powderText=preview.querySelector('.preview-powder');
+    if(powderText)powderText.textContent=powderCopy(resort);
+    const copy = preview.querySelector('.preview-preservation');
+    if (copy) copy.textContent = preservationExplanation(resort.liveForecast, state.useMetric);
+  }
 }
 
 preview.addEventListener('pointerenter', () => { clearTimeout(showTimer); clearTimeout(hideTimer); });
@@ -278,9 +332,9 @@ function positionTiles() {
   // ResizeObserver can run while a viewport/navigation transition temporarily
   // gives the canvas no width. Wait for its next non-zero measurement.
   if (!root.isConnected || width <= 0 || !visibleRows.length) return;
-  const height = document.body.classList.contains('tv-mode') ? innerHeight : Math.max(innerWidth <= 600 ? Math.max(720, visibleRows.length * 48) : 430, Math.min(820, innerHeight - 350), state.showAllResorts ? visibleRows.length * (innerWidth <= 600 ? 60 : 16) : 0);
+  const height = document.body.classList.contains('tv-mode') ? innerHeight : Math.max(innerWidth <= 600 ? Math.max(720, visibleRows.length * (metric().id === 'powderAlert' ? 130 : 48)) : 430, Math.min(820, innerHeight - 350), state.showAllResorts ? visibleRows.length * (innerWidth <= 600 ? 60 : 16) : 0);
   root.style.height = `${height}px`;
-  const rects = layoutHeatmap(visibleRows, width, height);
+  const rects = layoutHeatmap(visibleRows, width, height, {minRowHeight:metric().id === 'powderAlert' ? 220 : 0});
   root.querySelectorAll('.heat-tile').forEach((tile, i) => {
     const rect = rects[i];
     tile.style.left = `${rect.x}px`;
@@ -307,21 +361,23 @@ export function renderDashboard() {
   root.replaceChildren();
   document.getElementById('metric-description').textContent = `Showing ${metric().description}`;
   document.getElementById('metric-size-note').textContent = metric().id === 'season' && seasonError ? seasonError : 'Larger tile = higher value';
-  document.getElementById('resort-count').textContent = capped ? `${CAP} of ${visible.length} resorts` : `${visible.length} resorts`;
+  document.getElementById('resort-count').textContent = (isQualityMetric(metric().id) || metric().id === 'powderAlert')
+    ? `${capped ? CAP + ' of ' : ''}${allRows.length} eligible ${allRows.length === 1 ? 'resort' : 'resorts'} · ${visible.length - allRows.length} excluded`
+    : capped ? `${CAP} of ${visible.length} resorts` : `${visible.length} resorts`;
   document.getElementById('show-all-resorts').hidden = !capped;
-  document.getElementById('show-all-resorts').textContent = `Show all ${visible.length}`;
+  document.getElementById('show-all-resorts').textContent = `Show all ${allRows.length}`;
   document.querySelectorAll('.metric-button').forEach((button) => {
     const active = button.dataset.metric === metric().id;
     button.classList.toggle('active', active);
     button.setAttribute('aria-pressed', String(active));
   });
-  document.getElementById('legend-high').textContent = metric().id === 'runsOpen' ? 'More runs open' : metric().id === 'score' ? 'Higher snow score' : metric().id === 'forecast72h' ? 'Higher forecast' : 'More snowfall';
-  document.getElementById('legend-low').textContent = metric().id === 'runsOpen' ? 'Fewer runs open' : metric().id === 'score' ? 'Lower snow score' : metric().id === 'forecast72h' ? 'Lower forecast' : 'Less snowfall';
-  if (!visible.length) {
+  document.getElementById('legend-high').textContent = metric().id === 'runsOpen' ? 'More runs open' : (metric().id === 'score' || metric().id === 'powderAlert' || isQualityMetric(metric().id)) ? 'Higher score' : metric().id === 'forecast72h' ? 'Higher forecast' : 'More snowfall';
+  document.getElementById('legend-low').textContent = metric().id === 'runsOpen' ? 'Fewer runs open' : (metric().id === 'score' || metric().id === 'powderAlert' || isQualityMetric(metric().id)) ? 'Lower score' : metric().id === 'forecast72h' ? 'Lower forecast' : 'Less snowfall';
+  if (!allRows.length) {
     root.style.height = '430px';
     const empty = document.createElement('div');
     empty.className = 'heatmap-empty';
-    empty.textContent = state.passFilter === 'favorites' ? 'No saved resorts yet. Explore the heatmap and save a resort from its preview or full details.' : 'No resorts match these filters. Try another region, pass, or search.';
+    empty.textContent = metric().id === 'powderAlert' ? 'No qualifying incoming powder days in the available current forecasts. Powder Alert needs at least 6″ / approximately 15 cm on an incoming day. Try Biggest forecast to explore other snowfall.' : isQualityMetric(metric().id) ? 'No eligible resorts. These rankings require verified open ski runs, a current operating report, and complete weather inputs. Try Snow potential to explore snowfall without verified opening status.' : state.passFilter === 'favorites' ? 'No saved resorts yet. Explore the heatmap and save a resort from its preview or full details.' : 'No resorts match these filters. Try another region, pass, or search.';
     root.appendChild(empty);
     return;
   }
@@ -331,11 +387,12 @@ export function renderDashboard() {
     tile.type = 'button';
     tile.className = `heat-tile${value === null ? ' is-missing' : ''}${state.selectedId === resort.id ? ' selected' : ''}`;
     tile.dataset.resortId = resort.id;
+    tile.classList.toggle('is-powder-alert',metric().id === 'powderAlert');
     tile.classList.toggle('snow-demo-white', snowDemoWhite && row === visibleRows[0]);
     const color = heatColor(value, min, max);
     applyTileColor(tile, color);
     tile.setAttribute('aria-label', `${resort.name}, ${metric().label}: ${value === null ? 'Unavailable' : amount(value)}. Open resort details.`);
-    tile.innerHTML = `<strong class="heat-name">${escape(resort.name)}</strong><span class="heat-value">${amount(value)}</span><span class="heat-period">${value === null ? 'Not available' : metric().caption}</span><span class="heat-source">${escape(provenance(resort))}</span>`;
+    tile.innerHTML = `<strong class="heat-name">${escape(resort.name)}</strong><span class="heat-value">${amount(value)}</span><span class="heat-period">${value === null ? 'Not available' : metric().caption}</span><span class="heat-source">${escape(provenance(resort))}</span>${metric().id === 'powderAlert' ? `<span class="powder-tile-details">${powderTileMarkup(resort)}</span>` : ''}`;
     updateTileSnow(tile, resort);
     tile.addEventListener('pointerenter', (event) => { if (event.pointerType === 'touch' || preview.matches(':hover')) return; clearTimeout(showTimer); clearTimeout(hideTimer); showTimer = setTimeout(() => showPreview(resort, tile, true), 120); });
     tile.addEventListener('pointerleave', (event) => { clearTimeout(showTimer); if (!preview.contains(event.relatedTarget)) hideTimer = setTimeout(hideHeatmapPreview, 110); });

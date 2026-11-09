@@ -48,3 +48,30 @@ body.tv-mode { overflow:hidden; }
 .tv-mode.tv-idle .heatmap-header, .tv-mode.tv-idle .heatmap-controls, .tv-mode.tv-idle .heatmap-footer { visibility:hidden; opacity:0; pointer-events:none; }
 .tv-mode.tv-idle .heatmap-preview { display:none; }
 
+
+.preservation-info { margin:0 0 14px; font-size:12px; line-height:1.5; }
+.preservation-info summary { cursor:pointer; color:var(--text); }
+
+.forecast-chart { overflow-x:auto; }
+.forecast-day-target { cursor:pointer; outline:none; }
+.forecast-day-target text { pointer-events:none; }
+.forecast-day-target[aria-pressed="true"] .forecast-day-hit { fill:#2589ef18; stroke:var(--incoming); stroke-width:1.5; }
+.forecast-day-target:focus-visible .forecast-day-hit { stroke:var(--text); stroke-width:2; }
+.forecast-bar.is-outlook { --bar-opacity:.5; }
+.forecast-bar.is-powder { animation:powder-day-pulse 3.6s ease-in-out infinite; }
+@keyframes powder-day-pulse { 0%,100% { opacity:calc(var(--bar-opacity,1)*.65); } 50% { opacity:var(--bar-opacity,1); } }
+@media(prefers-reduced-motion:reduce) { .forecast-bar.is-powder { animation:none; } }
+.forecast-day-details { margin:14px 0; padding:14px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.forecast-day-details h4 { margin:0 0 12px; font-size:16px; }
+.selected-day-stats { display:flex; flex-wrap:wrap; gap:18px 32px; }
+.selected-day-stats span { display:block; color:var(--muted); font-size:12px; margin-bottom:4px; }
+.selected-day-stats strong { display:block; font-size:20px; }
+.powder-badge { font-size:12px; color:var(--incoming); margin:12px 0 0; }
+.forecast-about { margin-top:14px; font-size:12px; }
+.forecast-about summary { cursor:pointer; color:var(--muted); }
+
+.webcam-error { padding: 24px; margin: 0; color: #fff; background: #172536; min-height: 120px; display: grid; place-content: center; text-align: center; }
+.webcam-media > [hidden] { display: none; }
+.webcam-play { position: absolute; bottom: 12px; left: 12px; padding: 10px 14px; color: #fff; background: #173c65; border: 1px solid #a8c4df; border-radius: 8px; cursor: pointer; }
+.webcam-play:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.webcam-media img { object-fit: contain; }

@@ -28,7 +28,7 @@ document.body.insertAdjacentHTML('beforeend', `  <!-- Detail panel overlay -->
 
       <div class="detail-sections">
       <section id="tab-travel" class="tab-panel"><h3>Plan trip</h3><div id="travel-panel"></div></section>
-      <section id="tab-overview" class="tab-panel active"><h3>Conditions</h3><p id="conditions-location" class="measurement-location"></p>
+      <section id="tab-overview" class="tab-panel active"><h3>Conditions</h3><p id="conditions-location" class="measurement-location"></p><details class="preservation-info"><summary>Recent snow preservation · Experimental</summary><p id="detail-preservation" class="detail-note"></p></details>
         <div id="detail-visual-grid" class="detail-visual-grid"></div>
         <div id="detail-snow-bars" class="detail-snow-bars"></div>
         <div id="detail-forecast-bars" class="detail-snow-bars"></div>
@@ -45,10 +45,10 @@ document.body.insertAdjacentHTML('beforeend', `  <!-- Detail panel overlay -->
         <div class="detail-note" id="detail-note"></div>
       </section>
 
-      <section id="tab-forecast" class="tab-panel"><h3>Forecast</h3><p id="forecast-location" class="measurement-location"></p>
+      <section id="tab-forecast" class="tab-panel"><h3>Snowfall forecast</h3><p id="forecast-horizon" class="measurement-location"></p><p id="forecast-location" class="measurement-location"></p>
         <div id="forecast-chart" class="forecast-chart"></div>
-        <div id="forecast-grid" class="forecast-grid"></div>
-        <div id="forecast-actions" class="detail-source-actions"></div>
+        <section id="forecast-day-details" class="forecast-day-details" aria-live="polite" aria-atomic="true"></section>
+        <details class="forecast-about"><summary>About this forecast</summary><div id="forecast-actions" class="detail-source-actions"></div></details>
       </section>
 
       <section id="tab-trail-map" class="tab-panel">

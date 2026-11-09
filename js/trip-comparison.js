@@ -1,6 +1,6 @@
 import { mountTravelGuide } from './travel-guide-panel.js?v=20261106-all-travel-guides';
 import { icon } from './ui-icons.js?v=20261021-sources-verified';
-import { loadLiveForecastForResort } from './data-loader.js?v=20261106-mountain-weather';
+import { loadLiveForecastForResort } from './data-loader.js?v=20261109-webcams';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import { localDate, addDays, nearbyAirports, kayakFlightUrl } from './travel.js?v=20261106-all-travel-guides';
 import { GATEWAYS, validatePlan, snowForSkiDates, dailyTripForecast } from './trip-planning.js?v=20261106-all-travel-guides';

@@ -17,9 +17,9 @@ function weatherFixture(at = now) {
   const time = Array.from({ length: 240 }, (_, i) => asOf + (i - 100) * 3600);
   const daily = Array.from({ length: 10 }, (_, i) => Date.parse(`${localToday}T07:00:00Z`) / 1000 + (i - 3) * 86400);
   return {
-    hourly_units: { snowfall: 'cm', temperature_2m: '°F', snow_depth: 'm' },
+    hourly_units: { snowfall: 'cm', temperature_2m: '°F', snow_depth: 'm', rain:'mm', showers:'mm', wind_speed_10m:'mp/h', wind_gusts_10m:'mp/h' },
     daily_units: { snowfall_sum: 'cm' }, utc_offset_seconds: -25200, timezone: 'America/Los_Angeles',
-    hourly: { time, snowfall: time.map(() => 0), temperature_2m: time.map(() => 25), snow_depth: time.map(() => 0) },
+    hourly: { time, snowfall: time.map(() => 0), temperature_2m: time.map(() => 25), snow_depth: time.map(() => 0), rain:time.map(() => 0), showers:time.map(() => 0), wind_speed_10m:time.map(() => 10), wind_gusts_10m:time.map(() => 15) },
     daily: { time: daily, snowfall_sum: daily.map(() => 0), temperature_2m_max: daily.map(() => 30), temperature_2m_min: daily.map(() => 20), weather_code: daily.map(() => 3) }
   };
 }
@@ -238,4 +238,87 @@ test('an ambiguous or ranged reported number is not presented as an exact observ
   const result = parseVailSnow(html);
   assert.equal(result.metrics.snow24h, null);
   assert.equal(result.metrics.snow48h, null);
+});
+
+
+test('quality weather uses resort-local ski hours, de-duplicates past hours and keeps the next 72h separate', () => {
+  const payload = weatherFixture();
+  // It is 2:30pm at this resort. 9am is in both the past 24h and today's ski hours.
+  const nine = payload.hourly.time.indexOf(Date.parse('2026-10-21T16:00:00Z') / 1000);
+  payload.hourly.rain[nine] = 2;
+  payload.hourly.showers[nine] = 1;
+  const future = payload.hourly.time.indexOf(asOf + 4 * 3600);
+  payload.hourly.rain[future] = 4;
+  payload.hourly.wind_gusts_10m[future] = 60;
+  const q = parseWeather(payload, '', now).forecast.skiQuality;
+  assert.equal(q.today.status, 'ok');
+  assert.equal(q.today.rainMm, 3, '9am rain must be counted once; evening rain is outside the ski day');
+  assert.equal(q.today.gustMph, 15);
+  assert.equal(q.upcoming.rainMm, 4);
+  assert.equal(q.upcoming.gustMph, 60);
+  assert.equal(q.upcoming.start, '2026-10-21T22:00:00.000Z');
+  assert.equal(q.upcoming.end, '2026-10-24T21:00:00.000Z');
+});
+
+test('missing or wrongly labeled rain/wind withholds quality while preserving separately valid snowfall', () => {
+  const payload = weatherFixture();
+  payload.hourly.rain[100] = null;
+  let parsed = parseWeather(payload, '', now);
+  assert.equal(parsed.forecast.skiQuality.today.status, 'unavailable');
+  assert.equal(parsed.forecast.skiQuality.upcoming.status, 'ok');
+  assert.equal(parsed.forecast.forecast72h, 0);
+  payload.hourly_units.wind_speed_10m = 'km/h';
+  parsed = parseWeather(payload, '', now);
+  assert.equal(parsed.forecast.skiQuality.upcoming.status, 'unavailable');
+  assert.match(parsed.forecast.skiQuality.upcoming.reason, /units/);
+});
+
+
+test('shared weather parser produces preservation from 14 full days and never includes forecast rain in historical credit',()=>{
+  const p=weatherFixture();
+  p.hourly.time=Array.from({length:480},(_,i)=>asOf+(i-335)*3600);
+  for(const key of ['snowfall','rain','showers'])p.hourly[key]=p.hourly.time.map(()=>0);
+  p.hourly.temperature_2m=p.hourly.time.map(()=>20);
+  p.hourly.snow_depth=p.hourly.time.map(()=>0);
+  p.hourly.wind_speed_10m=p.hourly.time.map(()=>10);p.hourly.wind_gusts_10m=p.hourly.time.map(()=>15);
+  p.hourly.snowfall[335-168]=25.4;
+  p.hourly.rain[336]=100;
+  let parsed=parseWeather(p,'',now);
+  assert.equal(parsed.forecast.snowPreservation.status,'ok');
+  assert.ok(Math.abs(parsed.forecast.snowPreservation.creditInches-5)<.0001);
+  assert.equal(parsed.forecast.snowPreservation.rainSinceFirstSnowMm,0);
+  p.hourly.rain[0]=null;
+  parsed=parseWeather(p,'',now);
+  assert.equal(parsed.forecast.snowPreservation.status,'unavailable');
+  assert.equal(parsed.forecast.forecast72h,0,'missing older history must not invalidate independently complete forecast snowfall');
+  assert.equal(new URL(weatherUrl({name:'Whistler Blackcomb',lat:50,lon:-123})).searchParams.get('past_days'),'14');
+});
+
+test('16-day daily outlook keeps all dates while the ranking remains the next 72 hours',()=>{
+  const p=weatherFixture();
+  const first=p.daily.time[0];
+  p.daily.time=Array.from({length:20},(_,i)=>first+i*86400);
+  p.daily.snowfall_sum=p.daily.time.map((_,i)=>i===15?25.4:0);
+  p.daily.temperature_2m_max=p.daily.time.map(()=>30);
+  p.daily.temperature_2m_min=p.daily.time.map(()=>20);
+  p.daily.weather_code=p.daily.time.map(()=>3);
+  const f=parseWeather(p,'',now).forecast;
+  assert.equal(f.dailyTime.length,16);
+  assert.equal(f.dailyTime[15],'2026-11-05');
+  assert.equal(f.dailySnowfall[12],10,'a late storm remains available for planning');
+  assert.equal(f.forecast72h,0,'late storms must not inflate the near-term metric');
+  assert.equal(f.tempMax.length,16);
+  assert.equal(f.tempMin.length,16);
+  assert.equal(new URL(weatherUrl({name:'Whistler Blackcomb',lat:50,lon:-123})).searchParams.get('forecast_days'),'16');
+});
+
+test('remaining-today metadata uses future hourly intervals rather than the full calendar-day total',async()=>{
+  const {remainingTodaySnow}=await import('../js/powder-alert.js');
+  const p=weatherFixture();p.daily.snowfall_sum[3]=76.2;
+  p.hourly.snowfall[100]=25.4;
+  p.hourly.snowfall[101]=5.08;p.hourly.snowfall[102]=7.62;
+  const f=parseWeather(p,'',now).forecast;
+  assert.equal(f.remainingToday.hourlySnowfallInches.length,10);
+  assert.equal(f.remainingToday.start,f.periodStart);
+  assert.ok(Math.abs(remainingTodaySnow(f,Number(now))-4)<.00001);
 });

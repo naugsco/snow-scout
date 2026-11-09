@@ -225,3 +225,25 @@ body.map-open .heatmap-app { pointer-events: none; }
 @media (prefers-reduced-motion: reduce) {
   .heatmap-preview, .metric-button { transition: none; }
 }
+
+/* Metrics wrap without shrinking their labels. */
+.metric-filters { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.ranking-method { margin:12px 0; color:var(--muted); font-size:12px; line-height:1.6; }
+.ranking-method summary { width:max-content; max-width:100%; cursor:pointer; color:var(--text); }
+.ranking-method p { max-width:1000px; margin:8px 0; }
+.preview-quality, .preview-weather, .preview-preservation { font-size:12px; line-height:1.6; color:var(--text); }
+@media(min-width:1900px) { .metric-filters { grid-template-columns:repeat(8,minmax(0,1fr)); } }
+@media(max-width:900px) { .metric-filters { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+@media(max-width:600px) { .metric-filters { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+.tv-mode .heatmap-controls { max-height:calc(100dvh - var(--tv-header-height,76px) - 70px); overflow:auto; }
+
+.heatmap-preview { max-height:calc(100dvh - 24px); overflow-y:auto; }
+
+.powder-tile-details { display:grid; gap:4px; margin-top:8px; max-width:100%; line-height:1.25; }
+.powder-tile-details strong { font-size:12px; }
+.powder-tile-details small, .powder-tile-details > span { font-size:10px; }
+.heat-tile.is-powder-alert .heat-source { display:none; }
+.heat-tile.is-powder-alert .heat-name { font-size:min(var(--tile-name-size),24px); }
+.heat-tile.is-powder-alert .heat-value { font-size:min(var(--tile-value-size),40px); }
+.heat-tile.is-powder-alert .heat-period { font-size:11px; }
+.preview-powder { font-size:12px; line-height:1.6; color:var(--text); }

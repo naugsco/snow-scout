@@ -1,5 +1,5 @@
 import { assessConditions, normalizeConditionMetrics, SNOW_KEYS, isFresh } from './condition-data.js?v=20261021-sources-verified';
-import { forecastIsCurrent } from './weather-data.js?v=20261106-mountain-weather';
+import { forecastIsCurrent } from './weather-data.js?v=20261109-powder-alert';
 
 // Pick a whole recent-weather report, so observed and modeled cumulative periods are never mixed.
 export function chooseConditions(entry, snapshotAt, forecast, now = Date.now()) {

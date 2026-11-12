@@ -32,7 +32,11 @@
 @media (min-width:2300px) { .mountain-details .detail-sections { grid-template-columns:repeat(5,minmax(0,1fr)); } }
 @media (max-width:767px) {
   .detail-title { gap:8px; }
-  .mountain-details .detail-panel { padding:12px; }
+}
+@media (max-width:767px), (hover:none) and (pointer:coarse) {
+  /* Override the shared detail renderer's inline display value. */
+  .mountain-details .detail-overlay { display:none !important; }
+  .mountain-details #resort-details { display:none; }
 }
 
 /* TV controls overlay the full-screen heatmap without moving its tiles. */

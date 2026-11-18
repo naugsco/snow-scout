@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T07:36:53.884390+00:00",
+  "generatedAt": "2026-11-18T20:37:21.953635+00:00",
   "units": "in",
   "model": "era5",
   "source": "Open-Meteo / ECMWF ERA5 reanalysis",
@@ -7,8 +7,8 @@
   "historyStartDate": "1940-01-01",
   "seasonDefinition": "Northern: July 1–June 30. Southern: January 1–December 31. Days are UTC.",
   "summary": {
-    "ok": 104,
-    "error": 1,
+    "ok": 105,
+    "error": 0,
     "pending": 0
   },
   "resorts": {
@@ -53227,12 +53227,12 @@
       "name": "Mt. Brighton",
       "lat": 42.5392,
       "lon": -83.8136,
-      "status": "error",
+      "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=42.5392&longitude=-83.8136&start_date=2026-07-01&end_date=2026-11-12&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-17T07:59:45.899493+00:00",
-      "requestedThrough": "2026-11-12",
-      "availableThrough": "2026-11-11",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=42.5392&longitude=-83.8136&start_date=2026-07-01&end_date=2026-11-13&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-18T20:37:21.953635+00:00",
+      "requestedThrough": "2026-11-13",
+      "availableThrough": "2026-11-12",
       "historyStartDate": "1940-01-01",
       "gridElevationM": 291.0,
       "gridLat": 42.5,
@@ -53242,9 +53242,9 @@
           "season": "2026/27",
           "startDate": "2026-07-01",
           "endDate": "2027-06-30",
-          "through": "2026-11-11",
-          "observedDays": 134,
-          "expectedDays": 134,
+          "through": "2026-11-12",
+          "observedDays": 135,
+          "expectedDays": 135,
           "missingDays": 0,
           "total": 0.0,
           "complete": false
@@ -54207,9 +54207,7 @@
           "total": null,
           "complete": false
         }
-      ],
-      "lastAttemptAt": "2026-11-18T07:36:53.884390+00:00",
-      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
+      ]
     },
     "mt buller": {
       "name": "Mt Buller",

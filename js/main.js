@@ -103,21 +103,18 @@ setOnCompareToggle(toggleCompareResort);
 const metricRoot = document.getElementById('metric-filters');
 const mobileMetrics = matchMedia('(max-width: 767px)');
 const mobileMetricOrder = ['season', 'snow48h', 'snow24h', 'powderAlert', 'bestToday', 'forecast72h', 'score', 'runsOpen'];
-let centeredMetric;
+const supportsMetricScrollEnd = 'onscrollend' in metricRoot;
 let metricSettleTimer;
 let metricTouching = false;
 
 function centerActiveMetric() {
   clearTimeout(metricSettleTimer);
-  centeredMetric?.classList.remove('centered');
-  centeredMetric = null;
+  metricRoot.classList.remove('is-scrolling');
   if (!mobileMetrics.matches) return;
   const active = metricRoot.querySelector('.active');
   if (!active) return;
   const offset = active.getBoundingClientRect().left - metricRoot.getBoundingClientRect().left;
-  metricRoot.scrollLeft += offset + (active.offsetWidth - metricRoot.clientWidth) / 2;
-  centeredMetric = active;
-  active.classList.add('centered');
+  metricRoot.scrollLeft += offset + (active.getBoundingClientRect().width - metricRoot.clientWidth) / 2;
 }
 
 function selectMetric(id) {
@@ -126,7 +123,7 @@ function selectMetric(id) {
   applyFilters();
 }
 
-function previewCenteredMetric() {
+function commitCenteredMetric() {
   if (!mobileMetrics.matches) return;
   const row = metricRoot.getBoundingClientRect();
   const center = row.left + row.width / 2;
@@ -140,15 +137,13 @@ function previewCenteredMetric() {
       distance = offset;
     }
   }
-  if (nearest !== centeredMetric) {
-    centeredMetric?.classList.remove('centered');
-    centeredMetric = nearest;
-    nearest.classList.add('centered');
-  }
+  metricRoot.classList.remove('is-scrolling');
+  if (nearest && !nearest.classList.contains('active')) selectMetric(nearest.dataset.metric);
+}
+
+function scheduleMetricCommit() {
   clearTimeout(metricSettleTimer);
-  if (!metricTouching && !nearest.classList.contains('active')) {
-    metricSettleTimer = setTimeout(() => selectMetric(nearest.dataset.metric), 400);
-  }
+  if (!metricTouching) metricSettleTimer = setTimeout(commitCenteredMetric, 80);
 }
 
 const metricButtons = new Map(HEATMAP_METRICS.map((metric) => {
@@ -172,16 +167,24 @@ mobileMetrics.addEventListener('change', () => {
   orderMetricButtons();
   centerActiveMetric();
 });
-metricRoot.addEventListener('scroll', previewCenteredMetric);
-metricRoot.addEventListener('touchstart', () => {
-  metricTouching = true;
-  clearTimeout(metricSettleTimer);
+metricRoot.addEventListener('scroll', () => {
+  if (!mobileMetrics.matches) return;
+  metricRoot.classList.add('is-scrolling');
+  if (!supportsMetricScrollEnd) scheduleMetricCommit();
 }, { passive: true });
-for (const event of ['touchend', 'touchcancel']) {
-  metricRoot.addEventListener(event, () => {
-    metricTouching = false;
-    previewCenteredMetric();
+if (supportsMetricScrollEnd) {
+  metricRoot.addEventListener('scrollend', commitCenteredMetric);
+} else {
+  metricRoot.addEventListener('touchstart', () => {
+    metricTouching = true;
+    clearTimeout(metricSettleTimer);
   }, { passive: true });
+  for (const event of ['touchend', 'touchcancel']) {
+    metricRoot.addEventListener(event, () => {
+      metricTouching = false;
+      scheduleMetricCommit();
+    }, { passive: true });
+  }
 }
 window.addEventListener('resize', centerActiveMetric);
 searchInput.addEventListener('input', () => { state.searchQuery = searchInput.value; state.showAllResorts = false; applyFilters(); });

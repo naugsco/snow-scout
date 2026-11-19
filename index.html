@@ -9,7 +9,7 @@
   <title>Snow Scout</title>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261020-all-trails">
-  <link rel="stylesheet" href="heatmap.css?v=20261119-resort-controls">
+  <link rel="stylesheet" href="heatmap.css?v=20261119-metric-highlight">
   <link rel="stylesheet" href="resort-view.css?v=20261119-resort-controls">
   <link rel="stylesheet" href="travel.css?v=20261106-all-travel-guides">
 </head>
@@ -23,7 +23,9 @@
     <main id="dashboard" class="dashboard-area">
       <header class="heatmap-controls">
         <div class="heatmap-title-row"><h1>Resort heatmap</h1><div class="heatmap-search-filters"><label class="heatmap-search"><span data-icon="search"></span><input id="search-input" type="search" placeholder="Search resorts…" aria-label="Search resorts" autocomplete="off"></label><label class="heatmap-select"><span data-icon="globe"></span><select id="region-select" aria-label="Region"></select><span data-icon="chevron-down" class="select-chevron"></span></label><label class="heatmap-select"><span data-icon="ticket"></span><select id="pass-select" aria-label="Ski pass"></select><span data-icon="chevron-down" class="select-chevron"></span></label></div></div>
-        <div id="metric-filters" class="metric-filters" role="group" aria-label="Heatmap metric"></div>
+        <div class="metric-picker">
+          <div id="metric-filters" class="metric-filters" role="group" aria-label="Heatmap metric"></div>
+        </div>
         <details class="ranking-method"><summary>How snow rankings work</summary>
           <p><strong>Snow potential:</strong> 1.1 × next 72h snowfall + 1.35 × preserved-snow credit from the past 14 days (snow in inches). Each hourly snowfall layer loses credit gradually with age and faster after warmth, rain and freezing following wet conditions. New snow adds its own credit; it does not reset older layers. This experimental credit is not remaining snow depth or measured powder. Provisional credit deductions: half every 7 days; half per 48 °C-hours above freezing; half per 5 mm of rain/showers; half again when a wet layer freezes. Sun, wind, grooming and skier traffic are not modeled. Opening status is not checked.</p>
           <p><strong>Powder Alert:</strong> Each incoming day with at least 6″ (15.24 cm, approximately 15 cm) scores snowfall inches × 10 × ½^(days away ÷ 3). The highest-scoring day ranks the resort. Weight halves every three days. Today includes only the still-forecast portion of its hourly intervals, prorating the current hour uniformly. Tile details show the scoring day and the peak incoming day separately. Resort-local dates are used; days 8–16 are longer-range outlooks. Missing/stale forecasts and resorts without a qualifying day are excluded. This is an experimental priority score, not a confidence percentage or opening verification.</p>
@@ -84,6 +86,6 @@
 
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
-  <script type="module" src="js/main.js?v=20261119-mobile-powder"></script>
+  <script type="module" src="js/main.js?v=20261119-metric-highlight"></script>
 </body>
 </html>

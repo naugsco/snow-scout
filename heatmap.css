@@ -230,24 +230,50 @@ body.map-open .heatmap-app { pointer-events: none; }
 @media(min-width:1900px) { .metric-filters { grid-template-columns:repeat(8,minmax(0,1fr)); } }
 @media(max-width:900px) { .metric-filters { grid-template-columns:repeat(4,minmax(0,1fr)); } }
 @media (max-width:767px) {
+  .metric-picker { position:relative; min-width:0; }
+  .metric-picker::before {
+    content:"";
+    position:absolute;
+    inset:2px auto 2px 50%;
+    width:172px;
+    box-sizing:border-box;
+    transform:translateX(-50%);
+    border:2px solid #2797ff;
+    border-radius:9px;
+    background:#2589ef22;
+    pointer-events:none;
+  }
   .metric-filters {
     --metric-width: 154px;
+    position:relative;
     display:flex;
-    gap:10px;
+    gap:13px;
     overflow-x:auto;
     padding:6px calc((100% - var(--metric-width)) / 2);
     scroll-snap-type:x mandatory;
+    scrollbar-width:none;
   }
+  .metric-filters::-webkit-scrollbar { display:none; }
   .metric-filters .metric-button {
     order:0;
     flex:0 0 var(--metric-width);
     min-height:48px;
     padding:7px 9px;
     gap:7px;
+    justify-content:center;
     scroll-snap-align:center;
-    transition:transform .15s, background .15s, border-color .15s;
+    transition:transform .1s ease-out;
   }
-  .metric-button.centered { transform:scale(1.06); }
+  .metric-filters .metric-button.active {
+    border-color:var(--heat-line);
+    box-shadow:none;
+    background:#ffffff03;
+  }
+  .metric-filters:not(.is-scrolling) .metric-button.active {
+    transform:scale(1.08);
+    background:transparent;
+    border-color:transparent;
+  }
   .metric-button > .ui-icon { width:20px; height:20px; }
   .metric-button strong { font-size:12px; }
   .metric-button small { font-size:11px; margin-top:3px; }

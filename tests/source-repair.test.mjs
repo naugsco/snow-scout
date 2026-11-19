@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
 import { zonedTimestamp } from '../scripts/source-time.mjs';
-import { parseAltaPayload, parseMtnfeedPayload, parsePowdrPayload, parseReportPalPayload, parseMcTerrain, parseAbasinTerrain, visibleHtml } from '../scripts/resort-parsers.mjs';
-import { reportTimestamp, parseSingleDepth, applyWeatherFallback, collectEntry } from '../scripts/fetch_resort_conditions.mjs';
+import { parseAltaPayload, parseMtnfeedPayload, parsePowdrPayload, parseReportPalPayload, parseMcTerrain, parseAbasinTerrain, parseKillingtonTerrain, parseJacksonHoleTerrain, parseRevelstokeTerrain, visibleHtml } from '../scripts/resort-parsers.mjs';
+import { reportTimestamp, parseSingleDepth, applyWeatherFallback, collectEntry, parseVailTerrain } from '../scripts/fetch_resort_conditions.mjs';
 import { normalizeConditionMetrics, assessConditions } from '../js/condition-data.js';
 import { chooseConditions } from '../js/condition-selection.js';
 const fixture = async name => JSON.parse(await readFile(new URL(`./fixtures/source-repair/${name}.json`, import.meta.url), 'utf8'));
@@ -62,6 +62,71 @@ test('Snowbasin and Sun Valley use published winter summaries; legend and closed
   const valley = parseMcTerrain(await readFile(new URL('./fixtures/source-repair/sun-valley-reportUrl.html', import.meta.url), 'utf8'));
   assert.deepEqual(basin, { runsOpen: 0, runsTotal: 115, groomedRuns: 0 });
   assert.deepEqual(valley, { runsOpen: 0, runsTotal: 131, groomedRuns: 0 });
+});
+
+test('Sun Valley reads both winter counts through access alerts and rejects an incomplete combined report', () => {
+  const bald = '<p>Trails Open</p><p class="mc__alert">Mountain access closed until opening day.</p><p>0 / 109</p>';
+  const dollar = '<p>Trails Open</p><p class="mc__alert">Access alert</p><p>0 / 22</p>';
+  assert.deepEqual(parseMcTerrain(bald + dollar + '<p>Biking Trails 2 / 7</p>', 2),
+    { runsOpen: 0, runsTotal: 131, groomedRuns: 0 });
+  assert.throws(() => parseMcTerrain(bald, 2), /incomplete/);
+});
+
+test('Killington uses the dedicated winter summary and excludes sidebar counts, parks, and uphill trails', () => {
+  const html = '<aside>Open Trails 99/99</aside><h2 id="mountain-status">Mountain Status</h2>'
+    + '<p>Open Lifts 2/19 Open Trails 3/155 Groomed 3/3 Open Terrain Parks 1/7 Open Uphill Trails 0/5</p><h2>All Lifts</h2>';
+  assert.deepEqual(parseKillingtonTerrain(html), { runsOpen: 3, runsTotal: 155, liftsOpen: 2, groomedRuns: 3 });
+  assert.equal(parseKillingtonTerrain(html.replace('Groomed 3/3', 'Groomed 3/155')).groomedRuns, null);
+  assert.throws(() => parseKillingtonTerrain(html.replace('Open Trails 3/155', 'Open Bike Trails 3/155')), /no open trail summary/i);
+});
+
+test('Kirkwood accepts the text-based run summary when the dated feed has no trail rows', () => {
+  const feed = '<script>FR.TerrainStatusFeed = {"Date":"2026-11-19T16:00:00Z","IsSuccessful":true,"GroomingAreas":[{"Trails":[]}]};</script>';
+  const summary = '<div class="terrain_summary__tab_main" data-terrain-status-id="runs">'
+    + '<div class="terrain_summary__tab_main__text" tabindex="0"><div>'
+    + '<span class="c118__number1--v1">0</span><span class="c118__number2--v1">/ 84</span></div></div></div>';
+  assert.deepEqual(parseVailTerrain(feed + summary), {
+    metrics: { runsOpen: 0, runsTotal: 84, groomedRuns: 0 },
+    terrainReportedAt: '2026-11-19T16:00:00.000Z'
+  });
+  assert.equal(parseVailTerrain(feed + `<!--${summary}-->`).metrics.runsOpen, null);
+});
+
+test('Jackson Hole reconciles grooming with open ski rows and ages terrain from last modification', async t => {
+  const payload = {
+    lastModified: new Date(Date.now() - 25 * 3600000).toISOString(), respTimestamp: new Date().toISOString(),
+    trailStatus: { totalTrails: 130, openTrails: 1, groomedTrails: 30 }, liftStatus: { openLifts: 1 },
+    trails: {
+      open: { trailType: 'DOWNHILL_SKIING', openingStatus: 'OPEN', groomingStatus: 'Groomed AM' },
+      closed: { trailType: 'DOWNHILL_SKIING', openingStatus: 'CLOSED', groomingStatus: 'Groomed PM' }
+    }
+  };
+  assert.deepEqual(parseJacksonHoleTerrain(payload), { runsOpen: 1, runsTotal: 130, groomedRuns: 1, liftsOpen: 1 });
+  t.mock.method(globalThis, 'fetch', async () => new Response(JSON.stringify(payload)));
+  const entry = { name: 'Jackson Hole', adapter: 'jacksonhole', feedUrl: 'https://example.com/terrain.json' };
+  const stale = await collectEntry(entry);
+  assert.equal(stale.terrainStatus, 'stale');
+  assert.equal(stale.metrics.runsOpen, null);
+  payload.lastModified = payload.respTimestamp;
+  const current = await collectEntry(entry);
+  assert.equal(current.terrainStatus, 'ready');
+  assert.equal(current.metrics.groomedRuns, 1);
+});
+
+test('Revelstoke counts unique open runs independently of lifts and preserves the date of a stale report', async t => {
+  const row = (name, status) => `<tr><td class="run-name">${name}</td><td><span class="run-status run-status--${status}"></span></td></tr>`;
+  const html = '<div class="lifts-runs__timestamp"><strong>2026-10-28 10:48:05</strong></div>'
+    + '<span class="lift-status lift-status--closed"></span>'
+    + row('Burn Down', 'open') + row('Chopper', 'open') + row('Chopper', 'open') + row('Blow Down', 'closed');
+  assert.deepEqual(parseRevelstokeTerrain(html, 'America/Vancouver'), {
+    terrainReportedAt: '2026-10-28T17:48:05.000Z', metrics: { runsOpen: 2 }
+  });
+  t.mock.method(globalThis, 'fetch', async () => new Response(html));
+  const report = await collectEntry({ name: 'Revelstoke', adapter: 'revelstoke',
+    terrainUrl: 'https://example.com/lifts-grooming', timezone: 'America/Vancouver' });
+  assert.equal(report.terrainStatus, 'stale');
+  assert.equal(report.metrics.runsOpen, null);
+  assert.match(report.issues.join(' '), /2 open runs on October 28, 2026/);
 });
 
 test('A-Basin associates counts with following labels, not the next lift count; commented old HTML is ignored', () => {

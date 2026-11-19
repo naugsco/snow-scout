@@ -109,15 +109,64 @@ export function parseReportPalPayload(payload) {
   };
 }
 
-export function parseMcTerrain(html) {
-  const text = htmlText(html);
+export function parseMcTerrain(html, expectedMountains) {
+  // An access alert can appear between the winter trail heading and its count.
+  const withoutAlerts = visibleHtml(html).replace(/<p\b[^>]*class="[^"]*\bmc__alert\b[^"]*"[^>]*>[\s\S]*?<\/p>/gi, '');
+  const text = htmlText(withoutAlerts);
   const summaries = [...text.matchAll(/Trails Open\s+(\d+)\s*\/\s*(\d+)/g)];
   if (!summaries.length) throw new Error('No winter trail summary found.');
+  if (expectedMountains && summaries.length !== expectedMountains) throw new Error('Combined winter terrain report is incomplete or duplicated.');
   const runsOpen = summaries.reduce((sum, m) => sum + Number(m[1]), 0);
   const runsTotal = summaries.reduce((sum, m) => sum + Number(m[2]), 0);
   const rows = [...visibleHtml(html).matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)].map(m => m[1]);
   const open = rows.filter(row => /<span\b[^>]*class="sr-only"[^>]*>Trail Open<\/span>/i.test(row));
   return { runsTotal: runsTotal || null, runsOpen, groomedRuns: runsOpen === 0 ? 0 : open.length === runsOpen ? open.filter(row => /mc__icon-groomed/.test(row)).length : null };
+}
+
+export function parseKillingtonTerrain(html) {
+  const mainStatus = visibleHtml(html).split(/<h2\b[^>]*\bid="mountain-status"[^>]*>/i)[1];
+  const summary = htmlText(mainStatus?.split(/<h2\b/i, 1)[0] || '');
+  const trails = summary.match(/\bOpen Trails\s+(\d+)\s*\/\s*(\d+)/i);
+  if (!trails) throw new Error('Official winter mountain status has no open trail summary.');
+  const lifts = summary.match(/\bOpen Lifts\s+(\d+)\s*\/\s*(\d+)/i);
+  const groomed = summary.match(/\bGroomed\s+(\d+)\s*\/\s*(\d+)/i);
+  const runsOpen = Number(trails[1]);
+  return {
+    runsOpen, runsTotal: Number(trails[2]), liftsOpen: number(lifts?.[1]),
+    groomedRuns: runsOpen === 0 ? 0 : number(groomed?.[2]) === runsOpen ? number(groomed[1]) : null
+  };
+}
+
+export function parseJacksonHoleTerrain(payload) {
+  const runsOpen = number(payload?.trailStatus?.openTrails);
+  const runsTotal = number(payload?.trailStatus?.totalTrails);
+  if (!Number.isInteger(runsTotal) || runsTotal <= 0 || !Number.isInteger(runsOpen) || runsOpen < 0 || runsOpen > runsTotal) {
+    throw new Error('Official winter feed has no valid ski trail summary.');
+  }
+  const open = Object.values(payload.trails || {}).filter(trail => trail.trailType === 'DOWNHILL_SKIING' && isOpen(trail.openingStatus));
+  // The provider's headline grooming count includes closed trails.
+  const groomedRuns = runsOpen === 0 ? 0 : open.length === runsOpen && open.every(trail => /^(?:Groomed (?:AM|PM))?$/i.test(trail.groomingStatus))
+    ? open.filter(trail => /^Groomed (?:AM|PM)$/i.test(trail.groomingStatus)).length : null;
+  return { runsOpen, runsTotal, groomedRuns, liftsOpen: number(payload.liftStatus?.openLifts) };
+}
+
+export function parseRevelstokeTerrain(html, timezone) {
+  const page = visibleHtml(html);
+  const timestamp = page.match(/<div\b[^>]*class="lifts-runs__timestamp"[^>]*>([\s\S]*?)<\/div>/i);
+  const terrainReportedAt = zonedTimestamp(htmlText(timestamp?.[1] || ''), timezone);
+  if (!terrainReportedAt) throw new Error('Official lifts and grooming table has no valid report timestamp.');
+  const open = new Set();
+  let hasRunStatus = false;
+  for (const [, row] of page.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)) {
+    const name = htmlText(row.match(/<td\b[^>]*class="run-name"[^>]*>([\s\S]*?)<\/td>/i)?.[1] || '');
+    const status = row.match(/class="run-status run-status--(open|closed)"/i)?.[1];
+    if (!name || !status) continue;
+    hasRunStatus = true;
+    if (isOpen(status)) open.add(name.toLowerCase());
+  }
+  if (!hasRunStatus) throw new Error('Official lifts and grooming table has no ski run statuses.');
+  // The table lists selected runs and can repeat one run under multiple headings.
+  return { terrainReportedAt, metrics: { runsOpen: open.size } };
 }
 
 export function parseAbasinTerrain(html) {

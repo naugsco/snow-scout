@@ -103,28 +103,31 @@ setOnCompareToggle(toggleCompareResort);
 const metricRoot = document.getElementById('metric-filters');
 const mobileMetrics = matchMedia('(max-width: 767px)');
 const mobileMetricOrder = ['season', 'snow48h', 'snow24h', 'powderAlert', 'bestToday', 'forecast72h', 'score', 'runsOpen'];
-const supportsMetricScrollEnd = 'onscrollend' in metricRoot;
 let metricSettleTimer;
 let metricTouching = false;
+let metricViewportWidth;
 
 function centerActiveMetric() {
   clearTimeout(metricSettleTimer);
   metricRoot.classList.remove('is-scrolling');
+  metricViewportWidth = metricRoot.clientWidth;
   if (!mobileMetrics.matches) return;
   const active = metricRoot.querySelector('.active');
   if (!active) return;
   const offset = active.getBoundingClientRect().left - metricRoot.getBoundingClientRect().left;
-  metricRoot.scrollLeft += offset + (active.getBoundingClientRect().width - metricRoot.clientWidth) / 2;
+  metricRoot.scrollLeft += offset + (active.offsetWidth - metricViewportWidth) / 2;
 }
 
 function selectMetric(id) {
   state.sortMode = id;
   state.showAllResorts = false;
-  applyFilters();
+  renderDashboard();
+  syncHash();
 }
 
 function commitCenteredMetric() {
-  if (!mobileMetrics.matches) return;
+  if (!mobileMetrics.matches || metricTouching || !metricRoot.classList.contains('is-scrolling')) return;
+  clearTimeout(metricSettleTimer);
   const row = metricRoot.getBoundingClientRect();
   const center = row.left + row.width / 2;
   let nearest;
@@ -143,7 +146,9 @@ function commitCenteredMetric() {
 
 function scheduleMetricCommit() {
   clearTimeout(metricSettleTimer);
-  if (!metricTouching) metricSettleTimer = setTimeout(commitCenteredMetric, 80);
+  if (!metricTouching && metricRoot.classList.contains('is-scrolling')) {
+    metricSettleTimer = setTimeout(commitCenteredMetric, 55);
+  }
 }
 
 const metricButtons = new Map(HEATMAP_METRICS.map((metric) => {
@@ -151,7 +156,7 @@ const metricButtons = new Map(HEATMAP_METRICS.map((metric) => {
   button.type = 'button';
   button.className = 'metric-button';
   button.dataset.metric = metric.id;
-  button.innerHTML = `${icon(metric.icon)}<span><strong>${metric.label}</strong><small>${metric.period}</small></span>`;
+  button.innerHTML = `<span class="metric-content">${icon(metric.icon)}<span><strong>${metric.label}</strong><small>${metric.period}</small></span></span>`;
   if (metric.id === 'score') button.title = 'Experimental snow potential: 1.1 × 72h forecast + 1.35 × weather-preserved snow credit from 14 days of hourly history. Opening status is not checked. See How snow rankings work.';
   if (metric.id === 'powderAlert') button.title = 'Highest qualifying day score: snowfall inches × 10 × 0.5^(days away ÷ 3). Minimum 6 inches. Today counts remaining forecast snowfall only. Opening status is not checked.';
   if (metric.id === 'bestToday') button.title = 'Experimental weather-adjusted snow points. Requires verified open ski runs and complete current weather data. See How snow rankings work.';
@@ -170,23 +175,22 @@ mobileMetrics.addEventListener('change', () => {
 metricRoot.addEventListener('scroll', () => {
   if (!mobileMetrics.matches) return;
   metricRoot.classList.add('is-scrolling');
-  if (!supportsMetricScrollEnd) scheduleMetricCommit();
+  scheduleMetricCommit();
 }, { passive: true });
-if (supportsMetricScrollEnd) {
-  metricRoot.addEventListener('scrollend', commitCenteredMetric);
-} else {
-  metricRoot.addEventListener('touchstart', () => {
-    metricTouching = true;
-    clearTimeout(metricSettleTimer);
+metricRoot.addEventListener('scrollend', commitCenteredMetric);
+metricRoot.addEventListener('touchstart', () => {
+  metricTouching = true;
+  clearTimeout(metricSettleTimer);
+}, { passive: true });
+for (const event of ['touchend', 'touchcancel']) {
+  metricRoot.addEventListener(event, () => {
+    metricTouching = false;
+    scheduleMetricCommit();
   }, { passive: true });
-  for (const event of ['touchend', 'touchcancel']) {
-    metricRoot.addEventListener(event, () => {
-      metricTouching = false;
-      scheduleMetricCommit();
-    }, { passive: true });
-  }
 }
-window.addEventListener('resize', centerActiveMetric);
+window.addEventListener('resize', () => {
+  if (metricRoot.clientWidth !== metricViewportWidth) centerActiveMetric();
+});
 searchInput.addEventListener('input', () => { state.searchQuery = searchInput.value; state.showAllResorts = false; applyFilters(); });
 document.getElementById('show-all-resorts').addEventListener('click', () => { state.showAllResorts = true; renderDashboard(); });
 

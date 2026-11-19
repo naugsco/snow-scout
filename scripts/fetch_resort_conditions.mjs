@@ -8,11 +8,14 @@ const DATA_DIR = path.join(ROOT_DIR, 'data');
 const SOURCES_PATH = path.join(DATA_DIR, 'resort-condition-sources.json');
 const OUTPUT_PATH = path.join(DATA_DIR, 'resort-conditions.json');
 import { RAW_RESORTS, RESORT_SOURCE_ALIASES } from '../js/constants.js';
-import { assessConditions, normalizeConditionMetrics } from '../js/condition-data.js';
+import { assessConditions, isFresh, normalizeConditionMetrics, REPORT_MAX_AGE_MS } from '../js/condition-data.js';
 import { weatherUrl, parseWeather, forecastIsCurrent } from '../js/weather-data.js';
 import { chooseConditions } from '../js/condition-selection.js';
 import { zonedTimestamp } from './source-time.mjs';
-import { parseAltaPayload, parseMtnfeedPayload, parsePowdrPayload, parseReportPalPayload, parseMcTerrain, parseAbasinTerrain, htmlText, visibleHtml } from './resort-parsers.mjs';
+import {
+  parseAltaPayload, parseMtnfeedPayload, parsePowdrPayload, parseReportPalPayload, parseMcTerrain,
+  parseAbasinTerrain, parseKillingtonTerrain, parseJacksonHoleTerrain, parseRevelstokeTerrain, htmlText, visibleHtml
+} from './resort-parsers.mjs';
 
 const USER_AGENT = 'SnowScoutConditionFetcher/1.0 (+https://local.snowscout)';
 
@@ -185,8 +188,10 @@ export function summarizeVailTerrain(terrainFeed, html = '') {
   const summary = html.match(/<div\s+class="terrain_summary__tab_main"\s+data-terrain-status-id="runs">\s*<div\s+class="terrain_summary__circle"([^>]+)>/i);
   const open = summary?.[1].match(/data-open="(\d+)"/i);
   const total = summary?.[1].match(/data-total="(\d+)"/i);
-  const runsTotal = parseNumber(total?.[1]) || (trails.length || null);
-  const runsOpen = parseNumber(open?.[1]) ?? (trails.length ? trails.filter((trail) => trail.IsOpen === true).length : null);
+  // Some resorts render the numbers as text instead of using the summary circle.
+  const textCounts = visibleHtml(html).match(/<div\s+class="terrain_summary__tab_main"\s+data-terrain-status-id="runs">\s*<div\s+class="terrain_summary__tab_main__text"[^>]*>\s*<div>\s*<span\s+class="c118__number1--v1">\s*(\d+)\s*<\/span>\s*<span\s+class="c118__number2--v1">\s*\/\s*(\d+)\s*<\/span>/i);
+  const runsTotal = parseNumber(total?.[1] ?? textCounts?.[2]) || (trails.length || null);
+  const runsOpen = parseNumber(open?.[1] ?? textCounts?.[1]) ?? (trails.length ? trails.filter((trail) => trail.IsOpen === true).length : null);
   return {
     runsTotal, runsOpen,
     // No open runs means zero open groomed runs; otherwise require actual trail rows.
@@ -250,7 +255,7 @@ async function parseAlta(entry) {
 async function parseSnowbasin(entry) {
   const html = await fetchText(entry.reportUrl);
   return { snowStatus: 'unverified', terrainReportedAt: new Date().toISOString(), terrainTimestampKind: 'checked',
-    metrics: parseMcTerrain(html),
+    metrics: parseMcTerrain(html, entry.expectedMountains),
     note: 'Winter trail summary checked on the official report. Weather timestamps are not used to renew undated snowfall observations.',
     sources: { conditions: entry.reportUrl, terrain: entry.reportUrl } };
 }
@@ -321,13 +326,10 @@ async function parsePowdr(entry) {
 }
 
 async function parseKillington(entry) {
-  const text = htmlText(await fetchText(entry.reportUrl));
-  if (/Open Bike Trails/i.test(text) && !/\d+\s*\/\s*\d+\s*(?:Ski Trails|Winter Trails)/i.test(text)) {
-    return { snowStatus: 'unavailable', terrainStatus: 'unavailable', metrics: {},
-      note: 'The current official page publishes summer bike/hiking counts, not winter ski-run counts.',
-      sources: { conditions: entry.reportUrl, terrain: entry.reportUrl } };
-  }
-  throw new Error('Winter report schema needs verification on the migrated official website.');
+  const metrics = parseKillingtonTerrain(await fetchText(entry.terrainUrl));
+  return { snowStatus: 'unverified', terrainReportedAt: new Date().toISOString(), terrainTimestampKind: 'checked',
+    metrics, note: 'Winter operations checked on the official lift and trail status page.',
+    sources: { conditions: entry.reportUrl, terrain: entry.terrainUrl } };
 }
 
 async function parseReportPal(entry) {
@@ -345,34 +347,10 @@ async function parseTelluride(entry) {
 }
 
 async function parseJacksonHole(entry) {
-  const html = await fetchText(entry.reportUrl);
-
-  function extractTotalSmall(label) {
-    const pattern = new RegExp(label + '[\\s\\S]{0,200}?class="total-small"[^>]*>\\s*(\\d+(?:\\.\\d+)?)', 'i');
-    const match = html.match(pattern);
-    return parseNumber(match?.[1]);
-  }
-
-  const snow24h = null;
-  const snow48h = extractTotalSmall('48 HOURS');
-  const baseDepth = extractTotalSmall('SNOW DEPTH');
-
-  return {
-    updatedAt: null,
-    metrics: {
-      snow24h,
-      daysSinceSnow: inferDaysSinceSnow({ snow24h, snow48h }),
-      baseDepth,
-      runsOpen: null,
-      runsTotal: null,
-      groomedRuns: null
-    },
-    note: null,
-    sources: {
-      conditions: entry.reportUrl,
-      terrain: entry.reportUrl
-    }
-  };
+  const payload = await fetchJson(entry.feedUrl);
+  return { snowStatus: 'unverified', terrainReportedAt: reportTimestamp(payload.lastModified),
+    metrics: parseJacksonHoleTerrain(payload), note: 'Winter operations from the resort trail and lift feed.',
+    sources: { conditions: entry.reportUrl, terrain: entry.terrainUrl, feed: entry.feedUrl } };
 }
 
 async function parseAbasin(entry) {
@@ -382,41 +360,14 @@ async function parseAbasin(entry) {
 }
 
 async function parseRevelstoke(entry) {
-  const [conditionsHtml, terrainHtml] = await Promise.all([
-    fetchText(entry.conditionsUrl),
-    fetchText(entry.terrainUrl)
-  ]);
-
-  // Parse conditions page (dl/dt/dd structure)
-  const condText = conditionsHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
-  const baseMatch = condText.match(/Base Depth\s+([\d.]+)\s*cm/i);
-  const snow24Match = condText.match(/24 hours\s+([\d.]+)\s*cm/i);
-
-  const baseDepthCm = parseNumber(baseMatch?.[1]);
-  const snow24hCm = parseNumber(snow24Match?.[1]);
-
-  // Convert cm to inches
-  const baseDepth = baseDepthCm !== null ? Math.round(baseDepthCm / 2.54 * 10) / 10 : null;
-  const snow24h = snow24hCm !== null ? Math.round(snow24hCm / 2.54 * 10) / 10 : null;
-
-  const runsOpen = null, runsTotal = null, groomedRuns = null, liftsOpen = null;
-
-  return {
-    updatedAt: null,
-    metrics: {
-      snow24h,
-      daysSinceSnow: inferDaysSinceSnow({ snow24h }),
-      baseDepth,
-      runsOpen,
-      runsTotal,
-      groomedRuns,
-      liftsOpen
-    },
-    note: null,
-    sources: {
-      conditions: entry.conditionsUrl,
-      terrain: entry.terrainUrl
-    }
+  const terrain = parseRevelstokeTerrain(await fetchText(entry.terrainUrl), entry.timezone);
+  const { runsOpen } = terrain.metrics;
+  const publishedDate = new Intl.DateTimeFormat('en-US', { timeZone: entry.timezone, dateStyle: 'long' }).format(new Date(terrain.terrainReportedAt));
+  const report = `Revelstoke’s lifts and grooming table listed ${runsOpen} open ${runsOpen === 1 ? 'run' : 'runs'} on ${publishedDate}.`;
+  return { ...terrain, snowStatus: 'unverified',
+    issues: isFresh(terrain.terrainReportedAt, REPORT_MAX_AGE_MS) ? [] : [report],
+    note: report,
+    sources: { conditions: entry.conditionsUrl, terrain: entry.terrainUrl }
   };
 }
 

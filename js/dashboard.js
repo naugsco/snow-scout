@@ -7,7 +7,7 @@ import { state, saveFavorites } from './state.js?v=20261021-sources-verified';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import { formatInches, formatRunAccess, formatPassLabel } from './utils.js?v=20261106-mountain-weather';
 import { fetchSnowfallCatalog, currentSnowfall } from './season-snowfall.js?v=20261021-sources-verified';
-import { HEATMAP_METRICS, rankResorts, heatColor, layoutHeatmap } from './heatmap-metrics.js?v=20261109-powder-alert';
+import { HEATMAP_METRICS, rankResorts, heatColor, layoutHeatmap } from './heatmap-metrics.js?v=20261119-compact-rankings';
 import { icon } from './ui-icons.js?v=20261021-sources-verified';
 import { currentSnowStatus, loadCurrentSnow } from './current-snow.js?v=20261106-mountain-weather';
 import { weatherLocationLabel } from './weather-location.js?v=20261106-mountain-weather';
@@ -359,8 +359,10 @@ export function renderDashboard() {
   const min = Math.min(...values);
   const max = Math.max(...values);
   root.replaceChildren();
-  document.getElementById('metric-description').textContent = `Showing ${metric().description}`;
-  document.getElementById('metric-size-note').textContent = metric().id === 'season' && seasonError ? seasonError : 'Larger tile = higher value';
+  document.getElementById('metric-description').textContent = metric().description;
+  const metricError = document.getElementById('metric-error');
+  metricError.textContent = metric().id === 'season' ? seasonError || '' : '';
+  metricError.hidden = !metricError.textContent;
   document.getElementById('resort-count').textContent = (isQualityMetric(metric().id) || metric().id === 'powderAlert')
     ? `${capped ? CAP + ' of ' : ''}${allRows.length} eligible ${allRows.length === 1 ? 'resort' : 'resorts'} · ${visible.length - allRows.length} excluded`
     : capped ? `${CAP} of ${visible.length} resorts` : `${visible.length} resorts`;

@@ -10,13 +10,13 @@ import { powderAlert } from './powder-alert.js?v=20261109-powder-alert';
 
 export const HEATMAP_METRICS = [
   { id: 'snow48h', label: 'Recent snow', period: '48h', icon: 'cloud-snow', caption: 'last 48h', description: '48-hour snowfall' },
-  { id: 'season', label: 'Total snowfall', period: 'Season', icon: 'layers', caption: 'season estimate', description: 'current-season snowfall · ERA5 estimate' },
+  { id: 'season', label: 'Total snowfall', period: 'Season', icon: 'layers', caption: 'season estimate', description: 'Season snowfall · ERA5 estimate' },
   { id: 'snow24h', label: 'Most fresh', period: '24h', icon: 'snowflake', caption: 'last 24h', description: '24-hour snowfall' },
-  { id: 'forecast72h', label: 'Biggest forecast', period: 'Next 72h', icon: 'cloud', caption: 'next 72h', description: 'forecast snowfall · Next 72 hours' },
-  { id: 'score', label: 'Snow potential', period: 'Snow + forecast', icon: 'sparkles', caption: 'potential score', description: 'snow potential · Weather-preserved recent snow + 72h forecast · Experimental; opening not checked' },
-  { id: 'bestToday', label: 'Best today', period: 'Verified open', icon: 'snowflake', caption: 'points · experimental', description: 'best today · Recent snow, rain, temperature & wind · Verified open terrain only' },
-  { id: 'powderAlert', label: 'Powder Alert', period: 'Snow + arrival', icon: 'snowflake', caption: 'Powder Alert score', description: 'Powder Alert · 6″+ incoming days, weighted toward sooner arrivals · Resort-local dates' },
-  { id: 'runsOpen', label: 'Runs open', period: 'Open runs', icon: 'mountain', caption: 'runs open', description: 'number of runs open' }
+  { id: 'forecast72h', label: 'Biggest forecast', period: 'Next 72h', icon: 'cloud', caption: 'next 72h', description: 'Forecast snowfall · Next 72 hours' },
+  { id: 'score', label: 'Snow potential', period: 'Snow + forecast', icon: 'sparkles', caption: 'potential score', description: 'Preserved snow + 72-hour forecast' },
+  { id: 'bestToday', label: 'Best today', period: 'Verified open', icon: 'snowflake', caption: 'points · experimental', description: 'Weather-adjusted snow · Verified open terrain' },
+  { id: 'powderAlert', label: 'Powder Alert', period: 'Snow + arrival', icon: 'snowflake', caption: 'Powder Alert score', description: '6″+ forecast days · Sooner snow ranks higher' },
+  { id: 'runsOpen', label: 'Runs open', period: 'Open runs', icon: 'mountain', caption: 'runs open', description: 'Verified open ski runs' }
 ];
 
 export function snowScore(metrics, preservation) {

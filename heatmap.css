@@ -26,8 +26,6 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 .map-view-button:hover { border-color: #2589ef; }
 .heatmap-app .dashboard-area { flex: none; display: block; overflow: visible; padding: 18px 24px 16px; position: static; }
 .heatmap-controls { display: flex; flex-direction: column; gap: 16px; }
-.heatmap-title-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.heatmap-title-row h1 { font-family: var(--font-ui); font-size: 36px; letter-spacing: -.045em; line-height: 1.25; font-weight: 700; }
 .heatmap-search-filters { display: flex; gap: 10px; align-items: center; }
 .heatmap-search, .heatmap-select { position: relative; display: flex; gap: 10px; align-items: center; height: 48px; border: 1px solid var(--heat-line); border-radius: 8px; background: #ffffff03; padding: 0 14px; }
 .heatmap-search { width: clamp(210px, 22vw, 350px); }
@@ -45,10 +43,9 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 .metric-button small { display: block; color: #afc6e0; font-size: 13px; margin-top: 5px; }
 .metric-button.active { border-color: #2797ff; box-shadow: inset 0 0 0 1px #2797ff; background: #2589ef16; }
 .metric-button:hover { background: #2589ef19; border-color: #6aa6d7; }
-.heatmap-context { display: flex; align-items: center; justify-content: space-between; gap: 16px; color: #a9c2df; font-size: 12px; padding-bottom: 12px; }
-.heatmap-context > p { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
-#metric-size-note { border-left: 1px solid #56718c; padding-left: 18px; }
-.heatmap-coverage { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+.heatmap-context { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; color: #a9c2df; font-size: 12px; line-height: 1.45; padding-bottom: 8px; }
+#metric-error { display: block; }
+.heatmap-coverage { display: flex; align-items: baseline; gap: 3px 10px; flex-wrap: wrap; margin-left: auto; }
 .heatmap-coverage .updated-at { font-size: 11px; color: #91a9c1; padding: 0; margin: 0; }
 #show-all-resorts { border: 0; background: none; color: #b8d8ff; font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
 .heatmap-canvas { position: relative; width: 100%; min-height: 430px; }
@@ -151,11 +148,8 @@ body.map-open .heatmap-app { pointer-events: none; }
   .metric-button { padding: 12px; gap: 10px; }
   .metric-button strong { font-size: 12px; }
   .metric-content > .ui-icon { width: 25px; height: 25px; }
-  .heatmap-title-row h1 { font-size: 30px; }
   .heatmap-select { padding: 0 10px; }
   .heatmap-select select { max-width: 170px; font-size: 12px; }
-  .heatmap-context { align-items: flex-start; }
-  .heatmap-coverage .updated-at { max-width: 180px; text-align: right; }
 }
 @media (max-width: 900px) {
   .heatmap-header { gap: 20px; padding: 0 16px; height: 68px; }
@@ -163,7 +157,6 @@ body.map-open .heatmap-app { pointer-events: none; }
   .heatmap-nav { gap: 15px; }
   .heatmap-nav button { font-size: 13px; gap: 6px; }
   .header-history, #theme-toggle { display: none; }
-  .heatmap-title-row { align-items: stretch; flex-direction: column; gap: 14px; }
   .heatmap-search { flex: 1; width: auto; }
   .metric-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .metric-button[data-metric="score"] { order: 0; }
@@ -174,9 +167,6 @@ body.map-open .heatmap-app { pointer-events: none; }
   .metric-button[data-metric="runsOpen"] { order: 5; }
   .metric-button { min-height: 62px; }
   .metric-button strong { font-size: 14px; }
-  .heatmap-context { flex-direction: column; gap: 10px; }
-  .heatmap-coverage { justify-content: flex-start; }
-  .heatmap-coverage .updated-at { max-width: none; text-align: left; }
 }
 @media (max-width: 600px) {
   .heatmap-header { height: auto; min-height: 64px; flex-wrap: wrap; gap: 0 4px; padding: 10px 12px 0; }
@@ -194,17 +184,11 @@ body.map-open .heatmap-app { pointer-events: none; }
   .airport-preference > .ui-icon { display: none; }
   .airport-preference input { font-size: 11px; width: 46px; padding: 6px; }
   .heatmap-app .dashboard-area { padding: 18px 12px; }
-  .heatmap-title-row h1 { font-size: 29px; }
   .heatmap-search-filters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .heatmap-search { grid-column: 1 / -1; width: 100%; }
   .heatmap-select { min-width: 0; gap: 7px; }
   .heatmap-select select { width: 100%; min-width: 0; max-width: none; font-size: 12px; }
   .heatmap-search, .heatmap-select { height: 42px; }
-  .heatmap-context { font-size: 10px; padding-bottom: 8px; }
-  .heatmap-context > p { gap: 7px; }
-  #metric-size-note { border: 0; padding: 0; }
-  .heatmap-coverage, #show-all-resorts { font-size: 10px; }
-  .heatmap-coverage .updated-at { font-size: 10px; }
   .heatmap-footer { flex-direction: column; align-items: stretch; gap: 14px; padding: 15px 2px 8px; }
   .heatmap-legend { width: 100%; }
   .heatmap-footer > p { font-size: 10px; }
@@ -224,13 +208,19 @@ body.map-open .heatmap-app { pointer-events: none; }
 
 /* Metrics wrap without shrinking their labels. */
 .metric-filters { grid-template-columns:repeat(4,minmax(0,1fr)); }
-.ranking-method { margin:12px 0; color:var(--muted); font-size:12px; line-height:1.6; }
+.ranking-method { color:var(--muted); }
+.ranking-method[open] { flex-basis:100%; }
 .ranking-method summary { width:max-content; max-width:100%; cursor:pointer; color:var(--text); }
 .ranking-method p { max-width:1000px; margin:8px 0; }
 .preview-quality, .preview-weather, .preview-preservation { font-size:12px; line-height:1.6; color:var(--text); }
 @media(min-width:1900px) { .metric-filters { grid-template-columns:repeat(8,minmax(0,1fr)); } }
 @media(max-width:900px) { .metric-filters { grid-template-columns:repeat(4,minmax(0,1fr)); } }
 @media (max-width:767px) {
+  .heatmap-controls { gap:10px; }
+  .heatmap-context { display:grid; grid-template-columns:minmax(0, 1fr) auto; gap:3px 10px; font-size:11px; }
+  .heatmap-coverage, .ranking-method[open] { grid-column:1 / -1; }
+  .heatmap-coverage { margin-left:0; }
+  #show-all-resorts { font-size:inherit; }
   .metric-picker { position:relative; min-width:0; }
   .metric-picker::before {
     content:"";

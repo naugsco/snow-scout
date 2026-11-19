@@ -14,8 +14,8 @@ import {
   renderDashboard, renderFilters, renderUpdatedAt, filteredResorts,
   ensureSelectionVisible, toggleFavorite, setOnResortClick,
   setOnCompareToggle, loadHeatmapSeason, hideHeatmapPreview, refreshHeatmapPreview, reportPreviewForecastError, refreshCurrentSnow, refreshPowderAlerts
-} from './dashboard.js?v=20261109-powder-alert';
-import { HEATMAP_METRICS } from './heatmap-metrics.js?v=20261109-powder-alert';
+} from './dashboard.js?v=20261119-compact-rankings';
+import { HEATMAP_METRICS } from './heatmap-metrics.js?v=20261119-compact-rankings';
 import { icon, hydrateIcons } from './ui-icons.js?v=20261021-sources-verified';
 import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261119-resort-controls';
 import { parseHash, updateHash, initRouter } from './router.js?v=20261119-mobile-powder';

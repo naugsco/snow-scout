@@ -46,7 +46,6 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 .heatmap-context { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; color: #a9c2df; font-size: 12px; line-height: 1.45; padding-bottom: 8px; }
 #metric-error { display: block; }
 .heatmap-coverage { display: flex; align-items: baseline; gap: 3px 10px; flex-wrap: wrap; margin-left: auto; }
-.heatmap-coverage .updated-at { font-size: 11px; color: #91a9c1; padding: 0; margin: 0; }
 #show-all-resorts { border: 0; background: none; color: #b8d8ff; font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
 .heatmap-canvas { position: relative; width: 100%; min-height: 430px; }
 .heat-tile { position: absolute; border: 0; border-right: 4px solid #0d1823; border-bottom: 4px solid #0d1823; background: transparent; color: var(--tile-fg); padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; isolation: isolate; }
@@ -137,7 +136,7 @@ body.map-open .heatmap-app { pointer-events: none; }
 #hover-card { z-index: 60; }
 [data-theme="light"] .heatmap-nav button.active { color: #10233a; }
 [data-theme="light"] .heatmap-nav button, [data-theme="light"] .units-button { color: #38516b; }
-[data-theme="light"] .heatmap-data-note, [data-theme="light"] .heatmap-coverage .updated-at { color: #536b85; }
+[data-theme="light"] .heatmap-data-note { color: #536b85; }
 [data-theme="light"] .heatmap-context, [data-theme="light"] .heatmap-footer > p, [data-theme="light"] .heatmap-legend-labels { color: #38516b; }
 [data-theme="light"] .metric-button small { color: #4c6580; }
 [data-theme="light"] .heat-tile { border-color: #edf2f7; }

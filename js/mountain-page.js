@@ -1,4 +1,4 @@
-import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261109-webcams';
+import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261119-resort-controls';
 import { state, saveFavorites } from './state.js?v=20261021-sources-verified';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import { loadOptionalSourceData, loadLiveForecastForResort } from './data-loader.js?v=20261109-webcams';
@@ -126,6 +126,7 @@ if (!resort) {
   config = mountainConfig(resort);
   document.title = `${resort.name} in 3D — Snow Scout`;
   el('resort-details').href = `./#resort=${encodeURIComponent(mountainSlug(resort.name))}`;
+  el('close-mountain').href = el('resort-details').href;
   el('osm-credit').hidden = !config.trailsUrl;
   if (config.coverage.source === 'OpenSkiData') {
     el('osm-credit').href = 'https://www.openskidata.org/#license';

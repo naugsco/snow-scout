@@ -15,6 +15,13 @@
 
 /* Weather controls share the globe's layer controller and load only on demand. */
 .back-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid #ffffff26;border-radius:13px;background:#14202eeb;text-decoration:none;font-size:12px;white-space:nowrap}
+#back-to-globe .icon { filter:invert(1); }
+#close-mountain { background:#183a5c; border-color:#74b8fe; }
+#close-mountain:hover { background:#243950; }
+@media (max-width:600px) {
+  #back-to-globe { min-width:44px; }
+  #back-to-globe span { display:none; }
+}
 .weather-panel{position:absolute;right:22px;top:74px;width:min(380px,calc(100% - 44px));padding:12px;border:1px solid #ffffff26;border-radius:12px;background:#102437f5;display:none;flex-direction:column;gap:10px;z-index:3;color:#e5efff}
 .weather-panel.visible{display:flex}.weather-panel-head{display:flex;align-items:center;justify-content:space-between}.weather-panel-title{font-size:12px;font-weight:600}.weather-panel .icon-button{min-height:30px;width:30px;padding:0;border:0;background:transparent}
 .weather-layers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}.weather-layer-btn{min-height:40px;padding:5px 4px;gap:4px;border-radius:8px;font-size:10px}.weather-layer-btn.active{background:#2589ef35;border-color:#2589ef}

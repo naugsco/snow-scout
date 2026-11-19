@@ -10,7 +10,7 @@ import {
 } from './utils.js?v=20261106-mountain-weather';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import { weatherLocation, weatherLocationLabel } from './weather-location.js?v=20261106-mountain-weather';
-import { createSnowfallChart } from './snowfall-chart.js?v=20261109-selectable-bars';
+import { createSnowfallChart, DETAIL_SNOWFALL_PLOT_HEIGHT, snowfallBarHeight } from './snowfall-chart.js?v=20261119-resort-controls';
 import { TRAIL_MAP_VIEWPORTS } from './trail-map-viewports.js?v=20261021-sources-verified';
 import { mountainUrl } from './mountain-config.js?v=20261021-sources-verified';
 import { renderTravelPanel } from './travel-panel.js?v=20261109-selectable-bars';
@@ -258,26 +258,25 @@ export function renderDetailPanel() {
   // Cumulative reporting windows, not invented calendar-day totals.
   const snowBars = document.getElementById('detail-snow-bars');
   const recent = [resort.metrics.snow24h, resort.metrics.snow48h, resort.metrics.snow72h];
-  const recentMax = Math.max(...recent.filter(Number.isFinite), 1);
+  const daily = resort.liveForecast?.dailySnowfall?.slice(0, 16) || [];
+  const maxSnowfall = Math.max(...[...recent, ...daily].filter(Number.isFinite), 1);
+  const barHeight = amount => snowfallBarHeight(amount, maxSnowfall, DETAIL_SNOWFALL_PLOT_HEIGHT);
+  snowBars.style.setProperty('--snowfall-plot-height', `${DETAIL_SNOWFALL_PLOT_HEIGHT}px`);
   snowBars.innerHTML = `
     <span class="detail-snow-bars-label">Recent snowfall <em class="bars-total">${resort.liveConditionsKind === 'model' ? 'Model estimate' : 'Resort report'} · cumulative</em></span>
     <div class="detail-snow-bars-row">${recent.map((amount, index) => `
       <div class="detail-snow-bar-col">
-        <div class="detail-snow-bar"><div class="detail-snow-bar-fill recent-bar" style="height:${Number.isFinite(amount) ? amount / recentMax * 100 : 0}%"></div></div>
+        <div class="detail-snow-bar"><div class="detail-snow-bar-fill recent-bar" style="height:${barHeight(amount)}px"></div></div>
         <strong>${formatInches(amount)}</strong><span>Last ${(index + 1) * 24}h</span>
       </div>`).join('')}
     </div>`;
 
   // === 3-DAY FORECAST with temps ===
   const forecastBars = document.getElementById('detail-forecast-bars');
-  const ds = resort.liveForecast?.dailySnowfall;
+  forecastBars.style.setProperty('--snowfall-plot-height', `${DETAIL_SNOWFALL_PLOT_HEIGHT}px`);
   const dt = resort.liveForecast?.dailyTime;
   const tMax = resort.liveForecast?.tempMax;
   const tMin = resort.liveForecast?.tempMin;
-  const d1 = ds?.[0] ?? null;
-  const d2 = ds?.[1] ?? null;
-  const d3 = ds?.[2] ?? null;
-  const fMax = Math.max(...[d1, d2, d3].filter(Number.isFinite), 1);
   const forecastTotal = resort.metrics.forecast72h;
 
   function dayLabel(idx) {
@@ -299,22 +298,12 @@ export function renderDetailPanel() {
 
   forecastBars.innerHTML = `
     <span class="detail-snow-bars-label">\u26C8 Daily model forecast <em class="bars-total">${formatInches(forecastTotal)} next 72h</em></span>
-    <div class="detail-snow-bars-row forecast-with-temps">
+    <div class="detail-snow-bars-row forecast-with-temps">${[0, 1, 2].map(index => `
       <div class="detail-snow-bar-col">
-        <span class="bar-temp">${tempRange(0)}</span>
-        <div class="detail-snow-bar"><div class="detail-snow-bar-fill forecast-bar" style="height:${(d1 / fMax) * 100}%"></div></div>
-        <strong>${formatInches(d1)}</strong><span>${dayLabel(0)}</span>
-      </div>
-      <div class="detail-snow-bar-col">
-        <span class="bar-temp">${tempRange(1)}</span>
-        <div class="detail-snow-bar"><div class="detail-snow-bar-fill forecast-bar" style="height:${(d2 / fMax) * 100}%"></div></div>
-        <strong>${formatInches(d2)}</strong><span>${dayLabel(1)}</span>
-      </div>
-      <div class="detail-snow-bar-col">
-        <span class="bar-temp">${tempRange(2)}</span>
-        <div class="detail-snow-bar"><div class="detail-snow-bar-fill forecast-bar" style="height:${(d3 / fMax) * 100}%"></div></div>
-        <strong>${formatInches(d3)}</strong><span>${dayLabel(2)}</span>
-      </div>
+        <span class="bar-temp">${tempRange(index)}</span>
+        <div class="detail-snow-bar"><div class="detail-snow-bar-fill forecast-bar" style="height:${barHeight(daily[index])}px"></div></div>
+        <strong>${formatInches(daily[index])}</strong><span>${dayLabel(index)}</span>
+      </div>`).join('')}
     </div>
   `;
 
@@ -362,7 +351,6 @@ export function renderDetailPanel() {
   // === FORECAST TAB ===
   const powder = potentialPowderDays(resort.liveForecast);
   const dates = resort.liveForecast?.dailyTime?.slice(0,16) || [];
-  const daily = resort.liveForecast?.dailySnowfall?.slice(0,16) || [];
   const forecastChartEl = document.getElementById('forecast-chart');
   const sameResort = forecastSelection.resortId === resort.id;
   const previousScroll = sameResort ? forecastChartEl.scrollLeft : 0;
@@ -385,7 +373,7 @@ export function renderDetailPanel() {
   forecastChartEl.setAttribute('aria-label','Scrollable daily snowfall forecast');
   forecastChartEl.removeAttribute('tabindex');
   if(daily.length){
-    forecastChartEl.appendChild(createSnowfallChart(daily,dates,{selectedIndex,powderIndices,onSelect:showDay}));
+    forecastChartEl.appendChild(createSnowfallChart(daily, dates, { selectedIndex, powderIndices, onSelect: showDay, maxSnowfall }));
     showDay(selectedIndex);
     forecastChartEl.scrollLeft=previousScroll;
   } else forecastDayDetails.textContent='Daily forecast unavailable.';

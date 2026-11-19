@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Widgets/widgets.css" />
   <link rel="stylesheet" href="styles.css?v=20261107-resort-view" />
   <link rel="stylesheet" href="travel.css?v=20261106-all-travel-guides" />
-  <link rel="stylesheet" href="resort-view.css?v=20261112-mobile-map" />
-  <link rel="stylesheet" href="mountain.css?v=20261105-map-layers" />
+  <link rel="stylesheet" href="resort-view.css?v=20261119-resort-controls" />
+  <link rel="stylesheet" href="mountain.css?v=20261119-resort-controls" />
 </head>
 <body class="mountain-details">
   <main class="mountain-app">
@@ -21,7 +21,8 @@
       <span class="preview-label">3D MOUNTAIN</span>
       <div class="header-links">
         <a id="resort-details" class="header-link" href="./">Conditions</a>
-        <a id="back-to-globe" class="back-button" href="./?view=map"><img class="icon" src="assets/mountain-icons/arrow-left.svg" alt="" /><span>Map view</span></a>
+        <a id="back-to-globe" class="back-button" href="./?view=map" aria-label="Map view"><img class="icon" src="assets/mountain-icons/globe.svg" alt="" /><span>Map view</span></a>
+        <a id="close-mountain" class="back-button" href="./"><img class="icon" src="assets/mountain-icons/x.svg" alt="" /><span>Close map</span></a>
       </div>
     </header>
     <section class="map-view" aria-label="Painted 3D mountain">
@@ -67,6 +68,6 @@
   </main>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.138/Build/Cesium/Cesium.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
-  <script type="module" src="js/mountain-page.js?v=20261109-webcams"></script>
+  <script type="module" src="js/mountain-page.js?v=20261119-resort-controls"></script>
 </body>
 </html>

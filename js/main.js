@@ -17,8 +17,8 @@ import {
 } from './dashboard.js?v=20261109-powder-alert';
 import { HEATMAP_METRICS } from './heatmap-metrics.js?v=20261109-powder-alert';
 import { icon, hydrateIcons } from './ui-icons.js?v=20261021-sources-verified';
-import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261109-webcams';
-import { parseHash, updateHash, initRouter } from './router.js?v=20261109-forecast-preview';
+import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261119-resort-controls';
+import { parseHash, updateHash, initRouter } from './router.js?v=20261119-mobile-powder';
 import { toggleCompareResort, refreshComparison } from './comparison.js?v=20261106-all-travel-guides';
 import { createWeatherLayers } from './weather-layers.js?v=20261106-weather-backend';
 import { bindWeatherControls } from './weather-controls.js?v=20261105-map-layers';
@@ -101,7 +101,57 @@ setOnResortClick(focusResort);
 setOnCompareToggle(toggleCompareResort);
 
 const metricRoot = document.getElementById('metric-filters');
-HEATMAP_METRICS.forEach((metric) => {
+const mobileMetrics = matchMedia('(max-width: 767px)');
+const mobileMetricOrder = ['season', 'snow48h', 'snow24h', 'powderAlert', 'bestToday', 'forecast72h', 'score', 'runsOpen'];
+let centeredMetric;
+let metricSettleTimer;
+let metricTouching = false;
+
+function centerActiveMetric() {
+  clearTimeout(metricSettleTimer);
+  centeredMetric?.classList.remove('centered');
+  centeredMetric = null;
+  if (!mobileMetrics.matches) return;
+  const active = metricRoot.querySelector('.active');
+  if (!active) return;
+  const offset = active.getBoundingClientRect().left - metricRoot.getBoundingClientRect().left;
+  metricRoot.scrollLeft += offset + (active.offsetWidth - metricRoot.clientWidth) / 2;
+  centeredMetric = active;
+  active.classList.add('centered');
+}
+
+function selectMetric(id) {
+  state.sortMode = id;
+  state.showAllResorts = false;
+  applyFilters();
+}
+
+function previewCenteredMetric() {
+  if (!mobileMetrics.matches) return;
+  const row = metricRoot.getBoundingClientRect();
+  const center = row.left + row.width / 2;
+  let nearest;
+  let distance = Infinity;
+  for (const button of metricRoot.children) {
+    const bounds = button.getBoundingClientRect();
+    const offset = Math.abs(bounds.left + bounds.width / 2 - center);
+    if (offset < distance) {
+      nearest = button;
+      distance = offset;
+    }
+  }
+  if (nearest !== centeredMetric) {
+    centeredMetric?.classList.remove('centered');
+    centeredMetric = nearest;
+    nearest.classList.add('centered');
+  }
+  clearTimeout(metricSettleTimer);
+  if (!metricTouching && !nearest.classList.contains('active')) {
+    metricSettleTimer = setTimeout(() => selectMetric(nearest.dataset.metric), 400);
+  }
+}
+
+const metricButtons = new Map(HEATMAP_METRICS.map((metric) => {
   const button = document.createElement('button');
   button.type = 'button';
   button.className = 'metric-button';
@@ -110,9 +160,30 @@ HEATMAP_METRICS.forEach((metric) => {
   if (metric.id === 'score') button.title = 'Experimental snow potential: 1.1 × 72h forecast + 1.35 × weather-preserved snow credit from 14 days of hourly history. Opening status is not checked. See How snow rankings work.';
   if (metric.id === 'powderAlert') button.title = 'Highest qualifying day score: snowfall inches × 10 × 0.5^(days away ÷ 3). Minimum 6 inches. Today counts remaining forecast snowfall only. Opening status is not checked.';
   if (metric.id === 'bestToday') button.title = 'Experimental weather-adjusted snow points. Requires verified open ski runs and complete current weather data. See How snow rankings work.';
-  button.addEventListener('click', () => { state.sortMode = metric.id; state.showAllResorts = false; applyFilters(); });
-  metricRoot.appendChild(button);
+  button.addEventListener('click', () => { selectMetric(metric.id); centerActiveMetric(); });
+  return [metric.id, button];
+}));
+function orderMetricButtons() {
+  const order = mobileMetrics.matches ? mobileMetricOrder : metricButtons.keys();
+  metricRoot.append(...Array.from(order, id => metricButtons.get(id)));
+}
+orderMetricButtons();
+mobileMetrics.addEventListener('change', () => {
+  orderMetricButtons();
+  centerActiveMetric();
 });
+metricRoot.addEventListener('scroll', previewCenteredMetric);
+metricRoot.addEventListener('touchstart', () => {
+  metricTouching = true;
+  clearTimeout(metricSettleTimer);
+}, { passive: true });
+for (const event of ['touchend', 'touchcancel']) {
+  metricRoot.addEventListener(event, () => {
+    metricTouching = false;
+    previewCenteredMetric();
+  }, { passive: true });
+}
+window.addEventListener('resize', centerActiveMetric);
 searchInput.addEventListener('input', () => { state.searchQuery = searchInput.value; state.showAllResorts = false; applyFilters(); });
 document.getElementById('show-all-resorts').addEventListener('click', () => { state.showAllResorts = true; renderDashboard(); });
 
@@ -262,9 +333,10 @@ document.addEventListener('keydown', (event) => {
 });
 const hashState = parseHash(resorts);
 Object.assign(state, hashState);
-if (!hashState.sortMode) state.sortMode = 'forecast72h';
+if (!hashState.sortMode) state.sortMode = mobileMetrics.matches ? 'powderAlert' : 'forecast72h';
 renderFilters(selectPassFilter, selectRegionFilter);
 renderDashboard();
+centerActiveMetric();
 updateMarkerVisibility(visibleIds());
 if (state.selectedId) {
   const initial = resorts.find((resort) => resort.id === state.selectedId);
@@ -278,6 +350,7 @@ setInterval(() => loadOptionalSourceData(onDataReady), 15 * 60000);
 initRouter(resorts, (parsed) => {
   Object.assign(state, parsed);
   applyFilters();
+  if (parsed.sortMode) centerActiveMetric();
   if (parsed.currentTab) setActiveTab(parsed.currentTab);
 });
 window.__SNOW_SCOUT__ = {

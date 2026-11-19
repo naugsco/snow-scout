@@ -1,19 +1,25 @@
 import { formatInches } from './utils.js?v=20261106-mountain-weather';
 const SVG_NS = 'http://www.w3.org/2000/svg';
+export const DETAIL_SNOWFALL_PLOT_HEIGHT = 136;
+
+export function snowfallBarHeight(amount, max, plotHeight) {
+  return Number.isFinite(amount) ? Math.max(amount / max * plotHeight, 2) : 0;
+}
 
 export function createSnowfallChart(dailySnowfall, dailyTime, options = {}) {
   const days = dailySnowfall.slice(0, 16);
   if (!days.length) return null;
   const interactive = typeof options.onSelect === 'function';
   const width = Math.max(320, days.length * (interactive ? 64 : 48));
-  const height = interactive ? 210 : 140;
   const gap = 10, topPad = 30, bottomPad = 44;
-  const plotHeight = height - topPad - bottomPad;
+  const plotHeight = interactive ? DETAIL_SNOWFALL_PLOT_HEIGHT : 140 - topPad - bottomPad;
+  const height = plotHeight + topPad + bottomPad;
   const barWidth = (width - gap * (days.length + 1)) / days.length;
-  const max = Math.max(...days.filter(Number.isFinite), 1);
+  const max = options.maxSnowfall ?? Math.max(...days.filter(Number.isFinite), 1);
   const svg = document.createElementNS(SVG_NS, 'svg');
   svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
   svg.setAttribute('width', '100%');
+  if (interactive) svg.setAttribute('height', height);
   svg.setAttribute('role', interactive ? 'group' : 'img');
   svg.setAttribute('aria-label', `${days.length}-day snowfall forecast.${interactive ? ' Select a day for details. Arrow keys change day.' : ''} Days 8 onward are a longer-range outlook.`);
   svg.style.display = 'block';
@@ -62,7 +68,7 @@ export function createSnowfallChart(dailySnowfall, dailyTime, options = {}) {
         targets[next].scrollIntoView({block:'nearest',inline:'nearest'});
       });
     }
-    const barHeight = Number.isFinite(amount) ? Math.max(amount/max*plotHeight,2) : 0;
+    const barHeight = snowfallBarHeight(amount, max, plotHeight);
     const y = topPad+plotHeight-barHeight;
     const bar = document.createElementNS(SVG_NS,'rect');
     bar.setAttribute('x',x);bar.setAttribute('y',y);bar.setAttribute('width',barWidth);bar.setAttribute('height',barHeight);bar.setAttribute('rx',4);

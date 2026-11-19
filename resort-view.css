@@ -57,6 +57,10 @@ body.tv-mode { overflow:hidden; }
 .preservation-info summary { cursor:pointer; color:var(--text); }
 
 .forecast-chart { overflow-x:auto; }
+.detail-snow-bars-row { height:auto; }
+.detail-snow-bar-col { height:auto; min-width:0; }
+.detail-snow-bar-col .detail-snow-bar { flex:none; height:var(--snowfall-plot-height); }
+.detail-snow-bar-col .detail-snow-bar-fill { min-height:0; }
 .forecast-day-target { cursor:pointer; outline:none; }
 .forecast-day-target text { pointer-events:none; }
 .forecast-day-target[aria-pressed="true"] .forecast-day-hit { fill:#2589ef18; stroke:var(--incoming); stroke-width:1.5; }

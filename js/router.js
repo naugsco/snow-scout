@@ -44,7 +44,7 @@ export function updateHash(state, resorts) {
   }
   if (state.passFilter !== 'all') params.set('pass', state.passFilter);
   if (state.regionFilter !== 'all') params.set('region', state.regionFilter);
-  if (state.sortMode !== 'score') params.set('sort', state.sortMode);
+  params.set('sort', state.sortMode);
   if (state.statusFilter !== 'all') params.set('status', state.statusFilter);
   if (state.currentTab !== 'overview') params.set('tab', state.currentTab);
 

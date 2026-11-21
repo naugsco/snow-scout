@@ -20,6 +20,7 @@ export function parseAltaPayload(payload, timezone) {
     terrainReportedAt: new Date().toISOString(), terrainTimestampKind: 'checked',
     metrics: { snow24h: number(c.last24), baseDepth: number(c.base_depth), tempF: number(c.base_temp),
       runsOpen: number(payload.operations?.runs?.open), runsTotal: number(payload.operations?.runs?.total), groomedRuns: null },
+    seasonTotalInches: number(c.year_to_date),
     note: c.sky_cover || null
   };
 }
@@ -63,6 +64,7 @@ export function parseMtnfeedPayload(feed, { parseTime, parseDepth, expectedCount
     terrainStatus: !winter ? 'unavailable' : staleOpen ? 'unverified' : undefined,
     issues: !winter ? ['The official page currently selects a summer feed; summer trails are not ski-run inventory.'] : staleOpen ? ['Positive ski-run counts have no current dated winter report and trail-state evidence; a feed-render timestamp cannot renew old summer/winter states.'] : [],
     sourceUpdatedText: snow.map(s => s.LastUpdate).join(' / '), metrics,
+    seasonTotalInches: agree(snow.map(s => number(s.SeasonTotalIn))),
     componentReports: resorts.map(r => ({ name: r.Name, snowReportedAt: parseTime(r.SnowReport.LastUpdate), terrainReportedAt: parseTime(r.LastUpdate), runsOpen: number(r.SnowReport.TotalOpenTrails), runsTotal: number(r.SnowReport.TotalTrails) })),
     note: resorts.length > 1 ? `Terrain totals combine ${resorts.map(r => r.Name).join(', ')}. Snow values are reported only when all component reports agree.` : snow[0].BaseConditions
   };
@@ -78,6 +80,7 @@ export function parsePowdrPayload(snowReports, trails, timezone) {
   return {
     snowReportedAt: zonedTimestamp(snow.date, timezone), terrainReportedAt: new Date().toISOString(), terrainTimestampKind: 'checked',
     sourceUpdatedText: snow.date,
+    seasonTotalInches: number(snow.computed?.total),
     metrics: { snow24h: number(snow.computed?.['24_hour']), snow48h: number(snow.computed?.['48_hour']), snow72h: number(snow.computed?.['72_hour']), baseDepth: number(snow.base_depth),
       runsTotal: winter.length || null, runsOpen: winter.length ? open.length : null,
       groomedRuns: winter.length ? open.filter(t => String(t.groom_status).toLowerCase() === 'groomed').length : null },
@@ -104,6 +107,7 @@ export function parseReportPalPayload(payload) {
       // Count groomed runs available to ski; flags on closed trails are not open groomed terrain.
       groomedRuns: staleOpen ? null : open === 0 ? 0 : rows.length ? rows.filter(t => isOpen(t.status) && t.groomed === true).length : null,
       liftsOpen: staleOpen ? null : number(counts.numLiftsOpen) },
+    seasonTotalInches: unitValue('snowSeasonTotal'),
     note: `Winter terrain from ${payload.name}'s official ReportPal feed. Summer facilities are excluded.`,
     componentReports: locations.map(l => ({ name: l.name, snow24h: number(l.snow24Hours?.inches) }))
   };
@@ -176,4 +180,58 @@ export function parseAbasinTerrain(html) {
   const lifts = text.match(/(\d+)\s*\/\s*(\d+)\s*Open Lifts\b/i);
   if (!runs) throw new Error('Official page has no run-status summary.');
   return { runsOpen: number(runs[1]), runsTotal: number(runs[2]), groomedRuns: null, liftsOpen: number(lifts?.[1]) };
+}
+
+// Wall-clock parts -> 'YYYY-MM-DD HH:MM' for zonedTimestamp. Returns null on any mismatch.
+const MONTHS = ['january','february','march','april','may','june','july','august','september','october','november','december'];
+function wallClock(year, month, day, hour12, minute, meridiem) {
+  const h = Number(hour12), m = Number(minute);
+  if (!(h >= 1 && h <= 12) || !(m >= 0 && m <= 59)) return null;
+  const hour = (h % 12) + (/pm/i.test(meridiem) ? 12 : 0);
+  const pad = n => String(n).padStart(2, '0');
+  return `${year}-${pad(month)}-${pad(day)} ${pad(hour)}:${pad(m)}`;
+}
+// Same precision as the model conversion in js/weather-data.js.
+const cmToInches = cm => cm === null ? null : Math.round(cm / 2.54 * 100) / 100;
+
+// Sugar Bowl publishes labelled values (data-update-id) and one dated report clock.
+// Snow Scout reports the summit point (8,383 ft) for snowfall, base depth and temperature.
+export function parseSugarBowlConditions(html, timezone) {
+  const page = visibleHtml(html);
+  const field = id => {
+    const values = [...page.matchAll(new RegExp(`data-update-id="${id}"[^>]*>([^<]*)<`, 'g'))].map(m => m[1].trim());
+    if (!values.length) throw new Error(`Official conditions page has no ${id} field.`);
+    return values[0];
+  };
+  const clock = field('conditions_last_update').match(/^(\d{2})\/(\d{2})\/(\d{4}) (\d{1,2}):(\d{2}) ?(AM|PM)$/i);
+  const snowReportedAt = clock ? zonedTimestamp(wallClock(clock[3], clock[1], clock[2], clock[4], clock[5], clock[6]), timezone) : null;
+  if (!snowReportedAt) throw new Error('Official conditions page has no valid report timestamp.');
+  return {
+    snowReportedAt, sourceUpdatedText: field('conditions_last_update'),
+    metrics: { snow24h: number(field('conditions_snow_24hr_summit')), baseDepth: number(field('conditions_snowdepth_summit')),
+      tempF: number(field('conditions_temp_summit')) },
+    seasonTotalInches: number(field('conditions_snow_ytd_summit')),
+    note: 'Summit (8,383 ft) values from the official Sugar Bowl conditions page.'
+  };
+}
+
+// Banff Sunshine: "Updated: Friday, November 20th, 2026 7:01 PM", metric cards per mountain zone.
+// Snow Scout reports the Upper Mountain base.
+export function parseBanffSunshineConditions(html, timezone) {
+  const page = visibleHtml(html);
+  const clock = htmlText(page).match(/Current Conditions\s+Updated:\s+\w+,\s+([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?,\s+(\d{4})\s+(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  const month = clock ? MONTHS.indexOf(clock[1].toLowerCase()) + 1 : 0;
+  const snowReportedAt = month ? zonedTimestamp(wallClock(clock[3], month, clock[2], clock[4], clock[5], clock[6]), timezone) : null;
+  if (!snowReportedAt) throw new Error('Official current conditions have no valid report timestamp.');
+  const upper = page.split(/<div class="snow-group upper">/i)[1]?.split(/<div class="snow-group /i)[0];
+  if (!upper) throw new Error('Official report has no Upper Mountain snow group.');
+  const cards = Object.fromEntries([...upper.matchAll(/<h4>([^<]+)<\/h4>[\s\S]*?<span class="value">\s*([\d.]+)\s*<\/span>\s*<span class="t-label unit">\s*cm\b/gi)]
+    .map(m => [m[1].trim().toLowerCase(), number(m[2])]));
+  if (!('base' in cards)) throw new Error('Upper Mountain snow group has no base depth.');
+  return {
+    snowReportedAt, sourceUpdatedText: clock[0].replace(/^Current Conditions\s+/i, ''),
+    metrics: { baseDepth: cmToInches(cards.base) },
+    seasonTotalInches: 'cumulative' in cards ? cmToInches(cards.cumulative) : null,
+    note: 'Upper Mountain base from the official Banff Sunshine current conditions (published in cm).'
+  };
 }

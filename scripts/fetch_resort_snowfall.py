@@ -28,14 +28,32 @@ def resort_key(name):
     return re.sub(r'[^a-z0-9]+', ' ', text).strip()
 
 
+def weather_locations():
+    """Ski-terrain sample points shared with the forecast (js/weather-locations-data.js)."""
+    text = (ROOT / 'js/weather-locations-data.js').read_text()
+    match = re.search(r'export const WEATHER_LOCATIONS = (\{.*\});\s*$', text, re.S)
+    if not match:
+        raise ValueError('WEATHER_LOCATIONS not found in js/weather-locations-data.js')
+    return json.loads(match.group(1))
+
+
 def app_resorts():
     raw = (ROOT / 'js/constants.js').read_text().split('export const DEFAULT_WEBCAM_PAGES')[0]
     rows = re.findall(r'\{\s*name:\s*"([^"]+)",\s*lat:\s*([-\d.]+),\s*lon:\s*([-\d.]+)', raw)
+    points = weather_locations()
     results = {}
     for name, lat, lon in rows:
         if name == 'Squaw Valley Alpine Meadows':
             name = 'Palisades Tahoe'
-        results.setdefault(resort_key(name), {'name': name, 'lat': float(lat), 'lon': float(lon)})
+        if resort_key(name) in results:
+            continue
+        # Catalog coordinates are often base villages, where ERA5 turns mountain snow into rain.
+        # Use the forecast's ski-terrain point (and its official elevation where one is set).
+        point = points.get(name)
+        if point is None:
+            raise ValueError(f'No ski-terrain weather location for {name}')
+        results[resort_key(name)] = {'name': name, 'lat': point['lat'], 'lon': point['lon'],
+                                     'elevationM': point.get('elevationM')}
     if not results:
         raise ValueError('No app resorts found in constants.js')
     return results
@@ -87,10 +105,13 @@ def aggregate_seasons(payload, start, end, southern=False):
 
 
 def request_url(resort, start, end):
-    return 'https://archive-api.open-meteo.com/v1/archive?' + urlencode({
+    params = {
         'latitude': resort['lat'], 'longitude': resort['lon'], 'start_date': start.isoformat(),
         'end_date': end.isoformat(), 'daily': 'snowfall_sum', 'models': MODEL, 'timezone': 'GMT'
-    })
+    }
+    if resort.get('elevationM') is not None:
+        params['elevation'] = resort['elevationM']
+    return 'https://archive-api.open-meteo.com/v1/archive?' + urlencode(params)
 
 
 def fetch_payload(url):
@@ -177,7 +198,8 @@ def main():
             previous = results[key]
             if previous.get('requestedThrough') == target.isoformat() and previous.get('status') == 'ok':
                 continue
-            same_location = previous.get('lat') == resort['lat'] and previous.get('lon') == resort['lon']
+            # A moved sample point invalidates every stored season; rebuild from the current season back.
+            same_location = all(previous.get(field) == resort[field] for field in ('lat', 'lon', 'elevationM'))
             if not same_location:
                 previous = results[key] = {**resort, 'status': 'pending', 'seasons': [], 'sourceUrl': SOURCE}
             start = season_bounds(target, resort['lat'] < 0)[1]

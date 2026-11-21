@@ -14,6 +14,16 @@ def payload(start, end, amount=2.54):
 
 
 class SnowfallTests(unittest.TestCase):
+    def test_requests_use_forecast_terrain_points_not_base_villages(self):
+        resorts = snowfall.app_resorts()
+        palisades, whistler = resorts['palisades tahoe'], resorts['whistler blackcomb']
+        points = snowfall.weather_locations()
+        self.assertEqual((palisades['lat'], palisades['lon']), (points['Palisades Tahoe']['lat'], points['Palisades Tahoe']['lon']))
+        self.assertNotIn('elevation=', snowfall.request_url(palisades, date(2026, 7, 1), date(2026, 7, 2)))
+        self.assertEqual(whistler['elevationM'], 1850)
+        self.assertIn('elevation=1850', snowfall.request_url(whistler, date(2026, 7, 1), date(2026, 7, 2)))
+        self.assertEqual(len(resorts), len(points))
+
     def test_northern_season_and_leap_day(self):
         start, end = date(2023, 7, 1), date(2024, 6, 30)
         rows, through = snowfall.aggregate_seasons(payload(start, end), start, end)

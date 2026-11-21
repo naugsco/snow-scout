@@ -1,4 +1,4 @@
-import { currentSnowfall } from './season-snowfall.js?v=20261021-sources-verified';
+import { currentSnowfall } from './season-snowfall.js?v=20261121-season-reports';
 
 import { isQualityMetric, qualityAssessment } from './snow-quality.js?v=20261109-preservation';
 
@@ -10,7 +10,7 @@ import { powderAlert } from './powder-alert.js?v=20261109-powder-alert';
 
 export const HEATMAP_METRICS = [
   { id: 'snow48h', label: 'Recent snow', period: '48h', icon: 'cloud-snow', caption: 'last 48h', description: '48-hour snowfall' },
-  { id: 'season', label: 'Total snowfall', period: 'Season', icon: 'layers', caption: 'season estimate', description: 'Season snowfall · ERA5 estimate' },
+  { id: 'season', label: 'Total snowfall', period: 'Season', icon: 'layers', caption: 'season to date', description: 'Season snowfall · Resort reports, model estimate where none' },
   { id: 'snow24h', label: 'Most fresh', period: '24h', icon: 'snowflake', caption: 'last 24h', description: '24-hour snowfall' },
   { id: 'forecast72h', label: 'Biggest forecast', period: 'Next 72h', icon: 'cloud', caption: 'next 72h', description: 'Forecast snowfall · Next 72 hours' },
   { id: 'score', label: 'Snow potential', period: 'Snow + forecast', icon: 'sparkles', caption: 'potential score', description: 'Preserved snow + 72-hour forecast' },

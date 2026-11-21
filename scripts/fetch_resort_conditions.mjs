@@ -11,10 +11,12 @@ import { RAW_RESORTS, RESORT_SOURCE_ALIASES } from '../js/constants.js';
 import { assessConditions, isFresh, normalizeConditionMetrics, REPORT_MAX_AGE_MS } from '../js/condition-data.js';
 import { weatherUrl, parseWeather, forecastIsCurrent } from '../js/weather-data.js';
 import { chooseConditions } from '../js/condition-selection.js';
+import { plausibleSeasonTotal } from '../js/season-snowfall.js';
 import { zonedTimestamp } from './source-time.mjs';
 import {
   parseAltaPayload, parseMtnfeedPayload, parsePowdrPayload, parseReportPalPayload, parseMcTerrain,
-  parseAbasinTerrain, parseKillingtonTerrain, parseJacksonHoleTerrain, parseRevelstokeTerrain, htmlText, visibleHtml
+  parseAbasinTerrain, parseKillingtonTerrain, parseJacksonHoleTerrain, parseRevelstokeTerrain, htmlText, visibleHtml,
+  parseSugarBowlConditions, parseBanffSunshineConditions
 } from './resort-parsers.mjs';
 
 const USER_AGENT = 'SnowScoutConditionFetcher/1.0 (+https://local.snowscout)';
@@ -209,6 +211,7 @@ export function parseVailSnow(html) {
     sourceUpdatedText: cleanText(snow.LastUpdatedText),
     metrics: { snow24h, snow48h, snow72h: null, baseDepth: parseNumber(snow?.BaseDepth?.Inches),
       daysSinceSnow: inferDaysSinceSnow({ snow24h, snow48h }) },
+    seasonTotalInches: parseNumber(snow?.CurrentSeason?.Inches),
     note: cleanText(snow?.OverallSnowConditions)
   };
 }
@@ -371,6 +374,13 @@ async function parseRevelstoke(entry) {
   };
 }
 
+// Snow-report-only pages: terrain stays unavailable rather than inferred.
+const SNOW_PAGE_PARSERS = { sugarbowl: parseSugarBowlConditions, banffsunshine: parseBanffSunshineConditions };
+async function parseSnowPage(entry) {
+  const parsed = SNOW_PAGE_PARSERS[entry.adapter](await fetchText(entry.conditionsUrl), entry.timezone);
+  return { ...parsed, terrainStatus: 'unavailable', sources: { conditions: entry.conditionsUrl, terrain: null } };
+}
+
 async function parseOpenMeteo(entry) {
   const url = weatherUrl(entry);
   const parsed = parseWeather(await fetchJson(url), url);
@@ -404,6 +414,8 @@ async function parseEntry(entry) {
       return parseAbasin(entry);
     case 'revelstoke':
       return parseRevelstoke(entry);
+    case 'sugarbowl': case 'banffsunshine':
+      return parseSnowPage(entry);
     case 'open-meteo':
       return parseOpenMeteo(entry);
     default:
@@ -456,6 +468,9 @@ async function collectPrimary(entry) {
       sourceUpdatedText: parsed.sourceUpdatedText || parsed.updatedAt || null,
       snowStatus: parsed.snowStatus, terrainStatus: parsed.terrainStatus,
       note: parsed.note || null, metrics: normalized.metrics, sources: parsed.sources,
+      // Kept apart from the 24/48/72h metrics: a model fallback for recent snow must not erase it.
+      seasonSnowfall: Number.isFinite(parsed.seasonTotalInches) && parsed.seasonTotalInches >= 0 && (parsed.snowReportedAt || reportedAt)
+        ? { inches: parsed.seasonTotalInches, reportedAt: parsed.snowReportedAt || reportedAt, source: 'resort' } : undefined,
       issues: [...(parsed.issues || []), ...normalized.issues]
     };
     const assessment = assessConditions(result, checkedAt, Date.now());
@@ -493,7 +508,25 @@ export async function collectEntry(entry, { modelForecast } = {}) {
   const primary = entry.adapter === 'open-meteo' && forecastIsCurrent(modelForecast)
     ? { status: 'unavailable', adapter: entry.adapter, resort: entry.name, checkedAt: new Date().toISOString(), snowStatus: 'unavailable', terrainStatus: 'unavailable', metrics: normalizeConditionMetrics().metrics, sources: {} }
     : await collectPrimary(entry);
-  return applyWeatherFallback(primary, modelForecast);
+  return screenSeasonSnowfall(applyWeatherFallback(primary, modelForecast), modelForecast);
+}
+
+// Publish a resort season total only when it is plausible against the model's recent snowfall
+// at the same terrain point; resorts often keep last season's counter until they reset it.
+export function screenSeasonSnowfall(result, modelForecast) {
+  const reported = result.seasonSnowfall;
+  if (!reported) return result;
+  const check = modelForecast?.seasonCheck;
+  if (!Number.isFinite(check?.snowfallInches)) {
+    delete result.seasonSnowfall;
+    result.issues = [...(result.issues || []), `Resort season total ${reported.inches}" withheld: no model snowfall check is available.`];
+  } else if (!plausibleSeasonTotal(reported.inches, check.snowfallInches)) {
+    delete result.seasonSnowfall;
+    result.issues = [...(result.issues || []), `Resort season total ${reported.inches}" withheld: far above the model's ${check.snowfallInches}" since ${check.from}; likely last season's counter.`];
+  } else {
+    result.seasonSnowfall = { ...reported, modelCheckInches: check.snowfallInches, modelCheckFrom: check.from };
+  }
+  return result;
 }
 
 async function main() {

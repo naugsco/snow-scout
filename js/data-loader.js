@@ -45,6 +45,8 @@ export function applyLiveConditions(conditionCatalog, snapshotAt, now = Date.now
       ...assessment.issues
     ].filter(Boolean))].join(' ');
     resort.liveSources = { ...(resort.liveSources || {}), ...(live?.sources || {}) };
+    // Screened by the collector; age and season are checked where it is used.
+    resort.liveSeasonSnowfall = published?.seasonSnowfall || null;
     resort.status = inferStatus(resort.metrics);
     resort.statusText = getStatusText(resort.status, resort.metrics);
   });

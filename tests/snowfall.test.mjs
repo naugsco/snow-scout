@@ -45,3 +45,28 @@ test('pass, resort, season, and inclusive snowfall bounds compose correctly', ()
   assert.deepEqual(records.map((row) => row.resort.id), ['a']);
   assert.equal(historyRecords(resorts, catalog, { pass: 'epic', min: 101 }, now).length, 0);
 });
+
+test('a current resort season report replaces the model; old, future or last-season reports do not', async () => {
+  const { reportedSeasonTotal, plausibleSeasonTotal, seasonSourceText } = await import('../js/season-snowfall.js');
+  const at = new Date('2026-11-21T08:00:00Z');
+  const mammoth = { name: 'A', lat: 37.6, liveSeasonSnowfall: { inches: 56, reportedAt: '2026-11-20T23:42:50Z' } };
+  const result = currentSnowfall(mammoth, catalog, at);
+  assert.equal(result.kind, 'reported');
+  assert.equal(result.total, 56);
+  assert.equal(seasonSourceText(result), 'Resort report · Nov 20');
+  const model = currentSnowfall({ ...mammoth, liveSeasonSnowfall: null }, catalog, at);
+  assert.equal(model.kind, model.total === null ? null : 'model');
+  const north = { lat: 45 }, south = { lat: -36 };
+  assert.equal(reportedSeasonTotal({ inches: 10, reportedAt: '2026-11-13T07:00:00Z' }, north, at), null, 'over 7 days old');
+  assert.equal(reportedSeasonTotal({ inches: 10, reportedAt: '2026-11-21T09:00:00Z' }, north, at), null, 'future');
+  assert.equal(reportedSeasonTotal({ inches: 133, reportedAt: '2026-06-28T12:00:00Z' }, north, new Date('2026-07-02T00:00:00Z')), null, 'previous northern season');
+  assert.deepEqual(reportedSeasonTotal({ inches: 0, reportedAt: '2026-11-20T12:00:00Z' }, north, at), { total: 0, reportedAt: '2026-11-20T12:00:00Z' }, 'zero is a valid total');
+  assert.equal(reportedSeasonTotal({ inches: 40, reportedAt: '2025-12-30T12:00:00Z' }, south, new Date('2026-01-02T00:00:00Z')), null, 'previous southern calendar season');
+  assert.equal(reportedSeasonTotal({ inches: null, reportedAt: '2026-11-20T12:00:00Z' }, north, at), null);
+  // Leftover counters (Sugarloaf 145" vs 0.3" modeled) are rejected; real reports (Sugar Bowl 107" vs 35.1") pass.
+  assert.equal(plausibleSeasonTotal(145, 0.3), false);
+  assert.equal(plausibleSeasonTotal(105, 0.1), false);
+  assert.equal(plausibleSeasonTotal(107, 35.1), true);
+  assert.equal(plausibleSeasonTotal(11, 4.5), true);
+  assert.equal(plausibleSeasonTotal(5, null), false, 'no model check means no publication');
+});

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
 import { zonedTimestamp } from '../scripts/source-time.mjs';
-import { parseAltaPayload, parseMtnfeedPayload, parsePowdrPayload, parseReportPalPayload, parseMcTerrain, parseAbasinTerrain, parseKillingtonTerrain, parseJacksonHoleTerrain, parseRevelstokeTerrain, visibleHtml } from '../scripts/resort-parsers.mjs';
+import { parseAltaPayload, parseMtnfeedPayload, parsePowdrPayload, parseReportPalPayload, parseMcTerrain, parseAbasinTerrain, parseKillingtonTerrain, parseJacksonHoleTerrain, parseRevelstokeTerrain, visibleHtml, parseSugarBowlConditions, parseBanffSunshineConditions } from '../scripts/resort-parsers.mjs';
 import { reportTimestamp, parseSingleDepth, applyWeatherFallback, collectEntry, parseVailTerrain } from '../scripts/fetch_resort_conditions.mjs';
 import { normalizeConditionMetrics, assessConditions } from '../js/condition-data.js';
 import { chooseConditions } from '../js/condition-selection.js';
@@ -228,4 +228,63 @@ test('Mtnfeed open grooming excludes closed groomed trails and requires complete
   assert.equal(parse().metrics.groomedRuns, 1);
   resort.MountainAreas[0].Trails[0].Grooming = '--';
   assert.equal(parse().metrics.groomedRuns, null);
+});
+
+const sugarBowlField = (id, value) => `<span class="refresh_001 refresh_html" data-update-id="${id}">${value}</span>`;
+const sugarBowlPage = (clock) => ['<div>Last Updated:  ' + sugarBowlField('conditions_last_update', clock) + '</div>',
+  '<!-- ' + sugarBowlField('conditions_snowdepth_summit', '99') + ' -->',
+  sugarBowlField('conditions_snowdepth_summit', '36'), sugarBowlField('conditions_snowdepth_base', '33'),
+  sugarBowlField('conditions_snow_24hr_summit', '12'), sugarBowlField('conditions_snow_24hr_base', '9'),
+  sugarBowlField('conditions_temp_summit', '12'), sugarBowlField('conditions_temp_base', '18'),
+  sugarBowlField('conditions_snow_ytd_summit', '107'), sugarBowlField('conditions_snow_ytd_base', '72')].join('\n');
+
+test('Sugar Bowl reports the summit point with its dated report clock, ignoring commented HTML', async t => {
+  assert.deepEqual(parseSugarBowlConditions(sugarBowlPage('11/20/2026 03:33 PM'), 'America/Los_Angeles'), {
+    snowReportedAt: '2026-11-20T23:33:00.000Z', sourceUpdatedText: '11/20/2026 03:33 PM',
+    metrics: { snow24h: 12, baseDepth: 36, tempF: 12 }, seasonTotalInches: 107,
+    note: 'Summit (8,383 ft) values from the official Sugar Bowl conditions page.'
+  });
+  assert.throws(() => parseSugarBowlConditions(sugarBowlPage(''), 'America/Los_Angeles'), /no valid report timestamp/);
+  assert.throws(() => parseSugarBowlConditions(sugarBowlField('conditions_last_update', '11/20/2026 03:33 PM'), 'America/Los_Angeles'), /no conditions_snow_24hr_summit field/);
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse('2026-11-21T01:00:00Z') });
+  t.mock.method(globalThis, 'fetch', async () => new Response(sugarBowlPage('11/20/2026 03:33 PM')));
+  const report = await collectEntry({ name: 'Sugar Bowl', adapter: 'sugarbowl', conditionsUrl: 'https://example.com/conditions', timezone: 'America/Los_Angeles' });
+  assert.equal(report.snowSourceKind, 'reported');
+  assert.equal(report.snowStatus, 'ready');
+  assert.equal(report.metrics.baseDepth, 36);
+  assert.equal(report.terrainStatus, 'unavailable');
+});
+
+test('Banff Sunshine reports the Upper Mountain base converted from cm, not the mid-mountain settled base', () => {
+  const card = (label, cm) => `<div class="copy"><h4>${label}</h4><div class="snow-stats"><div><div class="lh-1 weather-data"><span class="value">\n${cm}\n</span>\n<span class="t-label unit">\ncm\n</span></div></div></div></div>`;
+  const page = (clock, upper) => `<section class="snow"><h2>Current Conditions</h2><p class="timestamp">\n${clock}\n</p>`
+    + `<div class="snow-group upper"><h3 class="snow-group-title"><span class="wi wi-snow"></span>\nUpper Mountain Snow Report</h3>${upper}</div>`
+    + `<div class="snow-group mid"><h3 class="snow-group-title"><span></span>Mid Mountain Snow Report</h3>${card('7 Days', 17)}${card('Settled Base', 28)}</div></section>`;
+  const parsed = parseBanffSunshineConditions(page('Updated: Friday, November 20th, 2026 7:01 PM', card('7 Day', 19) + card('Base', 38) + card('Cumulative', 63)), 'America/Edmonton');
+  assert.equal(parsed.snowReportedAt, '2026-11-21T02:01:00.000Z');
+  assert.deepEqual(parsed.metrics, { baseDepth: 14.96 });
+  assert.equal(parsed.seasonTotalInches, 24.8, 'Upper Mountain cumulative, not mid');
+  assert.throws(() => parseBanffSunshineConditions(page('', card('Base', 38)), 'America/Edmonton'), /no valid report timestamp/);
+  assert.throws(() => parseBanffSunshineConditions(page('Updated: Friday, November 20th, 2026 7:01 PM', card('7 Day', 19)), 'America/Edmonton'), /no base depth/);
+});
+
+test('season totals are collected from feeds, kept apart from recent-snow fallback, and screened against the model', async () => {
+  const { screenSeasonSnowfall } = await import('../scripts/fetch_resort_conditions.mjs');
+  const { parseSeasonCheck } = await import('../scripts/fetch_resort_forecasts.mjs');
+  const report = (season) => ({ Name: 'M', LastUpdate: '2026-11-20T15:42:50-0800', SnowReport: { LastUpdate: '2026-11-20T15:42:50-0800', SeasonTotalIn: season, AllMountain: {}, SnowBaseRangeIn: '--' } });
+  const opts = { parseTime: (v) => reportTimestamp(v), parseDepth: parseSingleDepth, now: Date.parse('2026-11-21T00:00:00Z') };
+  assert.equal(parseMtnfeedPayload({ Resorts: [report('56')] }, opts).seasonTotalInches, 56);
+  assert.equal(parseMtnfeedPayload({ Resorts: [report('--')] }, opts).seasonTotalInches, null);
+  assert.equal(parseMtnfeedPayload({ Resorts: [{ ...report('20'), Name: 'X' }, { ...report('21'), Name: 'Y' }] }, opts).seasonTotalInches, null, 'combined mountains must agree');
+  const withTotal = (inches) => ({ issues: [], seasonSnowfall: { inches, reportedAt: '2026-11-19T15:48:00Z', source: 'resort' } });
+  const check = { seasonCheck: { snowfallInches: 0.3, from: '2026-08-21' } };
+  const leftover = screenSeasonSnowfall(withTotal(145), check);
+  assert.equal(leftover.seasonSnowfall, undefined);
+  assert.match(leftover.issues.join(' '), /145" withheld: far above the model's 0.3" since 2026-08-21/);
+  assert.equal(screenSeasonSnowfall(withTotal(5), check).seasonSnowfall.inches, 5);
+  assert.equal(screenSeasonSnowfall(withTotal(5), {}).seasonSnowfall, undefined, 'no check, no publication');
+  const days = Array.from({ length: 93 }, (_, i) => new Date(Date.UTC(2026, 7, 21 + i)).toISOString().slice(0, 10));
+  const parsed = parseSeasonCheck({ daily_units: { snowfall_sum: 'cm' }, daily: { time: days, snowfall_sum: days.map(() => 2.54) } }, 'u');
+  assert.deepEqual([parsed.snowfallInches, parsed.from, parsed.through], [92, '2026-08-21', '2026-11-20']);
+  assert.throws(() => parseSeasonCheck({ daily_units: { snowfall_sum: 'cm' }, daily: { time: days, snowfall_sum: days.map((_, i) => i === 5 ? null : 1) } }, 'u'), /incomplete/);
 });

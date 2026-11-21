@@ -612,5 +612,23 @@
     "reportUrl": "https://www.brightonresort.com/",
     "feedUrl": "https://www.brightonresort.com/api/reportpal?resortName=br&useReportPal=true",
     "timezone": "America/Denver"
+  },
+  {
+    "key": "sugar bowl",
+    "name": "Sugar Bowl",
+    "adapter": "sugarbowl",
+    "lat": 39.3044,
+    "lon": -120.3358,
+    "conditionsUrl": "https://www.sugarbowl.com/conditions",
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "key": "banff sunshine",
+    "name": "Banff Sunshine",
+    "adapter": "banffsunshine",
+    "lat": 51.0783,
+    "lon": -115.7828,
+    "conditionsUrl": "https://www.skibanff.com/the-mountain/mountain-report/current-conditions",
+    "timezone": "America/Edmonton"
   }
 ]

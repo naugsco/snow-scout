@@ -6,8 +6,8 @@ import { PASS_FILTERS, REGION_FILTERS } from './constants.js?v=20261021-sources-
 import { state, saveFavorites } from './state.js?v=20261021-sources-verified';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import { formatInches, formatRunAccess, formatPassLabel } from './utils.js?v=20261106-mountain-weather';
-import { fetchSnowfallCatalog, currentSnowfall } from './season-snowfall.js?v=20261021-sources-verified';
-import { HEATMAP_METRICS, rankResorts, heatColor, layoutHeatmap } from './heatmap-metrics.js?v=20261119-compact-rankings';
+import { fetchSnowfallCatalog, currentSnowfall, seasonSourceText } from './season-snowfall.js?v=20261121-season-reports';
+import { HEATMAP_METRICS, rankResorts, heatColor, layoutHeatmap } from './heatmap-metrics.js?v=20261121-season-reports';
 import { icon } from './ui-icons.js?v=20261021-sources-verified';
 import { currentSnowStatus, loadCurrentSnow } from './current-snow.js?v=20261106-mountain-weather';
 import { weatherLocationLabel } from './weather-location.js?v=20261106-mountain-weather';
@@ -158,8 +158,7 @@ function provenance(resort, id = metric().id) {
   if (isQualityMetric(id)) return qualityAssessment(resort, id).reason;
   if (id === 'score') return 'Model preservation · Opening not checked';
   if (id === 'season') {
-    const entry = currentSnowfall(resort, catalog);
-    return `ERA5 estimate${entry.record?.through ? ' · through ' + entry.record.through : ''}`;
+    return seasonSourceText(currentSnowfall(resort, catalog));
   }
   if (id === 'forecast72h') return resort.liveForecastStatus === 'ready' ? 'Model forecast' : `Forecast ${resort.liveForecastStatus || 'unavailable'}`;
   const status = id === 'runsOpen' ? resort.liveTerrainStatus : resort.liveSnowStatus;

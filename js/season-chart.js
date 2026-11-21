@@ -1,6 +1,6 @@
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import { formatInches } from './utils.js?v=20261106-mountain-weather';
-import { rankedSnowfall, fetchSnowfallCatalog } from './season-snowfall.js?v=20261021-sources-verified';
+import { rankedSnowfall, fetchSnowfallCatalog, seasonSourceText } from './season-snowfall.js?v=20261121-season-reports';
 
 let onResortClick = null;
 export function setOnSeasonResortClick(handler) { onResortClick = handler; }
@@ -37,7 +37,7 @@ export function renderSeasonChart() {
       const name = document.createElement('strong');
       name.textContent = item.resort.name;
       const detail = document.createElement('span');
-      detail.textContent = `${item.season} · ${amount}${item.total === null ? '' : ' estimated snowfall to date'} · through ${item.record?.through || '—'}${item.entry?.status === 'error' ? ' · refresh failed' : ''}`;
+      detail.textContent = `${item.season} · ${amount}${item.total === null ? '' : ' snowfall to date'} · ${seasonSourceText(item)}${item.kind !== 'reported' && item.entry?.status === 'error' ? ' · refresh failed' : ''}`;
       tooltip.append(name, detail);
       tooltip.hidden = false;
       const rect = bar.getBoundingClientRect();
@@ -65,7 +65,7 @@ export function renderSeasonChart() {
   }
   document.getElementById('season-chart-max').textContent = reported.length ? formatInches(maximum) : '—';
   note.textContent = loadError || (catalog
-    ? `ERA5 model estimates · ${reported.length}/${resorts.length} resorts · Through ${[...new Set(reported.map((item) => item.record.through))].sort().join(' to ') || '—'} · Northern ${ranked.find((item) => item.resort.lat > 0)?.season}; southern ${ranked.find((item) => item.resort.lat < 0)?.season}.${resorts.length - reported.length ? ` ${resorts.length - reported.length} unavailable (hatched).` : ''}${Object.values(catalog.resorts).some((item) => item.status === 'error') ? ' Some data refreshes failed; see history for coverage.' : ''}`
+    ? `${reported.filter((item) => item.kind === 'reported').length} resort reports · ${reported.filter((item) => item.kind === 'model').length} ERA5 model estimates (undercount mountain snow${reported.some((item) => item.kind === 'model') ? `, through ${[...new Set(reported.filter((item) => item.kind === 'model').map((item) => item.record.through))].sort().join(' to ')}` : ''}) · Northern ${ranked.find((item) => item.resort.lat > 0)?.season}; southern ${ranked.find((item) => item.resort.lat < 0)?.season}.${resorts.length - reported.length ? ` ${resorts.length - reported.length} unavailable (hatched).` : ''}${Object.values(catalog.resorts).some((item) => item.status === 'error') ? ' Some data refreshes failed; see history for coverage.' : ''}`
     : 'Loading modeled season totals…');
   root.setAttribute('aria-label', `Current-season snowfall for all ${resorts.length} resorts, descending from left to right. Resorts without estimates are hatched.`);
 }

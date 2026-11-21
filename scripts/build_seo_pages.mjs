@@ -14,6 +14,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const SITE_URL = 'https://snowscout.ski';
 const CM_PER_INCH = 2.54;
 const NEARBY_LIMIT = 8;
+// Cloudflare Web Analytics site token for snowscout.ski (public by design).
+export const ANALYTICS_SNIPPET = `<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4d1c2398ed95451baef2883f23227184"}'></script><!-- End Cloudflare Web Analytics -->`;
 
 const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (c) => (
   { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -93,6 +95,7 @@ ${body}
     <p>Forecasts are weather-model estimates, not resort snow reports. Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> (CC BY 4.0).</p>
     <p><a href="${up}">Snow Scout</a> · <a href="${up}resorts/">All resorts</a> · <a href="${up}history.html">Snowfall history</a></p>
   </footer>
+  ${ANALYTICS_SNIPPET}
 </body>
 </html>
 `;

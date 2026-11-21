@@ -34,6 +34,7 @@ test('build writes one page per resort plus index, sitemap and robots', async ()
   assert.ok(page.includes('href="../../#resort=vail"'));
   assert.ok(page.includes('href="../../resort-page.css'));
   assert.ok(!/(href|src)="\//.test(page), 'links must stay relative for the Pages subpath');
+  assert.ok(page.includes('4d1c2398ed95451baef2883f23227184'), 'resort pages carry the analytics beacon');
 });
 
 test('stale forecasts are withheld instead of shown', async () => {

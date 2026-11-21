@@ -11,6 +11,7 @@ import { powderAlert } from './powder-alert.js?v=20261109-powder-alert';
 export const HEATMAP_METRICS = [
   { id: 'snow48h', label: 'Recent snow', period: '48h', icon: 'cloud-snow', caption: 'last 48h', description: '48-hour snowfall' },
   { id: 'season', label: 'Total snowfall', period: 'Season', icon: 'layers', caption: 'season to date', description: 'Season snowfall · Resort reports, model estimate where none' },
+  { id: 'baseDepth', label: 'Base depth', period: 'Snow on ground', icon: 'mountain-snow', caption: 'base depth', description: 'Base depth · Resort reports first, then model estimates' },
   { id: 'snow24h', label: 'Most fresh', period: '24h', icon: 'snowflake', caption: 'last 24h', description: '24-hour snowfall' },
   { id: 'forecast72h', label: 'Biggest forecast', period: 'Next 72h', icon: 'cloud', caption: 'next 72h', description: 'Forecast snowfall · Next 72 hours' },
   { id: 'score', label: 'Snow potential', period: 'Snow + forecast', icon: 'sparkles', caption: 'potential score', description: 'Preserved snow + 72-hour forecast' },
@@ -35,10 +36,24 @@ export function metricValue(resort, metric, catalog = null) {
   return Number.isFinite(value) && value >= 0 ? value : null;
 }
 
+// Base depth: resort-reported values rank ahead of model snow depth, which can be far off
+// (one grid point, no grooming or snowmaking); unknown values come last.
+const sourceTier = (row, metric) => metric !== 'baseDepth' ? 0
+  : row.value === null ? 2 : row.resort.liveConditionsKind === 'model' ? 1 : 0;
+
+// Model base depths stay visible but are kept out of the size and color scale, so a model
+// value cannot look like the leading resort report.
+export const MUTED_TILE_COLOR = { background: '#3a4757', foreground: '#dbe5f0' };
+export function isMutedRow(row, metric) {
+  return metric === 'baseDepth' && row.value !== null && row.resort?.liveConditionsKind === 'model';
+}
+
 export function rankResorts(list, metric, catalog) {
   return list.map((resort) => ({ resort, value: metricValue(resort, metric, catalog) }))
     .filter(row => (!isQualityMetric(metric) && metric !== 'powderAlert') || row.value !== null)
     .sort((a, b) => {
+      const tier = sourceTier(a, metric) - sourceTier(b, metric);
+      if (tier) return tier;
       if (a.value === null) return b.value === null ? a.resort.name.localeCompare(b.resort.name) : 1;
       if (b.value === null) return -1;
       return b.value - a.value || a.resort.name.localeCompare(b.resort.name);
@@ -60,10 +75,10 @@ export function heatColor(value, minimum, maximum) {
 // for low/zero/missing values so every displayed resort remains readable.
 export function layoutHeatmap(rows, width, height, { minRowHeight = 0 } = {}) {
   if (!rows.length || width <= 0 || height <= 0) return [];
-  const known = rows.map((row) => row.value).filter(Number.isFinite);
+  const known = rows.filter((row) => !row.muted).map((row) => row.value).filter(Number.isFinite);
   const minimum = Math.min(0, ...known);
   const maximum = Math.max(1, ...known) - minimum;
-  const weights = rows.map((row) => row.value === null ? maximum * 0.28 : Math.max(row.value - minimum, maximum * 0.28));
+  const weights = rows.map((row) => row.value === null || row.muted ? maximum * 0.28 : Math.max(row.value - minimum, maximum * 0.28));
   const rowCount = Math.max(1, Math.min(rows.length, Math.round(Math.sqrt(rows.length * height / width * 1.35)), minRowHeight ? Math.max(1,Math.floor(height/minRowHeight)) : rows.length));
   const reservedHeight = Math.min(minRowHeight,height/rowCount);
   const groups = [];

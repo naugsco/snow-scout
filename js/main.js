@@ -15,8 +15,8 @@ import {
   renderDashboard, renderFilters, renderUpdatedAt, filteredResorts,
   ensureSelectionVisible, toggleFavorite, setOnResortClick,
   setOnCompareToggle, loadHeatmapSeason, hideHeatmapPreview, refreshHeatmapPreview, reportPreviewForecastError, refreshCurrentSnow, refreshPowderAlerts
-} from './dashboard.js?v=20261121-season-reports';
-import { HEATMAP_METRICS } from './heatmap-metrics.js?v=20261121-season-reports';
+} from './dashboard.js?v=20261121-base-depth3';
+import { HEATMAP_METRICS } from './heatmap-metrics.js?v=20261121-base-depth2';
 import { icon, hydrateIcons } from './ui-icons.js?v=20261021-sources-verified';
 import { renderDetailPanel, setActiveTab } from './detail-panel.js?v=20261119-resort-controls';
 import { parseHash, updateHash, initRouter } from './router.js?v=20261119-mobile-powder';
@@ -104,7 +104,7 @@ setOnCompareToggle(toggleCompareResort);
 
 const metricRoot = document.getElementById('metric-filters');
 const mobileMetrics = matchMedia('(max-width: 767px)');
-const mobileMetricOrder = ['season', 'snow48h', 'snow24h', 'powderAlert', 'bestToday', 'forecast72h', 'score', 'runsOpen'];
+const mobileMetricOrder = ['season', 'baseDepth', 'snow48h', 'snow24h', 'powderAlert', 'bestToday', 'forecast72h', 'score', 'runsOpen'];
 let metricSettleTimer;
 let metricTouching = false;
 let metricViewportWidth;

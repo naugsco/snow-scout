@@ -7,7 +7,7 @@ import { state, saveFavorites } from './state.js?v=20261021-sources-verified';
 import { resorts } from './resorts.js?v=20261021-sources-verified';
 import { formatInches, formatRunAccess, formatPassLabel } from './utils.js?v=20261106-mountain-weather';
 import { fetchSnowfallCatalog, currentSnowfall, seasonSourceText } from './season-snowfall.js?v=20261121-season-reports';
-import { HEATMAP_METRICS, rankResorts, heatColor, layoutHeatmap } from './heatmap-metrics.js?v=20261121-season-reports';
+import { HEATMAP_METRICS, rankResorts, heatColor, layoutHeatmap, isMutedRow, MUTED_TILE_COLOR } from './heatmap-metrics.js?v=20261121-base-depth2';
 import { icon } from './ui-icons.js?v=20261021-sources-verified';
 import { currentSnowStatus, loadCurrentSnow } from './current-snow.js?v=20261106-mountain-weather';
 import { weatherLocationLabel } from './weather-location.js?v=20261106-mountain-weather';
@@ -28,7 +28,7 @@ const CAP = 20;
 const snowDemo = new URLSearchParams(window.location.search).get('snowDemo') === '1';
 const snowDemoWhite = snowDemo && new URLSearchParams(window.location.search).get('snowBackground') === 'white';
 const escape = (value) => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
-const metric = () => HEATMAP_METRICS.find((item) => item.id === state.sortMode) || HEATMAP_METRICS[3];
+const metric = () => HEATMAP_METRICS.find((item) => item.id === state.sortMode) || HEATMAP_METRICS.find((item) => item.id === 'forecast72h');
 
 function snowMarkup() {
   // Three vector crystals, each assembled from six identical radial arms.
@@ -160,6 +160,11 @@ function provenance(resort, id = metric().id) {
   if (id === 'season') {
     return seasonSourceText(currentSnowfall(resort, catalog));
   }
+  if (id === 'baseDepth') {
+    if (resort.liveSnowStatus !== 'ready' || !Number.isFinite(resort.metrics.baseDepth)) return resort.liveSnowStatus === 'stale' ? 'Stale report withheld' : 'Not reported';
+    if (resort.liveConditionsKind === 'model') return 'Model estimate';
+    return `Resort report${resort.liveSnowReportedAt ? ' · ' + new Date(resort.liveSnowReportedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : ''}`;
+  }
   if (id === 'forecast72h') return resort.liveForecastStatus === 'ready' ? 'Model forecast' : `Forecast ${resort.liveForecastStatus || 'unavailable'}`;
   const status = id === 'runsOpen' ? resort.liveTerrainStatus : resort.liveSnowStatus;
   if (status !== 'ready') return status === 'stale' ? 'Stale report withheld' : `Report ${status || 'unavailable'}`;
@@ -188,8 +193,9 @@ function powderTileMarkup(resort) {
 function heatmapRows(list) {
   return rankResorts(list, metric().id, catalog).map((row) => {
     if (metric().id === 'runsOpen' && !row.resort.liveRunsReported) return { ...row, value: null };
-    return row;
-  }).sort((a, b) => (a.value === null) - (b.value === null) || (b.value ?? 0) - (a.value ?? 0) || a.resort.name.localeCompare(b.resort.name));
+    return { ...row, muted: isMutedRow(row, metric().id) };
+  // Only move newly unknown values last; keep rankResorts' order (it ranks base depth by source first).
+  }).sort((a, b) => (a.value === null) - (b.value === null) || (a.value === null && b.value === null ? a.resort.name.localeCompare(b.resort.name) : 0));
 }
 
 export function hideHeatmapPreview({ refresh = true } = {}) {
@@ -270,12 +276,12 @@ export function refreshHeatmapPreview(resort) {
   const updated = heatmapRows(filteredResorts());
   const byId = new Map(updated.map((row) => [row.resort.id, row]));
   if ((isQualityMetric(metric().id) || metric().id === 'powderAlert') && visibleRows.some(row => !byId.has(row.resort.id))) { renderDashboard(); return; }
-  const values = updated.map((row) => row.value).filter(Number.isFinite);
+  const values = updated.filter((row) => !row.muted).map((row) => row.value).filter(Number.isFinite);
   visibleRows = visibleRows.map((row) => byId.get(row.resort.id) || row);
   root.querySelectorAll('.heat-tile').forEach((tile) => {
     const row = byId.get(tile.dataset.resortId);
     if (!row) return;
-    const color = heatColor(row.value, Math.min(...values), Math.max(...values));
+    const color = row.muted ? MUTED_TILE_COLOR : heatColor(row.value, Math.min(...values), Math.max(...values));
     applyTileColor(tile, color);
     tile.querySelector('.heat-value').textContent = amount(row.value);
     tile.querySelector('.heat-source').textContent = provenance(row.resort);
@@ -354,7 +360,7 @@ export function renderDashboard() {
   const allRows = heatmapRows(visible);
   const capped = !state.showAllResorts && !state.searchQuery && allRows.length > CAP;
   visibleRows = capped ? allRows.slice(0, CAP) : allRows;
-  const values = allRows.map((row) => row.value).filter(Number.isFinite);
+  const values = allRows.filter((row) => !row.muted).map((row) => row.value).filter(Number.isFinite);
   const min = Math.min(...values);
   const max = Math.max(...values);
   root.replaceChildren();
@@ -383,14 +389,14 @@ export function renderDashboard() {
     return;
   }
   for (const row of visibleRows) {
-    const { resort, value } = row;
+    const { resort, value, muted } = row;
     const tile = document.createElement('button');
     tile.type = 'button';
     tile.className = `heat-tile${value === null ? ' is-missing' : ''}${state.selectedId === resort.id ? ' selected' : ''}`;
     tile.dataset.resortId = resort.id;
     tile.classList.toggle('is-powder-alert',metric().id === 'powderAlert');
     tile.classList.toggle('snow-demo-white', snowDemoWhite && row === visibleRows[0]);
-    const color = heatColor(value, min, max);
+    const color = muted ? MUTED_TILE_COLOR : heatColor(value, min, max);
     applyTileColor(tile, color);
     tile.setAttribute('aria-label', `${resort.name}, ${metric().label}: ${value === null ? 'Unavailable' : amount(value)}. Open resort details.`);
     tile.innerHTML = `<strong class="heat-name">${escape(resort.name)}</strong><span class="heat-value">${amount(value)}</span><span class="heat-period">${value === null ? 'Not available' : metric().caption}</span><span class="heat-source">${escape(provenance(resort))}</span>${metric().id === 'powderAlert' ? `<span class="powder-tile-details">${powderTileMarkup(resort)}</span>` : ''}`;

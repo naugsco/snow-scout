@@ -58,3 +58,27 @@ test('Powder Alert reserves readable row height without overlaps or gaps',()=>{
     assert.ok(rects.every(rect=>rect.x>=0&&rect.y>=0&&rect.x+rect.width<=width+.0001&&rect.y+rect.height<=height+.0001));
   }
 });
+
+test('base depth ranks resort reports ahead of model estimates, with unknown values last', () => {
+  const resort = (name, baseDepth, kind) => ({ name, metrics: { baseDepth }, liveConditionsKind: kind });
+  const ranked = rankResorts([
+    resort('Model deep', 40, 'model'), resort('Unknown', null, 'reported'),
+    resort('Reported shallow', 12, 'reported'), resort('Reported deep', 36, 'reported'), resort('Model zero', 0, 'model')
+  ], 'baseDepth');
+  assert.deepEqual(ranked.map((row) => row.resort.name), ['Reported deep', 'Reported shallow', 'Model deep', 'Model zero', 'Unknown']);
+  // Other metrics keep plain value order regardless of source.
+  const fresh = rankResorts([{ name: 'M', metrics: { snow24h: 9 }, liveConditionsKind: 'model' }, { name: 'R', metrics: { snow24h: 3 }, liveConditionsKind: 'reported' }], 'snow24h');
+  assert.deepEqual(fresh.map((row) => row.resort.name), ['M', 'R']);
+});
+
+test('model base depths are muted: minimum tile size and outside the scale, even when largest', async () => {
+  const { isMutedRow } = await import('../js/heatmap-metrics.js');
+  const reported = { resort: { liveConditionsKind: 'reported' }, value: 50 };
+  const model = { resort: { liveConditionsKind: 'model' }, value: 62.6 };
+  assert.equal(isMutedRow(model, 'baseDepth'), true);
+  assert.equal(isMutedRow(reported, 'baseDepth'), false);
+  assert.equal(isMutedRow({ ...model, value: null }, 'baseDepth'), false);
+  assert.equal(isMutedRow(model, 'snow24h'), false, 'other metrics are never muted');
+  const rects = layoutHeatmap([{ ...reported, muted: false }, { ...reported, value: 10, muted: false }, { ...model, muted: true }], 300, 100);
+  assert.ok(rects[2].width * rects[2].height < rects[0].width * rects[0].height, 'model tile is smaller than the top report');
+});

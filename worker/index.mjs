@@ -1,4 +1,6 @@
 import { createWeatherTileGateway } from '../server/weather-tiles.mjs';
+import { ClickCounter, tokenMatches, MAX_BODY_BYTES } from './clicks.mjs';
+export { ClickCounter };
 // snowscout.ski is the public site; the github.io origin stays allowed until the custom-domain cutover is confirmed.
 const ORIGINS=new Set(['https://snowscout.ski','https://www.snowscout.ski','https://naugsco.github.io']);
 const allowed = origin => ORIGINS.has(origin);
@@ -27,14 +29,33 @@ export class WeatherAccount {
     return new Response(tile.bytes,{headers:{'Content-Type':tile.type,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
   }
 }
+async function clickCounter(env,request,origin){
+  try {
+    const response=await env.CLICK_COUNTER.get(env.CLICK_COUNTER.idFromName('clicks-v1')).fetch(request);
+    const h=new Headers(response.headers);for(const [k,v]of Object.entries(headers(origin)))if(k!=='Content-Type')h.set(k,v);
+    return new Response(response.body,{status:response.status,headers:h});
+  }catch{return json({error:'Click counter unavailable.'},503,origin);}
+}
 export default {
   async fetch(request,env) {
     const url=new URL(request.url),origin=request.headers.get('Origin');
-    if(url.pathname==='/health' && request.method==='GET')return json({service:'snow-scout-weather',version:'20261121',status:'ok'});
+    if(url.pathname==='/health' && request.method==='GET')return json({service:'snow-scout-weather',version:'20261121-clicks',status:'ok'});
     if(origin && !allowed(origin))return json({error:'Origin not allowed.'},403);
     if(request.method==='OPTIONS'){
       if(!allowed(origin))return json({error:'Origin required.'},403);
       return new Response(null,{status:204,headers:{...headers(origin),'Access-Control-Allow-Methods':'GET, OPTIONS','Access-Control-Allow-Headers':'Content-Type','Access-Control-Max-Age':'600'}});
+    }
+    if(url.pathname==='/api/clicks'){
+      if(request.method!=='POST')return json({error:'POST required.'},405,origin);
+      if(!allowed(origin))return json({error:'Origin required.'},403);
+      const length=Number(request.headers.get('Content-Length'));
+      if(!Number.isInteger(length) || length<1 || length>MAX_BODY_BYTES)return json({error:'Click body must be 1–512 bytes.'},413,origin);
+      return clickCounter(env,request,origin);
+    }
+    if(url.pathname==='/api/clicks/summary'){
+      if(request.method!=='GET')return json({error:'GET required.'},405);
+      if(!tokenMatches(request.headers.get('Authorization'),env.CLICK_STATS_TOKEN))return json({error:'Unauthorized.'},401);
+      return clickCounter(env,request,null);
     }
     if(request.method!=='GET')return json({error:'GET required.'},405,origin);
     if(!url.pathname.startsWith('/api/weather/'))return json({error:'Not found.'},404,origin);

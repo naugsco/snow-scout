@@ -1,4 +1,5 @@
 import { bindTVMode } from './tv-mode.js?v=20261107-resort-view';
+import { bindOutboundClicks } from './outbound-clicks.js?v=20261121-clicks';
 import { openTripComparison, refreshTripComparison } from './trip-comparison.js?v=20261106-all-travel-guides';
 import { DEFAULT_WEBCAM_PAGES } from './constants.js?v=20261021-sources-verified';
 import { state, setUseMetric, setTheme } from './state.js?v=20261021-sources-verified';
@@ -97,6 +98,7 @@ function applyFilters() {
 function selectPassFilter(id) { state.passFilter = id; state.showAllResorts = false; applyFilters(); }
 function selectRegionFilter(id) { state.regionFilter = id; state.showAllResorts = false; applyFilters(); }
 bindTVMode({ render: renderDashboard, hidePreview: hideHeatmapPreview });
+bindOutboundClicks();
 setOnResortClick(focusResort);
 setOnCompareToggle(toggleCompareResort);
 

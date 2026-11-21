@@ -9,7 +9,7 @@
     "OPENWEATHER_ENABLED": "false",
     "OPENWEATHER_CIRCUIT_RESET_ID": "initial"
   },
-  "durable_objects": {"bindings": [{"name": "WEATHER_ACCOUNT", "class_name": "WeatherAccount"}]},
-  "migrations": [{"tag": "v1", "new_sqlite_classes": ["WeatherAccount"]}],
+  "durable_objects": {"bindings": [{"name": "WEATHER_ACCOUNT", "class_name": "WeatherAccount"}, {"name": "CLICK_COUNTER", "class_name": "ClickCounter"}]},
+  "migrations": [{"tag": "v1", "new_sqlite_classes": ["WeatherAccount"]}, {"tag": "v2", "new_sqlite_classes": ["ClickCounter"]}],
   "observability": {"enabled": false}
 }

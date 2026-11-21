@@ -261,7 +261,9 @@ test('Banff Sunshine reports the Upper Mountain base converted from cm, not the 
     + `<div class="snow-group upper"><h3 class="snow-group-title"><span class="wi wi-snow"></span>\nUpper Mountain Snow Report</h3>${upper}</div>`
     + `<div class="snow-group mid"><h3 class="snow-group-title"><span></span>Mid Mountain Snow Report</h3>${card('7 Days', 17)}${card('Settled Base', 28)}</div></section>`;
   const parsed = parseBanffSunshineConditions(page('Updated: Friday, November 20th, 2026 7:01 PM', card('7 Day', 19) + card('Base', 38) + card('Cumulative', 63)), 'America/Edmonton');
-  assert.equal(parsed.snowReportedAt, '2026-11-21T02:01:00.000Z');
+  // Offset comes from the runtime's tz database (versions disagree on Alberta in 2026); test the wall clock.
+  assert.equal(parsed.snowReportedAt, zonedTimestamp('2026-11-20 19:01', 'America/Edmonton'));
+  assert.ok(parsed.snowReportedAt);
   assert.deepEqual(parsed.metrics, { baseDepth: 14.96 });
   assert.equal(parsed.seasonTotalInches, 24.8, 'Upper Mountain cumulative, not mid');
   assert.throws(() => parseBanffSunshineConditions(page('', card('Base', 38)), 'America/Edmonton'), /no valid report timestamp/);

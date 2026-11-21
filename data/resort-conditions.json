@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-21T02:16:20.983Z",
+  "generatedAt": "2026-11-21T08:55:48.409Z",
   "summary": {
     "ok": 105
   },
@@ -9,9 +9,9 @@
       "status": "ok",
       "resort": "Vail",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:31.476Z",
+      "checkedAt": "2026-11-21T08:54:42.063Z",
       "snowReportedAt": "2026-11-20T12:39:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:07:14.812Z",
+      "terrainReportedAt": "2026-11-21T08:45:34.808Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 20, 2026 at 5:39 AM MST",
       "snowStatus": "ready",
@@ -23,7 +23,7 @@
         "snow72h": null,
         "daysSinceSnow": 0,
         "baseDepth": 18,
-        "tempF": 21.4,
+        "tempF": 20.8,
         "runsOpen": 6,
         "runsTotal": 277,
         "groomedRuns": 6,
@@ -34,20 +34,27 @@
         "terrain": "https://www.vail.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=39.6138&longitude=-106.3656&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 14,
+        "reportedAt": "2026-11-20T12:39:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 4.7,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T12:39:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "beaver creek": {
       "status": "ok",
       "resort": "Beaver Creek",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:32.642Z",
+      "checkedAt": "2026-11-21T08:54:43.360Z",
       "snowReportedAt": "2026-11-20T12:39:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:08:02.488Z",
+      "terrainReportedAt": "2026-11-21T08:48:18.912Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 20, 2026 at 5:39 AM MST",
       "snowStatus": "ready",
@@ -59,7 +66,7 @@
         "snow72h": null,
         "daysSinceSnow": 0,
         "baseDepth": 4,
-        "tempF": 24.6,
+        "tempF": 20.1,
         "runsOpen": 0,
         "runsTotal": 182,
         "groomedRuns": 0,
@@ -70,20 +77,27 @@
         "terrain": "https://www.beavercreek.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=39.5958&longitude=-106.5299&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 13,
+        "reportedAt": "2026-11-20T12:39:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 3,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T12:39:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "breckenridge": {
       "status": "ok",
       "resort": "Breckenridge",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:33.762Z",
+      "checkedAt": "2026-11-21T08:54:44.523Z",
       "snowReportedAt": "2026-11-20T12:24:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:07:32.551Z",
+      "terrainReportedAt": "2026-11-21T08:46:33.006Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 20, 2026 at 5:24 AM MST",
       "snowStatus": "ready",
@@ -95,7 +109,7 @@
         "snow72h": null,
         "daysSinceSnow": null,
         "baseDepth": 18,
-        "tempF": 19.3,
+        "tempF": 14.8,
         "runsOpen": 2,
         "runsTotal": 226,
         "groomedRuns": null,
@@ -106,20 +120,27 @@
         "terrain": "https://www.breckenridge.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=39.4726&longitude=-106.0723&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 6,
+        "reportedAt": "2026-11-20T12:24:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 6.5,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T12:24:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "keystone": {
       "status": "ok",
       "resort": "Keystone",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:34.731Z",
+      "checkedAt": "2026-11-21T08:54:45.929Z",
       "snowReportedAt": "2026-11-20T12:48:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:07:02.495Z",
+      "terrainReportedAt": "2026-11-21T08:47:59.182Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 20, 2026 at 5:48 AM MST",
       "snowStatus": "ready",
@@ -131,7 +152,7 @@
         "snow72h": null,
         "daysSinceSnow": null,
         "baseDepth": 18,
-        "tempF": 19.7,
+        "tempF": 15,
         "runsOpen": 5,
         "runsTotal": 144,
         "groomedRuns": null,
@@ -142,20 +163,27 @@
         "terrain": "https://www.keystoneresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=39.5719&longitude=-105.9415&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 8,
+        "reportedAt": "2026-11-20T12:48:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 9.2,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T12:48:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "crested butte": {
       "status": "ok",
       "resort": "Crested Butte",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:36.051Z",
+      "checkedAt": "2026-11-21T08:54:47.473Z",
       "snowReportedAt": "2026-11-20T12:39:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:14:07.293Z",
+      "terrainReportedAt": "2026-11-21T08:45:43.367Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 20, 2026 at 5:39 AM MST",
       "snowStatus": "ready",
@@ -167,7 +195,7 @@
         "snow72h": null,
         "daysSinceSnow": 0,
         "baseDepth": 10,
-        "tempF": 25.1,
+        "tempF": 22.7,
         "runsOpen": 0,
         "runsTotal": 168,
         "groomedRuns": 0,
@@ -178,20 +206,27 @@
         "terrain": "https://www.skicb.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=38.8991&longitude=-106.9460&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 25,
+        "reportedAt": "2026-11-20T12:39:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 4.3,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T12:39:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "park city": {
       "status": "ok",
       "resort": "Park City",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:37.942Z",
+      "checkedAt": "2026-11-21T08:54:49.454Z",
       "snowReportedAt": "2026-11-20T12:35:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:54.994Z",
+      "terrainReportedAt": "2026-11-21T08:54:26.516Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 20, 2026 at 5:35 AM MST",
       "snowStatus": "ready",
@@ -203,7 +238,7 @@
         "snow72h": null,
         "daysSinceSnow": 0,
         "baseDepth": 23,
-        "tempF": 17.4,
+        "tempF": 14.8,
         "runsOpen": 0,
         "runsTotal": 349,
         "groomedRuns": 0,
@@ -214,20 +249,27 @@
         "terrain": "https://www.parkcitymountain.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=40.6533&longitude=-111.5519&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 35,
+        "reportedAt": "2026-11-20T12:35:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 20.6,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T12:35:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "kirkwood": {
       "status": "ok",
       "resort": "Kirkwood",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:39.149Z",
+      "checkedAt": "2026-11-21T08:54:50.955Z",
       "snowReportedAt": "2026-11-20T22:35:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:11:06.504Z",
+      "terrainReportedAt": "2026-11-21T08:45:30.056Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 20, 2026 at 2:35 PM PST",
       "snowStatus": "ready",
@@ -239,7 +281,7 @@
         "snow72h": null,
         "daysSinceSnow": 0,
         "baseDepth": 42,
-        "tempF": 17.9,
+        "tempF": 13.2,
         "runsOpen": 0,
         "runsTotal": 84,
         "groomedRuns": 0,
@@ -250,20 +292,27 @@
         "terrain": "https://www.kirkwood.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=38.6794&longitude=-120.0666&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 75,
+        "reportedAt": "2026-11-20T22:35:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 45.5,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T22:35:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "heavenly": {
       "status": "ok",
       "resort": "Heavenly",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:40.094Z",
+      "checkedAt": "2026-11-21T08:54:52.144Z",
       "snowReportedAt": "2026-11-20T14:52:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:11:44.530Z",
+      "terrainReportedAt": "2026-11-21T08:53:30.466Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 20, 2026 at 6:52 AM PST",
       "snowStatus": "ready",
@@ -275,7 +324,7 @@
         "snow72h": null,
         "daysSinceSnow": 0,
         "baseDepth": 25,
-        "tempF": 11.3,
+        "tempF": 9.6,
         "runsOpen": 11,
         "runsTotal": 113,
         "groomedRuns": null,
@@ -286,20 +335,27 @@
         "terrain": "https://www.skiheavenly.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=38.9330&longitude=-119.9041&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 49,
+        "reportedAt": "2026-11-20T14:52:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 34.9,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T14:52:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "northstar": {
       "status": "ok",
       "resort": "Northstar",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:41.156Z",
+      "checkedAt": "2026-11-21T08:54:53.438Z",
       "snowReportedAt": "2026-11-20T14:33:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:07:33.426Z",
+      "terrainReportedAt": "2026-11-21T08:49:16.900Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 20, 2026 at 6:33 AM PST",
       "snowStatus": "ready",
@@ -311,7 +367,7 @@
         "snow72h": null,
         "daysSinceSnow": 0,
         "baseDepth": 50,
-        "tempF": 18.7,
+        "tempF": 15.4,
         "runsOpen": 17,
         "runsTotal": 108,
         "groomedRuns": null,
@@ -322,20 +378,27 @@
         "terrain": "https://www.northstarcalifornia.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=39.2561&longitude=-120.1331&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 66,
+        "reportedAt": "2026-11-20T14:33:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 24.4,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T14:33:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "stowe": {
       "status": "ok",
       "resort": "Stowe",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:42.354Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:11:00.526Z",
+      "checkedAt": "2026-11-21T08:54:54.785Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:34.029Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 18, 2026 at 11:05 AM EST",
       "snowStatus": "ready",
@@ -347,7 +410,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 45.5,
+        "tempF": 35.1,
         "runsOpen": 0,
         "runsTotal": 158,
         "groomedRuns": 0,
@@ -358,6 +421,13 @@
         "terrain": "https://www.stowe.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=44.5287&longitude=-72.7904&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 7,
+        "reportedAt": "2026-11-18T16:05:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0.8,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated November 18, 2026 at 11:05 AM EST."
       ],
@@ -365,15 +435,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-11-18T16:05:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "okemo": {
       "status": "ok",
       "resort": "Okemo",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:43.882Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:07:10.610Z",
+      "checkedAt": "2026-11-21T08:54:56.365Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:49:55.667Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated June 23, 2026 at 6:24 PM EDT",
       "snowStatus": "ready",
@@ -385,7 +455,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 44.9,
+        "tempF": 34.6,
         "runsOpen": 0,
         "runsTotal": 21,
         "groomedRuns": 0,
@@ -396,6 +466,13 @@
         "terrain": "https://www.okemo.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=43.4091&longitude=-72.7339&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-06-23T22:24:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 3.5,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated June 23, 2026 at 6:24 PM EDT."
       ],
@@ -403,15 +480,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-06-23T22:24:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "mount sunapee": {
       "status": "ok",
       "resort": "Mount Sunapee",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:45.235Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:08:07.642Z",
+      "checkedAt": "2026-11-21T08:54:57.642Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:45:50.397Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 13, 2026 at 9:06 AM EST",
       "snowStatus": "ready",
@@ -423,7 +500,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 46.7,
+        "tempF": 37.7,
         "runsOpen": 0,
         "runsTotal": 19,
         "groomedRuns": 0,
@@ -434,6 +511,13 @@
         "terrain": "https://www.mountsunapee.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=43.3225&longitude=-72.0758&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 1,
+        "reportedAt": "2026-11-13T14:06:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 2.2,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated November 13, 2026 at 9:06 AM EST."
       ],
@@ -441,15 +525,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-11-13T14:06:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "stevens pass": {
       "status": "ok",
       "resort": "Stevens Pass",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:46.874Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:14:38.581Z",
+      "checkedAt": "2026-11-21T08:54:59.871Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:54:58.409Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated June 23, 2026 at 3:24 PM PDT",
       "snowStatus": "ready",
@@ -461,7 +545,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 2.36,
-        "tempF": 25.7,
+        "tempF": 23.5,
         "runsOpen": 0,
         "runsTotal": null,
         "groomedRuns": 0,
@@ -472,6 +556,13 @@
         "terrain": "https://www.stevenspass.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=47.7392&longitude=-121.0911&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-06-23T22:24:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 11.1,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated June 23, 2026 at 3:24 PM PDT."
       ],
@@ -479,15 +570,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-06-23T22:24:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "whistler blackcomb": {
       "status": "ok",
       "resort": "Whistler Blackcomb",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:48.201Z",
+      "checkedAt": "2026-11-21T08:55:01.067Z",
       "snowReportedAt": "2026-11-20T22:02:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:15:00.972Z",
+      "terrainReportedAt": "2026-11-21T08:53:35.047Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 20, 2026 at 2:02 PM PST",
       "snowStatus": "ready",
@@ -499,7 +590,7 @@
         "snow72h": null,
         "daysSinceSnow": null,
         "baseDepth": 14,
-        "tempF": 19.9,
+        "tempF": 18.8,
         "runsOpen": 1,
         "runsTotal": 307,
         "groomedRuns": null,
@@ -510,20 +601,27 @@
         "terrain": "https://www.whistlerblackcomb.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=50.0693&longitude=-122.9462&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime&elevation=1850"
       },
+      "seasonSnowfall": {
+        "inches": 11,
+        "reportedAt": "2026-11-20T22:02:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 24.4,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T22:02:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "afton alps": {
       "status": "ok",
       "resort": "Afton Alps",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:49.472Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:15:48.778Z",
+      "checkedAt": "2026-11-21T08:55:02.389Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:01.865Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated August 03, 2026 at 12:03 PM CDT",
       "snowStatus": "ready",
@@ -535,7 +633,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 59.8,
+        "tempF": 61.1,
         "runsOpen": 0,
         "runsTotal": 35,
         "groomedRuns": 0,
@@ -546,6 +644,13 @@
         "terrain": "https://www.aftonalps.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=44.8546&longitude=-92.7844&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-08-03T17:03:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated August 03, 2026 at 12:03 PM CDT."
       ],
@@ -553,15 +658,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-08-03T17:03:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "mt brighton": {
       "status": "ok",
       "resort": "Mt. Brighton",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:50.817Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:15:50.268Z",
+      "checkedAt": "2026-11-21T08:55:03.903Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:03.304Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated March 04, 2026 at 3:10 PM EST",
       "snowStatus": "ready",
@@ -573,7 +678,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 47.4,
+        "tempF": 40.8,
         "runsOpen": 0,
         "runsTotal": 26,
         "groomedRuns": 0,
@@ -584,6 +689,13 @@
         "terrain": "https://www.mtbrighton.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=42.5400&longitude=-83.8092&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-03-04T20:10:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated March 04, 2026 at 3:10 PM EST."
       ],
@@ -591,15 +703,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-03-04T20:10:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "wilmot mountain": {
       "status": "ok",
       "resort": "Wilmot Mountain",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:52.064Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:15:51.336Z",
+      "checkedAt": "2026-11-21T08:55:05.244Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:48:58.334Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated March 04, 2026 at 8:32 AM CST",
       "snowStatus": "ready",
@@ -611,7 +723,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 55,
+        "tempF": 50.6,
         "runsOpen": 0,
         "runsTotal": 26,
         "groomedRuns": 0,
@@ -622,6 +734,13 @@
         "terrain": "https://www.wilmotmountain.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=42.4974&longitude=-88.1909&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-03-04T14:32:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated March 04, 2026 at 8:32 AM CST."
       ],
@@ -629,15 +748,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-03-04T14:32:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "attitash": {
       "status": "ok",
       "resort": "Attitash",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:53.518Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:15:52.889Z",
+      "checkedAt": "2026-11-21T08:55:06.822Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:50:05.685Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated April 05, 2026 at 3:35 PM EDT",
       "snowStatus": "ready",
@@ -649,7 +768,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 48.4,
+        "tempF": 39.4,
         "runsOpen": 0,
         "runsTotal": 76,
         "groomedRuns": 0,
@@ -660,6 +779,13 @@
         "terrain": "https://www.attitash.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=44.0759&longitude=-71.2358&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-04-05T19:35:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated April 05, 2026 at 3:35 PM EDT."
       ],
@@ -667,15 +793,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-04-05T19:35:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "wildcat": {
       "status": "ok",
       "resort": "Wildcat Mountain",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:54.814Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:10:06.415Z",
+      "checkedAt": "2026-11-21T08:55:08.396Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:07.510Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated June 23, 2026 at 6:24 PM EDT",
       "snowStatus": "ready",
@@ -687,7 +813,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 42.7,
+        "tempF": 35.6,
         "runsOpen": 0,
         "runsTotal": 48,
         "groomedRuns": 0,
@@ -698,6 +824,13 @@
         "terrain": "https://www.skiwildcat.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=44.2579&longitude=-71.2325&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-06-23T22:24:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0.5,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated June 23, 2026 at 6:24 PM EDT."
       ],
@@ -705,15 +838,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-06-23T22:24:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "crotched mountain": {
       "status": "ok",
       "resort": "Crotched Mountain",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:56.280Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:10:50.019Z",
+      "checkedAt": "2026-11-21T08:55:09.946Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:10.773Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated June 23, 2026 at 6:22 PM EDT",
       "snowStatus": "ready",
@@ -725,7 +858,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 47.5,
+        "tempF": 38.1,
         "runsOpen": 0,
         "runsTotal": 26,
         "groomedRuns": 0,
@@ -736,6 +869,13 @@
         "terrain": "https://www.crotchedmtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=43.0066&longitude=-71.8792&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-06-23T22:22:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 1.4,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated June 23, 2026 at 6:22 PM EDT."
       ],
@@ -743,15 +883,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-06-23T22:22:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "hunter": {
       "status": "ok",
       "resort": "Hunter Mountain",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:57.645Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:11:16.379Z",
+      "checkedAt": "2026-11-21T08:55:12.129Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:48:08.850Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated June 23, 2026 at 6:22 PM EDT",
       "snowStatus": "ready",
@@ -763,7 +903,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 42.5,
+        "tempF": 38.7,
         "runsOpen": 0,
         "runsTotal": 7,
         "groomedRuns": 0,
@@ -774,6 +914,13 @@
         "terrain": "https://www.huntermtn.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=42.2018&longitude=-74.2210&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-06-23T22:22:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 3.1,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated June 23, 2026 at 6:22 PM EDT."
       ],
@@ -781,15 +928,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-06-23T22:22:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "mount snow": {
       "status": "ok",
       "resort": "Mount Snow",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:15:58.964Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:09:14.711Z",
+      "checkedAt": "2026-11-21T08:55:13.702Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:09.535Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated November 17, 2026 at 8:02 AM EST",
       "snowStatus": "ready",
@@ -801,7 +948,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 42.2,
+        "tempF": 36.6,
         "runsOpen": 0,
         "runsTotal": 86,
         "groomedRuns": 0,
@@ -812,6 +959,13 @@
         "terrain": "https://www.mountsnow.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=42.9608&longitude=-72.9105&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 5,
+        "reportedAt": "2026-11-17T13:02:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 5.6,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated November 17, 2026 at 8:02 AM EST."
       ],
@@ -819,15 +973,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-11-17T13:02:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "jack frost": {
       "status": "ok",
       "resort": "Jack Frost / Big Boulder",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:16:00.423Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:10:56.919Z",
+      "checkedAt": "2026-11-21T08:55:15.362Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:51:32.529Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated July 29, 2026 at 4:21 PM EDT",
       "snowStatus": "ready",
@@ -839,7 +993,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 41.2,
+        "tempF": 31.6,
         "runsOpen": 0,
         "runsTotal": 37,
         "groomedRuns": 0,
@@ -850,6 +1004,13 @@
         "terrain": "https://www.jfbb.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=41.1079&longitude=-75.6461&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-07-29T20:21:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0.7,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated July 29, 2026 at 4:21 PM EDT."
       ],
@@ -857,15 +1018,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-07-29T20:21:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "roundtop": {
       "status": "ok",
       "resort": "Roundtop Mountain",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:16:02.212Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:01.275Z",
+      "checkedAt": "2026-11-21T08:55:17.079Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:47:18.021Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated March 19, 2026 at 8:39 AM EDT",
       "snowStatus": "ready",
@@ -877,7 +1038,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 51.6,
+        "tempF": 41.7,
         "runsOpen": 0,
         "runsTotal": 21,
         "groomedRuns": 0,
@@ -888,6 +1049,13 @@
         "terrain": "https://www.skiroundtop.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=40.1059&longitude=-76.9265&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-03-19T12:39:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated March 19, 2026 at 8:39 AM EDT."
       ],
@@ -895,15 +1063,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-03-19T12:39:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "liberty": {
       "status": "ok",
       "resort": "Liberty Mountain",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:16:03.780Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:10:43.702Z",
+      "checkedAt": "2026-11-21T08:55:18.474Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:50:32.944Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated February 23, 2026 at 1:53 PM EST",
       "snowStatus": "ready",
@@ -915,7 +1083,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 49.7,
+        "tempF": 44,
         "runsOpen": 0,
         "runsTotal": 20,
         "groomedRuns": 0,
@@ -926,6 +1094,13 @@
         "terrain": "https://www.libertymountainresort.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=39.7580&longitude=-77.3676&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-02-23T18:53:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated February 23, 2026 at 1:53 PM EST."
       ],
@@ -933,15 +1108,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-02-23T18:53:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "whitetail": {
       "status": "ok",
       "resort": "Whitetail Resort",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:16:05.211Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:04.599Z",
+      "checkedAt": "2026-11-21T08:55:19.599Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:51:12.133Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated February 23, 2026 at 1:55 PM EST",
       "snowStatus": "ready",
@@ -953,7 +1128,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 53.3,
+        "tempF": 45.4,
         "runsOpen": 0,
         "runsTotal": 22,
         "groomedRuns": 0,
@@ -964,6 +1139,13 @@
         "terrain": "https://www.skiwhitetail.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=39.7439&longitude=-77.9366&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-02-23T18:55:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated February 23, 2026 at 1:55 PM EST."
       ],
@@ -971,15 +1153,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-02-23T18:55:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "seven springs": {
       "status": "ok",
       "resort": "Seven Springs",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:16:06.744Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:09:57.165Z",
+      "checkedAt": "2026-11-21T08:55:21.046Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:46:11.439Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated June 23, 2026 at 6:23 PM EDT",
       "snowStatus": "ready",
@@ -991,7 +1173,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 46.9,
+        "tempF": 41.1,
         "runsOpen": 0,
         "runsTotal": 47,
         "groomedRuns": 0,
@@ -1002,6 +1184,13 @@
         "terrain": "https://www.7springs.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=40.0241&longitude=-79.3039&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-06-23T22:23:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0.7,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated June 23, 2026 at 6:23 PM EDT."
       ],
@@ -1009,15 +1198,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-06-23T22:23:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "hidden valley": {
       "status": "ok",
       "resort": "Hidden Valley",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:16:08.339Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:07.605Z",
+      "checkedAt": "2026-11-21T08:55:22.287Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:53:34.051Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated March 24, 2026 at 9:19 AM EDT",
       "snowStatus": "ready",
@@ -1029,7 +1218,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 47.7,
+        "tempF": 41.9,
         "runsOpen": 0,
         "runsTotal": 32,
         "groomedRuns": 0,
@@ -1040,6 +1229,13 @@
         "terrain": "https://www.hiddenvalleyresort.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=40.0584&longitude=-79.2506&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-03-24T13:19:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0.5,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: Updated March 24, 2026 at 9:19 AM EDT."
       ],
@@ -1047,14 +1243,14 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-03-24T13:19:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "laurel mountain": {
       "status": "ok",
       "resort": "Laurel Mountain",
       "adapter": "vail",
-      "checkedAt": "2026-11-21T02:16:10.434Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "checkedAt": "2026-11-21T08:55:23.799Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "terrainReportedAt": null,
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": "Updated March 09, 2026 at 12:07 AM EDT",
@@ -1067,7 +1263,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 48.6,
+        "tempF": 44.1,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -1078,6 +1274,13 @@
         "terrain": "https://www.laurelmountainski.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=40.1664&longitude=-79.1684&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-03-09T04:07:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 0.1,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Terrain report: Assignment token not found: FR.TerrainStatusFeed =",
         "Snow report stale: Updated March 09, 2026 at 12:07 AM EDT.",
@@ -1087,13 +1290,75 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-03-09T04:07:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "perisher": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Perisher",
-      "checkedAt": "2026-11-21T02:16:10.435Z",
+      "checkedAt": "2026-11-21T08:55:23.799Z",
+      "snowStatus": "ready",
+      "terrainStatus": "unavailable",
+      "metrics": {
+        "snow24h": 0,
+        "snow48h": 0,
+        "snow72h": 0,
+        "daysSinceSnow": null,
+        "baseDepth": 0,
+        "tempF": 54.9,
+        "runsOpen": null,
+        "runsTotal": null,
+        "groomedRuns": null,
+        "liftsOpen": null
+      },
+      "sources": {
+        "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=-36.3958&longitude=148.3998&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
+      },
+      "issues": [],
+      "snowSourceKind": "model",
+      "primarySnowStatus": "unavailable",
+      "officialSnowReportedAt": null,
+      "temperatureKind": "model",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "note": "Weather-model estimates at the selected ski-terrain location (1883 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
+    },
+    "falls creek": {
+      "status": "ok",
+      "adapter": "open-meteo",
+      "resort": "Falls Creek",
+      "checkedAt": "2026-11-21T08:55:23.800Z",
+      "snowStatus": "ready",
+      "terrainStatus": "unavailable",
+      "metrics": {
+        "snow24h": 0,
+        "snow48h": 0,
+        "snow72h": 0,
+        "daysSinceSnow": null,
+        "baseDepth": 0,
+        "tempF": 57.6,
+        "runsOpen": null,
+        "runsTotal": null,
+        "groomedRuns": null,
+        "liftsOpen": null
+      },
+      "sources": {
+        "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=-36.8682&longitude=147.2726&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
+      },
+      "issues": [],
+      "snowSourceKind": "model",
+      "primarySnowStatus": "unavailable",
+      "officialSnowReportedAt": null,
+      "temperatureKind": "model",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "note": "Weather-model estimates at the selected ski-terrain location (1632 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
+    },
+    "hotham": {
+      "status": "ok",
+      "adapter": "open-meteo",
+      "resort": "Hotham",
+      "checkedAt": "2026-11-21T08:55:23.800Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -1109,68 +1374,6 @@
         "liftsOpen": null
       },
       "sources": {
-        "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=-36.3958&longitude=148.3998&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
-      },
-      "issues": [],
-      "snowSourceKind": "model",
-      "primarySnowStatus": "unavailable",
-      "officialSnowReportedAt": null,
-      "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "note": "Weather-model estimates at the selected ski-terrain location (1883 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
-    },
-    "falls creek": {
-      "status": "ok",
-      "adapter": "open-meteo",
-      "resort": "Falls Creek",
-      "checkedAt": "2026-11-21T02:16:10.435Z",
-      "snowStatus": "ready",
-      "terrainStatus": "unavailable",
-      "metrics": {
-        "snow24h": 0,
-        "snow48h": 0,
-        "snow72h": 0,
-        "daysSinceSnow": null,
-        "baseDepth": 0,
-        "tempF": 58.3,
-        "runsOpen": null,
-        "runsTotal": null,
-        "groomedRuns": null,
-        "liftsOpen": null
-      },
-      "sources": {
-        "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=-36.8682&longitude=147.2726&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
-      },
-      "issues": [],
-      "snowSourceKind": "model",
-      "primarySnowStatus": "unavailable",
-      "officialSnowReportedAt": null,
-      "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "note": "Weather-model estimates at the selected ski-terrain location (1632 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
-    },
-    "hotham": {
-      "status": "ok",
-      "adapter": "open-meteo",
-      "resort": "Hotham",
-      "checkedAt": "2026-11-21T02:16:10.435Z",
-      "snowStatus": "ready",
-      "terrainStatus": "unavailable",
-      "metrics": {
-        "snow24h": 0,
-        "snow48h": 0,
-        "snow72h": 0,
-        "daysSinceSnow": null,
-        "baseDepth": 0,
-        "tempF": 58.3,
-        "runsOpen": null,
-        "runsTotal": null,
-        "groomedRuns": null,
-        "liftsOpen": null
-      },
-      "sources": {
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=-36.9763&longitude=147.1473&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
       "issues": [],
@@ -1178,24 +1381,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1604 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "hakuba valley": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Hakuba Valley",
-      "checkedAt": "2026-11-21T02:16:10.436Z",
+      "checkedAt": "2026-11-21T08:55:23.800Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 2.84,
-        "snow48h": 2.84,
-        "snow72h": 2.84,
+        "snow24h": 2.76,
+        "snow48h": 2.76,
+        "snow72h": 2.76,
         "daysSinceSnow": 0,
-        "baseDepth": 12.6,
-        "tempF": 35.4,
+        "baseDepth": 12.99,
+        "tempF": 33,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -1209,24 +1412,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (843 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "rusutsu": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Rusutsu",
-      "checkedAt": "2026-11-21T02:16:10.436Z",
+      "checkedAt": "2026-11-21T08:55:23.800Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 2.84,
-        "snow48h": 3.58,
-        "snow72h": 4.02,
+        "snow24h": 2.67,
+        "snow48h": 3.11,
+        "snow72h": 4.08,
         "daysSinceSnow": 0,
-        "baseDepth": 5.51,
-        "tempF": 29.3,
+        "baseDepth": 6.69,
+        "tempF": 20.6,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -1240,23 +1443,23 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (614 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "andermatt sedrun": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Andermatt-Sedrun",
-      "checkedAt": "2026-11-21T02:16:10.436Z",
+      "checkedAt": "2026-11-21T08:55:23.800Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 2.87,
-        "snow48h": 5.4,
-        "snow72h": 6.64,
+        "snow24h": 5.81,
+        "snow48h": 7.03,
+        "snow72h": 8.74,
         "daysSinceSnow": 0,
-        "baseDepth": 11.81,
+        "baseDepth": 14.57,
         "tempF": 22,
         "runsOpen": null,
         "runsTotal": null,
@@ -1271,24 +1474,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (2431 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "verbier": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Verbier (4 Vallées)",
-      "checkedAt": "2026-11-21T02:16:10.436Z",
+      "checkedAt": "2026-11-21T08:55:23.800Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 2.76,
-        "snow48h": 12.24,
-        "snow72h": 18.3,
+        "snow24h": 3.69,
+        "snow48h": 9.09,
+        "snow72h": 15.87,
         "daysSinceSnow": 0,
-        "baseDepth": 27.17,
-        "tempF": 25.6,
+        "baseDepth": 29.92,
+        "tempF": 26.2,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -1302,24 +1505,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (2210 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "crans montana": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Crans-Montana",
-      "checkedAt": "2026-11-21T02:16:10.437Z",
+      "checkedAt": "2026-11-21T08:55:23.800Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 8.93,
-        "snow48h": 20.01,
-        "snow72h": 22.35,
+        "snow24h": 6.61,
+        "snow48h": 16.23,
+        "snow72h": 20.94,
         "daysSinceSnow": 0,
-        "baseDepth": 18.5,
-        "tempF": 27.5,
+        "baseDepth": 18.9,
+        "tempF": 26.5,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -1333,24 +1536,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (2093 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "les 3 vall es": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Les 3 Vallées",
-      "checkedAt": "2026-11-21T02:16:10.437Z",
+      "checkedAt": "2026-11-21T08:55:23.800Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 6.23,
-        "snow48h": 11.52,
-        "snow72h": 13.7,
+        "snow24h": 4.71,
+        "snow48h": 9.51,
+        "snow72h": 12.02,
         "daysSinceSnow": 0,
-        "baseDepth": 2.76,
-        "tempF": 31.1,
+        "baseDepth": 2.36,
+        "tempF": 32.5,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -1364,24 +1567,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1720 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "paradiski": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Paradiski",
-      "checkedAt": "2026-11-21T02:16:10.437Z",
+      "checkedAt": "2026-11-21T08:55:23.801Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 8.02,
-        "snow48h": 17.97,
-        "snow72h": 21.63,
+        "snow24h": 6.12,
+        "snow48h": 11.63,
+        "snow72h": 19.15,
         "daysSinceSnow": 0,
-        "baseDepth": 13.78,
-        "tempF": 27.9,
+        "baseDepth": 12.6,
+        "tempF": 28.6,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -1395,24 +1598,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1985 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "tignes": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Tignes",
-      "checkedAt": "2026-11-21T02:16:10.437Z",
+      "checkedAt": "2026-11-21T08:55:23.801Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 10.33,
-        "snow48h": 21.63,
-        "snow72h": 32.77,
+        "snow24h": 8.87,
+        "snow48h": 17.14,
+        "snow72h": 26.79,
         "daysSinceSnow": 0,
-        "baseDepth": 28.74,
-        "tempF": 21.3,
+        "baseDepth": 29.92,
+        "tempF": 21.8,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -1426,24 +1629,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (2572 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "val d is re": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Val d'Isère",
-      "checkedAt": "2026-11-21T02:16:10.437Z",
+      "checkedAt": "2026-11-21T08:55:23.801Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 10.33,
-        "snow48h": 21.63,
-        "snow72h": 32.77,
+        "snow24h": 8.87,
+        "snow48h": 17.14,
+        "snow72h": 26.79,
         "daysSinceSnow": 0,
-        "baseDepth": 28.74,
-        "tempF": 21.3,
+        "baseDepth": 29.92,
+        "tempF": 21.8,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -1457,17 +1660,17 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (2572 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "telluride": {
       "status": "ok",
       "resort": "Telluride",
       "adapter": "telluride",
-      "checkedAt": "2026-11-21T02:16:13.412Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:13.412Z",
+      "checkedAt": "2026-11-21T08:55:26.647Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:26.647Z",
       "terrainTimestampKind": "checked",
       "sourceUpdatedText": null,
       "snowStatus": "ready",
@@ -1478,8 +1681,8 @@
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "baseDepth": 1.97,
-        "tempF": 25.2,
+        "baseDepth": 2.36,
+        "tempF": 20.6,
         "runsOpen": 0,
         "runsTotal": 149,
         "groomedRuns": 0,
@@ -1497,13 +1700,13 @@
       "primarySnowStatus": "unverified",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "aspen snowmass": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Aspen Snowmass",
-      "checkedAt": "2026-11-21T02:16:13.413Z",
+      "checkedAt": "2026-11-21T08:55:26.647Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -1512,7 +1715,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 26.7,
+        "tempF": 24.4,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -1526,23 +1729,23 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (2694 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "steamboat": {
       "status": "ok",
       "resort": "Steamboat",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:13.681Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "checkedAt": "2026-11-21T08:55:26.999Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Steamboat",
           "snowReportedAt": "2026-11-17T23:30:12.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 0,
           "runsTotal": 184
         }
@@ -1554,10 +1757,10 @@
       "metrics": {
         "snow24h": 0.39,
         "snow48h": 0.39,
-        "snow72h": 1.27,
+        "snow72h": 0.39,
         "daysSinceSnow": 0,
         "baseDepth": 0,
-        "tempF": 24.4,
+        "tempF": 21.4,
         "runsOpen": 0,
         "runsTotal": 184,
         "groomedRuns": 0,
@@ -1577,21 +1780,21 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-11-17T23:30:12.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "winter park": {
       "status": "ok",
       "resort": "Winter Park",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:13.877Z",
+      "checkedAt": "2026-11-21T08:55:27.280Z",
       "snowReportedAt": "2026-11-20T18:14:47.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Winter Park",
           "snowReportedAt": "2026-11-20T18:14:47.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 4,
           "runsTotal": 171
         }
@@ -1606,7 +1809,7 @@
         "snow72h": 1,
         "daysSinceSnow": 2,
         "baseDepth": 18,
-        "tempF": 19.6,
+        "tempF": 17,
         "runsOpen": 4,
         "runsTotal": 171,
         "groomedRuns": 4,
@@ -1619,20 +1822,27 @@
         "configuration": "https://v4.mtnfeed.com/resorts/winter-park.json",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=39.8714&longitude=-105.7731&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 11,
+        "reportedAt": "2026-11-20T18:14:47.000Z",
+        "source": "resort",
+        "modelCheckInches": 4.5,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T18:14:47.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "copper mountain": {
       "status": "ok",
       "resort": "Copper Mountain",
       "adapter": "powdr",
-      "checkedAt": "2026-11-21T02:16:14.490Z",
+      "checkedAt": "2026-11-21T08:55:27.664Z",
       "snowReportedAt": "2026-11-20T12:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:14.490Z",
+      "terrainReportedAt": "2026-11-21T08:55:27.664Z",
       "terrainTimestampKind": "checked",
       "sourceUpdatedText": "2026-11-20 05:00:00",
       "snowStatus": "ready",
@@ -1644,7 +1854,7 @@
         "snow72h": 1,
         "daysSinceSnow": 2,
         "baseDepth": 18,
-        "tempF": 18.7,
+        "tempF": 16.7,
         "runsOpen": 3,
         "runsTotal": 151,
         "groomedRuns": 3,
@@ -1657,20 +1867,27 @@
         "trails": "https://api.coppercolorado.com/api/v1/dor/drupal/trails",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=39.4826&longitude=-106.1626&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 7,
+        "reportedAt": "2026-11-20T12:00:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 4.5,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T12:00:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "eldora": {
       "status": "ok",
       "resort": "Eldora",
       "adapter": "powdr",
-      "checkedAt": "2026-11-21T02:16:14.967Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:14.967Z",
+      "checkedAt": "2026-11-21T08:55:28.027Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:28.027Z",
       "terrainTimestampKind": "checked",
       "sourceUpdatedText": "2026-10-26 07:00:00",
       "snowStatus": "ready",
@@ -1679,10 +1896,10 @@
       "metrics": {
         "snow24h": 0,
         "snow48h": 0,
-        "snow72h": 0.11,
-        "daysSinceSnow": 2,
+        "snow72h": 0,
+        "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 21.5,
+        "tempF": 18.2,
         "runsOpen": 0,
         "runsTotal": 63,
         "groomedRuns": 0,
@@ -1695,6 +1912,13 @@
         "trails": "https://api.eldora.com/api/v1/dor/drupal/trails",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=39.9377&longitude=-105.5930&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-10-26T13:00:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 4,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: 2026-10-26 07:00:00."
       ],
@@ -1702,15 +1926,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-10-26T13:00:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "arapahoe basin": {
       "status": "ok",
       "resort": "Arapahoe Basin",
       "adapter": "abasin",
-      "checkedAt": "2026-11-21T02:16:15.105Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:14.967Z",
+      "checkedAt": "2026-11-21T08:55:28.290Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:28.027Z",
       "terrainTimestampKind": "checked",
       "sourceUpdatedText": null,
       "snowStatus": "ready",
@@ -1719,10 +1943,10 @@
       "metrics": {
         "snow24h": 0,
         "snow48h": 0,
-        "snow72h": 0.19,
-        "daysSinceSnow": 2,
+        "snow72h": 0,
+        "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 14.8,
+        "tempF": 13.3,
         "runsOpen": 1,
         "runsTotal": 147,
         "groomedRuns": null,
@@ -1740,33 +1964,33 @@
       "primarySnowStatus": "unverified",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "big sky": {
       "status": "ok",
       "resort": "Big Sky",
       "adapter": "reportpal",
-      "checkedAt": "2026-11-21T02:16:15.202Z",
-      "snowReportedAt": "2026-11-21T00:00:02Z",
-      "terrainReportedAt": "2026-11-21T02:16:15.201Z",
+      "checkedAt": "2026-11-21T08:55:28.705Z",
+      "snowReportedAt": "2026-11-21T03:10:59Z",
+      "terrainReportedAt": "2026-11-21T08:55:28.705Z",
       "terrainTimestampKind": "checked",
       "componentReports": [
         {
           "name": "Big Sky Resort",
-          "snow24h": 4
+          "snow24h": 5
         }
       ],
-      "sourceUpdatedText": "2026-11-21T00:00:02Z",
+      "sourceUpdatedText": "2026-11-21T03:10:59Z",
       "snowStatus": "ready",
       "terrainStatus": "ready",
       "note": "Winter terrain from Big Sky's official ReportPal feed. Summer facilities are excluded.",
       "metrics": {
-        "snow24h": 4,
-        "snow48h": 5,
-        "snow72h": 10,
+        "snow24h": 5,
+        "snow48h": 8,
+        "snow72h": 11,
         "daysSinceSnow": 0,
-        "baseDepth": 15,
-        "tempF": 16.4,
+        "baseDepth": 19,
+        "tempF": 13.4,
         "runsOpen": 0,
         "runsTotal": 318,
         "groomedRuns": 0,
@@ -1781,16 +2005,16 @@
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
-      "officialSnowReportedAt": "2026-11-21T00:00:02Z",
+      "officialSnowReportedAt": "2026-11-21T03:10:59Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "jackson hole": {
       "status": "ok",
       "resort": "Jackson Hole",
       "adapter": "jacksonhole",
-      "checkedAt": "2026-11-21T02:16:15.271Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "checkedAt": "2026-11-21T08:55:28.958Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "terrainReportedAt": "2026-11-20T23:51:00.000Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": null,
@@ -1798,12 +2022,12 @@
       "terrainStatus": "ready",
       "note": "Weather-model estimates at the selected ski-terrain location (2259 m). Resort snow report unverified; these are not resort measurements. A model can miss snowfall happening now.",
       "metrics": {
-        "snow24h": 1.21,
-        "snow48h": 1.32,
-        "snow72h": 1.65,
+        "snow24h": 2.23,
+        "snow48h": 2.45,
+        "snow72h": 2.67,
         "daysSinceSnow": 0,
-        "baseDepth": 3.15,
-        "tempF": 23.4,
+        "baseDepth": 4.33,
+        "tempF": 18.9,
         "runsOpen": 0,
         "runsTotal": 130,
         "groomedRuns": 0,
@@ -1822,27 +2046,27 @@
       "primarySnowStatus": "unverified",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "alta": {
       "status": "ok",
       "resort": "Alta",
       "adapter": "alta",
-      "checkedAt": "2026-11-21T02:16:15.707Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:15.707Z",
+      "checkedAt": "2026-11-21T08:55:29.273Z",
+      "snowReportedAt": "2026-11-21T07:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:29.273Z",
       "terrainTimestampKind": "checked",
       "sourceUpdatedText": null,
       "snowStatus": "ready",
       "terrainStatus": "ready",
       "note": "Partly Cloudy",
       "metrics": {
-        "snow24h": 9,
+        "snow24h": 7,
         "snow48h": null,
         "snow72h": null,
         "daysSinceSnow": 0,
         "baseDepth": 44,
-        "tempF": 22.2,
+        "tempF": 21.3,
         "runsOpen": 0,
         "runsTotal": 118,
         "groomedRuns": null,
@@ -1852,20 +2076,27 @@
         "conditions": "https://www.alta.com/weather",
         "terrain": "https://www.alta.com/lift-terrain-status"
       },
+      "seasonSnowfall": {
+        "inches": 72,
+        "reportedAt": "2026-11-21T07:00:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 64.3,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
-      "officialSnowReportedAt": "2026-11-21T02:00:00.000Z",
+      "officialSnowReportedAt": "2026-11-21T07:00:00.000Z",
       "temperatureKind": "reported",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T07:00:00.000Z"
     },
     "snowbird": {
       "status": "ok",
       "resort": "Snowbird",
       "adapter": "powdr",
-      "checkedAt": "2026-11-21T02:16:16.359Z",
+      "checkedAt": "2026-11-21T08:55:29.739Z",
       "snowReportedAt": "2026-11-20T12:30:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:16.359Z",
+      "terrainReportedAt": "2026-11-21T08:55:29.739Z",
       "terrainTimestampKind": "checked",
       "sourceUpdatedText": "2026-11-20 05:30:00",
       "snowStatus": "ready",
@@ -1877,7 +2108,7 @@
         "snow72h": 22,
         "daysSinceSnow": 0,
         "baseDepth": 40,
-        "tempF": 12.7,
+        "tempF": 6,
         "runsOpen": 0,
         "runsTotal": 150,
         "groomedRuns": 0,
@@ -1890,26 +2121,33 @@
         "trails": "https://api.snowbird.com/api/v1/dor/drupal/trails",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=40.5681&longitude=-111.6524&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 72,
+        "reportedAt": "2026-11-20T12:30:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 64.3,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T12:30:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "deer valley": {
       "status": "ok",
       "resort": "Deer Valley",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:16.488Z",
+      "checkedAt": "2026-11-21T08:55:31.429Z",
       "snowReportedAt": "2026-11-20T22:33:10.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Deer Valley",
           "snowReportedAt": "2026-11-20T22:33:10.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 0,
           "runsTotal": 209
         }
@@ -1924,7 +2162,7 @@
         "snow72h": 21,
         "daysSinceSnow": 0,
         "baseDepth": 20,
-        "tempF": 16.8,
+        "tempF": 12.8,
         "runsOpen": 0,
         "runsTotal": 209,
         "groomedRuns": 0,
@@ -1937,38 +2175,45 @@
         "configuration": "https://v4.mtnfeed.com/resorts/deer-valley.json",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=40.6162&longitude=-111.4784&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 23,
+        "reportedAt": "2026-11-20T22:33:10.000Z",
+        "source": "resort",
+        "modelCheckInches": 21,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T22:33:10.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "brighton": {
       "status": "ok",
       "resort": "Brighton Resort",
       "adapter": "reportpal",
-      "checkedAt": "2026-11-21T02:16:16.610Z",
-      "snowReportedAt": "2026-11-20T12:29:33Z",
-      "terrainReportedAt": "2026-11-21T02:16:16.610Z",
+      "checkedAt": "2026-11-21T08:55:31.706Z",
+      "snowReportedAt": "2026-11-21T04:11:12Z",
+      "terrainReportedAt": "2026-11-21T08:55:31.706Z",
       "terrainTimestampKind": "checked",
       "componentReports": [
         {
           "name": "Brighton",
-          "snow24h": 17
+          "snow24h": 20
         }
       ],
-      "sourceUpdatedText": "2026-11-20T12:29:33Z",
+      "sourceUpdatedText": "2026-11-21T04:11:12Z",
       "snowStatus": "ready",
       "terrainStatus": "ready",
       "note": "Winter terrain from Brighton's official ReportPal feed. Summer facilities are excluded.",
       "metrics": {
-        "snow24h": 17,
-        "snow48h": 17,
+        "snow24h": 20,
+        "snow48h": 28,
         "snow72h": 30,
         "daysSinceSnow": 0,
         "baseDepth": 28,
-        "tempF": 14.3,
+        "tempF": 7,
         "runsOpen": 0,
         "runsTotal": 76,
         "groomedRuns": 0,
@@ -1980,26 +2225,33 @@
         "feed": "https://www.brightonresort.com/api/reportpal?resortName=br&useReportPal=true",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=40.5948&longitude=-111.5795&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 65,
+        "reportedAt": "2026-11-21T04:11:12Z",
+        "source": "resort",
+        "modelCheckInches": 49.8,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
-      "officialSnowReportedAt": "2026-11-20T12:29:33Z",
+      "officialSnowReportedAt": "2026-11-21T04:11:12Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "solitude": {
       "status": "ok",
       "resort": "Solitude",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:16.649Z",
+      "checkedAt": "2026-11-21T08:55:32.763Z",
       "snowReportedAt": "2026-11-20T12:33:02.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Solitude",
           "snowReportedAt": "2026-11-20T12:33:02.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 2,
           "runsTotal": 82
         }
@@ -2014,7 +2266,7 @@
         "snow72h": 24,
         "daysSinceSnow": 0,
         "baseDepth": 29,
-        "tempF": 16.7,
+        "tempF": 8.8,
         "runsOpen": 2,
         "runsTotal": 82,
         "groomedRuns": 2,
@@ -2027,26 +2279,33 @@
         "configuration": "https://v4.mtnfeed.com/resorts/solitude.json",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=40.6154&longitude=-111.6028&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 51,
+        "reportedAt": "2026-11-20T12:33:02.000Z",
+        "source": "resort",
+        "modelCheckInches": 30,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T12:33:02.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "mammoth": {
       "status": "ok",
       "resort": "Mammoth Mountain",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:16.782Z",
+      "checkedAt": "2026-11-21T08:55:34.742Z",
       "snowReportedAt": "2026-11-20T23:42:50.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Mammoth Mountain",
           "snowReportedAt": "2026-11-20T23:42:50.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 39,
           "runsTotal": 181
         }
@@ -2061,7 +2320,7 @@
         "snow72h": 43,
         "daysSinceSnow": 0,
         "baseDepth": null,
-        "tempF": 11.2,
+        "tempF": 8,
         "runsOpen": 39,
         "runsTotal": 181,
         "groomedRuns": 8,
@@ -2074,26 +2333,33 @@
         "configuration": "https://v4.mtnfeed.com/resorts/mammoth.json",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=37.6425&longitude=-119.0207&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 56,
+        "reportedAt": "2026-11-20T23:42:50.000Z",
+        "source": "resort",
+        "modelCheckInches": 42.9,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T23:42:50.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "june mountain": {
       "status": "ok",
       "resort": "June Mountain",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:16.811Z",
+      "checkedAt": "2026-11-21T08:55:35.497Z",
       "snowReportedAt": "2026-11-20T14:50:27.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "June Mountain",
           "snowReportedAt": "2026-11-20T14:50:27.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 0,
           "runsTotal": 38
         }
@@ -2108,7 +2374,7 @@
         "snow72h": 17,
         "daysSinceSnow": 0,
         "baseDepth": null,
-        "tempF": 11.1,
+        "tempF": 9,
         "runsOpen": 0,
         "runsTotal": 38,
         "groomedRuns": 0,
@@ -2121,40 +2387,47 @@
         "configuration": "https://v4.mtnfeed.com/resorts/june-mountain.json",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=37.7484&longitude=-119.0742&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 26,
+        "reportedAt": "2026-11-20T14:50:27.000Z",
+        "source": "resort",
+        "modelCheckInches": 37.9,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T14:50:27.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "big bear mountain": {
       "status": "ok",
       "resort": "Big Bear Mountain",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:16.854Z",
+      "checkedAt": "2026-11-21T08:55:35.627Z",
       "snowReportedAt": "2026-11-20T22:49:09.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Snow Valley",
           "snowReportedAt": "2026-11-20T22:49:09.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 0,
           "runsTotal": 32
         },
         {
           "name": "Snow Summit",
           "snowReportedAt": "2026-11-20T22:49:22.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 0,
           "runsTotal": 31
         },
         {
           "name": "Bear Mountain",
           "snowReportedAt": "2026-11-20T22:49:31.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 0,
           "runsTotal": 26
         }
@@ -2169,7 +2442,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": null,
-        "tempF": 25.2,
+        "tempF": 25.5,
         "runsOpen": 0,
         "runsTotal": 89,
         "groomedRuns": 0,
@@ -2182,27 +2455,34 @@
         "configuration": "https://v4.mtnfeed.com/resorts/big-bear-mountain.json",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=34.2208&longitude=-116.8925&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-11-20T22:49:09.000Z",
+        "source": "resort",
+        "modelCheckInches": 4.9,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T22:49:09.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "palisades tahoe": {
       "status": "ok",
       "resort": "Palisades Tahoe",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:17.166Z",
+      "checkedAt": "2026-11-21T08:55:36.013Z",
       "snowReportedAt": "2026-11-20T17:02:41.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Palisades Tahoe",
           "snowReportedAt": "2026-11-20T17:02:41.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
-          "runsOpen": 0,
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
+          "runsOpen": 20,
           "runsTotal": 296
         }
       ],
@@ -2216,10 +2496,10 @@
         "snow72h": 37,
         "daysSinceSnow": 0,
         "baseDepth": null,
-        "tempF": 18.5,
-        "runsOpen": 0,
+        "tempF": 14.1,
+        "runsOpen": 20,
         "runsTotal": 296,
-        "groomedRuns": 0,
+        "groomedRuns": null,
         "liftsOpen": null
       },
       "sources": {
@@ -2229,20 +2509,27 @@
         "configuration": "https://v4.mtnfeed.com/resorts/palisades-tahoe.json",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=39.1847&longitude=-120.2405&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 69,
+        "reportedAt": "2026-11-20T17:02:41.000Z",
+        "source": "resort",
+        "modelCheckInches": 42.1,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T17:02:41.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "killington": {
       "status": "ok",
       "resort": "Killington",
       "adapter": "killington",
-      "checkedAt": "2026-11-21T02:16:17.394Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:17.394Z",
+      "checkedAt": "2026-11-21T08:55:36.244Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:36.244Z",
       "terrainTimestampKind": "checked",
       "sourceUpdatedText": null,
       "snowStatus": "ready",
@@ -2254,7 +2541,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 37.9,
+        "tempF": 36.8,
         "runsOpen": 3,
         "runsTotal": 155,
         "groomedRuns": 3,
@@ -2272,21 +2559,21 @@
       "primarySnowStatus": "unverified",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "sugarbush": {
       "status": "ok",
       "resort": "Sugarbush",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:17.449Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "checkedAt": "2026-11-21T08:55:37.466Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Sugarbush",
           "snowReportedAt": "2026-11-19T17:53:48.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 0,
           "runsTotal": 111
         }
@@ -2301,7 +2588,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 43.6,
+        "tempF": 35.7,
         "runsOpen": 0,
         "runsTotal": 111,
         "groomedRuns": 0,
@@ -2314,6 +2601,13 @@
         "configuration": "https://v4.mtnfeed.com/resorts/sugarbush.json",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=44.1387&longitude=-72.9136&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 7,
+        "reportedAt": "2026-11-19T17:53:48.000Z",
+        "source": "resort",
+        "modelCheckInches": 2.8,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: 2026-11-19T12:53:48-0500."
       ],
@@ -2321,21 +2615,21 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-11-19T17:53:48.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "stratton": {
       "status": "ok",
       "resort": "Stratton",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:17.596Z",
+      "checkedAt": "2026-11-21T08:55:39.349Z",
       "snowReportedAt": "2026-11-20T17:21:38.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Stratton",
           "snowReportedAt": "2026-11-20T17:21:38.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 0,
           "runsTotal": 99
         }
@@ -2350,7 +2644,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": null,
-        "tempF": 44.2,
+        "tempF": 35.3,
         "runsOpen": 0,
         "runsTotal": 99,
         "groomedRuns": 0,
@@ -2363,18 +2657,25 @@
         "configuration": "https://v4.mtnfeed.com/resorts/stratton.json",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=43.1037&longitude=-72.9142&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 6,
+        "reportedAt": "2026-11-20T17:21:38.000Z",
+        "source": "resort",
+        "modelCheckInches": 6.5,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [],
       "snowSourceKind": "reported",
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T17:21:38.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "tremblant": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Tremblant",
-      "checkedAt": "2026-11-21T02:16:17.596Z",
+      "checkedAt": "2026-11-21T08:55:39.349Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -2383,7 +2684,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 38.9,
+        "tempF": 35,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -2397,23 +2698,23 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (816 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "blue": {
       "status": "ok",
       "resort": "Blue Mountain (Ontario)",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:17.844Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "checkedAt": "2026-11-21T08:55:40.644Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Blue",
           "snowReportedAt": "2026-11-16T14:26:04.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 0,
           "runsTotal": 43
         }
@@ -2428,7 +2729,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 45.2,
+        "tempF": 49.5,
         "runsOpen": 0,
         "runsTotal": 43,
         "groomedRuns": 0,
@@ -2441,6 +2742,13 @@
         "configuration": "https://v4.mtnfeed.com/resorts/blue-mountain.json",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=44.4985&longitude=-80.3180&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-11-16T14:26:04.000Z",
+        "source": "resort",
+        "modelCheckInches": 0,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: 2026-11-16T09:26:04-0500."
       ],
@@ -2448,22 +2756,22 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-11-16T14:26:04.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "skibig3": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "SkiBig3 (Banff)",
-      "checkedAt": "2026-11-21T02:16:17.844Z",
+      "checkedAt": "2026-11-21T08:55:40.644Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
         "snow24h": 0,
         "snow48h": 0,
-        "snow72h": 0.66,
+        "snow72h": 0.22,
         "daysSinceSnow": 2,
         "baseDepth": 0,
-        "tempF": 15.7,
+        "tempF": 12.6,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -2477,16 +2785,16 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1661 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "revelstoke": {
       "status": "ok",
       "resort": "Revelstoke",
       "adapter": "revelstoke",
-      "checkedAt": "2026-11-21T02:16:18.293Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "checkedAt": "2026-11-21T08:55:41.204Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "terrainReportedAt": "2026-10-28T17:48:05.000Z",
       "terrainTimestampKind": "reported",
       "sourceUpdatedText": null,
@@ -2499,7 +2807,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 2.76,
-        "tempF": 12.5,
+        "tempF": 12.3,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -2519,15 +2827,15 @@
       "primarySnowStatus": "unverified",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "cypress": {
       "status": "ok",
       "resort": "Cypress Mountain",
       "adapter": "reportpal",
-      "checkedAt": "2026-11-21T02:16:18.462Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:18.462Z",
+      "checkedAt": "2026-11-21T08:55:41.561Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:41.561Z",
       "terrainTimestampKind": "checked",
       "componentReports": [
         {
@@ -2553,7 +2861,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 32.5,
+        "tempF": 31.7,
         "runsOpen": 0,
         "runsTotal": 61,
         "groomedRuns": 0,
@@ -2572,13 +2880,13 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-11-19T23:04:32Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "red": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Red Mountain",
-      "checkedAt": "2026-11-21T02:16:18.463Z",
+      "checkedAt": "2026-11-21T08:55:41.561Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -2587,7 +2895,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 1.97,
-        "tempF": 19.3,
+        "tempF": 16.2,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -2601,15 +2909,15 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1786 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "sun peaks": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Sun Peaks",
-      "checkedAt": "2026-11-21T02:16:18.463Z",
+      "checkedAt": "2026-11-21T08:55:41.561Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -2618,7 +2926,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 16.1,
+        "tempF": 13.8,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -2632,23 +2940,23 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1691 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "crystal": {
       "status": "ok",
       "resort": "Crystal Mountain",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:18.523Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "checkedAt": "2026-11-21T08:55:42.624Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Crystal Mountain",
           "snowReportedAt": "2026-11-11T17:52:26.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 0,
           "runsTotal": 85
         }
@@ -2659,11 +2967,11 @@
       "note": "Weather-model estimates at the selected ski-terrain location (1769 m). Resort snow report stale; these are not resort measurements. A model can miss snowfall happening now.",
       "metrics": {
         "snow24h": 0,
-        "snow48h": 0.52,
+        "snow48h": 0.41,
         "snow72h": 0.91,
         "daysSinceSnow": 1,
         "baseDepth": 2.36,
-        "tempF": 22.3,
+        "tempF": 23.2,
         "runsOpen": 0,
         "runsTotal": 85,
         "groomedRuns": 0,
@@ -2676,6 +2984,13 @@
         "configuration": "https://v4.mtnfeed.com/resorts/crystal-mountain.json",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=46.9326&longitude=-121.4921&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-11-11T17:52:26.000Z",
+        "source": "resort",
+        "modelCheckInches": 20.8,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: 2026-11-11T09:52:26-0800."
       ],
@@ -2683,15 +2998,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-11-11T17:52:26.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "summit at snoqualmie": {
       "status": "ok",
       "resort": "The Summit at Snoqualmie",
       "adapter": "reportpal",
-      "checkedAt": "2026-11-21T02:16:18.694Z",
+      "checkedAt": "2026-11-21T08:55:42.994Z",
       "snowReportedAt": "2026-11-20T19:23:54Z",
-      "terrainReportedAt": "2026-11-21T02:16:18.694Z",
+      "terrainReportedAt": "2026-11-21T08:55:42.994Z",
       "terrainTimestampKind": "checked",
       "componentReports": [
         {
@@ -2725,7 +3040,7 @@
         "snow72h": null,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 30.5,
+        "tempF": 28.4,
         "runsOpen": 0,
         "runsTotal": 109,
         "groomedRuns": 0,
@@ -2742,15 +3057,15 @@
       "primarySnowStatus": "ready",
       "officialSnowReportedAt": "2026-11-20T19:23:54Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "loon": {
       "status": "ok",
       "resort": "Loon Mountain",
       "adapter": "reportpal",
-      "checkedAt": "2026-11-21T02:16:18.806Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:18.806Z",
+      "checkedAt": "2026-11-21T08:55:43.461Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:43.461Z",
       "terrainTimestampKind": "checked",
       "componentReports": [
         {
@@ -2772,7 +3087,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 41.7,
+        "tempF": 36.2,
         "runsOpen": 0,
         "runsTotal": 73,
         "groomedRuns": 0,
@@ -2791,15 +3106,15 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": "2026-11-19T21:36:14Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "sugarloaf": {
       "status": "ok",
       "resort": "Sugarloaf",
       "adapter": "reportpal",
-      "checkedAt": "2026-11-21T02:16:18.943Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:18.942Z",
+      "checkedAt": "2026-11-21T08:55:43.846Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:43.846Z",
       "terrainTimestampKind": "checked",
       "componentReports": [
         {
@@ -2817,7 +3132,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 41.9,
+        "tempF": 39.8,
         "runsOpen": 0,
         "runsTotal": 176,
         "groomedRuns": 0,
@@ -2830,21 +3145,22 @@
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=45.0427&longitude=-70.3151&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
       "issues": [
-        "Snow report stale: 2026-11-19T15:48:00Z."
+        "Snow report stale: 2026-11-19T15:48:00Z.",
+        "Resort season total 145\" withheld: far above the model's 0.3\" since 2026-08-21; likely last season's counter."
       ],
       "snowSourceKind": "model",
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-11-19T15:48:00Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "sunday river": {
       "status": "ok",
       "resort": "Sunday River",
       "adapter": "reportpal",
-      "checkedAt": "2026-11-21T02:16:19.064Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:19.064Z",
+      "checkedAt": "2026-11-21T08:55:44.217Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:44.217Z",
       "terrainTimestampKind": "checked",
       "componentReports": [
         {
@@ -2862,7 +3178,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 45.5,
+        "tempF": 37.5,
         "runsOpen": 0,
         "runsTotal": 144,
         "groomedRuns": 0,
@@ -2874,6 +3190,13 @@
         "feed": "https://www.sundayriver.com/api/reportpal?resortName=sr&useReportPal=true",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=44.4670&longitude=-70.8711&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-11-19T20:50:53Z",
+        "source": "resort",
+        "modelCheckInches": 0,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: 2026-11-19T20:50:53Z."
       ],
@@ -2881,15 +3204,15 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-11-19T20:50:53Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "boyne highlands": {
       "status": "ok",
       "resort": "Boyne Highlands",
       "adapter": "reportpal",
-      "checkedAt": "2026-11-21T02:16:19.697Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:19.697Z",
+      "checkedAt": "2026-11-21T08:55:44.670Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:44.670Z",
       "terrainTimestampKind": "checked",
       "componentReports": [
         {
@@ -2911,7 +3234,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 51.1,
+        "tempF": 51.9,
         "runsOpen": 0,
         "runsTotal": 55,
         "groomedRuns": 0,
@@ -2930,15 +3253,15 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": "2026-11-09T19:46:45Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "boyne mountain": {
       "status": "ok",
       "resort": "Boyne Mountain",
       "adapter": "reportpal",
-      "checkedAt": "2026-11-21T02:16:19.785Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:19.785Z",
+      "checkedAt": "2026-11-21T08:55:45.018Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:45.018Z",
       "terrainTimestampKind": "checked",
       "componentReports": [
         {
@@ -2960,7 +3283,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 52.8,
+        "tempF": 54.6,
         "runsOpen": 0,
         "runsTotal": 65,
         "groomedRuns": 0,
@@ -2979,22 +3302,22 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": "2026-11-16T14:31:09Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "taos": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Taos",
-      "checkedAt": "2026-11-21T02:16:19.785Z",
+      "checkedAt": "2026-11-21T08:55:45.018Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
         "snow24h": 0,
         "snow48h": 0,
-        "snow72h": 7.03,
+        "snow72h": 2.59,
         "daysSinceSnow": 2,
         "baseDepth": 0,
-        "tempF": 28.9,
+        "tempF": 22.4,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3008,23 +3331,23 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (3358 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "snowshoe": {
       "status": "ok",
       "resort": "Snowshoe",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:19.825Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "checkedAt": "2026-11-21T08:55:46.252Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Snowshoe",
           "snowReportedAt": "2026-11-19T15:45:38.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 0,
           "runsTotal": 61
         }
@@ -3039,7 +3362,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 41.2,
+        "tempF": 39.4,
         "runsOpen": 0,
         "runsTotal": 61,
         "groomedRuns": 0,
@@ -3052,6 +3375,13 @@
         "configuration": "https://v4.mtnfeed.com/resorts/snowshoe.json",
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=38.4169&longitude=-79.9930&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
+      "seasonSnowfall": {
+        "inches": 0,
+        "reportedAt": "2026-11-19T15:45:38.000Z",
+        "source": "resort",
+        "modelCheckInches": 1.4,
+        "modelCheckFrom": "2026-08-21"
+      },
       "issues": [
         "Snow report stale: 2026-11-19T10:45:38-0500."
       ],
@@ -3059,13 +3389,13 @@
       "primarySnowStatus": "stale",
       "officialSnowReportedAt": "2026-11-19T15:45:38.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "windham mountain": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Windham Mountain",
-      "checkedAt": "2026-11-21T02:16:19.825Z",
+      "checkedAt": "2026-11-21T08:55:46.252Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -3074,7 +3404,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 42.1,
+        "tempF": 35.6,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3088,24 +3418,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (712 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "chamonix": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Chamonix (Mont Blanc)",
-      "checkedAt": "2026-11-21T02:16:19.825Z",
+      "checkedAt": "2026-11-21T08:55:46.253Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 12.9,
-        "snow48h": 32.24,
-        "snow72h": 41.12,
+        "snow24h": 10.78,
+        "snow48h": 25.93,
+        "snow72h": 36.3,
         "daysSinceSnow": 0,
-        "baseDepth": 17.72,
-        "tempF": 28.4,
+        "baseDepth": 16.54,
+        "tempF": 30.2,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3119,24 +3449,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1914 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "zermatt": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Zermatt",
-      "checkedAt": "2026-11-21T02:16:19.826Z",
+      "checkedAt": "2026-11-21T08:55:46.253Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 2.76,
-        "snow48h": 7.74,
-        "snow72h": 11.3,
+        "snow24h": 2.98,
+        "snow48h": 4.08,
+        "snow72h": 9.31,
         "daysSinceSnow": 0,
-        "baseDepth": 35.04,
-        "tempF": 11.8,
+        "baseDepth": 35.43,
+        "tempF": 11.9,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3150,24 +3480,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (3285 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "st moritz": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "St. Moritz (Diavolezza)",
-      "checkedAt": "2026-11-21T02:16:19.826Z",
+      "checkedAt": "2026-11-21T08:55:46.253Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 0.3,
-        "snow48h": 2.87,
-        "snow72h": 3.22,
+        "snow24h": 0.44,
+        "snow48h": 2.04,
+        "snow72h": 3,
         "daysSinceSnow": 0,
-        "baseDepth": 6.3,
-        "tempF": 20.7,
+        "baseDepth": 10.24,
+        "tempF": 20.4,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3181,24 +3511,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (2531 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "kitzb hel": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Kitzbühel",
-      "checkedAt": "2026-11-21T02:16:19.826Z",
+      "checkedAt": "2026-11-21T08:55:46.253Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
         "snow24h": 0.52,
-        "snow48h": 1.68,
-        "snow72h": 1.85,
+        "snow48h": 2.01,
+        "snow72h": 2.18,
         "daysSinceSnow": 0,
-        "baseDepth": 0,
-        "tempF": 32.5,
+        "baseDepth": 0.39,
+        "tempF": 29.3,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3212,24 +3542,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1696 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "lech z rs am arlberg": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Lech Zürs am Arlberg",
-      "checkedAt": "2026-11-21T02:16:19.826Z",
+      "checkedAt": "2026-11-21T08:55:46.253Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 2.62,
-        "snow48h": 4.71,
-        "snow72h": 5.65,
+        "snow24h": 2.34,
+        "snow48h": 5.24,
+        "snow72h": 6.04,
         "daysSinceSnow": 0,
-        "baseDepth": 1.18,
-        "tempF": 31.9,
+        "baseDepth": 2.36,
+        "tempF": 32.3,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3243,24 +3573,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1547 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "dolomiti superski": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Dolomiti Superski",
-      "checkedAt": "2026-11-21T02:16:19.826Z",
+      "checkedAt": "2026-11-21T08:55:46.253Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
         "snow24h": 0,
-        "snow48h": 3.17,
+        "snow48h": 2.7,
         "snow72h": 3.17,
         "daysSinceSnow": 1,
         "baseDepth": 3.94,
-        "tempF": 31.4,
+        "tempF": 30.2,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3274,15 +3604,15 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1717 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "thredbo": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Thredbo",
-      "checkedAt": "2026-11-21T02:16:19.827Z",
+      "checkedAt": "2026-11-21T08:55:46.253Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -3291,7 +3621,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 59.7,
+        "tempF": 56.7,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3305,24 +3635,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1700 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "niseko united": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Niseko United",
-      "checkedAt": "2026-11-21T02:16:19.827Z",
+      "checkedAt": "2026-11-21T08:55:46.253Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 4.66,
-        "snow48h": 7.14,
-        "snow72h": 7.55,
+        "snow24h": 4.16,
+        "snow48h": 6.7,
+        "snow72h": 7.69,
         "daysSinceSnow": 0,
-        "baseDepth": 9.45,
-        "tempF": 25.9,
+        "baseDepth": 10.63,
+        "tempF": 17,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3336,15 +3666,15 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (851 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "lotte arai": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Lotte Arai",
-      "checkedAt": "2026-11-21T02:16:19.827Z",
+      "checkedAt": "2026-11-21T08:55:46.254Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -3352,8 +3682,8 @@
         "snow48h": 0,
         "snow72h": 0,
         "daysSinceSnow": null,
-        "baseDepth": 2.76,
-        "tempF": 39.1,
+        "baseDepth": 0.39,
+        "tempF": 37.8,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3367,24 +3697,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (534 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "valle nevado": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Valle Nevado",
-      "checkedAt": "2026-11-21T02:16:19.827Z",
+      "checkedAt": "2026-11-21T08:55:46.254Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
         "snow24h": 0,
-        "snow48h": 1.41,
+        "snow48h": 1.24,
         "snow72h": 1.43,
         "daysSinceSnow": 1,
         "baseDepth": 62.6,
-        "tempF": 34.4,
+        "tempF": 30.4,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3398,15 +3728,15 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (3145 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "panorama": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Panorama",
-      "checkedAt": "2026-11-21T02:16:19.827Z",
+      "checkedAt": "2026-11-21T08:55:46.254Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -3415,7 +3745,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 23.2,
+        "tempF": 21.1,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3429,23 +3759,23 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1535 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "schweitzer": {
       "status": "ok",
       "resort": "Schweitzer",
       "adapter": "mtnfeed",
-      "checkedAt": "2026-11-21T02:16:19.891Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+      "checkedAt": "2026-11-21T08:55:47.597Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:52:32.000Z",
       "terrainTimestampKind": "feed",
       "componentReports": [
         {
           "name": "Schweitzer",
           "snowReportedAt": "2026-11-19T16:11:05.000Z",
-          "terrainReportedAt": "2026-11-21T02:13:29.000Z",
+          "terrainReportedAt": "2026-11-21T08:52:32.000Z",
           "runsOpen": 0,
           "runsTotal": 92
         }
@@ -3460,7 +3790,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0.39,
-        "tempF": 19.9,
+        "tempF": 17.6,
         "runsOpen": 0,
         "runsTotal": 92,
         "groomedRuns": 0,
@@ -3480,27 +3810,27 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": "2026-11-19T16:11:05.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "sun valley": {
       "status": "ok",
       "resort": "Sun Valley",
       "adapter": "snowbasin",
-      "checkedAt": "2026-11-21T02:16:20.539Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:20.527Z",
+      "checkedAt": "2026-11-21T08:55:47.820Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:47.812Z",
       "terrainTimestampKind": "checked",
       "sourceUpdatedText": null,
       "snowStatus": "ready",
       "terrainStatus": "ready",
       "note": "Weather-model estimates at the selected ski-terrain location (2446 m). Resort snow report unverified; these are not resort measurements. A model can miss snowfall happening now.",
       "metrics": {
-        "snow24h": 0.8,
-        "snow48h": 6.97,
+        "snow24h": 0.69,
+        "snow48h": 6.17,
         "snow72h": 7.17,
         "daysSinceSnow": 0,
         "baseDepth": 12.2,
-        "tempF": 16.7,
+        "tempF": 13.2,
         "runsOpen": 0,
         "runsTotal": 131,
         "groomedRuns": 0,
@@ -3518,27 +3848,27 @@
       "primarySnowStatus": "unverified",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "snowbasin": {
       "status": "ok",
       "resort": "Snowbasin",
       "adapter": "snowbasin",
-      "checkedAt": "2026-11-21T02:16:20.980Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "terrainReportedAt": "2026-11-21T02:16:20.972Z",
+      "checkedAt": "2026-11-21T08:55:48.093Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
+      "terrainReportedAt": "2026-11-21T08:55:48.088Z",
       "terrainTimestampKind": "checked",
       "sourceUpdatedText": null,
       "snowStatus": "ready",
       "terrainStatus": "ready",
       "note": "Weather-model estimates at the selected ski-terrain location (2357 m). Resort snow report unverified; these are not resort measurements. A model can miss snowfall happening now.",
       "metrics": {
-        "snow24h": 7.36,
+        "snow24h": 7.06,
         "snow48h": 8.85,
-        "snow72h": 10.14,
+        "snow72h": 8.85,
         "daysSinceSnow": 0,
         "baseDepth": 20.87,
-        "tempF": 17.9,
+        "tempF": 18.7,
         "runsOpen": 0,
         "runsTotal": 115,
         "groomedRuns": 0,
@@ -3556,22 +3886,22 @@
       "primarySnowStatus": "unverified",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z"
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "grand targhee": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Grand Targhee",
-      "checkedAt": "2026-11-21T02:16:20.981Z",
+      "checkedAt": "2026-11-21T08:55:48.093Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 0.63,
-        "snow48h": 0.74,
-        "snow72h": 2.67,
+        "snow24h": 2.73,
+        "snow48h": 2.95,
+        "snow72h": 3.97,
         "daysSinceSnow": 0,
-        "baseDepth": 10.63,
-        "tempF": 20.9,
+        "baseDepth": 13.39,
+        "tempF": 16.3,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3585,46 +3915,59 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (2614 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "sugar bowl": {
       "status": "ok",
-      "adapter": "open-meteo",
       "resort": "Sugar Bowl",
-      "checkedAt": "2026-11-21T02:16:20.981Z",
+      "adapter": "sugarbowl",
+      "checkedAt": "2026-11-21T08:55:48.270Z",
+      "snowReportedAt": "2026-11-20T23:33:00.000Z",
+      "terrainReportedAt": null,
+      "terrainTimestampKind": "reported",
+      "sourceUpdatedText": "11/20/2026 03:33 PM",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
+      "note": "Summit (8,383 ft) values from the official Sugar Bowl conditions page.",
       "metrics": {
-        "snow24h": 2.2,
-        "snow48h": 9.67,
-        "snow72h": 20.7,
+        "snow24h": 12,
+        "snow48h": null,
+        "snow72h": null,
         "daysSinceSnow": 0,
-        "baseDepth": 33.46,
-        "tempF": 20,
+        "baseDepth": 36,
+        "tempF": 13,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
         "liftsOpen": null
       },
       "sources": {
-        "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=39.2990&longitude=-120.3313&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
+        "conditions": "https://www.sugarbowl.com/conditions",
+        "terrain": null
       },
-      "issues": [],
-      "snowSourceKind": "model",
-      "primarySnowStatus": "unavailable",
-      "officialSnowReportedAt": null,
-      "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "note": "Weather-model estimates at the selected ski-terrain location (2185 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
+      "seasonSnowfall": {
+        "inches": 107,
+        "reportedAt": "2026-11-20T23:33:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 35.1,
+        "modelCheckFrom": "2026-08-21"
+      },
+      "issues": [
+        "Terrain report unavailable."
+      ],
+      "snowSourceKind": "reported",
+      "primarySnowStatus": "ready",
+      "officialSnowReportedAt": "2026-11-20T23:33:00.000Z",
+      "temperatureKind": "reported",
+      "temperatureReportedAt": "2026-11-20T23:33:00.000Z"
     },
     "whiteface": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Whiteface",
-      "checkedAt": "2026-11-21T02:16:20.981Z",
+      "checkedAt": "2026-11-21T08:55:48.270Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -3633,7 +3976,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 41.9,
+        "tempF": 38.1,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3647,46 +3990,60 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (742 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "banff sunshine": {
       "status": "ok",
-      "adapter": "open-meteo",
       "resort": "Banff Sunshine",
-      "checkedAt": "2026-11-21T02:16:20.981Z",
+      "adapter": "banffsunshine",
+      "checkedAt": "2026-11-21T08:55:48.408Z",
+      "snowReportedAt": "2026-11-21T01:01:00.000Z",
+      "terrainReportedAt": null,
+      "terrainTimestampKind": "reported",
+      "sourceUpdatedText": "Updated: Friday, November 20th, 2026 7:01 PM",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
+      "note": "Upper Mountain base from the official Banff Sunshine current conditions (published in cm).",
       "metrics": {
-        "snow24h": 0,
-        "snow48h": 0,
-        "snow72h": 0.66,
-        "daysSinceSnow": 2,
-        "baseDepth": 1.97,
-        "tempF": 9.2,
+        "snow24h": null,
+        "snow48h": null,
+        "snow72h": null,
+        "daysSinceSnow": null,
+        "baseDepth": 14.96,
+        "tempF": 6.7,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
         "liftsOpen": null
       },
       "sources": {
+        "conditions": "https://www.skibanff.com/the-mountain/mountain-report/current-conditions",
+        "terrain": null,
         "weatherModel": "https://api.open-meteo.com/v1/forecast?latitude=51.0790&longitude=-115.7739&daily=snowfall_sum%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cweather_code&hourly=snowfall%2Ctemperature_2m%2Csnow_depth%2Crain%2Cshowers%2Cwind_speed_10m%2Cwind_gusts_10m&wind_speed_unit=mph&precipitation_unit=mm&past_days=14&forecast_days=16&temperature_unit=fahrenheit&timezone=auto&timeformat=unixtime"
       },
-      "issues": [],
-      "snowSourceKind": "model",
-      "primarySnowStatus": "unavailable",
-      "officialSnowReportedAt": null,
+      "seasonSnowfall": {
+        "inches": 24.8,
+        "reportedAt": "2026-11-21T01:01:00.000Z",
+        "source": "resort",
+        "modelCheckInches": 13.9,
+        "modelCheckFrom": "2026-08-21"
+      },
+      "issues": [
+        "Terrain report unavailable."
+      ],
+      "snowSourceKind": "reported",
+      "primarySnowStatus": "ready",
+      "officialSnowReportedAt": "2026-11-21T01:01:00.000Z",
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
-      "note": "Weather-model estimates at the selected ski-terrain location (2173 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z"
     },
     "bromont": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Bromont",
-      "checkedAt": "2026-11-21T02:16:20.981Z",
+      "checkedAt": "2026-11-21T08:55:48.408Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -3695,7 +4052,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 45.9,
+        "tempF": 37.9,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3709,15 +4066,15 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (505 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "lake louise": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Lake Louise",
-      "checkedAt": "2026-11-21T02:16:20.982Z",
+      "checkedAt": "2026-11-21T08:55:48.408Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -3726,7 +4083,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0.39,
-        "tempF": 7.2,
+        "tempF": 4.5,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3740,15 +4097,15 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (2271 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "le massif de charlevoix": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Le Massif de Charlevoix",
-      "checkedAt": "2026-11-21T02:16:20.982Z",
+      "checkedAt": "2026-11-21T08:55:48.408Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -3757,7 +4114,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 41.5,
+        "tempF": 35.7,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3771,15 +4128,15 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (494 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "marmot basin": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Marmot Basin",
-      "checkedAt": "2026-11-21T02:16:20.982Z",
+      "checkedAt": "2026-11-21T08:55:48.408Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -3788,7 +4145,7 @@
         "snow72h": 0.14,
         "daysSinceSnow": 2,
         "baseDepth": 11.81,
-        "tempF": 10.1,
+        "tempF": 4.8,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3802,24 +4159,24 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (2034 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "meg ve": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Megève",
-      "checkedAt": "2026-11-21T02:16:20.982Z",
+      "checkedAt": "2026-11-21T08:55:48.408Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
-        "snow24h": 9.09,
-        "snow48h": 20.42,
-        "snow72h": 20.42,
+        "snow24h": 5.7,
+        "snow48h": 16.01,
+        "snow72h": 21.08,
         "daysSinceSnow": 0,
-        "baseDepth": 5.91,
-        "tempF": 31.2,
+        "baseDepth": 6.3,
+        "tempF": 32.2,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3833,15 +4190,15 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1692 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "mt buller": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Mt Buller",
-      "checkedAt": "2026-11-21T02:16:20.982Z",
+      "checkedAt": "2026-11-21T08:55:48.409Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -3850,7 +4207,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 62,
+        "tempF": 57.2,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3864,15 +4221,15 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1707 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "coronet peak": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "Coronet Peak",
-      "checkedAt": "2026-11-21T02:16:20.982Z",
+      "checkedAt": "2026-11-21T08:55:48.409Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -3881,7 +4238,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 51.8,
+        "tempF": 47.8,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3895,15 +4252,15 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1379 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     },
     "the remarkables": {
       "status": "ok",
       "adapter": "open-meteo",
       "resort": "The Remarkables",
-      "checkedAt": "2026-11-21T02:16:20.983Z",
+      "checkedAt": "2026-11-21T08:55:48.409Z",
       "snowStatus": "ready",
       "terrainStatus": "unavailable",
       "metrics": {
@@ -3912,7 +4269,7 @@
         "snow72h": 0,
         "daysSinceSnow": null,
         "baseDepth": 0,
-        "tempF": 48.5,
+        "tempF": 42.9,
         "runsOpen": null,
         "runsTotal": null,
         "groomedRuns": null,
@@ -3926,8 +4283,8 @@
       "primarySnowStatus": "unavailable",
       "officialSnowReportedAt": null,
       "temperatureKind": "model",
-      "temperatureReportedAt": "2026-11-21T02:00:00.000Z",
-      "snowReportedAt": "2026-11-21T02:00:00.000Z",
+      "temperatureReportedAt": "2026-11-21T08:00:00.000Z",
+      "snowReportedAt": "2026-11-21T08:00:00.000Z",
       "note": "Weather-model estimates at the selected ski-terrain location (1728 m). Resort snow report unavailable; these are not resort measurements. A model can miss snowfall happening now."
     }
   }

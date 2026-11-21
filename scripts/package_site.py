@@ -3,6 +3,7 @@
 import argparse
 from pathlib import Path
 import shutil
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -13,6 +14,7 @@ def main():
     output = parser.parse_args().output.resolve()
     files = [ROOT / name for name in (
         'index.html', 'history.html', 'styles.css', 'heatmap.css', 'travel.css', 'mountain.html', 'mountain.css', 'resort-view.css',
+        'resort-page.css',
         'data/travel-airports.json',
         'assets/gouache-grain.png', 'assets/painted-conifer.png',
         'assets/mountain-icons/LICENSE',
@@ -30,6 +32,8 @@ def main():
         destination = output / source.relative_to(ROOT)
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, destination)
+    # Crawlable per-resort pages, resort index, sitemap.xml and robots.txt.
+    subprocess.run(['node', str(ROOT / 'scripts/build_seo_pages.mjs'), str(output)], check=True)
     (output / '.nojekyll').touch()
     print(f'Packaged {len(files)} public files in {output}')
 

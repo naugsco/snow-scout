@@ -31,7 +31,7 @@ async function check() {
     await previous;
     const record = { url, resorts:[...new Set(names)] };
     try {
-      const response = await fetch(url, { headers:{'User-Agent':'SnowScoutSourceAudit/1.0 (+https://naugsco.github.io/snow-scout/)'}, signal:AbortSignal.timeout(12000) });
+      const response = await fetch(url, { headers:{'User-Agent':'SnowScoutSourceAudit/1.0 (+https://snowscout.ski/)'}, signal:AbortSignal.timeout(12000) });
       record.status = response.status; record.finalUrl = response.url;
       record.result = response.ok ? 'reachable' : [401,403,429].includes(response.status) ? 'restricted-needs-manual-check' : 'http-error';
       // No inventory scraping, tracking identifiers or response bodies retained.

@@ -1,6 +1,8 @@
 import { createWeatherTileGateway } from '../server/weather-tiles.mjs';
-const ORIGIN='https://naugsco.github.io';
-const headers = origin => ({'Content-Type':'application/json','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Vary':'Origin',...(origin===ORIGIN?{'Access-Control-Allow-Origin':ORIGIN}:{})});
+// snowscout.ski is the public site; the github.io origin stays allowed until the custom-domain cutover is confirmed.
+const ORIGINS=new Set(['https://snowscout.ski','https://www.snowscout.ski','https://naugsco.github.io']);
+const allowed = origin => ORIGINS.has(origin);
+const headers = origin => ({'Content-Type':'application/json','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Vary':'Origin',...(allowed(origin)?{'Access-Control-Allow-Origin':origin}:{})});
 const json = (body,status=200,origin=null) => new Response(JSON.stringify(body),{status,headers:headers(origin)});
 
 export class WeatherAccount {
@@ -28,15 +30,15 @@ export class WeatherAccount {
 export default {
   async fetch(request,env) {
     const url=new URL(request.url),origin=request.headers.get('Origin');
-    if(url.pathname==='/health' && request.method==='GET')return json({service:'snow-scout-weather',version:'20261106',status:'ok'});
-    if(origin && origin!==ORIGIN)return json({error:'Origin not allowed.'},403);
+    if(url.pathname==='/health' && request.method==='GET')return json({service:'snow-scout-weather',version:'20261121',status:'ok'});
+    if(origin && !allowed(origin))return json({error:'Origin not allowed.'},403);
     if(request.method==='OPTIONS'){
-      if(origin!==ORIGIN)return json({error:'Origin required.'},403);
+      if(!allowed(origin))return json({error:'Origin required.'},403);
       return new Response(null,{status:204,headers:{...headers(origin),'Access-Control-Allow-Methods':'GET, OPTIONS','Access-Control-Allow-Headers':'Content-Type','Access-Control-Max-Age':'600'}});
     }
     if(request.method!=='GET')return json({error:'GET required.'},405,origin);
     if(!url.pathname.startsWith('/api/weather/'))return json({error:'Not found.'},404,origin);
-    if(url.pathname!=='/api/weather/status' && origin!==ORIGIN)return json({error:'Origin required.'},403);
+    if(url.pathname!=='/api/weather/status' && !allowed(origin))return json({error:'Origin required.'},403);
     try {
       const id=env.WEATHER_ACCOUNT.idFromName('openweather-account-v1');
       const response=await env.WEATHER_ACCOUNT.get(id).fetch(request);

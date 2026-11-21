@@ -21,3 +21,12 @@ test('actual account class persists initialization and stays paused without a ke
  assert.ok(saved.starts);assert.equal((await (await account.fetch(new Request('https://worker/api/weather/status'))).json()).enabled,false);
  assert.equal((await account.fetch(new Request('https://worker/api/weather/tiles/temp_new/0/0/0.png'))).status,503);
 });
+test('custom domain origins are allowed and echoed; lookalikes are rejected',async()=>{
+ const env={WEATHER_ACCOUNT:{idFromName(){return 'one';},get(){return {fetch:async()=>new Response('{}',{status:200})};}}};
+ for(const allowedOrigin of ['https://snowscout.ski','https://www.snowscout.ski']){
+  const response=await worker.fetch(new Request('https://worker/api/weather/status',{headers:{Origin:allowedOrigin}}),env);
+  assert.equal(response.status,200);assert.equal(response.headers.get('Access-Control-Allow-Origin'),allowedOrigin);
+ }
+ for(const bad of ['http://snowscout.ski','https://snowscout.ski.evil.example','https://evilsnowscout.ski'])
+  assert.equal((await worker.fetch(new Request('https://worker/api/weather/status',{headers:{Origin:bad}}),env)).status,403);
+});

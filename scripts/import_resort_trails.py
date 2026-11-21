@@ -81,7 +81,7 @@ def download_snapshot(folder):
         state[name] = {'date': today, 'complete': False}
         state_file.write_text(json.dumps(state, indent=2) + '\n')
         request = urllib.request.Request(SOURCE + remote, headers={
-            'User-Agent': 'SnowScout/1.0 (+https://naugsco.github.io/snow-scout/)',
+            'User-Agent': 'SnowScout/1.0 (+https://snowscout.ski/)',
             'Accept-Encoding': 'gzip',
         })
         temporary = path.with_suffix(path.suffix + '.part')

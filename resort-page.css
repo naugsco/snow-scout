@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --text: #0b1b35;
+  --muted: #4b5d75;
+  --line: #d5dfeb;
+  --accent: #1f6fd1;
+  --accent-text: #ffffff;
+  --bar: #2589ef;
+  --font-ui: "Inter", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Barlow Condensed", "Avenir Next", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #07111f;
+    --surface: #0d1b2e;
+    --text: #eef4ff;
+    --muted: #a7b9d1;
+    --line: #22344b;
+    --accent: #3d8bf0;
+    --bar: #4aa3ff;
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 var(--font-ui); }
+a { color: var(--accent); }
+main, .site-header, .site-footer { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 20px; padding-bottom: 20px; flex-wrap: wrap; }
+.brand { font-family: var(--font-display); font-weight: 800; font-size: 26px; text-transform: uppercase; color: var(--text); text-decoration: none; letter-spacing: -.02em; }
+.site-header nav { display: flex; gap: 18px; font-size: 14px; font-weight: 600; }
+.site-header nav a { text-decoration: none; }
+
+.crumbs { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+.hero { padding: 8px 0 24px; border-bottom: 1px solid var(--line); }
+h1 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(34px, 7vw, 54px); line-height: 1; margin: 0 0 8px; letter-spacing: -.02em; }
+h2 { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 26px; margin: 32px 0 12px; }
+.place { color: var(--muted); margin: 0 0 20px; }
+.issued { color: var(--muted); font-size: 14px; margin: 12px 0 20px; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 0; }
+.stats div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.stats dt { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.stats dd { margin: 4px 0 0; font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1; }
+.stats small { display: block; font-family: var(--font-ui); font-weight: 500; font-size: 14px; color: var(--muted); margin-top: 6px; }
+
+.cta { display: inline-block; background: var(--accent); color: var(--accent-text); padding: 12px 18px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+.cta:hover { filter: brightness(1.08); }
+
+.outlook { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; font-variant-numeric: tabular-nums; }
+.outlook th, .outlook td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); font-size: 15px; }
+.outlook thead th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.outlook tbody th { font-weight: 500; white-space: nowrap; }
+.outlook tr:last-child > * { border-bottom: 0; }
+.bar-cell { width: 40%; }
+.bar-cell span { display: block; height: 10px; border-radius: 5px; background: var(--bar); min-width: 0; }
+
+.nearby, .resort-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.nearby { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.nearby a, .resort-list li { display: flex; justify-content: space-between; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+.nearby a { text-decoration: none; font-weight: 600; }
+.resort-list a { font-weight: 600; text-decoration: none; }
+.resort-list span { color: var(--muted); font-size: 14px; white-space: nowrap; }
+
+.site-footer { margin-top: 48px; padding-top: 20px; padding-bottom: 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 520px) {
+  .bar-cell { display: none; }
+  .outlook th, .outlook td { padding: 8px 10px; }
+}

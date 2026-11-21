@@ -44,6 +44,11 @@ class PackagingTests(unittest.TestCase):
 
             self.assertFalse((output / 'docs/flight-travel-build.mb').exists())
             self.assertTrue((output / 'data/travel-airports.json').is_file())
+            self.assertTrue((output / 'resort-page.css').is_file())
+            self.assertTrue((output / 'resorts/index.html').is_file())
+            self.assertTrue((output / 'resorts/vail/index.html').is_file())
+            self.assertIn('https://snowscout.ski/sitemap.xml', (output / 'robots.txt').read_text())
+            self.assertIn('<urlset', (output / 'sitemap.xml').read_text())
             parser = ResourceLinks()
             parser.feed((output / 'mountain.html').read_text())
             parser.feed((output / 'index.html').read_text())
@@ -52,6 +57,15 @@ class PackagingTests(unittest.TestCase):
                 if not url.scheme:
                     self.assertFalse(url.path.startswith('/'), link)
                     self.assertTrue((output / unquote(url.path)).is_file(), link)
+            # Generated resort pages link relative to their own directory.
+            for page in (output / 'resorts/index.html', output / 'resorts/vail/index.html'):
+                page_links = ResourceLinks()
+                page_links.feed(page.read_text())
+                self.assertTrue(page_links.links, page)
+                for link in page_links.links:
+                    path = urlsplit(link).path
+                    self.assertFalse(path.startswith('/'), link)
+                    self.assertTrue((page.parent / unquote(path)).resolve().is_file(), f'{page}: {link}')
             # Resolve relative imports and texture/data URLs from the published
             # module locations, just as the /snow-scout/ Pages deployment does.
             for module in (output / 'js').glob('*.js'):

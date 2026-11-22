@@ -13,7 +13,7 @@ from pathlib import Path
 import re
 import sys
 import time
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
@@ -21,6 +21,16 @@ ROOT = Path(__file__).resolve().parents[1]
 MODEL = 'era5'
 FIRST_DAY = date(1940, 1, 1)
 SOURCE = 'https://open-meteo.com/en/docs/historical-weather-api'
+# Each unanswered request can take minutes to time out; stop instead of blocking the shared data queue.
+MAX_CONSECUTIVE_NETWORK_ERRORS = 3
+
+
+class ArchiveUnreachable(Exception):
+    pass
+
+
+def is_network_error(error):
+    return isinstance(error, (URLError, TimeoutError, ConnectionError)) and not isinstance(error, HTTPError)
 
 
 def resort_key(name):
@@ -159,9 +169,10 @@ def main():
     results = {key: results.get(key, {**resort, 'status': 'pending', 'seasons': [], 'sourceUrl': SOURCE}) for key, resort in all_resorts.items()}
     generated_at = datetime.now(timezone.utc).isoformat()
     failures = 0
+    network_failures = 0
 
     def update(key, start, end):
-        nonlocal failures
+        nonlocal failures, network_failures
         resort, previous = all_resorts[key], results[key]
         url = request_url(resort, start, end)
         print(f"Fetching {resort['name']}: {start} to {end}", flush=True)
@@ -176,6 +187,7 @@ def main():
                             'historyStartDate': min(previous_start, start.isoformat()),
                             'gridElevationM': payload.get('elevation'), 'gridLat': payload.get('latitude'), 'gridLon': payload.get('longitude'),
                             'seasons': merge_seasons(previous['seasons'], fresh)}
+            network_failures = 0
             print(f"ok: {resort['name']}: {sum(row['complete'] for row in results[key]['seasons'])} complete seasons", flush=True)
         except Exception as error:
             failures += 1
@@ -185,6 +197,11 @@ def main():
             if isinstance(error, HTTPError) and error.code == 429:
                 print('API rate limit reached; stopped. Rerun later to resume checkpoints.', file=sys.stderr)
                 raise
+            if is_network_error(error):
+                network_failures += 1
+                if network_failures >= MAX_CONSECUTIVE_NETWORK_ERRORS:
+                    print(f'{network_failures} network errors in a row; archive API unreachable, stopped. Rerun later to resume checkpoints.', file=sys.stderr)
+                    raise ArchiveUnreachable(str(error)) from error
         save_catalog(args.output, results, generated_at)
         # One variable uses 1/10 of the two-week call unit. Keep below 550 units/min.
         weight = max(1, (end - start).days / 14 / 10)
@@ -225,6 +242,8 @@ def main():
     except HTTPError as error:
         if error.code != 429:
             raise
+    except ArchiveUnreachable:
+        pass
     summary = save_catalog(args.output, results, generated_at)
     remaining = sum(row.get('historyStartDate', '9999') > FIRST_DAY.isoformat() for row in results.values())
     print(json.dumps({**summary, 'resortsStillBackfilling': remaining}))

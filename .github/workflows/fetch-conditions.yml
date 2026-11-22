@@ -33,4 +33,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/resort-conditions.json data/resort-forecasts.json data/resort-source-health.json
           git diff --cached --quiet || git commit -m "chore: update resort data"
+          # Commits may land while this job runs (code pushes, the other data job); replay on top.
+          git pull --rebase origin main
           git push

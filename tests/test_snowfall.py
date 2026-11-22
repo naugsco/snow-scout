@@ -1,7 +1,12 @@
 import importlib.util
 from datetime import date, timedelta
+import json
 from pathlib import Path
+import sys
+import tempfile
 import unittest
+from unittest import mock
+from urllib.error import HTTPError, URLError
 
 spec = importlib.util.spec_from_file_location('snowfall', Path(__file__).resolve().parents[1] / 'scripts/fetch_resort_snowfall.py')
 snowfall = importlib.util.module_from_spec(spec)
@@ -90,6 +95,48 @@ class SnowfallTests(unittest.TestCase):
         self.assertEqual(len(merged), 2)
         self.assertEqual(merged[0]['total'], 75)
         self.assertEqual(merged[1]['total'], 200)
+
+    def run_main(self, fetch, resorts):
+        calls = []
+        def fake_fetch(url):
+            calls.append(url)
+            return fetch(len(calls))
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder) / 'snowfall.json'
+            argv = ['fetch', '--output', str(output), '--as-of', '2026-11-21', '--backfill-budget', '0']
+            for name in resorts:
+                argv += ['--resort', name]
+            with mock.patch.object(snowfall, 'fetch_payload', fake_fetch), mock.patch.object(snowfall.time, 'sleep'), mock.patch.object(sys, 'argv', argv):
+                code = snowfall.main()
+            return code, calls, json.loads(output.read_text())
+
+    def test_stops_after_consecutive_network_errors_and_keeps_checkpoints(self):
+        names = ['Vail', 'Alta', 'Aspen Snowmass', 'Big Sky', 'Snowbird']
+        def fetch(n):
+            if n == 1:
+                return payload(date(2026, 7, 1), date(2026, 11, 16))
+            raise URLError('_ssl.c:994: The handshake operation timed out')
+        code, calls, saved = self.run_main(fetch, names)
+        self.assertEqual(code, 1)
+        self.assertEqual(len(calls), 1 + snowfall.MAX_CONSECUTIVE_NETWORK_ERRORS)
+        statuses = sorted(row['status'] for row in saved['resorts'].values() if row['name'] in names)
+        self.assertEqual(statuses.count('ok'), 1)
+        self.assertEqual(statuses.count('error'), 3)
+
+    def test_scattered_network_errors_do_not_stop_the_run(self):
+        names = ['Vail', 'Alta', 'Aspen Snowmass', 'Big Sky', 'Snowbird']
+        def fetch(n):
+            if n % 2 == 0:
+                raise URLError('handshake timed out')
+            return payload(date(2026, 7, 1), date(2026, 11, 16))
+        code, calls, _ = self.run_main(fetch, names)
+        self.assertEqual((code, len(calls)), (1, 5))
+
+    def test_http_errors_other_than_429_are_not_counted_as_network_errors(self):
+        self.assertTrue(snowfall.is_network_error(URLError('x')))
+        self.assertTrue(snowfall.is_network_error(TimeoutError()))
+        self.assertFalse(snowfall.is_network_error(HTTPError('u', 500, 'x', {}, None)))
+        self.assertFalse(snowfall.is_network_error(ValueError('x')))
 
 
 if __name__ == '__main__':

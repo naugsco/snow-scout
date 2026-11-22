@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T06:57:20.285538+00:00",
+  "generatedAt": "2026-11-22T19:45:48.200234+00:00",
   "units": "in",
   "model": "era5",
   "source": "Open-Meteo / ECMWF ERA5 reanalysis",
@@ -7,8 +7,8 @@
   "historyStartDate": "1940-01-01",
   "seasonDefinition": "Northern: July 1–June 30. Southern: January 1–December 31. Days are UTC.",
   "summary": {
-    "ok": 105,
-    "error": 0,
+    "ok": 92,
+    "error": 13,
     "pending": 0
   },
   "resorts": {
@@ -4884,11 +4884,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=43.5957601&longitude=-110.8397713&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=43.5957601&longitude=-110.8397713&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 2259.0,
       "gridLat": 43.5,
       "gridLon": -110.75,
@@ -5013,6 +5013,116 @@
           "missingDays": 0,
           "total": 136.09,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 86.89,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 85.32,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 126.85,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 76.26,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 87.33,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 141.24,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 89.62,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 113.3,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 121.56,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 75.21,
+          "complete": true
         }
       ]
     },
@@ -5023,11 +5133,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=37.7484366&longitude=-119.0742445&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=37.7484366&longitude=-119.0742445&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 2783.0,
       "gridLat": 37.75,
       "gridLon": -119.0,
@@ -5152,6 +5262,116 @@
           "missingDays": 0,
           "total": 192.09,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 101.78,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 40.65,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 66.56,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 54.02,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 63.74,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 192.91,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 121.54,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 90.61,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 123.71,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 61.29,
+          "complete": true
         }
       ]
     },
@@ -5160,7 +5380,7 @@
       "lat": 39.5718987,
       "lon": -105.9415005,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=39.5718987&longitude=-105.9415005&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -5292,7 +5512,9 @@
           "total": 118.28,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "killington": {
       "name": "Killington",
@@ -5301,11 +5523,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=43.6111717&longitude=-72.8029328&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=43.6111717&longitude=-72.8029328&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 993.0,
       "gridLat": 43.5,
       "gridLon": -72.75,
@@ -5430,6 +5652,116 @@
           "missingDays": 0,
           "total": 86.45,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 29.32,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 84.11,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 74.19,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 60.99,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 53.41,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 86.31,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 74.63,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 73.67,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 93.07,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 88.38,
+          "complete": true
         }
       ]
     },
@@ -5440,11 +5772,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=38.6793544&longitude=-120.0665551&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=38.6793544&longitude=-120.0665551&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 2430.0,
       "gridLat": 38.75,
       "gridLon": -120.0,
@@ -5569,6 +5901,116 @@
           "missingDays": 0,
           "total": 267.82,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 196.41,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 68.48,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 101.78,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 112.39,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 127.71,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 313.15,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 232.63,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 153.01,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 175.77,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 127.38,
+          "complete": true
         }
       ]
     },
@@ -5577,7 +6019,7 @@
       "lat": 47.4063902,
       "lon": 12.3672765,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=47.4063902&longitude=12.3672765&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -5709,7 +6151,9 @@
           "total": 106.3,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "lake louise": {
       "name": "Lake Louise",
@@ -5718,11 +6162,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=51.4558059&longitude=-116.1359811&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=51.4558059&longitude=-116.1359811&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 2271.0,
       "gridLat": 51.5,
       "gridLon": -116.25,
@@ -5847,6 +6291,116 @@
           "missingDays": 0,
           "total": 156.12,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 125.7,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 125.48,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 148.46,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 155.19,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 179.88,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 153.7,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 121.23,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 111.23,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 145.57,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 167.7,
+          "complete": true
         }
       ]
     },
@@ -5857,11 +6411,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.1664273&longitude=-79.1683635&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.1664273&longitude=-79.1683635&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 773.0,
       "gridLat": 40.25,
       "gridLon": -79.25,
@@ -5986,6 +6540,116 @@
           "missingDays": 0,
           "total": 34.2,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 25.77,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 48.26,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 53.24,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 44.87,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 31.22,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 43.19,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 52.64,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 37.54,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 35.19,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 35.61,
+          "complete": true
         }
       ]
     },
@@ -5994,7 +6658,7 @@
       "lat": 47.2795332,
       "lon": -70.5933856,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=47.2795332&longitude=-70.5933856&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -6126,7 +6790,9 @@
           "total": 148.98,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "lech z rs am arlberg": {
       "name": "Lech Zürs am Arlberg",
@@ -6135,11 +6801,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=47.1917139&longitude=10.1488098&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=47.1917139&longitude=10.1488098&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 1547.0,
       "gridLat": 47.25,
       "gridLon": 10.25,
@@ -6264,6 +6930,116 @@
           "missingDays": 0,
           "total": 170.26,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 206.8,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 206.36,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 172.0,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 235.69,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 260.38,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 155.85,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 188.89,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 214.27,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 250.9,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 174.94,
+          "complete": true
         }
       ]
     },
@@ -6274,11 +7050,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=45.3724841&longitude=6.5832676&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=45.3724841&longitude=6.5832676&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 1717.0,
       "gridLat": 45.25,
       "gridLon": 6.5,
@@ -6403,6 +7179,116 @@
           "missingDays": 0,
           "total": 94.64,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 128.07,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 87.72,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 137.71,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 160.06,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 140.63,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 86.62,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 125.86,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 141.54,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 126.69,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 80.11,
+          "complete": true
         }
       ]
     },
@@ -6411,7 +7297,7 @@
       "lat": 39.7579748,
       "lon": -77.3676378,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=39.7579748&longitude=-77.3676378&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -6543,7 +7429,9 @@
           "total": 15.02,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "loon mountain": {
       "name": "Loon Mountain",
@@ -6552,11 +7440,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=44.0436957&longitude=-71.6321535&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=44.0436957&longitude=-71.6321535&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 646.0,
       "gridLat": 44.0,
       "gridLon": -71.75,
@@ -6681,6 +7569,116 @@
           "missingDays": 0,
           "total": 83.92,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 34.78,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 74.3,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 69.48,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 58.7,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 50.96,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 79.01,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 57.96,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 62.86,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 98.44,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 78.98,
+          "complete": true
         }
       ]
     },
@@ -6691,11 +7689,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=36.991523&longitude=138.160851&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=36.991523&longitude=138.160851&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 534.0,
       "gridLat": 37.0,
       "gridLon": 138.25,
@@ -6820,6 +7818,116 @@
           "missingDays": 0,
           "total": 161.74,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 109.46,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 178.17,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 178.14,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 171.78,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 193.41,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 156.59,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 151.35,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 130.52,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 148.07,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 88.16,
+          "complete": true
         }
       ]
     },
@@ -6828,7 +7936,7 @@
       "lat": 37.642456,
       "lon": -119.0207208,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=37.642456&longitude=-119.0207208&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -6960,7 +8068,9 @@
           "total": 204.98,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "marmot basin": {
       "name": "Marmot Basin",
@@ -6969,11 +8079,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=52.7991823&longitude=-118.1056701&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=52.7991823&longitude=-118.1056701&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 2034.0,
       "gridLat": 52.75,
       "gridLon": -118.0,
@@ -7098,6 +8208,116 @@
           "missingDays": 0,
           "total": 146.83,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 121.56,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 121.56,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 133.83,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 135.78,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 158.16,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 117.32,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 118.56,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 116.55,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 125.09,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 147.94,
+          "complete": true
         }
       ]
     },
@@ -7108,11 +8328,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=45.8470567&longitude=6.6673843&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=45.8470567&longitude=6.6673843&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 1692.0,
       "gridLat": 45.75,
       "gridLon": 6.75,
@@ -7237,6 +8457,116 @@
           "missingDays": 0,
           "total": 120.71,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 180.59,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 101.14,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 155.82,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 215.65,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 192.72,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 91.28,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 134.16,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 158.3,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 161.63,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 111.61,
+          "complete": true
         }
       ]
     },
@@ -7245,7 +8575,7 @@
       "lat": 42.9608203,
       "lon": -72.9105097,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=42.9608203&longitude=-72.9105097&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -7377,7 +8707,9 @@
           "total": 85.07,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "mount sunapee": {
       "name": "Mount Sunapee",
@@ -7386,11 +8718,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=43.3225407&longitude=-72.0758098&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=43.3225407&longitude=-72.0758098&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 629.0,
       "gridLat": 43.25,
       "gridLon": -72.0,
@@ -7515,6 +8847,116 @@
           "missingDays": 0,
           "total": 74.96,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 24.47,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 71.02,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 62.04,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 62.34,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 43.79,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 66.67,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 58.51,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 61.51,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 81.27,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 66.78,
+          "complete": true
         }
       ]
     },
@@ -7525,11 +8967,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=42.5400434&longitude=-83.8091995&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=42.5400434&longitude=-83.8091995&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 293.0,
       "gridLat": 42.5,
       "gridLon": -83.75,
@@ -7653,6 +9095,116 @@
           "expectedDays": 365,
           "missingDays": 0,
           "total": 25.63,
+          "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 30.37,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 26.1,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 44.18,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 29.35,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 21.94,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 38.14,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 26.02,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 47.13,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 54.65,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 19.35,
           "complete": true
         }
       ]
@@ -7801,7 +9353,7 @@
       "lat": 42.8667392,
       "lon": 140.6752229,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=42.8667392&longitude=140.6752229&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -7933,7 +9485,9 @@
           "total": 86.62,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "northstar": {
       "name": "Northstar",
@@ -7942,11 +9496,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=39.2560502&longitude=-120.1331377&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=39.2560502&longitude=-120.1331377&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 2293.0,
       "gridLat": 39.25,
       "gridLon": -120.25,
@@ -8071,6 +9625,116 @@
           "missingDays": 0,
           "total": 245.96,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 173.57,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 52.83,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 81.55,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 110.37,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 124.26,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 290.0,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 209.7,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 137.44,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 179.27,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 115.11,
+          "complete": true
         }
       ]
     },
@@ -8081,11 +9745,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=43.4090594&longitude=-72.7339354&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=43.4090594&longitude=-72.7339354&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 745.0,
       "gridLat": 43.5,
       "gridLon": -72.75,
@@ -8210,6 +9874,116 @@
           "missingDays": 0,
           "total": 84.03,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 26.43,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 81.52,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 72.76,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 56.94,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 51.98,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 80.28,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 63.0,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 69.56,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 91.66,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 83.5,
+          "complete": true
         }
       ]
     },
@@ -8218,7 +9992,7 @@
       "lat": 39.1847087,
       "lon": -120.2404866,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=39.1847087&longitude=-120.2404866&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -8350,7 +10124,9 @@
           "total": 252.52,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "panorama": {
       "name": "Panorama",
@@ -8359,11 +10135,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=50.4452447&longitude=-116.2285727&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=50.4452447&longitude=-116.2285727&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 1535.0,
       "gridLat": 50.5,
       "gridLon": -116.25,
@@ -8488,6 +10264,116 @@
           "missingDays": 0,
           "total": 62.7,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 41.92,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 45.42,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 77.5,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 64.6,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 82.35,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 89.76,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 39.63,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 61.35,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 64.43,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 72.73,
+          "complete": true
         }
       ]
     },
@@ -8498,11 +10384,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=45.5506521&longitude=6.7798996&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=45.5506521&longitude=6.7798996&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 1985.0,
       "gridLat": 45.5,
       "gridLon": 6.75,
@@ -8627,6 +10513,116 @@
           "missingDays": 0,
           "total": 119.11,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 173.9,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 125.56,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 171.11,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 205.76,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 194.43,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 112.66,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 163.95,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 160.59,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 177.12,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 141.24,
+          "complete": true
         }
       ]
     },
@@ -8635,7 +10631,7 @@
       "lat": 40.6532953,
       "lon": -111.5519363,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.6532953&longitude=-111.5519363&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -8767,7 +10763,9 @@
           "total": 140.11,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "perisher": {
       "name": "Perisher",
@@ -8915,11 +10913,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=49.1053567&longitude=-117.8449066&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=49.1053567&longitude=-117.8449066&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 1786.0,
       "gridLat": 49.0,
       "gridLon": -117.75,
@@ -9044,6 +11042,116 @@
           "missingDays": 0,
           "total": 108.36,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 99.96,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 58.37,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 91.3,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 112.33,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 106.85,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 122.89,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 91.83,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 81.33,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 105.28,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 102.52,
+          "complete": true
         }
       ]
     },
@@ -9054,11 +11162,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=50.967896&longitude=-118.1161302&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=50.967896&longitude=-118.1161302&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 1857.0,
       "gridLat": 51.0,
       "gridLon": -118.0,
@@ -9183,6 +11291,116 @@
           "missingDays": 0,
           "total": 217.36,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 205.23,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 174.39,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 237.06,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 246.19,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 244.81,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 232.19,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 196.19,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 189.47,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 207.08,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 225.71,
+          "complete": true
         }
       ]
     },
@@ -9191,7 +11409,7 @@
       "lat": 40.1059225,
       "lon": -76.9264733,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.1059225&longitude=-76.9264733&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -9323,7 +11541,9 @@
           "total": 17.2,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "rusutsu": {
       "name": "Rusutsu",
@@ -9332,11 +11552,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=42.7270763&longitude=140.9188572&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=42.7270763&longitude=140.9188572&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 614.0,
       "gridLat": 42.75,
       "gridLon": 141.0,
@@ -9461,6 +11681,116 @@
           "missingDays": 0,
           "total": 104.97,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 90.78,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 108.86,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 83.78,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 118.61,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 93.95,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 68.7,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 105.14,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 117.57,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 76.17,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 104.17,
+          "complete": true
         }
       ]
     },
@@ -9471,11 +11801,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=48.3798339&longitude=-116.6231124&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=48.3798339&longitude=-116.6231124&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 1686.0,
       "gridLat": 48.5,
       "gridLon": -116.5,
@@ -9600,6 +11930,116 @@
           "missingDays": 0,
           "total": 106.3,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 90.67,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 60.44,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 108.2,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 110.84,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 121.45,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 144.96,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 68.32,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 107.87,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 139.72,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 104.56,
+          "complete": true
         }
       ]
     },
@@ -9608,7 +12048,7 @@
       "lat": 40.0241293,
       "lon": -79.3038826,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.0241293&longitude=-79.3038826&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -9740,7 +12180,9 @@
           "total": 41.2,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "skibig3": {
       "name": "SkiBig3 (Banff)",
@@ -9749,11 +12191,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=51.1149043&longitude=-115.7628381&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=51.1149043&longitude=-115.7628381&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 1661.0,
       "gridLat": 51.0,
       "gridLon": -115.75,
@@ -9878,6 +12320,116 @@
           "missingDays": 0,
           "total": 62.97,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 53.91,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 62.12,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 91.17,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 83.26,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 87.89,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 86.2,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 55.28,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 72.26,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 73.8,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 69.53,
+          "complete": true
         }
       ]
     },
@@ -9888,11 +12440,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=41.1986884&longitude=-111.8632121&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=41.1986884&longitude=-111.8632121&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 2357.0,
       "gridLat": 41.25,
       "gridLon": -111.75,
@@ -10017,6 +12569,116 @@
           "missingDays": 0,
           "total": 102.05,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 78.63,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 49.83,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 77.28,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 64.87,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 55.12,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 132.28,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 76.04,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 101.64,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 98.03,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 61.59,
+          "complete": true
         }
       ]
     },
@@ -10025,7 +12687,7 @@
       "lat": 40.568144,
       "lon": -111.6524494,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.568144&longitude=-111.6524494&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -10157,7 +12819,9 @@
           "total": 123.44,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "snowshoe": {
       "name": "Snowshoe",
@@ -10166,11 +12830,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=38.4169262&longitude=-79.9930215&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=38.4169262&longitude=-79.9930215&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 1378.0,
       "gridLat": 38.5,
       "gridLon": -80.0,
@@ -10295,6 +12959,116 @@
           "missingDays": 0,
           "total": 33.18,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 44.15,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 65.87,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 70.58,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 99.16,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 42.11,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 65.84,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 79.04,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 46.66,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 41.75,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 45.36,
+          "complete": true
         }
       ]
     },
@@ -10305,11 +13079,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.615436&longitude=-111.6028406&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.615436&longitude=-111.6028406&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 2673.0,
       "gridLat": 40.5,
       "gridLon": -111.5,
@@ -10434,6 +13208,116 @@
           "missingDays": 0,
           "total": 154.63,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 104.81,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 74.11,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 110.7,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 86.65,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 83.72,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 192.72,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 108.14,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 126.69,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 140.08,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 99.13,
+          "complete": true
         }
       ]
     },
@@ -10442,7 +13326,7 @@
       "lat": 46.4247006,
       "lon": 9.9744515,
       "elevationM": null,
-      "status": "ok",
+      "status": "error",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
       "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=46.4247006&longitude=9.9744515&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
       "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
@@ -10574,7 +13458,9 @@
           "total": 122.44,
           "complete": true
         }
-      ]
+      ],
+      "lastAttemptAt": "2026-11-22T19:45:48.200234+00:00",
+      "error": "URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
     },
     "steamboat": {
       "name": "Steamboat",
@@ -10583,11 +13469,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.4558486&longitude=-106.7628259&start_date=2026-07-01&end_date=2026-11-17&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=40.4558486&longitude=-106.7628259&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 2759.0,
       "gridLat": 40.5,
       "gridLon": -106.75,
@@ -10712,6 +13598,116 @@
           "missingDays": 0,
           "total": 115.97,
           "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 109.69,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 78.76,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 137.8,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 92.57,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 68.15,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 152.07,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 114.26,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 117.13,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 129.36,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 93.84,
+          "complete": true
         }
       ]
     },
@@ -10722,11 +13718,11 @@
       "elevationM": null,
       "status": "ok",
       "sourceUrl": "https://open-meteo.com/en/docs/historical-weather-api",
-      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=47.7391511&longitude=-121.0910689&start_date=2016-07-01&end_date=2026-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
-      "retrievedAt": "2026-11-22T06:15:52.889957+00:00",
+      "apiUrl": "https://archive-api.open-meteo.com/v1/archive?latitude=47.7391511&longitude=-121.0910689&start_date=2006-07-01&end_date=2016-06-30&daily=snowfall_sum&models=era5&timezone=GMT",
+      "retrievedAt": "2026-11-22T19:45:48.200234+00:00",
       "requestedThrough": "2026-11-17",
       "availableThrough": "2026-11-16",
-      "historyStartDate": "2016-07-01",
+      "historyStartDate": "2006-07-01",
       "gridElevationM": 1317.0,
       "gridLat": 47.75,
       "gridLon": -121.0,
@@ -10850,6 +13846,116 @@
           "expectedDays": 365,
           "missingDays": 0,
           "total": 301.88,
+          "complete": true
+        },
+        {
+          "season": "2015/16",
+          "startDate": "2015-07-01",
+          "endDate": "2016-06-30",
+          "through": "2016-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 294.83,
+          "complete": true
+        },
+        {
+          "season": "2014/15",
+          "startDate": "2014-07-01",
+          "endDate": "2015-06-30",
+          "through": "2015-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 161.0,
+          "complete": true
+        },
+        {
+          "season": "2013/14",
+          "startDate": "2013-07-01",
+          "endDate": "2014-06-30",
+          "through": "2014-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 328.53,
+          "complete": true
+        },
+        {
+          "season": "2012/13",
+          "startDate": "2012-07-01",
+          "endDate": "2013-06-30",
+          "through": "2013-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 317.62,
+          "complete": true
+        },
+        {
+          "season": "2011/12",
+          "startDate": "2011-07-01",
+          "endDate": "2012-06-30",
+          "through": "2012-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 352.87,
+          "complete": true
+        },
+        {
+          "season": "2010/11",
+          "startDate": "2010-07-01",
+          "endDate": "2011-06-30",
+          "through": "2011-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 351.54,
+          "complete": true
+        },
+        {
+          "season": "2009/10",
+          "startDate": "2009-07-01",
+          "endDate": "2010-06-30",
+          "through": "2010-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 277.46,
+          "complete": true
+        },
+        {
+          "season": "2008/09",
+          "startDate": "2008-07-01",
+          "endDate": "2009-06-30",
+          "through": "2009-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 292.98,
+          "complete": true
+        },
+        {
+          "season": "2007/08",
+          "startDate": "2007-07-01",
+          "endDate": "2008-06-30",
+          "through": "2008-06-30",
+          "observedDays": 366,
+          "expectedDays": 366,
+          "missingDays": 0,
+          "total": 331.98,
+          "complete": true
+        },
+        {
+          "season": "2006/07",
+          "startDate": "2006-07-01",
+          "endDate": "2007-06-30",
+          "through": "2007-06-30",
+          "observedDays": 365,
+          "expectedDays": 365,
+          "missingDays": 0,
+          "total": 304.75,
           "complete": true
         }
       ]

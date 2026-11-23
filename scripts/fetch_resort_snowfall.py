@@ -21,8 +21,10 @@ ROOT = Path(__file__).resolve().parents[1]
 MODEL = 'era5'
 FIRST_DAY = date(1940, 1, 1)
 SOURCE = 'https://open-meteo.com/en/docs/historical-weather-api'
-# Each unanswered request can take minutes to time out; stop instead of blocking the shared data queue.
+# Unanswered requests each wait out the timeout; stop instead of blocking the shared data queue.
 MAX_CONSECUTIVE_NETWORK_ERRORS = 3
+# Per socket operation (handshake, each read), not the whole download. Handshakes normally take under a second.
+REQUEST_TIMEOUT_SECONDS = 30
 
 
 class ArchiveUnreachable(Exception):
@@ -126,7 +128,7 @@ def request_url(resort, start, end):
 
 def fetch_payload(url):
     request = Request(url, headers={'User-Agent': 'SnowScout/1.0 ERA5-season-totals'})
-    with urlopen(request, timeout=120) as response:
+    with urlopen(request, timeout=REQUEST_TIMEOUT_SECONDS) as response:
         payload = json.load(response)
     if payload.get('error'):
         raise ValueError(payload.get('reason', 'Archive API error'))

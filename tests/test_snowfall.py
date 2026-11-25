@@ -132,6 +132,35 @@ class SnowfallTests(unittest.TestCase):
         code, calls, _ = self.run_main(fetch, names)
         self.assertEqual((code, len(calls)), (1, 5))
 
+    def test_request_retries_temporary_failures(self):
+        response = mock.MagicMock()
+        response.__enter__.return_value.read.return_value = b'{"daily": {}}'
+        with mock.patch.object(snowfall, 'urlopen', side_effect=[URLError('handshake'), TimeoutError(), response]) as request, mock.patch.object(snowfall.time, 'sleep') as sleep:
+            self.assertEqual(snowfall.fetch_payload('https://example.com'), {'daily': {}})
+        self.assertEqual(request.call_count, 3)
+        self.assertEqual(sleep.call_args_list, [mock.call(1), mock.call(2)])
+
+    def test_request_retries_are_bounded_and_rate_limits_are_not_retried(self):
+        for error, attempts in [(URLError('handshake'), 3), (HTTPError('u', 429, 'limit', {}, None), 1), (HTTPError('u', 503, 'busy', {}, None), 3)]:
+            with self.subTest(error=error), mock.patch.object(snowfall, 'urlopen', side_effect=error) as request, mock.patch.object(snowfall.time, 'sleep'):
+                with self.assertRaises(type(error)):
+                    snowfall.fetch_payload('https://example.com')
+                self.assertEqual(request.call_count, attempts)
+
+    def test_historical_failure_preserves_current_data_and_exits_successfully(self):
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder) / 'snowfall.json'
+            resort = snowfall.app_resorts()['vail']
+            argv = ['fetch', '--output', str(output), '--as-of', '2026-11-21', '--backfill-budget', '1200']
+            with mock.patch.object(snowfall, 'app_resorts', return_value={'vail': resort}), mock.patch.object(snowfall, 'fetch_payload', side_effect=[payload(date(2026, 7, 1), date(2026, 11, 16)), URLError('handshake')]) as fetch, mock.patch.object(snowfall.time, 'sleep'), mock.patch.object(sys, 'argv', argv):
+                self.assertEqual(snowfall.main(), 0)
+            saved = json.loads(output.read_text())['resorts']['vail']
+            self.assertEqual(fetch.call_count, 2)
+            self.assertEqual(saved['status'], 'ok')
+            self.assertEqual(saved['availableThrough'], '2026-11-16')
+            self.assertIn('handshake', saved['historyError'])
+            self.assertTrue(saved['seasons'])
+
     def test_http_errors_other_than_429_are_not_counted_as_network_errors(self):
         self.assertTrue(snowfall.is_network_error(URLError('x')))
         self.assertTrue(snowfall.is_network_error(TimeoutError()))

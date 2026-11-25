@@ -14,10 +14,12 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
+      - name: Test snowfall collection
+        run: python3 -m unittest discover -s tests -p 'test_snowfall.py'
       - name: Refresh current totals and resume historical backfill
         # Reserve free-tier request capacity for hourly current weather collection.
         run: python3 scripts/fetch_resort_snowfall.py --backfill-budget 1200

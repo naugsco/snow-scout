@@ -24,7 +24,8 @@ SOURCE = 'https://open-meteo.com/en/docs/historical-weather-api'
 # Unanswered requests each wait out the timeout; stop instead of blocking the shared data queue.
 MAX_CONSECUTIVE_NETWORK_ERRORS = 3
 # Per socket operation (handshake, each read), not the whole download. Handshakes normally take under a second.
-REQUEST_TIMEOUT_SECONDS = 30
+REQUEST_TIMEOUT_SECONDS = 15
+MAX_REQUEST_ATTEMPTS = 3
 
 
 class ArchiveUnreachable(Exception):
@@ -128,11 +129,20 @@ def request_url(resort, start, end):
 
 def fetch_payload(url):
     request = Request(url, headers={'User-Agent': 'SnowScout/1.0 ERA5-season-totals'})
-    with urlopen(request, timeout=REQUEST_TIMEOUT_SECONDS) as response:
-        payload = json.load(response)
-    if payload.get('error'):
-        raise ValueError(payload.get('reason', 'Archive API error'))
-    return payload
+    for attempt in range(MAX_REQUEST_ATTEMPTS):
+        try:
+            with urlopen(request, timeout=REQUEST_TIMEOUT_SECONDS) as response:
+                payload = json.load(response)
+            if payload.get('error'):
+                raise ValueError(payload.get('reason', 'Archive API error'))
+            return payload
+        except (URLError, TimeoutError, ConnectionError) as error:
+            retryable = is_network_error(error) or (isinstance(error, HTTPError) and error.code in (500, 502, 503, 504))
+            if not retryable or attempt == MAX_REQUEST_ATTEMPTS - 1:
+                raise
+            delay = 2 ** attempt
+            print(f'Archive request failed; retrying in {delay}s: {error}', file=sys.stderr, flush=True)
+            time.sleep(delay)
 
 
 def merge_seasons(previous, fresh):
@@ -172,9 +182,11 @@ def main():
     generated_at = datetime.now(timezone.utc).isoformat()
     failures = 0
     network_failures = 0
+    historical_failures = 0
+    failed_backfills = set()
 
-    def update(key, start, end):
-        nonlocal failures, network_failures
+    def update(key, start, end, historical=False):
+        nonlocal failures, network_failures, historical_failures
         resort, previous = all_resorts[key], results[key]
         url = request_url(resort, start, end)
         print(f"Fetching {resort['name']}: {start} to {end}", flush=True)
@@ -192,8 +204,14 @@ def main():
             network_failures = 0
             print(f"ok: {resort['name']}: {sum(row['complete'] for row in results[key]['seasons'])} complete seasons", flush=True)
         except Exception as error:
-            failures += 1
-            results[key] = {**previous, **resort, 'status': 'error', 'lastAttemptAt': generated_at, 'error': f'{type(error).__name__}: {error}'}
+            if historical:
+                historical_failures += 1
+                failed_backfills.add(key)
+                results[key] = {**previous, 'historyLastAttemptAt': generated_at,
+                                'historyError': f'{type(error).__name__}: {error}'}
+            else:
+                failures += 1
+                results[key] = {**previous, **resort, 'status': 'error', 'lastAttemptAt': generated_at, 'error': f'{type(error).__name__}: {error}'}
             print(f"ERROR: {resort['name']}: {error}", file=sys.stderr, flush=True)
             save_catalog(args.output, results, generated_at)
             if isinstance(error, HTTPError) and error.code == 429:
@@ -230,7 +248,7 @@ def main():
         # so repeated scheduled runs progressively reach 1940 without repeating downloads.
         budget = args.backfill_budget
         while True:
-            candidates = [(key, row) for key, row in results.items() if key in requested and row.get('status') == 'ok' and row.get('historyStartDate', FIRST_DAY.isoformat()) > FIRST_DAY.isoformat()]
+            candidates = [(key, row) for key, row in results.items() if key in requested and key not in failed_backfills and row.get('status') == 'ok' and row.get('historyStartDate', FIRST_DAY.isoformat()) > FIRST_DAY.isoformat()]
             if not candidates:
                 break
             key, previous = max(candidates, key=lambda pair: (pair[1]['historyStartDate'], pair[0]))
@@ -239,7 +257,7 @@ def main():
             weight = max(1, (end - start).days / 14 / 10)
             if weight > budget:
                 break
-            update(key, start, end)
+            update(key, start, end, historical=True)
             budget -= weight
     except HTTPError as error:
         if error.code != 429:
@@ -248,8 +266,10 @@ def main():
         pass
     summary = save_catalog(args.output, results, generated_at)
     remaining = sum(row.get('historyStartDate', '9999') > FIRST_DAY.isoformat() for row in results.values())
-    print(json.dumps({**summary, 'resortsStillBackfilling': remaining}))
-    return 1 if failures or summary['pending'] else 0
+    print(json.dumps({**summary, 'resortsStillBackfilling': remaining, 'currentFailures': failures, 'historicalFailures': historical_failures}))
+    if historical_failures:
+        print(f'::warning::{historical_failures} historical downloads failed; current data retained, backfill will resume next run.')
+    return 1 if failures or summary['error'] or summary['pending'] else 0
 
 
 if __name__ == '__main__':
